@@ -1,13 +1,13 @@
-import { findGymFixture, gymFixtures } from "@zac/shared";
 import { Hono } from "hono";
+import { getGym, listGyms } from "../services/gym-service.js";
 
 export function createGymRoutes() {
   const app = new Hono();
 
-  app.get("/", (context) => context.json({ data: gymFixtures }));
+  app.get("/", (context) => context.json({ data: listGyms() }));
 
   app.get("/:gymId", (context) => {
-    const gym = findGymFixture(context.req.param("gymId"));
+    const gym = getGym(context.req.param("gymId"));
 
     if (!gym) {
       return context.json(
@@ -27,4 +27,3 @@ export function createGymRoutes() {
 
   return app;
 }
-

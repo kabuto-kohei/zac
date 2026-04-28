@@ -1,12 +1,12 @@
-import { findPostFixture, postFixtures } from "@zac/shared";
 import { Hono } from "hono";
+import { getPost, listPosts } from "../services/post-service.js";
 
 export function createPostRoutes() {
   const app = new Hono();
 
   app.get("/", (context) =>
     context.json({
-      data: postFixtures,
+      data: listPosts(),
       page: {
         limit: 20,
         cursor: null,
@@ -16,7 +16,7 @@ export function createPostRoutes() {
   );
 
   app.get("/:postId", (context) => {
-    const post = findPostFixture(context.req.param("postId"));
+    const post = getPost(context.req.param("postId"));
 
     if (!post) {
       return context.json(
@@ -36,4 +36,3 @@ export function createPostRoutes() {
 
   return app;
 }
-

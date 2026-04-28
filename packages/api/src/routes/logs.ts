@@ -1,12 +1,12 @@
-import { findLogFixture, logFixtures } from "@zac/shared";
 import { Hono } from "hono";
+import { getClimbingLog, listClimbingLogs } from "../services/climbing-log-service.js";
 
 export function createLogRoutes() {
   const app = new Hono();
 
   app.get("/", (context) =>
     context.json({
-      data: logFixtures,
+      data: listClimbingLogs(),
       page: {
         limit: 20,
         cursor: null,
@@ -16,7 +16,7 @@ export function createLogRoutes() {
   );
 
   app.get("/:logId", (context) => {
-    const log = findLogFixture(context.req.param("logId"));
+    const log = getClimbingLog(context.req.param("logId"));
 
     if (!log) {
       return context.json(

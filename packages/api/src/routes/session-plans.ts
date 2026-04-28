@@ -1,12 +1,12 @@
-import { findPlanFixture, planFixtures } from "@zac/shared";
 import { Hono } from "hono";
+import { getSessionPlan, listSessionPlans } from "../services/session-plan-service.js";
 
 export function createSessionPlanRoutes() {
   const app = new Hono();
 
   app.get("/", (context) =>
     context.json({
-      data: planFixtures,
+      data: listSessionPlans(),
       page: {
         limit: 20,
         cursor: null,
@@ -16,7 +16,7 @@ export function createSessionPlanRoutes() {
   );
 
   app.get("/:planId", (context) => {
-    const plan = findPlanFixture(context.req.param("planId"));
+    const plan = getSessionPlan(context.req.param("planId"));
 
     if (!plan) {
       return context.json(

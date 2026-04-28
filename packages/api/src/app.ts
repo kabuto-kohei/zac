@@ -6,6 +6,7 @@ import { createHealthRoutes } from "./routes/health.js";
 import { createLogRoutes } from "./routes/logs.js";
 import { createPostRoutes } from "./routes/posts.js";
 import { createSessionPlanRoutes } from "./routes/session-plans.js";
+import { notFoundResponse } from "./responses.js";
 
 export function createApp() {
   const app = new Hono();
@@ -27,18 +28,7 @@ export function createApp() {
     });
   });
 
-  app.notFound((context) =>
-    context.json(
-      {
-        error: {
-          code: "not_found",
-          message: "Not found.",
-          details: {},
-        },
-      },
-      404,
-    ),
-  );
+  app.notFound((context) => context.json(notFoundResponse(), 404));
 
   return app;
 }

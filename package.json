@@ -14,7 +14,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "openapi:generate": "pnpm --filter @zac/api openapi:generate",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+    "secret:scan": "node scripts/secret-scan.mjs",
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm secret:scan"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

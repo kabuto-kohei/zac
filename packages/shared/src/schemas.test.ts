@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   createClimbingLogSchema,
   createPostSchema,
+  createReportSchema,
   createSessionPlanSchema,
   localSessionSchema,
   onboardingProfileSchema,
@@ -103,4 +104,25 @@ test("onboardingProfileSchema keeps location disabled", () => {
   });
 
   assert.equal(result.success, true);
+});
+
+test("createReportSchema accepts a valid report", () => {
+  const result = createReportSchema.safeParse({
+    targetType: "post",
+    targetId: "yellow-wall-post",
+    category: "spam",
+    note: "同じ内容が繰り返されています。",
+  });
+
+  assert.equal(result.success, true);
+});
+
+test("createReportSchema rejects missing target", () => {
+  const result = createReportSchema.safeParse({
+    targetType: "post",
+    targetId: "",
+    category: "other",
+  });
+
+  assert.equal(result.success, false);
 });

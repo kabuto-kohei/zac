@@ -85,6 +85,24 @@ export const createPostSchema = z.object({
   visibility: visibilitySchema.default("followers"),
 });
 
+export const reportCategorySchema = z.enum([
+  "harassment",
+  "spam",
+  "inappropriate_image",
+  "dangerous_behavior",
+  "personal_information",
+  "copyright",
+  "impersonation",
+  "other",
+]);
+
+export const createReportSchema = z.object({
+  targetType: z.enum(["post", "session_plan", "climbing_log", "user"]),
+  targetId: z.string().min(1).max(120),
+  category: reportCategorySchema,
+  note: z.string().max(1000).nullable().optional(),
+});
+
 export type Visibility = z.infer<typeof visibilitySchema>;
 export type SessionPlanStatus = z.infer<typeof sessionPlanStatusSchema>;
 export type JoinPolicy = z.infer<typeof joinPolicySchema>;
@@ -93,3 +111,4 @@ export type OnboardingProfileInput = z.infer<typeof onboardingProfileSchema>;
 export type CreateSessionPlanInput = z.infer<typeof createSessionPlanSchema>;
 export type CreateClimbingLogInput = z.infer<typeof createClimbingLogSchema>;
 export type CreatePostInput = z.infer<typeof createPostSchema>;
+export type CreateReportInput = z.infer<typeof createReportSchema>;

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { AppShell } from "./app-shell";
 import { getPostDetailData } from "./data";
 
@@ -21,6 +22,11 @@ export function PostDetail({ postId }: { postId: string }) {
         </div>
       </section>
       <section className="stack">
+        <article className="wide-card action-row">
+          <Link className="ghost-button" href={`/reports/new?targetType=post&targetId=${post.id}`}>
+            通報
+          </Link>
+        </article>
         <article className="wide-card">
           <p className="card-kind">コメント</p>
           <h3>コメントはまだありません</h3>

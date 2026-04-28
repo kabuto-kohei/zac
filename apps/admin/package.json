@@ -11,8 +11,12 @@
     "build": "next build"
   },
   "dependencies": {
+    "@sentry/browser": "^10.50.0",
+    "@sentry/nextjs": "^10.50.0",
+    "@supabase/supabase-js": "^2.105.0",
     "@zac/shared": "workspace:*",
     "next": "^15.0.0",
+    "posthog-js": "^1.372.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

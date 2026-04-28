@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { AdminIntegrationProvider } from "../src/features/admin/integration-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <AdminIntegrationProvider>{children}</AdminIntegrationProvider>
+      </body>
     </html>
   );
 }

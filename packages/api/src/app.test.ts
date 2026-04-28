@@ -26,6 +26,18 @@ test("GET /v1/gyms/:gymId returns not_found for unknown gym", async () => {
   assert.equal(body.error.code, "not_found");
 });
 
+test("GET /v1/integrations returns non-secret status", async () => {
+  const response = await createApp().request("/v1/integrations");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(typeof body.data.supabase, "boolean");
+  assert.equal(typeof body.data.database, "boolean");
+  assert.equal(typeof body.data.posthog, "boolean");
+  assert.equal(typeof body.data.sentry, "boolean");
+  assert.equal(body.data.storage.userMediaBucket, "user-media");
+});
+
 test("GET /v1/announcements returns paginated announcements", async () => {
   const response = await createApp().request("/v1/announcements");
   const body = await response.json();

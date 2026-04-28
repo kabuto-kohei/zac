@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { createClimbingLogSchema } from "@zac/shared";
+import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createClimbingLog, getClimbingLog, listClimbingLogs } from "../services/climbing-log-service.js";
 
@@ -15,7 +16,9 @@ export function createLogRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    return context.json(dataResponse(createClimbingLog(result.data)), 201);
+    const log = createClimbingLog(result.data);
+    captureServerEvent("climbing_log_created");
+    return context.json(dataResponse(log), 201);
   });
 
   app.get("/:logId", (context) => {

@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { createSessionPlanSchema } from "@zac/shared";
+import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createSessionPlan, getSessionPlan, listSessionPlans } from "../services/session-plan-service.js";
 
@@ -15,7 +16,9 @@ export function createSessionPlanRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    return context.json(dataResponse(createSessionPlan(result.data)), 201);
+    const plan = createSessionPlan(result.data);
+    captureServerEvent("session_plan_created", { visibility: plan.visibility });
+    return context.json(dataResponse(plan), 201);
   });
 
   app.get("/:planId", (context) => {

@@ -23,7 +23,9 @@ export function PlanCard({ plan }: { plan: PlanSummary }) {
       <div className="card-visual plan-visual" />
       <div>
         <p className="card-kind">予定 · {plan.visibility}</p>
-        <h3>{plan.title}</h3>
+        <h3>
+          <Link href={`/plans/${plan.id}`}>{plan.title}</Link>
+        </h3>
         <p>
           {plan.place} · {plan.time} · {plan.members}
         </p>
@@ -38,7 +40,9 @@ export function LogCard({ log }: { log: LogSummary }) {
       <div className="card-visual log-visual" />
       <div>
         <p className="card-kind">記録</p>
-        <h3>{log.title}</h3>
+        <h3>
+          <Link href={`/logs/${log.id}`}>{log.title}</Link>
+        </h3>
         <p>
           {log.place} · {log.grade}
         </p>
@@ -46,4 +50,3 @@ export function LogCard({ log }: { log: LogSummary }) {
     </article>
   );
 }
-

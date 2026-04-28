@@ -95,3 +95,10 @@ export function findGymFixture(gymId: string) {
   return gymFixtures.find((gym) => gym.id === gymId);
 }
 
+export function findPlanFixture(planId: string) {
+  return planFixtures.find((plan) => plan.id === planId);
+}
+
+export function findLogFixture(logId: string) {
+  return logFixtures.find((log) => log.id === logId);
+}

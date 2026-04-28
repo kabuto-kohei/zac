@@ -1,4 +1,4 @@
-import { logFixtures } from "@zac/shared";
+import { findLogFixture, logFixtures } from "@zac/shared";
 import { Hono } from "hono";
 
 export function createLogRoutes() {
@@ -15,6 +15,24 @@ export function createLogRoutes() {
     }),
   );
 
+  app.get("/:logId", (context) => {
+    const log = findLogFixture(context.req.param("logId"));
+
+    if (!log) {
+      return context.json(
+        {
+          error: {
+            code: "not_found",
+            message: "Not found.",
+            details: {},
+          },
+        },
+        404,
+      );
+    }
+
+    return context.json({ data: log });
+  });
+
   return app;
 }
-

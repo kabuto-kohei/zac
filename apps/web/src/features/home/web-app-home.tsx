@@ -59,7 +59,9 @@ function PlansPanel() {
       {plans.map((plan) => (
         <article className="wide-card" key={plan.id}>
           <p className="card-kind">{plan.time}</p>
-          <h3>{plan.title}</h3>
+          <h3>
+            <Link href={`/plans/${plan.id}`}>{plan.title}</Link>
+          </h3>
           <p>
             {plan.place} · {plan.members}
           </p>
@@ -81,7 +83,9 @@ function LogsPanel() {
       {logs.map((log) => (
         <article className="wide-card" key={log.id}>
           <p className="card-kind">{log.place}</p>
-          <h3>{log.title}</h3>
+          <h3>
+            <Link href={`/logs/${log.id}`}>{log.title}</Link>
+          </h3>
           <p>
             {log.grade} · {log.note}
           </p>
@@ -103,4 +107,3 @@ function ProfilePanel() {
     </section>
   );
 }
-

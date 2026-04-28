@@ -1,4 +1,4 @@
-import { planFixtures } from "@zac/shared";
+import { findPlanFixture, planFixtures } from "@zac/shared";
 import { Hono } from "hono";
 
 export function createSessionPlanRoutes() {
@@ -15,6 +15,24 @@ export function createSessionPlanRoutes() {
     }),
   );
 
+  app.get("/:planId", (context) => {
+    const plan = findPlanFixture(context.req.param("planId"));
+
+    if (!plan) {
+      return context.json(
+        {
+          error: {
+            code: "not_found",
+            message: "Not found.",
+            details: {},
+          },
+        },
+        404,
+      );
+    }
+
+    return context.json({ data: plan });
+  });
+
   return app;
 }
-

@@ -34,3 +34,18 @@ test("GET /v1/session-plans returns paginated shape", async () => {
   assert.equal(body.page.hasNext, false);
 });
 
+test("GET /v1/session-plans/:planId returns a plan", async () => {
+  const response = await createApp().request("/v1/session-plans/tuesday-night");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.data.id, "tuesday-night");
+});
+
+test("GET /v1/logs/:logId returns a log", async () => {
+  const response = await createApp().request("/v1/logs/yellow-wall");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.data.id, "yellow-wall");
+});

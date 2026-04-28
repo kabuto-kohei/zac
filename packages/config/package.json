@@ -1,0 +1,13 @@
+{
+  "name": "@zac/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "echo 'No lint configured for @zac/config yet.'",
+    "typecheck": "echo 'No typecheck configured for @zac/config yet.'",
+    "test": "echo 'No tests configured for @zac/config yet.'",
+    "build": "echo 'No build configured for @zac/config yet.'"
+  }
+}
+

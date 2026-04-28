@@ -1,0 +1,42 @@
+import { Hono } from "hono";
+import { toErrorResponse } from "./errors.js";
+import { createGymRoutes } from "./routes/gyms.js";
+import { createHealthRoutes } from "./routes/health.js";
+import { createLogRoutes } from "./routes/logs.js";
+import { createSessionPlanRoutes } from "./routes/session-plans.js";
+
+export function createApp() {
+  const app = new Hono();
+
+  app.route("/v1/health", createHealthRoutes());
+  app.route("/v1/gyms", createGymRoutes());
+  app.route("/v1/session-plans", createSessionPlanRoutes());
+  app.route("/v1/logs", createLogRoutes());
+
+  app.onError((error, context) => {
+    const response = toErrorResponse(error);
+    return new Response(JSON.stringify(response.body), {
+      status: response.status,
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+  });
+
+  app.notFound((context) =>
+    context.json(
+      {
+        error: {
+          code: "not_found",
+          message: "Not found.",
+          details: {},
+        },
+      },
+      404,
+    ),
+  );
+
+  return app;
+}
+
+export type ZacApi = ReturnType<typeof createApp>;

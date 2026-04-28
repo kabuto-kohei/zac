@@ -12,6 +12,20 @@ export const paginationQuerySchema = z.object({
   limit: z.coerce.number().int().min(1).max(100).default(20),
 });
 
+export const localSessionSchema = z.object({
+  email: z.string().email(),
+});
+
+export const onboardingProfileSchema = z.object({
+  displayName: z.string().min(1).max(40),
+  discipline: z.enum(["boulder", "lead", "top_rope"]),
+  experience: z.enum(["beginner", "intermediate", "advanced"]),
+  area: z.string().min(1).max(40),
+  interest: z.enum(["partner", "log", "event", "training"]),
+  defaultVisibility: visibilitySchema.default("followers"),
+  locationEnabled: z.literal(false),
+});
+
 export const createSessionPlanSchema = z
   .object({
     title: z.string().min(1).max(80),
@@ -74,6 +88,8 @@ export const createPostSchema = z.object({
 export type Visibility = z.infer<typeof visibilitySchema>;
 export type SessionPlanStatus = z.infer<typeof sessionPlanStatusSchema>;
 export type JoinPolicy = z.infer<typeof joinPolicySchema>;
+export type LocalSessionInput = z.infer<typeof localSessionSchema>;
+export type OnboardingProfileInput = z.infer<typeof onboardingProfileSchema>;
 export type CreateSessionPlanInput = z.infer<typeof createSessionPlanSchema>;
 export type CreateClimbingLogInput = z.infer<typeof createClimbingLogSchema>;
 export type CreatePostInput = z.infer<typeof createPostSchema>;

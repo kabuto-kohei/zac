@@ -252,6 +252,12 @@ p {
   justify-content: space-between;
 }
 
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .form-panel {
   display: grid;
   gap: 18px;

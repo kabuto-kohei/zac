@@ -1,6 +1,5 @@
-import { WebAppHome } from "../src/features/home/web-app-home";
+import { LaunchGate } from "../src/features/home/auth-flow";
 
 export default function HomePage() {
-  return <WebAppHome activeTab="home" />;
+  return <LaunchGate />;
 }
-

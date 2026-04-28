@@ -1,6 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createClimbingLogSchema, createPostSchema, createSessionPlanSchema } from "./schemas.js";
+import {
+  createClimbingLogSchema,
+  createPostSchema,
+  createSessionPlanSchema,
+  localSessionSchema,
+  onboardingProfileSchema,
+} from "./schemas.js";
 
 test("createSessionPlanSchema accepts a valid gym plan", () => {
   const result = createSessionPlanSchema.safeParse({
@@ -75,4 +81,26 @@ test("createPostSchema rejects empty body", () => {
   });
 
   assert.equal(result.success, false);
+});
+
+test("localSessionSchema accepts email", () => {
+  const result = localSessionSchema.safeParse({
+    email: "climber@example.test",
+  });
+
+  assert.equal(result.success, true);
+});
+
+test("onboardingProfileSchema keeps location disabled", () => {
+  const result = onboardingProfileSchema.safeParse({
+    displayName: "Climber",
+    discipline: "boulder",
+    experience: "beginner",
+    area: "東京",
+    interest: "partner",
+    defaultVisibility: "followers",
+    locationEnabled: false,
+  });
+
+  assert.equal(result.success, true);
 });

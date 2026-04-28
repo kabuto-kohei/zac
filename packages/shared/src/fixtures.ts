@@ -34,6 +34,22 @@ export type PostSummary = {
   visibility: string;
 };
 
+export type ReportSummary = {
+  id: string;
+  targetType: string;
+  category: string;
+  status: "open" | "reviewing" | "resolved";
+  createdAt: string;
+};
+
+export type AuditLogSummary = {
+  id: string;
+  action: string;
+  targetType: string;
+  actorName: string;
+  createdAt: string;
+};
+
 export const gymFixtures: GymSummary[] = [
   {
     id: "b-pump-tokyo",
@@ -116,6 +132,40 @@ export const postFixtures: PostSummary[] = [
     sourceType: "session_plan",
     sourceLabel: "週末セッション",
     visibility: "public",
+  },
+];
+
+export const reportFixtures: ReportSummary[] = [
+  {
+    id: "report-001",
+    targetType: "post",
+    category: "スパム",
+    status: "open",
+    createdAt: "2026-04-28 10:30",
+  },
+  {
+    id: "report-002",
+    targetType: "comment",
+    category: "ハラスメント",
+    status: "reviewing",
+    createdAt: "2026-04-28 12:45",
+  },
+];
+
+export const auditLogFixtures: AuditLogSummary[] = [
+  {
+    id: "audit-001",
+    action: "gym_update",
+    targetType: "gym",
+    actorName: "admin",
+    createdAt: "2026-04-28 09:12",
+  },
+  {
+    id: "audit-002",
+    action: "report_status_update",
+    targetType: "report",
+    actorName: "admin",
+    createdAt: "2026-04-28 13:18",
   },
 ];
 

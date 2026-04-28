@@ -1,9 +1,6 @@
+import { AdminDashboard } from "../src/features/admin/admin-dashboard";
+
 export default function AdminHomePage() {
-  return (
-    <main>
-      <h1>Zac Admin</h1>
-      <p>Operations console</p>
-    </main>
-  );
+  return <AdminDashboard view="dashboard" />;
 }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AppShell, MetricStrip, type Tab } from "./app-shell";
-import { GymCard, LogCard, PlanCard } from "./cards";
-import { gyms, logs, plans } from "./mock-data";
+import { GymCard, LogCard, PlanCard, PostCard } from "./cards";
+import { gyms, logs, plans, posts } from "./mock-data";
 
 export function WebAppHome({ activeTab }: { activeTab: Tab }) {
   return (
@@ -28,6 +28,9 @@ function HomeFeed() {
       ))}
       {logs.slice(0, 1).map((log) => (
         <LogCard key={log.id} log={log} />
+      ))}
+      {posts.map((post) => (
+        <PostCard key={post.id} post={post} />
       ))}
     </section>
   );

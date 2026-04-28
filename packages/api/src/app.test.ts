@@ -49,3 +49,19 @@ test("GET /v1/logs/:logId returns a log", async () => {
   assert.equal(response.status, 200);
   assert.equal(body.data.id, "yellow-wall");
 });
+
+test("GET /v1/posts/:postId returns a post", async () => {
+  const response = await createApp().request("/v1/posts/yellow-wall-post");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.data.id, "yellow-wall-post");
+});
+
+test("GET /v1/feed returns mixed feed", async () => {
+  const response = await createApp().request("/v1/feed");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.ok(body.data.some((entry: { type: string }) => entry.type === "post"));
+});

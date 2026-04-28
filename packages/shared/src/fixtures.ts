@@ -25,6 +25,15 @@ export type LogSummary = {
   note: string;
 };
 
+export type PostSummary = {
+  id: string;
+  body: string;
+  authorName: string;
+  sourceType: "standalone" | "climbing_log" | "session_plan" | "gym";
+  sourceLabel: string;
+  visibility: string;
+};
+
 export const gymFixtures: GymSummary[] = [
   {
     id: "b-pump-tokyo",
@@ -91,6 +100,25 @@ export const logFixtures: LogSummary[] = [
   },
 ];
 
+export const postFixtures: PostSummary[] = [
+  {
+    id: "yellow-wall-post",
+    body: "垂壁の黄色、足位置を変えたら一気に安定した。",
+    authorName: "Climber",
+    sourceType: "climbing_log",
+    sourceLabel: "垂壁の黄色を完登",
+    visibility: "followers",
+  },
+  {
+    id: "partner-search-post",
+    body: "週末の午前中に品川で登れる人を探しています。",
+    authorName: "Climber",
+    sourceType: "session_plan",
+    sourceLabel: "週末セッション",
+    visibility: "public",
+  },
+];
+
 export function findGymFixture(gymId: string) {
   return gymFixtures.find((gym) => gym.id === gymId);
 }
@@ -102,3 +130,13 @@ export function findPlanFixture(planId: string) {
 export function findLogFixture(logId: string) {
   return logFixtures.find((log) => log.id === logId);
 }
+
+export function findPostFixture(postId: string) {
+  return postFixtures.find((post) => post.id === postId);
+}
+
+export const feedFixtures = [
+  ...planFixtures.map((plan) => ({ type: "session_plan" as const, item: plan })),
+  ...logFixtures.slice(0, 1).map((log) => ({ type: "climbing_log" as const, item: log })),
+  ...postFixtures.map((post) => ({ type: "post" as const, item: post })),
+];

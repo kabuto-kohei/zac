@@ -211,6 +211,10 @@ p {
   background-color: #e0e7ff;
 }
 
+.post-visual {
+  background-color: #fee2e2;
+}
+
 .search-box {
   display: grid;
   gap: 8px;

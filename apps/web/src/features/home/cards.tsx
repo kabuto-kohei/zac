@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { GymSummary, LogSummary, PlanSummary } from "./mock-data";
+import type { GymSummary, LogSummary, PlanSummary, PostSummary } from "./mock-data";
 
 export function GymCard({ gym }: { gym: GymSummary }) {
   return (
@@ -46,6 +46,21 @@ export function LogCard({ log }: { log: LogSummary }) {
         <p>
           {log.place} · {log.grade}
         </p>
+      </div>
+    </article>
+  );
+}
+
+export function PostCard({ post }: { post: PostSummary }) {
+  return (
+    <article className="content-card">
+      <div className="card-visual post-visual" />
+      <div>
+        <p className="card-kind">投稿 · {post.visibility}</p>
+        <h3>
+          <Link href={`/posts/${post.id}`}>{post.sourceLabel}</Link>
+        </h3>
+        <p>{post.body}</p>
       </div>
     </article>
   );

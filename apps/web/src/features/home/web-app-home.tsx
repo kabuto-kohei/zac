@@ -125,6 +125,9 @@ function ProfilePanel() {
         <p className="card-kind">ボルダー · 東京</p>
         <h2>Climber</h2>
         <p>よく行くジム、予定、記録をここに集約する。</p>
+        <Link className="ghost-button" href="/settings">
+          設定
+        </Link>
       </div>
     </section>
   );

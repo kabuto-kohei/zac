@@ -246,6 +246,12 @@ p {
   padding: 18px;
 }
 
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .form-panel {
   display: grid;
   gap: 18px;

@@ -23,7 +23,9 @@ function HomeFeed({ data }: { data: HomeViewData }) {
     <section className="stack">
       <div className="section-title">
         <h2>フィード</h2>
-        <span>Following</span>
+        <Link className="primary-action" href="/posts/new">
+          投稿
+        </Link>
       </div>
       {data.feed.map((entry) => (
         <FeedCard entry={entry} key={`${entry.type}-${entry.item.id}`} />

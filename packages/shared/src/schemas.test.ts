@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createClimbingLogSchema, createSessionPlanSchema } from "./schemas.js";
+import { createClimbingLogSchema, createPostSchema, createSessionPlanSchema } from "./schemas.js";
 
 test("createSessionPlanSchema accepts a valid gym plan", () => {
   const result = createSessionPlanSchema.safeParse({
@@ -59,3 +59,20 @@ test("createClimbingLogSchema rejects missing place", () => {
   assert.equal(result.success, false);
 });
 
+test("createPostSchema accepts a valid post", () => {
+  const result = createPostSchema.safeParse({
+    body: "垂壁の黄色、足位置を変えたら安定した。",
+    visibility: "followers",
+  });
+
+  assert.equal(result.success, true);
+});
+
+test("createPostSchema rejects empty body", () => {
+  const result = createPostSchema.safeParse({
+    body: "",
+    visibility: "public",
+  });
+
+  assert.equal(result.success, false);
+});

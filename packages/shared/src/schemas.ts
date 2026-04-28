@@ -65,8 +65,15 @@ export const createClimbingLogSchema = z
     }
   });
 
+export const createPostSchema = z.object({
+  body: z.string().min(1).max(500),
+  categoryId: uuidSchema.nullish(),
+  visibility: visibilitySchema.default("followers"),
+});
+
 export type Visibility = z.infer<typeof visibilitySchema>;
 export type SessionPlanStatus = z.infer<typeof sessionPlanStatusSchema>;
 export type JoinPolicy = z.infer<typeof joinPolicySchema>;
 export type CreateSessionPlanInput = z.infer<typeof createSessionPlanSchema>;
 export type CreateClimbingLogInput = z.infer<typeof createClimbingLogSchema>;
+export type CreatePostInput = z.infer<typeof createPostSchema>;

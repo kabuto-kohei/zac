@@ -40,51 +40,104 @@ export type HomeViewData = {
   };
 };
 
-export function getHomeViewData(activeTab: Tab): HomeViewData {
+type DataResponse<T> = {
+  data: T;
+};
+
+export type GymOption = {
+  id: string;
+  name: string;
+};
+
+export async function getHomeViewData(activeTab: Tab): Promise<HomeViewData> {
+  const [events, gyms, plans, logs, posts, feed] = await Promise.all([
+    getApiList<EventSummary>("/v1/events", eventFixtures),
+    getApiList<GymSummary>("/v1/gyms", gymFixtures),
+    getApiList<PlanSummary>("/v1/session-plans", planFixtures),
+    getApiList<LogSummary>("/v1/logs", logFixtures),
+    getApiList<PostSummary>("/v1/posts", postFixtures),
+    getApiList<HomeFeedItem>("/v1/feed", feedFixtures),
+  ]);
+
   return {
     activeTab,
-    events: eventFixtures,
-    gyms: gymFixtures,
-    plans: planFixtures,
-    logs: logFixtures,
-    posts: postFixtures,
-    feed: feedFixtures,
+    events,
+    gyms,
+    plans,
+    logs,
+    posts,
+    feed,
     metrics: {
-      weeklyPlans: planFixtures.length,
-      savedGyms: gymFixtures.filter((gym) => gym.saved).length,
-      logs: logFixtures.length,
+      weeklyPlans: plans.length,
+      savedGyms: gyms.filter((gym) => gym.saved).length,
+      logs: logs.length,
     },
   };
 }
 
-export function getGymDetailData(gymId: string) {
-  const gym = findGymFixture(gymId);
+export async function getGymDetailData(gymId: string) {
+  const [gym, plans] = await Promise.all([
+    getApiData<GymSummary>(`/v1/gyms/${encodeURIComponent(gymId)}`, findGymFixture(gymId) ?? null),
+    getApiList<PlanSummary>("/v1/session-plans", planFixtures),
+  ]);
 
   return {
     gym,
-    relatedPlans: gym ? planFixtures.filter((plan) => plan.place === gym.name) : [],
+    relatedPlans: gym ? plans.filter((plan) => plan.place === gym.name) : [],
   };
 }
 
-export function getEventDetailData(eventId: string) {
-  return findEventFixture(eventId);
+export async function getEventDetailData(eventId: string) {
+  return getApiData<EventSummary>(`/v1/events/${encodeURIComponent(eventId)}`, findEventFixture(eventId) ?? null);
 }
 
-export function getPlanDetailData(planId: string) {
-  return findPlanFixture(planId);
+export async function getPlanDetailData(planId: string) {
+  return getApiData<PlanSummary>(`/v1/session-plans/${encodeURIComponent(planId)}`, findPlanFixture(planId) ?? null);
 }
 
-export function getLogDetailData(logId: string) {
-  return findLogFixture(logId);
+export async function getLogDetailData(logId: string) {
+  return getApiData<LogSummary>(`/v1/logs/${encodeURIComponent(logId)}`, findLogFixture(logId) ?? null);
 }
 
-export function getPostDetailData(postId: string) {
-  return findPostFixture(postId);
+export async function getPostDetailData(postId: string) {
+  return getApiData<PostSummary>(`/v1/posts/${encodeURIComponent(postId)}`, findPostFixture(postId) ?? null);
 }
 
-export function getGymOptions() {
-  return gymFixtures.map((gym) => ({
+export async function getGymOptions(): Promise<GymOption[]> {
+  const gyms = await getApiList<GymSummary>("/v1/gyms", gymFixtures);
+
+  return gyms.map((gym) => ({
     id: gym.id,
     name: gym.name,
   }));
+}
+
+async function getApiList<T>(path: string, fallback: T[]): Promise<T[]> {
+  const response = await getApiJson<DataResponse<T[]>>(path);
+  return Array.isArray(response?.data) ? response.data : fallback;
+}
+
+async function getApiData<T>(path: string, fallback: T | null): Promise<T | null> {
+  const response = await getApiJson<DataResponse<T>>(path);
+  return response?.data ?? fallback;
+}
+
+async function getApiJson<T>(path: string): Promise<T | null> {
+  try {
+    const response = await fetch(`${getApiBaseUrl()}${path}`, {
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return (await response.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+function getApiBaseUrl() {
+  return process.env.API_INTERNAL_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787";
 }

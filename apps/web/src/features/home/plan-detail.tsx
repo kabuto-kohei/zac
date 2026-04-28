@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
 import { getPlanDetailData } from "./data";
 
-export function PlanDetail({ planId }: { planId: string }) {
-  const plan = getPlanDetailData(planId);
+export async function PlanDetail({ planId }: { planId: string }) {
+  const plan = await getPlanDetailData(planId);
 
   if (!plan) {
     notFound();

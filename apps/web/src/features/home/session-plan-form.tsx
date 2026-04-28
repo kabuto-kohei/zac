@@ -4,10 +4,9 @@ import { createSessionPlanSchema } from "@zac/shared";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
-import type { getGymOptions } from "./data";
+import type { GymOption } from "./data";
 
 type FieldErrors = Partial<Record<"title" | "placeName" | "startAt" | "endAt", string>>;
-type GymOption = ReturnType<typeof getGymOptions>[number];
 
 export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
   const [errors, setErrors] = useState<FieldErrors>({});

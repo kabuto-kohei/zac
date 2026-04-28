@@ -3,8 +3,8 @@ import Link from "next/link";
 import { AppShell } from "./app-shell";
 import { getPostDetailData } from "./data";
 
-export function PostDetail({ postId }: { postId: string }) {
-  const post = getPostDetailData(postId);
+export async function PostDetail({ postId }: { postId: string }) {
+  const post = await getPostDetailData(postId);
 
   if (!post) {
     notFound();

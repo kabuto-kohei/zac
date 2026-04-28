@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { AppShell, MetricStrip } from "./app-shell";
 import { getEventDetailData } from "./data";
 
-export function EventDetail({ eventId }: { eventId: string }) {
-  const event = getEventDetailData(eventId);
+export async function EventDetail({ eventId }: { eventId: string }) {
+  const event = await getEventDetailData(eventId);
 
   if (!event) {
     notFound();

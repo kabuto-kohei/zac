@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { AppShell, MetricStrip } from "./app-shell";
 import { getGymDetailData } from "./data";
 
-export function GymDetail({ gymId }: { gymId: string }) {
-  const { gym, relatedPlans } = getGymDetailData(gymId);
+export async function GymDetail({ gymId }: { gymId: string }) {
+  const { gym, relatedPlans } = await getGymDetailData(gymId);
 
   if (!gym) {
     notFound();

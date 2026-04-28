@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
 import { getLogDetailData } from "./data";
 
-export function LogDetail({ logId }: { logId: string }) {
-  const log = getLogDetailData(logId);
+export async function LogDetail({ logId }: { logId: string }) {
+  const log = await getLogDetailData(logId);
 
   if (!log) {
     notFound();

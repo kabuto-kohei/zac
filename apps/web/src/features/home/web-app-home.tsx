@@ -3,8 +3,8 @@ import { AppShell, MetricStripView, type Tab } from "./app-shell";
 import { EventCard, GymCard, LogCard, PlanCard, PostCard } from "./cards";
 import { getHomeViewData, type HomeViewData } from "./data";
 
-export function WebAppHome({ activeTab }: { activeTab: Tab }) {
-  const data = getHomeViewData(activeTab);
+export async function WebAppHome({ activeTab }: { activeTab: Tab }) {
+  const data = await getHomeViewData(activeTab);
 
   return (
     <AppShell activeTab={activeTab}>

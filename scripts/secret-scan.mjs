@@ -5,6 +5,7 @@ const root = process.cwd();
 const ignoredDirectories = new Set([
   ".git",
   ".next",
+  ".vercel",
   "coverage",
   "dist",
   "node_modules",
@@ -12,6 +13,14 @@ const ignoredDirectories = new Set([
   "test-results",
 ]);
 const ignoredFiles = new Set(["scripts/secret-scan.mjs"]);
+
+function isIgnoredPath(relativePath) {
+  return (
+    relativePath === ".env" ||
+    (relativePath.startsWith(".env.") && relativePath !== ".env.example") ||
+    relativePath.startsWith("supabase/.temp/")
+  );
+}
 
 const suspiciousPatterns = [
   { label: "GitHub token", pattern: /gh[pousr]_[A-Za-z0-9_]{20,}/ },
@@ -47,7 +56,7 @@ const findings = [];
 
 for (const file of await listFiles(root)) {
   const relativePath = relative(root, file);
-  if (ignoredFiles.has(relativePath)) {
+  if (ignoredFiles.has(relativePath) || isIgnoredPath(relativePath)) {
     continue;
   }
 

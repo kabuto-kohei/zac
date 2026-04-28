@@ -97,7 +97,7 @@ export const reportCategorySchema = z.enum([
 ]);
 
 export const createReportSchema = z.object({
-  targetType: z.enum(["post", "session_plan", "climbing_log", "user"]),
+  targetType: z.enum(["post", "comment", "session_plan", "climbing_log", "user"]),
   targetId: z.string().min(1).max(120),
   category: reportCategorySchema,
   note: z.string().max(1000).nullable().optional(),

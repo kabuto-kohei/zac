@@ -176,6 +176,27 @@ test("POST /v1/posts creates a post", async () => {
   assert.equal(body.data.body, "週末に一緒に登れる人を探しています。");
 });
 
+test("POST /v1/reports creates a report", async () => {
+  const app = createApp();
+  const response = await app.request("/v1/reports", {
+    method: "POST",
+    body: JSON.stringify({
+      targetType: "post",
+      targetId: "yellow-wall-post",
+      category: "spam",
+      note: "同じ内容の投稿が繰り返されています。",
+    }),
+    headers: { "content-type": "application/json" },
+  });
+  const body = await response.json();
+  const listResponse = await app.request("/v1/reports");
+  const listBody = await listResponse.json();
+
+  assert.equal(response.status, 201);
+  assert.equal(body.data.category, "spam");
+  assert.ok(listBody.data.some((report: { id: string }) => report.id === body.data.id));
+});
+
 test("GET /v1/feed returns mixed feed", async () => {
   const response = await createApp().request("/v1/feed");
   const body = await response.json();

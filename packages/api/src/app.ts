@@ -10,6 +10,7 @@ import { createHealthRoutes } from "./routes/health.js";
 import { createIntegrationRoutes } from "./routes/integrations.js";
 import { createLogRoutes } from "./routes/logs.js";
 import { createPostRoutes } from "./routes/posts.js";
+import { createReportRoutes } from "./routes/reports.js";
 import { createSessionPlanRoutes } from "./routes/session-plans.js";
 import { notFoundResponse } from "./responses.js";
 
@@ -36,6 +37,7 @@ export function createApp() {
   app.route("/v1/logs", createLogRoutes());
   app.route("/v1/posts", createPostRoutes());
   app.route("/v1/feed", createFeedRoutes());
+  app.route("/v1/reports", createReportRoutes());
 
   app.onError((error, context) => {
     captureException(error);

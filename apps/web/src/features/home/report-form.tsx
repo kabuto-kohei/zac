@@ -3,6 +3,7 @@
 import { createReportSchema } from "@zac/shared";
 import { useState } from "react";
 import { AppShell } from "./app-shell";
+import { postApi } from "./api-client";
 
 type FieldErrors = Partial<Record<"targetId" | "category", string>>;
 
@@ -16,7 +17,7 @@ export function ReportForm({
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
 
-  function validate(formData: FormData) {
+  async function submit(formData: FormData) {
     setSavedMessage("");
     const result = createReportSchema.safeParse({
       targetType: formData.get("targetType")?.toString(),
@@ -27,7 +28,8 @@ export function ReportForm({
 
     if (result.success) {
       setErrors({});
-      setSavedMessage("通報内容を確認しました。API接続後に運営キューへ送ります。");
+      const response = await postApi<{ id: string }>("/v1/reports", result.data);
+      setSavedMessage(response.ok ? "通報を運営キューへ送信しました。" : response.message);
       return;
     }
 
@@ -43,7 +45,7 @@ export function ReportForm({
 
   return (
     <AppShell activeTab="home">
-      <form action={validate} className="form-panel">
+      <form action={submit} className="form-panel">
         <p className="card-kind">通報</p>
         <h2>運営に知らせる</h2>
         <div className="form-grid">
@@ -56,6 +58,7 @@ export function ReportForm({
             対象種別
             <select defaultValue={initialTargetType} name="targetType">
               <option value="post">投稿</option>
+              <option value="comment">コメント</option>
               <option value="session_plan">予定</option>
               <option value="climbing_log">記録</option>
               <option value="user">ユーザー</option>

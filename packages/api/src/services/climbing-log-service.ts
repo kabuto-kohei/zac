@@ -1,6 +1,6 @@
 import { climbingLogs } from "@zac/db";
 import { findLogFixture, logFixtures, type CreateClimbingLogInput, type LogSummary } from "@zac/shared";
-import { getDatabase, getSystemUserId } from "../integrations/database.js";
+import { getDatabase } from "../integrations/database.js";
 
 const createdClimbingLogs: LogSummary[] = [];
 let createdClimbingLogCount = 0;
@@ -13,8 +13,8 @@ export function getClimbingLog(logId: string) {
   return createdClimbingLogs.find((log) => log.id === logId) ?? findLogFixture(logId);
 }
 
-export async function createClimbingLog(input: CreateClimbingLogInput) {
-  const persisted = await createPersistentClimbingLog(input);
+export async function createClimbingLog(input: CreateClimbingLogInput, actorId?: string) {
+  const persisted = await createPersistentClimbingLog(input, actorId);
 
   if (persisted) {
     return persisted;
@@ -37,11 +37,10 @@ function createMemoryClimbingLog(input: CreateClimbingLogInput) {
   return log;
 }
 
-async function createPersistentClimbingLog(input: CreateClimbingLogInput) {
+async function createPersistentClimbingLog(input: CreateClimbingLogInput, actorId?: string) {
   const db = getDatabase();
-  const systemUserId = getSystemUserId();
 
-  if (!db || !systemUserId) {
+  if (!db || !actorId) {
     return null;
   }
 
@@ -49,7 +48,7 @@ async function createPersistentClimbingLog(input: CreateClimbingLogInput) {
     const [row] = await db
       .insert(climbingLogs)
       .values({
-        createdBy: systemUserId,
+        createdBy: actorId,
         sessionPlanId: input.sessionPlanId ?? null,
         gymId: input.gymId ?? null,
         placeName: input.placeName ?? null,

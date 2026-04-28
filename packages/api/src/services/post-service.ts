@@ -1,6 +1,6 @@
 import { posts } from "@zac/db";
 import { findPostFixture, postFixtures, type CreatePostInput, type PostSummary } from "@zac/shared";
-import { getDatabase, getSystemUserId } from "../integrations/database.js";
+import { getDatabase } from "../integrations/database.js";
 
 const createdPosts: PostSummary[] = [];
 let createdPostCount = 0;
@@ -13,8 +13,8 @@ export function getPost(postId: string) {
   return createdPosts.find((post) => post.id === postId) ?? findPostFixture(postId);
 }
 
-export async function createPost(input: CreatePostInput) {
-  const persisted = await createPersistentPost(input);
+export async function createPost(input: CreatePostInput, actorId?: string) {
+  const persisted = await createPersistentPost(input, actorId);
 
   if (persisted) {
     return persisted;
@@ -38,11 +38,10 @@ function createMemoryPost(input: CreatePostInput) {
   return post;
 }
 
-async function createPersistentPost(input: CreatePostInput) {
+async function createPersistentPost(input: CreatePostInput, actorId?: string) {
   const db = getDatabase();
-  const systemUserId = getSystemUserId();
 
-  if (!db || !systemUserId) {
+  if (!db || !actorId) {
     return null;
   }
 
@@ -50,7 +49,7 @@ async function createPersistentPost(input: CreatePostInput) {
     const [row] = await db
       .insert(posts)
       .values({
-        createdBy: systemUserId,
+        createdBy: actorId,
         sourceType: "standalone",
         body: input.body,
         visibility: input.visibility,

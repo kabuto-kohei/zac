@@ -6,6 +6,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "dev": "pnpm build && node dist/index.js",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "test": "pnpm --filter @zac/shared build && pnpm build && node --test dist/**/*.test.js",

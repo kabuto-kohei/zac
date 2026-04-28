@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { cors } from "hono/cors";
 import { toErrorResponse } from "./errors.js";
 import { captureException, initMonitoring } from "./integrations/monitoring.js";
 import { createAnnouncementRoutes } from "./routes/announcements.js";
@@ -15,6 +16,16 @@ import { notFoundResponse } from "./responses.js";
 export function createApp() {
   initMonitoring();
   const app = new Hono();
+
+  app.use(
+    "*",
+    cors({
+      origin: getAllowedOrigins(),
+      allowHeaders: ["authorization", "content-type"],
+      allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      credentials: false,
+    }),
+  );
 
   app.route("/v1/health", createHealthRoutes());
   app.route("/v1/integrations", createIntegrationRoutes());
@@ -43,3 +54,13 @@ export function createApp() {
 }
 
 export type ZacApi = ReturnType<typeof createApp>;
+
+function getAllowedOrigins() {
+  return [
+    process.env.APP_URL,
+    process.env.WEB_URL,
+    process.env.ADMIN_URL,
+    "http://localhost:3000",
+    "http://localhost:3001",
+  ].filter((origin): origin is string => Boolean(origin));
+}

@@ -1,6 +1,6 @@
 import { sessionPlans } from "@zac/db";
 import { findPlanFixture, planFixtures, type CreateSessionPlanInput, type PlanSummary } from "@zac/shared";
-import { getDatabase, getSystemUserId } from "../integrations/database.js";
+import { getDatabase } from "../integrations/database.js";
 
 const createdSessionPlans: PlanSummary[] = [];
 let createdSessionPlanCount = 0;
@@ -13,8 +13,8 @@ export function getSessionPlan(planId: string) {
   return createdSessionPlans.find((plan) => plan.id === planId) ?? findPlanFixture(planId);
 }
 
-export async function createSessionPlan(input: CreateSessionPlanInput) {
-  const persisted = await createPersistentSessionPlan(input);
+export async function createSessionPlan(input: CreateSessionPlanInput, actorId?: string) {
+  const persisted = await createPersistentSessionPlan(input, actorId);
 
   if (persisted) {
     return persisted;
@@ -38,11 +38,10 @@ function createMemorySessionPlan(input: CreateSessionPlanInput) {
   return plan;
 }
 
-async function createPersistentSessionPlan(input: CreateSessionPlanInput) {
+async function createPersistentSessionPlan(input: CreateSessionPlanInput, actorId?: string) {
   const db = getDatabase();
-  const systemUserId = getSystemUserId();
 
-  if (!db || !systemUserId) {
+  if (!db || !actorId) {
     return null;
   }
 
@@ -50,7 +49,7 @@ async function createPersistentSessionPlan(input: CreateSessionPlanInput) {
     const [row] = await db
       .insert(sessionPlans)
       .values({
-        createdBy: systemUserId,
+        createdBy: actorId,
         gymId: input.gymId ?? null,
         placeName: input.placeName ?? null,
         title: input.title,

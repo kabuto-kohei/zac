@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { createPostSchema } from "@zac/shared";
+import { resolveRequestActor } from "../auth.js";
 import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createPost, getPost, listPosts } from "../services/post-service.js";
@@ -16,7 +17,8 @@ export function createPostRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const post = await createPost(result.data);
+    const actor = await resolveRequestActor(context.req.header("authorization"));
+    const post = await createPost(result.data, actor?.userId);
     captureServerEvent("post_created", { visibility: post.visibility });
     return context.json(dataResponse(post), 201);
   });

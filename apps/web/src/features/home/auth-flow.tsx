@@ -4,11 +4,12 @@ import { localSessionSchema, onboardingProfileSchema } from "@zac/shared";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { getBrowserSupabaseClient } from "./integration-provider";
 
 const sessionKey = "zac.local.session";
 const profileKey = "zac.local.profile";
 
-type FieldErrors = Partial<Record<"email" | "displayName" | "area", string>>;
+type FieldErrors = Partial<Record<"email" | "displayName" | "area" | "form", string>>;
 type AuthMode = "login" | "register";
 
 export function LaunchGate() {
@@ -33,7 +34,7 @@ export function LaunchGate() {
         <article className="wide-card">
           <p className="card-kind">Climb Life OS</p>
           <h2>予定、記録、仲間探しをひとつに集約</h2>
-          <p>このMVPでは入力内容をブラウザ内に保持し、外部送信せずに初期体験を確認できます。</p>
+          <p>予定、記録、投稿を保存しながら、クライミングの次の行動を決められます。</p>
         </article>
         <article className="wide-card action-row">
           <Link className="primary-action" href="/register">
@@ -52,7 +53,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
   const router = useRouter();
   const [errors, setErrors] = useState<FieldErrors>({});
 
-  function submit(formData: FormData) {
+  async function submit(formData: FormData) {
     const result = localSessionSchema.safeParse({
       email: formData.get("email")?.toString(),
     });
@@ -63,6 +64,22 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
     }
 
     window.localStorage.setItem(sessionKey, JSON.stringify(result.data));
+    const supabase = getBrowserSupabaseClient();
+
+    if (supabase) {
+      const { error } = await supabase.auth.signInWithOtp({
+        email: result.data.email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/onboarding`,
+        },
+      });
+
+      if (error) {
+        setErrors({ form: "認証メールの送信に失敗しました。" });
+        return;
+      }
+    }
+
     setErrors({});
     router.push(mode === "register" ? "/onboarding" : hasLocalProfile() ? "/home" : "/onboarding");
   }
@@ -82,6 +99,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
         <button className="primary-action" type="submit">
           続ける
         </button>
+        {errors.form ? <p className="field-error">{errors.form}</p> : null}
         <Link className="ghost-button" href={mode === "register" ? "/login" : "/register"}>
           {mode === "register" ? "ログインへ" : "新規登録へ"}
         </Link>

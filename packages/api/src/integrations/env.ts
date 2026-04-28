@@ -12,7 +12,7 @@ export type ApiIntegrationStatus = {
 export function getApiIntegrationStatus(): ApiIntegrationStatus {
   return {
     supabase: hasEnv("SUPABASE_URL") && hasEnv("SUPABASE_SERVICE_ROLE_KEY"),
-    database: hasEnv("DATABASE_URL") && hasEnv("ZAC_SYSTEM_USER_ID"),
+    database: hasEnv("DATABASE_URL"),
     posthog: hasEnv("POSTHOG_KEY"),
     sentry: hasEnv("SENTRY_DSN"),
     storage: {

@@ -2,6 +2,7 @@
 
 import { createPostSchema } from "@zac/shared";
 import { useState } from "react";
+import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
 
 type FieldErrors = Partial<Record<"body", string>>;
@@ -10,7 +11,7 @@ export function PostForm() {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
 
-  function validate(formData: FormData) {
+  async function submit(formData: FormData) {
     setSavedMessage("");
     const result = createPostSchema.safeParse({
       body: formData.get("body")?.toString(),
@@ -19,7 +20,8 @@ export function PostForm() {
 
     if (result.success) {
       setErrors({});
-      setSavedMessage("入力内容は投稿可能です。API接続後に投稿作成へつなぎます。");
+      const response = await postApi<{ id: string }>("/v1/posts", result.data);
+      setSavedMessage(response.ok ? "投稿しました。" : response.message);
       return;
     }
 
@@ -34,7 +36,7 @@ export function PostForm() {
 
   return (
     <AppShell activeTab="home">
-      <form action={validate} className="form-panel">
+      <form action={submit} className="form-panel">
         <p className="card-kind">投稿作成</p>
         <h2>登ったことを共有する</h2>
         <div className="form-grid">

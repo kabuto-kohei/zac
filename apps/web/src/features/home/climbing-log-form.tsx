@@ -2,6 +2,7 @@
 
 import { createClimbingLogSchema } from "@zac/shared";
 import { useState } from "react";
+import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
 import type { getGymOptions } from "./data";
 
@@ -12,7 +13,7 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
 
-  function validate(formData: FormData) {
+  async function submit(formData: FormData) {
     setSavedMessage("");
     const result = createClimbingLogSchema.safeParse({
       climbedOn: formData.get("climbedOn")?.toString(),
@@ -25,7 +26,8 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
 
     if (result.success) {
       setErrors({});
-      setSavedMessage("入力内容は保存可能です。API接続後に記録作成へつなぎます。");
+      const response = await postApi<{ id: string }>("/v1/logs", result.data);
+      setSavedMessage(response.ok ? "記録を保存しました。" : response.message);
       return;
     }
 
@@ -41,7 +43,7 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
 
   return (
     <AppShell activeTab="logs">
-      <form action={validate} className="form-panel">
+      <form action={submit} className="form-panel">
         <p className="card-kind">記録作成</p>
         <h2>登った内容を残す</h2>
         <div className="form-grid">

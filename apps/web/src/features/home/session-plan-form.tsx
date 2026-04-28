@@ -2,6 +2,7 @@
 
 import { createSessionPlanSchema } from "@zac/shared";
 import { useState } from "react";
+import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
 import type { getGymOptions } from "./data";
 
@@ -12,7 +13,7 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
 
-  function validate(formData: FormData) {
+  async function submit(formData: FormData) {
     setSavedMessage("");
     const startAt = formData.get("startAt")?.toString();
     const endAt = formData.get("endAt")?.toString();
@@ -28,7 +29,8 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
 
     if (result.success) {
       setErrors({});
-      setSavedMessage("入力内容は保存可能です。API接続後に作成処理へつなぎます。");
+      const response = await postApi<{ id: string }>("/v1/session-plans", result.data);
+      setSavedMessage(response.ok ? "予定を保存しました。" : response.message);
       return;
     }
 
@@ -44,7 +46,7 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
 
   return (
     <AppShell activeTab="plans">
-      <form action={validate} className="form-panel">
+      <form action={submit} className="form-panel">
         <p className="card-kind">予定作成</p>
         <h2>次に登る予定</h2>
         <div className="form-grid">

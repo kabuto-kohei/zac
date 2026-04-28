@@ -11,7 +11,3 @@ export function getDatabase() {
   cachedDb ??= createDb(process.env.DATABASE_URL!);
   return cachedDb;
 }
-
-export function getSystemUserId() {
-  return process.env.ZAC_SYSTEM_USER_ID?.trim() || null;
-}

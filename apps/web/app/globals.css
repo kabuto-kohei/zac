@@ -215,6 +215,10 @@ p {
   background-color: #fee2e2;
 }
 
+.event-visual {
+  background-color: #dcfce7;
+}
+
 .search-box {
   display: grid;
   gap: 8px;

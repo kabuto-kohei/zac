@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { GymSummary, LogSummary, PlanSummary, PostSummary } from "./data";
+import type { EventSummary, GymSummary, LogSummary, PlanSummary, PostSummary } from "./data";
 
 export function GymCard({ gym }: { gym: GymSummary }) {
   return (
@@ -13,6 +13,26 @@ export function GymCard({ gym }: { gym: GymSummary }) {
         <p>{gym.disciplines}</p>
       </div>
       <button className="ghost-button">{gym.saved ? "保存済み" : "保存"}</button>
+    </article>
+  );
+}
+
+export function EventCard({ event }: { event: EventSummary }) {
+  return (
+    <article className="content-card">
+      <div className="card-visual event-visual" />
+      <div>
+        <p className="card-kind">{event.gymName}</p>
+        <h3>
+          <Link href={`/events/${event.id}`}>{event.title}</Link>
+        </h3>
+        <p>
+          {event.startsAt} · {event.capacity}
+        </p>
+      </div>
+      <Link className="ghost-button" href={`/events/${event.id}`}>
+        詳細
+      </Link>
     </article>
   );
 }

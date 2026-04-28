@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AppShell, MetricStripView, type Tab } from "./app-shell";
-import { GymCard, LogCard, PlanCard, PostCard } from "./cards";
+import { EventCard, GymCard, LogCard, PlanCard, PostCard } from "./cards";
 import { getHomeViewData, type HomeViewData } from "./data";
 
 export function WebAppHome({ activeTab }: { activeTab: Tab }) {
@@ -48,9 +48,20 @@ function ExplorePanel({ data }: { data: HomeViewData }) {
   return (
     <section className="stack">
       <label className="search-box">
-        <span>ジム検索</span>
+        <span>ジム・イベント検索</span>
         <input placeholder="エリア、ジム名、種目" />
       </label>
+      <div className="section-title">
+        <h2>イベント</h2>
+        <span>{data.events.length}件</span>
+      </div>
+      {data.events.map((event) => (
+        <EventCard event={event} key={event.id} />
+      ))}
+      <div className="section-title">
+        <h2>ジム</h2>
+        <span>{data.gyms.length}件</span>
+      </div>
       {data.gyms.map((gym) => (
         <GymCard gym={gym} key={gym.id} />
       ))}

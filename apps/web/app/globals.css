@@ -275,6 +275,22 @@ p {
   resize: vertical;
 }
 
+.field-error {
+  color: #b91c1c;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.success-message {
+  margin: 0;
+  border: 1px solid #99f6e4;
+  border-radius: 8px;
+  padding: 12px;
+  background: #ecfdf5;
+  color: #0f766e;
+  font-weight: 700;
+}
+
 .avatar {
   min-height: 88px;
   border-radius: 50%;

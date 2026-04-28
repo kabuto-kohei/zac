@@ -14,7 +14,7 @@
   "scripts": {
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "test": "tsc --noEmit",
+    "test": "pnpm build && node --test dist/**/*.test.js",
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {

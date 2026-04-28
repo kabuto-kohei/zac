@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "test": "tsc --noEmit",
+    "test": "pnpm --filter @zac/shared build && pnpm build && node --test dist/**/*.test.js",
     "build": "tsc -p tsconfig.json",
     "openapi:generate": "echo 'OpenAPI generation will be added with @hono/zod-openapi routes.'"
   },
@@ -23,4 +23,3 @@
     "typescript": "^5.8.0"
   }
 }
-

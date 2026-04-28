@@ -44,6 +44,14 @@ export type EventSummary = {
   status: "scheduled" | "closed";
 };
 
+export type AnnouncementSummary = {
+  id: string;
+  title: string;
+  audience: "all" | "users" | "gyms";
+  status: "draft" | "published";
+  publishedAt: string;
+};
+
 export type ReportSummary = {
   id: string;
   targetType: string;
@@ -163,6 +171,23 @@ export const eventFixtures: EventSummary[] = [
     endsAt: "2026-05-05 10:00",
     capacity: "8人",
     status: "scheduled",
+  },
+];
+
+export const announcementFixtures: AnnouncementSummary[] = [
+  {
+    id: "beta-guideline",
+    title: "ベータ利用ガイドを公開",
+    audience: "all",
+    status: "published",
+    publishedAt: "2026-04-28 09:00",
+  },
+  {
+    id: "event-policy",
+    title: "イベント掲載ポリシー確認",
+    audience: "gyms",
+    status: "draft",
+    publishedAt: "",
   },
 ];
 

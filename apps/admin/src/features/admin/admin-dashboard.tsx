@@ -1,15 +1,17 @@
-import { auditLogFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
+import { announcementFixtures, auditLogFixtures, eventFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
 import Link from "next/link";
 
-type AdminView = "dashboard" | "users" | "gyms" | "posts" | "reports" | "auditLogs";
+type AdminView = "dashboard" | "users" | "gyms" | "events" | "posts" | "reports" | "auditLogs" | "announcements";
 
 const navItems: Array<{ id: AdminView; href: string; label: string }> = [
   { id: "dashboard", href: "/dashboard", label: "ダッシュボード" },
   { id: "users", href: "/users", label: "ユーザー" },
   { id: "gyms", href: "/gyms", label: "ジム" },
+  { id: "events", href: "/events", label: "イベント" },
   { id: "posts", href: "/posts", label: "投稿" },
   { id: "reports", href: "/reports", label: "通報" },
   { id: "auditLogs", href: "/audit-logs", label: "監査ログ" },
+  { id: "announcements", href: "/announcements", label: "お知らせ" },
 ];
 
 export function AdminDashboard({ view }: { view: AdminView }) {
@@ -32,9 +34,11 @@ export function AdminDashboard({ view }: { view: AdminView }) {
         {view === "dashboard" ? <DashboardView /> : null}
         {view === "users" ? <UsersView /> : null}
         {view === "gyms" ? <GymsView /> : null}
+        {view === "events" ? <EventsView /> : null}
         {view === "posts" ? <PostsView /> : null}
         {view === "reports" ? <ReportsView /> : null}
         {view === "auditLogs" ? <AuditLogsView /> : null}
+        {view === "announcements" ? <AnnouncementsView /> : null}
       </section>
     </main>
   );
@@ -50,8 +54,9 @@ function DashboardView() {
       <section className="metric-grid">
         <Metric label="未対応通報" value={String(reportFixtures.filter((report) => report.status === "open").length)} />
         <Metric label="登録ジム" value={String(gymFixtures.length)} />
+        <Metric label="イベント" value={String(eventFixtures.length)} />
         <Metric label="投稿" value={String(postFixtures.length)} />
-        <Metric label="監査ログ" value={String(auditLogFixtures.length)} />
+        <Metric label="お知らせ" value={String(announcementFixtures.length)} />
       </section>
     </>
   );
@@ -76,6 +81,16 @@ function GymsView() {
       description="ジム情報は公開情報または許諾済み情報のみ登録します。"
       rows={gymFixtures.map((gym) => [gym.name, gym.area, gym.disciplines])}
       title="ジム管理"
+    />
+  );
+}
+
+function EventsView() {
+  return (
+    <TableView
+      description="イベント掲載内容と公開状態を確認します。"
+      rows={eventFixtures.map((event) => [event.title, event.gymName, event.status])}
+      title="イベント管理"
     />
   );
 }
@@ -110,6 +125,16 @@ function AuditLogsView() {
   );
 }
 
+function AnnouncementsView() {
+  return (
+    <TableView
+      description="利用者向けのお知らせ内容と掲載状態を確認します。"
+      rows={announcementFixtures.map((announcement) => [announcement.title, announcement.audience, announcement.status])}
+      title="お知らせ管理"
+    />
+  );
+}
+
 function Metric({ label, value }: { label: string; value: string }) {
   return (
     <article className="admin-card">
@@ -138,4 +163,3 @@ function TableView({ description, rows, title }: { description: string; rows: st
     </>
   );
 }
-

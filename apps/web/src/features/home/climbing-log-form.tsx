@@ -3,11 +3,12 @@
 import { createClimbingLogSchema } from "@zac/shared";
 import { useState } from "react";
 import { AppShell } from "./app-shell";
-import { gyms } from "./mock-data";
+import type { getGymOptions } from "./data";
 
 type FieldErrors = Partial<Record<"climbedOn" | "placeName", string>>;
+type GymOption = ReturnType<typeof getGymOptions>[number];
 
-export function ClimbingLogForm() {
+export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
 

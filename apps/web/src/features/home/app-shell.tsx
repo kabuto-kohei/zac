@@ -54,11 +54,23 @@ export function AppShell({
 }
 
 export function MetricStrip() {
+  return <MetricStripView weeklyPlans={2} savedGyms={3} logs={8} />;
+}
+
+export function MetricStripView({
+  weeklyPlans,
+  savedGyms,
+  logs,
+}: {
+  weeklyPlans: number;
+  savedGyms: number;
+  logs: number;
+}) {
   return (
     <section className="metric-strip" aria-label="Weekly summary">
-      <Metric label="今週の予定" value="2" />
-      <Metric label="保存ジム" value="3" />
-      <Metric label="記録" value="8" />
+      <Metric label="今週の予定" value={String(weeklyPlans)} />
+      <Metric label="保存ジム" value={String(savedGyms)} />
+      <Metric label="記録" value={String(logs)} />
     </section>
   );
 }
@@ -71,4 +83,3 @@ function Metric({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
-

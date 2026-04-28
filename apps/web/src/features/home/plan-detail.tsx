@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
-import { findPlanFixture } from "@zac/shared";
+import { getPlanDetailData } from "./data";
 
 export function PlanDetail({ planId }: { planId: string }) {
-  const plan = findPlanFixture(planId);
+  const plan = getPlanDetailData(planId);
 
   if (!plan) {
     notFound();
@@ -36,4 +36,3 @@ export function PlanDetail({ planId }: { planId: string }) {
     </AppShell>
   );
 }
-

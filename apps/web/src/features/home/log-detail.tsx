@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
-import { findLogFixture } from "@zac/shared";
+import { getLogDetailData } from "./data";
 
 export function LogDetail({ logId }: { logId: string }) {
-  const log = findLogFixture(logId);
+  const log = getLogDetailData(logId);
 
   if (!log) {
     notFound();
@@ -31,4 +31,3 @@ export function LogDetail({ logId }: { logId: string }) {
     </AppShell>
   );
 }
-

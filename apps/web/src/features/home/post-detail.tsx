@@ -1,9 +1,9 @@
-import { findPostFixture } from "@zac/shared";
 import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
+import { getPostDetailData } from "./data";
 
 export function PostDetail({ postId }: { postId: string }) {
-  const post = findPostFixture(postId);
+  const post = getPostDetailData(postId);
 
   if (!post) {
     notFound();
@@ -30,4 +30,3 @@ export function PostDetail({ postId }: { postId: string }) {
     </AppShell>
   );
 }
-

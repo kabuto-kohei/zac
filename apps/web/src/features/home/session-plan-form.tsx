@@ -3,11 +3,12 @@
 import { createSessionPlanSchema } from "@zac/shared";
 import { useState } from "react";
 import { AppShell } from "./app-shell";
-import { gyms } from "./mock-data";
+import type { getGymOptions } from "./data";
 
 type FieldErrors = Partial<Record<"title" | "placeName" | "startAt" | "endAt", string>>;
+type GymOption = ReturnType<typeof getGymOptions>[number];
 
-export function SessionPlanForm() {
+export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
 

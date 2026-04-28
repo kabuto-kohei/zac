@@ -1,17 +1,14 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell, MetricStrip } from "./app-shell";
-import { plans } from "./mock-data";
-import { findGym } from "./mock-data";
+import { getGymDetailData } from "./data";
 
 export function GymDetail({ gymId }: { gymId: string }) {
-  const gym = findGym(gymId);
+  const { gym, relatedPlans } = getGymDetailData(gymId);
 
   if (!gym) {
     notFound();
   }
-
-  const relatedPlans = plans.filter((plan) => plan.place === gym.name);
 
   return (
     <AppShell activeTab="explore" action={<Link className="primary-action" href="/plans/new">予定作成</Link>}>
@@ -49,4 +46,3 @@ export function GymDetail({ gymId }: { gymId: string }) {
     </AppShell>
   );
 }
-

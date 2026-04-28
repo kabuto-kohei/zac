@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { GymSummary, LogSummary, PlanSummary, PostSummary } from "./mock-data";
+import type { GymSummary, LogSummary, PlanSummary, PostSummary } from "./data";
 
 export function GymCard({ gym }: { gym: GymSummary }) {
   return (

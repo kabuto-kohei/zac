@@ -26,6 +26,31 @@ test("GET /v1/gyms/:gymId returns not_found for unknown gym", async () => {
   assert.equal(body.error.code, "not_found");
 });
 
+test("GET /v1/announcements returns paginated announcements", async () => {
+  const response = await createApp().request("/v1/announcements");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.page.hasNext, false);
+  assert.ok(body.data.length > 0);
+});
+
+test("GET /v1/announcements/:announcementId returns an announcement", async () => {
+  const response = await createApp().request("/v1/announcements/beta-guideline");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.data.id, "beta-guideline");
+});
+
+test("GET /v1/announcements/:announcementId returns not_found for unknown announcement", async () => {
+  const response = await createApp().request("/v1/announcements/unknown");
+  const body = await response.json();
+
+  assert.equal(response.status, 404);
+  assert.equal(body.error.code, "not_found");
+});
+
 test("GET /v1/events returns paginated events", async () => {
   const response = await createApp().request("/v1/events");
   const body = await response.json();

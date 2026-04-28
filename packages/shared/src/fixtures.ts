@@ -245,6 +245,10 @@ export function findEventFixture(eventId: string) {
   return eventFixtures.find((event) => event.id === eventId);
 }
 
+export function findAnnouncementFixture(announcementId: string) {
+  return announcementFixtures.find((announcement) => announcement.id === announcementId);
+}
+
 export const feedFixtures = [
   ...planFixtures.map((plan) => ({ type: "session_plan" as const, item: plan })),
   ...logFixtures.slice(0, 1).map((log) => ({ type: "climbing_log" as const, item: log })),

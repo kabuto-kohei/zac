@@ -34,6 +34,16 @@ export type PostSummary = {
   visibility: string;
 };
 
+export type EventSummary = {
+  id: string;
+  title: string;
+  gymName: string;
+  startsAt: string;
+  endsAt: string;
+  capacity: string;
+  status: "scheduled" | "closed";
+};
+
 export type ReportSummary = {
   id: string;
   targetType: string;
@@ -135,6 +145,27 @@ export const postFixtures: PostSummary[] = [
   },
 ];
 
+export const eventFixtures: EventSummary[] = [
+  {
+    id: "b-pump-beginner-session",
+    title: "はじめてのボルダー講習",
+    gymName: "B-PUMP Tokyo",
+    startsAt: "2026-05-02 19:00",
+    endsAt: "2026-05-02 20:30",
+    capacity: "12人",
+    status: "scheduled",
+  },
+  {
+    id: "rocky-morning-session",
+    title: "朝活セッション",
+    gymName: "Rocky Shinagawa",
+    startsAt: "2026-05-05 08:00",
+    endsAt: "2026-05-05 10:00",
+    capacity: "8人",
+    status: "scheduled",
+  },
+];
+
 export const reportFixtures: ReportSummary[] = [
   {
     id: "report-001",
@@ -183,6 +214,10 @@ export function findLogFixture(logId: string) {
 
 export function findPostFixture(postId: string) {
   return postFixtures.find((post) => post.id === postId);
+}
+
+export function findEventFixture(eventId: string) {
+  return eventFixtures.find((event) => event.id === eventId);
 }
 
 export const feedFixtures = [

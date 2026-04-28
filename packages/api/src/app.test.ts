@@ -26,6 +26,31 @@ test("GET /v1/gyms/:gymId returns not_found for unknown gym", async () => {
   assert.equal(body.error.code, "not_found");
 });
 
+test("GET /v1/events returns paginated events", async () => {
+  const response = await createApp().request("/v1/events");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.page.hasNext, false);
+  assert.ok(body.data.length > 0);
+});
+
+test("GET /v1/events/:eventId returns an event", async () => {
+  const response = await createApp().request("/v1/events/b-pump-beginner-session");
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.data.id, "b-pump-beginner-session");
+});
+
+test("GET /v1/events/:eventId returns not_found for unknown event", async () => {
+  const response = await createApp().request("/v1/events/unknown");
+  const body = await response.json();
+
+  assert.equal(response.status, 404);
+  assert.equal(body.error.code, "not_found");
+});
+
 test("GET /v1/session-plans returns paginated shape", async () => {
   const response = await createApp().request("/v1/session-plans");
   const body = await response.json();

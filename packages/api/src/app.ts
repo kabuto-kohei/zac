@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { toErrorResponse } from "./errors.js";
+import { createEventRoutes } from "./routes/events.js";
 import { createFeedRoutes } from "./routes/feed.js";
 import { createGymRoutes } from "./routes/gyms.js";
 import { createHealthRoutes } from "./routes/health.js";
@@ -13,6 +14,7 @@ export function createApp() {
 
   app.route("/v1/health", createHealthRoutes());
   app.route("/v1/gyms", createGymRoutes());
+  app.route("/v1/events", createEventRoutes());
   app.route("/v1/session-plans", createSessionPlanRoutes());
   app.route("/v1/logs", createLogRoutes());
   app.route("/v1/posts", createPostRoutes());

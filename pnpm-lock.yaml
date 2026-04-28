@@ -106,6 +106,9 @@ importers:
       '@supabase/supabase-js':
         specifier: ^2.105.0
         version: 2.105.0
+      '@zac/db':
+        specifier: workspace:*
+        version: link:../db
       '@zac/shared':
         specifier: workspace:*
         version: link:../shared

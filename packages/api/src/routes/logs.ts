@@ -16,7 +16,7 @@ export function createLogRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const log = createClimbingLog(result.data);
+    const log = await createClimbingLog(result.data);
     captureServerEvent("climbing_log_created");
     return context.json(dataResponse(log), 201);
   });

@@ -16,7 +16,7 @@ export function createPostRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const post = createPost(result.data);
+    const post = await createPost(result.data);
     captureServerEvent("post_created", { visibility: post.visibility });
     return context.json(dataResponse(post), 201);
   });

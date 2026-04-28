@@ -16,7 +16,7 @@ export function createSessionPlanRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const plan = createSessionPlan(result.data);
+    const plan = await createSessionPlan(result.data);
     captureServerEvent("session_plan_created", { visibility: plan.visibility });
     return context.json(dataResponse(plan), 201);
   });

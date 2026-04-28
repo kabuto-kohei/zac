@@ -1,4 +1,6 @@
+import { sessionPlans } from "@zac/db";
 import { findPlanFixture, planFixtures, type CreateSessionPlanInput, type PlanSummary } from "@zac/shared";
+import { getDatabase, getSystemUserId } from "../integrations/database.js";
 
 const createdSessionPlans: PlanSummary[] = [];
 let createdSessionPlanCount = 0;
@@ -11,7 +13,17 @@ export function getSessionPlan(planId: string) {
   return createdSessionPlans.find((plan) => plan.id === planId) ?? findPlanFixture(planId);
 }
 
-export function createSessionPlan(input: CreateSessionPlanInput) {
+export async function createSessionPlan(input: CreateSessionPlanInput) {
+  const persisted = await createPersistentSessionPlan(input);
+
+  if (persisted) {
+    return persisted;
+  }
+
+  return createMemorySessionPlan(input);
+}
+
+function createMemorySessionPlan(input: CreateSessionPlanInput) {
   createdSessionPlanCount += 1;
   const plan: PlanSummary = {
     id: `local-plan-${createdSessionPlanCount}`,
@@ -24,6 +36,49 @@ export function createSessionPlan(input: CreateSessionPlanInput) {
 
   createdSessionPlans.unshift(plan);
   return plan;
+}
+
+async function createPersistentSessionPlan(input: CreateSessionPlanInput) {
+  const db = getDatabase();
+  const systemUserId = getSystemUserId();
+
+  if (!db || !systemUserId) {
+    return null;
+  }
+
+  try {
+    const [row] = await db
+      .insert(sessionPlans)
+      .values({
+        createdBy: systemUserId,
+        gymId: input.gymId ?? null,
+        placeName: input.placeName ?? null,
+        title: input.title,
+        disciplineId: input.disciplineId ?? null,
+        startAt: new Date(input.startAt),
+        endAt: new Date(input.endAt),
+        visibility: input.visibility,
+        joinPolicy: input.joinPolicy,
+        maxParticipants: input.maxParticipants ?? null,
+        note: input.note ?? null,
+      })
+      .returning();
+
+    if (!row) {
+      return null;
+    }
+
+    return {
+      id: row.id,
+      title: row.title,
+      place: row.placeName ?? "ジム未接続",
+      time: formatDateTime(row.startAt.toISOString()),
+      members: row.maxParticipants ? `1/${row.maxParticipants}人` : "1人",
+      visibility: row.visibility,
+    } satisfies PlanSummary;
+  } catch {
+    return null;
+  }
 }
 
 function formatDateTime(value: string) {

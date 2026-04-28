@@ -1,4 +1,6 @@
+import { posts } from "@zac/db";
 import { findPostFixture, postFixtures, type CreatePostInput, type PostSummary } from "@zac/shared";
+import { getDatabase, getSystemUserId } from "../integrations/database.js";
 
 const createdPosts: PostSummary[] = [];
 let createdPostCount = 0;
@@ -11,7 +13,17 @@ export function getPost(postId: string) {
   return createdPosts.find((post) => post.id === postId) ?? findPostFixture(postId);
 }
 
-export function createPost(input: CreatePostInput) {
+export async function createPost(input: CreatePostInput) {
+  const persisted = await createPersistentPost(input);
+
+  if (persisted) {
+    return persisted;
+  }
+
+  return createMemoryPost(input);
+}
+
+function createMemoryPost(input: CreatePostInput) {
   createdPostCount += 1;
   const post: PostSummary = {
     id: `local-post-${createdPostCount}`,
@@ -24,4 +36,40 @@ export function createPost(input: CreatePostInput) {
 
   createdPosts.unshift(post);
   return post;
+}
+
+async function createPersistentPost(input: CreatePostInput) {
+  const db = getDatabase();
+  const systemUserId = getSystemUserId();
+
+  if (!db || !systemUserId) {
+    return null;
+  }
+
+  try {
+    const [row] = await db
+      .insert(posts)
+      .values({
+        createdBy: systemUserId,
+        sourceType: "standalone",
+        body: input.body,
+        visibility: input.visibility,
+      })
+      .returning();
+
+    if (!row) {
+      return null;
+    }
+
+    return {
+      id: row.id,
+      body: row.body,
+      authorName: "Climber",
+      sourceType: "standalone",
+      sourceLabel: row.body.slice(0, 32),
+      visibility: row.visibility,
+    } satisfies PostSummary;
+  } catch {
+    return null;
+  }
 }

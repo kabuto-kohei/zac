@@ -92,6 +92,29 @@ test("GET /v1/session-plans/:planId returns a plan", async () => {
   assert.equal(body.data.id, "tuesday-night");
 });
 
+test("POST /v1/session-plans creates a plan", async () => {
+  const app = createApp();
+  const response = await app.request("/v1/session-plans", {
+    method: "POST",
+    body: JSON.stringify({
+      title: "金曜夜に登る",
+      placeName: "B-PUMP Tokyo",
+      startAt: "2026-05-08T19:00:00+09:00",
+      endAt: "2026-05-08T21:00:00+09:00",
+      visibility: "followers",
+      joinPolicy: "open",
+    }),
+    headers: { "content-type": "application/json" },
+  });
+  const body = await response.json();
+  const listResponse = await app.request("/v1/session-plans");
+  const listBody = await listResponse.json();
+
+  assert.equal(response.status, 201);
+  assert.equal(body.data.title, "金曜夜に登る");
+  assert.ok(listBody.data.some((plan: { id: string }) => plan.id === body.data.id));
+});
+
 test("GET /v1/logs/:logId returns a log", async () => {
   const response = await createApp().request("/v1/logs/yellow-wall");
   const body = await response.json();
@@ -100,12 +123,45 @@ test("GET /v1/logs/:logId returns a log", async () => {
   assert.equal(body.data.id, "yellow-wall");
 });
 
+test("POST /v1/logs creates a log", async () => {
+  const response = await createApp().request("/v1/logs", {
+    method: "POST",
+    body: JSON.stringify({
+      placeName: "Noborock Shibuya",
+      climbedOn: "2026-05-08",
+      gradeText: "4級",
+      summary: "垂壁を完登",
+      visibility: "private",
+    }),
+    headers: { "content-type": "application/json" },
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 201);
+  assert.equal(body.data.title, "垂壁を完登");
+});
+
 test("GET /v1/posts/:postId returns a post", async () => {
   const response = await createApp().request("/v1/posts/yellow-wall-post");
   const body = await response.json();
 
   assert.equal(response.status, 200);
   assert.equal(body.data.id, "yellow-wall-post");
+});
+
+test("POST /v1/posts creates a post", async () => {
+  const response = await createApp().request("/v1/posts", {
+    method: "POST",
+    body: JSON.stringify({
+      body: "週末に一緒に登れる人を探しています。",
+      visibility: "public",
+    }),
+    headers: { "content-type": "application/json" },
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 201);
+  assert.equal(body.data.body, "週末に一緒に登れる人を探しています。");
 });
 
 test("GET /v1/feed returns mixed feed", async () => {

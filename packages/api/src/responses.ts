@@ -25,6 +25,16 @@ export function notFoundResponse() {
   };
 }
 
+export function validationErrorResponse(details: unknown) {
+  return {
+    error: {
+      code: "validation_error",
+      message: "Invalid request.",
+      details,
+    },
+  };
+}
+
 function defaultPageInfo(): PageInfo {
   return {
     limit: 20,

@@ -1,11 +1,22 @@
 import { Hono } from "hono";
-import { dataResponse, notFoundResponse, paginatedResponse } from "../responses.js";
-import { getClimbingLog, listClimbingLogs } from "../services/climbing-log-service.js";
+import { createClimbingLogSchema } from "@zac/shared";
+import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
+import { createClimbingLog, getClimbingLog, listClimbingLogs } from "../services/climbing-log-service.js";
 
 export function createLogRoutes() {
   const app = new Hono();
 
   app.get("/", (context) => context.json(paginatedResponse(listClimbingLogs())));
+
+  app.post("/", async (context) => {
+    const result = createClimbingLogSchema.safeParse(await context.req.json());
+
+    if (!result.success) {
+      return context.json(validationErrorResponse(result.error.flatten()), 422);
+    }
+
+    return context.json(dataResponse(createClimbingLog(result.data)), 201);
+  });
 
   app.get("/:logId", (context) => {
     const log = getClimbingLog(context.req.param("logId"));

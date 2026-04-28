@@ -8,7 +8,7 @@ import { createClimbingLog, getClimbingLog, listClimbingLogs } from "../services
 export function createLogRoutes() {
   const app = new Hono();
 
-  app.get("/", (context) => context.json(paginatedResponse(listClimbingLogs())));
+  app.get("/", async (context) => context.json(paginatedResponse(await listClimbingLogs())));
 
   app.post("/", async (context) => {
     const result = createClimbingLogSchema.safeParse(await context.req.json());
@@ -23,8 +23,8 @@ export function createLogRoutes() {
     return context.json(dataResponse(log), 201);
   });
 
-  app.get("/:logId", (context) => {
-    const log = getClimbingLog(context.req.param("logId"));
+  app.get("/:logId", async (context) => {
+    const log = await getClimbingLog(context.req.param("logId"));
 
     if (!log) {
       return context.json(notFoundResponse(), 404);

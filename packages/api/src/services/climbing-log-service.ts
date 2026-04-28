@@ -1,15 +1,25 @@
-import { climbingLogs } from "@zac/db";
+import { climbingLogs, desc, eq, isNull } from "@zac/db";
 import { findLogFixture, logFixtures, type CreateClimbingLogInput, type LogSummary } from "@zac/shared";
 import { getDatabase } from "../integrations/database.js";
+import { isUuid } from "./ids.js";
 
 const createdClimbingLogs: LogSummary[] = [];
 let createdClimbingLogCount = 0;
 
-export function listClimbingLogs() {
-  return [...createdClimbingLogs, ...logFixtures];
+export async function listClimbingLogs() {
+  const persisted = await listPersistentClimbingLogs();
+  return [...createdClimbingLogs, ...persisted, ...logFixtures];
 }
 
-export function getClimbingLog(logId: string) {
+export async function getClimbingLog(logId: string) {
+  if (isUuid(logId)) {
+    const persisted = await getPersistentClimbingLog(logId);
+
+    if (persisted) {
+      return persisted;
+    }
+  }
+
   return createdClimbingLogs.find((log) => log.id === logId) ?? findLogFixture(logId);
 }
 
@@ -75,4 +85,44 @@ async function createPersistentClimbingLog(input: CreateClimbingLogInput, actorI
   } catch {
     return null;
   }
+}
+
+async function listPersistentClimbingLogs() {
+  const db = getDatabase();
+
+  if (!db) {
+    return [];
+  }
+
+  try {
+    const rows = await db.select().from(climbingLogs).where(isNull(climbingLogs.deletedAt)).orderBy(desc(climbingLogs.createdAt)).limit(50);
+    return rows.map(toLogSummary);
+  } catch {
+    return [];
+  }
+}
+
+async function getPersistentClimbingLog(logId: string) {
+  const db = getDatabase();
+
+  if (!db) {
+    return null;
+  }
+
+  try {
+    const [row] = await db.select().from(climbingLogs).where(eq(climbingLogs.id, logId)).limit(1);
+    return row && !row.deletedAt ? toLogSummary(row) : null;
+  } catch {
+    return null;
+  }
+}
+
+function toLogSummary(row: typeof climbingLogs.$inferSelect) {
+  return {
+    id: row.id,
+    title: row.summary || `${row.climbedOn}の記録`,
+    place: row.placeName ?? "ジム未接続",
+    grade: row.gradeText ?? "未設定",
+    note: row.note ?? "",
+  } satisfies LogSummary;
 }

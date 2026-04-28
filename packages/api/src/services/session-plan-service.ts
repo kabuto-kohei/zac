@@ -1,15 +1,25 @@
-import { sessionPlans } from "@zac/db";
+import { desc, eq, isNull, sessionPlans } from "@zac/db";
 import { findPlanFixture, planFixtures, type CreateSessionPlanInput, type PlanSummary } from "@zac/shared";
 import { getDatabase } from "../integrations/database.js";
+import { isUuid } from "./ids.js";
 
 const createdSessionPlans: PlanSummary[] = [];
 let createdSessionPlanCount = 0;
 
-export function listSessionPlans() {
-  return [...createdSessionPlans, ...planFixtures];
+export async function listSessionPlans() {
+  const persisted = await listPersistentSessionPlans();
+  return [...createdSessionPlans, ...persisted, ...planFixtures];
 }
 
-export function getSessionPlan(planId: string) {
+export async function getSessionPlan(planId: string) {
+  if (isUuid(planId)) {
+    const persisted = await getPersistentSessionPlan(planId);
+
+    if (persisted) {
+      return persisted;
+    }
+  }
+
   return createdSessionPlans.find((plan) => plan.id === planId) ?? findPlanFixture(planId);
 }
 
@@ -78,6 +88,47 @@ async function createPersistentSessionPlan(input: CreateSessionPlanInput, actorI
   } catch {
     return null;
   }
+}
+
+async function listPersistentSessionPlans() {
+  const db = getDatabase();
+
+  if (!db) {
+    return [];
+  }
+
+  try {
+    const rows = await db.select().from(sessionPlans).where(isNull(sessionPlans.deletedAt)).orderBy(desc(sessionPlans.createdAt)).limit(50);
+    return rows.map(toPlanSummary);
+  } catch {
+    return [];
+  }
+}
+
+async function getPersistentSessionPlan(planId: string) {
+  const db = getDatabase();
+
+  if (!db) {
+    return null;
+  }
+
+  try {
+    const [row] = await db.select().from(sessionPlans).where(eq(sessionPlans.id, planId)).limit(1);
+    return row && !row.deletedAt ? toPlanSummary(row) : null;
+  } catch {
+    return null;
+  }
+}
+
+function toPlanSummary(row: typeof sessionPlans.$inferSelect) {
+  return {
+    id: row.id,
+    title: row.title,
+    place: row.placeName ?? "ジム未接続",
+    time: formatDateTime(row.startAt.toISOString()),
+    members: row.maxParticipants ? `1/${row.maxParticipants}人` : "1人",
+    visibility: row.visibility,
+  } satisfies PlanSummary;
 }
 
 function formatDateTime(value: string) {

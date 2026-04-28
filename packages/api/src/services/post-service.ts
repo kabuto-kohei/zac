@@ -1,15 +1,25 @@
-import { posts } from "@zac/db";
+import { desc, eq, isNull, posts } from "@zac/db";
 import { findPostFixture, postFixtures, type CreatePostInput, type PostSummary } from "@zac/shared";
 import { getDatabase } from "../integrations/database.js";
+import { isUuid } from "./ids.js";
 
 const createdPosts: PostSummary[] = [];
 let createdPostCount = 0;
 
-export function listPosts() {
-  return [...createdPosts, ...postFixtures];
+export async function listPosts() {
+  const persisted = await listPersistentPosts();
+  return [...createdPosts, ...persisted, ...postFixtures];
 }
 
-export function getPost(postId: string) {
+export async function getPost(postId: string) {
+  if (isUuid(postId)) {
+    const persisted = await getPersistentPost(postId);
+
+    if (persisted) {
+      return persisted;
+    }
+  }
+
   return createdPosts.find((post) => post.id === postId) ?? findPostFixture(postId);
 }
 
@@ -71,4 +81,45 @@ async function createPersistentPost(input: CreatePostInput, actorId?: string) {
   } catch {
     return null;
   }
+}
+
+async function listPersistentPosts() {
+  const db = getDatabase();
+
+  if (!db) {
+    return [];
+  }
+
+  try {
+    const rows = await db.select().from(posts).where(isNull(posts.deletedAt)).orderBy(desc(posts.createdAt)).limit(50);
+    return rows.map(toPostSummary);
+  } catch {
+    return [];
+  }
+}
+
+async function getPersistentPost(postId: string) {
+  const db = getDatabase();
+
+  if (!db) {
+    return null;
+  }
+
+  try {
+    const [row] = await db.select().from(posts).where(eq(posts.id, postId)).limit(1);
+    return row && !row.deletedAt ? toPostSummary(row) : null;
+  } catch {
+    return null;
+  }
+}
+
+function toPostSummary(row: typeof posts.$inferSelect) {
+  return {
+    id: row.id,
+    body: row.body,
+    authorName: "Climber",
+    sourceType: row.sourceType === "climbing_log" || row.sourceType === "session_plan" || row.sourceType === "gym" ? row.sourceType : "standalone",
+    sourceLabel: row.body.slice(0, 32),
+    visibility: row.visibility,
+  } satisfies PostSummary;
 }

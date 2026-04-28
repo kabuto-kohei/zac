@@ -8,7 +8,7 @@ import { createSessionPlan, getSessionPlan, listSessionPlans } from "../services
 export function createSessionPlanRoutes() {
   const app = new Hono();
 
-  app.get("/", (context) => context.json(paginatedResponse(listSessionPlans())));
+  app.get("/", async (context) => context.json(paginatedResponse(await listSessionPlans())));
 
   app.post("/", async (context) => {
     const result = createSessionPlanSchema.safeParse(await context.req.json());
@@ -23,8 +23,8 @@ export function createSessionPlanRoutes() {
     return context.json(dataResponse(plan), 201);
   });
 
-  app.get("/:planId", (context) => {
-    const plan = getSessionPlan(context.req.param("planId"));
+  app.get("/:planId", async (context) => {
+    const plan = await getSessionPlan(context.req.param("planId"));
 
     if (!plan) {
       return context.json(notFoundResponse(), 404);

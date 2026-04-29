@@ -90,6 +90,45 @@ p {
   padding: 28px;
 }
 
+.admin-login-panel {
+  display: grid;
+  gap: 14px;
+  width: min(100%, 480px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 24px;
+  background: var(--surface);
+}
+
+.admin-login-panel label {
+  display: grid;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.admin-login-panel input,
+.admin-login-panel button {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font: inherit;
+}
+
+.admin-login-panel input {
+  padding: 12px;
+  background: var(--surface);
+}
+
+.admin-login-panel button {
+  padding: 12px 14px;
+  background: var(--brand);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
 .admin-title {
   display: grid;
   gap: 2px;

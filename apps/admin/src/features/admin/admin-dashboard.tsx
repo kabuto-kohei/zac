@@ -5,6 +5,7 @@ import type { AuditLogSummary, GymSummary, PostSummary, ReportSummary } from "@z
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./api-client";
+import { getAdminSupabaseClient } from "./integration-provider";
 
 type AdminView = "dashboard" | "users" | "gyms" | "events" | "posts" | "reports" | "auditLogs" | "announcements";
 
@@ -20,6 +21,25 @@ const navItems: Array<{ id: AdminView; href: string; label: string }> = [
 ];
 
 export function AdminDashboard({ view }: { view: AdminView }) {
+  const session = useAdminSession();
+
+  if (session.checking) {
+    return (
+      <main className="admin-shell">
+        <section className="admin-content">
+          <div className="admin-title">
+            <h2>認証確認</h2>
+            <p>管理画面の認証状態を確認しています。</p>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  if (!session.authenticated) {
+    return <AdminLoginGate />;
+  }
+
   return (
     <main className="admin-shell">
       <aside className="admin-sidebar">
@@ -47,6 +67,104 @@ export function AdminDashboard({ view }: { view: AdminView }) {
       </section>
     </main>
   );
+}
+
+function AdminLoginGate() {
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "error" | "sent">("idle");
+
+  async function submit(formData: FormData) {
+    const email = formData.get("email")?.toString().trim();
+
+    if (!email) {
+      setStatus("error");
+      setMessage("メールアドレスを入力してください。");
+      return;
+    }
+
+    const supabase = getAdminSupabaseClient();
+
+    if (!supabase) {
+      setStatus("error");
+      setMessage("管理画面の認証設定が見つかりません。");
+      return;
+    }
+
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: window.location.origin,
+      },
+    });
+
+    if (error) {
+      setStatus("error");
+      setMessage("認証メールの送信に失敗しました。");
+      return;
+    }
+
+    setStatus("sent");
+    setMessage("認証メールを送信しました。リンクを開くと管理画面に戻ります。");
+  }
+
+  return (
+    <main className="admin-shell">
+      <section className="admin-content">
+        <form action={submit} className="admin-login-panel">
+          <p className="eyebrow">Zac Admin</p>
+          <h1>管理者ログイン</h1>
+          <p>管理操作と監査ログは、認証済みの管理者だけが利用できます。</p>
+          <label>
+            メールアドレス
+            <input autoComplete="email" inputMode="email" name="email" placeholder="admin@example.com" />
+          </label>
+          <button type="submit">認証メールを送信</button>
+          {message ? <p className={status === "error" ? "admin-status error" : "admin-status"}>{message}</p> : null}
+        </form>
+      </section>
+    </main>
+  );
+}
+
+function useAdminSession() {
+  const [checking, setChecking] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const supabase = getAdminSupabaseClient();
+
+    if (!supabase) {
+      setChecking(false);
+      setAuthenticated(false);
+      return;
+    }
+
+    const client = supabase;
+
+    async function loadSession() {
+      const session = await client.auth.getSession();
+
+      if (active) {
+        setAuthenticated(Boolean(session.data.session?.access_token));
+        setChecking(false);
+      }
+    }
+
+    const subscription = client.auth.onAuthStateChange((_event, session) => {
+      setAuthenticated(Boolean(session?.access_token));
+      setChecking(false);
+    });
+
+    void loadSession();
+
+    return () => {
+      active = false;
+      subscription.data.subscription.unsubscribe();
+    };
+  }, []);
+
+  return { authenticated, checking };
 }
 
 function DashboardView() {

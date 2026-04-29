@@ -15,7 +15,21 @@ export function createMediaRoutes() {
     }
 
     const actor = await resolveRequestActor(context.req.header("authorization"));
-    const urls = await createMediaUploadUrls(result.data, actor?.userId);
+
+    if (!actor) {
+      return context.json(
+        {
+          error: {
+            code: "unauthorized",
+            message: "Login is required to upload images.",
+            details: {},
+          },
+        },
+        401,
+      );
+    }
+
+    const urls = await createMediaUploadUrls(result.data, actor.userId);
     return context.json(dataResponse(urls), 201);
   });
 

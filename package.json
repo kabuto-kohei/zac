@@ -18,11 +18,16 @@
     "openapi:check": "node scripts/openapi-check.mjs",
     "config:audit": "node scripts/config-audit.mjs",
     "secret:scan": "node scripts/secret-scan.mjs",
+    "vercel:prebuild:api": "node scripts/vercel-api-prebuild.mjs",
+    "vercel:deploy:api": "node scripts/vercel-api-prebuild.mjs --deploy",
+    "vercel:deploy:web": "node scripts/vercel-next-prebuilt-deploy.mjs web",
+    "vercel:deploy:admin": "node scripts/vercel-next-prebuilt-deploy.mjs admin",
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm openapi:check && pnpm config:audit && pnpm build && pnpm secret:scan"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
     "drizzle-kit": "^0.31.0",
+    "esbuild": "^0.28.0",
     "typescript": "^5.8.0"
   }
 }

@@ -57,6 +57,7 @@ export function LaunchGate() {
 export function AuthForm({ mode }: { mode: AuthMode }) {
   const router = useRouter();
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [sentEmail, setSentEmail] = useState("");
 
   async function submit(formData: FormData) {
     const result = localSessionSchema.safeParse({
@@ -68,7 +69,6 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       return;
     }
 
-    window.localStorage.setItem(sessionKey, JSON.stringify(result.data));
     const supabase = getBrowserSupabaseClient();
 
     if (supabase) {
@@ -83,10 +83,31 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
         setErrors({ form: "認証メールの送信に失敗しました。" });
         return;
       }
+
+      window.localStorage.setItem(sessionKey, JSON.stringify(result.data));
+      setSentEmail(result.data.email);
+      setErrors({});
+      return;
     }
 
+    window.localStorage.setItem(sessionKey, JSON.stringify(result.data));
     setErrors({});
     router.push(mode === "register" ? "/onboarding" : hasLocalProfile() ? "/home" : "/onboarding");
+  }
+
+  if (sentEmail) {
+    return (
+      <main className="app-shell">
+        <section className="form-panel">
+          <p className="card-kind">{mode === "register" ? "新規登録" : "ログイン"}</p>
+          <h1>メールを確認してください</h1>
+          <p>{sentEmail} に認証リンクを送りました。リンクを開くとZacに戻ります。</p>
+          <Link className="ghost-button" href="/login">
+            別のメールで続ける
+          </Link>
+        </section>
+      </main>
+    );
   }
 
   return (
@@ -114,8 +135,44 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
 export function OnboardingForm() {
   const router = useRouter();
   const [errors, setErrors] = useState<FieldErrors>({});
+  const [checkingSession, setCheckingSession] = useState(true);
+  const [hasSession, setHasSession] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+
+    async function checkSession() {
+      const supabase = getBrowserSupabaseClient();
+
+      if (!supabase) {
+        if (active) {
+          setHasSession(true);
+          setCheckingSession(false);
+        }
+        return;
+      }
+
+      const session = await supabase.auth.getSession();
+
+      if (active) {
+        setHasSession(Boolean(session.data.session?.access_token));
+        setCheckingSession(false);
+      }
+    }
+
+    void checkSession();
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   function submit(formData: FormData) {
+    if (!hasSession) {
+      setErrors({ form: "メール認証後にプロフィールを保存できます。" });
+      return;
+    }
+
     const result = onboardingProfileSchema.safeParse({
       displayName: formData.get("displayName")?.toString(),
       discipline: formData.get("discipline")?.toString(),
@@ -148,6 +205,17 @@ export function OnboardingForm() {
       <form action={submit} className="form-panel">
         <p className="card-kind">オンボーディング</p>
         <h1>登るスタイルを設定</h1>
+        {checkingSession ? <p>認証状態を確認しています。</p> : null}
+        {!checkingSession && !hasSession ? (
+          <article className="wide-card">
+            <p className="card-kind">認証が必要です</p>
+            <h3>メールリンクから戻ってください</h3>
+            <p>ログインメールのリンクを開くと、プロフィール設定を続けられます。</p>
+            <Link className="ghost-button" href="/login">
+              ログインへ
+            </Link>
+          </article>
+        ) : null}
         <div className="form-grid">
           <label>
             表示名
@@ -200,6 +268,7 @@ export function OnboardingForm() {
           <p>現在地共有はMVPでは使いません。</p>
         </article>
         <SubmitButton pendingLabel="保存中">ホームへ</SubmitButton>
+        {errors.form ? <p className="field-error">{errors.form}</p> : null}
       </form>
     </main>
   );

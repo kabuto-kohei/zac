@@ -1,14 +1,15 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ZacIcon, type ZacIconKey } from "./zac-icons";
 
 export type Tab = "home" | "explore" | "plans" | "logs" | "me";
 
-const navItems: Array<{ id: Tab; href: string; label: string; icon: string }> = [
-  { id: "home", href: "/home", label: "ホーム", icon: "⌂" },
-  { id: "explore", href: "/explore", label: "探す", icon: "⌕" },
-  { id: "plans", href: "/plans", label: "予定", icon: "□" },
-  { id: "logs", href: "/logs", label: "記録", icon: "◫" },
-  { id: "me", href: "/me", label: "マイ", icon: "○" },
+const navItems: Array<{ id: Tab; href: string; label: string; icon?: ZacIconKey; textIcon?: string }> = [
+  { id: "home", href: "/home", label: "ホーム", textIcon: "⌂" },
+  { id: "explore", href: "/explore", label: "探す", icon: "gym" },
+  { id: "plans", href: "/plans", label: "予定", icon: "sessionPlan" },
+  { id: "logs", href: "/logs", label: "記録", icon: "climbLog" },
+  { id: "me", href: "/me", label: "マイ", textIcon: "○" },
 ];
 
 export function AppShell({
@@ -23,9 +24,12 @@ export function AppShell({
   return (
     <main className="app-shell">
       <section className="topbar" aria-label="Zac overview">
-        <div>
-          <p className="eyebrow">Zac</p>
-          <h1>次のセッションを決める</h1>
+        <div className="topbar-brand">
+          <ZacIcon icon="logo" size={56} />
+          <div>
+            <p className="eyebrow">Zac</p>
+            <h1>次のセッションを決める</h1>
+          </div>
         </div>
         {action ?? (
           <Link className="primary-action" href="/plans/new">
@@ -44,7 +48,11 @@ export function AppShell({
             href={item.href}
             key={item.id}
           >
-            <span aria-hidden="true">{item.icon}</span>
+            {item.icon ? (
+              <ZacIcon decorative icon={item.icon} size={24} />
+            ) : (
+              <span aria-hidden="true">{item.textIcon}</span>
+            )}
             {item.label}
           </Link>
         ))}

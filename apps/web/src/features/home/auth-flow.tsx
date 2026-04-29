@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { getBrowserSupabaseClient } from "./integration-provider";
+import { SubmitButton } from "./submit-button";
+import { ZacIcon } from "./zac-icons";
 
 const sessionKey = "zac.local.session";
 const profileKey = "zac.local.profile";
@@ -22,9 +24,12 @@ export function LaunchGate() {
   return (
     <main className="app-shell">
       <section className="topbar" aria-label="Zac start">
-        <div>
-          <p className="eyebrow">Zac</p>
-          <h1>次のセッションを決める</h1>
+        <div className="topbar-brand">
+          <ZacIcon icon="logo" size={56} />
+          <div>
+            <p className="eyebrow">Zac</p>
+            <h1>次のセッションを決める</h1>
+          </div>
         </div>
         <Link className="primary-action" href={ready && hasLocalProfile() ? "/home" : "/register"}>
           開始
@@ -96,9 +101,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
             {errors.email ? <span className="field-error" id="email-error">{errors.email}</span> : null}
           </label>
         </div>
-        <button className="primary-action" type="submit">
-          続ける
-        </button>
+        <SubmitButton pendingLabel="確認中">続ける</SubmitButton>
         {errors.form ? <p className="field-error">{errors.form}</p> : null}
         <Link className="ghost-button" href={mode === "register" ? "/login" : "/register"}>
           {mode === "register" ? "ログインへ" : "新規登録へ"}
@@ -196,9 +199,7 @@ export function OnboardingForm() {
           <h3>OFF</h3>
           <p>現在地共有はMVPでは使いません。</p>
         </article>
-        <button className="primary-action" type="submit">
-          ホームへ
-        </button>
+        <SubmitButton pendingLabel="保存中">ホームへ</SubmitButton>
       </form>
     </main>
   );

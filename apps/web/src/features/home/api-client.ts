@@ -7,11 +7,39 @@ type ApiResult<T> =
   | { ok: false; message: string };
 
 export async function postApi<T>(path: string, body: unknown): Promise<ApiResult<T>> {
-  const response = await fetch(`${getApiBaseUrl()}${path}`, {
-    method: "POST",
-    headers: await getJsonHeaders(),
-    body: JSON.stringify(body),
-  });
+  return sendApi<T>("POST", path, body);
+}
+
+export async function deleteApi<T>(path: string): Promise<ApiResult<T>> {
+  return sendApi<T>("DELETE", path);
+}
+
+export async function getApi<T>(path: string): Promise<ApiResult<T>> {
+  return sendApi<T>("GET", path);
+}
+
+async function sendApi<T>(method: "GET" | "POST" | "DELETE", path: string, body?: unknown): Promise<ApiResult<T>> {
+  let response: Response;
+
+  try {
+    const init: RequestInit = {
+      method,
+      headers: await getJsonHeaders(),
+    };
+
+    if (body !== undefined) {
+      init.body = JSON.stringify(body);
+    }
+
+    response = await fetch(`${getApiBaseUrl()}${path}`, {
+      ...init,
+    });
+  } catch {
+    return {
+      ok: false,
+      message: "APIに接続できません。ローカルでは `pnpm dev:api` を起動してください。",
+    };
+  }
 
   const payload = await response.json().catch(() => null);
 

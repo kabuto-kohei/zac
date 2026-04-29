@@ -1,19 +1,24 @@
 "use client";
 
 import { createSessionPlanSchema } from "@zac/shared";
+import Link from "next/link";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
 import type { GymOption } from "./data";
+import { SubmitButton } from "./submit-button";
+import { ZacIcon } from "./zac-icons";
 
 type FieldErrors = Partial<Record<"title" | "placeName" | "startAt" | "endAt", string>>;
 
 export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
+  const [createdPlanHref, setCreatedPlanHref] = useState("");
 
   async function submit(formData: FormData) {
     setSavedMessage("");
+    setCreatedPlanHref("");
     const startAt = formData.get("startAt")?.toString();
     const endAt = formData.get("endAt")?.toString();
     const result = createSessionPlanSchema.safeParse({
@@ -30,6 +35,7 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
       setErrors({});
       const response = await postApi<{ id: string }>("/v1/session-plans", result.data);
       setSavedMessage(response.ok ? "予定を保存しました。" : response.message);
+      setCreatedPlanHref(response.ok ? `/plans/${response.data.id}` : "");
       return;
     }
 
@@ -46,8 +52,13 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
   return (
     <AppShell activeTab="plans">
       <form action={submit} className="form-panel">
-        <p className="card-kind">予定作成</p>
-        <h2>次に登る予定</h2>
+        <div className="form-heading">
+          <ZacIcon decorative icon="sessionPlan" size={48} />
+          <div>
+            <p className="card-kind">予定作成</p>
+            <h2>次に登る予定</h2>
+          </div>
+        </div>
         <div className="form-grid">
           <label>
             タイトル
@@ -92,10 +103,25 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
             <textarea maxLength={1000} name="note" placeholder="軽めに登ります" />
           </label>
         </div>
-        {savedMessage ? <p className="success-message">{savedMessage}</p> : null}
-        <button className="primary-action" type="submit">
-          保存
-        </button>
+        {savedMessage ? (
+          <div className="success-panel">
+            <p className="success-message">{savedMessage}</p>
+            <div className="action-row">
+              {createdPlanHref ? (
+                <Link className="ghost-button" href={createdPlanHref}>
+                  作成した予定
+                </Link>
+              ) : null}
+              <Link className="ghost-button" href="/plans">
+                予定を見る
+              </Link>
+              <Link className="ghost-button" href="/logs/new">
+                記録を作る
+              </Link>
+            </div>
+          </div>
+        ) : null}
+        <SubmitButton pendingLabel="保存中">保存</SubmitButton>
       </form>
     </AppShell>
   );

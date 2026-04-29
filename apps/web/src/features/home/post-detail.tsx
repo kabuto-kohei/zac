@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { AppShell } from "./app-shell";
 import { getPostDetailData } from "./data";
+import { CommentThread, PostActions } from "./detail-actions";
+import { ZacIcon } from "./zac-icons";
 
 export async function PostDetail({ postId }: { postId: string }) {
   const post = await getPostDetailData(postId);
@@ -13,7 +15,9 @@ export async function PostDetail({ postId }: { postId: string }) {
   return (
     <AppShell activeTab="home">
       <section className="hero-card">
-        <div className="hero-visual post-visual" />
+        <div className="hero-visual icon-visual post-visual">
+          <ZacIcon decorative icon="bouldering" size={76} />
+        </div>
         <div>
           <p className="card-kind">投稿 · {post.visibility}</p>
           <h2>{post.sourceLabel}</h2>
@@ -22,16 +26,13 @@ export async function PostDetail({ postId }: { postId: string }) {
         </div>
       </section>
       <section className="stack">
+        <PostActions postId={post.id} />
         <article className="wide-card action-row">
           <Link className="ghost-button" href={`/reports/new?targetType=post&targetId=${post.id}`}>
             通報
           </Link>
         </article>
-        <article className="wide-card">
-          <p className="card-kind">コメント</p>
-          <h3>コメントはまだありません</h3>
-          <p>API接続後に対象リソースの公開範囲を継承して表示します。</p>
-        </article>
+        <CommentThread targetId={post.id} targetType="post" />
       </section>
     </AppShell>
   );

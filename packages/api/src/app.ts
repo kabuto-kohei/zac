@@ -9,6 +9,7 @@ import { createGymRoutes } from "./routes/gyms.js";
 import { createHealthRoutes } from "./routes/health.js";
 import { createIntegrationRoutes } from "./routes/integrations.js";
 import { createLogRoutes } from "./routes/logs.js";
+import { createMediaRoutes } from "./routes/media.js";
 import { createPostRoutes } from "./routes/posts.js";
 import { createReportRoutes } from "./routes/reports.js";
 import { createSessionPlanRoutes } from "./routes/session-plans.js";
@@ -36,6 +37,7 @@ export function createApp() {
   app.route("/v1/session-plans", createSessionPlanRoutes());
   app.route("/v1/logs", createLogRoutes());
   app.route("/v1/posts", createPostRoutes());
+  app.route("/v1/media", createMediaRoutes());
   app.route("/v1/feed", createFeedRoutes());
   app.route("/v1/reports", createReportRoutes());
 

@@ -2,18 +2,19 @@ import { climbingLogs, desc, eq, isNull } from "@zac/db";
 import { findLogFixture, logFixtures, type CreateClimbingLogInput, type LogSummary } from "@zac/shared";
 import { getDatabase } from "../integrations/database.js";
 import { isUuid } from "./ids.js";
+import { canViewResource, filterVisibleResources } from "./visibility-service.js";
 
 const createdClimbingLogs: LogSummary[] = [];
 let createdClimbingLogCount = 0;
 
-export async function listClimbingLogs() {
-  const persisted = await listPersistentClimbingLogs();
+export async function listClimbingLogs(viewerId?: string) {
+  const persisted = await listPersistentClimbingLogs(viewerId);
   return [...createdClimbingLogs, ...persisted, ...logFixtures];
 }
 
-export async function getClimbingLog(logId: string) {
+export async function getClimbingLog(logId: string, viewerId?: string) {
   if (isUuid(logId)) {
-    const persisted = await getPersistentClimbingLog(logId);
+    const persisted = await getPersistentClimbingLog(logId, viewerId);
 
     if (persisted) {
       return persisted;
@@ -87,7 +88,7 @@ async function createPersistentClimbingLog(input: CreateClimbingLogInput, actorI
   }
 }
 
-async function listPersistentClimbingLogs() {
+async function listPersistentClimbingLogs(viewerId?: string) {
   const db = getDatabase();
 
   if (!db) {
@@ -96,13 +97,21 @@ async function listPersistentClimbingLogs() {
 
   try {
     const rows = await db.select().from(climbingLogs).where(isNull(climbingLogs.deletedAt)).orderBy(desc(climbingLogs.createdAt)).limit(50);
-    return rows.map(toLogSummary);
+    const visibleRows = await filterVisibleResources(
+      rows.map((row) => ({
+        ...row,
+        ownerId: row.createdBy,
+        participantPlanId: row.sessionPlanId,
+      })),
+      viewerId,
+    );
+    return visibleRows.map(toLogSummary);
   } catch {
     return [];
   }
 }
 
-async function getPersistentClimbingLog(logId: string) {
+async function getPersistentClimbingLog(logId: string, viewerId?: string) {
   const db = getDatabase();
 
   if (!db) {
@@ -111,7 +120,21 @@ async function getPersistentClimbingLog(logId: string) {
 
   try {
     const [row] = await db.select().from(climbingLogs).where(eq(climbingLogs.id, logId)).limit(1);
-    return row && !row.deletedAt ? toLogSummary(row) : null;
+
+    if (!row || row.deletedAt) {
+      return null;
+    }
+
+    const canView = await canViewResource(
+      {
+        id: row.id,
+        ownerId: row.createdBy,
+        visibility: row.visibility,
+        participantPlanId: row.sessionPlanId,
+      },
+      viewerId,
+    );
+    return canView ? toLogSummary(row) : null;
   } catch {
     return null;
   }

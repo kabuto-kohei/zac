@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   createClimbingLogSchema,
+  createMediaUploadUrlsSchema,
   createPostSchema,
   createReportSchema,
   createSessionPlanSchema,
@@ -122,6 +123,38 @@ test("createReportSchema rejects missing target", () => {
     targetType: "post",
     targetId: "",
     category: "other",
+  });
+
+  assert.equal(result.success, false);
+});
+
+test("createMediaUploadUrlsSchema accepts image upload requests", () => {
+  const result = createMediaUploadUrlsSchema.safeParse({
+    targetType: "post",
+    targetId: "00000000-0000-4000-8000-000000000001",
+    files: [
+      {
+        fileName: "wall.png",
+        contentType: "image/png",
+        size: 1024,
+      },
+    ],
+  });
+
+  assert.equal(result.success, true);
+});
+
+test("createMediaUploadUrlsSchema rejects oversized images", () => {
+  const result = createMediaUploadUrlsSchema.safeParse({
+    targetType: "climbing_log",
+    targetId: "00000000-0000-4000-8000-000000000001",
+    files: [
+      {
+        fileName: "large.jpg",
+        contentType: "image/jpeg",
+        size: 5 * 1024 * 1024 + 1,
+      },
+    ],
   });
 
   assert.equal(result.success, false);

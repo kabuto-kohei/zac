@@ -1,11 +1,22 @@
 import { Hono } from "hono";
+import { resolveRequestActor } from "../auth.js";
 import { dataResponse, notFoundResponse } from "../responses.js";
-import { getGym, listGyms } from "../services/gym-service.js";
+import { getGym, listGyms, saveGym, unsaveGym } from "../services/gym-service.js";
 
 export function createGymRoutes() {
   const app = new Hono();
 
   app.get("/", async (context) => context.json(dataResponse(await listGyms())));
+
+  app.post("/:gymId/save", async (context) => {
+    const actor = await resolveRequestActor(context.req.header("authorization"));
+    return context.json(dataResponse(await saveGym(context.req.param("gymId"), actor?.userId)));
+  });
+
+  app.delete("/:gymId/save", async (context) => {
+    const actor = await resolveRequestActor(context.req.header("authorization"));
+    return context.json(dataResponse(await unsaveGym(context.req.param("gymId"), actor?.userId)));
+  });
 
   app.get("/:gymId", async (context) => {
     const gym = await getGym(context.req.param("gymId"));

@@ -14,9 +14,11 @@
     "dev:api": "pnpm --filter @zac/api dev",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "openapi:generate": "pnpm --filter @zac/api openapi:generate",
+    "openapi:generate": "node scripts/openapi-generate.mjs",
+    "openapi:check": "node scripts/openapi-check.mjs",
+    "config:audit": "node scripts/config-audit.mjs",
     "secret:scan": "node scripts/secret-scan.mjs",
-    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm secret:scan"
+    "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm openapi:check && pnpm config:audit && pnpm build && pnpm secret:scan"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

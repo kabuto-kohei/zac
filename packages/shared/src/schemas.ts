@@ -103,6 +103,42 @@ export const createReportSchema = z.object({
   note: z.string().max(1000).nullable().optional(),
 });
 
+export const createCommentSchema = z.object({
+  body: z.string().min(1).max(300),
+});
+
+export const mediaUploadTargetSchema = z.enum(["avatar", "post", "climbing_log"]);
+
+export const mediaUploadFileSchema = z.object({
+  fileName: z.string().min(1).max(120),
+  contentType: z.enum(["image/jpeg", "image/png", "image/webp"]),
+  size: z.number().int().min(1).max(5 * 1024 * 1024),
+});
+
+export const createMediaUploadUrlsSchema = z
+  .object({
+    targetType: mediaUploadTargetSchema,
+    targetId: z.string().min(1).max(120).optional(),
+    files: z.array(mediaUploadFileSchema).min(1).max(4),
+  })
+  .superRefine((value, context) => {
+    if (value.targetType !== "avatar" && !value.targetId) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "targetId is required.",
+        path: ["targetId"],
+      });
+    }
+
+    if (value.targetType === "avatar" && value.files.length > 1) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "avatar accepts only one image.",
+        path: ["files"],
+      });
+    }
+  });
+
 export type Visibility = z.infer<typeof visibilitySchema>;
 export type SessionPlanStatus = z.infer<typeof sessionPlanStatusSchema>;
 export type JoinPolicy = z.infer<typeof joinPolicySchema>;
@@ -112,3 +148,7 @@ export type CreateSessionPlanInput = z.infer<typeof createSessionPlanSchema>;
 export type CreateClimbingLogInput = z.infer<typeof createClimbingLogSchema>;
 export type CreatePostInput = z.infer<typeof createPostSchema>;
 export type CreateReportInput = z.infer<typeof createReportSchema>;
+export type CreateCommentInput = z.infer<typeof createCommentSchema>;
+export type MediaUploadTarget = z.infer<typeof mediaUploadTargetSchema>;
+export type MediaUploadFileInput = z.infer<typeof mediaUploadFileSchema>;
+export type CreateMediaUploadUrlsInput = z.infer<typeof createMediaUploadUrlsSchema>;

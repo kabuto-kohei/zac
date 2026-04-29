@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { AppShell, MetricStripView, type Tab } from "./app-shell";
-import { EventCard, GymCard, LogCard, PlanCard, PostCard } from "./cards";
+import { EventCard, GymCard } from "./cards";
 import { getHomeViewData, type HomeViewData } from "./data";
+import { FeedExperience } from "./feed-experience";
+import { ProfilePanel } from "./profile-panel";
 
 export async function WebAppHome({ activeTab }: { activeTab: Tab }) {
   const data = await getHomeViewData(activeTab);
@@ -12,38 +14,10 @@ export async function WebAppHome({ activeTab }: { activeTab: Tab }) {
       {activeTab === "explore" ? <ExplorePanel data={data} /> : null}
       {activeTab === "plans" ? <PlansPanel data={data} /> : null}
       {activeTab === "logs" ? <LogsPanel data={data} /> : null}
-      {activeTab === "me" ? <ProfilePanel /> : null}
-      {activeTab === "home" ? <HomeFeed data={data} /> : null}
+      {activeTab === "me" ? <ProfilePanel data={data} /> : null}
+      {activeTab === "home" ? <FeedExperience data={data} /> : null}
     </AppShell>
   );
-}
-
-function HomeFeed({ data }: { data: HomeViewData }) {
-  return (
-    <section className="stack">
-      <div className="section-title">
-        <h2>フィード</h2>
-        <Link className="primary-action" href="/posts/new">
-          投稿
-        </Link>
-      </div>
-      {data.feed.map((entry) => (
-        <FeedCard entry={entry} key={`${entry.type}-${entry.item.id}`} />
-      ))}
-    </section>
-  );
-}
-
-function FeedCard({ entry }: { entry: HomeViewData["feed"][number] }) {
-  if (entry.type === "session_plan") {
-    return <PlanCard plan={entry.item} />;
-  }
-
-  if (entry.type === "climbing_log") {
-    return <LogCard log={entry.item} />;
-  }
-
-  return <PostCard post={entry.item} />;
 }
 
 function ExplorePanel({ data }: { data: HomeViewData }) {
@@ -115,22 +89,6 @@ function LogsPanel({ data }: { data: HomeViewData }) {
           </p>
         </article>
       ))}
-    </section>
-  );
-}
-
-function ProfilePanel() {
-  return (
-    <section className="profile-panel">
-      <div className="avatar" />
-      <div>
-        <p className="card-kind">ボルダー · 東京</p>
-        <h2>Climber</h2>
-        <p>よく行くジム、予定、記録をここに集約する。</p>
-        <Link className="ghost-button" href="/settings">
-          設定
-        </Link>
-      </div>
     </section>
   );
 }

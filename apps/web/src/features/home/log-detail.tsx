@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
 import { getLogDetailData } from "./data";
+import { LogConvertActions } from "./detail-actions";
+import { ZacIcon } from "./zac-icons";
 
 export async function LogDetail({ logId }: { logId: string }) {
   const log = await getLogDetailData(logId);
@@ -13,7 +15,9 @@ export async function LogDetail({ logId }: { logId: string }) {
   return (
     <AppShell activeTab="logs" action={<Link className="primary-action" href="/plans/new">次回予定</Link>}>
       <section className="hero-card">
-        <div className="hero-visual log-visual" />
+        <div className="hero-visual icon-visual log-visual">
+          <ZacIcon decorative icon="climbLog" size={76} />
+        </div>
         <div>
           <p className="card-kind">{log.place}</p>
           <h2>{log.title}</h2>
@@ -22,11 +26,7 @@ export async function LogDetail({ logId }: { logId: string }) {
         </div>
       </section>
       <section className="stack">
-        <article className="wide-card">
-          <p className="card-kind">投稿</p>
-          <h3>記録から投稿へ</h3>
-          <p>API接続後に投稿作成と公開範囲を接続します。</p>
-        </article>
+        <LogConvertActions logId={log.id} />
       </section>
     </AppShell>
   );

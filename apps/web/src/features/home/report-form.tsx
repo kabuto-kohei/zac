@@ -1,9 +1,11 @@
 "use client";
 
 import { createReportSchema } from "@zac/shared";
+import Link from "next/link";
 import { useState } from "react";
 import { AppShell } from "./app-shell";
 import { postApi } from "./api-client";
+import { SubmitButton } from "./submit-button";
 
 type FieldErrors = Partial<Record<"targetId" | "category", string>>;
 
@@ -83,10 +85,17 @@ export function ReportForm({
             <textarea maxLength={1000} name="note" placeholder="確認してほしい内容" />
           </label>
         </div>
-        {savedMessage ? <p className="success-message">{savedMessage}</p> : null}
-        <button className="primary-action" type="submit">
-          確認
-        </button>
+        {savedMessage ? (
+          <div className="success-panel">
+            <p className="success-message">{savedMessage}</p>
+            <div className="action-row">
+              <Link className="ghost-button" href="/home">
+                フィードへ戻る
+              </Link>
+            </div>
+          </div>
+        ) : null}
+        <SubmitButton pendingLabel="送信中">確認</SubmitButton>
       </form>
     </AppShell>
   );

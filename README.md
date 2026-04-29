@@ -36,13 +36,19 @@ Common commands:
 pnpm lint
 pnpm typecheck
 pnpm test
+pnpm openapi:generate
+pnpm openapi:check
+pnpm config:audit
 pnpm build
 pnpm check
 ```
+
+`pnpm check` runs lint, typecheck, tests, OpenAPI drift check, config audit,
+build, and secret scan.
 
 ## Design Source
 
 Implementation should follow `docs/19_fixed_pre_implementation_decisions.md`
 first when design documents differ. The current consistency review is
 `docs/28_design_consistency_audit.md`.
-
+The latest non-UI implementation audit is `docs/33_non_ui_completion_audit.md`.

@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell, MetricStrip } from "./app-shell";
 import { getGymDetailData } from "./data";
+import { GymActions } from "./detail-actions";
+import { ZacIcon } from "./zac-icons";
 
 export async function GymDetail({ gymId }: { gymId: string }) {
   const { gym, relatedPlans } = await getGymDetailData(gymId);
@@ -14,7 +16,9 @@ export async function GymDetail({ gymId }: { gymId: string }) {
     <AppShell activeTab="explore" action={<Link className="primary-action" href="/plans/new">予定作成</Link>}>
       <MetricStrip />
       <section className="hero-card">
-        <div className="hero-visual gym-visual" />
+        <div className="hero-visual icon-visual gym-visual">
+          <ZacIcon decorative icon="gym" size={76} />
+        </div>
         <div>
           <p className="card-kind">{gym.area}</p>
           <h2>{gym.name}</h2>
@@ -24,6 +28,7 @@ export async function GymDetail({ gymId }: { gymId: string }) {
       </section>
 
       <section className="stack">
+        <GymActions gymId={gym.id} initiallySaved={gym.saved} />
         <div className="section-title">
           <h2>関連予定</h2>
           <span>{relatedPlans.length}件</span>

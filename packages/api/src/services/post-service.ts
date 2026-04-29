@@ -1,19 +1,22 @@
-import { desc, eq, isNull, posts } from "@zac/db";
-import { findPostFixture, postFixtures, type CreatePostInput, type PostSummary } from "@zac/shared";
+import { and, desc, eq, isNull, postLikes, postSaves, posts } from "@zac/db";
+import { findLogFixture, findPostFixture, postFixtures, type CreatePostInput, type PostSummary } from "@zac/shared";
 import { getDatabase } from "../integrations/database.js";
 import { isUuid } from "./ids.js";
+import { canViewResource, filterVisibleResources } from "./visibility-service.js";
 
 const createdPosts: PostSummary[] = [];
+const likedPosts = new Set<string>();
+const savedPosts = new Set<string>();
 let createdPostCount = 0;
 
-export async function listPosts() {
-  const persisted = await listPersistentPosts();
+export async function listPosts(viewerId?: string) {
+  const persisted = await listPersistentPosts(viewerId);
   return [...createdPosts, ...persisted, ...postFixtures];
 }
 
-export async function getPost(postId: string) {
+export async function getPost(postId: string, viewerId?: string) {
   if (isUuid(postId)) {
-    const persisted = await getPersistentPost(postId);
+    const persisted = await getPersistentPost(postId, viewerId);
 
     if (persisted) {
       return persisted;
@@ -31,6 +34,62 @@ export async function createPost(input: CreatePostInput, actorId?: string) {
   }
 
   return createMemoryPost(input);
+}
+
+export async function convertLogToPost(logId: string, actorId?: string) {
+  const log = findLogFixture(logId);
+
+  if (!log) {
+    return null;
+  }
+
+  return createPost(
+    {
+      body: `${log.title}。${log.note}`,
+      visibility: "followers",
+    },
+    actorId,
+  );
+}
+
+export async function likePost(postId: string, actorId?: string) {
+  const persisted = await setPersistentPostLike(postId, actorId, true);
+
+  if (!persisted) {
+    likedPosts.add(postId);
+  }
+
+  return { postId, liked: true };
+}
+
+export async function unlikePost(postId: string, actorId?: string) {
+  const persisted = await setPersistentPostLike(postId, actorId, false);
+
+  if (!persisted) {
+    likedPosts.delete(postId);
+  }
+
+  return { postId, liked: false };
+}
+
+export async function savePost(postId: string, actorId?: string) {
+  const persisted = await setPersistentPostSave(postId, actorId, true);
+
+  if (!persisted) {
+    savedPosts.add(postId);
+  }
+
+  return { postId, saved: true };
+}
+
+export async function unsavePost(postId: string, actorId?: string) {
+  const persisted = await setPersistentPostSave(postId, actorId, false);
+
+  if (!persisted) {
+    savedPosts.delete(postId);
+  }
+
+  return { postId, saved: false };
 }
 
 function createMemoryPost(input: CreatePostInput) {
@@ -83,7 +142,45 @@ async function createPersistentPost(input: CreatePostInput, actorId?: string) {
   }
 }
 
-async function listPersistentPosts() {
+async function setPersistentPostLike(postId: string, actorId: string | undefined, liked: boolean) {
+  const db = getDatabase();
+
+  if (!db || !actorId || !isUuid(postId)) {
+    return false;
+  }
+
+  try {
+    if (liked) {
+      await db.insert(postLikes).values({ postId, userId: actorId }).onConflictDoNothing();
+    } else {
+      await db.delete(postLikes).where(and(eq(postLikes.postId, postId), eq(postLikes.userId, actorId)));
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function setPersistentPostSave(postId: string, actorId: string | undefined, saved: boolean) {
+  const db = getDatabase();
+
+  if (!db || !actorId || !isUuid(postId)) {
+    return false;
+  }
+
+  try {
+    if (saved) {
+      await db.insert(postSaves).values({ postId, userId: actorId }).onConflictDoNothing();
+    } else {
+      await db.delete(postSaves).where(and(eq(postSaves.postId, postId), eq(postSaves.userId, actorId)));
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function listPersistentPosts(viewerId?: string) {
   const db = getDatabase();
 
   if (!db) {
@@ -92,13 +189,21 @@ async function listPersistentPosts() {
 
   try {
     const rows = await db.select().from(posts).where(isNull(posts.deletedAt)).orderBy(desc(posts.createdAt)).limit(50);
-    return rows.map(toPostSummary);
+    const visibleRows = await filterVisibleResources(
+      rows.map((row) => ({
+        ...row,
+        ownerId: row.createdBy,
+        participantPlanId: row.sourceType === "session_plan" ? row.sourceId : null,
+      })),
+      viewerId,
+    );
+    return visibleRows.map(toPostSummary);
   } catch {
     return [];
   }
 }
 
-async function getPersistentPost(postId: string) {
+async function getPersistentPost(postId: string, viewerId?: string) {
   const db = getDatabase();
 
   if (!db) {
@@ -107,7 +212,21 @@ async function getPersistentPost(postId: string) {
 
   try {
     const [row] = await db.select().from(posts).where(eq(posts.id, postId)).limit(1);
-    return row && !row.deletedAt ? toPostSummary(row) : null;
+
+    if (!row || row.deletedAt) {
+      return null;
+    }
+
+    const canView = await canViewResource(
+      {
+        id: row.id,
+        ownerId: row.createdBy,
+        visibility: row.visibility,
+        participantPlanId: row.sourceType === "session_plan" ? row.sourceId : null,
+      },
+      viewerId,
+    );
+    return canView ? toPostSummary(row) : null;
   } catch {
     return null;
   }

@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { AppShell } from "./app-shell";
-
-const privacyRows = [
-  ["予定の初期表示範囲", "フォロワー"],
-  ["記録の初期表示範囲", "自分のみ"],
-  ["ホームジム表示", "OFF"],
-  ["位置情報利用", "OFF"],
-];
+import { PrivacySettingsPanel } from "./privacy-settings-panel";
 
 export function SettingsHome() {
   return (
@@ -43,14 +37,7 @@ export function PrivacySettings() {
             設定
           </Link>
         </div>
-        {privacyRows.map(([label, value]) => (
-          <article className="wide-card settings-row" key={label}>
-            <div>
-              <p className="card-kind">{label}</p>
-              <h3>{value}</h3>
-            </div>
-          </article>
-        ))}
+        <PrivacySettingsPanel />
       </section>
     </AppShell>
   );

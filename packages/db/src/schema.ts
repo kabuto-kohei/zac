@@ -78,6 +78,49 @@ export const gyms = pgTable("gyms", {
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
 });
 
+export const gymImages = pgTable("gym_images", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  gymId: uuid("gym_id")
+    .notNull()
+    .references(() => gyms.id),
+  imageUrl: text("image_url").notNull(),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const gymSaves = pgTable(
+  "gym_saves",
+  {
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id),
+    gymId: uuid("gym_id")
+      .notNull()
+      .references(() => gyms.id),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.userId, table.gymId] }),
+  }),
+);
+
+export const gymUpdates = pgTable("gym_updates", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  gymId: uuid("gym_id")
+    .notNull()
+    .references(() => gyms.id),
+  title: text("title").notNull(),
+  body: text("body").notNull(),
+  status: text("status").notNull().default("draft"),
+  publishedAt: timestamp("published_at", { withTimezone: true }),
+  createdBy: uuid("created_by")
+    .notNull()
+    .references(() => users.id),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  deletedAt: timestamp("deleted_at", { withTimezone: true }),
+});
+
 export const sessionPlans = pgTable("session_plans", {
   id: uuid("id").primaryKey().defaultRandom(),
   createdBy: uuid("created_by")
@@ -137,6 +180,16 @@ export const climbingLogs = pgTable("climbing_logs", {
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
 });
 
+export const climbingLogImages = pgTable("climbing_log_images", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  logId: uuid("log_id")
+    .notNull()
+    .references(() => climbingLogs.id),
+  imageUrl: text("image_url").notNull(),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export const posts = pgTable("posts", {
   id: uuid("id").primaryKey().defaultRandom(),
   createdBy: uuid("created_by")
@@ -150,6 +203,16 @@ export const posts = pgTable("posts", {
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
+});
+
+export const postImages = pgTable("post_images", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  postId: uuid("post_id")
+    .notNull()
+    .references(() => posts.id),
+  imageUrl: text("image_url").notNull(),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
 export const postCategories = pgTable(
@@ -212,6 +275,78 @@ export const postSaves = pgTable(
     pk: primaryKey({ columns: [table.postId, table.userId] }),
   }),
 );
+
+export const events = pgTable("events", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  gymId: uuid("gym_id").references(() => gyms.id),
+  title: text("title").notNull(),
+  description: text("description"),
+  startsAt: timestamp("starts_at", { withTimezone: true }).notNull(),
+  endsAt: timestamp("ends_at", { withTimezone: true }),
+  status: text("status").notNull().default("draft"),
+  visibility: text("visibility").notNull().default("public"),
+  createdBy: uuid("created_by")
+    .notNull()
+    .references(() => users.id),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  deletedAt: timestamp("deleted_at", { withTimezone: true }),
+});
+
+export const eventImages = pgTable("event_images", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  eventId: uuid("event_id")
+    .notNull()
+    .references(() => events.id),
+  imageUrl: text("image_url").notNull(),
+  sortOrder: integer("sort_order").notNull().default(0),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const eventSaves = pgTable(
+  "event_saves",
+  {
+    eventId: uuid("event_id")
+      .notNull()
+      .references(() => events.id),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.eventId, table.userId] }),
+  }),
+);
+
+export const notifications = pgTable("notifications", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => users.id),
+  type: text("type").notNull(),
+  title: text("title").notNull(),
+  body: text("body"),
+  targetType: text("target_type"),
+  targetId: uuid("target_id"),
+  readAt: timestamp("read_at", { withTimezone: true }),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  deletedAt: timestamp("deleted_at", { withTimezone: true }),
+});
+
+export const announcements = pgTable("announcements", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  title: text("title").notNull(),
+  body: text("body").notNull(),
+  status: text("status").notNull().default("draft"),
+  publishedAt: timestamp("published_at", { withTimezone: true }),
+  createdBy: uuid("created_by")
+    .notNull()
+    .references(() => users.id),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  deletedAt: timestamp("deleted_at", { withTimezone: true }),
+});
 
 export const follows = pgTable(
   "follows",
@@ -282,6 +417,20 @@ export const auditLogs = pgTable("audit_logs", {
   targetId: uuid("target_id"),
   metadata: jsonb("metadata").notNull().default({}),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const mediaDeletionJobs = pgTable("media_deletion_jobs", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  bucket: text("bucket").notNull(),
+  objectPath: text("object_path").notNull(),
+  targetType: text("target_type"),
+  targetId: uuid("target_id"),
+  status: text("status").notNull().default("pending"),
+  attempts: integer("attempts").notNull().default(0),
+  lastError: text("last_error"),
+  runAfter: timestamp("run_after", { withTimezone: true }).notNull().defaultNow(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
 });
 
 export const adminMemberships = pgTable("admin_memberships", {

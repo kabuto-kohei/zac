@@ -5,6 +5,7 @@ export type ApiErrorCode =
   | "validation_error"
   | "conflict"
   | "rate_limited"
+  | "service_unavailable"
   | "internal_error";
 
 export class ApiError extends Error {
@@ -43,4 +44,3 @@ export function toErrorResponse(error: unknown) {
     },
   };
 }
-

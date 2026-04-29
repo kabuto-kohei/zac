@@ -60,6 +60,13 @@ export type ReportSummary = {
   createdAt: string;
 };
 
+export type CommentSummary = {
+  id: string;
+  body: string;
+  authorName: string;
+  createdAt: string;
+};
+
 export type AuditLogSummary = {
   id: string;
   action: string;

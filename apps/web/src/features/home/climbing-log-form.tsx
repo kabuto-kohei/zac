@@ -1,19 +1,25 @@
 "use client";
 
 import { createClimbingLogSchema } from "@zac/shared";
+import Link from "next/link";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
 import type { GymOption } from "./data";
+import { ImageAttachmentField, uploadSelectedImages } from "./image-attachment-field";
+import { SubmitButton } from "./submit-button";
+import { ZacIcon } from "./zac-icons";
 
 type FieldErrors = Partial<Record<"climbedOn" | "placeName", string>>;
 
 export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
   const [errors, setErrors] = useState<FieldErrors>({});
   const [savedMessage, setSavedMessage] = useState("");
+  const [createdLogHref, setCreatedLogHref] = useState("");
 
   async function submit(formData: FormData) {
     setSavedMessage("");
+    setCreatedLogHref("");
     const result = createClimbingLogSchema.safeParse({
       climbedOn: formData.get("climbedOn")?.toString(),
       placeName: formData.get("placeName")?.toString(),
@@ -26,7 +32,15 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
     if (result.success) {
       setErrors({});
       const response = await postApi<{ id: string }>("/v1/logs", result.data);
-      setSavedMessage(response.ok ? "記録を保存しました。" : response.message);
+      if (!response.ok) {
+        setSavedMessage(response.message);
+        setCreatedLogHref("");
+        return;
+      }
+
+      const uploadResult = await uploadSelectedImages("climbing_log", response.data.id, formData);
+      setSavedMessage(uploadResult.ok && uploadResult.message ? `記録を保存しました。${uploadResult.message}` : uploadResult.ok ? "記録を保存しました。" : `記録を保存しました。${uploadResult.message}`);
+      setCreatedLogHref(`/logs/${response.data.id}`);
       return;
     }
 
@@ -43,8 +57,13 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
   return (
     <AppShell activeTab="logs">
       <form action={submit} className="form-panel">
-        <p className="card-kind">記録作成</p>
-        <h2>登った内容を残す</h2>
+        <div className="form-heading">
+          <ZacIcon decorative icon="climbLog" size={48} />
+          <div>
+            <p className="card-kind">記録作成</p>
+            <h2>登った内容を残す</h2>
+          </div>
+        </div>
         <div className="form-grid">
           <label>
             日付
@@ -77,11 +96,30 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
             メモ
             <textarea maxLength={2000} name="note" placeholder="足位置、ムーブ、次回試したいこと" />
           </label>
+          <ImageAttachmentField />
         </div>
-        {savedMessage ? <p className="success-message">{savedMessage}</p> : null}
-        <button className="primary-action" type="submit">
-          保存
-        </button>
+        {savedMessage ? (
+          <div className="success-panel">
+            <p className="success-message">{savedMessage}</p>
+            <div className="action-row">
+              {createdLogHref ? (
+                <Link className="ghost-button" href={createdLogHref}>
+                  作成した記録
+                </Link>
+              ) : null}
+              <Link className="ghost-button" href="/logs">
+                記録を見る
+              </Link>
+              <Link className="ghost-button" href="/posts/new">
+                投稿する
+              </Link>
+              <Link className="ghost-button" href="/plans/new">
+                次回予定
+              </Link>
+            </div>
+          </div>
+        ) : null}
+        <SubmitButton pendingLabel="保存中">保存</SubmitButton>
       </form>
     </AppShell>
   );

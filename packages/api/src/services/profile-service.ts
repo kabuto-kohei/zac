@@ -1,5 +1,5 @@
 import { eq, userProfiles, userSettings, users } from "@zac/db";
-import type { OnboardingProfileInput, UserProfileSummary } from "@zac/shared";
+import type { OnboardingProfileInput, UpdateProfileSettingsInput, UserProfileSummary } from "@zac/shared";
 import type { RequestActor } from "../auth.js";
 import { getDatabase } from "../integrations/database.js";
 
@@ -86,6 +86,43 @@ export async function upsertCurrentProfile(actor: RequestActor, input: Onboardin
     });
 
   return profile;
+}
+
+export async function updateCurrentSettings(actor: RequestActor, input: UpdateProfileSettingsInput) {
+  const db = getDatabase();
+  const current = memoryProfiles.get(actor.userId);
+
+  if (!db) {
+    if (current) {
+      const next = {
+        ...current,
+        defaultVisibility: input.defaultVisibility,
+        locationEnabled: false,
+      } satisfies UserProfileSummary;
+      memoryProfiles.set(actor.userId, next);
+      return next;
+    }
+
+    return null;
+  }
+
+  await db
+    .insert(userSettings)
+    .values({
+      userId: actor.userId,
+      defaultPlanVisibility: input.defaultVisibility,
+      allowLocation: false,
+    })
+    .onConflictDoUpdate({
+      target: userSettings.userId,
+      set: {
+        defaultPlanVisibility: input.defaultVisibility,
+        allowLocation: false,
+        updatedAt: new Date(),
+      },
+    });
+
+  return getCurrentProfile(actor);
 }
 
 function parseExperience(value: string | null): UserProfileSummary["experience"] {

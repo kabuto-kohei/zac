@@ -2255,6 +2255,63 @@
         }
       }
     },
+    "/me/settings": {
+      "patch": {
+        "tags": [
+          "me"
+        ],
+        "summary": "Update current user settings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentProfileResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrentProfileResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileSettingsInput"
+              }
+            }
+          }
+        }
+      }
+    },
     "/notifications": {
       "get": {
         "tags": [
@@ -3262,6 +3319,21 @@
           "experience",
           "area",
           "interest",
+          "locationEnabled"
+        ]
+      },
+      "UpdateProfileSettingsInput": {
+        "type": "object",
+        "properties": {
+          "defaultVisibility": {
+            "type": "string"
+          },
+          "locationEnabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "defaultVisibility",
           "locationEnabled"
         ]
       },

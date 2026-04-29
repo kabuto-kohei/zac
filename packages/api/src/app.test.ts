@@ -104,6 +104,41 @@ test("PUT and GET /v1/me/profile persist onboarding profile for the actor", asyn
   assert.equal(getBody.data.displayName, "Test Climber");
 });
 
+test("PATCH /v1/me/settings updates persisted default visibility", async () => {
+  const app = createApp();
+  await app.request("/v1/me/profile", {
+    method: "PUT",
+    body: JSON.stringify({
+      displayName: "Settings Climber",
+      discipline: "boulder",
+      experience: "beginner",
+      area: "東京",
+      interest: "partner",
+      defaultVisibility: "followers",
+      locationEnabled: false,
+    }),
+    headers: userJsonHeaders,
+  });
+  const settingsResponse = await app.request("/v1/me/settings", {
+    method: "PATCH",
+    body: JSON.stringify({
+      defaultVisibility: "private",
+      locationEnabled: false,
+    }),
+    headers: userJsonHeaders,
+  });
+  const settingsBody = await settingsResponse.json();
+  const getResponse = await app.request("/v1/me/profile", {
+    headers: userAuth,
+  });
+  const getBody = await getResponse.json();
+
+  assert.equal(settingsResponse.status, 200);
+  assert.equal(settingsBody.data.defaultVisibility, "private");
+  assert.equal(getResponse.status, 200);
+  assert.equal(getBody.data.defaultVisibility, "private");
+});
+
 test("GET /v1/me/profile rejects missing auth", async () => {
   const response = await createApp().request("/v1/me/profile");
   const body = await response.json();

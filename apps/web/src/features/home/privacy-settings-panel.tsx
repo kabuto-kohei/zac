@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { UserProfileSummary } from "@zac/shared";
+import { getApi, patchApi } from "./api-client";
+import { getBrowserSupabaseClient } from "./integration-provider";
 
 const profileKey = "zac.local.profile";
 
@@ -18,13 +21,54 @@ export function PrivacySettingsPanel() {
   const [savedMessage, setSavedMessage] = useState("");
 
   useEffect(() => {
+    let active = true;
     const profile = readProfile();
     if (isVisibility(profile?.defaultVisibility)) {
       setVisibility(profile.defaultVisibility);
     }
+
+    async function loadRemoteSettings() {
+      if (!getBrowserSupabaseClient()) {
+        return;
+      }
+
+      const response = await getApi<UserProfileSummary | null>("/v1/me/profile");
+
+      if (!active || !response.ok || !response.data || !isVisibility(response.data.defaultVisibility)) {
+        return;
+      }
+
+      setVisibility(response.data.defaultVisibility);
+      window.localStorage.setItem(profileKey, JSON.stringify(response.data));
+    }
+
+    void loadRemoteSettings();
+
+    return () => {
+      active = false;
+    };
   }, []);
 
-  function save() {
+  async function save() {
+    if (getBrowserSupabaseClient()) {
+      const response = await patchApi<UserProfileSummary | null>("/v1/me/settings", {
+        defaultVisibility: visibility,
+        locationEnabled: false,
+      });
+
+      if (!response.ok) {
+        setSavedMessage(response.message);
+        return;
+      }
+
+      if (response.data) {
+        window.localStorage.setItem(profileKey, JSON.stringify(response.data));
+      }
+
+      setSavedMessage("公開範囲を保存しました。");
+      return;
+    }
+
     const profile = readProfile() ?? {};
     window.localStorage.setItem(
       profileKey,

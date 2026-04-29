@@ -26,6 +26,11 @@ export const onboardingProfileSchema = z.object({
   locationEnabled: z.literal(false),
 });
 
+export const updateProfileSettingsSchema = z.object({
+  defaultVisibility: visibilitySchema.default("followers"),
+  locationEnabled: z.literal(false),
+});
+
 export const createSessionPlanSchema = z
   .object({
     title: z.string().min(1).max(80),
@@ -171,6 +176,7 @@ export type SessionPlanStatus = z.infer<typeof sessionPlanStatusSchema>;
 export type JoinPolicy = z.infer<typeof joinPolicySchema>;
 export type LocalSessionInput = z.infer<typeof localSessionSchema>;
 export type OnboardingProfileInput = z.infer<typeof onboardingProfileSchema>;
+export type UpdateProfileSettingsInput = z.infer<typeof updateProfileSettingsSchema>;
 export type CreateSessionPlanInput = z.infer<typeof createSessionPlanSchema>;
 export type CreateClimbingLogInput = z.infer<typeof createClimbingLogSchema>;
 export type CreatePostInput = z.infer<typeof createPostSchema>;

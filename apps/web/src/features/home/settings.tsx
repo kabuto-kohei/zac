@@ -19,8 +19,10 @@ export function SettingsHome() {
         </article>
         <article className="wide-card">
           <p className="card-kind">アカウント</p>
-          <h3>プロフィール</h3>
-          <p>編集機能は後続の入力保存処理で接続します。</p>
+          <h3>
+            <Link href="/onboarding">プロフィール</Link>
+          </h3>
+          <p>プロフィールは認証済みセッションでAPIへ保存され、端末を変えても復元できます。</p>
         </article>
       </section>
     </AppShell>

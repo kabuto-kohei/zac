@@ -5,10 +5,10 @@ import { getAnnouncement, listAnnouncements } from "../services/announcement-ser
 export function createAnnouncementRoutes() {
   const app = new Hono();
 
-  app.get("/", (context) => context.json(paginatedResponse(listAnnouncements())));
+  app.get("/", async (context) => context.json(paginatedResponse(await listAnnouncements())));
 
-  app.get("/:announcementId", (context) => {
-    const announcement = getAnnouncement(context.req.param("announcementId"));
+  app.get("/:announcementId", async (context) => {
+    const announcement = await getAnnouncement(context.req.param("announcementId"));
 
     if (!announcement) {
       return context.json(notFoundResponse(), 404);

@@ -1,5 +1,5 @@
-import { adminMemberships, and, auditLogs, eq, gyms, moderationActions, posts, reports } from "@zac/db";
-import type { AuditLogSummary, ModeratePostInput, UpdateGymStatusInput, UpdateReportStatusInput } from "@zac/shared";
+import { adminMemberships, and, auditLogs, desc, eq, gyms, moderationActions, posts, reports, userProfiles, users } from "@zac/db";
+import type { AdminUserSummary, AuditLogSummary, ModeratePostInput, UpdateGymStatusInput, UpdateReportStatusInput } from "@zac/shared";
 import type { RequestActor } from "../auth.js";
 import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
@@ -46,6 +46,37 @@ export async function listAuditLogs() {
   } catch {
     return [...memoryAuditLogs];
   }
+}
+
+export async function listAdminUsers() {
+  const db = getDatabase();
+
+  if (!db) {
+    return [];
+  }
+
+  const rows = await db
+    .select({
+      id: users.id,
+      email: users.email,
+      status: users.status,
+      createdAt: users.createdAt,
+      displayName: userProfiles.displayName,
+      homeArea: userProfiles.homeArea,
+    })
+    .from(users)
+    .leftJoin(userProfiles, eq(userProfiles.userId, users.id))
+    .orderBy(desc(users.createdAt))
+    .limit(100);
+
+  return rows.map((row) => ({
+    id: row.id,
+    email: row.email ?? "",
+    displayName: row.displayName ?? "(未設定)",
+    status: row.status,
+    area: row.homeArea ?? "",
+    createdAt: row.createdAt.toISOString(),
+  })) satisfies AdminUserSummary[];
 }
 
 export async function updateReportStatus(reportId: string, input: UpdateReportStatusInput, actor: RequestActor) {

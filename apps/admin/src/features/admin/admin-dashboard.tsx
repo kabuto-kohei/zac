@@ -1,7 +1,7 @@
 "use client";
 
 import { announcementFixtures, auditLogFixtures, eventFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
-import type { AuditLogSummary, GymSummary, PostSummary, ReportSummary } from "@zac/shared";
+import type { AdminUserSummary, AnnouncementSummary, AuditLogSummary, EventSummary, GymSummary, PostSummary, ReportSummary } from "@zac/shared";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./api-client";
@@ -180,24 +180,39 @@ function DashboardView() {
       <section className="metric-grid">
         <Metric label="未対応通報" value={String(adminData.reports.filter((report) => report.status === "open").length)} />
         <Metric label="登録ジム" value={String(adminData.gyms.length)} />
-        <Metric label="イベント" value={String(eventFixtures.length)} />
+        <Metric label="イベント" value={String(adminData.events.length)} />
         <Metric label="投稿" value={String(adminData.posts.length)} />
-        <Metric label="お知らせ" value={String(announcementFixtures.length)} />
+        <Metric label="お知らせ" value={String(adminData.announcements.length)} />
       </section>
     </>
   );
 }
 
 function UsersView() {
+  const { data: users, message } = useAdminList<AdminUserSummary>("/v1/admin/users", [
+    { id: "local-climber", email: "climber@example.com", displayName: "Climber", status: "active", area: "東京", createdAt: "" },
+    { id: "local-guest", email: "guest@example.com", displayName: "Guest", status: "active", area: "神奈川", createdAt: "" },
+  ]);
+
   return (
-    <TableView
-      description="ユーザー状態管理はAPI認可と監査ログ接続後に操作を有効化します。"
-      rows={[
-        ["Climber", "active", "東京"],
-        ["Guest", "active", "神奈川"],
-      ]}
-      title="ユーザー管理"
-    />
+    <>
+      <div className="admin-title">
+        <h2>ユーザー管理</h2>
+        <p>認証済みユーザーとプロフィール状態を確認します。</p>
+      </div>
+      <AdminDataStatus message={message} />
+      <section className="admin-table">
+        {users.map((user) => (
+          <article className="admin-row" key={user.id}>
+            <span>{user.displayName}</span>
+            <span>{user.email}</span>
+            <span>{user.status}</span>
+            <span>{user.area || "未設定"}</span>
+          </article>
+        ))}
+        {users.length === 0 ? <EmptyAdminRow /> : null}
+      </section>
+    </>
   );
 }
 
@@ -222,12 +237,27 @@ function GymsView() {
 }
 
 function EventsView() {
+  const { data: events, message } = useAdminList<EventSummary>("/v1/admin/events", eventFixtures);
+
   return (
-    <TableView
-      description="イベント掲載内容と公開状態を確認します。"
-      rows={eventFixtures.map((event) => [event.title, event.gymName, event.status])}
-      title="イベント管理"
-    />
+    <>
+      <div className="admin-title">
+        <h2>イベント管理</h2>
+        <p>イベント掲載内容と公開状態を確認します。</p>
+      </div>
+      <AdminDataStatus message={message} />
+      <section className="admin-table">
+        {events.map((event) => (
+          <article className="admin-row" key={event.id}>
+            <span>{event.title}</span>
+            <span>{event.gymName}</span>
+            <span>{event.startsAt}</span>
+            <span>{event.status}</span>
+          </article>
+        ))}
+        {events.length === 0 ? <EmptyAdminRow /> : null}
+      </section>
+    </>
   );
 }
 
@@ -296,12 +326,27 @@ function AuditLogsView() {
 }
 
 function AnnouncementsView() {
+  const { data: announcements, message } = useAdminList<AnnouncementSummary>("/v1/admin/announcements", announcementFixtures);
+
   return (
-    <TableView
-      description="利用者向けのお知らせ内容と掲載状態を確認します。"
-      rows={announcementFixtures.map((announcement) => [announcement.title, announcement.audience, announcement.status])}
-      title="お知らせ管理"
-    />
+    <>
+      <div className="admin-title">
+        <h2>お知らせ管理</h2>
+        <p>利用者向けのお知らせ内容と掲載状態を確認します。</p>
+      </div>
+      <AdminDataStatus message={message} />
+      <section className="admin-table">
+        {announcements.map((announcement) => (
+          <article className="admin-row" key={announcement.id}>
+            <span>{announcement.title}</span>
+            <span>{announcement.audience}</span>
+            <span>{announcement.status}</span>
+            <span>{announcement.publishedAt || "未公開"}</span>
+          </article>
+        ))}
+        {announcements.length === 0 ? <EmptyAdminRow /> : null}
+      </section>
+    </>
   );
 }
 
@@ -311,26 +356,6 @@ function Metric({ label, value }: { label: string; value: string }) {
       <span>{label}</span>
       <strong>{value}</strong>
     </article>
-  );
-}
-
-function TableView({ description, rows, title }: { description: string; rows: string[][]; title: string }) {
-  return (
-    <>
-      <div className="admin-title">
-        <h2>{title}</h2>
-        <p>{description}</p>
-      </div>
-      <section className="admin-table">
-        {rows.map((row) => (
-          <article className="admin-row" key={row.join("-")}>
-            {row.map((cell) => (
-              <span key={cell}>{cell}</span>
-            ))}
-          </article>
-        ))}
-      </section>
-    </>
   );
 }
 
@@ -481,12 +506,16 @@ function useAdminDashboardData() {
   const gyms = useAdminList<GymSummary>("/v1/gyms", gymFixtures);
   const posts = useAdminList<PostSummary>("/v1/posts", postFixtures);
   const reports = useAdminList<ReportSummary>("/v1/reports", reportFixtures);
-  const message = [gyms.message, posts.message, reports.message].find(Boolean) ?? "";
+  const events = useAdminList<EventSummary>("/v1/admin/events", eventFixtures);
+  const announcements = useAdminList<AnnouncementSummary>("/v1/admin/announcements", announcementFixtures);
+  const message = [gyms.message, posts.message, reports.message, events.message, announcements.message].find(Boolean) ?? "";
 
   return {
     gyms: gyms.data,
     posts: posts.data,
     reports: reports.data,
+    events: events.data,
+    announcements: announcements.data,
     message,
   };
 }

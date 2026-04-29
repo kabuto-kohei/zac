@@ -76,6 +76,42 @@ test("GET /v1/integrations returns non-secret status", async () => {
   assert.equal(body.data.storage.userMediaBucket, "user-media");
 });
 
+test("PUT and GET /v1/me/profile persist onboarding profile for the actor", async () => {
+  const app = createApp();
+  const updateResponse = await app.request("/v1/me/profile", {
+    method: "PUT",
+    body: JSON.stringify({
+      displayName: "Test Climber",
+      discipline: "lead",
+      experience: "intermediate",
+      area: "東京",
+      interest: "partner",
+      defaultVisibility: "followers",
+      locationEnabled: false,
+    }),
+    headers: userJsonHeaders,
+  });
+  const updateBody = await updateResponse.json();
+  const getResponse = await app.request("/v1/me/profile", {
+    headers: userAuth,
+  });
+  const getBody = await getResponse.json();
+
+  assert.equal(updateResponse.status, 200);
+  assert.equal(updateBody.data.displayName, "Test Climber");
+  assert.equal(updateBody.data.defaultVisibility, "followers");
+  assert.equal(getResponse.status, 200);
+  assert.equal(getBody.data.displayName, "Test Climber");
+});
+
+test("GET /v1/me/profile rejects missing auth", async () => {
+  const response = await createApp().request("/v1/me/profile");
+  const body = await response.json();
+
+  assert.equal(response.status, 401);
+  assert.equal(body.error.code, "unauthorized");
+});
+
 test("GET /v1/announcements returns paginated announcements", async () => {
   const response = await createApp().request("/v1/announcements");
   const body = await response.json();
@@ -490,6 +526,29 @@ test("admin routes reject non-admin users", async () => {
 
   assert.equal(response.status, 403);
   assert.equal(body.error.code, "forbidden");
+});
+
+test("admin users route requires admin and returns a paginated list", async () => {
+  const response = await createApp().request("/v1/admin/users", {
+    headers: adminAuth,
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(Array.isArray(body.data), true);
+  assert.equal(body.page.hasNext, false);
+});
+
+test("admin content list routes require admin", async () => {
+  const eventsResponse = await createApp().request("/v1/admin/events", {
+    headers: adminAuth,
+  });
+  const announcementsResponse = await createApp().request("/v1/admin/announcements", {
+    headers: adminAuth,
+  });
+
+  assert.equal(eventsResponse.status, 200);
+  assert.equal(announcementsResponse.status, 200);
 });
 
 test("admin report status mutation writes audit log", async () => {

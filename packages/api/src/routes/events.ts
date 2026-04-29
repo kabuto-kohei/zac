@@ -6,7 +6,7 @@ import { getEvent, listEvents, saveEvent, unsaveEvent } from "../services/event-
 export function createEventRoutes() {
   const app = new Hono();
 
-  app.get("/", (context) => context.json(paginatedResponse(listEvents())));
+  app.get("/", async (context) => context.json(paginatedResponse(await listEvents())));
 
   app.post("/:eventId/save", async (context) => {
     const actor = await requireRequestActor(context.req.header("authorization"));
@@ -18,8 +18,8 @@ export function createEventRoutes() {
     return context.json(dataResponse(await unsaveEvent(context.req.param("eventId"), actor.userId)));
   });
 
-  app.get("/:eventId", (context) => {
-    const event = getEvent(context.req.param("eventId"));
+  app.get("/:eventId", async (context) => {
+    const event = await getEvent(context.req.param("eventId"));
 
     if (!event) {
       return context.json(notFoundResponse(), 404);

@@ -10,6 +10,10 @@ export async function postApi<T>(path: string, body: unknown): Promise<ApiResult
   return sendApi<T>("POST", path, body);
 }
 
+export async function putApi<T>(path: string, body: unknown): Promise<ApiResult<T>> {
+  return sendApi<T>("PUT", path, body);
+}
+
 export async function deleteApi<T>(path: string): Promise<ApiResult<T>> {
   return sendApi<T>("DELETE", path);
 }
@@ -22,7 +26,7 @@ export async function getApi<T>(path: string): Promise<ApiResult<T>> {
   return sendApi<T>("GET", path);
 }
 
-async function sendApi<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<ApiResult<T>> {
+async function sendApi<T>(method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<ApiResult<T>> {
   let response: Response;
 
   try {

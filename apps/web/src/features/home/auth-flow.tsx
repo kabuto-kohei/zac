@@ -4,6 +4,7 @@ import { localSessionSchema, onboardingProfileSchema } from "@zac/shared";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { putApi } from "./api-client";
 import { getBrowserSupabaseClient } from "./integration-provider";
 import { SubmitButton } from "./submit-button";
 import { ZacIcon } from "./zac-icons";
@@ -167,7 +168,7 @@ export function OnboardingForm() {
     };
   }, []);
 
-  function submit(formData: FormData) {
+  async function submit(formData: FormData) {
     if (!hasSession) {
       setErrors({ form: "メール認証後にプロフィールを保存できます。" });
       return;
@@ -193,6 +194,15 @@ export function OnboardingForm() {
       }
       setErrors(nextErrors);
       return;
+    }
+
+    const supabase = getBrowserSupabaseClient();
+    if (supabase) {
+      const response = await putApi<typeof result.data>("/v1/me/profile", result.data);
+      if (!response.ok) {
+        setErrors({ form: response.message });
+        return;
+      }
     }
 
     window.localStorage.setItem(profileKey, JSON.stringify(result.data));

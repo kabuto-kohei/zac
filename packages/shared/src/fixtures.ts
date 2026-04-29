@@ -86,6 +86,26 @@ export type NotificationSummary = {
   createdAt: string;
 };
 
+export type UserProfileSummary = {
+  userId: string;
+  email: string | null;
+  displayName: string;
+  discipline: "boulder" | "lead" | "top_rope";
+  experience: "beginner" | "intermediate" | "advanced";
+  area: string;
+  defaultVisibility: string;
+  locationEnabled: false;
+};
+
+export type AdminUserSummary = {
+  id: string;
+  email: string;
+  displayName: string;
+  status: string;
+  area: string;
+  createdAt: string;
+};
+
 export const gymFixtures: GymSummary[] = [
   {
     id: "b-pump-tokyo",

@@ -11,6 +11,7 @@ import { createHealthRoutes } from "./routes/health.js";
 import { createIntegrationRoutes } from "./routes/integrations.js";
 import { createLogRoutes } from "./routes/logs.js";
 import { createMediaRoutes } from "./routes/media.js";
+import { createMeRoutes } from "./routes/me.js";
 import { createNotificationRoutes } from "./routes/notifications.js";
 import { createPostRoutes } from "./routes/posts.js";
 import { createReportRoutes } from "./routes/reports.js";
@@ -40,6 +41,7 @@ export function createApp() {
   app.route("/v1/logs", createLogRoutes());
   app.route("/v1/posts", createPostRoutes());
   app.route("/v1/media", createMediaRoutes());
+  app.route("/v1/me", createMeRoutes());
   app.route("/v1/notifications", createNotificationRoutes());
   app.route("/v1/feed", createFeedRoutes());
   app.route("/v1/reports", createReportRoutes());

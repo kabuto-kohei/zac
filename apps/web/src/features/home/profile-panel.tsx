@@ -3,19 +3,16 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import type { UserProfileSummary } from "@zac/shared";
+import { getApi } from "./api-client";
 import type { HomeViewData } from "./data";
+import { getBrowserSupabaseClient } from "./integration-provider";
 import { ZacIcon } from "./zac-icons";
 
 const sessionKey = "zac.local.session";
 const profileKey = "zac.local.profile";
 
-type LocalProfile = {
-  displayName: string;
-  discipline: "boulder" | "lead" | "top_rope";
-  experience: "beginner" | "intermediate" | "advanced";
-  area: string;
-  defaultVisibility: string;
-};
+type LocalProfile = Pick<UserProfileSummary, "displayName" | "discipline" | "experience" | "area" | "defaultVisibility">;
 
 const disciplineLabels: Record<LocalProfile["discipline"], string> = {
   boulder: "ボルダー",
@@ -36,8 +33,40 @@ export function ProfilePanel({ data }: { data: HomeViewData }) {
   const [localStateVersion, setLocalStateVersion] = useState(0);
 
   useEffect(() => {
-    const value = window.localStorage.getItem(profileKey);
-    setProfile(value ? parseProfile(value) : null);
+    let active = true;
+
+    async function loadProfile() {
+      const value = window.localStorage.getItem(profileKey);
+      const localProfile = value ? parseProfile(value) : null;
+      setProfile(localProfile);
+
+      if (!getBrowserSupabaseClient()) {
+        return;
+      }
+
+      const response = await getApi<UserProfileSummary | null>("/v1/me/profile");
+
+      if (!active || !response.ok || !response.data) {
+        return;
+      }
+
+      const remoteProfile: LocalProfile = {
+        displayName: response.data.displayName,
+        discipline: response.data.discipline,
+        experience: response.data.experience,
+        area: response.data.area,
+        defaultVisibility: response.data.defaultVisibility,
+      };
+
+      window.localStorage.setItem(profileKey, JSON.stringify(remoteProfile));
+      setProfile(remoteProfile);
+    }
+
+    void loadProfile();
+
+    return () => {
+      active = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -68,7 +97,11 @@ export function ProfilePanel({ data }: { data: HomeViewData }) {
     };
   }, [data.gyms, data.logs, data.plans, data.posts, localStateVersion]);
 
-  function logout() {
+  async function logout() {
+    const supabase = getBrowserSupabaseClient();
+    if (supabase) {
+      await supabase.auth.signOut();
+    }
     window.localStorage.removeItem(sessionKey);
     router.push("/login");
   }

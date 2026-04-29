@@ -95,6 +95,16 @@ p {
   gap: 2px;
 }
 
+.admin-data-status {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #fff7ed;
+  color: var(--warning);
+  font-weight: 700;
+}
+
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

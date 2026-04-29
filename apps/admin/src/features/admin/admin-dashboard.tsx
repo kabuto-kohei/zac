@@ -1,9 +1,10 @@
 "use client";
 
 import { announcementFixtures, auditLogFixtures, eventFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
+import type { AuditLogSummary, GymSummary, PostSummary, ReportSummary } from "@zac/shared";
 import Link from "next/link";
-import { useState } from "react";
-import { patchAdminApi, postAdminApi } from "./api-client";
+import { useEffect, useState } from "react";
+import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./api-client";
 
 type AdminView = "dashboard" | "users" | "gyms" | "events" | "posts" | "reports" | "auditLogs" | "announcements";
 
@@ -49,17 +50,20 @@ export function AdminDashboard({ view }: { view: AdminView }) {
 }
 
 function DashboardView() {
+  const adminData = useAdminDashboardData();
+
   return (
     <>
       <div className="admin-title">
         <h2>ダッシュボード</h2>
         <p>通報、投稿、予定、ジム更新を確認します。</p>
       </div>
+      <AdminDataStatus message={adminData.message} />
       <section className="metric-grid">
-        <Metric label="未対応通報" value={String(reportFixtures.filter((report) => report.status === "open").length)} />
-        <Metric label="登録ジム" value={String(gymFixtures.length)} />
+        <Metric label="未対応通報" value={String(adminData.reports.filter((report) => report.status === "open").length)} />
+        <Metric label="登録ジム" value={String(adminData.gyms.length)} />
         <Metric label="イベント" value={String(eventFixtures.length)} />
-        <Metric label="投稿" value={String(postFixtures.length)} />
+        <Metric label="投稿" value={String(adminData.posts.length)} />
         <Metric label="お知らせ" value={String(announcementFixtures.length)} />
       </section>
     </>
@@ -80,16 +84,20 @@ function UsersView() {
 }
 
 function GymsView() {
+  const { data: gyms, message } = useAdminList<GymSummary>("/v1/gyms", gymFixtures);
+
   return (
     <>
       <div className="admin-title">
         <h2>ジム管理</h2>
         <p>ジム情報は公開情報または許諾済み情報のみ登録します。</p>
       </div>
+      <AdminDataStatus message={message} />
       <section className="admin-table">
-        {gymFixtures.map((gym) => (
+        {gyms.map((gym) => (
           <GymModerationRow gym={gym} key={gym.id} />
         ))}
+        {gyms.length === 0 ? <EmptyAdminRow /> : null}
       </section>
     </>
   );
@@ -106,44 +114,66 @@ function EventsView() {
 }
 
 function PostsView() {
+  const { data: posts, message } = useAdminList<PostSummary>("/v1/posts", postFixtures);
+
   return (
     <>
       <div className="admin-title">
         <h2>投稿管理</h2>
         <p>非表示操作は管理APIへ送信され、監査ログに記録されます。</p>
       </div>
+      <AdminDataStatus message={message} />
       <section className="admin-table">
-        {postFixtures.map((post) => (
+        {posts.map((post) => (
           <PostModerationRow post={post} key={post.id} />
         ))}
+        {posts.length === 0 ? <EmptyAdminRow /> : null}
       </section>
     </>
   );
 }
 
 function ReportsView() {
+  const { data: reports, message } = useAdminList<ReportSummary>("/v1/reports", reportFixtures);
+
   return (
     <>
       <div className="admin-title">
         <h2>通報管理</h2>
         <p>通報状態の更新は管理APIへ送信され、監査ログに記録されます。</p>
       </div>
+      <AdminDataStatus message={message} />
       <section className="admin-table">
-        {reportFixtures.map((report) => (
+        {reports.map((report) => (
           <ReportModerationRow report={report} key={report.id} />
         ))}
+        {reports.length === 0 ? <EmptyAdminRow /> : null}
       </section>
     </>
   );
 }
 
 function AuditLogsView() {
+  const { data: auditLogs, message } = useAdminList<AuditLogSummary>("/v1/admin/audit-logs", auditLogFixtures);
+
   return (
-    <TableView
-      description="管理者操作は必ず監査ログに残します。"
-      rows={auditLogFixtures.map((log) => [log.action, log.targetType, log.createdAt])}
-      title="監査ログ"
-    />
+    <>
+      <div className="admin-title">
+        <h2>監査ログ</h2>
+        <p>管理者操作は必ず監査ログに残します。</p>
+      </div>
+      <AdminDataStatus message={message} />
+      <section className="admin-table">
+        {auditLogs.map((log) => (
+          <article className="admin-row" key={log.id}>
+            <span>{log.action}</span>
+            <span>{log.targetType}</span>
+            <span>{log.createdAt}</span>
+          </article>
+        ))}
+        {auditLogs.length === 0 ? <EmptyAdminRow /> : null}
+      </section>
+    </>
   );
 }
 
@@ -186,7 +216,7 @@ function TableView({ description, rows, title }: { description: string; rows: st
   );
 }
 
-function ReportModerationRow({ report }: { report: (typeof reportFixtures)[number] }) {
+function ReportModerationRow({ report }: { report: ReportSummary }) {
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
 
@@ -226,7 +256,7 @@ function ReportModerationRow({ report }: { report: (typeof reportFixtures)[numbe
   );
 }
 
-function PostModerationRow({ post }: { post: (typeof postFixtures)[number] }) {
+function PostModerationRow({ post }: { post: PostSummary }) {
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
 
@@ -264,7 +294,7 @@ function PostModerationRow({ post }: { post: (typeof postFixtures)[number] }) {
   );
 }
 
-function GymModerationRow({ gym }: { gym: (typeof gymFixtures)[number] }) {
+function GymModerationRow({ gym }: { gym: GymSummary }) {
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
 
@@ -309,4 +339,71 @@ function StatusMessage({ message, status }: { message: string; status: string })
   }
 
   return <span className={status === "error" ? "admin-status error" : "admin-status"}>{message}</span>;
+}
+
+function EmptyAdminRow() {
+  return (
+    <article className="admin-row">
+      <span>データを取得できませんでした。</span>
+      <span>API接続または権限を確認してください。</span>
+      <span />
+    </article>
+  );
+}
+
+function AdminDataStatus({ message }: { message: string }) {
+  if (!message) {
+    return null;
+  }
+
+  return <p className="admin-data-status">{message}</p>;
+}
+
+function useAdminDashboardData() {
+  const gyms = useAdminList<GymSummary>("/v1/gyms", gymFixtures);
+  const posts = useAdminList<PostSummary>("/v1/posts", postFixtures);
+  const reports = useAdminList<ReportSummary>("/v1/reports", reportFixtures);
+  const message = [gyms.message, posts.message, reports.message].find(Boolean) ?? "";
+
+  return {
+    gyms: gyms.data,
+    posts: posts.data,
+    reports: reports.data,
+    message,
+  };
+}
+
+function useAdminList<T>(path: string, localFallback: T[]) {
+  const liveMode = isAdminLiveApiMode();
+  const [data, setData] = useState<T[]>(liveMode ? [] : localFallback);
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    let active = true;
+
+    async function load() {
+      const response = await getAdminApi<T[]>(path);
+
+      if (!active) {
+        return;
+      }
+
+      if (response.ok) {
+        setData(response.data);
+        setMessage("");
+        return;
+      }
+
+      setData(liveMode ? [] : localFallback);
+      setMessage(liveMode ? response.message : "");
+    }
+
+    void load();
+
+    return () => {
+      active = false;
+    };
+  }, [path, liveMode, localFallback]);
+
+  return { data, message };
 }

@@ -4,6 +4,10 @@ import { getAdminSupabaseClient } from "./integration-provider";
 
 type ApiResult<T> = { ok: true; data: T } | { ok: false; message: string };
 
+type DataResponse<T> = {
+  data: T;
+};
+
 export async function patchAdminApi<T>(path: string, body: unknown): Promise<ApiResult<T>> {
   return sendAdminApi<T>("PATCH", path, body);
 }
@@ -12,15 +16,24 @@ export async function postAdminApi<T>(path: string, body: unknown): Promise<ApiR
   return sendAdminApi<T>("POST", path, body);
 }
 
-async function sendAdminApi<T>(method: "PATCH" | "POST", path: string, body: unknown): Promise<ApiResult<T>> {
+export async function getAdminApi<T>(path: string): Promise<ApiResult<T>> {
+  return sendAdminApi<T>("GET", path);
+}
+
+async function sendAdminApi<T>(method: "GET" | "PATCH" | "POST", path: string, body?: unknown): Promise<ApiResult<T>> {
   let response: Response;
 
   try {
-    response = await fetch(`${getApiBaseUrl()}${path}`, {
+    const init: RequestInit = {
       method,
       headers: await getJsonHeaders(),
-      body: JSON.stringify(body),
-    });
+    };
+
+    if (body !== undefined) {
+      init.body = JSON.stringify(body);
+    }
+
+    response = await fetch(`${getApiBaseUrl()}${path}`, init);
   } catch {
     return {
       ok: false,
@@ -39,7 +52,7 @@ async function sendAdminApi<T>(method: "PATCH" | "POST", path: string, body: unk
 
   return {
     ok: true,
-    data: payload.data as T,
+    data: (payload as DataResponse<T>).data,
   };
 }
 
@@ -60,4 +73,8 @@ async function getJsonHeaders() {
   }
 
   return headers;
+}
+
+export function isAdminLiveApiMode() {
+  return process.env.NEXT_PUBLIC_APP_ENV === "production";
 }

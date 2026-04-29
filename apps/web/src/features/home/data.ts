@@ -114,12 +114,16 @@ export async function getGymOptions(): Promise<GymOption[]> {
 
 async function getApiList<T>(path: string, fallback: T[]): Promise<T[]> {
   const response = await getApiJson<DataResponse<T[]>>(path);
-  return Array.isArray(response?.data) ? response.data : fallback;
+  if (Array.isArray(response?.data)) {
+    return response.data;
+  }
+
+  return isLiveApiMode() ? [] : fallback;
 }
 
 async function getApiData<T>(path: string, fallback: T | null): Promise<T | null> {
   const response = await getApiJson<DataResponse<T>>(path);
-  return response?.data ?? fallback;
+  return response?.data ?? (isLiveApiMode() ? null : fallback);
 }
 
 async function getApiJson<T>(path: string): Promise<T | null> {
@@ -140,4 +144,8 @@ async function getApiJson<T>(path: string): Promise<T | null> {
 
 function getApiBaseUrl() {
   return process.env.API_INTERNAL_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787";
+}
+
+function isLiveApiMode() {
+  return process.env.APP_ENV === "production" || process.env.NEXT_PUBLIC_APP_ENV === "production";
 }

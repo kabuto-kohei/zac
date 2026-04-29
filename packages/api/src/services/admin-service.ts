@@ -61,22 +61,24 @@ export async function listAdminUsers() {
       email: users.email,
       status: users.status,
       createdAt: users.createdAt,
-      displayName: userProfiles.displayName,
-      homeArea: userProfiles.homeArea,
     })
     .from(users)
-    .leftJoin(userProfiles, eq(userProfiles.userId, users.id))
     .orderBy(desc(users.createdAt))
     .limit(100);
 
-  return rows.map((row) => ({
-    id: row.id,
-    email: row.email ?? "",
-    displayName: row.displayName ?? "(未設定)",
-    status: row.status,
-    area: row.homeArea ?? "",
-    createdAt: row.createdAt.toISOString(),
-  })) satisfies AdminUserSummary[];
+  return Promise.all(
+    rows.map(async (row) => {
+      const [profile] = await db.select().from(userProfiles).where(eq(userProfiles.userId, row.id)).limit(1);
+      return {
+        id: row.id,
+        email: row.email ?? "",
+        displayName: profile?.displayName ?? "(未設定)",
+        status: row.status,
+        area: profile?.homeArea ?? "",
+        createdAt: row.createdAt.toISOString(),
+      } satisfies AdminUserSummary;
+    }),
+  );
 }
 
 export async function updateReportStatus(reportId: string, input: UpdateReportStatusInput, actor: RequestActor) {

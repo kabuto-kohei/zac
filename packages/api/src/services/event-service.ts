@@ -44,17 +44,16 @@ async function listPersistentEvents(includeDrafts: boolean) {
       .select({
         id: events.id,
         title: events.title,
-        gymName: gyms.name,
+        gymId: events.gymId,
         startsAt: events.startsAt,
         endsAt: events.endsAt,
         status: events.status,
       })
       .from(events)
-      .leftJoin(gyms, eq(gyms.id, events.gymId))
       .where(isNull(events.deletedAt))
       .orderBy(desc(events.startsAt))
       .limit(50);
-    return rows.filter((row) => includeDrafts || row.status !== "draft").map(toEventSummary);
+    return Promise.all(rows.filter((row) => includeDrafts || row.status !== "draft").map(toEventSummary));
   } catch {
     return [];
   }
@@ -72,14 +71,13 @@ async function getPersistentEvent(eventId: string) {
       .select({
         id: events.id,
         title: events.title,
-        gymName: gyms.name,
+        gymId: events.gymId,
         startsAt: events.startsAt,
         endsAt: events.endsAt,
         status: events.status,
         deletedAt: events.deletedAt,
       })
       .from(events)
-      .leftJoin(gyms, eq(gyms.id, events.gymId))
       .where(eq(events.id, eventId))
       .limit(1);
 
@@ -89,16 +87,31 @@ async function getPersistentEvent(eventId: string) {
   }
 }
 
-function toEventSummary(row: { id: string; title: string; gymName: string | null; startsAt: Date; endsAt: Date | null; status: string }) {
+async function toEventSummary(row: { id: string; title: string; gymId: string | null; startsAt: Date; endsAt: Date | null; status: string }) {
   return {
     id: row.id,
     title: row.title,
-    gymName: row.gymName ?? "Zac",
+    gymName: await getGymName(row.gymId),
     startsAt: formatDateTime(row.startsAt),
     endsAt: row.endsAt ? formatDateTime(row.endsAt) : "",
     capacity: "定員未設定",
     status: row.status === "closed" ? "closed" : "scheduled",
   } satisfies EventSummary;
+}
+
+async function getGymName(gymId: string | null) {
+  const db = getDatabase();
+
+  if (!db || !gymId) {
+    return "Zac";
+  }
+
+  try {
+    const [row] = await db.select({ name: gyms.name }).from(gyms).where(eq(gyms.id, gymId)).limit(1);
+    return row?.name ?? "Zac";
+  } catch {
+    return "Zac";
+  }
 }
 
 function formatDateTime(value: Date) {

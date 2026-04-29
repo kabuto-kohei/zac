@@ -1,5 +1,9 @@
+"use client";
+
 import { announcementFixtures, auditLogFixtures, eventFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
 import Link from "next/link";
+import { useState } from "react";
+import { patchAdminApi, postAdminApi } from "./api-client";
 
 type AdminView = "dashboard" | "users" | "gyms" | "events" | "posts" | "reports" | "auditLogs" | "announcements";
 
@@ -77,11 +81,17 @@ function UsersView() {
 
 function GymsView() {
   return (
-    <TableView
-      description="ジム情報は公開情報または許諾済み情報のみ登録します。"
-      rows={gymFixtures.map((gym) => [gym.name, gym.area, gym.disciplines])}
-      title="ジム管理"
-    />
+    <>
+      <div className="admin-title">
+        <h2>ジム管理</h2>
+        <p>ジム情報は公開情報または許諾済み情報のみ登録します。</p>
+      </div>
+      <section className="admin-table">
+        {gymFixtures.map((gym) => (
+          <GymModerationRow gym={gym} key={gym.id} />
+        ))}
+      </section>
+    </>
   );
 }
 
@@ -97,21 +107,33 @@ function EventsView() {
 
 function PostsView() {
   return (
-    <TableView
-      description="非表示や削除はmoderation actionとaudit log接続後に有効化します。"
-      rows={postFixtures.map((post) => [post.sourceLabel, post.visibility, post.authorName])}
-      title="投稿管理"
-    />
+    <>
+      <div className="admin-title">
+        <h2>投稿管理</h2>
+        <p>非表示操作は管理APIへ送信され、監査ログに記録されます。</p>
+      </div>
+      <section className="admin-table">
+        {postFixtures.map((post) => (
+          <PostModerationRow post={post} key={post.id} />
+        ))}
+      </section>
+    </>
   );
 }
 
 function ReportsView() {
   return (
-    <TableView
-      description="通報対応はMVP管理画面の最優先機能です。"
-      rows={reportFixtures.map((report) => [report.id, report.category, report.status])}
-      title="通報管理"
-    />
+    <>
+      <div className="admin-title">
+        <h2>通報管理</h2>
+        <p>通報状態の更新は管理APIへ送信され、監査ログに記録されます。</p>
+      </div>
+      <section className="admin-table">
+        {reportFixtures.map((report) => (
+          <ReportModerationRow report={report} key={report.id} />
+        ))}
+      </section>
+    </>
   );
 }
 
@@ -162,4 +184,129 @@ function TableView({ description, rows, title }: { description: string; rows: st
       </section>
     </>
   );
+}
+
+function ReportModerationRow({ report }: { report: (typeof reportFixtures)[number] }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const nextStatus = formData.get("status")?.toString() || "reviewing";
+    const response = await patchAdminApi<{ reportId: string; status: string }>(`/v1/admin/reports/${report.id}/status`, {
+      status: nextStatus,
+      action: nextStatus === "resolved" ? "dismiss_report" : "mark_review_pending",
+      reason: formData.get("reason")?.toString() || null,
+    });
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage(`状態を ${response.data.status} に更新しました。`);
+  }
+
+  return (
+    <form action={submit} className="admin-row moderation-row">
+      <span>{report.id}</span>
+      <span>{report.category}</span>
+      <span>{report.status}</span>
+      <select aria-label="通報状態" defaultValue="reviewing" name="status">
+        <option value="reviewing">reviewing</option>
+        <option value="resolved">resolved</option>
+        <option value="open">open</option>
+      </select>
+      <input aria-label="対応理由" maxLength={1000} name="reason" placeholder="理由" />
+      <button type="submit">更新</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function PostModerationRow({ post }: { post: (typeof postFixtures)[number] }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const action = formData.get("action")?.toString() || "hide_post";
+    const response = await postAdminApi<{ postId: string; action: string }>(`/v1/admin/posts/${post.id}/moderation`, {
+      action,
+      reason: formData.get("reason")?.toString() || null,
+    });
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage(`操作 ${response.data.action} を記録しました。`);
+  }
+
+  return (
+    <form action={submit} className="admin-row moderation-row">
+      <span>{post.sourceLabel}</span>
+      <span>{post.visibility}</span>
+      <span>{post.authorName}</span>
+      <select aria-label="投稿操作" defaultValue="hide_post" name="action">
+        <option value="hide_post">hide_post</option>
+        <option value="dismiss_report">dismiss_report</option>
+      </select>
+      <input aria-label="対応理由" maxLength={1000} name="reason" placeholder="理由" />
+      <button type="submit">実行</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function GymModerationRow({ gym }: { gym: (typeof gymFixtures)[number] }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const nextStatus = formData.get("status")?.toString() || "published";
+    const response = await patchAdminApi<{ gymId: string; status: string }>(`/v1/admin/gyms/${gym.id}/status`, {
+      status: nextStatus,
+      reason: formData.get("reason")?.toString() || null,
+    });
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage(`状態を ${response.data.status} に更新しました。`);
+  }
+
+  return (
+    <form action={submit} className="admin-row moderation-row">
+      <span>{gym.name}</span>
+      <span>{gym.area}</span>
+      <span>{gym.disciplines}</span>
+      <select aria-label="ジム状態" defaultValue="published" name="status">
+        <option value="published">published</option>
+        <option value="draft">draft</option>
+        <option value="closed">closed</option>
+      </select>
+      <input aria-label="対応理由" maxLength={1000} name="reason" placeholder="理由" />
+      <button type="submit">更新</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function StatusMessage({ message, status }: { message: string; status: string }) {
+  if (!message) {
+    return null;
+  }
+
+  return <span className={status === "error" ? "admin-status error" : "admin-status"}>{message}</span>;
 }

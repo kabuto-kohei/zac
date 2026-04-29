@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createApp } from "./app.js";
+import { buildMediaAttachmentRows, buildMediaDeletionJob } from "./services/media-service.js";
 import { isVisibilityAllowed } from "./services/visibility-service.js";
 
 const adminAuth = { authorization: "Bearer test-user:00000000-0000-4000-8000-0000000000ad:admin@example.test" };
@@ -412,6 +413,55 @@ test("POST /v1/media/upload-urls validates image requests", async () => {
 
   assert.equal(response.status, 422);
   assert.equal(body.error.code, "validation_error");
+});
+
+test("POST /v1/media/attachments validates uploaded paths", async () => {
+  const response = await createApp().request("/v1/media/attachments", {
+    method: "POST",
+    body: JSON.stringify({
+      targetType: "post",
+      targetId: "not-a-uuid",
+      paths: [],
+    }),
+    headers: userJsonHeaders,
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 422);
+  assert.equal(body.error.code, "validation_error");
+});
+
+test("media attachment rows preserve image order", () => {
+  const rows = buildMediaAttachmentRows({
+    targetType: "post",
+    targetId: "00000000-0000-4000-8000-000000000001",
+    paths: [
+      "posts/00000000-0000-4000-8000-000000000001/a.jpg",
+      "posts/00000000-0000-4000-8000-000000000001/b.jpg",
+    ],
+  });
+
+  assert.deepEqual(
+    rows.map((row) => ({ imageUrl: row.imageUrl, sortOrder: row.sortOrder })),
+    [
+      { imageUrl: "posts/00000000-0000-4000-8000-000000000001/a.jpg", sortOrder: 0 },
+      { imageUrl: "posts/00000000-0000-4000-8000-000000000001/b.jpg", sortOrder: 1 },
+    ],
+  );
+});
+
+test("media deletion jobs are scheduled for unclaimed uploads", () => {
+  const job = buildMediaDeletionJob({
+    bucket: "user-media",
+    objectPath: "logs/00000000-0000-4000-8000-000000000001/a.jpg",
+    targetType: "climbing_log",
+    targetId: "00000000-0000-4000-8000-000000000001",
+  });
+
+  assert.equal(job.bucket, "user-media");
+  assert.equal(job.objectPath, "logs/00000000-0000-4000-8000-000000000001/a.jpg");
+  assert.equal(job.status, "pending");
+  assert.ok(job.runAfter > new Date());
 });
 
 test("visibility rules protect private and follower content", () => {

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  attachMediaSchema,
   createClimbingLogSchema,
   createMediaUploadUrlsSchema,
   createPostSchema,
@@ -155,6 +156,26 @@ test("createMediaUploadUrlsSchema rejects oversized images", () => {
         size: 5 * 1024 * 1024 + 1,
       },
     ],
+  });
+
+  assert.equal(result.success, false);
+});
+
+test("attachMediaSchema accepts uploaded post paths", () => {
+  const result = attachMediaSchema.safeParse({
+    targetType: "post",
+    targetId: "00000000-0000-4000-8000-000000000001",
+    paths: ["posts/00000000-0000-4000-8000-000000000001/image.jpg"],
+  });
+
+  assert.equal(result.success, true);
+});
+
+test("attachMediaSchema rejects missing paths", () => {
+  const result = attachMediaSchema.safeParse({
+    targetType: "climbing_log",
+    targetId: "00000000-0000-4000-8000-000000000001",
+    paths: [],
   });
 
   assert.equal(result.success, false);

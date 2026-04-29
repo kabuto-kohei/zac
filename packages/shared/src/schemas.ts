@@ -108,6 +108,7 @@ export const createCommentSchema = z.object({
 });
 
 export const mediaUploadTargetSchema = z.enum(["avatar", "post", "climbing_log"]);
+export const mediaAttachTargetSchema = z.enum(["post", "climbing_log"]);
 
 export const mediaUploadFileSchema = z.object({
   fileName: z.string().min(1).max(120),
@@ -138,6 +139,12 @@ export const createMediaUploadUrlsSchema = z
       });
     }
   });
+
+export const attachMediaSchema = z.object({
+  targetType: mediaAttachTargetSchema,
+  targetId: uuidSchema,
+  paths: z.array(z.string().min(1).max(500)).min(1).max(4),
+});
 
 export const adminReportStatusSchema = z.enum(["open", "reviewing", "resolved"]);
 export const adminModerationActionSchema = z.enum(["hide_post", "delete_comment", "warn_user", "suspend_user", "ban_user", "dismiss_report", "mark_review_pending"]);
@@ -170,8 +177,10 @@ export type CreatePostInput = z.infer<typeof createPostSchema>;
 export type CreateReportInput = z.infer<typeof createReportSchema>;
 export type CreateCommentInput = z.infer<typeof createCommentSchema>;
 export type MediaUploadTarget = z.infer<typeof mediaUploadTargetSchema>;
+export type MediaAttachTarget = z.infer<typeof mediaAttachTargetSchema>;
 export type MediaUploadFileInput = z.infer<typeof mediaUploadFileSchema>;
 export type CreateMediaUploadUrlsInput = z.infer<typeof createMediaUploadUrlsSchema>;
+export type AttachMediaInput = z.infer<typeof attachMediaSchema>;
 export type UpdateReportStatusInput = z.infer<typeof updateReportStatusSchema>;
 export type ModeratePostInput = z.infer<typeof moderatePostSchema>;
 export type UpdateGymStatusInput = z.infer<typeof updateGymStatusSchema>;

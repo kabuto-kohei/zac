@@ -84,6 +84,9 @@ export const openApiDocument = {
     "/media/upload-urls": {
       post: operation("media", "Create signed media upload URLs", "MediaUploadUrlListResponse", [], "CreateMediaUploadUrlsInput"),
     },
+    "/media/attachments": {
+      post: operation("media", "Attach uploaded media to a target", "AttachMediaResponse", [], "AttachMediaInput"),
+    },
     "/notifications": { get: operation("notifications", "List notifications", "NotificationListResponse") },
     "/notifications/{notificationId}/read": { patch: operation("notifications", "Mark notification read", "NotificationResponse", ["notificationId"]) },
     "/admin/audit-logs": { get: operation("admin", "List audit logs", "AuditLogListResponse") },
@@ -124,7 +127,9 @@ export const openApiDocument = {
       CreateCommentInput: object({ body: string() }, ["body"]),
       MediaUploadFileInput: object({ fileName: string(), contentType: string(), size: { type: "integer" } }, ["fileName", "contentType", "size"]),
       CreateMediaUploadUrlsInput: object({ targetType: string(), targetId: string(), files: { type: "array", items: ref("MediaUploadFileInput") } }, ["targetType", "files"]),
+      AttachMediaInput: object({ targetType: string(), targetId: string(), paths: { type: "array", items: string() } }, ["targetType", "targetId", "paths"]),
       MediaUploadUrl: object({ bucket: string(), path: string(), signedUrl: string(), token: string(), contentType: string(), maxBytes: { type: "integer" } }, ["bucket", "path", "signedUrl", "token", "contentType", "maxBytes"]),
+      AttachedMedia: object({ targetType: string(), targetId: string(), attachedCount: { type: "integer" } }, ["targetType", "targetId", "attachedCount"]),
       UpdateReportStatusInput: object({ status: string(), action: string(), reason: nullableString() }, ["status"]),
       ModeratePostInput: object({ action: string(), reason: nullableString() }, ["action"]),
       UpdateGymStatusInput: object({ status: string(), reason: nullableString() }, ["status"]),
@@ -148,6 +153,7 @@ export const openApiDocument = {
       NotificationListResponse: paginatedArray("Notification"),
       NotificationResponse: dataRef("Notification"),
       MediaUploadUrlListResponse: dataArray("MediaUploadUrl"),
+      AttachMediaResponse: dataRef("AttachedMedia"),
       AuditLogListResponse: paginatedArray("AuditLog"),
       AdminReportStatusResponse: data(object({ reportId: string(), status: string() }, ["reportId", "status"])),
       AdminPostModerationResponse: data(object({ postId: string(), action: string() }, ["postId", "action"])),

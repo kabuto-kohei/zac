@@ -2093,6 +2093,63 @@
         }
       }
     },
+    "/media/attachments": {
+      "post": {
+        "tags": [
+          "media"
+        ],
+        "summary": "Attach uploaded media to a target",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachMediaResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachMediaResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachMediaInput"
+              }
+            }
+          }
+        }
+      }
+    },
     "/notifications": {
       "get": {
         "tags": [
@@ -3062,6 +3119,28 @@
           "files"
         ]
       },
+      "AttachMediaInput": {
+        "type": "object",
+        "properties": {
+          "targetType": {
+            "type": "string"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "targetType",
+          "targetId",
+          "paths"
+        ]
+      },
       "MediaUploadUrl": {
         "type": "object",
         "properties": {
@@ -3091,6 +3170,25 @@
           "token",
           "contentType",
           "maxBytes"
+        ]
+      },
+      "AttachedMedia": {
+        "type": "object",
+        "properties": {
+          "targetType": {
+            "type": "string"
+          },
+          "targetId": {
+            "type": "string"
+          },
+          "attachedCount": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "targetType",
+          "targetId",
+          "attachedCount"
         ]
       },
       "UpdateReportStatusInput": {
@@ -3422,6 +3520,17 @@
             "items": {
               "$ref": "#/components/schemas/MediaUploadUrl"
             }
+          }
+        },
+        "required": [
+          "data"
+        ]
+      },
+      "AttachMediaResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/AttachedMedia"
           }
         },
         "required": [

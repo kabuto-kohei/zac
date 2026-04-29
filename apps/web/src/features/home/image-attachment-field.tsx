@@ -110,9 +110,23 @@ export async function uploadSelectedImages(targetType: UploadTargetType, targetI
     uploadedPaths.push(uploadUrl.path);
   }
 
+  const attachResponse = await postApi<{ attachedCount: number }>("/v1/media/attachments", {
+    targetType,
+    targetId,
+    paths: uploadedPaths,
+  });
+
+  if (!attachResponse.ok) {
+    return {
+      ok: false as const,
+      paths: uploadedPaths,
+      message: `画像はアップロード済みですが、関連付けに失敗しました。${attachResponse.message}`,
+    };
+  }
+
   return {
     ok: true as const,
     paths: uploadedPaths,
-    message: `${uploadedPaths.length}枚の画像をアップロードしました。`,
+    message: `${attachResponse.data.attachedCount}枚の画像をアップロードしました。`,
   };
 }

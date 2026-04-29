@@ -3,6 +3,9 @@ import test from "node:test";
 import { createApp } from "./app.js";
 import { isVisibilityAllowed } from "./services/visibility-service.js";
 
+const adminAuth = { authorization: "Bearer test-user:00000000-0000-4000-8000-0000000000ad:admin@example.test" };
+const userAuth = { authorization: "Bearer test-user:00000000-0000-4000-8000-0000000000aa:user@example.test" };
+
 test("GET /v1/health returns ok", async () => {
   const response = await createApp().request("/v1/health");
   const body = await response.json();
@@ -401,6 +404,83 @@ test("visibility rules protect private and follower content", () => {
   assert.equal(isVisibilityAllowed("followers", "owner", "viewer", true), true);
   assert.equal(isVisibilityAllowed("participants", "owner", "viewer", false, false), false);
   assert.equal(isVisibilityAllowed("participants", "owner", "viewer", false, true), true);
+});
+
+test("admin routes reject unauthenticated requests", async () => {
+  const response = await createApp().request("/v1/admin/audit-logs");
+  const body = await response.json();
+
+  assert.equal(response.status, 401);
+  assert.equal(body.error.code, "unauthorized");
+});
+
+test("admin routes reject non-admin users", async () => {
+  const response = await createApp().request("/v1/admin/audit-logs", {
+    headers: userAuth,
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 403);
+  assert.equal(body.error.code, "forbidden");
+});
+
+test("admin report status mutation writes audit log", async () => {
+  const app = createApp();
+  const response = await app.request("/v1/admin/reports/report-001/status", {
+    method: "PATCH",
+    body: JSON.stringify({
+      status: "reviewing",
+      action: "mark_review_pending",
+      reason: "確認中",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const body = await response.json();
+  const auditResponse = await app.request("/v1/admin/audit-logs", {
+    headers: adminAuth,
+  });
+  const auditBody = await auditResponse.json();
+
+  assert.equal(response.status, 200);
+  assert.equal(body.data.status, "reviewing");
+  assert.equal(auditResponse.status, 200);
+  assert.ok(auditBody.data.some((log: { action: string; targetType: string }) => log.action === "report_status_update" && log.targetType === "report"));
+});
+
+test("admin post moderation and gym status mutations require admin", async () => {
+  const app = createApp();
+  const postResponse = await app.request("/v1/admin/posts/yellow-wall-post/moderation", {
+    method: "POST",
+    body: JSON.stringify({
+      action: "hide_post",
+      reason: "通報対応",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const gymResponse = await app.request("/v1/admin/gyms/b-pump-tokyo/status", {
+    method: "PATCH",
+    body: JSON.stringify({
+      status: "published",
+      reason: "確認済み",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const postBody = await postResponse.json();
+  const gymBody = await gymResponse.json();
+
+  assert.equal(postResponse.status, 200);
+  assert.equal(postBody.data.action, "hide_post");
+  assert.equal(gymResponse.status, 200);
+  assert.equal(gymBody.data.status, "published");
 });
 
 test("GET /v1/feed returns mixed feed", async () => {

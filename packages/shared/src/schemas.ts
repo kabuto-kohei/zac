@@ -139,6 +139,26 @@ export const createMediaUploadUrlsSchema = z
     }
   });
 
+export const adminReportStatusSchema = z.enum(["open", "reviewing", "resolved"]);
+export const adminModerationActionSchema = z.enum(["hide_post", "delete_comment", "warn_user", "suspend_user", "ban_user", "dismiss_report", "mark_review_pending"]);
+export const adminGymStatusSchema = z.enum(["draft", "published", "closed"]);
+
+export const updateReportStatusSchema = z.object({
+  status: adminReportStatusSchema,
+  action: adminModerationActionSchema.default("mark_review_pending"),
+  reason: z.string().max(1000).nullable().optional(),
+});
+
+export const moderatePostSchema = z.object({
+  action: z.enum(["hide_post", "dismiss_report"]),
+  reason: z.string().max(1000).nullable().optional(),
+});
+
+export const updateGymStatusSchema = z.object({
+  status: adminGymStatusSchema,
+  reason: z.string().max(1000).nullable().optional(),
+});
+
 export type Visibility = z.infer<typeof visibilitySchema>;
 export type SessionPlanStatus = z.infer<typeof sessionPlanStatusSchema>;
 export type JoinPolicy = z.infer<typeof joinPolicySchema>;
@@ -152,3 +172,6 @@ export type CreateCommentInput = z.infer<typeof createCommentSchema>;
 export type MediaUploadTarget = z.infer<typeof mediaUploadTargetSchema>;
 export type MediaUploadFileInput = z.infer<typeof mediaUploadFileSchema>;
 export type CreateMediaUploadUrlsInput = z.infer<typeof createMediaUploadUrlsSchema>;
+export type UpdateReportStatusInput = z.infer<typeof updateReportStatusSchema>;
+export type ModeratePostInput = z.infer<typeof moderatePostSchema>;
+export type UpdateGymStatusInput = z.infer<typeof updateGymStatusSchema>;

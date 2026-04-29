@@ -14,6 +14,12 @@ export async function resolveRequestActor(authorization: string | null | undefin
     return null;
   }
 
+  const testActor = resolveTestActor(token);
+
+  if (testActor) {
+    return testActor;
+  }
+
   const supabase = getSupabaseAdminClient();
 
   if (!supabase) {
@@ -33,6 +39,23 @@ export async function resolveRequestActor(authorization: string | null | undefin
 
   await ensureUser(actor);
   return actor;
+}
+
+function resolveTestActor(token: string): RequestActor | null {
+  if (process.env.NODE_ENV !== "test" || !token.startsWith("test-user:")) {
+    return null;
+  }
+
+  const [, userId, email] = token.split(":");
+
+  if (!userId) {
+    return null;
+  }
+
+  return {
+    userId,
+    email: email || null,
+  };
 }
 
 function extractBearerToken(authorization: string | null | undefined) {

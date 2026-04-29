@@ -18,6 +18,7 @@ export const openApiDocument = {
     { name: "feed" },
     { name: "reports" },
     { name: "announcements" },
+    { name: "admin" },
   ],
   paths: {
     "/health": { get: operation("health", "Health check", "HealthResponse") },
@@ -82,6 +83,10 @@ export const openApiDocument = {
     "/media/upload-urls": {
       post: operation("media", "Create signed media upload URLs", "MediaUploadUrlListResponse", [], "CreateMediaUploadUrlsInput"),
     },
+    "/admin/audit-logs": { get: operation("admin", "List audit logs", "AuditLogListResponse") },
+    "/admin/reports/{reportId}/status": { patch: operation("admin", "Update report status", "AdminReportStatusResponse", ["reportId"], "UpdateReportStatusInput") },
+    "/admin/posts/{postId}/moderation": { post: operation("admin", "Moderate post", "AdminPostModerationResponse", ["postId"], "ModeratePostInput") },
+    "/admin/gyms/{gymId}/status": { patch: operation("admin", "Update gym status", "AdminGymStatusResponse", ["gymId"], "UpdateGymStatusInput") },
   },
   components: {
     securitySchemes: {
@@ -116,6 +121,9 @@ export const openApiDocument = {
       MediaUploadFileInput: object({ fileName: string(), contentType: string(), size: { type: "integer" } }, ["fileName", "contentType", "size"]),
       CreateMediaUploadUrlsInput: object({ targetType: string(), targetId: string(), files: { type: "array", items: ref("MediaUploadFileInput") } }, ["targetType", "files"]),
       MediaUploadUrl: object({ bucket: string(), path: string(), signedUrl: string(), token: string(), contentType: string(), maxBytes: { type: "integer" } }, ["bucket", "path", "signedUrl", "token", "contentType", "maxBytes"]),
+      UpdateReportStatusInput: object({ status: string(), action: string(), reason: nullableString() }, ["status"]),
+      ModeratePostInput: object({ action: string(), reason: nullableString() }, ["action"]),
+      UpdateGymStatusInput: object({ status: string(), reason: nullableString() }, ["status"]),
       GymListResponse: dataArray("Gym"),
       GymResponse: dataRef("Gym"),
       EventListResponse: paginatedArray("Event"),
@@ -134,6 +142,10 @@ export const openApiDocument = {
       ReportResponse: dataRef("Report"),
       FeedResponse: dataArray("FeedEntry"),
       MediaUploadUrlListResponse: dataArray("MediaUploadUrl"),
+      AuditLogListResponse: paginatedArray("AuditLog"),
+      AdminReportStatusResponse: data(object({ reportId: string(), status: string() }, ["reportId", "status"])),
+      AdminPostModerationResponse: data(object({ postId: string(), action: string() }, ["postId", "action"])),
+      AdminGymStatusResponse: data(object({ gymId: string(), status: string() }, ["gymId", "status"])),
       SaveGymResponse: data(object({ gymId: string(), saved: bool() }, ["gymId", "saved"])),
       SaveEventResponse: data(object({ eventId: string(), saved: bool() }, ["eventId", "saved"])),
       JoinPlanResponse: data(object({ planId: string(), joined: bool() }, ["planId", "joined"])),

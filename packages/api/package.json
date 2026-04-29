@@ -9,7 +9,7 @@
     "dev": "pnpm build && node dist/index.js",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
-    "test": "pnpm --filter @zac/shared build && pnpm --filter @zac/db build && pnpm build && node --test dist/**/*.test.js",
+    "test": "NODE_ENV=test pnpm --filter @zac/shared build && pnpm --filter @zac/db build && pnpm build && NODE_ENV=test node --test dist/**/*.test.js",
     "build": "pnpm --filter @zac/db build && tsc -p tsconfig.json",
     "openapi:generate": "echo 'OpenAPI generation will be added with @hono/zod-openapi routes.'"
   },

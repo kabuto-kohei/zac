@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { toErrorResponse } from "./errors.js";
 import { captureException, initMonitoring } from "./integrations/monitoring.js";
+import { createAdminRoutes } from "./routes/admin.js";
 import { createAnnouncementRoutes } from "./routes/announcements.js";
 import { createEventRoutes } from "./routes/events.js";
 import { createFeedRoutes } from "./routes/feed.js";
@@ -40,6 +41,7 @@ export function createApp() {
   app.route("/v1/media", createMediaRoutes());
   app.route("/v1/feed", createFeedRoutes());
   app.route("/v1/reports", createReportRoutes());
+  app.route("/v1/admin", createAdminRoutes());
 
   app.onError((error, context) => {
     captureException(error);

@@ -5,6 +5,7 @@ import { isVisibilityAllowed } from "./services/visibility-service.js";
 
 const adminAuth = { authorization: "Bearer test-user:00000000-0000-4000-8000-0000000000ad:admin@example.test" };
 const userAuth = { authorization: "Bearer test-user:00000000-0000-4000-8000-0000000000aa:user@example.test" };
+const userJsonHeaders = { ...userAuth, "content-type": "application/json" };
 
 test("GET /v1/health returns ok", async () => {
   const response = await createApp().request("/v1/health");
@@ -35,11 +36,12 @@ test("POST and DELETE /v1/gyms/:gymId/save toggles save", async () => {
   const saveResponse = await app.request("/v1/gyms/rocky-shinagawa/save", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const saveBody = await saveResponse.json();
   const unsaveResponse = await app.request("/v1/gyms/rocky-shinagawa/save", {
     method: "DELETE",
+    headers: userAuth,
   });
   const unsaveBody = await unsaveResponse.json();
 
@@ -47,6 +49,18 @@ test("POST and DELETE /v1/gyms/:gymId/save toggles save", async () => {
   assert.equal(saveBody.data.saved, true);
   assert.equal(unsaveResponse.status, 200);
   assert.equal(unsaveBody.data.saved, false);
+});
+
+test("mutation routes reject missing auth", async () => {
+  const response = await createApp().request("/v1/gyms/rocky-shinagawa/save", {
+    method: "POST",
+    body: JSON.stringify({}),
+    headers: { "content-type": "application/json" },
+  });
+  const body = await response.json();
+
+  assert.equal(response.status, 401);
+  assert.equal(body.error.code, "unauthorized");
 });
 
 test("GET /v1/integrations returns non-secret status", async () => {
@@ -116,11 +130,12 @@ test("POST and DELETE /v1/events/:eventId/save toggles save", async () => {
   const saveResponse = await app.request("/v1/events/b-pump-beginner-session/save", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const saveBody = await saveResponse.json();
   const unsaveResponse = await app.request("/v1/events/b-pump-beginner-session/save", {
     method: "DELETE",
+    headers: userAuth,
   });
   const unsaveBody = await unsaveResponse.json();
 
@@ -158,7 +173,7 @@ test("POST /v1/session-plans creates a plan", async () => {
       visibility: "followers",
       joinPolicy: "open",
     }),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
   const listResponse = await app.request("/v1/session-plans");
@@ -174,11 +189,12 @@ test("POST and DELETE /v1/session-plans/:planId/join toggles participation", asy
   const joinResponse = await app.request("/v1/session-plans/tuesday-night/join", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const joinBody = await joinResponse.json();
   const cancelResponse = await app.request("/v1/session-plans/tuesday-night/join", {
     method: "DELETE",
+    headers: userAuth,
   });
   const cancelBody = await cancelResponse.json();
 
@@ -192,7 +208,7 @@ test("POST /v1/session-plans/:planId/complete completes a plan", async () => {
   const response = await createApp().request("/v1/session-plans/tuesday-night/complete", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
 
@@ -205,7 +221,7 @@ test("POST /v1/session-plans/:planId/comments creates a comment", async () => {
   const response = await app.request("/v1/session-plans/tuesday-night/comments", {
     method: "POST",
     body: JSON.stringify({ body: "参加予定です。" }),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
   const listResponse = await app.request("/v1/session-plans/tuesday-night/comments");
@@ -220,7 +236,7 @@ test("POST /v1/session-plans/:planId/convert-to-log creates a log", async () => 
   const response = await createApp().request("/v1/session-plans/tuesday-night/convert-to-log", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
 
@@ -246,7 +262,7 @@ test("POST /v1/logs creates a log", async () => {
       summary: "垂壁を完登",
       visibility: "private",
     }),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
 
@@ -258,7 +274,7 @@ test("POST /v1/logs/:logId/convert-to-post creates a post", async () => {
   const response = await createApp().request("/v1/logs/yellow-wall/convert-to-post", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
 
@@ -281,7 +297,7 @@ test("POST /v1/posts creates a post", async () => {
       body: "週末に一緒に登れる人を探しています。",
       visibility: "public",
     }),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
 
@@ -294,11 +310,12 @@ test("POST and DELETE /v1/posts/:postId/like toggles like", async () => {
   const likeResponse = await app.request("/v1/posts/yellow-wall-post/like", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const likeBody = await likeResponse.json();
   const unlikeResponse = await app.request("/v1/posts/yellow-wall-post/like", {
     method: "DELETE",
+    headers: userAuth,
   });
   const unlikeBody = await unlikeResponse.json();
 
@@ -313,11 +330,12 @@ test("POST and DELETE /v1/posts/:postId/save toggles save", async () => {
   const saveResponse = await app.request("/v1/posts/yellow-wall-post/save", {
     method: "POST",
     body: JSON.stringify({}),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const saveBody = await saveResponse.json();
   const unsaveResponse = await app.request("/v1/posts/yellow-wall-post/save", {
     method: "DELETE",
+    headers: userAuth,
   });
   const unsaveBody = await unsaveResponse.json();
 
@@ -332,7 +350,7 @@ test("POST /v1/posts/:postId/comments creates a comment", async () => {
   const response = await app.request("/v1/posts/yellow-wall-post/comments", {
     method: "POST",
     body: JSON.stringify({ body: "参考になりました。" }),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
   const listResponse = await app.request("/v1/posts/yellow-wall-post/comments");
@@ -353,7 +371,7 @@ test("POST /v1/reports creates a report", async () => {
       category: "spam",
       note: "同じ内容の投稿が繰り返されています。",
     }),
-    headers: { "content-type": "application/json" },
+    headers: userJsonHeaders,
   });
   const body = await response.json();
   const listResponse = await app.request("/v1/reports");

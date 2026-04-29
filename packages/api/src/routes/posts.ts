@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { createCommentSchema, createPostSchema } from "@zac/shared";
-import { resolveRequestActor } from "../auth.js";
+import { requireRequestActor, resolveRequestActor } from "../auth.js";
 import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createComment, listComments } from "../services/comment-service.js";
@@ -21,33 +21,33 @@ export function createPostRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const post = await createPost(result.data, actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await createPost(result.data, actor.userId);
     captureServerEvent("post_created", { visibility: post.visibility });
     return context.json(dataResponse(post), 201);
   });
 
   app.post("/:postId/like", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const result = await likePost(context.req.param("postId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const result = await likePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.delete("/:postId/like", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const result = await unlikePost(context.req.param("postId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const result = await unlikePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.post("/:postId/save", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const result = await savePost(context.req.param("postId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const result = await savePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.delete("/:postId/save", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const result = await unsavePost(context.req.param("postId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const result = await unsavePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
@@ -60,8 +60,8 @@ export function createPostRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const comment = await createComment("post", context.req.param("postId"), result.data, actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const comment = await createComment("post", context.req.param("postId"), result.data, actor.userId);
     return context.json(dataResponse(comment), 201);
   });
 

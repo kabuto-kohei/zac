@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { createClimbingLogSchema } from "@zac/shared";
-import { resolveRequestActor } from "../auth.js";
+import { requireRequestActor, resolveRequestActor } from "../auth.js";
 import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createClimbingLog, getClimbingLog, listClimbingLogs } from "../services/climbing-log-service.js";
@@ -21,15 +21,15 @@ export function createLogRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const log = await createClimbingLog(result.data, actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const log = await createClimbingLog(result.data, actor.userId);
     captureServerEvent("climbing_log_created");
     return context.json(dataResponse(log), 201);
   });
 
   app.post("/:logId/convert-to-post", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const post = await convertLogToPost(context.req.param("logId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await convertLogToPost(context.req.param("logId"), actor.userId);
 
     if (!post) {
       return context.json(notFoundResponse(), 404);

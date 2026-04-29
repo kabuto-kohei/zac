@@ -1,4 +1,5 @@
 import { users } from "@zac/db";
+import { ApiError } from "./errors.js";
 import { getDatabase } from "./integrations/database.js";
 import { getSupabaseAdminClient } from "./integrations/supabase.js";
 
@@ -38,6 +39,16 @@ export async function resolveRequestActor(authorization: string | null | undefin
   } satisfies RequestActor;
 
   await ensureUser(actor);
+  return actor;
+}
+
+export async function requireRequestActor(authorization: string | null | undefined): Promise<RequestActor> {
+  const actor = await resolveRequestActor(authorization);
+
+  if (!actor) {
+    throw new ApiError("unauthorized", "Login is required.", 401);
+  }
+
   return actor;
 }
 

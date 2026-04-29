@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { createCommentSchema, createSessionPlanSchema } from "@zac/shared";
-import { resolveRequestActor } from "../auth.js";
+import { requireRequestActor, resolveRequestActor } from "../auth.js";
 import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createComment, listComments } from "../services/comment-service.js";
@@ -29,34 +29,35 @@ export function createSessionPlanRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const plan = await createSessionPlan(result.data, actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const plan = await createSessionPlan(result.data, actor.userId);
     captureServerEvent("session_plan_created", { visibility: plan.visibility });
     return context.json(dataResponse(plan), 201);
   });
 
   app.post("/:planId/join", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const result = await joinSessionPlan(context.req.param("planId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const result = await joinSessionPlan(context.req.param("planId"), actor.userId);
     captureServerEvent("session_plan_joined", { planId: result.planId });
     return context.json(dataResponse(result));
   });
 
   app.delete("/:planId/join", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const result = await cancelSessionPlanJoin(context.req.param("planId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const result = await cancelSessionPlanJoin(context.req.param("planId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.post("/:planId/complete", async (context) => {
+    await requireRequestActor(context.req.header("authorization"));
     const result = await completeSessionPlan(context.req.param("planId"));
     captureServerEvent("session_plan_completed", { planId: result.planId });
     return context.json(dataResponse(result));
   });
 
   app.post("/:planId/convert-to-log", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const log = await convertSessionPlanToLog(context.req.param("planId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const log = await convertSessionPlanToLog(context.req.param("planId"), actor.userId);
 
     if (!log) {
       return context.json(notFoundResponse(), 404);
@@ -75,8 +76,8 @@ export function createSessionPlanRoutes() {
       return context.json(validationErrorResponse(result.error.flatten()), 422);
     }
 
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const comment = await createComment("session_plan", context.req.param("planId"), result.data, actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const comment = await createComment("session_plan", context.req.param("planId"), result.data, actor.userId);
     return context.json(dataResponse(comment), 201);
   });
 

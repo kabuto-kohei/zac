@@ -12,34 +12,22 @@ export async function getCurrentProfile(actor: RequestActor) {
     return memoryProfiles.get(actor.userId) ?? null;
   }
 
-  const [row] = await db
-    .select({
-      userId: users.id,
-      email: users.email,
-      displayName: userProfiles.displayName,
-      homeArea: userProfiles.homeArea,
-      climbingExperience: userProfiles.climbingExperience,
-      defaultPlanVisibility: userSettings.defaultPlanVisibility,
-      allowLocation: userSettings.allowLocation,
-    })
-    .from(users)
-    .leftJoin(userProfiles, eq(userProfiles.userId, users.id))
-    .leftJoin(userSettings, eq(userSettings.userId, users.id))
-    .where(eq(users.id, actor.userId))
-    .limit(1);
+  const [userRow] = await db.select().from(users).where(eq(users.id, actor.userId)).limit(1);
+  const [profileRow] = await db.select().from(userProfiles).where(eq(userProfiles.userId, actor.userId)).limit(1);
+  const [settingsRow] = await db.select().from(userSettings).where(eq(userSettings.userId, actor.userId)).limit(1);
 
-  if (!row?.displayName) {
+  if (!userRow || !profileRow?.displayName) {
     return null;
   }
 
   return {
-    userId: row.userId,
-    email: row.email,
-    displayName: row.displayName,
+    userId: userRow.id,
+    email: userRow.email,
+    displayName: profileRow.displayName,
     discipline: "boulder",
-    experience: parseExperience(row.climbingExperience),
-    area: row.homeArea ?? "",
-    defaultVisibility: row.defaultPlanVisibility ?? "followers",
+    experience: parseExperience(profileRow.climbingExperience),
+    area: profileRow.homeArea ?? "",
+    defaultVisibility: settingsRow?.defaultPlanVisibility ?? "followers",
     locationEnabled: false,
   } satisfies UserProfileSummary;
 }

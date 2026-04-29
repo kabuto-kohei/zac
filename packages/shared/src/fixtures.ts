@@ -75,6 +75,17 @@ export type AuditLogSummary = {
   createdAt: string;
 };
 
+export type NotificationSummary = {
+  id: string;
+  type: string;
+  title: string;
+  body: string;
+  targetType: string;
+  targetId: string;
+  readAt: string | null;
+  createdAt: string;
+};
+
 export const gymFixtures: GymSummary[] = [
   {
     id: "b-pump-tokyo",
@@ -229,6 +240,29 @@ export const auditLogFixtures: AuditLogSummary[] = [
     targetType: "report",
     actorName: "admin",
     createdAt: "2026-04-28 13:18",
+  },
+];
+
+export const notificationFixtures: NotificationSummary[] = [
+  {
+    id: "notification-plan-comment",
+    type: "comment",
+    title: "予定にコメントがありました",
+    body: "火曜夜の予定に新しいコメントがあります。",
+    targetType: "session_plan",
+    targetId: "tuesday-night",
+    readAt: null,
+    createdAt: "2026-04-29 09:00",
+  },
+  {
+    id: "notification-event",
+    type: "event",
+    title: "保存ジムのイベント",
+    body: "B-PUMP Tokyoで初心者向け講習が予定されています。",
+    targetType: "event",
+    targetId: "b-pump-beginner-session",
+    readAt: "2026-04-29 10:00",
+    createdAt: "2026-04-29 08:30",
   },
 ];
 

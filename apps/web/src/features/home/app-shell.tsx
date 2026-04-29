@@ -32,9 +32,14 @@ export function AppShell({
           </div>
         </div>
         {action ?? (
-          <Link className="primary-action" href="/plans/new">
-            予定
-          </Link>
+          <div className="action-row">
+            <Link className="ghost-button" href="/notifications">
+              通知
+            </Link>
+            <Link className="primary-action" href="/plans/new">
+              予定
+            </Link>
+          </div>
         )}
       </section>
 

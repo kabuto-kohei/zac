@@ -483,6 +483,30 @@ test("admin post moderation and gym status mutations require admin", async () =>
   assert.equal(gymBody.data.status, "published");
 });
 
+test("notifications require authenticated users and can be marked read", async () => {
+  const app = createApp();
+  const unauthenticatedResponse = await app.request("/v1/notifications");
+  const unauthenticatedBody = await unauthenticatedResponse.json();
+  const listResponse = await app.request("/v1/notifications", {
+    headers: userAuth,
+  });
+  const listBody = await listResponse.json();
+  const unread = listBody.data.find((notification: { readAt: string | null }) => notification.readAt === null);
+  const readResponse = await app.request(`/v1/notifications/${unread.id}/read`, {
+    method: "PATCH",
+    headers: userAuth,
+  });
+  const readBody = await readResponse.json();
+
+  assert.equal(unauthenticatedResponse.status, 401);
+  assert.equal(unauthenticatedBody.error.code, "unauthorized");
+  assert.equal(listResponse.status, 200);
+  assert.ok(listBody.data.length > 0);
+  assert.equal(readResponse.status, 200);
+  assert.equal(readBody.data.id, unread.id);
+  assert.equal(typeof readBody.data.readAt, "string");
+});
+
 test("GET /v1/feed returns mixed feed", async () => {
   const response = await createApp().request("/v1/feed");
   const body = await response.json();

@@ -14,11 +14,15 @@ export async function deleteApi<T>(path: string): Promise<ApiResult<T>> {
   return sendApi<T>("DELETE", path);
 }
 
+export async function patchApi<T>(path: string, body?: unknown): Promise<ApiResult<T>> {
+  return sendApi<T>("PATCH", path, body);
+}
+
 export async function getApi<T>(path: string): Promise<ApiResult<T>> {
   return sendApi<T>("GET", path);
 }
 
-async function sendApi<T>(method: "GET" | "POST" | "DELETE", path: string, body?: unknown): Promise<ApiResult<T>> {
+async function sendApi<T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, body?: unknown): Promise<ApiResult<T>> {
   let response: Response;
 
   try {

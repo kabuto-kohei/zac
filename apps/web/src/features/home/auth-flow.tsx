@@ -22,8 +22,8 @@ export function LaunchGate() {
         <div className="topbar-brand">
           <ZacIcon icon="logo" size={56} />
           <div>
-            <p className="eyebrow">Zac</p>
-            <h1>次のセッションを決める</h1>
+            <h1>Zac</h1>
+            <p className="topbar-subtitle">次のセッションを決める</p>
           </div>
         </div>
         <Link className="primary-action" href="/home">

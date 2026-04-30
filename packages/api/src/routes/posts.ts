@@ -29,29 +29,62 @@ export function createPostRoutes() {
 
   app.post("/:postId/like", async (context) => {
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor.userId);
+
+    if (!post) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const result = await likePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.delete("/:postId/like", async (context) => {
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor.userId);
+
+    if (!post) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const result = await unlikePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.post("/:postId/save", async (context) => {
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor.userId);
+
+    if (!post) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const result = await savePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.delete("/:postId/save", async (context) => {
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor.userId);
+
+    if (!post) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const result = await unsavePost(context.req.param("postId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
-  app.get("/:postId/comments", async (context) => context.json(paginatedResponse(await listComments("post", context.req.param("postId")))));
+  app.get("/:postId/comments", async (context) => {
+    const actor = await resolveRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor?.userId);
+
+    if (!post) {
+      return context.json(notFoundResponse(), 404);
+    }
+
+    return context.json(paginatedResponse(await listComments("post", context.req.param("postId"))));
+  });
 
   app.post("/:postId/comments", async (context) => {
     const result = createCommentSchema.safeParse(await context.req.json());
@@ -61,6 +94,12 @@ export function createPostRoutes() {
     }
 
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor.userId);
+
+    if (!post) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const comment = await createComment("post", context.req.param("postId"), result.data, actor.userId);
     return context.json(dataResponse(comment), 201);
   });

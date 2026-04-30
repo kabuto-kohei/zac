@@ -1,7 +1,9 @@
 import { eq, userProfiles, userSettings, users } from "@zac/db";
 import type { OnboardingProfileInput, UpdateProfileSettingsInput, UserProfileSummary } from "@zac/shared";
 import type { RequestActor } from "../auth.js";
+import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 
 const memoryProfiles = new Map<string, UserProfileSummary>();
 
@@ -9,6 +11,9 @@ export async function getCurrentProfile(actor: RequestActor) {
   const db = getDatabase();
 
   if (!db) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for profile.", 503);
+    }
     return memoryProfiles.get(actor.userId) ?? null;
   }
 
@@ -47,6 +52,9 @@ export async function upsertCurrentProfile(actor: RequestActor, input: Onboardin
   const db = getDatabase();
 
   if (!db) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for profile.", 503);
+    }
     memoryProfiles.set(actor.userId, profile);
     return profile;
   }
@@ -93,6 +101,10 @@ export async function updateCurrentSettings(actor: RequestActor, input: UpdatePr
   const current = memoryProfiles.get(actor.userId);
 
   if (!db) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for settings.", 503);
+    }
+
     if (current) {
       const next = {
         ...current,

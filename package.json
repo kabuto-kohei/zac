@@ -11,7 +11,10 @@
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "build": "pnpm -r build",
+    "e2e:web": "playwright test",
+    "e2e:web:ui": "playwright test --ui",
     "dev:api": "pnpm --filter @zac/api dev",
+    "media:cleanup": "pnpm --filter @zac/api media:cleanup",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "openapi:generate": "node scripts/openapi-generate.mjs",
@@ -25,6 +28,7 @@
     "check": "pnpm lint && pnpm typecheck && pnpm test && pnpm openapi:check && pnpm config:audit && pnpm build && pnpm secret:scan"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@types/node": "^22.0.0",
     "drizzle-kit": "^0.31.0",
     "esbuild": "^0.28.0",

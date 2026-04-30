@@ -4,6 +4,7 @@ import { createReportSchema } from "@zac/shared";
 import Link from "next/link";
 import { useState } from "react";
 import { AppShell } from "./app-shell";
+import { AuthRequiredNote } from "./auth-required-note";
 import { postApi } from "./api-client";
 import { SubmitButton } from "./submit-button";
 
@@ -50,6 +51,7 @@ export function ReportForm({
       <form action={submit} className="form-panel">
         <p className="card-kind">通報</p>
         <h2>運営に知らせる</h2>
+        <AuthRequiredNote action="通報はログイン後に送信できます" />
         <div className="form-grid">
           <label>
             対象

@@ -20,6 +20,11 @@ const navItems: Array<{ id: AdminView; href: string; label: string }> = [
   { id: "announcements", href: "/announcements", label: "お知らせ" },
 ];
 
+const adminUserFallback: AdminUserSummary[] = [
+  { id: "local-climber", email: "climber@example.com", displayName: "Climber", status: "active", area: "東京", createdAt: "" },
+  { id: "local-guest", email: "guest@example.com", displayName: "Guest", status: "active", area: "神奈川", createdAt: "" },
+];
+
 export function AdminDashboard({ view }: { view: AdminView }) {
   const session = useAdminSession();
 
@@ -189,10 +194,7 @@ function DashboardView() {
 }
 
 function UsersView() {
-  const { data: users, message } = useAdminList<AdminUserSummary>("/v1/admin/users", [
-    { id: "local-climber", email: "climber@example.com", displayName: "Climber", status: "active", area: "東京", createdAt: "" },
-    { id: "local-guest", email: "guest@example.com", displayName: "Guest", status: "active", area: "神奈川", createdAt: "" },
-  ]);
+  const { data: users, message } = useAdminList<AdminUserSummary>("/v1/admin/users", adminUserFallback);
 
   return (
     <>
@@ -238,24 +240,29 @@ function GymsView() {
 
 function EventsView() {
   const { data: events, message } = useAdminList<EventSummary>("/v1/admin/events", eventFixtures);
+  const [items, setItems] = useState(events);
+
+  useEffect(() => {
+    setItems(events);
+  }, [events]);
 
   return (
     <>
       <div className="admin-title">
         <h2>イベント管理</h2>
-        <p>イベント掲載内容と公開状態を確認します。</p>
+        <p>イベント掲載内容を作成・編集し、下書きと公開状態を切り替えます。</p>
       </div>
       <AdminDataStatus message={message} />
+      <EventEditorForm
+        onSaved={(event) => {
+          setItems((current) => [event, ...current.filter((item) => item.id !== event.id)]);
+        }}
+      />
       <section className="admin-table">
-        {events.map((event) => (
-          <article className="admin-row" key={event.id}>
-            <span>{event.title}</span>
-            <span>{event.gymName}</span>
-            <span>{event.startsAt}</span>
-            <span>{event.status}</span>
-          </article>
+        {items.map((event) => (
+          <EventEditorRow event={event} key={event.id} onSaved={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))} />
         ))}
-        {events.length === 0 ? <EmptyAdminRow /> : null}
+        {items.length === 0 ? <EmptyAdminRow /> : null}
       </section>
     </>
   );
@@ -327,24 +334,29 @@ function AuditLogsView() {
 
 function AnnouncementsView() {
   const { data: announcements, message } = useAdminList<AnnouncementSummary>("/v1/admin/announcements", announcementFixtures);
+  const [items, setItems] = useState(announcements);
+
+  useEffect(() => {
+    setItems(announcements);
+  }, [announcements]);
 
   return (
     <>
       <div className="admin-title">
         <h2>お知らせ管理</h2>
-        <p>利用者向けのお知らせ内容と掲載状態を確認します。</p>
+        <p>利用者向けのお知らせを作成・編集し、公開と下書きを切り替えます。</p>
       </div>
       <AdminDataStatus message={message} />
+      <AnnouncementEditorForm
+        onSaved={(announcement) => {
+          setItems((current) => [announcement, ...current.filter((item) => item.id !== announcement.id)]);
+        }}
+      />
       <section className="admin-table">
-        {announcements.map((announcement) => (
-          <article className="admin-row" key={announcement.id}>
-            <span>{announcement.title}</span>
-            <span>{announcement.audience}</span>
-            <span>{announcement.status}</span>
-            <span>{announcement.publishedAt || "未公開"}</span>
-          </article>
+        {items.map((announcement) => (
+          <AnnouncementEditorRow announcement={announcement} key={announcement.id} onSaved={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))} />
         ))}
-        {announcements.length === 0 ? <EmptyAdminRow /> : null}
+        {items.length === 0 ? <EmptyAdminRow /> : null}
       </section>
     </>
   );
@@ -474,6 +486,202 @@ function GymModerationRow({ gym }: { gym: GymSummary }) {
       <StatusMessage message={message} status={status} />
     </form>
   );
+}
+
+function EventEditorForm({ onSaved }: { onSaved: (event: EventSummary) => void }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const body = eventPayloadFromForm(formData);
+    const response = await postAdminApi<EventSummary>("/v1/admin/events", body);
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage("イベントを保存しました。");
+    onSaved(response.data);
+  }
+
+  return (
+    <form action={submit} className="admin-editor-form">
+      <label>
+        タイトル
+        <input maxLength={120} name="title" placeholder="イベント名" required />
+      </label>
+      <label>
+        開始
+        <input name="startsAt" required type="datetime-local" />
+      </label>
+      <label>
+        終了
+        <input name="endsAt" type="datetime-local" />
+      </label>
+      <label>
+        状態
+        <select defaultValue="draft" name="status">
+          <option value="draft">draft</option>
+          <option value="scheduled">scheduled</option>
+          <option value="closed">closed</option>
+        </select>
+      </label>
+      <label className="admin-editor-wide">
+        説明
+        <textarea maxLength={2000} name="description" placeholder="掲載内容" />
+      </label>
+      <button type="submit">作成</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function EventEditorRow({ event, onSaved }: { event: EventSummary; onSaved: (event: EventSummary) => void }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const response = await patchAdminApi<EventSummary>(`/v1/admin/events/${event.id}`, eventPayloadFromForm(formData));
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage("イベントを更新しました。");
+    onSaved(response.data);
+  }
+
+  return (
+    <form action={submit} className="admin-row content-editor-row">
+      <input aria-label="イベント名" defaultValue={event.title} maxLength={120} name="title" required />
+      <span>{event.gymName}</span>
+      <input aria-label="開始" defaultValue={toDateTimeLocal(event.startsAt)} name="startsAt" required type="datetime-local" />
+      <input aria-label="終了" defaultValue={toDateTimeLocal(event.endsAt)} name="endsAt" type="datetime-local" />
+      <select aria-label="イベント状態" defaultValue={event.status} name="status">
+        <option value="draft">draft</option>
+        <option value="scheduled">scheduled</option>
+        <option value="closed">closed</option>
+      </select>
+      <input aria-label="説明" defaultValue={event.description} maxLength={2000} name="description" placeholder="説明" />
+      <button type="submit">更新</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function AnnouncementEditorForm({ onSaved }: { onSaved: (announcement: AnnouncementSummary) => void }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const response = await postAdminApi<AnnouncementSummary>("/v1/admin/announcements", announcementPayloadFromForm(formData));
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage("お知らせを保存しました。");
+    onSaved(response.data);
+  }
+
+  return (
+    <form action={submit} className="admin-editor-form">
+      <label>
+        タイトル
+        <input maxLength={120} name="title" placeholder="お知らせタイトル" required />
+      </label>
+      <label>
+        状態
+        <select defaultValue="draft" name="status">
+          <option value="draft">draft</option>
+          <option value="published">published</option>
+        </select>
+      </label>
+      <label className="admin-editor-wide">
+        本文
+        <textarea maxLength={4000} name="body" placeholder="本文" required />
+      </label>
+      <button type="submit">作成</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function AnnouncementEditorRow({ announcement, onSaved }: { announcement: AnnouncementSummary; onSaved: (announcement: AnnouncementSummary) => void }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const response = await patchAdminApi<AnnouncementSummary>(`/v1/admin/announcements/${announcement.id}`, announcementPayloadFromForm(formData));
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage("お知らせを更新しました。");
+    onSaved(response.data);
+  }
+
+  return (
+    <form action={submit} className="admin-row announcement-editor-row">
+      <input aria-label="お知らせタイトル" defaultValue={announcement.title} maxLength={120} name="title" required />
+      <textarea aria-label="お知らせ本文" defaultValue={announcement.body} maxLength={4000} name="body" required />
+      <select aria-label="お知らせ状態" defaultValue={announcement.status} name="status">
+        <option value="draft">draft</option>
+        <option value="published">published</option>
+      </select>
+      <span>{announcement.publishedAt || "未公開"}</span>
+      <button type="submit">更新</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function eventPayloadFromForm(formData: FormData) {
+  const endsAt = toIsoDateTime(formData.get("endsAt")?.toString());
+  return {
+    title: formData.get("title")?.toString() ?? "",
+    description: formData.get("description")?.toString() || null,
+    startsAt: toIsoDateTime(formData.get("startsAt")?.toString()) ?? "",
+    endsAt,
+    status: formData.get("status")?.toString() || "draft",
+  };
+}
+
+function announcementPayloadFromForm(formData: FormData) {
+  return {
+    title: formData.get("title")?.toString() ?? "",
+    body: formData.get("body")?.toString() ?? "",
+    status: formData.get("status")?.toString() || "draft",
+  };
+}
+
+function toIsoDateTime(value: string | undefined) {
+  if (!value) {
+    return null;
+  }
+
+  return new Date(value).toISOString();
+}
+
+function toDateTimeLocal(value: string) {
+  return value ? value.replace(" ", "T") : "";
 }
 
 function StatusMessage({ message, status }: { message: string; status: string }) {

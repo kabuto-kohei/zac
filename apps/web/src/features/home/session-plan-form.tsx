@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
+import { AuthRequiredNote } from "./auth-required-note";
 import type { GymOption } from "./data";
 import { SubmitButton } from "./submit-button";
 import { ZacIcon } from "./zac-icons";
@@ -59,6 +60,7 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
             <h2>次に登る予定</h2>
           </div>
         </div>
+        <AuthRequiredNote action="予定作成はログイン後に保存できます" />
         <div className="form-grid">
           <label>
             タイトル

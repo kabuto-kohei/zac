@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
+import { AuthRequiredNote } from "./auth-required-note";
 import type { GymOption } from "./data";
 import { ImageAttachmentField, uploadSelectedImages } from "./image-attachment-field";
 import { SubmitButton } from "./submit-button";
@@ -64,6 +65,7 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
             <h2>登った内容を残す</h2>
           </div>
         </div>
+        <AuthRequiredNote action="記録作成はログイン後に保存できます" />
         <div className="form-grid">
           <label>
             日付

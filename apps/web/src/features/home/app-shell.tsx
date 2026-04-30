@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ShellActions } from "./shell-actions";
 import { ZacIcon, type ZacIconKey } from "./zac-icons";
 
 export type Tab = "home" | "explore" | "plans" | "logs" | "me";
@@ -31,19 +32,8 @@ export function AppShell({
             <h1>次のセッションを決める</h1>
           </div>
         </div>
-        {action ?? (
-          <div className="action-row">
-            <Link className="ghost-button" href="/notifications">
-              通知
-            </Link>
-            <Link className="primary-action" href="/plans/new">
-              予定
-            </Link>
-          </div>
-        )}
+        {action ?? <ShellActions />}
       </section>
-
-      {children}
 
       <nav className="bottom-nav" aria-label="Main navigation">
         {navItems.map((item) => (
@@ -62,6 +52,8 @@ export function AppShell({
           </Link>
         ))}
       </nav>
+
+      {children}
     </main>
   );
 }

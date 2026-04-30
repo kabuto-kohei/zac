@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppShell } from "./app-shell";
 import { PrivacySettingsPanel } from "./privacy-settings-panel";
+import { ProfileSettingsPanel } from "./profile-settings-panel";
 
 export function SettingsHome() {
   return (
@@ -20,10 +21,40 @@ export function SettingsHome() {
         <article className="wide-card">
           <p className="card-kind">アカウント</p>
           <h3>
-            <Link href="/onboarding">プロフィール</Link>
+            <Link href="/settings/profile">プロフィール</Link>
           </h3>
           <p>プロフィールは認証済みセッションでAPIへ保存され、端末を変えても復元できます。</p>
         </article>
+        <article className="wide-card">
+          <p className="card-kind">ポリシー</p>
+          <h3>
+            <Link href="/legal/terms">利用規約</Link>
+          </h3>
+          <p>投稿、画像、通報、安全対応に関する利用条件を確認できます。</p>
+        </article>
+        <article className="wide-card">
+          <p className="card-kind">ポリシー</p>
+          <h3>
+            <Link href="/legal/privacy">プライバシーポリシー</Link>
+          </h3>
+          <p>プロフィール、予定、記録、画像、利用状況データの取り扱いを確認できます。</p>
+        </article>
+      </section>
+    </AppShell>
+  );
+}
+
+export function ProfileSettings() {
+  return (
+    <AppShell activeTab="me">
+      <section className="stack">
+        <div className="section-title">
+          <h2>プロフィール</h2>
+          <Link className="ghost-button" href="/settings">
+            設定
+          </Link>
+        </div>
+        <ProfileSettingsPanel />
       </section>
     </AppShell>
   );

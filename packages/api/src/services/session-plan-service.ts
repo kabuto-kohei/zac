@@ -1,6 +1,8 @@
 import { and, desc, eq, isNull, sessionPlanParticipants, sessionPlans } from "@zac/db";
 import { findPlanFixture, planFixtures, type CreateClimbingLogInput, type CreateSessionPlanInput, type PlanSummary } from "@zac/shared";
+import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { createClimbingLog } from "./climbing-log-service.js";
 import { isUuid } from "./ids.js";
 import { canViewResource, filterVisibleResources } from "./visibility-service.js";
@@ -12,6 +14,10 @@ let createdSessionPlanCount = 0;
 
 export async function listSessionPlans(viewerId?: string) {
   const persisted = await listPersistentSessionPlans(viewerId);
+  if (!isRuntimeFallbackAllowed()) {
+    return persisted;
+  }
+
   return [...createdSessionPlans, ...persisted, ...planFixtures];
 }
 
@@ -22,6 +28,10 @@ export async function getSessionPlan(planId: string, viewerId?: string) {
     if (persisted) {
       return persisted;
     }
+  }
+
+  if (!isRuntimeFallbackAllowed()) {
+    return undefined;
   }
 
   return createdSessionPlans.find((plan) => plan.id === planId) ?? findPlanFixture(planId);
@@ -106,6 +116,9 @@ async function createPersistentSessionPlan(input: CreateSessionPlanInput, actorI
   const db = getDatabase();
 
   if (!db || !actorId) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for session plans.", 503);
+    }
     return null;
   }
 
@@ -157,6 +170,9 @@ async function createPersistentSessionPlan(input: CreateSessionPlanInput, actorI
       visibility: row.visibility,
     } satisfies PlanSummary;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not create session plan.", 503);
+    }
     return null;
   }
 }
@@ -165,6 +181,9 @@ async function setPersistentSessionPlanParticipation(planId: string, status: "jo
   const db = getDatabase();
 
   if (!db || !actorId || !isUuid(planId)) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("not_found", "Session plan not found.", 404);
+    }
     return false;
   }
 
@@ -187,6 +206,9 @@ async function setPersistentSessionPlanParticipation(planId: string, status: "jo
       });
     return true;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not update session participation.", 503);
+    }
     return false;
   }
 }
@@ -195,6 +217,9 @@ async function completePersistentSessionPlan(planId: string) {
   const db = getDatabase();
 
   if (!db || !isUuid(planId)) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("not_found", "Session plan not found.", 404);
+    }
     return false;
   }
 
@@ -209,6 +234,9 @@ async function completePersistentSessionPlan(planId: string) {
       .returning({ id: sessionPlans.id });
     return rows.length > 0;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not complete session plan.", 503);
+    }
     return false;
   }
 }
@@ -232,6 +260,9 @@ async function listPersistentSessionPlans(viewerId?: string) {
     );
     return visibleRows.map(toPlanSummary);
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not list session plans.", 503);
+    }
     return [];
   }
 }
@@ -261,6 +292,9 @@ async function getPersistentSessionPlan(planId: string, viewerId?: string) {
     );
     return canView ? toPlanSummary(row) : null;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not load session plan.", 503);
+    }
     return null;
   }
 }

@@ -8,7 +8,7 @@ import { createReport, listReports } from "../services/report-service.js";
 export function createReportRoutes() {
   const app = new Hono();
 
-  app.get("/", (context) => context.json(paginatedResponse(listReports())));
+  app.get("/", async (context) => context.json(paginatedResponse(await listReports())));
 
   app.post("/", async (context) => {
     const result = createReportSchema.safeParse(await context.req.json());

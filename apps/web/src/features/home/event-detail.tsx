@@ -28,6 +28,7 @@ export async function EventDetail({ eventId }: { eventId: string }) {
           <p>
             定員 {event.capacity} · {event.status === "scheduled" ? "開催予定" : "受付終了"}
           </p>
+          {event.description ? <p>{event.description}</p> : null}
         </div>
       </section>
 

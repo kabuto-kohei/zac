@@ -37,6 +37,12 @@ export function createSessionPlanRoutes() {
 
   app.post("/:planId/join", async (context) => {
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const plan = await getSessionPlan(context.req.param("planId"), actor.userId);
+
+    if (!plan) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const result = await joinSessionPlan(context.req.param("planId"), actor.userId);
     captureServerEvent("session_plan_joined", { planId: result.planId });
     return context.json(dataResponse(result));
@@ -44,12 +50,24 @@ export function createSessionPlanRoutes() {
 
   app.delete("/:planId/join", async (context) => {
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const plan = await getSessionPlan(context.req.param("planId"), actor.userId);
+
+    if (!plan) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const result = await cancelSessionPlanJoin(context.req.param("planId"), actor.userId);
     return context.json(dataResponse(result));
   });
 
   app.post("/:planId/complete", async (context) => {
-    await requireRequestActor(context.req.header("authorization"));
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const plan = await getSessionPlan(context.req.param("planId"), actor.userId);
+
+    if (!plan) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const result = await completeSessionPlan(context.req.param("planId"));
     captureServerEvent("session_plan_completed", { planId: result.planId });
     return context.json(dataResponse(result));
@@ -67,7 +85,16 @@ export function createSessionPlanRoutes() {
     return context.json(dataResponse(log), 201);
   });
 
-  app.get("/:planId/comments", async (context) => context.json(paginatedResponse(await listComments("session_plan", context.req.param("planId")))));
+  app.get("/:planId/comments", async (context) => {
+    const actor = await resolveRequestActor(context.req.header("authorization"));
+    const plan = await getSessionPlan(context.req.param("planId"), actor?.userId);
+
+    if (!plan) {
+      return context.json(notFoundResponse(), 404);
+    }
+
+    return context.json(paginatedResponse(await listComments("session_plan", context.req.param("planId"))));
+  });
 
   app.post("/:planId/comments", async (context) => {
     const result = createCommentSchema.safeParse(await context.req.json());
@@ -77,6 +104,12 @@ export function createSessionPlanRoutes() {
     }
 
     const actor = await requireRequestActor(context.req.header("authorization"));
+    const plan = await getSessionPlan(context.req.param("planId"), actor.userId);
+
+    if (!plan) {
+      return context.json(notFoundResponse(), 404);
+    }
+
     const comment = await createComment("session_plan", context.req.param("planId"), result.data, actor.userId);
     return context.json(dataResponse(comment), 201);
   });

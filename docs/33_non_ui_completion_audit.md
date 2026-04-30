@@ -54,15 +54,15 @@
 
 ---
 
-## 4. 残リスク
+## 4. 公開前ゲート
 
 | リスク | 内容 | 対応 |
 ---|---|---|
-| 認可が簡易 | ローカルでは未ログイン時にメモリフォールバックする | Supabase接続後、認証必須APIを段階的に厳格化 |
-| feed visibility | 公開範囲/ブロック判定がまだservice横断で完全ではない | visibility-serviceとblocklist-serviceを実装 |
-| media | 画像入力UIはあるがStorage uploadは未接続 | signed upload URL APIを追加 |
-| admin | 管理画面はfixture中心 | admin API、requireAdmin、audit log強制を追加 |
-| notification | DB schemaはあるがAPI未実装 | Webアプリ内通知APIを追加 |
+| production fallback | production-likeではfixture/memory fallbackを公開データとして返さない | `docs/35_mvp_design_code_audit.md` で確認済み |
+| feed visibility | visibility-serviceとblocklist-serviceは実装済み | 本番相当環境でユーザーA/B検証を行う |
+| media | signed upload URL、添付、削除ジョブを実装済み | 本番Storage bucket/policyを外部ゲートで確認 |
+| admin | admin API、requireAdmin、audit log、イベント/お知らせ作成編集を実装済み | 初期Admin登録を外部ゲートで実施 |
+| notification | Webアプリ内通知APIを実装済み | 本番DB接続後に通知作成トリガーを確認 |
 | migration journal | 追加migrationは手書き | 次回Drizzle生成時にmeta整合を確認 |
 
 ---
@@ -70,10 +70,9 @@
 ## 5. 次の非UI優先順位
 
 1. Supabase接続環境でmigration/seedを適用する前のdry run確認。
-2. `media-service` と `/v1/media/upload-urls` を実装する。
-3. `visibility-service` と `blocklist-service` を実装し、feed/detail queryに接続する。
-4. `requireAdmin` とadmin APIの最小セットを実装する。
-5. 通知APIを実装する。
+2. 本番相当環境でStorage signed upload、添付、削除ジョブを確認する。
+3. 本番相当環境でvisibility-serviceとblocklist-serviceのユーザーA/B検証を行う。
+4. 初期Admin登録を承認済み運用作業として実施する。
+5. Web版UX/UI完成後に実ブラウザE2Eを実施する。
 
 UX/UIの最終調整は、この後に実施する。
-

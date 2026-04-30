@@ -1,6 +1,8 @@
 import { climbingLogs, desc, eq, isNull } from "@zac/db";
 import { findLogFixture, logFixtures, type CreateClimbingLogInput, type LogSummary } from "@zac/shared";
+import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { isUuid } from "./ids.js";
 import { canViewResource, filterVisibleResources } from "./visibility-service.js";
 
@@ -9,6 +11,10 @@ let createdClimbingLogCount = 0;
 
 export async function listClimbingLogs(viewerId?: string) {
   const persisted = await listPersistentClimbingLogs(viewerId);
+  if (!isRuntimeFallbackAllowed()) {
+    return persisted;
+  }
+
   return [...createdClimbingLogs, ...persisted, ...logFixtures];
 }
 
@@ -19,6 +25,10 @@ export async function getClimbingLog(logId: string, viewerId?: string) {
     if (persisted) {
       return persisted;
     }
+  }
+
+  if (!isRuntimeFallbackAllowed()) {
+    return undefined;
   }
 
   return createdClimbingLogs.find((log) => log.id === logId) ?? findLogFixture(logId);
@@ -52,6 +62,9 @@ async function createPersistentClimbingLog(input: CreateClimbingLogInput, actorI
   const db = getDatabase();
 
   if (!db || !actorId) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for climbing logs.", 503);
+    }
     return null;
   }
 
@@ -84,6 +97,9 @@ async function createPersistentClimbingLog(input: CreateClimbingLogInput, actorI
       note: row.note ?? "",
     } satisfies LogSummary;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not create climbing log.", 503);
+    }
     return null;
   }
 }
@@ -107,6 +123,9 @@ async function listPersistentClimbingLogs(viewerId?: string) {
     );
     return visibleRows.map(toLogSummary);
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not list climbing logs.", 503);
+    }
     return [];
   }
 }
@@ -136,6 +155,9 @@ async function getPersistentClimbingLog(logId: string, viewerId?: string) {
     );
     return canView ? toLogSummary(row) : null;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not load climbing log.", 503);
+    }
     return null;
   }
 }

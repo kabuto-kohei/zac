@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AppShell, MetricStripView, type Tab } from "./app-shell";
-import { EventCard, GymCard } from "./cards";
 import { getHomeViewData, type HomeViewData } from "./data";
+import { ExplorePanel } from "./explore-panel";
 import { FeedExperience } from "./feed-experience";
 import { ProfilePanel } from "./profile-panel";
 
@@ -17,31 +17,6 @@ export async function WebAppHome({ activeTab }: { activeTab: Tab }) {
       {activeTab === "me" ? <ProfilePanel data={data} /> : null}
       {activeTab === "home" ? <FeedExperience data={data} /> : null}
     </AppShell>
-  );
-}
-
-function ExplorePanel({ data }: { data: HomeViewData }) {
-  return (
-    <section className="stack">
-      <label className="search-box">
-        <span>ジム・イベント検索</span>
-        <input placeholder="エリア、ジム名、種目" />
-      </label>
-      <div className="section-title">
-        <h2>イベント</h2>
-        <span>{data.events.length}件</span>
-      </div>
-      {data.events.map((event) => (
-        <EventCard event={event} key={event.id} />
-      ))}
-      <div className="section-title">
-        <h2>ジム</h2>
-        <span>{data.gyms.length}件</span>
-      </div>
-      {data.gyms.map((gym) => (
-        <GymCard gym={gym} key={gym.id} />
-      ))}
-    </section>
   );
 }
 

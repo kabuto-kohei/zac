@@ -1,6 +1,8 @@
 import { and, comments, desc, eq, isNull } from "@zac/db";
 import type { CommentSummary, CreateCommentInput } from "@zac/shared";
+import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { isUuid } from "./ids.js";
 
 type CommentTargetType = "session_plan" | "post";
@@ -37,6 +39,9 @@ async function createPersistentComment(targetType: CommentTargetType, targetId: 
   const db = getDatabase();
 
   if (!db || !actorId || !isUuid(targetId)) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for comments.", 503);
+    }
     return null;
   }
 
@@ -53,6 +58,9 @@ async function createPersistentComment(targetType: CommentTargetType, targetId: 
 
     return row ? toCommentSummary(row) : null;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not create comment.", 503);
+    }
     return null;
   }
 }
@@ -73,6 +81,9 @@ async function listPersistentComments(targetType: CommentTargetType, targetId: s
       .limit(50);
     return rows.map(toCommentSummary);
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not list comments.", 503);
+    }
     return [];
   }
 }

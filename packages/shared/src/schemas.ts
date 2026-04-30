@@ -154,6 +154,8 @@ export const attachMediaSchema = z.object({
 export const adminReportStatusSchema = z.enum(["open", "reviewing", "resolved"]);
 export const adminModerationActionSchema = z.enum(["hide_post", "delete_comment", "warn_user", "suspend_user", "ban_user", "dismiss_report", "mark_review_pending"]);
 export const adminGymStatusSchema = z.enum(["draft", "published", "closed"]);
+export const adminEventStatusSchema = z.enum(["draft", "scheduled", "closed"]);
+export const adminAnnouncementStatusSchema = z.enum(["draft", "published"]);
 
 export const updateReportStatusSchema = z.object({
   status: adminReportStatusSchema,
@@ -169,6 +171,31 @@ export const moderatePostSchema = z.object({
 export const updateGymStatusSchema = z.object({
   status: adminGymStatusSchema,
   reason: z.string().max(1000).nullable().optional(),
+});
+
+export const upsertAdminEventSchema = z
+  .object({
+    title: z.string().min(1).max(120),
+    gymId: uuidSchema.nullish(),
+    description: z.string().max(2000).nullable().optional(),
+    startsAt: z.string().datetime({ offset: true }),
+    endsAt: z.string().datetime({ offset: true }).nullable().optional(),
+    status: adminEventStatusSchema.default("draft"),
+  })
+  .superRefine((value, context) => {
+    if (value.endsAt && Date.parse(value.startsAt) >= Date.parse(value.endsAt)) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "startsAt must be before endsAt.",
+        path: ["startsAt"],
+      });
+    }
+  });
+
+export const upsertAdminAnnouncementSchema = z.object({
+  title: z.string().min(1).max(120),
+  body: z.string().min(1).max(4000),
+  status: adminAnnouncementStatusSchema.default("draft"),
 });
 
 export type Visibility = z.infer<typeof visibilitySchema>;
@@ -190,3 +217,5 @@ export type AttachMediaInput = z.infer<typeof attachMediaSchema>;
 export type UpdateReportStatusInput = z.infer<typeof updateReportStatusSchema>;
 export type ModeratePostInput = z.infer<typeof moderatePostSchema>;
 export type UpdateGymStatusInput = z.infer<typeof updateGymStatusSchema>;
+export type UpsertAdminEventInput = z.infer<typeof upsertAdminEventSchema>;
+export type UpsertAdminAnnouncementInput = z.infer<typeof upsertAdminAnnouncementSchema>;

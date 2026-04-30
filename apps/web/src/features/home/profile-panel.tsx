@@ -114,12 +114,17 @@ export function ProfilePanel({ data }: { data: HomeViewData }) {
             <ZacIcon decorative icon="logo" size={54} />
           </div>
           <div>
-            <p className="card-kind">未設定</p>
-            <h2>プロフィールを作成</h2>
-            <p>オンボーディングを完了すると、よく行くエリアと公開範囲をここで確認できます。</p>
-            <Link className="primary-action" href="/onboarding">
-              設定する
-            </Link>
+            <p className="card-kind">ゲスト閲覧中</p>
+            <h2>ログインするとマイページを使えます</h2>
+            <p>保存したジム、参加予定、記録、投稿をひとつの場所で管理できます。</p>
+            <div className="action-row">
+              <Link className="primary-action" href="/register">
+                新規登録
+              </Link>
+              <Link className="ghost-button" href="/login">
+                ログイン
+              </Link>
+            </div>
           </div>
         </div>
         <ProfileActivity activity={activity} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />

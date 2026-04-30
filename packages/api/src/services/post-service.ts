@@ -1,6 +1,8 @@
 import { and, desc, eq, isNull, postLikes, postSaves, posts } from "@zac/db";
 import { findLogFixture, findPostFixture, postFixtures, type CreatePostInput, type PostSummary } from "@zac/shared";
+import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { isUuid } from "./ids.js";
 import { canViewResource, filterVisibleResources } from "./visibility-service.js";
 
@@ -11,6 +13,10 @@ let createdPostCount = 0;
 
 export async function listPosts(viewerId?: string) {
   const persisted = await listPersistentPosts(viewerId);
+  if (!isRuntimeFallbackAllowed()) {
+    return persisted;
+  }
+
   return [...createdPosts, ...persisted, ...postFixtures];
 }
 
@@ -21,6 +27,10 @@ export async function getPost(postId: string, viewerId?: string) {
     if (persisted) {
       return persisted;
     }
+  }
+
+  if (!isRuntimeFallbackAllowed()) {
+    return undefined;
   }
 
   return createdPosts.find((post) => post.id === postId) ?? findPostFixture(postId);
@@ -111,6 +121,9 @@ async function createPersistentPost(input: CreatePostInput, actorId?: string) {
   const db = getDatabase();
 
   if (!db || !actorId) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for posts.", 503);
+    }
     return null;
   }
 
@@ -138,6 +151,9 @@ async function createPersistentPost(input: CreatePostInput, actorId?: string) {
       visibility: row.visibility,
     } satisfies PostSummary;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not create post.", 503);
+    }
     return null;
   }
 }
@@ -146,6 +162,9 @@ async function setPersistentPostLike(postId: string, actorId: string | undefined
   const db = getDatabase();
 
   if (!db || !actorId || !isUuid(postId)) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("not_found", "Post not found.", 404);
+    }
     return false;
   }
 
@@ -157,6 +176,9 @@ async function setPersistentPostLike(postId: string, actorId: string | undefined
     }
     return true;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not update post like.", 503);
+    }
     return false;
   }
 }
@@ -165,6 +187,9 @@ async function setPersistentPostSave(postId: string, actorId: string | undefined
   const db = getDatabase();
 
   if (!db || !actorId || !isUuid(postId)) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("not_found", "Post not found.", 404);
+    }
     return false;
   }
 
@@ -176,6 +201,9 @@ async function setPersistentPostSave(postId: string, actorId: string | undefined
     }
     return true;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not update post save.", 503);
+    }
     return false;
   }
 }
@@ -199,6 +227,9 @@ async function listPersistentPosts(viewerId?: string) {
     );
     return visibleRows.map(toPostSummary);
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not list posts.", 503);
+    }
     return [];
   }
 }
@@ -228,6 +259,9 @@ async function getPersistentPost(postId: string, viewerId?: string) {
     );
     return canView ? toPostSummary(row) : null;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not load post.", 503);
+    }
     return null;
   }
 }

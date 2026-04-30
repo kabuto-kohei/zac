@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createApp } from "./app.js";
+import { assertApiRuntimeConfig } from "./integrations/env.js";
 import { buildMediaAttachmentRows, buildMediaDeletionJob } from "./services/media-service.js";
 import { isVisibilityAllowed } from "./services/visibility-service.js";
 
@@ -62,6 +63,35 @@ test("mutation routes reject missing auth", async () => {
 
   assert.equal(response.status, 401);
   assert.equal(body.error.code, "unauthorized");
+});
+
+test("mutation routes reject unknown targets", async () => {
+  const app = createApp();
+  const gymResponse = await app.request("/v1/gyms/unknown/save", {
+    method: "POST",
+    body: JSON.stringify({}),
+    headers: userJsonHeaders,
+  });
+  const eventResponse = await app.request("/v1/events/unknown/save", {
+    method: "POST",
+    body: JSON.stringify({}),
+    headers: userJsonHeaders,
+  });
+  const postResponse = await app.request("/v1/posts/unknown/save", {
+    method: "POST",
+    body: JSON.stringify({}),
+    headers: userJsonHeaders,
+  });
+  const planResponse = await app.request("/v1/session-plans/unknown/join", {
+    method: "POST",
+    body: JSON.stringify({}),
+    headers: userJsonHeaders,
+  });
+
+  assert.equal(gymResponse.status, 404);
+  assert.equal(eventResponse.status, 404);
+  assert.equal(postResponse.status, 404);
+  assert.equal(planResponse.status, 404);
 });
 
 test("GET /v1/integrations returns non-secret status", async () => {
@@ -433,6 +463,21 @@ test("POST /v1/posts/:postId/comments creates a comment", async () => {
   assert.ok(listBody.data.some((comment: { id: string }) => comment.id === body.data.id));
 });
 
+test("comment routes require a visible target", async () => {
+  const app = createApp();
+  const postCommentsResponse = await app.request("/v1/posts/unknown/comments");
+  const planCommentsResponse = await app.request("/v1/session-plans/unknown/comments");
+  const createPostCommentResponse = await app.request("/v1/posts/unknown/comments", {
+    method: "POST",
+    body: JSON.stringify({ body: "見えない対象へのコメント" }),
+    headers: userJsonHeaders,
+  });
+
+  assert.equal(postCommentsResponse.status, 404);
+  assert.equal(planCommentsResponse.status, 404);
+  assert.equal(createPostCommentResponse.status, 404);
+});
+
 test("POST /v1/reports creates a report", async () => {
   const app = createApp();
   const response = await app.request("/v1/reports", {
@@ -586,6 +631,88 @@ test("admin content list routes require admin", async () => {
   assert.equal(announcementsResponse.status, 200);
 });
 
+test("admin content mutations create and update events and announcements", async () => {
+  const app = createApp();
+  const eventResponse = await app.request("/v1/admin/events", {
+    method: "POST",
+    body: JSON.stringify({
+      title: "公開前イベント",
+      description: "公開前の説明です。",
+      startsAt: "2026-05-10T10:00:00+09:00",
+      endsAt: "2026-05-10T12:00:00+09:00",
+      status: "draft",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const eventBody = await eventResponse.json();
+  const draftEventPublicResponse = await app.request(`/v1/events/${eventBody.data.id}`);
+  const publishEventResponse = await app.request(`/v1/admin/events/${eventBody.data.id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      title: "公開イベント",
+      description: "公開済みの説明です。",
+      startsAt: "2026-05-10T10:00:00+09:00",
+      endsAt: "2026-05-10T12:00:00+09:00",
+      status: "scheduled",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const publishEventBody = await publishEventResponse.json();
+  const publicEventResponse = await app.request(`/v1/events/${eventBody.data.id}`);
+  const publicEventBody = await publicEventResponse.json();
+  const announcementResponse = await app.request("/v1/admin/announcements", {
+    method: "POST",
+    body: JSON.stringify({
+      title: "公開前のお知らせ",
+      body: "公開前の本文です。",
+      status: "draft",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const announcementBody = await announcementResponse.json();
+  const draftAnnouncementPublicResponse = await app.request(`/v1/announcements/${announcementBody.data.id}`);
+  const publishAnnouncementResponse = await app.request(`/v1/admin/announcements/${announcementBody.data.id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      title: "公開お知らせ",
+      body: "公開済みの本文です。",
+      status: "published",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const publishAnnouncementBody = await publishAnnouncementResponse.json();
+  const publicAnnouncementResponse = await app.request(`/v1/announcements/${announcementBody.data.id}`);
+  const publicAnnouncementBody = await publicAnnouncementResponse.json();
+
+  assert.equal(eventResponse.status, 201);
+  assert.equal(eventBody.data.status, "draft");
+  assert.equal(draftEventPublicResponse.status, 404);
+  assert.equal(publishEventResponse.status, 200);
+  assert.equal(publishEventBody.data.status, "scheduled");
+  assert.equal(publishEventBody.data.description, "公開済みの説明です。");
+  assert.equal(publicEventResponse.status, 200);
+  assert.equal(publicEventBody.data.description, "公開済みの説明です。");
+  assert.equal(announcementResponse.status, 201);
+  assert.equal(announcementBody.data.status, "draft");
+  assert.equal(draftAnnouncementPublicResponse.status, 404);
+  assert.equal(publishAnnouncementResponse.status, 200);
+  assert.equal(publishAnnouncementBody.data.status, "published");
+  assert.equal(publicAnnouncementResponse.status, 200);
+  assert.equal(publicAnnouncementBody.data.body, "公開済みの本文です。");
+});
+
 test("admin report status mutation writes audit log", async () => {
   const app = createApp();
   const response = await app.request("/v1/admin/reports/report-001/status", {
@@ -644,6 +771,55 @@ test("admin post moderation and gym status mutations require admin", async () =>
   assert.equal(gymResponse.status, 200);
   assert.equal(gymBody.data.status, "published");
 });
+
+test("production-like API config requires database and Supabase admin auth", () => {
+  const previousAppEnv = process.env.APP_ENV;
+  const previousDatabaseUrl = process.env.DATABASE_URL;
+  const previousSupabaseUrl = process.env.SUPABASE_URL;
+  const previousServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  try {
+    process.env.APP_ENV = "production";
+    delete process.env.DATABASE_URL;
+    delete process.env.SUPABASE_URL;
+    delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    assert.throws(() => assertApiRuntimeConfig(), /DATABASE_URL/);
+  } finally {
+    restoreEnv("APP_ENV", previousAppEnv);
+    restoreEnv("DATABASE_URL", previousDatabaseUrl);
+    restoreEnv("SUPABASE_URL", previousSupabaseUrl);
+    restoreEnv("SUPABASE_SERVICE_ROLE_KEY", previousServiceRoleKey);
+  }
+});
+
+test("production-like runtime does not serve fixture fallback data", async () => {
+  const previousAppEnv = process.env.APP_ENV;
+  const previousDatabaseUrl = process.env.DATABASE_URL;
+
+  try {
+    process.env.APP_ENV = "production";
+    delete process.env.DATABASE_URL;
+
+    const response = await createApp().request("/v1/gyms");
+    const body = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(body.data, []);
+  } finally {
+    restoreEnv("APP_ENV", previousAppEnv);
+    restoreEnv("DATABASE_URL", previousDatabaseUrl);
+  }
+});
+
+function restoreEnv(name: string, value: string | undefined) {
+  if (value === undefined) {
+    delete process.env[name];
+    return;
+  }
+
+  process.env[name] = value;
+}
 
 test("notifications require authenticated users and can be marked read", async () => {
   const app = createApp();

@@ -16,12 +16,6 @@ type FieldErrors = Partial<Record<"email" | "displayName" | "area" | "form", str
 type AuthMode = "login" | "register";
 
 export function LaunchGate() {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setReady(true);
-  }, []);
-
   return (
     <main className="app-shell">
       <section className="topbar" aria-label="Zac start">
@@ -32,17 +26,20 @@ export function LaunchGate() {
             <h1>次のセッションを決める</h1>
           </div>
         </div>
-        <Link className="primary-action" href={ready && hasLocalProfile() ? "/home" : "/register"}>
-          開始
+        <Link className="primary-action" href="/home">
+          ゲストで見る
         </Link>
       </section>
       <section className="stack">
         <article className="wide-card">
           <p className="card-kind">Climb Life OS</p>
-          <h2>予定、記録、仲間探しをひとつに集約</h2>
-          <p>予定、記録、投稿を保存しながら、クライミングの次の行動を決められます。</p>
+          <h2>まず探して、必要なときだけログイン</h2>
+          <p>ジム、イベント、公開予定、投稿はゲストで閲覧できます。保存、参加、作成、マイページはログイン後に使えます。</p>
         </article>
         <article className="wide-card action-row">
+          <Link className="primary-action" href="/home">
+            ゲストで見る
+          </Link>
           <Link className="primary-action" href="/register">
             新規登録
           </Link>
@@ -115,7 +112,8 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
     <main className="app-shell">
       <form action={submit} className="form-panel">
         <p className="card-kind">{mode === "register" ? "新規登録" : "ログイン"}</p>
-        <h1>{mode === "register" ? "Zacを始める" : "Zacに戻る"}</h1>
+        <h1>{mode === "register" ? "保存と作成を始める" : "保存した予定に戻る"}</h1>
+        <p>メールリンクでログインします。閲覧だけなら登録せずに続けられます。</p>
         <div className="form-grid">
           <label>
             メールアドレス

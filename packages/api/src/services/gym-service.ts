@@ -1,13 +1,15 @@
 import { and, eq, gymSaves, gyms, isNull } from "@zac/db";
 import { findGymFixture, gymFixtures, type GymSummary } from "@zac/shared";
+import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { isUuid } from "./ids.js";
 
 const savedGymIds = new Set<string>();
 
 export async function listGyms() {
   const rows = await listPersistentGyms();
-  const gyms = rows.length > 0 ? rows : gymFixtures;
+  const gyms = rows.length > 0 || !isRuntimeFallbackAllowed() ? rows : gymFixtures;
   return gyms.map((gym) => ({ ...gym, saved: gym.saved || savedGymIds.has(gym.id) }));
 }
 
@@ -18,6 +20,10 @@ export async function getGym(gymId: string) {
     if (row) {
       return row;
     }
+  }
+
+  if (!isRuntimeFallbackAllowed()) {
+    return undefined;
   }
 
   const fixture = findGymFixture(gymId);
@@ -55,6 +61,9 @@ async function listPersistentGyms() {
     const rows = await db.select().from(gyms).where(isNull(gyms.deletedAt)).limit(50);
     return rows.map(toGymSummary);
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not list gyms.", 503);
+    }
     return [];
   }
 }
@@ -70,6 +79,9 @@ async function getPersistentGym(gymId: string) {
     const [row] = await db.select().from(gyms).where(eq(gyms.id, gymId)).limit(1);
     return row && !row.deletedAt ? toGymSummary(row) : null;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not load gym.", 503);
+    }
     return null;
   }
 }
@@ -90,6 +102,9 @@ async function setPersistentGymSave(gymId: string, actorId: string | undefined, 
   const db = getDatabase();
 
   if (!db || !actorId || !isUuid(gymId)) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("not_found", "Gym not found.", 404);
+    }
     return false;
   }
 
@@ -101,6 +116,9 @@ async function setPersistentGymSave(gymId: string, actorId: string | undefined, 
     }
     return true;
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not update gym save.", 503);
+    }
     return false;
   }
 }

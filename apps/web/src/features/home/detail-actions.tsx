@@ -3,6 +3,7 @@
 import { useEffect, useState, useTransition } from "react";
 import Link from "next/link";
 import { deleteApi, getApi, postApi } from "./api-client";
+import { useAuthStatus } from "./auth-state";
 import { useLocalToggle } from "./local-toggle";
 
 type Comment = {
@@ -18,8 +19,14 @@ export function PlanActions({ planId }: { planId: string }) {
   const [createdLogHref, setCreatedLogHref] = useState("");
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
+  const { authenticated, checking } = useAuthStatus();
 
   function submitJoin() {
+    if (!checking && !authenticated) {
+      setMessage("ログインすると予定に参加できます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = joined ? await deleteApi<{ joined: boolean }>(`/v1/session-plans/${planId}/join`) : await postApi<{ joined: boolean }>(`/v1/session-plans/${planId}/join`, {});
       if (response.ok) {
@@ -32,6 +39,11 @@ export function PlanActions({ planId }: { planId: string }) {
   }
 
   function submitComplete() {
+    if (!checking && !authenticated) {
+      setMessage("ログインすると予定を完了できます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = await postApi<{ completed: boolean }>(`/v1/session-plans/${planId}/complete`, {});
       if (response.ok) {
@@ -46,6 +58,11 @@ export function PlanActions({ planId }: { planId: string }) {
   }
 
   function convertToLog() {
+    if (!checking && !authenticated) {
+      setMessage("ログインすると予定から記録を作成できます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = await postApi<{ id: string }>(`/v1/session-plans/${planId}/convert-to-log`, {});
       if (response.ok) {
@@ -82,7 +99,7 @@ export function PlanActions({ planId }: { planId: string }) {
           </button>
         )}
       </div>
-      {message ? <p className="field-help">{message}</p> : null}
+      {message ? <ActionMessage message={message} /> : null}
     </article>
   );
 }
@@ -92,8 +109,14 @@ export function PostActions({ postId }: { postId: string }) {
   const [saved, toggleSaved] = useLocalToggle(`zac.post.saved.${postId}`);
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
+  const { authenticated, checking } = useAuthStatus();
 
   function submitLike() {
+    if (!checking && !authenticated) {
+      setMessage("ログインすると投稿にリアクションできます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = liked ? await deleteApi<{ liked: boolean }>(`/v1/posts/${postId}/like`) : await postApi<{ liked: boolean }>(`/v1/posts/${postId}/like`, {});
       if (response.ok) {
@@ -106,6 +129,11 @@ export function PostActions({ postId }: { postId: string }) {
   }
 
   function submitSave() {
+    if (!checking && !authenticated) {
+      setMessage("ログインすると投稿を保存できます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = saved ? await deleteApi<{ saved: boolean }>(`/v1/posts/${postId}/save`) : await postApi<{ saved: boolean }>(`/v1/posts/${postId}/save`, {});
       if (response.ok) {
@@ -130,7 +158,7 @@ export function PostActions({ postId }: { postId: string }) {
           {saved ? "保存済み" : "保存"}
         </button>
       </div>
-      {message ? <p className="field-help">{message}</p> : null}
+      {message ? <ActionMessage message={message} /> : null}
     </article>
   );
 }
@@ -139,8 +167,14 @@ export function GymActions({ gymId, initiallySaved }: { gymId: string; initially
   const [saved, toggleSaved] = useLocalToggle(`zac.gym.saved.${gymId}`, initiallySaved);
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
+  const { authenticated, checking } = useAuthStatus();
 
   function submitSave() {
+    if (!checking && !authenticated) {
+      setMessage("ログインするとジムを保存できます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = saved ? await deleteApi<{ saved: boolean }>(`/v1/gyms/${gymId}/save`) : await postApi<{ saved: boolean }>(`/v1/gyms/${gymId}/save`, {});
       if (response.ok) {
@@ -162,7 +196,7 @@ export function GymActions({ gymId, initiallySaved }: { gymId: string; initially
           {saved ? "保存解除" : "保存"}
         </button>
       </div>
-      {message ? <p className="field-help">{message}</p> : null}
+      {message ? <ActionMessage message={message} /> : null}
     </article>
   );
 }
@@ -171,8 +205,14 @@ export function EventActions({ eventId }: { eventId: string }) {
   const [interested, toggleInterested] = useLocalToggle(`zac.event.interested.${eventId}`);
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
+  const { authenticated, checking } = useAuthStatus();
 
   function submitInterest() {
+    if (!checking && !authenticated) {
+      setMessage("ログインするとイベントを保存できます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = interested ? await deleteApi<{ saved: boolean }>(`/v1/events/${eventId}/save`) : await postApi<{ saved: boolean }>(`/v1/events/${eventId}/save`, {});
       if (response.ok) {
@@ -194,7 +234,7 @@ export function EventActions({ eventId }: { eventId: string }) {
           {interested ? "興味あり" : "興味あり"}
         </button>
       </div>
-      {message ? <p className="field-help">{message}</p> : null}
+      {message ? <ActionMessage message={message} /> : null}
     </article>
   );
 }
@@ -203,8 +243,14 @@ export function LogConvertActions({ logId }: { logId: string }) {
   const [createdPostHref, setCreatedPostHref] = useState("");
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
+  const { authenticated, checking } = useAuthStatus();
 
   function convertToPost() {
+    if (!checking && !authenticated) {
+      setMessage("ログインすると記録から投稿を作成できます。");
+      return;
+    }
+
     startTransition(async () => {
       const response = await postApi<{ id: string }>(`/v1/logs/${logId}/convert-to-post`, {});
       if (response.ok) {
@@ -235,7 +281,7 @@ export function LogConvertActions({ logId }: { logId: string }) {
           次回予定
         </Link>
       </div>
-      {message ? <p className="field-help">{message}</p> : null}
+      {message ? <ActionMessage message={message} /> : null}
     </article>
   );
 }
@@ -252,6 +298,7 @@ export function CommentThread({
   const [comments, setComments] = useState<Comment[]>(initialComments);
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
+  const { authenticated, checking } = useAuthStatus();
 
   useEffect(() => {
     let active = true;
@@ -268,6 +315,11 @@ export function CommentThread({
   function submit(formData: FormData) {
     const body = formData.get("comment")?.toString().trim();
     if (!body) {
+      return;
+    }
+
+    if (!checking && !authenticated) {
+      setMessage("ログインするとコメントできます。");
       return;
     }
 
@@ -295,7 +347,7 @@ export function CommentThread({
           送信
         </button>
       </form>
-      {message ? <p className="field-help">{message}</p> : null}
+      {message ? <ActionMessage message={message} /> : null}
       <div className="comment-list">
         {comments.map((comment) => (
           <p className="comment-item" key={comment.id}>
@@ -312,4 +364,14 @@ export function CommentThread({
 
 function getCommentPath(targetType: "post" | "session_plan", targetId: string) {
   return targetType === "post" ? `/v1/posts/${targetId}/comments` : `/v1/session-plans/${targetId}/comments`;
+}
+
+function ActionMessage({ message }: { message: string }) {
+  const needsLogin = message.startsWith("ログインすると");
+
+  return (
+    <p className="field-help">
+      {message} {needsLogin ? <Link href="/login">ログイン</Link> : null}
+    </p>
+  );
 }

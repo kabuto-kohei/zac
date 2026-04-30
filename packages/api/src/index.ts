@@ -1,8 +1,9 @@
 import { serve } from "@hono/node-server";
 import { createApp } from "./app.js";
-import { getApiIntegrationStatus } from "./integrations/env.js";
+import { assertApiRuntimeConfig, getApiIntegrationStatus } from "./integrations/env.js";
 
 const port = Number(process.env.PORT ?? 8787);
+assertApiRuntimeConfig();
 const integrations = getApiIntegrationStatus();
 
 serve({

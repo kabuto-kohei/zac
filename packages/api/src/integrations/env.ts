@@ -22,6 +22,26 @@ export function getApiIntegrationStatus(): ApiIntegrationStatus {
   };
 }
 
+export function assertApiRuntimeConfig() {
+  if (!isProductionLike()) {
+    return;
+  }
+
+  const missing = ["DATABASE_URL", "SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"].filter((name) => !hasEnv(name));
+
+  if (missing.length > 0) {
+    throw new Error(`Production API requires configured persistence and auth: missing ${missing.join(", ")}`);
+  }
+}
+
 export function hasEnv(name: string) {
   return Boolean(process.env[name]?.trim());
+}
+
+export function isRuntimeFallbackAllowed() {
+  return !isProductionLike();
+}
+
+export function isProductionLike() {
+  return process.env.APP_ENV === "production" || process.env.NODE_ENV === "production" || process.env.VERCEL_ENV === "production";
 }

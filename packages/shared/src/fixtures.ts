@@ -37,16 +37,18 @@ export type PostSummary = {
 export type EventSummary = {
   id: string;
   title: string;
+  description: string;
   gymName: string;
   startsAt: string;
   endsAt: string;
   capacity: string;
-  status: "scheduled" | "closed";
+  status: "draft" | "scheduled" | "closed";
 };
 
 export type AnnouncementSummary = {
   id: string;
   title: string;
+  body: string;
   audience: "all" | "users" | "gyms";
   status: "draft" | "published";
   publishedAt: string;
@@ -195,6 +197,7 @@ export const eventFixtures: EventSummary[] = [
   {
     id: "b-pump-beginner-session",
     title: "はじめてのボルダー講習",
+    description: "初心者向けに安全確認と基本ムーブを確認する少人数セッションです。",
     gymName: "B-PUMP Tokyo",
     startsAt: "2026-05-02 19:00",
     endsAt: "2026-05-02 20:30",
@@ -204,6 +207,7 @@ export const eventFixtures: EventSummary[] = [
   {
     id: "rocky-morning-session",
     title: "朝活セッション",
+    description: "開店直後の空いている時間帯に、それぞれの課題を持ち寄って登ります。",
     gymName: "Rocky Shinagawa",
     startsAt: "2026-05-05 08:00",
     endsAt: "2026-05-05 10:00",
@@ -216,6 +220,7 @@ export const announcementFixtures: AnnouncementSummary[] = [
   {
     id: "beta-guideline",
     title: "ベータ利用ガイドを公開",
+    body: "ZacのMVPベータ利用時の基本ルールと安全方針を公開しました。",
     audience: "all",
     status: "published",
     publishedAt: "2026-04-28 09:00",
@@ -223,6 +228,7 @@ export const announcementFixtures: AnnouncementSummary[] = [
   {
     id: "event-policy",
     title: "イベント掲載ポリシー確認",
+    body: "ジムイベント掲載時の確認項目を運営向けに整理しています。",
     audience: "gyms",
     status: "draft",
     publishedAt: "",

@@ -1,9 +1,9 @@
 import { randomUUID } from "node:crypto";
-import { and, climbingLogImages, eq, mediaDeletionJobs, postImages } from "@zac/db";
+import { and, climbingLogImages, eq, lte, mediaDeletionJobs, postImages } from "@zac/db";
 import type { AttachMediaInput, CreateMediaUploadUrlsInput, MediaUploadFileInput, MediaUploadTarget } from "@zac/shared";
 import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
-import { getApiIntegrationStatus } from "../integrations/env.js";
+import { getApiIntegrationStatus, isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { getSupabaseAdminClient } from "../integrations/supabase.js";
 
 export type MediaUploadUrl = {
@@ -19,6 +19,12 @@ export type AttachedMediaResult = {
   targetType: AttachMediaInput["targetType"];
   targetId: string;
   attachedCount: number;
+};
+
+export type MediaCleanupResult = {
+  scanned: number;
+  deleted: number;
+  failed: number;
 };
 
 const extensionByContentType = {
@@ -147,6 +153,59 @@ export function buildMediaDeletionJob(input: {
   };
 }
 
+export async function processPendingMediaDeletionJobs(limit = 25): Promise<MediaCleanupResult> {
+  const db = getDatabase();
+  const supabase = getSupabaseAdminClient();
+
+  if (!db || !supabase) {
+    throw new ApiError("service_unavailable", "Database and storage are required for media cleanup.", 503);
+  }
+
+  const normalizedLimit = normalizeCleanupLimit(limit);
+  const rows = await db
+    .select()
+    .from(mediaDeletionJobs)
+    .where(and(eq(mediaDeletionJobs.status, "pending"), lte(mediaDeletionJobs.runAfter, new Date())))
+    .limit(normalizedLimit);
+
+  const result: MediaCleanupResult = {
+    scanned: rows.length,
+    deleted: 0,
+    failed: 0,
+  };
+
+  for (const row of rows) {
+    const { error } = await supabase.storage.from(row.bucket).remove([row.objectPath]);
+
+    if (error) {
+      result.failed += 1;
+      await db
+        .update(mediaDeletionJobs)
+        .set({
+          attempts: row.attempts + 1,
+          lastError: error.message,
+          runAfter: new Date(Date.now() + 60 * 60 * 1000),
+          updatedAt: new Date(),
+        })
+        .where(eq(mediaDeletionJobs.id, row.id));
+      continue;
+    }
+
+    result.deleted += 1;
+    await db.update(mediaDeletionJobs).set({ status: "done", updatedAt: new Date() }).where(eq(mediaDeletionJobs.id, row.id));
+  }
+
+  return result;
+}
+
+function normalizeCleanupLimit(limit: number) {
+  if (!Number.isFinite(limit)) {
+    return 25;
+  }
+
+  return Math.max(1, Math.min(Math.trunc(limit), 100));
+}
+
 async function scheduleMediaDeletionJob(input: {
   bucket: string;
   objectPath: string;
@@ -156,12 +215,18 @@ async function scheduleMediaDeletionJob(input: {
   const db = getDatabase();
 
   if (!db) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for media cleanup scheduling.", 503);
+    }
     return;
   }
 
   try {
     await db.insert(mediaDeletionJobs).values(buildMediaDeletionJob(input));
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not schedule media cleanup.", 503);
+    }
     // Upload URL creation should not fail just because cleanup scheduling is temporarily unavailable.
   }
 }

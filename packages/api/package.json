@@ -7,6 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "pnpm build && node dist/index.js",
+    "media:cleanup": "pnpm build && node dist/jobs/media-cleanup.js",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit",
     "test": "NODE_ENV=test pnpm --filter @zac/shared build && pnpm --filter @zac/db build && pnpm build && NODE_ENV=test node --test dist/**/*.test.js",

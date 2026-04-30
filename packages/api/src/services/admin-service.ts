@@ -3,6 +3,7 @@ import type { AdminUserSummary, AuditLogSummary, ModeratePostInput, UpdateGymSta
 import type { RequestActor } from "../auth.js";
 import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { isUuid } from "./ids.js";
 
 type AuditTarget = {
@@ -31,6 +32,9 @@ export async function listAuditLogs() {
   const db = getDatabase();
 
   if (!db) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for audit logs.", 503);
+    }
     return [...memoryAuditLogs, ...[]];
   }
 
@@ -44,6 +48,9 @@ export async function listAuditLogs() {
       createdAt: row.createdAt.toISOString(),
     })) satisfies AuditLogSummary[];
   } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not list audit logs.", 503);
+    }
     return [...memoryAuditLogs];
   }
 }
@@ -52,6 +59,9 @@ export async function listAdminUsers() {
   const db = getDatabase();
 
   if (!db) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Database is required for admin users.", 503);
+    }
     return [];
   }
 
@@ -124,6 +134,10 @@ export async function updateGymStatus(gymId: string, input: UpdateGymStatusInput
     gymId,
     status: input.status,
   };
+}
+
+export async function recordAdminAudit(actor: RequestActor, target: AuditTarget) {
+  await writeAuditLog(actor, target);
 }
 
 async function isAdmin(actor: RequestActor) {

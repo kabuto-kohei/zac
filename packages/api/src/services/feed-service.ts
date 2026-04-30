@@ -1,4 +1,5 @@
 import { feedFixtures } from "@zac/shared";
+import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { listClimbingLogs } from "./climbing-log-service.js";
 import { listPosts } from "./post-service.js";
 import { listSessionPlans } from "./session-plan-service.js";
@@ -11,5 +12,5 @@ export async function getMixedFeed(viewerId?: string) {
     ...posts.slice(0, 10).map((post) => ({ type: "post" as const, item: post })),
   ];
 
-  return dynamicFeed.length > 0 ? dynamicFeed : feedFixtures;
+  return dynamicFeed.length > 0 || !isRuntimeFallbackAllowed() ? dynamicFeed : feedFixtures;
 }

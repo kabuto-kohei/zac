@@ -23,7 +23,9 @@ Figmaでは実装済み画面を正とし、レビュー・修正提案・コン
 
 ### Shell
 
+- Shell幅: `min(viewport - horizontal padding, 760px)`
 - 最大幅: `760px`
+- 最小検証幅: `320px`
 - 背景: `#f7f8f4`
 - Surface: `#ffffff`
 - 角丸: `8px`
@@ -33,6 +35,64 @@ Figmaでは実装済み画面を正とし、レビュー・修正提案・コン
 - Danger/Count: `#b45309`
 - Text: `#1e2522`
 - Muted text: `#68736f`
+
+### Responsive breakpoints
+
+Figmaでは単一の固定カンプではなく、同じ情報設計が全サイズで破綻しないことを確認できるようにする。
+初回レビュー対象は次の6幅とする。
+
+| Width | 用途 | Shell / navigation | 主なレイアウト |
+|---:|---|---|---|
+| `320px` | 最小スマホstress | shell `288px`, bottom nav | すべて1列、CTAは折り返し、長い文言は複数行 |
+| `390px` | iPhone標準 | shell `358px`, bottom nav | 1列、カードactionは下段full width |
+| `430px` | 大きめスマホ | shell `398px`, bottom nav | 1列、topic/feed tabは横スクロール |
+| `768px` | tablet portrait | shell `736px`, top nav | 2列化できる領域のみ2列、主要カードは横並び維持 |
+| `1024px` | tablet landscape / small desktop | shell `760px`, top nav | shell中央寄せ、内部はdesktop構造 |
+| `1440px` | desktop | shell `760px`, top nav | shell中央寄せ、余白は背景として扱う |
+
+Figma上の各screen frameはviewport幅を表す外側フレームを持ち、その中に `Shell` フレームを置く。
+`Shell` はAuto Layout verticalで、horizontal resizingは `Fill container`、max width相当は幅別フレームで再現する。
+
+### Responsive component rules
+
+- `AppHeader`
+  - `>= 768px`: brand左、actions右の横並び。
+  - `< 768px`: brandとactionsを縦積み。actionsは横2列、`320px`では必要に応じて折り返す。
+- `MainNav`
+  - `>= 768px`: header直下のtop nav。
+  - `< 768px`: bottom fixed nav想定。Figmaではviewport下部に固定位置の参照レイヤーを置く。
+- `MetricStrip`
+  - `>= 390px`: 3列。
+  - `< 390px`: 3列を維持し、label/valueを中央揃えで圧縮する。文字が潰れる場合はlabelを短縮する。
+- `GuestBanner` / `AuthRequiredNote`
+  - `>= 768px`: copy + actionsの2列。
+  - `< 768px`: copy、actionsの縦積み。CTAはwrap可能な横並び。
+- `Composer`
+  - `>= 390px`: avatar + mainの2列。
+  - `< 390px`: avatarを上段、input/actionsを下段に落とす。
+- `ShortcutGrid`
+  - `>= 768px`: 3列。
+  - `< 768px`: 1列。
+- `ExploreHero`
+  - `>= 768px`: copy + countsの2列。
+  - `< 768px`: copy、countsの縦積み。countsは2列を維持する。
+- `ContentCard`
+  - `>= 768px`: visual / body / actionの3列。
+  - `< 768px`: visual / bodyの2列、actionは下段full width。
+- `TabRail` / `TopicRail`
+  - 全幅で横スクロール可能。Figmaではoverflow領域を示すため右端に途中で切れるchipを1つ置く。
+- Text
+  - viewport幅でfont-sizeは変えない。
+  - letter spacingは`0`。
+  - 長い日本語はauto heightで折り返す。ボタン内で収まらない文言は短縮ではなく2行許容または幅を広げる。
+
+### Figma responsive acceptance
+
+- `320px`, `390px`, `430px`, `768px`, `1024px`, `1440px` の各幅で、主要テキスト、CTA、nav、カードactionが重ならない。
+- Figmaの主要部品はAuto Layoutを使い、画面幅変更時に手動座標調整が不要な構造にする。
+- 各screenは `Screen / {name} / {width}` で命名する。
+- 同じ画面の幅違いは横並びに配置し、レビュー時に崩れ方を比較できるようにする。
+- 実装との差分がある場合は、Figmaではなく実装済みWebを正とし、差分をコメントで明記してから修正する。
 
 ### Header
 
@@ -210,14 +270,13 @@ Desktopは3列、mobileは1列。
 ## 10. Figma作成順
 
 1. Foundations page
-   - colors, typography, spacing, radius, shadows
+   - colors, typography, spacing, radius, shadows, responsive breakpoints
 2. Components page
    - shell, nav, buttons, chips, cards, forms
-3. Screens page
-   - Desktop 1440px artboards
-   - Mobile 390px artboards
-4. Review page
-   - Before/after notes
+   - componentごとのresponsive behavior notes
+3. Screens + Review page
+   - `320px`, `390px`, `430px`, `768px`, `1024px`, `1440px` artboards
+   - Review notes
    - User feedback comments area
 
 ## 11. Figma MCP実行に必要な入力
@@ -227,4 +286,4 @@ Figmaへ直接書き込むには、次のどちらかが必要。
 - 既存Figma file URL
 - Figma file key
 
-受領後、`Home`, `Explore`, `Plan Create`, `Me`, `Notifications` のdesktop/mobile画面を作成する。
+受領後、`Home`, `Explore`, `Plan Create`, `Me`, `Notifications` の各画面を `320px`, `390px`, `430px`, `768px`, `1024px`, `1440px` で作成する。

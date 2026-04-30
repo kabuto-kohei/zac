@@ -40,6 +40,7 @@ export function FeedExperience({ data }: { data: HomeViewData }) {
 
   return (
     <section className="stack">
+      <FeaturedEventsRail events={data.events} />
       <GuestValueBanner />
       <QuickComposer />
       <HomeShortcutGrid nextPlan={nextPlan} highlightedGym={highlightedGym} nextEvent={nextEvent} />
@@ -96,13 +97,49 @@ export function FeedExperience({ data }: { data: HomeViewData }) {
         ))}
       </div>
       {filteredFeed.length > 0 ? (
-        filteredFeed.map((entry) => <FeedCard entry={entry} key={`${entry.type}-${entry.item.id}`} />)
+        <div className="feed-grid">
+          {filteredFeed.map((entry) => (
+            <FeedCard entry={entry} key={`${entry.type}-${entry.item.id}`} />
+          ))}
+        </div>
       ) : (
         <div className="empty-state">
           <h3>表示できるフィードがありません</h3>
           <p>別のタブに切り替えるか、新しい投稿・予定・記録を追加してください。</p>
         </div>
       )}
+    </section>
+  );
+}
+
+function FeaturedEventsRail({ events }: { events: HomeViewData["events"] }) {
+  const featured = events.slice(0, 3);
+
+  if (featured.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="featured-events" aria-label="注目イベント">
+      <div className="featured-event-grid">
+        {featured.map((event) => (
+          <Link className="featured-event" href={`/events/${event.id}`} key={event.id}>
+            <span className="featured-event-thumb" aria-hidden="true">
+              <ZacIcon decorative icon="lead" size={48} />
+            </span>
+            <span className="featured-event-copy">
+              <span className="featured-event-tag">イベント</span>
+              <strong>{event.title}</strong>
+              <small>
+                {event.startsAt} · {event.gymName}
+              </small>
+            </span>
+          </Link>
+        ))}
+      </div>
+      <Link className="featured-more" href="/explore">
+        イベントをもっと見る →
+      </Link>
     </section>
   );
 }

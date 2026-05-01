@@ -6,7 +6,7 @@ import { GymActions } from "./detail-actions";
 import { ZacIcon } from "./zac-icons";
 
 export async function GymDetail({ gymId }: { gymId: string }) {
-  const { gym, relatedPlans } = await getGymDetailData(gymId);
+  const { gym } = await getGymDetailData(gymId);
 
   if (!gym) {
     notFound();
@@ -29,24 +29,10 @@ export async function GymDetail({ gymId }: { gymId: string }) {
 
       <section className="stack">
         <GymActions gymId={gym.id} initiallySaved={gym.saved} />
-        <div className="section-title">
-          <h2>関連予定</h2>
-          <span>{relatedPlans.length}件</span>
-        </div>
-        {relatedPlans.length > 0 ? (
-          relatedPlans.map((plan) => (
-            <article className="wide-card" key={plan.id}>
-              <p className="card-kind">{plan.time}</p>
-              <h3>{plan.title}</h3>
-              <p>{plan.members}</p>
-            </article>
-          ))
-        ) : (
-          <article className="empty-state">
-            <h3>まだ予定はありません</h3>
-            <p>このジムで次のセッションを作成できます。</p>
-          </article>
-        )}
+        <article className="empty-state">
+          <h3>予定はログイン後に使えます</h3>
+          <p>このジムを保存し、次のセッションを作成できます。</p>
+        </article>
       </section>
     </AppShell>
   );

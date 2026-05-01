@@ -1,5 +1,4 @@
 import {
-  feedFixtures,
   findEventFixture,
   findGymFixture,
   findLogFixture,
@@ -50,40 +49,32 @@ export type GymOption = {
 };
 
 export async function getHomeViewData(activeTab: Tab): Promise<HomeViewData> {
-  const [events, gyms, plans, logs, posts, feed] = await Promise.all([
+  const [events, gyms] = await Promise.all([
     getApiList<EventSummary>("/v1/events", eventFixtures),
     getApiList<GymSummary>("/v1/gyms", gymFixtures),
-    getApiList<PlanSummary>("/v1/session-plans", planFixtures),
-    getApiList<LogSummary>("/v1/logs", logFixtures),
-    getApiList<PostSummary>("/v1/posts", postFixtures),
-    getApiList<HomeFeedItem>("/v1/feed", feedFixtures),
   ]);
 
   return {
     activeTab,
     events,
     gyms,
-    plans,
-    logs,
-    posts,
-    feed,
+    plans: [],
+    logs: [],
+    posts: [],
+    feed: [],
     metrics: {
-      weeklyPlans: plans.length,
+      weeklyPlans: 0,
       savedGyms: gyms.filter((gym) => gym.saved).length,
-      logs: logs.length,
+      logs: 0,
     },
   };
 }
 
 export async function getGymDetailData(gymId: string) {
-  const [gym, plans] = await Promise.all([
-    getApiData<GymSummary>(`/v1/gyms/${encodeURIComponent(gymId)}`, findGymFixture(gymId) ?? null),
-    getApiList<PlanSummary>("/v1/session-plans", planFixtures),
-  ]);
+  const gym = await getApiData<GymSummary>(`/v1/gyms/${encodeURIComponent(gymId)}`, findGymFixture(gymId) ?? null);
 
   return {
     gym,
-    relatedPlans: gym ? plans.filter((plan) => plan.place === gym.name) : [],
   };
 }
 

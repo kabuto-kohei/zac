@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { createClimbingLogSchema } from "@zac/shared";
-import { requireRequestActor, resolveRequestActor } from "../auth.js";
+import { requireRequestActor } from "../auth.js";
 import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createClimbingLog, getClimbingLog, listClimbingLogs } from "../services/climbing-log-service.js";
@@ -10,8 +10,8 @@ export function createLogRoutes() {
   const app = new Hono();
 
   app.get("/", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    return context.json(paginatedResponse(await listClimbingLogs(actor?.userId)));
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    return context.json(paginatedResponse(await listClimbingLogs(actor.userId)));
   });
 
   app.post("/", async (context) => {
@@ -40,8 +40,8 @@ export function createLogRoutes() {
   });
 
   app.get("/:logId", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const log = await getClimbingLog(context.req.param("logId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const log = await getClimbingLog(context.req.param("logId"), actor.userId);
 
     if (!log) {
       return context.json(notFoundResponse(), 404);

@@ -179,6 +179,8 @@ POST   /v1/session-plans/{planId}/complete
 POST   /v1/session-plans/{planId}/convert-to-log
 ```
 
+MVPのゲスト公開範囲はジムとイベントに限定する。`GET /v1/session-plans`、`GET /v1/session-plans/{planId}`、コメント一覧を含む予定系read APIは認証必須とする。
+
 ### 8.1 作成リクエスト
 
 ```json
@@ -217,6 +219,8 @@ DELETE /v1/log-images/{imageId}
 POST   /v1/logs/{logId}/convert-to-post
 ```
 
+記録一覧/詳細はログイン後の活動データとして扱い、read APIも認証必須とする。
+
 作成制約:
 
 - `climbedOn` は必須。
@@ -241,6 +245,8 @@ POST   /v1/posts/{postId}/comments
 GET    /v1/posts/{postId}/comments
 DELETE /v1/comments/{commentId}
 ```
+
+feed、投稿一覧/詳細、投稿コメント一覧はログイン後の活動データとして扱い、read APIも認証必須とする。
 
 フィードは次を除外する。
 

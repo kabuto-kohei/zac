@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { createCommentSchema, createSessionPlanSchema } from "@zac/shared";
-import { requireRequestActor, resolveRequestActor } from "../auth.js";
+import { requireRequestActor } from "../auth.js";
 import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createComment, listComments } from "../services/comment-service.js";
@@ -18,8 +18,8 @@ export function createSessionPlanRoutes() {
   const app = new Hono();
 
   app.get("/", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    return context.json(paginatedResponse(await listSessionPlans(actor?.userId)));
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    return context.json(paginatedResponse(await listSessionPlans(actor.userId)));
   });
 
   app.post("/", async (context) => {
@@ -86,8 +86,8 @@ export function createSessionPlanRoutes() {
   });
 
   app.get("/:planId/comments", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const plan = await getSessionPlan(context.req.param("planId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const plan = await getSessionPlan(context.req.param("planId"), actor.userId);
 
     if (!plan) {
       return context.json(notFoundResponse(), 404);
@@ -115,8 +115,8 @@ export function createSessionPlanRoutes() {
   });
 
   app.get("/:planId", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const plan = await getSessionPlan(context.req.param("planId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const plan = await getSessionPlan(context.req.param("planId"), actor.userId);
 
     if (!plan) {
       return context.json(notFoundResponse(), 404);

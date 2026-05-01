@@ -46,6 +46,20 @@ test.describe("web guest experience", () => {
   });
 
   test("keeps user activity details private for guests", async ({ page }) => {
+    const homeResponse = await page.request.get("/");
+    const homeHtml = await homeResponse.text();
+    expect(homeHtml).not.toContain("火曜夜に軽く登る");
+    expect(homeHtml).not.toContain("垂壁の黄色を完登");
+    expect(homeHtml).not.toContain("週末セッション");
+
+    const gymResponse = await page.request.get("/gyms/b-pump-tokyo");
+    const gymHtml = await gymResponse.text();
+    expect(gymHtml).not.toContain("火曜夜に軽く登る");
+
+    const planResponse = await page.request.get("/plans/tuesday-night");
+    const planHtml = await planResponse.text();
+    expect(planHtml).not.toContain("火曜夜に軽く登る");
+
     await page.goto("/plans/tuesday-night");
     await expect(page.getByText("予定詳細はログイン後に閲覧できます")).toBeVisible();
     await expect(page.getByRole("heading", { name: "火曜夜に軽く登る" })).toHaveCount(0);

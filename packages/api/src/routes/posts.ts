@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import { createCommentSchema, createPostSchema } from "@zac/shared";
-import { requireRequestActor, resolveRequestActor } from "../auth.js";
+import { requireRequestActor } from "../auth.js";
 import { captureServerEvent } from "../integrations/analytics.js";
 import { dataResponse, notFoundResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createComment, listComments } from "../services/comment-service.js";
@@ -10,8 +10,8 @@ export function createPostRoutes() {
   const app = new Hono();
 
   app.get("/", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    return context.json(paginatedResponse(await listPosts(actor?.userId)));
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    return context.json(paginatedResponse(await listPosts(actor.userId)));
   });
 
   app.post("/", async (context) => {
@@ -76,8 +76,8 @@ export function createPostRoutes() {
   });
 
   app.get("/:postId/comments", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const post = await getPost(context.req.param("postId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor.userId);
 
     if (!post) {
       return context.json(notFoundResponse(), 404);
@@ -105,8 +105,8 @@ export function createPostRoutes() {
   });
 
   app.get("/:postId", async (context) => {
-    const actor = await resolveRequestActor(context.req.header("authorization"));
-    const post = await getPost(context.req.param("postId"), actor?.userId);
+    const actor = await requireRequestActor(context.req.header("authorization"));
+    const post = await getPost(context.req.param("postId"), actor.userId);
 
     if (!post) {
       return context.json(notFoundResponse(), 404);

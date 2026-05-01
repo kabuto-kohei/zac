@@ -248,7 +248,9 @@ test("POST and DELETE /v1/events/:eventId/save toggles save", async () => {
 });
 
 test("GET /v1/session-plans returns paginated shape", async () => {
-  const response = await createApp().request("/v1/session-plans");
+  const response = await createApp().request("/v1/session-plans", {
+    headers: userAuth,
+  });
   const body = await response.json();
 
   assert.equal(response.status, 200);
@@ -256,11 +258,32 @@ test("GET /v1/session-plans returns paginated shape", async () => {
 });
 
 test("GET /v1/session-plans/:planId returns a plan", async () => {
-  const response = await createApp().request("/v1/session-plans/tuesday-night");
+  const response = await createApp().request("/v1/session-plans/tuesday-night", {
+    headers: userAuth,
+  });
   const body = await response.json();
 
   assert.equal(response.status, 200);
   assert.equal(body.data.id, "tuesday-night");
+});
+
+test("activity read routes reject missing auth", async () => {
+  const app = createApp();
+  const responses = await Promise.all([
+    app.request("/v1/session-plans"),
+    app.request("/v1/session-plans/tuesday-night"),
+    app.request("/v1/logs"),
+    app.request("/v1/logs/yellow-wall"),
+    app.request("/v1/posts"),
+    app.request("/v1/posts/yellow-wall-post"),
+    app.request("/v1/feed"),
+  ]);
+
+  for (const response of responses) {
+    const body = await response.json();
+    assert.equal(response.status, 401);
+    assert.equal(body.error.code, "unauthorized");
+  }
 });
 
 test("POST /v1/session-plans creates a plan", async () => {
@@ -278,7 +301,9 @@ test("POST /v1/session-plans creates a plan", async () => {
     headers: userJsonHeaders,
   });
   const body = await response.json();
-  const listResponse = await app.request("/v1/session-plans");
+  const listResponse = await app.request("/v1/session-plans", {
+    headers: userAuth,
+  });
   const listBody = await listResponse.json();
 
   assert.equal(response.status, 201);
@@ -326,7 +351,9 @@ test("POST /v1/session-plans/:planId/comments creates a comment", async () => {
     headers: userJsonHeaders,
   });
   const body = await response.json();
-  const listResponse = await app.request("/v1/session-plans/tuesday-night/comments");
+  const listResponse = await app.request("/v1/session-plans/tuesday-night/comments", {
+    headers: userAuth,
+  });
   const listBody = await listResponse.json();
 
   assert.equal(response.status, 201);
@@ -347,7 +374,9 @@ test("POST /v1/session-plans/:planId/convert-to-log creates a log", async () => 
 });
 
 test("GET /v1/logs/:logId returns a log", async () => {
-  const response = await createApp().request("/v1/logs/yellow-wall");
+  const response = await createApp().request("/v1/logs/yellow-wall", {
+    headers: userAuth,
+  });
   const body = await response.json();
 
   assert.equal(response.status, 200);
@@ -385,7 +414,9 @@ test("POST /v1/logs/:logId/convert-to-post creates a post", async () => {
 });
 
 test("GET /v1/posts/:postId returns a post", async () => {
-  const response = await createApp().request("/v1/posts/yellow-wall-post");
+  const response = await createApp().request("/v1/posts/yellow-wall-post", {
+    headers: userAuth,
+  });
   const body = await response.json();
 
   assert.equal(response.status, 200);
@@ -455,7 +486,9 @@ test("POST /v1/posts/:postId/comments creates a comment", async () => {
     headers: userJsonHeaders,
   });
   const body = await response.json();
-  const listResponse = await app.request("/v1/posts/yellow-wall-post/comments");
+  const listResponse = await app.request("/v1/posts/yellow-wall-post/comments", {
+    headers: userAuth,
+  });
   const listBody = await listResponse.json();
 
   assert.equal(response.status, 201);
@@ -465,8 +498,12 @@ test("POST /v1/posts/:postId/comments creates a comment", async () => {
 
 test("comment routes require a visible target", async () => {
   const app = createApp();
-  const postCommentsResponse = await app.request("/v1/posts/unknown/comments");
-  const planCommentsResponse = await app.request("/v1/session-plans/unknown/comments");
+  const postCommentsResponse = await app.request("/v1/posts/unknown/comments", {
+    headers: userAuth,
+  });
+  const planCommentsResponse = await app.request("/v1/session-plans/unknown/comments", {
+    headers: userAuth,
+  });
   const createPostCommentResponse = await app.request("/v1/posts/unknown/comments", {
     method: "POST",
     body: JSON.stringify({ body: "見えない対象へのコメント" }),
@@ -846,7 +883,9 @@ test("notifications require authenticated users and can be marked read", async (
 });
 
 test("GET /v1/feed returns mixed feed", async () => {
-  const response = await createApp().request("/v1/feed");
+  const response = await createApp().request("/v1/feed", {
+    headers: userAuth,
+  });
   const body = await response.json();
 
   assert.equal(response.status, 200);

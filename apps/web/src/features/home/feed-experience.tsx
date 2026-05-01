@@ -29,30 +29,16 @@ export function FeedExperience({ data }: { data: HomeViewData }) {
 }
 
 function GuestHomeExperience({ data }: { data: HomeViewData }) {
-  const [filter, setFilter] = useState<FeedFilter>("all");
-  const filteredFeed = useMemo(() => {
-    if (filter === "all") {
-      return data.feed;
-    }
-
-    return data.feed.filter((entry) => entry.type === filter);
-  }, [data.feed, filter]);
-
-  const nextPlan = data.plans[0];
   const highlightedGym = data.gyms[0];
   const nextEvent = data.events[0];
-  const feedCounts = {
-    all: data.feed.length,
-    session_plan: data.feed.filter((entry) => entry.type === "session_plan").length,
-    climbing_log: data.feed.filter((entry) => entry.type === "climbing_log").length,
-    post: data.feed.filter((entry) => entry.type === "post").length,
-  };
+  const featuredGyms = data.gyms.slice(0, 3);
+  const featuredEvents = data.events.slice(0, 3);
 
   return (
     <section className="stack">
       <FeaturedEventsRail events={data.events} />
       <GuestValueBanner />
-      <HomeShortcutGrid nextPlan={nextPlan} highlightedGym={highlightedGym} nextEvent={nextEvent} />
+      <GuestShortcutGrid highlightedGym={highlightedGym} nextEvent={nextEvent} />
       <div className="topic-rail" aria-label="トピック">
         {topicLabels.map((topic) => (
           <button className="topic-chip" key={topic} type="button">
@@ -65,14 +51,14 @@ function GuestHomeExperience({ data }: { data: HomeViewData }) {
           <p className="card-kind">TODAY</p>
           <h2>今日の動き</h2>
           <p>
-            {nextPlan ? `${nextPlan.place}で${nextPlan.title}があります。` : "参加できる予定を探しましょう。"}
-            {nextEvent ? ` ${nextEvent.title}もチェックできます。` : ""}
+            {nextEvent ? `${nextEvent.gymName}で${nextEvent.title}があります。` : "参加できるイベントを探しましょう。"}
+            {highlightedGym ? ` ${highlightedGym.name}もチェックできます。` : ""}
           </p>
         </div>
         <div className="digest-actions">
-          {nextPlan ? (
-            <Link className="ghost-button" href={`/plans/${nextPlan.id}`}>
-              予定を見る
+          {nextEvent ? (
+            <Link className="ghost-button" href={`/events/${nextEvent.id}`}>
+              イベントを見る
             </Link>
           ) : null}
           {highlightedGym ? (
@@ -84,39 +70,21 @@ function GuestHomeExperience({ data }: { data: HomeViewData }) {
       </section>
       <div className="section-title">
         <div>
-          <p className="section-kicker">Feed</p>
-          <h2>公開フィード</h2>
+          <p className="section-kicker">Explore</p>
+          <h2>ジムとイベント</h2>
         </div>
         <Link className="primary-action" href="/explore">
           探す
         </Link>
       </div>
-      <div className="feed-tabs" aria-label="フィード切り替え">
-        {filterLabels.map((item) => (
-          <button
-            aria-pressed={filter === item.value}
-            className={filter === item.value ? "feed-tab is-active" : "feed-tab"}
-            key={item.value}
-            onClick={() => setFilter(item.value)}
-            type="button"
-          >
-            {item.label}
-            <span>{feedCounts[item.value]}</span>
-          </button>
+      <section className="feed-grid" aria-label="ゲスト閲覧">
+        {featuredEvents.map((event) => (
+          <EventCard event={event} key={event.id} />
         ))}
-      </div>
-      {filteredFeed.length > 0 ? (
-        <div className="feed-grid">
-          {filteredFeed.map((entry) => (
-            <FeedCard entry={entry} key={`${entry.type}-${entry.item.id}`} />
-          ))}
-        </div>
-      ) : (
-        <div className="empty-state">
-          <h3>表示できるフィードがありません</h3>
-          <p>別のタブに切り替えるか、新しい投稿・予定・記録を追加してください。</p>
-        </div>
-      )}
+        {featuredGyms.map((gym) => (
+          <GymCard gym={gym} key={gym.id} />
+        ))}
+      </section>
     </section>
   );
 }
@@ -152,7 +120,7 @@ function MemberHomeExperience({ data }: { data: HomeViewData }) {
           <p className="card-kind">TODAY</p>
           <h2>今日のセッション</h2>
           <p>
-            {nextPlan ? `${nextPlan.place}で${nextPlan.title}があります。` : "公開予定から次のセッションを決めましょう。"}
+            {nextPlan ? `${nextPlan.place}で${nextPlan.title}があります。` : "予定を作成して次のセッションを決めましょう。"}
             {latestLog ? ` 直近の記録は${latestLog.title}です。` : ""}
           </p>
         </div>
@@ -171,7 +139,7 @@ function MemberHomeExperience({ data }: { data: HomeViewData }) {
       <div className="section-title">
         <div>
           <p className="section-kicker">Feed</p>
-          <h2>参加中と公開フィード</h2>
+          <h2>参加中とメンバーフィード</h2>
         </div>
         <Link className="primary-action" href="/posts/new">
           投稿
@@ -242,8 +210,8 @@ function MemberDashboard({
         <MemberLink
           href={nextPlan ? `/plans/${nextPlan.id}` : "/plans"}
           label="次の予定"
-          title={nextPlan?.title ?? "参加できる予定を探す"}
-          meta={nextPlan ? `${nextPlan.place} · ${nextPlan.time}` : "公開予定から選ぶ"}
+          title={nextPlan?.title ?? "予定を作成する"}
+          meta={nextPlan ? `${nextPlan.place} · ${nextPlan.time}` : "ログイン後の予定を管理"}
         />
         <MemberLink
           href={highlightedGym ? `/gyms/${highlightedGym.id}` : "/explore"}
@@ -333,8 +301,8 @@ function HomeShortcutGrid({
       : {
           href: "/plans",
           kicker: "Next plan",
-          title: "予定を探す",
-          detail: "参加できる公開予定を見る",
+          title: "予定を確認",
+          detail: "ログイン後の予定を見る",
         },
     nextEvent
       ? {
@@ -366,6 +334,55 @@ function HomeShortcutGrid({
 
   return (
     <section className="home-shortcuts" aria-label="ホームショートカット">
+      {shortcuts.map((shortcut) => (
+        <Link className="home-shortcut" href={shortcut.href} key={shortcut.kicker}>
+          <span>{shortcut.kicker}</span>
+          <strong>{shortcut.title}</strong>
+          <small>{shortcut.detail}</small>
+        </Link>
+      ))}
+    </section>
+  );
+}
+
+function GuestShortcutGrid({
+  highlightedGym,
+  nextEvent,
+}: {
+  highlightedGym: HomeViewData["gyms"][number] | undefined;
+  nextEvent: HomeViewData["events"][number] | undefined;
+}) {
+  const shortcuts = [
+    nextEvent
+      ? {
+          href: `/events/${nextEvent.id}`,
+          kicker: "Event",
+          title: nextEvent.title,
+          detail: `${nextEvent.gymName} · ${nextEvent.startsAt}`,
+        }
+      : {
+          href: "/explore",
+          kicker: "Event",
+          title: "イベントを探す",
+          detail: "講習やセッションを見る",
+        },
+    highlightedGym
+      ? {
+          href: `/gyms/${highlightedGym.id}`,
+          kicker: "Gym",
+          title: highlightedGym.name,
+          detail: `${highlightedGym.area} · ${highlightedGym.disciplines}`,
+        }
+      : {
+          href: "/explore",
+          kicker: "Gym",
+          title: "ジムを探す",
+          detail: "エリアと種目から探す",
+        },
+  ];
+
+  return (
+    <section className="home-shortcuts guest-shortcuts" aria-label="ゲストショートカット">
       {shortcuts.map((shortcut) => (
         <Link className="home-shortcut" href={shortcut.href} key={shortcut.kicker}>
           <span>{shortcut.kicker}</span>
@@ -438,7 +455,7 @@ function GuestValueBanner() {
       <div>
         <p className="card-kind">Guest mode</p>
         <h2>公開情報はこのまま閲覧できます</h2>
-        <p>ジム、イベント、公開予定、投稿を見てから、保存や参加が必要になったタイミングでログインできます。</p>
+        <p>ジムとイベントを見てから、保存や参加が必要になったタイミングでログインできます。</p>
       </div>
       <div className="action-row">
         <Link className="primary-action" href="/register">

@@ -15,7 +15,7 @@ export function AuthRequiredNote({ action }: { action: string }) {
       <div>
         <p className="card-kind">ログインが必要です</p>
         <h3>{action}</h3>
-        <p>公開情報はゲストで閲覧できます。保存や作成はメールリンクでログインすると使えます。</p>
+        <p>ジムとイベントはゲストで閲覧できます。保存、参加、作成はメールリンクでログインすると使えます。</p>
       </div>
       <div className="action-row">
         <Link className="primary-action" href="/login">

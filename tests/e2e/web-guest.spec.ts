@@ -14,7 +14,10 @@ test.describe("web guest experience", () => {
     await expect(navigation.getByRole("link", { name: "予定" })).toHaveCount(0);
     await expect(navigation.getByRole("link", { name: "記録" })).toHaveCount(0);
     await expect(navigation.getByRole("link", { name: "マイ" })).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: "公開フィード" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "ジムとイベント" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "火曜夜に軽く登る" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "垂壁の黄色を完登" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "週末セッション" })).toHaveCount(0);
     await expect(page.getByRole("region", { name: "作成" })).toHaveCount(0);
 
     await page.goto("/plans/new");
@@ -40,6 +43,20 @@ test.describe("web guest experience", () => {
 
     await page.goto("/me");
     await expect(page.getByText("マイページはログイン後に使えます")).toBeVisible();
+  });
+
+  test("keeps user activity details private for guests", async ({ page }) => {
+    await page.goto("/plans/tuesday-night");
+    await expect(page.getByText("予定詳細はログイン後に閲覧できます")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "火曜夜に軽く登る" })).toHaveCount(0);
+
+    await page.goto("/logs/yellow-wall");
+    await expect(page.getByText("記録詳細はログイン後に閲覧できます")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "垂壁の黄色を完登" })).toHaveCount(0);
+
+    await page.goto("/posts/yellow-wall-post");
+    await expect(page.getByText("投稿詳細はログイン後に閲覧できます")).toBeVisible();
+    await expect(page.getByRole("heading", { name: "垂壁の黄色を完登" })).toHaveCount(0);
   });
 
   test("keeps protected forms private for guests", async ({ page }) => {
@@ -95,7 +112,7 @@ test.describe("web guest experience", () => {
   test("filters public gyms and events on explore", async ({ page }) => {
     await page.goto("/explore");
 
-    await expect(page.getByRole("heading", { name: "登る場所と予定を探す" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "ジムとイベントを探す" })).toBeVisible();
     await page.getByPlaceholder("秋葉原、B-PUMP、ボルダー").fill("品川");
 
     await expect(page.getByRole("heading", { name: "Rocky Shinagawa" })).toBeVisible();

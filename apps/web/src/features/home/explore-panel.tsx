@@ -36,7 +36,7 @@ export function ExplorePanel({ data }: { data: HomeViewData }) {
       <section className="explore-hero" aria-label="検索">
         <div>
           <p className="card-kind">Explore</p>
-          <h2>登る場所と予定を探す</h2>
+          <h2>ジムとイベントを探す</h2>
           <p>エリア、ジム名、種目、イベント名で公開情報を横断できます。</p>
         </div>
         <div className="explore-counts" aria-label="検索結果">

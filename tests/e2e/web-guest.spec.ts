@@ -8,7 +8,8 @@ test.describe("web guest experience", () => {
     const overview = page.getByLabel("Zac overview");
     await expect(overview.getByRole("link", { name: "Login" })).toBeVisible();
     await expect(overview.getByRole("link", { name: "予定作成" })).toHaveCount(0);
-    await expect(page.getByRole("region", { name: "ログイン" }).getByRole("link", { name: "探す" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "公開フィード" })).toBeVisible();
+    await expect(page.getByRole("region", { name: "作成" })).toHaveCount(0);
 
     await page.goto("/plans/new");
     await expect(page).toHaveURL(/\/plans\/new$/);
@@ -41,6 +42,8 @@ test.describe("web guest experience", () => {
     await page.goto("/");
 
     const overview = page.getByLabel("Zac overview");
+    await expect(page.getByRole("region", { name: "ログイン後ホーム" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "今日のセッション管理" })).toBeVisible();
     await expect(overview.getByRole("link", { name: "予定作成" })).toBeVisible();
     await overview.getByRole("button", { name: "ログアウト" }).click();
 

@@ -55,6 +55,7 @@ a {
 .wide-card,
 .profile-panel,
 .profile-dashboard,
+.member-dashboard,
 .composer-card,
 .digest-card,
 .hero-card,
@@ -365,6 +366,97 @@ p {
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.member-dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.45fr) minmax(260px, 0.8fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 22px;
+}
+
+.member-dashboard-copy {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.member-dashboard-copy h2 {
+  margin-bottom: 0;
+}
+
+.member-dashboard-copy p:last-of-type {
+  margin-bottom: 4px;
+}
+
+.member-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  min-width: 0;
+}
+
+.member-stat,
+.member-link {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+
+.member-stat {
+  display: grid;
+  gap: 2px;
+  align-content: center;
+  min-height: 74px;
+  padding: 12px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.member-stat strong {
+  color: var(--ink);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.member-dashboard-list {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.member-link {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 12px;
+}
+
+.member-link span {
+  color: var(--brand);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.member-link strong,
+.member-link small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-link strong {
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.member-link small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .topic-rail,
@@ -1086,9 +1178,14 @@ p {
 
   .composer-card,
   .profile-panel,
+  .member-dashboard,
   .guest-banner,
   .auth-required-note {
     grid-template-columns: 1fr;
+  }
+
+  .member-dashboard-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .composer-avatar {
@@ -1149,6 +1246,10 @@ p {
   .topbar > .action-row a {
     flex: 1 1 130px;
   }
+
+  .topbar > .action-row button {
+    flex: 1 1 130px;
+  }
 }
 
 @media (min-width: 461px) and (max-width: 900px) {
@@ -1160,5 +1261,13 @@ p {
   .featured-event-grid,
   .feed-grid {
     grid-template-columns: 1fr;
+  }
+
+  .member-dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .member-dashboard-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

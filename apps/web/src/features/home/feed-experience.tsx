@@ -19,6 +19,16 @@ const filterLabels: Array<{ value: FeedFilter; label: string }> = [
 const topicLabels = ["#仕事後", "#初級歓迎", "#ボルダー", "#リード", "#遠征", "#セッション募集"];
 
 export function FeedExperience({ data }: { data: HomeViewData }) {
+  const { authenticated, checking } = useAuthStatus();
+
+  if (!checking && authenticated) {
+    return <MemberHomeExperience data={data} />;
+  }
+
+  return <GuestHomeExperience data={data} />;
+}
+
+function GuestHomeExperience({ data }: { data: HomeViewData }) {
   const [filter, setFilter] = useState<FeedFilter>("all");
   const filteredFeed = useMemo(() => {
     if (filter === "all") {
@@ -42,7 +52,6 @@ export function FeedExperience({ data }: { data: HomeViewData }) {
     <section className="stack">
       <FeaturedEventsRail events={data.events} />
       <GuestValueBanner />
-      <QuickComposer />
       <HomeShortcutGrid nextPlan={nextPlan} highlightedGym={highlightedGym} nextEvent={nextEvent} />
       <div className="topic-rail" aria-label="トピック">
         {topicLabels.map((topic) => (
@@ -78,6 +87,92 @@ export function FeedExperience({ data }: { data: HomeViewData }) {
           <p className="section-kicker">Feed</p>
           <h2>公開フィード</h2>
         </div>
+        <Link className="primary-action" href="/explore">
+          探す
+        </Link>
+      </div>
+      <div className="feed-tabs" aria-label="フィード切り替え">
+        {filterLabels.map((item) => (
+          <button
+            aria-pressed={filter === item.value}
+            className={filter === item.value ? "feed-tab is-active" : "feed-tab"}
+            key={item.value}
+            onClick={() => setFilter(item.value)}
+            type="button"
+          >
+            {item.label}
+            <span>{feedCounts[item.value]}</span>
+          </button>
+        ))}
+      </div>
+      {filteredFeed.length > 0 ? (
+        <div className="feed-grid">
+          {filteredFeed.map((entry) => (
+            <FeedCard entry={entry} key={`${entry.type}-${entry.item.id}`} />
+          ))}
+        </div>
+      ) : (
+        <div className="empty-state">
+          <h3>表示できるフィードがありません</h3>
+          <p>別のタブに切り替えるか、新しい投稿・予定・記録を追加してください。</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function MemberHomeExperience({ data }: { data: HomeViewData }) {
+  const [filter, setFilter] = useState<FeedFilter>("all");
+  const filteredFeed = useMemo(() => {
+    if (filter === "all") {
+      return data.feed;
+    }
+
+    return data.feed.filter((entry) => entry.type === filter);
+  }, [data.feed, filter]);
+
+  const nextPlan = data.plans[0];
+  const highlightedGym = data.gyms.find((gym) => gym.saved) ?? data.gyms[0];
+  const nextEvent = data.events[0];
+  const latestLog = data.logs[0];
+  const feedCounts = {
+    all: data.feed.length,
+    session_plan: data.feed.filter((entry) => entry.type === "session_plan").length,
+    climbing_log: data.feed.filter((entry) => entry.type === "climbing_log").length,
+    post: data.feed.filter((entry) => entry.type === "post").length,
+  };
+
+  return (
+    <section className="stack">
+      <MemberDashboard nextPlan={nextPlan} highlightedGym={highlightedGym} latestLog={latestLog} metrics={data.metrics} />
+      <QuickComposer />
+      <HomeShortcutGrid nextPlan={nextPlan} highlightedGym={highlightedGym} nextEvent={nextEvent} />
+      <section className="digest-card" aria-label="今日のピックアップ">
+        <div>
+          <p className="card-kind">TODAY</p>
+          <h2>今日のセッション</h2>
+          <p>
+            {nextPlan ? `${nextPlan.place}で${nextPlan.title}があります。` : "公開予定から次のセッションを決めましょう。"}
+            {latestLog ? ` 直近の記録は${latestLog.title}です。` : ""}
+          </p>
+        </div>
+        <div className="digest-actions">
+          {nextPlan ? (
+            <Link className="ghost-button" href={`/plans/${nextPlan.id}`}>
+              予定を見る
+            </Link>
+          ) : null}
+          <Link className="primary-action" href="/logs/new">
+            記録する
+          </Link>
+        </div>
+      </section>
+      <FeaturedEventsRail events={data.events} />
+      <div className="section-title">
+        <div>
+          <p className="section-kicker">Feed</p>
+          <h2>参加中と公開フィード</h2>
+        </div>
         <Link className="primary-action" href="/posts/new">
           投稿
         </Link>
@@ -109,6 +204,80 @@ export function FeedExperience({ data }: { data: HomeViewData }) {
         </div>
       )}
     </section>
+  );
+}
+
+function MemberDashboard({
+  nextPlan,
+  highlightedGym,
+  latestLog,
+  metrics,
+}: {
+  nextPlan: HomeViewData["plans"][number] | undefined;
+  highlightedGym: HomeViewData["gyms"][number] | undefined;
+  latestLog: HomeViewData["logs"][number] | undefined;
+  metrics: HomeViewData["metrics"];
+}) {
+  return (
+    <section className="member-dashboard" aria-label="ログイン後ホーム">
+      <div className="member-dashboard-copy">
+        <p className="card-kind">Member home</p>
+        <h2>今日のセッション管理</h2>
+        <p>保存したジム、参加予定、記録を起点に、次の行動をすぐ作れます。</p>
+        <div className="action-row">
+          <Link className="primary-action" href="/plans/new">
+            予定作成
+          </Link>
+          <Link className="ghost-button" href="/logs/new">
+            記録追加
+          </Link>
+        </div>
+      </div>
+      <div className="member-dashboard-grid">
+        <MemberStat label="今週の予定" value={String(metrics.weeklyPlans)} />
+        <MemberStat label="保存ジム" value={String(metrics.savedGyms)} />
+        <MemberStat label="記録" value={String(metrics.logs)} />
+      </div>
+      <div className="member-dashboard-list">
+        <MemberLink
+          href={nextPlan ? `/plans/${nextPlan.id}` : "/plans"}
+          label="次の予定"
+          title={nextPlan?.title ?? "参加できる予定を探す"}
+          meta={nextPlan ? `${nextPlan.place} · ${nextPlan.time}` : "公開予定から選ぶ"}
+        />
+        <MemberLink
+          href={highlightedGym ? `/gyms/${highlightedGym.id}` : "/explore"}
+          label="保存ジム"
+          title={highlightedGym?.name ?? "ジムを探す"}
+          meta={highlightedGym ? `${highlightedGym.area} · ${highlightedGym.disciplines}` : "エリアと種目で探す"}
+        />
+        <MemberLink
+          href={latestLog ? `/logs/${latestLog.id}` : "/logs/new"}
+          label="最近の記録"
+          title={latestLog?.title ?? "記録を追加する"}
+          meta={latestLog ? `${latestLog.place} · ${latestLog.grade}` : "1分で残す"}
+        />
+      </div>
+    </section>
+  );
+}
+
+function MemberStat({ label, value }: { label: string; value: string }) {
+  return (
+    <span className="member-stat">
+      <strong>{value}</strong>
+      {label}
+    </span>
+  );
+}
+
+function MemberLink({ href, label, title, meta }: { href: string; label: string; title: string; meta: string }) {
+  return (
+    <Link className="member-link" href={href}>
+      <span>{label}</span>
+      <strong>{title}</strong>
+      <small>{meta}</small>
+    </Link>
   );
 }
 

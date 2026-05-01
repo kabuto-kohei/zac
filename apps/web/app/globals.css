@@ -163,7 +163,11 @@ p {
 }
 
 .metric-strip {
-  display: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 28px;
+  padding: 14px;
 }
 
 .metric {

@@ -4,17 +4,16 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { feedFixtures, logFixtures, planFixtures, postFixtures } from "@zac/shared";
 import { getApi } from "./api-client";
-import { useAuthStatus } from "./auth-state";
 import type { HomeFeedItem, HomeViewData, LogSummary, PlanSummary, PostSummary } from "./data";
 import { ProfilePanel } from "./profile-panel";
 
-type LoadState =
+export type MemberActivityLoadState =
   | { status: "loading"; data?: never; message?: never }
   | { status: "error"; data?: never; message: string }
   | { status: "ready"; data: HomeViewData; message?: never };
 
-export function useMemberActivityData(baseData: HomeViewData, enabled = true): LoadState {
-  const [state, setState] = useState<LoadState>({ status: "loading" });
+export function useMemberActivityData(baseData: HomeViewData, enabled = true): MemberActivityLoadState {
+  const [state, setState] = useState<MemberActivityLoadState>({ status: "loading" });
 
   useEffect(() => {
     let active = true;
@@ -79,13 +78,7 @@ export function useMemberActivityData(baseData: HomeViewData, enabled = true): L
   return state;
 }
 
-export function MemberPlansPanel({ baseData }: { baseData: HomeViewData }) {
-  const state = useMemberActivityData(baseData);
-
-  if (state.status !== "ready") {
-    return <MemberActivityState state={state} />;
-  }
-
+export function MemberPlansPanel({ data }: { data: HomeViewData }) {
   return (
     <section className="stack">
       <div className="section-title">
@@ -94,8 +87,8 @@ export function MemberPlansPanel({ baseData }: { baseData: HomeViewData }) {
           作成
         </Link>
       </div>
-      {state.data.plans.length > 0 ? (
-        state.data.plans.map((plan) => (
+      {data.plans.length > 0 ? (
+        data.plans.map((plan) => (
           <article className="wide-card" key={plan.id}>
             <p className="card-kind">{plan.time}</p>
             <h3>
@@ -116,13 +109,7 @@ export function MemberPlansPanel({ baseData }: { baseData: HomeViewData }) {
   );
 }
 
-export function MemberLogsPanel({ baseData }: { baseData: HomeViewData }) {
-  const state = useMemberActivityData(baseData);
-
-  if (state.status !== "ready") {
-    return <MemberActivityState state={state} />;
-  }
-
+export function MemberLogsPanel({ data }: { data: HomeViewData }) {
   return (
     <section className="stack">
       <div className="section-title">
@@ -131,8 +118,8 @@ export function MemberLogsPanel({ baseData }: { baseData: HomeViewData }) {
           追加
         </Link>
       </div>
-      {state.data.logs.length > 0 ? (
-        state.data.logs.map((log) => (
+      {data.logs.length > 0 ? (
+        data.logs.map((log) => (
           <article className="wide-card" key={log.id}>
             <p className="card-kind">{log.place}</p>
             <h3>
@@ -153,20 +140,21 @@ export function MemberLogsPanel({ baseData }: { baseData: HomeViewData }) {
   );
 }
 
-export function MemberProfilePanel({ baseData }: { baseData: HomeViewData }) {
-  const state = useMemberActivityData(baseData);
-
-  if (state.status !== "ready") {
-    return <MemberActivityState state={state} />;
-  }
-
-  return <ProfilePanel data={state.data} />;
+export function MemberProfilePanel({ data }: { data: HomeViewData }) {
+  return <ProfilePanel data={data} />;
 }
 
-export function ActivityMetricStrip({ baseData }: { baseData: HomeViewData }) {
-  const { authenticated, checking } = useAuthStatus();
-  const state = useMemberActivityData(baseData, !checking && authenticated);
-
+export function ActivityMetricStrip({
+  authenticated,
+  baseData,
+  checking,
+  memberState,
+}: {
+  authenticated: boolean;
+  baseData: HomeViewData;
+  checking: boolean;
+  memberState: MemberActivityLoadState;
+}) {
   if (checking || !authenticated) {
     return (
       <section className="metric-strip" aria-label="Public summary">
@@ -177,7 +165,7 @@ export function ActivityMetricStrip({ baseData }: { baseData: HomeViewData }) {
     );
   }
 
-  const metrics = state.status === "ready" ? state.data.metrics : baseData.metrics;
+  const metrics = memberState.status === "ready" ? memberState.data.metrics : baseData.metrics;
 
   return (
     <section className="metric-strip" aria-label="Weekly summary">
@@ -188,7 +176,7 @@ export function ActivityMetricStrip({ baseData }: { baseData: HomeViewData }) {
   );
 }
 
-export function MemberActivityState({ state }: { state: Exclude<LoadState, { status: "ready" }> }) {
+export function MemberActivityState({ state }: { state: Exclude<MemberActivityLoadState, { status: "ready" }> }) {
   return (
     <section className="wide-card">
       <p className="card-kind">{state.status === "loading" ? "Loading" : "Error"}</p>

@@ -14,6 +14,9 @@ test.describe("web guest experience", () => {
     await expect(navigation.getByRole("link", { name: "予定" })).toHaveCount(0);
     await expect(navigation.getByRole("link", { name: "記録" })).toHaveCount(0);
     await expect(navigation.getByRole("link", { name: "マイ" })).toHaveCount(0);
+    const publicSummary = page.getByRole("region", { name: "Public summary" });
+    await expect(publicSummary.getByText("閲覧範囲")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Weekly summary" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "ジムとイベント" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "火曜夜に軽く登る" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "垂壁の黄色を完登" })).toHaveCount(0);
@@ -37,6 +40,7 @@ test.describe("web guest experience", () => {
   test("keeps member tabs private for guests", async ({ page }) => {
     await page.goto("/plans");
     await expect(page.getByText("予定の管理はログイン後に使えます")).toBeVisible();
+    await expect(page.getByText("閲覧範囲")).toHaveCount(0);
 
     await page.goto("/logs");
     await expect(page.getByText("記録の管理はログイン後に使えます")).toBeVisible();
@@ -111,6 +115,9 @@ test.describe("web guest experience", () => {
     const overview = page.getByLabel("Zac overview");
     await expect(page.getByRole("region", { name: "ログイン後ホーム" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "今日のセッション管理" })).toBeVisible();
+    const weeklySummary = page.getByRole("region", { name: "Weekly summary" });
+    await expect(weeklySummary.getByText("今週の予定", { exact: true })).toBeVisible();
+    await expect(weeklySummary.getByText("保存ジム", { exact: true })).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "予定" })).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "記録" })).toBeVisible();
     await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "マイ" })).toBeVisible();

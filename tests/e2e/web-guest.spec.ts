@@ -20,6 +20,7 @@ test.describe("web guest experience", () => {
     await page.goto("/plans/new");
     await expect(page).toHaveURL(/\/plans\/new$/);
     await expect(page.getByText("予定作成はログイン後に保存できます")).toBeVisible();
+    await expect(page.getByLabel("タイトル")).toHaveCount(0);
     await expect(page.getByRole("link", { name: "ゲストで戻る" })).toBeVisible();
   });
 
@@ -39,6 +40,24 @@ test.describe("web guest experience", () => {
 
     await page.goto("/me");
     await expect(page.getByText("マイページはログイン後に使えます")).toBeVisible();
+  });
+
+  test("keeps protected forms private for guests", async ({ page }) => {
+    await page.goto("/logs/new");
+    await expect(page.getByText("記録作成はログイン後に保存できます")).toBeVisible();
+    await expect(page.getByLabel("日付")).toHaveCount(0);
+
+    await page.goto("/posts/new");
+    await expect(page.getByText("投稿作成はログイン後に公開できます")).toBeVisible();
+    await expect(page.getByLabel("本文")).toHaveCount(0);
+
+    await page.goto("/reports/new");
+    await expect(page.getByText("通報はログイン後に送信できます")).toBeVisible();
+    await expect(page.getByLabel("対象")).toHaveCount(0);
+
+    await page.goto("/settings");
+    await expect(page.getByText("設定はログイン後に使えます")).toBeVisible();
+    await expect(page.getByRole("link", { name: "プロフィール" })).toHaveCount(0);
   });
 
   test("allows authenticated users to log out from the header", async ({ page }) => {

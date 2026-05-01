@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
-import { AuthRequiredNote } from "./auth-required-note";
+import { AuthGate } from "./auth-gate";
 import type { GymOption } from "./data";
 import { SubmitButton } from "./submit-button";
 import { ZacIcon } from "./zac-icons";
@@ -52,7 +52,8 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
 
   return (
     <AppShell activeTab="plans">
-      <form action={submit} className="form-panel">
+      <AuthGate action="予定作成はログイン後に保存できます">
+        <form action={submit} className="form-panel">
         <div className="form-heading">
           <ZacIcon decorative icon="sessionPlan" size={48} />
           <div>
@@ -60,7 +61,6 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
             <h2>次に登る予定</h2>
           </div>
         </div>
-        <AuthRequiredNote action="予定作成はログイン後に保存できます" />
         <div className="form-grid">
           <label>
             タイトル
@@ -124,7 +124,8 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
           </div>
         ) : null}
         <SubmitButton pendingLabel="保存中">保存</SubmitButton>
-      </form>
+        </form>
+      </AuthGate>
     </AppShell>
   );
 }

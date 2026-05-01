@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
-import { AuthRequiredNote } from "./auth-required-note";
+import { AuthGate } from "./auth-gate";
 import type { GymOption } from "./data";
 import { ImageAttachmentField, uploadSelectedImages } from "./image-attachment-field";
 import { SubmitButton } from "./submit-button";
@@ -57,7 +57,8 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
 
   return (
     <AppShell activeTab="logs">
-      <form action={submit} className="form-panel">
+      <AuthGate action="記録作成はログイン後に保存できます">
+        <form action={submit} className="form-panel">
         <div className="form-heading">
           <ZacIcon decorative icon="climbLog" size={48} />
           <div>
@@ -65,7 +66,6 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
             <h2>登った内容を残す</h2>
           </div>
         </div>
-        <AuthRequiredNote action="記録作成はログイン後に保存できます" />
         <div className="form-grid">
           <label>
             日付
@@ -122,7 +122,8 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
           </div>
         ) : null}
         <SubmitButton pendingLabel="保存中">保存</SubmitButton>
-      </form>
+        </form>
+      </AuthGate>
     </AppShell>
   );
 }

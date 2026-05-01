@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { postApi } from "./api-client";
 import { AppShell } from "./app-shell";
-import { AuthRequiredNote } from "./auth-required-note";
+import { AuthGate } from "./auth-gate";
 import { ImageAttachmentField, uploadSelectedImages } from "./image-attachment-field";
 import { SubmitButton } from "./submit-button";
 import { ZacIcon } from "./zac-icons";
@@ -51,7 +51,8 @@ export function PostForm() {
 
   return (
     <AppShell activeTab="home">
-      <form action={submit} className="form-panel">
+      <AuthGate action="投稿作成はログイン後に公開できます">
+        <form action={submit} className="form-panel">
         <div className="form-heading">
           <ZacIcon decorative icon="bouldering" size={48} />
           <div>
@@ -59,7 +60,6 @@ export function PostForm() {
             <h2>登ったことを共有する</h2>
           </div>
         </div>
-        <AuthRequiredNote action="投稿作成はログイン後に公開できます" />
         <div className="form-grid">
           <label>
             本文
@@ -96,7 +96,8 @@ export function PostForm() {
           </div>
         ) : null}
         <SubmitButton pendingLabel="投稿中">投稿</SubmitButton>
-      </form>
+        </form>
+      </AuthGate>
     </AppShell>
   );
 }

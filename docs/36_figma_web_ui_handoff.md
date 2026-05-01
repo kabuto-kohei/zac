@@ -182,6 +182,7 @@ Authenticated composer:
 - links: `記録`, `予定`, `投稿`
 
 Guestではcomposerを常設しない。保存・参加・作成の意図が出た時だけinline messageまたは `AuthRequiredNote` でログインへつなぐ。
+ゲストが作成、設定、通報などの保護routeへ直アクセスした場合は、フォーム本体を出さず `AuthRequiredNote` のみを表示する。
 
 ### 4.4 Home shortcuts
 

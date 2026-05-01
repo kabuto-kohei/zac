@@ -32,7 +32,7 @@ export function AppShell({
             <p className="topbar-subtitle">次のセッションを決める</p>
           </div>
         </div>
-        {action ?? <ShellActions />}
+        <ShellActions>{action}</ShellActions>
       </section>
 
       <nav className="bottom-nav" aria-label="Main navigation">

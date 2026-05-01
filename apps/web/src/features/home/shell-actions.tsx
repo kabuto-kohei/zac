@@ -1,19 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useAuthStatus } from "./auth-state";
 
-export function ShellActions() {
+export function ShellActions({ children }: { children?: ReactNode }) {
   const { authenticated, checking } = useAuthStatus();
 
-  if (!checking && !authenticated) {
+  if (checking || !authenticated) {
     return (
       <div className="action-row">
-        <Link className="ghost-button" href="/login">
-          ログイン
-        </Link>
-        <Link className="primary-action" href="/plans/new">
-          予定作成
+        <Link className="primary-action" href="/login">
+          Login
         </Link>
       </div>
     );
@@ -24,10 +22,11 @@ export function ShellActions() {
       <Link className="ghost-button" href="/notifications">
         通知
       </Link>
-      <Link className="primary-action" href="/plans/new">
-        予定作成
-      </Link>
+      {children ?? (
+        <Link className="primary-action" href="/plans/new">
+          予定作成
+        </Link>
+      )}
     </div>
   );
 }
-

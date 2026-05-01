@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 import { useAuthStatus } from "./auth-state";
 import { EventCard, GymCard, LogCard, PlanCard, PostCard } from "./cards";
 import type { HomeFeedItem, HomeViewData } from "./data";
+import { MemberActivityState, useMemberActivityData } from "./member-activity-data";
 import { ZacIcon } from "./zac-icons";
 
 type FeedFilter = "all" | HomeFeedItem["type"];
@@ -22,10 +23,20 @@ export function FeedExperience({ data }: { data: HomeViewData }) {
   const { authenticated, checking } = useAuthStatus();
 
   if (!checking && authenticated) {
-    return <MemberHomeExperience data={data} />;
+    return <MemberHomeExperienceLoader data={data} />;
   }
 
   return <GuestHomeExperience data={data} />;
+}
+
+function MemberHomeExperienceLoader({ data }: { data: HomeViewData }) {
+  const state = useMemberActivityData(data);
+
+  if (state.status !== "ready") {
+    return <MemberActivityState state={state} />;
+  }
+
+  return <MemberHomeExperience data={state.data} />;
 }
 
 function GuestHomeExperience({ data }: { data: HomeViewData }) {

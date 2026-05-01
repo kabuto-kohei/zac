@@ -34,10 +34,6 @@ export function AppShell({
   );
 }
 
-export function MetricStrip() {
-  return <MetricStripView weeklyPlans={2} savedGyms={3} logs={8} />;
-}
-
 export function MetricStripView({
   weeklyPlans,
   savedGyms,

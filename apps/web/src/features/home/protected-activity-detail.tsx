@@ -12,10 +12,6 @@ type LoadState<T> =
   | { status: "error"; data?: never; message: string }
   | { status: "ready"; data: T; message?: never };
 
-type DataResponse<T> = {
-  data: T;
-};
-
 export function ProtectedPlanDetail({ planId }: { planId: string }) {
   const state = useProtectedData<PlanSummary>(`/v1/session-plans/${encodeURIComponent(planId)}`);
 
@@ -132,7 +128,7 @@ function useProtectedData<T>(path: string): LoadState<T> {
 
     async function load() {
       setState({ status: "loading" });
-      const response = await getApi<DataResponse<T>>(path);
+      const response = await getApi<T>(path);
 
       if (!active) {
         return;
@@ -143,7 +139,7 @@ function useProtectedData<T>(path: string): LoadState<T> {
         return;
       }
 
-      setState({ status: "ready", data: response.data.data });
+      setState({ status: "ready", data: response.data });
     }
 
     void load();

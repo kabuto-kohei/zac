@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { AppShell, MetricStrip } from "./app-shell";
+import { AppShell } from "./app-shell";
 import { getEventDetailData } from "./data";
 import { EventActions } from "./detail-actions";
 import { ZacIcon } from "./zac-icons";
@@ -14,7 +14,6 @@ export async function EventDetail({ eventId }: { eventId: string }) {
 
   return (
     <AppShell activeTab="explore" action={<Link className="primary-action" href="/plans/new">予定作成</Link>}>
-      <MetricStrip />
       <section className="hero-card">
         <div className="hero-visual icon-visual event-visual">
           <ZacIcon decorative icon="lead" size={76} />

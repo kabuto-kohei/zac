@@ -24,6 +24,7 @@
 - API service層で認可/公開範囲/ブロックを判定し、RLSは防御層として使う。
 - route/service/queryの責務境界を分離する。
 - User Web/AdminはNext.js App Routerで実装し、Hono APIだけを呼ぶ。
+- ゲスト公開はジム/イベントだけに限定する。予定、記録、投稿、feedはログイン後の活動データであり、API、初期HTML/RSC payload、画面表示のすべてでanonymousへ返さない。
 - PR/CI/release gateでlint、typecheck、test、build、migration、OpenAPI、secret漏れを確認する。
 
 ---

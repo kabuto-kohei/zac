@@ -1,14 +1,8 @@
 import {
   findEventFixture,
   findGymFixture,
-  findLogFixture,
-  findPlanFixture,
-  findPostFixture,
   eventFixtures,
   gymFixtures,
-  logFixtures,
-  planFixtures,
-  postFixtures,
   type EventSummary,
   type GymSummary,
   type LogSummary,
@@ -80,18 +74,6 @@ export async function getGymDetailData(gymId: string) {
 
 export async function getEventDetailData(eventId: string) {
   return getApiData<EventSummary>(`/v1/events/${encodeURIComponent(eventId)}`, findEventFixture(eventId) ?? null);
-}
-
-export async function getPlanDetailData(planId: string) {
-  return getApiData<PlanSummary>(`/v1/session-plans/${encodeURIComponent(planId)}`, findPlanFixture(planId) ?? null);
-}
-
-export async function getLogDetailData(logId: string) {
-  return getApiData<LogSummary>(`/v1/logs/${encodeURIComponent(logId)}`, findLogFixture(logId) ?? null);
-}
-
-export async function getPostDetailData(postId: string) {
-  return getApiData<PostSummary>(`/v1/posts/${encodeURIComponent(postId)}`, findPostFixture(postId) ?? null);
 }
 
 export async function getGymOptions(): Promise<GymOption[]> {

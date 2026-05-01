@@ -8,6 +8,12 @@ test.describe("web guest experience", () => {
     const overview = page.getByLabel("Zac overview");
     await expect(overview.getByRole("link", { name: "Login" })).toBeVisible();
     await expect(overview.getByRole("link", { name: "予定作成" })).toHaveCount(0);
+    const navigation = page.getByRole("navigation", { name: "Main navigation" });
+    await expect(navigation.getByRole("link", { name: "ホーム" })).toBeVisible();
+    await expect(navigation.getByRole("link", { name: "探す" })).toBeVisible();
+    await expect(navigation.getByRole("link", { name: "予定" })).toHaveCount(0);
+    await expect(navigation.getByRole("link", { name: "記録" })).toHaveCount(0);
+    await expect(navigation.getByRole("link", { name: "マイ" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "公開フィード" })).toBeVisible();
     await expect(page.getByRole("region", { name: "作成" })).toHaveCount(0);
 
@@ -22,6 +28,17 @@ test.describe("web guest experience", () => {
 
     await expect(page.getByText("通知はログイン後に確認できます")).toBeVisible();
     await expect(page.getByRole("article").getByRole("link", { name: "ログイン" })).toBeVisible();
+  });
+
+  test("keeps member tabs private for guests", async ({ page }) => {
+    await page.goto("/plans");
+    await expect(page.getByText("予定の管理はログイン後に使えます")).toBeVisible();
+
+    await page.goto("/logs");
+    await expect(page.getByText("記録の管理はログイン後に使えます")).toBeVisible();
+
+    await page.goto("/me");
+    await expect(page.getByText("マイページはログイン後に使えます")).toBeVisible();
   });
 
   test("allows authenticated users to log out from the header", async ({ page }) => {
@@ -44,6 +61,9 @@ test.describe("web guest experience", () => {
     const overview = page.getByLabel("Zac overview");
     await expect(page.getByRole("region", { name: "ログイン後ホーム" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "今日のセッション管理" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "予定" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "記録" })).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Main navigation" }).getByRole("link", { name: "マイ" })).toBeVisible();
     await expect(overview.getByRole("link", { name: "予定作成" })).toBeVisible();
     await overview.getByRole("button", { name: "ログアウト" }).click();
 

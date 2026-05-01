@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AppShell, MetricStripView, type Tab } from "./app-shell";
+import { AuthGate } from "./auth-gate";
 import { getHomeViewData, type HomeViewData } from "./data";
 import { ExplorePanel } from "./explore-panel";
 import { FeedExperience } from "./feed-experience";
@@ -12,9 +13,21 @@ export async function WebAppHome({ activeTab }: { activeTab: Tab }) {
     <AppShell activeTab={activeTab}>
       <MetricStripView {...data.metrics} />
       {activeTab === "explore" ? <ExplorePanel data={data} /> : null}
-      {activeTab === "plans" ? <PlansPanel data={data} /> : null}
-      {activeTab === "logs" ? <LogsPanel data={data} /> : null}
-      {activeTab === "me" ? <ProfilePanel data={data} /> : null}
+      {activeTab === "plans" ? (
+        <AuthGate action="予定の管理はログイン後に使えます">
+          <PlansPanel data={data} />
+        </AuthGate>
+      ) : null}
+      {activeTab === "logs" ? (
+        <AuthGate action="記録の管理はログイン後に使えます">
+          <LogsPanel data={data} />
+        </AuthGate>
+      ) : null}
+      {activeTab === "me" ? (
+        <AuthGate action="マイページはログイン後に使えます">
+          <ProfilePanel data={data} />
+        </AuthGate>
+      ) : null}
       {activeTab === "home" ? <FeedExperience data={data} /> : null}
     </AppShell>
   );

@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getBrowserSupabaseClient } from "./integration-provider";
-
-const sessionKey = "zac.local.session";
+import { authSessionChangedEvent, localSessionKey } from "./auth-session";
 
 export function useAuthStatus() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -17,7 +16,7 @@ export function useAuthStatus() {
 
       if (!supabase) {
         if (active) {
-          setAuthenticated(Boolean(window.localStorage.getItem(sessionKey)));
+          setAuthenticated(Boolean(window.localStorage.getItem(localSessionKey)));
           setChecking(false);
         }
         return;
@@ -31,13 +30,18 @@ export function useAuthStatus() {
       }
     }
 
+    function handleAuthSessionChange() {
+      void load();
+    }
+
     void load();
+    window.addEventListener(authSessionChangedEvent, handleAuthSessionChange);
 
     return () => {
       active = false;
+      window.removeEventListener(authSessionChangedEvent, handleAuthSessionChange);
     };
   }, []);
 
   return { authenticated, checking };
 }
-

@@ -23,6 +23,33 @@ test.describe("web guest experience", () => {
     await expect(page.getByRole("article").getByRole("link", { name: "ログイン" })).toBeVisible();
   });
 
+  test("allows authenticated users to log out from the header", async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.setItem("zac.local.session", JSON.stringify({ email: "climber@example.test" }));
+      window.localStorage.setItem(
+        "zac.local.profile",
+        JSON.stringify({
+          displayName: "Climber",
+          discipline: "boulder",
+          experience: "beginner",
+          area: "東京",
+          defaultVisibility: "followers",
+        }),
+      );
+    });
+
+    await page.goto("/");
+
+    const overview = page.getByLabel("Zac overview");
+    await expect(overview.getByRole("link", { name: "予定作成" })).toBeVisible();
+    await overview.getByRole("button", { name: "ログアウト" }).click();
+
+    await expect(overview.getByRole("link", { name: "Login" })).toBeVisible();
+    await expect(overview.getByRole("button", { name: "ログアウト" })).toHaveCount(0);
+    await expect(page).toHaveURL(/\/$/);
+    await expect(page.evaluate(() => window.localStorage.getItem("zac.local.profile"))).resolves.toBeNull();
+  });
+
   test("filters public gyms and events on explore", async ({ page }) => {
     await page.goto("/explore");
 

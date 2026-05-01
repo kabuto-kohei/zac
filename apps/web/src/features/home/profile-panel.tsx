@@ -4,13 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { UserProfileSummary } from "@zac/shared";
+import { localProfileKey, signOutCurrentUser } from "./auth-session";
 import { getApi } from "./api-client";
 import type { HomeViewData } from "./data";
 import { getBrowserSupabaseClient } from "./integration-provider";
 import { ZacIcon } from "./zac-icons";
-
-const sessionKey = "zac.local.session";
-const profileKey = "zac.local.profile";
 
 type LocalProfile = Pick<UserProfileSummary, "displayName" | "discipline" | "experience" | "area" | "defaultVisibility">;
 
@@ -36,7 +34,7 @@ export function ProfilePanel({ data }: { data: HomeViewData }) {
     let active = true;
 
     async function loadProfile() {
-      const value = window.localStorage.getItem(profileKey);
+      const value = window.localStorage.getItem(localProfileKey);
       const localProfile = value ? parseProfile(value) : null;
       setProfile(localProfile);
 
@@ -58,7 +56,7 @@ export function ProfilePanel({ data }: { data: HomeViewData }) {
         defaultVisibility: response.data.defaultVisibility,
       };
 
-      window.localStorage.setItem(profileKey, JSON.stringify(remoteProfile));
+      window.localStorage.setItem(localProfileKey, JSON.stringify(remoteProfile));
       setProfile(remoteProfile);
     }
 
@@ -98,12 +96,9 @@ export function ProfilePanel({ data }: { data: HomeViewData }) {
   }, [data.gyms, data.logs, data.plans, data.posts, localStateVersion]);
 
   async function logout() {
-    const supabase = getBrowserSupabaseClient();
-    if (supabase) {
-      await supabase.auth.signOut();
-    }
-    window.localStorage.removeItem(sessionKey);
+    await signOutCurrentUser();
     router.push("/login");
+    router.refresh();
   }
 
   if (!profile) {

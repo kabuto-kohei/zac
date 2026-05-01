@@ -15,43 +15,6 @@ const profileKey = "zac.local.profile";
 type FieldErrors = Partial<Record<"email" | "displayName" | "area" | "form", string>>;
 type AuthMode = "login" | "register";
 
-export function LaunchGate() {
-  return (
-    <main className="app-shell">
-      <section className="topbar" aria-label="Zac start">
-        <div className="topbar-brand">
-          <ZacIcon icon="logo" size={56} />
-          <div>
-            <h1>Zac</h1>
-            <p className="topbar-subtitle">次のセッションを決める</p>
-          </div>
-        </div>
-        <Link className="primary-action" href="/home">
-          ゲストで見る
-        </Link>
-      </section>
-      <section className="stack">
-        <article className="wide-card">
-          <p className="card-kind">Climb Life OS</p>
-          <h2>まず探して、必要なときだけログイン</h2>
-          <p>ジム、イベント、公開予定、投稿はゲストで閲覧できます。保存、参加、作成、マイページはログイン後に使えます。</p>
-        </article>
-        <article className="wide-card action-row">
-          <Link className="primary-action" href="/home">
-            ゲストで見る
-          </Link>
-          <Link className="primary-action" href="/register">
-            新規登録
-          </Link>
-          <Link className="ghost-button" href="/login">
-            ログイン
-          </Link>
-        </article>
-      </section>
-    </main>
-  );
-}
-
 export function AuthForm({ mode }: { mode: AuthMode }) {
   const router = useRouter();
   const [errors, setErrors] = useState<FieldErrors>({});
@@ -90,7 +53,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
 
     window.localStorage.setItem(sessionKey, JSON.stringify(result.data));
     setErrors({});
-    router.push(mode === "register" ? "/onboarding" : hasLocalProfile() ? "/home" : "/onboarding");
+    router.push(mode === "register" ? "/onboarding" : hasLocalProfile() ? "/" : "/onboarding");
   }
 
   if (sentEmail) {
@@ -205,7 +168,7 @@ export function OnboardingForm() {
 
     window.localStorage.setItem(profileKey, JSON.stringify(result.data));
     setErrors({});
-    router.push("/home");
+    router.push("/");
   }
 
   return (

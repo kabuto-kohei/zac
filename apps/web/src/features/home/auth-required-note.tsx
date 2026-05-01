@@ -21,11 +21,10 @@ export function AuthRequiredNote({ action }: { action: string }) {
         <Link className="primary-action" href="/login">
           ログイン
         </Link>
-        <Link className="ghost-button" href="/home">
+        <Link className="ghost-button" href="/">
           ゲストで戻る
         </Link>
       </div>
     </article>
   );
 }
-

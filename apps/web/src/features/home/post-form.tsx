@@ -86,7 +86,7 @@ export function PostForm() {
                   作成した投稿
                 </Link>
               ) : null}
-              <Link className="ghost-button" href="/home">
+              <Link className="ghost-button" href="/">
                 フィードへ
               </Link>
               <Link className="ghost-button" href="/plans/new">

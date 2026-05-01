@@ -4,11 +4,6 @@ test.describe("web guest experience", () => {
   test("allows public browsing before login and guides protected actions to auth", async ({ page }) => {
     await page.goto("/");
 
-    const startPanel = page.getByLabel("Zac start");
-    await expect(startPanel.getByRole("link", { name: "ゲストで見る" })).toBeVisible();
-    await startPanel.getByRole("link", { name: "ゲストで見る" }).click();
-
-    await expect(page).toHaveURL(/\/home$/);
     await expect(page.getByText("公開情報はこのまま閲覧できます")).toBeVisible();
     const overview = page.getByLabel("Zac overview");
     await expect(overview.getByRole("link", { name: "ログイン" })).toBeVisible();

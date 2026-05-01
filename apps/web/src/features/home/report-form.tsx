@@ -91,7 +91,7 @@ export function ReportForm({
           <div className="success-panel">
             <p className="success-message">{savedMessage}</p>
             <div className="action-row">
-              <Link className="ghost-button" href="/home">
+              <Link className="ghost-button" href="/">
                 フィードへ戻る
               </Link>
             </div>

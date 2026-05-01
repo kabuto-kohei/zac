@@ -6,7 +6,7 @@ import { ZacIcon, type ZacIconKey } from "./zac-icons";
 export type Tab = "home" | "explore" | "plans" | "logs" | "me";
 
 const navItems: Array<{ id: Tab; href: string; label: string; icon?: ZacIconKey; textIcon?: string }> = [
-  { id: "home", href: "/home", label: "ホーム", textIcon: "⌂" },
+  { id: "home", href: "/", label: "ホーム", textIcon: "⌂" },
   { id: "explore", href: "/explore", label: "探す", icon: "gym" },
   { id: "plans", href: "/plans", label: "予定", icon: "sessionPlan" },
   { id: "logs", href: "/logs", label: "記録", icon: "climbLog" },

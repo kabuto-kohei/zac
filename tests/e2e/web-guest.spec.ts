@@ -1,4 +1,13 @@
-import { expect, test } from "@playwright/test";
+import { expect, type Page, test } from "@playwright/test";
+
+const localSession = { email: "climber@example.test" };
+const localProfile = {
+  displayName: "Climber",
+  discipline: "boulder",
+  experience: "beginner",
+  area: "東京",
+  defaultVisibility: "followers",
+};
 
 test.describe("web guest experience", () => {
   test("allows public browsing before login and guides protected actions to auth", async ({ page }) => {
@@ -96,19 +105,7 @@ test.describe("web guest experience", () => {
   });
 
   test("allows authenticated users to log out from the header", async ({ page }) => {
-    await page.addInitScript(() => {
-      window.localStorage.setItem("zac.local.session", JSON.stringify({ email: "climber@example.test" }));
-      window.localStorage.setItem(
-        "zac.local.profile",
-        JSON.stringify({
-          displayName: "Climber",
-          discipline: "boulder",
-          experience: "beginner",
-          area: "東京",
-          defaultVisibility: "followers",
-        }),
-      );
-    });
+    await signInWithLocalSession(page);
 
     await page.goto("/");
 
@@ -145,3 +142,137 @@ test.describe("web guest experience", () => {
     await expect(page.getByRole("heading", { name: "Rocky Shinagawa" })).toBeVisible();
   });
 });
+
+test.describe("web authenticated local experience", () => {
+  test.beforeEach(async ({ page }) => {
+    await signInWithLocalSession(page);
+  });
+
+  test("saves profile and privacy settings locally", async ({ page }) => {
+    await page.goto("/settings/profile");
+
+    const profileForm = page.locator("form").filter({ hasText: "プロフィール編集" });
+    await expect(profileForm.getByRole("heading", { name: "プロフィール編集" })).toBeVisible();
+    await profileForm.getByLabel("表示名").fill("Zac Tester");
+    await profileForm.getByLabel("よく行くエリア").fill("横浜");
+    await profileForm.getByLabel("経験").selectOption("intermediate");
+    await profileForm.getByLabel("予定の初期表示範囲").selectOption("private");
+    await profileForm.getByRole("button", { name: "保存" }).click();
+
+    await expect(profileForm.getByText("プロフィールを保存しました。")).toBeVisible();
+    await expect(page.evaluate(() => JSON.parse(window.localStorage.getItem("zac.local.profile") ?? "{}"))).resolves.toMatchObject({
+      area: "横浜",
+      defaultVisibility: "private",
+      displayName: "Zac Tester",
+      experience: "intermediate",
+    });
+
+    await page.goto("/settings/privacy");
+
+    const privacyPanel = page.getByRole("main");
+    await expect(privacyPanel.getByRole("heading", { name: "自分のみ" })).toBeVisible();
+    await privacyPanel.getByLabel("初期表示範囲").selectOption("public");
+    await privacyPanel.getByRole("button", { name: "保存" }).click();
+
+    await expect(privacyPanel.getByText("公開範囲を保存しました。")).toBeVisible();
+    await expect(page.evaluate(() => JSON.parse(window.localStorage.getItem("zac.local.profile") ?? "{}"))).resolves.toMatchObject({
+      defaultVisibility: "public",
+    });
+  });
+
+  test("submits the main creation forms with authenticated UI", async ({ page }) => {
+    await routeCreationApis(page);
+
+    await page.goto("/plans/new");
+    const planForm = page.locator("form").filter({ hasText: "次に登る予定" });
+    await expect(planForm.getByLabel("タイトル")).toBeVisible();
+    await planForm.getByLabel("タイトル").fill("E2E セッション");
+    await planForm.getByLabel("ジム").selectOption("B-PUMP Tokyo");
+    await planForm.getByLabel("開始日時").fill("2026-05-12T19:00");
+    await planForm.getByLabel("終了日時").fill("2026-05-12T21:00");
+    await planForm.getByLabel("メモ").fill("軽めに登る");
+    await planForm.getByRole("button", { name: "保存" }).click();
+
+    await expect(planForm.getByText("予定を保存しました。")).toBeVisible();
+    await expect(planForm.getByRole("link", { name: "作成した予定" })).toHaveAttribute("href", "/plans/e2e-plan");
+
+    await page.goto("/logs/new");
+    const logForm = page.locator("form").filter({ hasText: "登った内容を残す" });
+    await expect(logForm.getByLabel("日付")).toBeVisible();
+    await logForm.getByLabel("日付").fill("2026-05-12");
+    await logForm.getByLabel("ジム").selectOption("B-PUMP Tokyo");
+    await logForm.getByLabel("グレード").fill("4級");
+    await logForm.getByLabel("概要").fill("E2E 完登ログ");
+    await logForm.getByLabel("メモ").fill("足位置を確認");
+    await logForm.getByRole("button", { name: "保存" }).click();
+
+    await expect(logForm.getByText("記録を保存しました。")).toBeVisible();
+    await expect(logForm.getByRole("link", { name: "作成した記録" })).toHaveAttribute("href", "/logs/e2e-log");
+
+    await page.goto("/posts/new");
+    const postForm = page.locator("form").filter({ hasText: "登ったことを共有する" });
+    await expect(postForm.getByLabel("本文")).toBeVisible();
+    await postForm.getByLabel("本文").fill("E2E 投稿テスト");
+    await postForm.getByLabel("表示範囲").selectOption("public");
+    await postForm.getByRole("button", { name: "投稿" }).click();
+
+    await expect(postForm.getByText("投稿しました。")).toBeVisible();
+    await expect(postForm.getByRole("link", { name: "作成した投稿" })).toHaveAttribute("href", "/posts/e2e-post");
+  });
+});
+
+async function signInWithLocalSession(page: Page) {
+  await page.addInitScript(
+    ({ profile, session }) => {
+      if (!window.localStorage.getItem("zac.local.session")) {
+        window.localStorage.setItem("zac.local.session", JSON.stringify(session));
+      }
+
+      if (!window.localStorage.getItem("zac.local.profile")) {
+        window.localStorage.setItem("zac.local.profile", JSON.stringify(profile));
+      }
+    },
+    { profile: localProfile, session: localSession },
+  );
+}
+
+async function routeCreationApis(page: Page) {
+  await page.route("**/v1/session-plans", async (route) => {
+    if (route.request().method() !== "POST") {
+      await route.fallback();
+      return;
+    }
+
+    await route.fulfill({
+      contentType: "application/json",
+      status: 201,
+      body: JSON.stringify({ data: { id: "e2e-plan" } }),
+    });
+  });
+
+  await page.route("**/v1/logs", async (route) => {
+    if (route.request().method() !== "POST") {
+      await route.fallback();
+      return;
+    }
+
+    await route.fulfill({
+      contentType: "application/json",
+      status: 201,
+      body: JSON.stringify({ data: { id: "e2e-log" } }),
+    });
+  });
+
+  await page.route("**/v1/posts", async (route) => {
+    if (route.request().method() !== "POST") {
+      await route.fallback();
+      return;
+    }
+
+    await route.fulfill({
+      contentType: "application/json",
+      status: 201,
+      body: JSON.stringify({ data: { id: "e2e-post" } }),
+    });
+  });
+}

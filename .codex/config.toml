@@ -1,0 +1,15 @@
+# Zac project-scoped Codex defaults.
+#
+# This file intentionally keeps the sandbox limited to the Zac repo. Use
+# org-os-zac when work needs planning/state management outside this product repo.
+
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+[sandbox_workspace_write]
+writable_roots = []
+network_access = false

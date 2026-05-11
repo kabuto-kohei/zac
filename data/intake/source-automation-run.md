@@ -1,17 +1,17 @@
 # Source Automation Run
 
-- Generated: 2026-05-11T06:02:12.060Z
-- Updated: 2026-05-11T06:02:14.677Z
+- Generated: 2026-05-11T06:39:51.361Z
+- Updated: 2026-05-11T06:39:57.348Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `pnpm db:verify:remote` (558ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (536ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (671ms, attempt 1)
-- passed: `pnpm sources:monitor` (848ms, attempt 1)
+- passed: `pnpm db:verify:remote` (1350ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1399ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (1375ms, attempt 1)
+- passed: `pnpm sources:monitor` (1859ms, attempt 1)
 
 ## Summary
 

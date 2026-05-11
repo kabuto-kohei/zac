@@ -180,7 +180,7 @@ export function OnboardingForm() {
     <main className="app-shell">
       <form action={submit} className="form-panel">
         <p className="card-kind">オンボーディング</p>
-        <h1>登るスタイルを設定</h1>
+        <h1>プロフィール設定</h1>
         {checkingSession ? <p>認証状態を確認しています。</p> : null}
         {!checkingSession && !hasSession ? (
           <article className="wide-card">
@@ -241,7 +241,6 @@ export function OnboardingForm() {
         <article className="wide-card">
           <p className="card-kind">位置情報</p>
           <h3>OFF</h3>
-          <p>現在地共有はMVPでは使いません。</p>
         </article>
         <SubmitButton pendingLabel="保存中">ホームへ</SubmitButton>
         {errors.form ? <p className="field-error">{errors.form}</p> : null}

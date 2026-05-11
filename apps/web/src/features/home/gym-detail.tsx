@@ -23,19 +23,25 @@ export async function GymDetail({ gymId }: { gymId: string }) {
           <h2>{gym.name}</h2>
           <p>{gym.address}</p>
           <p>{gym.disciplines} · {gym.openingHours}</p>
-          {gym.sourceUrl ? (
-            <p className="source-line">
-              <span>情報源</span>
-              <a href={gym.sourceUrl} rel="noreferrer" target="_blank">
-                {gym.sourceAttribution ?? "公式情報"}
-              </a>
-              {gym.instagramUrl ? (
-                <a href={gym.instagramUrl} rel="noreferrer" target="_blank">
-                  Instagram
-                </a>
+          {gym.sourceUrl || gym.websiteUrl || gym.instagramUrl ? (
+            <div className="source-list" aria-label="情報源">
+              {gym.websiteUrl || gym.sourceUrl ? (
+                <p className="source-line">
+                  <span>{gym.websiteUrl ? "公式サイト" : "情報源"}</span>
+                  <a href={gym.websiteUrl ?? gym.sourceUrl} rel="noreferrer" target="_blank">
+                    {gym.sourceAttribution ?? "公式情報"}
+                  </a>
+                </p>
               ) : null}
-              {gym.sourceVerifiedAt ? <span>{gym.sourceVerifiedAt}</span> : null}
-            </p>
+              {gym.instagramUrl ? (
+                <p className="source-line">
+                  <span>SNS</span>
+                  <a href={gym.instagramUrl} rel="noreferrer" target="_blank">
+                    Instagram{gym.instagramHandle ? ` @${gym.instagramHandle}` : ""}
+                  </a>
+                </p>
+              ) : null}
+            </div>
           ) : null}
         </div>
       </section>

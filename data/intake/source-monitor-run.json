@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T09:17:05.429Z",
+  "generatedAt": "2026-05-11T09:50:56.017Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -68,7 +68,7 @@
       "private_booking": 1,
       "route_set": 16
     },
-    "dueApprovedSources": 13,
+    "dueApprovedSources": 18,
     "instagramPostSources": 32,
     "candidateSources": 94,
     "upcomingEvents": 23,
@@ -194,6 +194,51 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T03:05:00.000Z",
         "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "base-camp-hanno",
+        "displayName": "Boulder Park Base Camp 飯能店 公式サイト",
+        "sourceUrl": "https://b-camp.jp/hanno",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "base-camp-iruma",
+        "displayName": "Climb Park Base Camp 入間店 公式サイト",
+        "sourceUrl": "https://b-camp.jp/iruma",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "base-camp-tokyo-edogawabashi",
+        "displayName": "Base Camp Tokyo 江戸川橋 公式サイト",
+        "sourceUrl": "https://b-camp.jp/edogawabashi/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "base-camp-tokyo-kinshicho",
+        "displayName": "Base Camp Tokyo 錦糸町 公式サイト",
+        "sourceUrl": "https://b-camp.jp/kinshicho/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "climbing-spider",
+        "displayName": "クライミングジムSPIDER 公式サイト",
+        "sourceUrl": "https://climbing-spider.com/shop/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
       }
     ],
     "instagramPostInspection": [

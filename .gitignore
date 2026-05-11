@@ -12,6 +12,7 @@ coverage/
 playwright-report/
 test-results/
 supabase/.temp/
+data/intake/*.log
 
 *.tsbuildinfo
 .vercel

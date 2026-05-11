@@ -128,15 +128,34 @@ Codex app automation:
 
 - Name: `Zac official source freshness monitor`
 - ID: `zac-official-source-freshness-monitor`
-- Interval: hourly after the cleanup pass
+- Interval: hourly after the local launchd pass
 - Workspace: `/Users/kkabuto/dev/zac`
-- Required first command: `pnpm sources:automation-run`
-- Required health check after run: `pnpm sources:automation-health`
+- Required first command for Codex cron: `pnpm sources:automation-health`
+- Role: read the latest local-run artifacts and report blockers. Do not pretend
+  Codex cron performed public-source inspection if its sandbox cannot reach the
+  public web.
 - Fallback command order when the orchestrator needs manual recovery:
   1. `pnpm db:verify:remote`
   2. `pnpm sources:plan-refresh`
   3. `pnpm sources:match-instagram`
   4. `pnpm sources:monitor`
+
+Local macOS runner:
+
+- LaunchAgent template: `ops/launchd/com.zac.source-freshness.plist`
+- Installed path: `~/Library/LaunchAgents/com.zac.source-freshness.plist`
+- Program: `scripts/run-source-automation-local.sh`
+- Cadence: hourly, plus `RunAtLoad`
+- Command order: `pnpm sources:automation-run` then
+  `pnpm sources:automation-health`
+- Logs:
+  - `data/intake/source-automation-local.out.log`
+  - `data/intake/source-automation-local.err.log`
+
+The local LaunchAgent is the source-fetch execution path because it runs in the
+user's normal macOS network context. The Codex app cron remains useful for
+reporting and supervision, but it must not be the only source-fetch mechanism
+when its sandbox cannot resolve public web hosts.
 
 The Supabase pooler can hit connection limits if DB commands run in parallel.
 Automation must run DB commands sequentially. `sources:automation-run` handles

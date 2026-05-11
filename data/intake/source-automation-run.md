@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-11T09:17:01.936Z
-- Updated: 2026-05-11T09:17:07.202Z
+- Generated: 2026-05-11T09:50:53.225Z
+- Updated: 2026-05-11T09:50:56.557Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (192ms, attempt 1)
-- passed: `pnpm db:verify:remote` (1220ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (897ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (958ms, attempt 1)
-- passed: `pnpm sources:monitor` (1996ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (104ms, attempt 1)
+- passed: `pnpm db:verify:remote` (761ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (903ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (825ms, attempt 1)
+- passed: `pnpm sources:monitor` (735ms, attempt 1)
 
 ## Summary
 
@@ -34,7 +34,7 @@
 - sourceType.official_instagram: 125
 - sourceType.official_site: 67
 - sourceType.operator_owned_page: 1
-- dueApprovedSources: 13
+- dueApprovedSources: 18
 - instagramPostSources: 32
 - approvedSourceRotation: 96
 - operatorBatch: 16
@@ -53,7 +53,7 @@
 ## Next Actions
 
 - Inspect official Instagram recent-post queue first (32 source(s)); record post URLs in source_post_observations or reproducible SQL patches.
-- Inspect 13 due approved source(s) from inspectNow first.
+- Inspect 18 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
 - Recheck upcomingEventRecheck for items starting within the next 30 days (23 queued).
 - Promote candidateVerification only with official-site/profile evidence (94 queued).

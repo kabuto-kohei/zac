@@ -15,15 +15,17 @@ type ZacIconAsset = {
   alt: string;
 };
 
+const iconSrc = (fileName: string) => `/icons/zac/${fileName}?v=20260511-transparent`;
+
 export const zacIcons: Record<ZacIconKey, ZacIconAsset> = {
-  logo: { src: "/icons/zac/01_zac_logo.png", alt: "Zac" },
-  gym: { src: "/icons/zac/02_gym.png", alt: "ジム" },
-  bouldering: { src: "/icons/zac/03_bouldering.png", alt: "ボルダリング" },
-  lead: { src: "/icons/zac/04_lead.png", alt: "リード" },
-  topRope: { src: "/icons/zac/05_top_rope.png", alt: "トップロープ" },
-  climbLog: { src: "/icons/zac/06_climb_log.png", alt: "記録" },
-  sessionPlan: { src: "/icons/zac/07_session_plan.png", alt: "予定" },
-  grade: { src: "/icons/zac/08_grade.png", alt: "グレード" },
+  logo: { src: iconSrc("01_zac_logo.png"), alt: "Zac" },
+  gym: { src: iconSrc("02_gym.png"), alt: "ジム" },
+  bouldering: { src: iconSrc("03_bouldering.png"), alt: "ボルダリング" },
+  lead: { src: iconSrc("04_lead.png"), alt: "リード" },
+  topRope: { src: iconSrc("05_top_rope.png"), alt: "トップロープ" },
+  climbLog: { src: iconSrc("06_climb_log.png"), alt: "記録" },
+  sessionPlan: { src: iconSrc("07_session_plan.png"), alt: "予定" },
+  grade: { src: iconSrc("08_grade.png"), alt: "グレード" },
 };
 
 export function ZacIcon({

@@ -1,7 +1,16 @@
 import dns from "node:dns/promises";
 import { setTimeout as sleep } from "node:timers/promises";
 
-const TRANSIENT_CODES = new Set(["ENOTFOUND", "EAI_AGAIN", "ETIMEDOUT", "ECONNRESET", "ECONNREFUSED", "57P03", "53300", "08006"]);
+const TRANSIENT_CODES = new Set([
+  "ENOTFOUND",
+  "EAI_AGAIN",
+  "ETIMEDOUT",
+  "ECONNRESET",
+  "ECONNREFUSED",
+  "57P03",
+  "53300",
+  "08006",
+]);
 
 export async function withDatabaseClient(postgres, databaseUrl, operation, options = {}) {
   const attempts = options.attempts ?? 4;
@@ -78,5 +87,9 @@ function getDatabaseHostname(databaseUrl) {
 }
 
 function isTransientDatabaseError(error) {
-  return TRANSIENT_CODES.has(error.code ?? error.name);
+  if (TRANSIENT_CODES.has(error.code ?? error.name)) {
+    return true;
+  }
+
+  return /EMAXCONNSESSION|max clients reached|pool_size/u.test(String(error.message ?? ""));
 }

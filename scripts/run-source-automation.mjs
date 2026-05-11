@@ -8,6 +8,7 @@ const markdownPath = outputPath.replace(/\.json$/u, ".md");
 const attempts = parsePositiveInt(process.env.ZAC_AUTOMATION_COMMAND_ATTEMPTS, 5);
 const baseDelayMs = parsePositiveInt(process.env.ZAC_AUTOMATION_RETRY_BASE_MS, 10000);
 const staleHours = parsePositiveInt(process.env.ZAC_AUTOMATION_STALE_HOURS, 24);
+const allowNoPublicNetwork = process.env.ZAC_AUTOMATION_ALLOW_NO_PUBLIC_NETWORK === "1";
 
 const commandPlan = [
   {
@@ -48,6 +49,32 @@ const run = {
 
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
 
+const preflight = await runCommand(
+  {
+    name: "publicNetworkPreflight",
+    command: ["curl", "-I", "--max-time", "10", "https://example.com"],
+    output: null,
+  },
+  1,
+);
+preflight.publicNetworkReachable = preflight.exitCode === 0;
+run.commands.push(preflight);
+
+if (preflight.status !== "passed" && !allowNoPublicNetwork) {
+  run.status = "blocked";
+  run.blockedReason = "publicNetworkPreflight failed";
+  run.summary = await buildSummary();
+  run.summary.publicNetworkReachable = preflight.publicNetworkReachable;
+  run.nextActions = [
+    "Do not treat this run as a completed freshness pass.",
+    "Restore public web access before running official-source or Instagram inspection.",
+    "Rerun pnpm sources:automation-run after network recovery; do not mark queue items complete from stale packets.",
+  ];
+  await writeRun(run);
+  process.exitCode = 1;
+  process.exit();
+}
+
 for (const step of commandPlan) {
   const result = await runWithRetries(step);
   run.commands.push(result);
@@ -60,8 +87,9 @@ for (const step of commandPlan) {
     run.summary.currentDatabaseReachable = false;
     run.summary.lastKnownDatabaseReachable = run.summary.databaseReachable;
     run.summary.databaseReachable = false;
+    run.summary.publicNetworkReachable = preflight.publicNetworkReachable;
 
-    if (failedTransiently && recentMonitor) {
+    if (failedTransiently && recentMonitor && preflight.publicNetworkReachable) {
       run.status = "degraded_review_ready";
       run.degradedReason = "Remote DB was not reachable, but a recent source monitor artifact is available.";
       run.lastKnownMonitor = recentMonitor;
@@ -98,6 +126,7 @@ for (const step of commandPlan) {
 
 run.status = "ready_for_review";
 run.summary = await buildSummary();
+run.summary.publicNetworkReachable = preflight.publicNetworkReachable;
 run.nextActions = buildNextActions(run.summary);
 await writeRun(run);
 
@@ -325,7 +354,7 @@ function flattenSummary(summary, prefix = "") {
 
 function isTransientFailure(result) {
   const text = `${result.stdout}\n${result.stderr}`;
-  return /ENOTFOUND|EAI_AGAIN|ETIMEDOUT|ECONNRESET|ECONNREFUSED|57P03|53300|08006/u.test(text);
+  return /ENOTFOUND|EAI_AGAIN|ETIMEDOUT|ECONNRESET|ECONNREFUSED|57P03|53300|08006|EMAXCONNSESSION|max clients reached|pool_size/u.test(text);
 }
 
 function truncate(value) {

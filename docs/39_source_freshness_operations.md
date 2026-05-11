@@ -38,6 +38,11 @@ candidate matching, and source monitor generation in sequence. It writes:
 - `data/intake/source-monitor-run.json`
 - `data/intake/source-monitor-run.md`
 
+The first step is a public web preflight (`curl -I https://example.com`) so the
+routine can distinguish real official-source inspection capacity from stale
+local artifacts. If public web access is unavailable, the run must be treated as
+`blocked` and must not use a stale packet as a completed freshness pass.
+
 Verify remote DB reachability and counts:
 
 ```bash
@@ -120,15 +125,18 @@ error such as `ENOTFOUND`, rerun the same command order after the retry window;
 do not mark the source queue itself as empty or complete from a failed DB read.
 `sources:automation-run` retries transient command failures up to 5 times with a
 longer backoff by default, because Supabase pooler DNS can recover after tens of
-seconds rather than immediately.
+seconds rather than immediately. Supabase pooler `EMAXCONNSESSION` / max-client
+errors are also transient and should be retried instead of being reported as a
+final operator blocker.
 
 When remote DB reachability remains blocked but a recent
 `data/intake/source-monitor-run.json` exists, `sources:automation-run` writes
-`status = degraded_review_ready` instead of stopping the whole routine. In that
-mode automation may continue read-only official-source inspection from the
+`status = degraded_review_ready` only if public web DNS is still reachable. In
+that mode automation may continue read-only official-source inspection from the
 last-known monitor packet and may prepare reproducible seed/SQL patches, but it
 must not run remote DB writes or mark queue work complete until
-`pnpm db:verify:remote` passes again.
+`pnpm db:verify:remote` passes again. If public web DNS is also unavailable,
+the run stays `blocked` and exits non-zero so the failure is visible.
 
 ## Computer Use Review
 

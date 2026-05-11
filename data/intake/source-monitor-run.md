@@ -1,7 +1,7 @@
 # Source Monitor Run
 
-- Generated: 2026-05-11T07:26:19.643Z
-- Due approved sources: 0
+- Generated: 2026-05-11T08:59:43.785Z
+- Due approved sources: 10
 - Instagram post sources: 32
 - Candidate Instagram sources: 94
 - Upcoming event rechecks: 23
@@ -38,7 +38,16 @@
 
 ## Inspect Now
 
-No stale approved sources.
+1. BASE CAMP TOKYO 江戸川橋 公式サイト (base-camp-edogawabashi) - https://b-camp.jp/edogawabashi/
+2. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/
+3. NOBOROCK 高田馬場店 (noborock_takadanobaba) - https://www.instagram.com/noborock_takadanobaba/
+4. WESTROCK 公式イベント情報 (westrock-climbing-event) - https://www.westrock-climbing.com/event/
+5. NOBOROCK 大宮店 (noborock_omiya) - https://www.instagram.com/noborock_omiya/
+6. NOBOROCK 池袋店 (noborock_ikebukuro) - https://www.instagram.com/noborock_ikebukuro/
+7. NOBOROCK 池袋店 公式サイト (noborock-ikebukuro) - https://noborock-climbing.com/program/ikebukuro/
+8. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
+9. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
+10. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/
 
 ## Operator Batch
 

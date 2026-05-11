@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T07:26:19.643Z",
+  "generatedAt": "2026-05-11T08:59:43.785Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -68,7 +68,7 @@
       "private_booking": 1,
       "route_set": 16
     },
-    "dueApprovedSources": 0,
+    "dueApprovedSources": 10,
     "instagramPostSources": 32,
     "candidateSources": 94,
     "upcomingEvents": 23,
@@ -77,7 +77,98 @@
     "closureVerificationCandidates": 80
   },
   "queues": {
-    "inspectNow": [],
+    "inspectNow": [
+      {
+        "platform": "web",
+        "handle": "base-camp-edogawabashi",
+        "displayName": "BASE CAMP TOKYO 江戸川橋 公式サイト",
+        "sourceUrl": "https://b-camp.jp/edogawabashi/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bpumptokyo",
+        "displayName": "B-PUMP Tokyo",
+        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_takadanobaba",
+        "displayName": "NOBOROCK 高田馬場店",
+        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "westrock-climbing-event",
+        "displayName": "WESTROCK 公式イベント情報",
+        "sourceUrl": "https://www.westrock-climbing.com/event/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_omiya",
+        "displayName": "NOBOROCK 大宮店",
+        "sourceUrl": "https://www.instagram.com/noborock_omiya/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_ikebukuro",
+        "displayName": "NOBOROCK 池袋店",
+        "sourceUrl": "https://www.instagram.com/noborock_ikebukuro/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "noborock-ikebukuro",
+        "displayName": "NOBOROCK 池袋店 公式サイト",
+        "sourceUrl": "https://noborock-climbing.com/program/ikebukuro/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "noborock-machida",
+        "displayName": "NOBOROCK 町田店 公式サイト",
+        "sourceUrl": "https://noborock-climbing.com/program/machida/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "noborock-mizonokuchi",
+        "displayName": "NOBOROCK 溝ノ口店 公式サイト",
+        "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_machida",
+        "displayName": "NOBOROCK 町田店",
+        "sourceUrl": "https://www.instagram.com/noborock_machida/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      }
+    ],
     "instagramPostInspection": [
       {
         "eventSourceId": "86b3a08a-8bae-454f-9eb0-241adab7b8ec",

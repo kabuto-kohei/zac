@@ -1,12 +1,40 @@
 # Source Monitor Run
 
-- Generated: 2026-05-11T06:39:55.707Z
+- Generated: 2026-05-11T07:26:19.643Z
 - Due approved sources: 0
+- Instagram post sources: 32
 - Candidate Instagram sources: 94
 - Upcoming event rechecks: 23
 - Gym discipline verification candidates: 119
 - Closure verification candidates: 80
 - Gyms with Instagram: 32/192
+
+## Instagram Post Inspection
+
+1. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/ - lastObserved: none - observedPosts: 0
+2. NOBOROCK 高田馬場店 (noborock_takadanobaba) - https://www.instagram.com/noborock_takadanobaba/ - lastObserved: none - observedPosts: 0
+3. NOBOROCK 大宮店 (noborock_omiya) - https://www.instagram.com/noborock_omiya/ - lastObserved: none - observedPosts: 0
+4. NOBOROCK 池袋店 (noborock_ikebukuro) - https://www.instagram.com/noborock_ikebukuro/ - lastObserved: none - observedPosts: 0
+5. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/ - lastObserved: none - observedPosts: 0
+6. BOULCOM 川崎店 (boulcom_kawasaki) - https://www.instagram.com/boulcom_kawasaki/ - lastObserved: none - observedPosts: 0
+7. BOULCOM 東京店 (boulcom_tokyo) - https://www.instagram.com/boulcom_tokyo/ - lastObserved: none - observedPosts: 0
+8. ROCKY 船橋店 (funabashirocky) - https://www.instagram.com/funabashirocky/ - lastObserved: none - observedPosts: 0
+9. ROCKY 印西店 (inzairocky) - https://www.instagram.com/inzairocky/ - lastObserved: none - observedPosts: 0
+10. ROCKY 新宿曙橋店 (jyuku_rocky) - https://www.instagram.com/jyuku_rocky/ - lastObserved: none - observedPosts: 0
+11. ROCKY 品川店 (shina_rocky) - https://www.instagram.com/shina_rocky/ - lastObserved: none - observedPosts: 0
+12. ROCKY つくば阿見店 (tsukuba_ami_rocky) - https://www.instagram.com/tsukuba_ami_rocky/ - lastObserved: none - observedPosts: 0
+13. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
+14. And Energy Bouldering (and_energy_bouldering) - https://www.instagram.com/and_energy_bouldering/ - lastObserved: none - observedPosts: 0
+15. B-PUMP OGIKUBO (bpump_ogikubo) - https://www.instagram.com/bpump_ogikubo/ - lastObserved: none - observedPosts: 0
+16. エナジークライミングジム浦和店公式Instagram (energyurawa) - https://www.instagram.com/energyurawa/ - lastObserved: none - observedPosts: 0
+17. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/ - lastObserved: none - observedPosts: 0
+18. Noborock Shibuya (noborock_shibuya) - https://www.instagram.com/noborock_shibuya/ - lastObserved: none - observedPosts: 0
+19. Rocky Shinagawa (rocky_shinagawa) - https://www.instagram.com/rocky_shinagawa/ - lastObserved: none - observedPosts: 0
+20. アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - https://www.instagram.com/ao_roc.climbing/ - lastObserved: none - observedPosts: 0
+21. Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - https://www.instagram.com/basecamp_edogawabashi/ - lastObserved: none - observedPosts: 0
+22. Boulder Park Base Camp 飯能店 (basecamp_hanno) - https://www.instagram.com/basecamp_hanno/ - lastObserved: none - observedPosts: 0
+23. Climb Park Base Camp 入間店 (basecamp_iruma) - https://www.instagram.com/basecamp_iruma/ - lastObserved: none - observedPosts: 0
+24. Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - https://www.instagram.com/basecamp_kinshicho/ - lastObserved: none - observedPosts: 0
 
 ## Inspect Now
 
@@ -123,6 +151,7 @@ No stale approved sources.
 
 - Publish only title, summary, category, date/time, source link, source label, and short quote.
 - Do not publish full Instagram captions or copied images/videos.
+- Prioritize official Instagram profiles for latest updates. Track inspected post URLs in source_post_observations and mark irrelevant posts ignored to avoid repeated work.
 - Multi-day events are marked on the start date only.
 - Route-set announcements that include closure/opening times stay in route_set; private rental closures use private_booking; area work uses construction; pure temporary hours changes use opening_change.
 - Gym discipline filters must use official site or official SNS evidence; keep directory-only uncertainty as クライミング.

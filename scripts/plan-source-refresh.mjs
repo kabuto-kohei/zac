@@ -26,6 +26,7 @@ try {
     eventCategoryRows,
     gymRiskRows,
     dailyApprovedSources,
+    instagramPostSources,
     candidateInstagramSources,
     gymInstagramBackfill,
     upcomingEvents,
@@ -74,6 +75,42 @@ try {
         and status = 'approved'
         and source_type in ('official_instagram', 'official_site')
       order by last_checked_at asc nulls first, source_verified_at asc nulls first, platform asc, handle asc
+      limit 80
+    `,
+    sql`
+      select
+        s.id,
+        s.platform,
+        s.handle,
+        s.display_name,
+        s.source_url,
+        s.source_type,
+        s.status,
+        s.relationship_source_handle,
+        s.last_checked_at,
+        s.source_verified_at,
+        max(o.observed_at) as last_observed_at,
+        count(o.id)::int as observed_posts
+      from event_sources s
+      left join source_post_observations o
+        on o.deleted_at is null
+        and o.event_source_id = s.id
+      where s.deleted_at is null
+        and s.status = 'approved'
+        and s.platform = 'instagram'
+        and s.source_type = 'official_instagram'
+      group by
+        s.id,
+        s.platform,
+        s.handle,
+        s.display_name,
+        s.source_url,
+        s.source_type,
+        s.status,
+        s.relationship_source_handle,
+        s.last_checked_at,
+        s.source_verified_at
+      order by max(o.observed_at) asc nulls first, s.last_checked_at asc nulls first, s.source_verified_at asc nulls first, s.handle asc
       limit 80
     `,
     sql`
@@ -140,6 +177,8 @@ try {
       publicDataOnly: true,
       publishOnly: ["title", "summary", "category", "startsAt", "endsAt", "sourceUrl", "sourceLabel", "shortQuote"],
       neverPublish: ["instagram full caption", "copied image/video", "source_raw_text"],
+      instagramFirst:
+        "Treat official Instagram profiles as the first freshness signal for gyms. Official websites remain baseline/cross-check sources.",
       calendarRule: "Multi-day events are marked only on the start date; the full period belongs on the detail page.",
       closureRule:
         "Mark closed only with an official closure notice, or with two independent current sources when the official source is unavailable. Partial evidence stays published and queued.",
@@ -153,6 +192,7 @@ try {
     },
     queues: {
       dailyApprovedSources: dailyApprovedSources.map(formatSource),
+      instagramPostInspection: instagramPostSources.map(formatInstagramPostSource),
       candidateInstagramVerification: candidateInstagramSources.map(formatSource),
       gymInstagramBackfill: gymInstagramBackfill.map((gym) => ({
         name: gym.name,
@@ -199,6 +239,7 @@ try {
         gymBackfillQueue: plan.queues.gymInstagramBackfill.length,
         candidateInstagramQueue: plan.queues.candidateInstagramVerification.length,
         dailyApprovedQueue: plan.queues.dailyApprovedSources.length,
+        instagramPostQueue: plan.queues.instagramPostInspection.length,
         upcomingEventReviewQueue: plan.queues.upcomingEventReview.length,
         closureVerificationQueue: plan.queues.closureVerification.length,
       },
@@ -231,6 +272,25 @@ function formatSource(source) {
     discoverySource: source.discovery_source ?? "",
     lastCheckedAt: formatNullableDate(source.last_checked_at),
     sourceVerifiedAt: formatNullableDate(source.source_verified_at),
+  };
+}
+
+function formatInstagramPostSource(source) {
+  return {
+    eventSourceId: source.id,
+    platform: source.platform,
+    handle: source.handle,
+    displayName: source.display_name ?? source.handle,
+    sourceUrl: source.source_url,
+    sourceType: source.source_type,
+    status: source.status,
+    relationshipSourceHandle: source.relationship_source_handle ?? null,
+    lastCheckedAt: formatNullableDate(source.last_checked_at),
+    sourceVerifiedAt: formatNullableDate(source.source_verified_at),
+    lastObservedAt: formatNullableDate(source.last_observed_at),
+    observedPosts: source.observed_posts ?? 0,
+    requiredEvidence:
+      "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies",
   };
 }
 

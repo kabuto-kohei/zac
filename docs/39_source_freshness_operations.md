@@ -6,13 +6,15 @@ freshness, evidence, and source links without becoming an Instagram replacement.
 
 ## Operating Model
 
-Zac does not build an alternate Instagram viewer. The operating model has four
-stages:
+Zac does not build an alternate Instagram viewer. Instagram is nevertheless the
+first freshness signal for most climbing gyms; official websites are the stable
+baseline and cross-check source. The operating model has five stages:
 
 1. Register official sites and official Instagram profiles in `event_sources`.
-2. Generate review queues from DB state.
+2. Generate review queues from DB state, with official Instagram post checks first.
 3. Use Browser/Computer Use or a normal browser to inspect public official pages.
-4. Reflect only confirmed updates into `events` / `gyms` as structured data.
+4. Record inspected Instagram post URLs in `source_post_observations`.
+5. Reflect only confirmed updates into `events` / `gyms` as structured data.
 
 The public UI may show only title, short summary, category, date/time, source
 link, source label, and a minimal short quote. It must not show copied images,
@@ -67,10 +69,14 @@ pnpm sources:monitor
 
 These files list official sources to inspect, candidate sources to verify, and
 upcoming events to recheck. They do not fetch external post bodies or media.
+The highest-priority queue is `instagramPostInspection`, which lists approved
+official Instagram profiles whose recent public posts/reels should be reviewed.
 
 The monitor accepts optional batch-size environment variables:
 
 - `ZAC_SOURCE_DUE_HOURS`: due threshold for approved sources. Default: `6`.
+- `ZAC_INSTAGRAM_DUE_HOURS`: due threshold for official Instagram post checks. Default: `1`.
+- `ZAC_INSTAGRAM_POST_SOURCE_LIMIT`: official Instagram post-check batch size. Default: `48`.
 - `ZAC_SOURCE_APPROVED_LIMIT`: approved source rotation size. Default: `96`.
 - `ZAC_SOURCE_STALE_LIMIT`: due approved source batch size. Default: `64`.
 - `ZAC_SOURCE_CANDIDATE_LIMIT`: candidate source batch size. Default: `96`.
@@ -85,8 +91,8 @@ system does not wait passively for the next due threshold.
 
 Recommended cadence:
 
-- Hourly quick pulse: verify DB and inspect a small high-priority batch.
-- Every 6 hours: inspect approved official Instagram/site rotation and recheck upcoming calendar items.
+- Hourly quick pulse: verify DB and inspect `instagramPostInspection` first.
+- Every 6 hours: inspect broader approved official Instagram/site rotation and recheck upcoming calendar items.
 - Daily: verify candidate Instagram sources and promote only officially confirmed profiles.
 - Weekly: backfill missing gym Instagram accounts through official sites, chain pages, and public business profiles.
 - Monthly: recheck closure, relocation, rename, and account-change risk.
@@ -128,7 +134,12 @@ must not run remote DB writes or mark queue work complete until
 
 Rules for Browser/Computer Use:
 
-- Open `sourceUrl` for approved sources first.
+- Open `instagramPostInspection` first. For each approved official Instagram
+  source, inspect recent public posts/reels since the last observation.
+- Record each reviewed post URL in `source_post_observations`. Calendar-worthy
+  posts get classification, title, short summary, dates, and a short quote;
+  irrelevant posts get `review_status = ignored` plus a short decision note.
+- Then open `sourceUrl` for other approved sources.
 - Do not save full post bodies, images, or videos.
 - Extract only event name, date/time, location, category, booking requirement, and source URL.
 - Keep uncertain extraction as `events.review_status = pending` and do not publish it.
@@ -159,6 +170,12 @@ Required fields:
 `route_set`, `notice`, `construction`, and `opening-change` must not be mixed
 with competitions or general events in UI. They belong in the set/operations
 group.
+
+Inspected Instagram posts should be reflected in `source_post_observations`
+even when no public event is created. This keeps the next automation run from
+repeating the same post and creates an audit trail of what was considered.
+Only store source URL, post date when visible, classification, short summary,
+short quote, review status, and decision note.
 
 Confirmed gym closure or active-status corrections should be reflected through
 reproducible seeds or explicit SQL patches. `status = closed` hides the gym from

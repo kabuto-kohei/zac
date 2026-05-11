@@ -173,6 +173,7 @@ async function buildSummary() {
     sourceStatus: plan?.summary?.sourceStatus ?? {},
     sourceType: plan?.summary?.sourceType ?? {},
     dueApprovedSources: monitor?.summary?.dueApprovedSources ?? 0,
+    instagramPostSources: monitor?.summary?.instagramPostSources ?? monitor?.queues?.instagramPostInspection?.length ?? 0,
     approvedSourceRotation: monitor?.summary?.approvedSourceRotation ?? 0,
     operatorBatch: monitor?.queues?.operatorBatch?.length ?? 0,
     candidateSources: monitor?.summary?.candidateSources ?? 0,
@@ -185,6 +186,9 @@ async function buildSummary() {
 
 function buildNextActions(summary) {
   const actions = [];
+  if (summary.instagramPostSources > 0) {
+    actions.push(`Inspect official Instagram recent-post queue first (${summary.instagramPostSources} source(s)); record post URLs in source_post_observations or reproducible SQL patches.`);
+  }
   if (summary.dueApprovedSources > 0) {
     actions.push(`Inspect ${summary.dueApprovedSources} due approved source(s) from inspectNow first.`);
   }
@@ -216,6 +220,9 @@ function buildDegradedNextActions(summary, monitor) {
 
   if (summary.operatorBatch > 0) {
     actions.push(`Inspect last-known operatorBatch first; it currently has ${summary.operatorBatch} approved source(s).`);
+  }
+  if (summary.instagramPostSources > 0) {
+    actions.push(`Inspect last-known Instagram post queue read-only first (${summary.instagramPostSources} source(s)); prepare observations but wait for DB reachability before marking them complete.`);
   }
   if (summary.upcomingEvents > 0) {
     actions.push(`Recheck last-known upcomingEventRecheck items carefully (${summary.upcomingEvents} queued).`);

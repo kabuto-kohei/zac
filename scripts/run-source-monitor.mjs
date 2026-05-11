@@ -13,10 +13,12 @@ const now = new Date();
 const approvedSourceLimit = parsePositiveInt(process.env.ZAC_SOURCE_APPROVED_LIMIT, 96);
 const staleSourceLimit = parsePositiveInt(process.env.ZAC_SOURCE_STALE_LIMIT, 64);
 const candidateSourceLimit = parsePositiveInt(process.env.ZAC_SOURCE_CANDIDATE_LIMIT, 96);
+const instagramPostSourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_POST_SOURCE_LIMIT, 48);
 const upcomingEventLimit = parsePositiveInt(process.env.ZAC_SOURCE_EVENT_LIMIT, 120);
 const gymDisciplineLimit = parsePositiveInt(process.env.ZAC_GYM_DISCIPLINE_LIMIT, 120);
 const closureVerificationLimit = parsePositiveInt(process.env.ZAC_GYM_CLOSURE_LIMIT, 80);
 const dueIntervalHours = parsePositiveInt(process.env.ZAC_SOURCE_DUE_HOURS, 6);
+const instagramDueIntervalHours = parsePositiveInt(process.env.ZAC_INSTAGRAM_DUE_HOURS, 1);
 
 if (!databaseUrl) {
   console.error("DATABASE_URL is required.");
@@ -31,6 +33,7 @@ try {
   const [
     approvedSources,
     staleSources,
+    instagramPostSources,
     candidateSources,
     upcomingEvents,
     eventFingerprints,
@@ -58,6 +61,53 @@ try {
         and (last_checked_at is null or last_checked_at < now() - (${dueIntervalHours}::text || ' hours')::interval)
       order by last_checked_at asc nulls first, source_verified_at asc nulls first, handle asc
       limit ${staleSourceLimit}
+    `,
+    sql`
+      select
+        s.id,
+        s.platform,
+        s.handle,
+        s.display_name,
+        s.source_url,
+        s.source_type,
+        s.last_checked_at,
+        s.source_verified_at,
+        max(o.observed_at) as last_observed_at,
+        count(o.id)::int as observed_posts
+      from event_sources s
+      left join source_post_observations o
+        on o.deleted_at is null
+        and o.event_source_id = s.id
+      where s.deleted_at is null
+        and s.status = 'approved'
+        and s.platform = 'instagram'
+        and s.source_type = 'official_instagram'
+        and (
+          s.last_checked_at is null
+          or s.last_checked_at < now() - (${instagramDueIntervalHours}::text || ' hours')::interval
+          or not exists (
+            select 1
+            from source_post_observations recent
+            where recent.deleted_at is null
+              and recent.event_source_id = s.id
+              and recent.observed_at >= now() - (${instagramDueIntervalHours}::text || ' hours')::interval
+          )
+        )
+      group by
+        s.id,
+        s.platform,
+        s.handle,
+        s.display_name,
+        s.source_url,
+        s.source_type,
+        s.last_checked_at,
+        s.source_verified_at
+      order by
+        max(o.observed_at) asc nulls first,
+        s.last_checked_at asc nulls first,
+        s.source_verified_at asc nulls first,
+        s.handle asc
+      limit ${instagramPostSourceLimit}
     `,
     sql`
       select platform, handle, display_name, source_url, source_type, relationship_source_handle, discovery_source
@@ -190,9 +240,11 @@ try {
       closureRelocationRenameRecheck: "monthly, or sooner for directory-only and stale official-source rows",
     },
     policy: {
-      sourceUse: "Use official sites and approved official Instagram profiles as source inputs.",
+      sourceUse: "Use approved official Instagram profiles as the freshest source inputs; use official sites for stable baseline data, account verification, and cross-checks.",
       publicOutput: ["title", "summary", "category", "startsAt", "endsAt", "sourceUrl", "sourceLabel", "shortQuote"],
       neverPublicOutput: ["full Instagram captions", "copied images/videos", "unreviewed raw text"],
+      instagramTrackingRule:
+        "Track recent public posts/reels by source URL. Store observation metadata and short summaries only; never store copied images/videos or full captions for public redistribution.",
       calendarRule: "Multi-day events are marked on the start date only; the full period is shown on the detail page.",
       eventSplitRule:
         "Classify each source item by primary user impact: competition, event/lesson, route_set, private_booking, opening_change, construction, notice, or recruit. If a route-set announcement includes closure/opening times, keep category route_set and store the closure/opening period in startsAt/endsAt. If a post is only a private rental closure, use private_booking. If it is only hours/temporary closure, use opening_change. If it is wall/area work, use construction.",
@@ -212,6 +264,7 @@ try {
       eventsByReviewStatus: toCountObject(reviewSummaryRows, "review_status"),
       scheduledEventsByCategory: toCountObject(categoryRows, "category"),
       dueApprovedSources: staleSources.length,
+      instagramPostSources: instagramPostSources.length,
       candidateSources: candidateSources.length,
       upcomingEvents: upcomingEvents.length,
       approvedSourceRotation: approvedSources.length,
@@ -220,6 +273,7 @@ try {
     },
     queues: {
       inspectNow: staleSources.map(formatSource),
+      instagramPostInspection: instagramPostSources.map(formatInstagramPostSource),
       approvedSourceRotation: approvedSources.map(formatSource),
       operatorBatch: [...staleSources, ...approvedSources.filter((source) => !staleSources.some((stale) => stale.platform === source.platform && stale.handle === source.handle))]
         .slice(0, Math.min(16, Math.max(8, staleSourceLimit)))
@@ -231,10 +285,12 @@ try {
       existingEventFingerprints: eventFingerprints.map(formatEventFingerprint),
     },
     operatorChecklist: [
-      "Open inspectNow first; if it is empty, process approvedSourceRotation in order. Use large batches and stop only at the configured source limit or a human gate.",
+      "Open instagramPostInspection first. For each official Instagram source, inspect recent public posts/reels since the last observation and record each relevant post URL in source_post_observations or a reproducible SQL patch.",
+      "After Instagram post inspection, open inspectNow; if it is empty, process approvedSourceRotation in order. Use large batches and stop only at the configured source limit or a human gate.",
       "Look only for public, official updates that affect visit planning: competitions, lessons, route sets, construction, opening changes, closures, or recruitment.",
       "Before inserting an event, compare against queues.existingEventFingerprints by category, gym, normalized title, start date, and source host.",
       "Do not copy images, videos, or full captions.",
+      "For Instagram posts that are inspected but not calendar-worthy, record review_status = ignored with a short decision note so the next run does not repeat the same post.",
       "For each valid update, create or update an events row with a short summary, a source URL, and review_status = approved only when the source is clear.",
       "For uncertain extraction, keep review_status = pending and do not show it in public UI.",
       "After a source is checked, update event_sources.last_checked_at in the applied seed or an explicit SQL patch.",
@@ -254,6 +310,7 @@ try {
       {
         databaseReachable: run.summary.databaseReachable,
         dueApprovedSources: run.summary.dueApprovedSources,
+        instagramPostSources: run.summary.instagramPostSources,
         candidateSources: run.summary.candidateSources,
         upcomingEvents: run.summary.upcomingEvents,
         gymDisciplineCandidates: run.summary.gymDisciplineCandidates,
@@ -301,6 +358,24 @@ function formatCandidateSource(source) {
     relationshipSourceHandle: source.relationship_source_handle ?? null,
     discoverySource: source.discovery_source ?? null,
     requiredEvidence: "official site link, official profile identity, or gym/operator page before approval",
+  };
+}
+
+function formatInstagramPostSource(source) {
+  return {
+    eventSourceId: source.id,
+    platform: source.platform,
+    handle: source.handle,
+    displayName: source.display_name ?? source.handle,
+    sourceUrl: source.source_url,
+    sourceType: source.source_type,
+    lastCheckedAt: formatNullableDateTime(source.last_checked_at),
+    sourceVerifiedAt: formatNullableDateTime(source.source_verified_at),
+    lastObservedAt: formatNullableDateTime(source.last_observed_at),
+    observedPosts: source.observed_posts ?? 0,
+    priority: "instagram_recent_posts",
+    inspectionRule:
+      "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media.",
   };
 }
 
@@ -401,6 +476,13 @@ function formatNullableJstDateTime(value) {
 }
 
 function renderMarkdown(run) {
+  const instagramRows = run.queues.instagramPostInspection
+    .slice(0, 24)
+    .map(
+      (source, index) =>
+        `${index + 1}. ${source.displayName} (${source.handle}) - ${source.sourceUrl} - lastObserved: ${source.lastObservedAt || "none"} - observedPosts: ${source.observedPosts}`,
+    )
+    .join("\n");
   const sourceRows = run.queues.inspectNow
     .slice(0, 12)
     .map((source, index) => `${index + 1}. ${source.displayName} (${source.handle}) - ${source.sourceUrl}`)
@@ -430,11 +512,16 @@ function renderMarkdown(run) {
 
 - Generated: ${run.generatedAt}
 - Due approved sources: ${run.summary.dueApprovedSources}
+- Instagram post sources: ${run.summary.instagramPostSources}
 - Candidate Instagram sources: ${run.summary.candidateSources}
 - Upcoming event rechecks: ${run.summary.upcomingEvents}
 - Gym discipline verification candidates: ${run.summary.gymDisciplineCandidates}
 - Closure verification candidates: ${run.summary.closureVerificationCandidates}
 - Gyms with Instagram: ${run.summary.gyms.with_instagram}/${run.summary.gyms.total}
+
+## Instagram Post Inspection
+
+${instagramRows || "No official Instagram post inspection sources are due."}
 
 ## Inspect Now
 
@@ -464,6 +551,7 @@ ${closureRows || "No closure verification candidates."}
 
 - Publish only title, summary, category, date/time, source link, source label, and short quote.
 - Do not publish full Instagram captions or copied images/videos.
+- Prioritize official Instagram profiles for latest updates. Track inspected post URLs in source_post_observations and mark irrelevant posts ignored to avoid repeated work.
 - Multi-day events are marked on the start date only.
 - Route-set announcements that include closure/opening times stay in route_set; private rental closures use private_booking; area work uses construction; pure temporary hours changes use opening_change.
 - Gym discipline filters must use official site or official SNS evidence; keep directory-only uncertainty as クライミング.

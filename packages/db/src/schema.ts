@@ -342,6 +342,39 @@ export const eventSources = pgTable(
   }),
 );
 
+export const sourcePostObservations = pgTable(
+  "source_post_observations",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    eventSourceId: uuid("event_source_id").references(() => eventSources.id),
+    platform: text("platform").notNull().default("instagram"),
+    handle: text("handle").notNull(),
+    sourceUrl: text("source_url").notNull(),
+    sourceExternalId: text("source_external_id"),
+    sourcePostedAt: timestamp("source_posted_at", { withTimezone: true }),
+    observedAt: timestamp("observed_at", { withTimezone: true }).notNull().defaultNow(),
+    classification: text("classification"),
+    title: text("title"),
+    summary: text("summary"),
+    startsAt: timestamp("starts_at", { withTimezone: true }),
+    endsAt: timestamp("ends_at", { withTimezone: true }),
+    sourceQuote: text("source_quote"),
+    extractionConfidence: numeric("extraction_confidence", { precision: 3, scale: 2 }),
+    reviewStatus: text("review_status").notNull().default("pending"),
+    decisionNote: text("decision_note"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+    deletedAt: timestamp("deleted_at", { withTimezone: true }),
+  },
+  (table) => ({
+    platformExternalUnique: uniqueIndex("source_post_observations_platform_external_unique").on(
+      table.platform,
+      table.sourceExternalId,
+    ),
+    sourceUrlUnique: uniqueIndex("source_post_observations_source_url_unique").on(table.sourceUrl),
+  }),
+);
+
 export const eventImages = pgTable("event_images", {
   id: uuid("id").primaryKey().defaultRandom(),
   eventId: uuid("event_id")

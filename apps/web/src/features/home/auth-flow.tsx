@@ -58,8 +58,11 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
 
   if (sentEmail) {
     return (
-      <main className="app-shell">
-        <section className="form-panel">
+      <main className="app-shell auth-modal-shell">
+        <section className="form-panel auth-modal-card">
+          <Link aria-label="閉じる" className="auth-modal-close" href="/">
+            ×
+          </Link>
           <p className="card-kind">{mode === "register" ? "新規登録" : "ログイン"}</p>
           <h1>メールを確認してください</h1>
           <p>{sentEmail} に認証リンクを送りました。リンクを開くとZacに戻ります。</p>
@@ -72,11 +75,13 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
   }
 
   return (
-    <main className="app-shell">
-      <form action={submit} className="form-panel">
+    <main className="app-shell auth-modal-shell">
+      <form action={submit} className="form-panel auth-modal-card">
+        <Link aria-label="閉じる" className="auth-modal-close" href="/">
+          ×
+        </Link>
         <p className="card-kind">{mode === "register" ? "新規登録" : "ログイン"}</p>
-        <h1>{mode === "register" ? "保存と作成を始める" : "保存した予定に戻る"}</h1>
-        <p>メールリンクでログインします。閲覧だけなら登録せずに続けられます。</p>
+        <p>メールで続けます。</p>
         <div className="form-grid">
           <label>
             メールアドレス

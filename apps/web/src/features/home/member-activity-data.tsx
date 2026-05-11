@@ -156,13 +156,7 @@ export function ActivityMetricStrip({
   memberState: MemberActivityLoadState;
 }) {
   if (checking || !authenticated) {
-    return (
-      <section className="metric-strip" aria-label="Public summary">
-        <Metric label="イベント" value={String(baseData.events.length)} />
-        <Metric label="ジム" value={String(baseData.gyms.length)} />
-        <Metric label="閲覧範囲" value="公開" />
-      </section>
-    );
+    return null;
   }
 
   const metrics = memberState.status === "ready" ? memberState.data.metrics : baseData.metrics;

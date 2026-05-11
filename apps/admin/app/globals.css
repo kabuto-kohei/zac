@@ -157,6 +157,10 @@ p {
   gap: 14px;
 }
 
+.compact-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .admin-card,
 .admin-table {
   border: 1px solid var(--line);
@@ -201,6 +205,23 @@ p {
 .admin-row span {
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.admin-row a {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.admin-row small {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.source-row {
+  grid-template-columns: minmax(150px, 1.2fr) minmax(90px, 0.6fr) minmax(120px, 0.9fr) minmax(130px, 0.9fr) minmax(90px, 0.7fr) minmax(120px, 0.9fr) 64px minmax(220px, 1.4fr);
 }
 
 .moderation-row {
@@ -336,6 +357,10 @@ p {
   }
 
   .admin-editor-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .source-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

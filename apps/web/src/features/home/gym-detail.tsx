@@ -2,8 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
 import { getGymDetailData } from "./data";
+import { DetailBackButton } from "./detail-back-button";
 import { GymActions } from "./detail-actions";
-import { ZacIcon } from "./zac-icons";
 
 export async function GymDetail({ gymId }: { gymId: string }) {
   const { gym } = await getGymDetailData(gymId);
@@ -14,15 +14,29 @@ export async function GymDetail({ gymId }: { gymId: string }) {
 
   return (
     <AppShell activeTab="explore" action={<Link className="primary-action" href="/plans/new">予定作成</Link>}>
-      <section className="hero-card">
-        <div className="hero-visual icon-visual gym-visual">
-          <ZacIcon decorative icon="gym" size={76} />
-        </div>
+      <div className="detail-back-row">
+        <DetailBackButton />
+      </div>
+      <section className="hero-card no-visual-hero">
         <div>
           <p className="card-kind">{gym.area}</p>
           <h2>{gym.name}</h2>
           <p>{gym.address}</p>
           <p>{gym.disciplines} · {gym.openingHours}</p>
+          {gym.sourceUrl ? (
+            <p className="source-line">
+              <span>情報源</span>
+              <a href={gym.sourceUrl} rel="noreferrer" target="_blank">
+                {gym.sourceAttribution ?? "公式情報"}
+              </a>
+              {gym.instagramUrl ? (
+                <a href={gym.instagramUrl} rel="noreferrer" target="_blank">
+                  Instagram
+                </a>
+              ) : null}
+              {gym.sourceVerifiedAt ? <span>{gym.sourceVerifiedAt}</span> : null}
+            </p>
+          ) : null}
         </div>
       </section>
 

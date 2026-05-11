@@ -102,14 +102,12 @@ export function PrivacySettingsPanel() {
         <div>
           <p className="card-kind">ホームジム表示</p>
           <h3>OFF</h3>
-          <p>ホームジムや位置情報はMVPでは公開しません。</p>
         </div>
       </article>
       <article className="wide-card settings-row">
         <div>
           <p className="card-kind">位置情報利用</p>
           <h3>OFF</h3>
-          <p>近隣検索は後続フェーズで明示同意後に追加します。</p>
         </div>
       </article>
       {savedMessage ? <p className="success-message">{savedMessage}</p> : null}

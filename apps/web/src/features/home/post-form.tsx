@@ -56,14 +56,14 @@ export function PostForm() {
         <div className="form-heading">
           <ZacIcon decorative icon="bouldering" size={48} />
           <div>
-            <p className="card-kind">投稿作成</p>
-            <h2>登ったことを共有する</h2>
+            <p className="card-kind">投稿</p>
+            <h2>新規投稿</h2>
           </div>
         </div>
         <div className="form-grid">
           <label>
             本文
-            <textarea aria-describedby={errors.body ? "post-body-error" : undefined} maxLength={500} name="body" placeholder="今日のセッション、気づき、募集したいこと" />
+            <textarea aria-describedby={errors.body ? "post-body-error" : undefined} maxLength={500} name="body" placeholder="本文" />
             {errors.body ? <span className="field-error" id="post-body-error">{errors.body}</span> : null}
           </label>
           <label>

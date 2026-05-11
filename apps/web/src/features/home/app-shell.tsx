@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { ShellNavigation } from "./shell-navigation";
 import { ShellActions } from "./shell-actions";
 import { ZacIcon } from "./zac-icons";
@@ -17,13 +18,13 @@ export function AppShell({
   return (
     <main className="app-shell">
       <section className="topbar" aria-label="Zac overview">
-        <div className="topbar-brand">
+        <Link className="topbar-brand" href="/">
           <ZacIcon icon="logo" size={56} />
           <div>
             <h1>Zac</h1>
             <p className="topbar-subtitle">次のセッションを決める</p>
           </div>
-        </div>
+        </Link>
         <ShellActions>{action}</ShellActions>
       </section>
 

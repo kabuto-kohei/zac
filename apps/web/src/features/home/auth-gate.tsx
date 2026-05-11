@@ -10,9 +10,8 @@ export function AuthGate({ action, children }: { action: string; children: React
   if (checking) {
     return (
       <section className="wide-card">
-        <p className="card-kind">認証確認</p>
-        <h3>ログイン状態を確認しています</h3>
-        <p>公開情報はHomeと探すから閲覧できます。</p>
+        <p className="card-kind">Loading</p>
+        <h3>確認中</h3>
       </section>
     );
   }

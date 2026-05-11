@@ -1,0 +1,130 @@
+{
+  "generatedAt": "2026-05-11T06:02:12.060Z",
+  "policy": {
+    "officialSourceOnly": true,
+    "publicOutput": [
+      "title",
+      "summary",
+      "category",
+      "startsAt",
+      "endsAt",
+      "sourceUrl",
+      "sourceLabel",
+      "shortQuote"
+    ],
+    "neverPublish": [
+      "full captions",
+      "copied images/videos",
+      "unreviewed raw source text"
+    ],
+    "noBillingActions": true
+  },
+  "status": "ready_for_review",
+  "commands": [
+    {
+      "name": "verifyRemoteDb",
+      "command": "pnpm db:verify:remote",
+      "attempt": 1,
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-05-11T06:02:12.061Z",
+      "finishedAt": "2026-05-11T06:02:12.619Z",
+      "durationMs": 558,
+      "outputPath": null,
+      "stdout": "\n> zac@0.0.0 db:verify:remote /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/verify-db-data.mjs\n\n{\n  \"databaseReachable\": true,\n  \"gyms\": 192,\n  \"events\": 31,\n  \"eventSources\": 195\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "planRefresh",
+      "command": "pnpm sources:plan-refresh",
+      "attempt": 1,
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-05-11T06:02:12.619Z",
+      "finishedAt": "2026-05-11T06:02:13.155Z",
+      "durationMs": 536,
+      "outputPath": "data/intake/source-refresh-plan.json",
+      "stdout": "\n> zac@0.0.0 sources:plan-refresh /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/plan-source-refresh.mjs\n\nwrote data/intake/source-refresh-plan.json\n{\n  \"sourceStatus\": {\n    \"approved\": 100,\n    \"candidate\": 95\n  },\n  \"sourceType\": {\n    \"aggregator_instagram\": 1,\n    \"media_summary\": 1,\n    \"official_instagram\": 125,\n    \"official_site\": 67,\n    \"operator_owned_page\": 1\n  },\n  \"gymBackfillQueue\": 80,\n  \"candidateInstagramQueue\": 80,\n  \"dailyApprovedQueue\": 80,\n  \"upcomingEventReviewQueue\": 23,\n  \"closureVerificationQueue\": 80\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "matchInstagram",
+      "command": "pnpm sources:match-instagram",
+      "attempt": 1,
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-05-11T06:02:13.155Z",
+      "finishedAt": "2026-05-11T06:02:13.826Z",
+      "durationMs": 671,
+      "outputPath": "data/intake/instagram-source-match-report.json",
+      "stdout": "\n> zac@0.0.0 sources:match-instagram /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/match-instagram-sources.mjs\n\nwrote data/intake/instagram-source-match-report.json\n{\n  \"candidates\": 94,\n  \"gyms\": 192,\n  \"matched\": 7,\n  \"highConfidence\": 2,\n  \"needsReview\": 5,\n  \"unmatched\": 87\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "monitorSources",
+      "command": "pnpm sources:monitor",
+      "attempt": 1,
+      "status": "passed",
+      "exitCode": 0,
+      "startedAt": "2026-05-11T06:02:13.826Z",
+      "finishedAt": "2026-05-11T06:02:14.674Z",
+      "durationMs": 848,
+      "outputPath": "data/intake/source-monitor-run.json",
+      "stdout": "\n> zac@0.0.0 sources:monitor /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/run-source-monitor.mjs\n\nwrote data/intake/source-monitor-run.json\nwrote data/intake/source-monitor-run.md\n{\n  \"databaseReachable\": true,\n  \"dueApprovedSources\": 0,\n  \"candidateSources\": 94,\n  \"upcomingEvents\": 23,\n  \"gymDisciplineCandidates\": 119,\n  \"closureVerificationCandidates\": 80,\n  \"gymsWithInstagram\": 32,\n  \"gymsTotal\": 192\n}\n",
+      "stderr": ""
+    }
+  ],
+  "summary": {
+    "databaseReachable": true,
+    "gyms": {
+      "total": 192,
+      "with_instagram": 32,
+      "official_site_verified": 76,
+      "directory_only": 116
+    },
+    "eventsByReviewStatus": {
+      "approved": 31
+    },
+    "scheduledEventsByCategory": {
+      "competition": 7,
+      "construction": 1,
+      "event": 6,
+      "private_booking": 1,
+      "route_set": 16
+    },
+    "sourceStatus": {
+      "approved": 100,
+      "candidate": 95
+    },
+    "sourceType": {
+      "aggregator_instagram": 1,
+      "media_summary": 1,
+      "official_instagram": 125,
+      "official_site": 67,
+      "operator_owned_page": 1
+    },
+    "dueApprovedSources": 0,
+    "approvedSourceRotation": 96,
+    "operatorBatch": 16,
+    "candidateSources": 94,
+    "candidateMatches": {
+      "candidates": 94,
+      "gyms": 192,
+      "matched": 7,
+      "highConfidence": 2,
+      "needsReview": 5,
+      "unmatched": 87
+    },
+    "upcomingEvents": 23,
+    "gymDisciplineCandidates": 119,
+    "closureVerificationCandidates": 80
+  },
+  "nextActions": [
+    "Inspect operatorBatch next; it currently has 16 approved source(s).",
+    "Recheck upcomingEventRecheck for items starting within the next 30 days (23 queued).",
+    "Promote candidateVerification only with official-site/profile evidence (94 queued).",
+    "Classify gym disciplines only from official site/SNS evidence; leave directory-only rows as クライミング (119 queued).",
+    "Verify closure, relocation, and rename risk with official evidence first; require two independent current sources if the official source is unavailable (80 queued)."
+  ],
+  "updatedAt": "2026-05-11T06:02:14.677Z"
+}

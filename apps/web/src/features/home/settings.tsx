@@ -16,30 +16,26 @@ export function SettingsHome() {
           <article className="wide-card">
             <p className="card-kind">表示範囲</p>
             <h3>
-              <Link href="/settings/privacy">公開範囲と位置情報</Link>
+              <Link href="/settings/privacy">公開範囲</Link>
             </h3>
-            <p>MVPの初期値と安全設定を確認します。</p>
           </article>
           <article className="wide-card">
             <p className="card-kind">アカウント</p>
             <h3>
               <Link href="/settings/profile">プロフィール</Link>
             </h3>
-            <p>プロフィールは認証済みセッションでAPIへ保存され、端末を変えても復元できます。</p>
           </article>
           <article className="wide-card">
             <p className="card-kind">ポリシー</p>
             <h3>
               <Link href="/legal/terms">利用規約</Link>
             </h3>
-            <p>投稿、画像、通報、安全対応に関する利用条件を確認できます。</p>
           </article>
           <article className="wide-card">
             <p className="card-kind">ポリシー</p>
             <h3>
               <Link href="/legal/privacy">プライバシーポリシー</Link>
             </h3>
-            <p>プロフィール、予定、記録、画像、利用状況データの取り扱いを確認できます。</p>
           </article>
         </section>
       </AuthGate>

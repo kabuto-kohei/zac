@@ -1,4 +1,4 @@
-import { and, eq, gymSaves, gyms, isNull } from "@zac/db";
+import { and, asc, eq, gymSaves, gyms, isNull } from "@zac/db";
 import { findGymFixture, gymFixtures, type GymSummary } from "@zac/shared";
 import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
@@ -58,7 +58,12 @@ async function listPersistentGyms() {
   }
 
   try {
-    const rows = await db.select().from(gyms).where(isNull(gyms.deletedAt)).limit(50);
+    const rows = await db
+      .select()
+      .from(gyms)
+      .where(and(isNull(gyms.deletedAt), eq(gyms.status, "published")))
+      .orderBy(asc(gyms.area), asc(gyms.name))
+      .limit(250);
     return rows.map(toGymSummary);
   } catch {
     if (!isRuntimeFallbackAllowed()) {
@@ -77,7 +82,7 @@ async function getPersistentGym(gymId: string) {
 
   try {
     const [row] = await db.select().from(gyms).where(eq(gyms.id, gymId)).limit(1);
-    return row && !row.deletedAt ? toGymSummary(row) : null;
+    return row && !row.deletedAt && row.status === "published" ? toGymSummary(row) : null;
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not load gym.", 503);
@@ -92,10 +97,20 @@ function toGymSummary(row: typeof gyms.$inferSelect) {
     name: row.name,
     area: row.area ?? "",
     address: row.address ?? "",
-    disciplines: "ボルダー / リード",
+    disciplines: row.disciplinesText ?? "クライミング",
     openingHours: row.openingHoursText ?? "",
+    ...(row.websiteUrl ? { websiteUrl: row.websiteUrl } : {}),
+    ...(row.instagramHandle ? { instagramHandle: row.instagramHandle } : {}),
+    ...(row.instagramUrl ? { instagramUrl: row.instagramUrl } : {}),
+    ...(row.sourceUrl ?? row.websiteUrl ? { sourceUrl: row.sourceUrl ?? row.websiteUrl ?? "" } : {}),
+    ...(row.sourceAttribution ? { sourceAttribution: row.sourceAttribution } : {}),
+    ...(row.sourceVerifiedAt ? { sourceVerifiedAt: formatDate(row.sourceVerifiedAt) } : {}),
     saved: false,
   } satisfies GymSummary;
+}
+
+function formatDate(value: Date) {
+  return value.toISOString().slice(0, 10);
 }
 
 async function setPersistentGymSave(gymId: string, actorId: string | undefined, saved: boolean) {

@@ -57,8 +57,8 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
         <div className="form-heading">
           <ZacIcon decorative icon="sessionPlan" size={48} />
           <div>
-            <p className="card-kind">予定作成</p>
-            <h2>次に登る予定</h2>
+            <p className="card-kind">予定</p>
+            <h2>新規予定</h2>
           </div>
         </div>
         <div className="form-grid">
@@ -102,7 +102,7 @@ export function SessionPlanForm({ gyms }: { gyms: GymOption[] }) {
           </label>
           <label>
             メモ
-            <textarea maxLength={1000} name="note" placeholder="軽めに登ります" />
+            <textarea maxLength={1000} name="note" placeholder="メモ" />
           </label>
         </div>
         {savedMessage ? (

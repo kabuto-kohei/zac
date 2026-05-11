@@ -101,6 +101,7 @@ test("GET /v1/integrations returns non-secret status", async () => {
   assert.equal(response.status, 200);
   assert.equal(typeof body.data.supabase, "boolean");
   assert.equal(typeof body.data.database, "boolean");
+  assert.equal(typeof body.data.databaseReachable, "boolean");
   assert.equal(typeof body.data.posthog, "boolean");
   assert.equal(typeof body.data.sentry, "boolean");
   assert.equal(body.data.storage.userMediaBucket, "user-media");
@@ -660,11 +661,17 @@ test("admin content list routes require admin", async () => {
   const eventsResponse = await createApp().request("/v1/admin/events", {
     headers: adminAuth,
   });
+  const eventSourcesResponse = await createApp().request("/v1/admin/event-sources", {
+    headers: adminAuth,
+  });
   const announcementsResponse = await createApp().request("/v1/admin/announcements", {
     headers: adminAuth,
   });
+  const eventSourcesBody = await eventSourcesResponse.json();
 
   assert.equal(eventsResponse.status, 200);
+  assert.equal(eventSourcesResponse.status, 200);
+  assert.equal(eventSourcesBody.data.some((source: { handle: string }) => source.handle === "comp_bible"), true);
   assert.equal(announcementsResponse.status, 200);
 });
 

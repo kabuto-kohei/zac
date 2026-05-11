@@ -2,8 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
 import { getEventDetailData } from "./data";
+import { DetailBackButton } from "./detail-back-button";
 import { EventActions } from "./detail-actions";
-import { ZacIcon } from "./zac-icons";
 
 export async function EventDetail({ eventId }: { eventId: string }) {
   const event = await getEventDetailData(eventId);
@@ -14,20 +14,26 @@ export async function EventDetail({ eventId }: { eventId: string }) {
 
   return (
     <AppShell activeTab="explore" action={<Link className="primary-action" href="/plans/new">予定作成</Link>}>
-      <section className="hero-card">
-        <div className="hero-visual icon-visual event-visual">
-          <ZacIcon decorative icon="lead" size={76} />
-        </div>
+      <div className="detail-back-row">
+        <DetailBackButton />
+      </div>
+      <section className="hero-card no-visual-hero">
         <div>
           <p className="card-kind">{event.gymName}</p>
           <h2>{event.title}</h2>
           <p>
             {event.startsAt} - {event.endsAt}
           </p>
-          <p>
-            定員 {event.capacity} · {event.status === "scheduled" ? "開催予定" : "受付終了"}
-          </p>
           {event.description ? <p>{event.description}</p> : null}
+          {event.sourceUrl ? (
+            <p className="source-line">
+              <span>情報源</span>
+              <a href={event.sourceUrl} rel="noreferrer" target="_blank">
+                {event.sourceLabel}
+              </a>
+              {event.sourceQuote ? <span>{event.sourceQuote}</span> : null}
+            </p>
+          ) : null}
         </div>
       </section>
 

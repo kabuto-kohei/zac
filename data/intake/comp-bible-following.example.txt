@@ -1,0 +1,8 @@
+# Paste one Instagram handle per line after exporting/copying Comp Bible's following list.
+# Keep this file as an example only; do not commit a private/login-derived dump
+# unless each handle is intended to be part of Zac's public source registry.
+#
+# Example:
+# westrock_climbing
+# bloc_bouldering_local_circuit
+# bpumptokyo

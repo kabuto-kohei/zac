@@ -5,6 +5,7 @@ import { dataResponse, paginatedResponse, validationErrorResponse } from "../res
 import { createAnnouncement, listAnnouncements, updateAnnouncement } from "../services/announcement-service.js";
 import { listAdminUsers, listAuditLogs, moderatePost, recordAdminAudit, requireAdminActor, updateGymStatus, updateReportStatus } from "../services/admin-service.js";
 import { createEvent, listEvents, updateEvent } from "../services/event-service.js";
+import { listEventSources } from "../services/event-source-service.js";
 
 export function createAdminRoutes() {
   const app = new Hono();
@@ -25,6 +26,12 @@ export function createAdminRoutes() {
     const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
     void actor;
     return context.json(paginatedResponse(await listEvents({ includeDrafts: true })));
+  });
+
+  app.get("/event-sources", async (context) => {
+    const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
+    void actor;
+    return context.json(paginatedResponse(await listEventSources({ includeCandidates: true })));
   });
 
   app.post("/events", async (context) => {

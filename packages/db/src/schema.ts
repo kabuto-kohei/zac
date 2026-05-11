@@ -8,6 +8,7 @@ import {
   primaryKey,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
 
@@ -70,8 +71,17 @@ export const gyms = pgTable("gyms", {
   latitude: numeric("latitude", { precision: 10, scale: 7 }),
   longitude: numeric("longitude", { precision: 10, scale: 7 }),
   websiteUrl: text("website_url"),
+  instagramHandle: text("instagram_handle"),
+  instagramUrl: text("instagram_url"),
   phone: text("phone"),
+  disciplinesText: text("disciplines_text"),
   openingHoursText: text("opening_hours_text"),
+  sourceExternalId: text("source_external_id"),
+  sourceType: text("source_type").notNull().default("manual"),
+  sourceUrl: text("source_url"),
+  sourceAttribution: text("source_attribution"),
+  sourceVerifiedAt: timestamp("source_verified_at", { withTimezone: true }),
+  sourcePolicy: text("source_policy").notNull().default("summary_with_link"),
   status: text("status").notNull().default("draft"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
@@ -279,10 +289,24 @@ export const postSaves = pgTable(
 export const events = pgTable("events", {
   id: uuid("id").primaryKey().defaultRandom(),
   gymId: uuid("gym_id").references(() => gyms.id),
+  category: text("category").notNull().default("event"),
   title: text("title").notNull(),
+  summary: text("summary"),
   description: text("description"),
   startsAt: timestamp("starts_at", { withTimezone: true }).notNull(),
   endsAt: timestamp("ends_at", { withTimezone: true }),
+  capacityText: text("capacity_text"),
+  sourceType: text("source_type").notNull().default("manual"),
+  sourceUrl: text("source_url"),
+  sourceAccount: text("source_account"),
+  sourcePublishedAt: timestamp("source_published_at", { withTimezone: true }),
+  sourceFetchedAt: timestamp("source_fetched_at", { withTimezone: true }),
+  sourceQuote: text("source_quote"),
+  sourceRawText: text("source_raw_text"),
+  sourcePolicy: text("source_policy").notNull().default("summary_with_link"),
+  extractionConfidence: numeric("extraction_confidence", { precision: 3, scale: 2 }),
+  reviewStatus: text("review_status").notNull().default("approved"),
+  reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
   status: text("status").notNull().default("draft"),
   visibility: text("visibility").notNull().default("public"),
   createdBy: uuid("created_by")
@@ -292,6 +316,31 @@ export const events = pgTable("events", {
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
 });
+
+export const eventSources = pgTable(
+  "event_sources",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    platform: text("platform").notNull(),
+    handle: text("handle").notNull(),
+    displayName: text("display_name"),
+    sourceUrl: text("source_url").notNull(),
+    sourceType: text("source_type").notNull().default("official_instagram"),
+    relationshipSourceHandle: text("relationship_source_handle"),
+    discoverySource: text("discovery_source"),
+    discoveryNote: text("discovery_note"),
+    ingestionPolicy: text("ingestion_policy").notNull().default("summary_with_link"),
+    lastCheckedAt: timestamp("last_checked_at", { withTimezone: true }),
+    sourceVerifiedAt: timestamp("source_verified_at", { withTimezone: true }),
+    status: text("status").notNull().default("candidate"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+    deletedAt: timestamp("deleted_at", { withTimezone: true }),
+  },
+  (table) => ({
+    platformHandleUnique: uniqueIndex("event_sources_platform_handle_unique").on(table.platform, table.handle),
+  }),
+);
 
 export const eventImages = pgTable("event_images", {
   id: uuid("id").primaryKey().defaultRandom(),

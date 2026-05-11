@@ -1,9 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAuthStatus } from "./auth-state";
-import { EventCard, GymCard, LogCard, PlanCard, PostCard } from "./cards";
+import { GymCard, LogCard, PlanCard, PostCard } from "./cards";
 import type { HomeFeedItem, HomeViewData } from "./data";
 import { MemberActivityState, type MemberActivityLoadState } from "./member-activity-data";
 import { ZacIcon } from "./zac-icons";
@@ -16,8 +16,6 @@ const filterLabels: Array<{ value: FeedFilter; label: string }> = [
   { value: "climbing_log", label: "記録" },
   { value: "post", label: "投稿" },
 ];
-
-const topicLabels = ["#仕事後", "#初級歓迎", "#ボルダー", "#リード", "#遠征", "#セッション募集"];
 
 export function FeedExperience({ data, memberState }: { data: HomeViewData; memberState: MemberActivityLoadState }) {
   const { authenticated, checking } = useAuthStatus();
@@ -34,64 +32,325 @@ export function FeedExperience({ data, memberState }: { data: HomeViewData; memb
 }
 
 function GuestHomeExperience({ data }: { data: HomeViewData }) {
-  const highlightedGym = data.gyms[0];
-  const nextEvent = data.events[0];
-  const featuredGyms = data.gyms.slice(0, 3);
-  const featuredEvents = data.events.slice(0, 3);
+  const [showGyms, setShowGyms] = useState(false);
+  const gyms = useMemo(() => getSortedGyms(data.gyms), [data.gyms]);
+  const calendarEvents = getCalendarEvents(data.events);
 
   return (
     <section className="stack">
-      <FeaturedEventsRail events={data.events} />
-      <GuestValueBanner />
-      <GuestShortcutGrid highlightedGym={highlightedGym} nextEvent={nextEvent} />
-      <div className="topic-rail" aria-label="トピック">
-        {topicLabels.map((topic) => (
-          <button className="topic-chip" key={topic} type="button">
-            {topic}
-          </button>
-        ))}
-      </div>
-      <section className="digest-card" aria-label="今日のピックアップ">
-        <div>
-          <p className="card-kind">TODAY</p>
-          <h2>今日の動き</h2>
-          <p>
-            {nextEvent ? `${nextEvent.gymName}で${nextEvent.title}があります。` : "参加できるイベントを探しましょう。"}
-            {highlightedGym ? ` ${highlightedGym.name}もチェックできます。` : ""}
-          </p>
-        </div>
-        <div className="digest-actions">
-          {nextEvent ? (
-            <Link className="ghost-button" href={`/events/${nextEvent.id}`}>
-              イベントを見る
-            </Link>
-          ) : null}
-          {highlightedGym ? (
-            <Link className="ghost-button" href={`/gyms/${highlightedGym.id}`}>
-              ジムを見る
-            </Link>
-          ) : null}
-        </div>
-      </section>
+      <EventCalendar events={calendarEvents} />
       <div className="section-title">
         <div>
-          <p className="section-kicker">Explore</p>
-          <h2>ジムとイベント</h2>
+          <h2>ジム</h2>
+        </div>
+        <span>{data.gyms.length}件</span>
+        <button className="ghost-button section-toggle" onClick={() => setShowGyms((current) => !current)} type="button">
+          {showGyms ? "閉じる" : "表示"}
+        </button>
+        <Link className="primary-action" href="/explore">
+          探す
+        </Link>
+      </div>
+      {showGyms ? (
+        <section className="feed-grid" aria-label="ジム一覧">
+          {gyms.map((gym) => (
+            <GymCard gym={gym} key={gym.id} />
+          ))}
+        </section>
+      ) : null}
+    </section>
+  );
+}
+
+type CalendarDay = {
+  dateKey: string;
+  day: number;
+  events: HomeViewData["events"];
+  displayGroups: CalendarDisplayGroup[];
+};
+
+type CalendarDisplayGroup = "event" | "competition" | "route_set" | "opening_change" | "private_booking";
+
+const calendarDisplayGroups: Array<{ key: CalendarDisplayGroup; label: string }> = [
+  { key: "event", label: "イベント" },
+  { key: "competition", label: "コンペ" },
+  { key: "route_set", label: "セット" },
+  { key: "opening_change", label: "営業時間変更" },
+  { key: "private_booking", label: "貸切" },
+];
+
+function EventCalendar({ events }: { events: HomeViewData["events"] }) {
+  const initialMonthKey = useMemo(() => getInitialCalendarMonth(events), [events]);
+  const [visibleMonth, setVisibleMonth] = useState(initialMonthKey);
+  const [activeFilter, setActiveFilter] = useState<CalendarDisplayGroup | null>(null);
+  const filteredEvents = useMemo(
+    () => (activeFilter ? events.filter((event) => getCalendarDisplayGroup(event) === activeFilter) : events),
+    [activeFilter, events],
+  );
+  const eventDays = useMemo(() => buildEventCalendarDays(filteredEvents, visibleMonth), [filteredEvents, visibleMonth]);
+  const visibleMonthEvents = useMemo(() => events.filter((event) => getEventDateKey(event)?.slice(0, 7) === visibleMonth), [events, visibleMonth]);
+  const todayKey = getTodayDateKey();
+  const firstEventDate =
+    eventDays.find((day) => day.events.length > 0 && day.dateKey >= todayKey)?.dateKey ?? eventDays.find((day) => day.events.length > 0)?.dateKey ?? `${visibleMonth}-01`;
+  const [selectedDate, setSelectedDate] = useState(firstEventDate);
+  const selectedDay = eventDays.find((day) => day.dateKey === selectedDate && day.events.length > 0);
+  const firstCalendarDate = eventDays.find((day) => day.day > 0)?.dateKey;
+  const monthLabel = firstCalendarDate ? `${firstCalendarDate.slice(0, 4)}年${Number(firstCalendarDate.slice(5, 7))}月` : "イベント";
+  const counts = useMemo(() => getCalendarCounts(visibleMonthEvents), [visibleMonthEvents]);
+
+  useEffect(() => {
+    setSelectedDate(firstEventDate);
+  }, [firstEventDate]);
+
+  return (
+    <section className="event-calendar" aria-label="イベントカレンダー">
+      <div className="section-title calendar-title">
+        <div>
+          <h2>イベント</h2>
+          <span>{monthLabel}</span>
+        </div>
+        <div className="calendar-month-actions" aria-label="月を切り替え">
+          <button aria-label="前月" onClick={() => setVisibleMonth(shiftMonth(visibleMonth, -1))} type="button">
+            ←
+          </button>
+          <button aria-label="翌月" onClick={() => setVisibleMonth(shiftMonth(visibleMonth, 1))} type="button">
+            →
+          </button>
+        </div>
+        <div className="calendar-summary" aria-label="カレンダー内訳">
+          {calendarDisplayGroups.map((group) => (
+            <button
+              aria-label={`${group.label}だけ表示`}
+              aria-pressed={activeFilter === group.key}
+              key={group.key}
+              onClick={() => setActiveFilter((current) => (current === group.key ? null : group.key))}
+              type="button"
+            >
+              {group.label} {counts[group.key]}
+            </button>
+          ))}
         </div>
         <Link className="primary-action" href="/explore">
           探す
         </Link>
       </div>
-      <section className="feed-grid" aria-label="ゲスト閲覧">
-        {featuredEvents.map((event) => (
-          <EventCard event={event} key={event.id} />
+      <div className="calendar-weekdays" aria-hidden="true">
+        {["月", "火", "水", "木", "金", "土", "日"].map((day) => (
+          <span key={day}>{day}</span>
         ))}
-        {featuredGyms.map((gym) => (
-          <GymCard gym={gym} key={gym.id} />
-        ))}
-      </section>
+      </div>
+      <div className="calendar-grid">
+        {eventDays.map((day) =>
+          day.day === 0 ? (
+            <span className="calendar-day is-empty" key={day.dateKey} />
+          ) : (
+            <button
+              aria-label={`${day.dateKey}${day.events.length > 0 ? ` ${day.events.map((event) => event.title).join("、")}` : ""}`}
+              aria-pressed={selectedDate === day.dateKey}
+              className={getCalendarDayClassName(day)}
+              key={day.dateKey}
+              onClick={() => setSelectedDate(day.dateKey)}
+              type="button"
+            >
+              <span>{day.day}</span>
+              {day.events.length > 0 ? (
+                <small aria-hidden="true">
+                  {day.displayGroups.map((group) => (
+                    <i className={`calendar-dot ${group}`} key={group} />
+                  ))}
+                </small>
+              ) : null}
+            </button>
+          ),
+        )}
+      </div>
+      <div className="calendar-detail" aria-live="polite">
+        {selectedDay ? (
+          <CalendarEventGroups events={selectedDay.events} />
+        ) : (
+          <p>イベントなし</p>
+        )}
+      </div>
     </section>
   );
+}
+
+function CalendarEventGroups({ events }: { events: HomeViewData["events"] }) {
+  return (
+    <>
+      {calendarDisplayGroups.map((group) => {
+        const groupEvents = events.filter((event) => getCalendarDisplayGroup(event) === group.key);
+        return groupEvents.length > 0 ? <CalendarEventGroup events={groupEvents} key={group.key} label={group.label} /> : null;
+      })}
+    </>
+  );
+}
+
+function CalendarEventGroup({ events, label }: { events: HomeViewData["events"]; label: string }) {
+  return (
+    <section className="calendar-event-group" aria-label={label}>
+      <h3>{label}</h3>
+      {events.map((event) => (
+        <Link className="calendar-event" href={`/events/${event.id}`} key={event.id}>
+          <span className="calendar-event-meta">
+            <i className={getCalendarEventBadgeClassName(event)}>{getCalendarEventLabel(event)}</i>
+            <span className="calendar-event-gym">{event.gymName}</span>
+          </span>
+          <strong>{event.title}</strong>
+        </Link>
+      ))}
+    </section>
+  );
+}
+
+function getCalendarEvents(events: HomeViewData["events"]) {
+  return [...events]
+    .filter((event) => event.status === "scheduled")
+    .sort((left, right) => left.startsAt.localeCompare(right.startsAt));
+}
+
+function getInitialCalendarMonth(events: HomeViewData["events"]) {
+  const scheduledEvents = getCalendarEvents(events);
+  const upcomingEvents = scheduledEvents.filter((event) => {
+    const eventTime = Date.parse(event.startsAt.replace(" ", "T"));
+    if (Number.isNaN(eventTime)) {
+      return true;
+    }
+
+    return eventTime >= startOfToday().getTime();
+  });
+  const targetEvents = upcomingEvents.length > 0 ? upcomingEvents : scheduledEvents;
+  const firstDateKey = getEventDateKey(targetEvents[0]);
+  return firstDateKey?.slice(0, 7) ?? getCurrentMonthKey().slice(0, 7);
+}
+
+function buildEventCalendarDays(events: HomeViewData["events"], monthKey: string): CalendarDay[] {
+  const year = Number(monthKey.slice(0, 4));
+  const month = Number(monthKey.slice(5, 7));
+  const daysInMonth = new Date(year, month, 0).getDate();
+  const firstDay = new Date(year, month - 1, 1).getDay();
+  const leadingEmptyDays = (firstDay + 6) % 7;
+  const eventsByDay = new Map<string, HomeViewData["events"]>();
+
+  for (const event of events) {
+    const dateKey = getEventDateKey(event);
+    if (!dateKey) {
+      continue;
+    }
+
+    eventsByDay.set(dateKey, [...(eventsByDay.get(dateKey) ?? []), event]);
+  }
+
+  const days: CalendarDay[] = Array.from({ length: leadingEmptyDays }, (_, index) => ({
+    dateKey: `empty-${index}`,
+    day: 0,
+    events: [],
+    displayGroups: [],
+  }));
+
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const dateKey = `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const dayEvents = eventsByDay.get(dateKey) ?? [];
+    days.push({
+      dateKey,
+      day,
+      events: dayEvents,
+      displayGroups: getCalendarDisplayGroups(dayEvents),
+    });
+  }
+
+  return days;
+}
+
+function shiftMonth(monthKey: string, amount: number) {
+  const year = Number(monthKey.slice(0, 4));
+  const month = Number(monthKey.slice(5, 7));
+  const next = new Date(year, month - 1 + amount, 1);
+  return `${next.getFullYear()}-${String(next.getMonth() + 1).padStart(2, "0")}`;
+}
+
+function getCalendarCounts(events: HomeViewData["events"]) {
+  return events.reduce(
+    (counts, event) => {
+      counts[getCalendarDisplayGroup(event)] += 1;
+
+      return counts;
+    },
+    {
+      event: 0,
+      competition: 0,
+      route_set: 0,
+      opening_change: 0,
+      private_booking: 0,
+    } satisfies Record<CalendarDisplayGroup, number>,
+  );
+}
+
+function getCalendarDayClassName(day: CalendarDay) {
+  const classes = ["calendar-day"];
+  if (day.events.length > 0) {
+    classes.push("has-event");
+  }
+  day.displayGroups.forEach((group) => classes.push(`has-${group}`));
+
+  return classes.join(" ");
+}
+
+function getCalendarEventLabel(event: HomeViewData["events"][number]) {
+  return calendarDisplayGroups.find((group) => group.key === getCalendarDisplayGroup(event))?.label ?? "イベント";
+}
+
+function getCalendarEventBadgeClassName(event: HomeViewData["events"][number]) {
+  return `calendar-event-badge ${getCalendarDisplayGroup(event)}`;
+}
+
+function getCalendarDisplayGroups(events: HomeViewData["events"]) {
+  const groups = new Set(events.map(getCalendarDisplayGroup));
+  return calendarDisplayGroups.map((group) => group.key).filter((group) => groups.has(group));
+}
+
+function getCalendarDisplayGroup(event: HomeViewData["events"][number]): CalendarDisplayGroup {
+  if (event.category === "competition") {
+    return "competition";
+  }
+
+  if (event.category === "route_set") {
+    return "route_set";
+  }
+
+  if (event.category === "private_booking") {
+    return "private_booking";
+  }
+
+  if (event.category === "opening_change" || event.category === "construction" || event.category === "notice") {
+    return "opening_change";
+  }
+
+  return "event";
+}
+
+function getEventDateKey(event: HomeViewData["events"][number] | undefined) {
+  return event?.startsAt.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? null;
+}
+
+function startOfToday() {
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  return now;
+}
+
+function getCurrentMonthKey() {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-01`;
+}
+
+function getTodayDateKey() {
+  const now = new Date();
+  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+}
+
+function getSortedGyms(gyms: HomeViewData["gyms"]) {
+  return [...gyms].sort((left, right) => left.name.localeCompare(right.name, "en", { numeric: true, sensitivity: "base" }));
 }
 
 function MemberHomeExperience({ data }: { data: HomeViewData }) {
@@ -106,7 +365,6 @@ function MemberHomeExperience({ data }: { data: HomeViewData }) {
 
   const nextPlan = data.plans[0];
   const highlightedGym = data.gyms.find((gym) => gym.saved) ?? data.gyms[0];
-  const nextEvent = data.events[0];
   const latestLog = data.logs[0];
   const feedCounts = {
     all: data.feed.length,
@@ -119,32 +377,9 @@ function MemberHomeExperience({ data }: { data: HomeViewData }) {
     <section className="stack">
       <MemberDashboard nextPlan={nextPlan} highlightedGym={highlightedGym} latestLog={latestLog} metrics={data.metrics} />
       <QuickComposer />
-      <HomeShortcutGrid nextPlan={nextPlan} highlightedGym={highlightedGym} nextEvent={nextEvent} />
-      <section className="digest-card" aria-label="今日のピックアップ">
-        <div>
-          <p className="card-kind">TODAY</p>
-          <h2>今日のセッション</h2>
-          <p>
-            {nextPlan ? `${nextPlan.place}で${nextPlan.title}があります。` : "予定を作成して次のセッションを決めましょう。"}
-            {latestLog ? ` 直近の記録は${latestLog.title}です。` : ""}
-          </p>
-        </div>
-        <div className="digest-actions">
-          {nextPlan ? (
-            <Link className="ghost-button" href={`/plans/${nextPlan.id}`}>
-              予定を見る
-            </Link>
-          ) : null}
-          <Link className="primary-action" href="/logs/new">
-            記録する
-          </Link>
-        </div>
-      </section>
-      <FeaturedEventsRail events={data.events} />
       <div className="section-title">
         <div>
-          <p className="section-kicker">Feed</p>
-          <h2>参加中とメンバーフィード</h2>
+          <h2>フィード</h2>
         </div>
         <Link className="primary-action" href="/posts/new">
           投稿
@@ -172,8 +407,7 @@ function MemberHomeExperience({ data }: { data: HomeViewData }) {
         </div>
       ) : (
         <div className="empty-state">
-          <h3>表示できるフィードがありません</h3>
-          <p>別のタブに切り替えるか、新しい投稿・予定・記録を追加してください。</p>
+          <h3>まだありません</h3>
         </div>
       )}
     </section>
@@ -194,15 +428,14 @@ function MemberDashboard({
   return (
     <section className="member-dashboard" aria-label="ログイン後ホーム">
       <div className="member-dashboard-copy">
-        <p className="card-kind">Member home</p>
-        <h2>今日のセッション管理</h2>
-        <p>保存したジム、参加予定、記録を起点に、次の行動をすぐ作れます。</p>
+        <p className="card-kind">Home</p>
+        <h2>今日</h2>
         <div className="action-row">
           <Link className="primary-action" href="/plans/new">
-            予定作成
+            予定
           </Link>
           <Link className="ghost-button" href="/logs/new">
-            記録追加
+            記録
           </Link>
         </div>
       </div>
@@ -215,8 +448,8 @@ function MemberDashboard({
         <MemberLink
           href={nextPlan ? `/plans/${nextPlan.id}` : "/plans"}
           label="次の予定"
-          title={nextPlan?.title ?? "予定を作成する"}
-          meta={nextPlan ? `${nextPlan.place} · ${nextPlan.time}` : "ログイン後の予定を管理"}
+          title={nextPlan?.title ?? "未定"}
+          meta={nextPlan ? `${nextPlan.place} · ${nextPlan.time}` : "予定なし"}
         />
         <MemberLink
           href={highlightedGym ? `/gyms/${highlightedGym.id}` : "/explore"}
@@ -226,9 +459,9 @@ function MemberDashboard({
         />
         <MemberLink
           href={latestLog ? `/logs/${latestLog.id}` : "/logs/new"}
-          label="最近の記録"
-          title={latestLog?.title ?? "記録を追加する"}
-          meta={latestLog ? `${latestLog.place} · ${latestLog.grade}` : "1分で残す"}
+          label="記録"
+          title={latestLog?.title ?? "未記録"}
+          meta={latestLog ? `${latestLog.place} · ${latestLog.grade}` : "記録なし"}
         />
       </div>
     </section>
@@ -254,151 +487,6 @@ function MemberLink({ href, label, title, meta }: { href: string; label: string;
   );
 }
 
-function FeaturedEventsRail({ events }: { events: HomeViewData["events"] }) {
-  const featured = events.slice(0, 3);
-
-  if (featured.length === 0) {
-    return null;
-  }
-
-  return (
-    <section className="featured-events" aria-label="注目イベント">
-      <div className="featured-event-grid">
-        {featured.map((event) => (
-          <Link className="featured-event" href={`/events/${event.id}`} key={event.id}>
-            <span className="featured-event-thumb" aria-hidden="true">
-              <ZacIcon decorative icon="lead" size={48} />
-            </span>
-            <span className="featured-event-copy">
-              <span className="featured-event-tag">イベント</span>
-              <strong>{event.title}</strong>
-              <small>
-                {event.startsAt} · {event.gymName}
-              </small>
-            </span>
-          </Link>
-        ))}
-      </div>
-      <Link className="featured-more" href="/explore">
-        イベントをもっと見る →
-      </Link>
-    </section>
-  );
-}
-
-function HomeShortcutGrid({
-  nextPlan,
-  highlightedGym,
-  nextEvent,
-}: {
-  nextPlan: HomeViewData["plans"][number] | undefined;
-  highlightedGym: HomeViewData["gyms"][number] | undefined;
-  nextEvent: HomeViewData["events"][number] | undefined;
-}) {
-  const shortcuts = [
-    nextPlan
-      ? {
-          href: `/plans/${nextPlan.id}`,
-          kicker: "Next plan",
-          title: nextPlan.title,
-          detail: `${nextPlan.place} · ${nextPlan.time}`,
-        }
-      : {
-          href: "/plans",
-          kicker: "Next plan",
-          title: "予定を確認",
-          detail: "ログイン後の予定を見る",
-        },
-    nextEvent
-      ? {
-          href: `/events/${nextEvent.id}`,
-          kicker: "Event",
-          title: nextEvent.title,
-          detail: `${nextEvent.gymName} · ${nextEvent.startsAt}`,
-        }
-      : {
-          href: "/explore",
-          kicker: "Event",
-          title: "イベントを探す",
-          detail: "講習やセッションを見る",
-        },
-    highlightedGym
-      ? {
-          href: `/gyms/${highlightedGym.id}`,
-          kicker: "Gym",
-          title: highlightedGym.name,
-          detail: `${highlightedGym.area} · ${highlightedGym.disciplines}`,
-        }
-      : {
-          href: "/explore",
-          kicker: "Gym",
-          title: "ジムを探す",
-          detail: "エリアと種目から探す",
-        },
-  ];
-
-  return (
-    <section className="home-shortcuts" aria-label="ホームショートカット">
-      {shortcuts.map((shortcut) => (
-        <Link className="home-shortcut" href={shortcut.href} key={shortcut.kicker}>
-          <span>{shortcut.kicker}</span>
-          <strong>{shortcut.title}</strong>
-          <small>{shortcut.detail}</small>
-        </Link>
-      ))}
-    </section>
-  );
-}
-
-function GuestShortcutGrid({
-  highlightedGym,
-  nextEvent,
-}: {
-  highlightedGym: HomeViewData["gyms"][number] | undefined;
-  nextEvent: HomeViewData["events"][number] | undefined;
-}) {
-  const shortcuts = [
-    nextEvent
-      ? {
-          href: `/events/${nextEvent.id}`,
-          kicker: "Event",
-          title: nextEvent.title,
-          detail: `${nextEvent.gymName} · ${nextEvent.startsAt}`,
-        }
-      : {
-          href: "/explore",
-          kicker: "Event",
-          title: "イベントを探す",
-          detail: "講習やセッションを見る",
-        },
-    highlightedGym
-      ? {
-          href: `/gyms/${highlightedGym.id}`,
-          kicker: "Gym",
-          title: highlightedGym.name,
-          detail: `${highlightedGym.area} · ${highlightedGym.disciplines}`,
-        }
-      : {
-          href: "/explore",
-          kicker: "Gym",
-          title: "ジムを探す",
-          detail: "エリアと種目から探す",
-        },
-  ];
-
-  return (
-    <section className="home-shortcuts guest-shortcuts" aria-label="ゲストショートカット">
-      {shortcuts.map((shortcut) => (
-        <Link className="home-shortcut" href={shortcut.href} key={shortcut.kicker}>
-          <span>{shortcut.kicker}</span>
-          <strong>{shortcut.title}</strong>
-          <small>{shortcut.detail}</small>
-        </Link>
-      ))}
-    </section>
-  );
-}
-
 function QuickComposer() {
   const { authenticated, checking } = useAuthStatus();
 
@@ -409,7 +497,7 @@ function QuickComposer() {
           <ZacIcon decorative icon="logo" size={38} />
         </div>
         <div className="composer-main">
-          <p className="composer-input">保存、参加、作成はログイン後に使えます</p>
+          <p className="composer-input">ログインして保存・参加</p>
           <div className="composer-actions">
             <Link href="/login">ログイン</Link>
             <Link href="/register">新規登録</Link>
@@ -427,7 +515,7 @@ function QuickComposer() {
       </div>
       <div className="composer-main">
         <Link className="composer-input" href="/posts/new">
-          今日の登りを共有する
+          いまどう？
         </Link>
         <div className="composer-actions">
           <Link href="/logs/new">
@@ -443,32 +531,6 @@ function QuickComposer() {
             投稿
           </Link>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function GuestValueBanner() {
-  const { authenticated, checking } = useAuthStatus();
-
-  if (checking || authenticated) {
-    return null;
-  }
-
-  return (
-    <section className="guest-banner">
-      <div>
-        <p className="card-kind">Guest mode</p>
-        <h2>公開情報はこのまま閲覧できます</h2>
-        <p>ジムとイベントを見てから、保存や参加が必要になったタイミングでログインできます。</p>
-      </div>
-      <div className="action-row">
-        <Link className="primary-action" href="/register">
-          保存を始める
-        </Link>
-        <Link className="ghost-button" href="/login">
-          ログイン
-        </Link>
       </div>
     </section>
   );

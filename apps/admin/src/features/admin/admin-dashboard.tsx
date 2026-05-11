@@ -1,19 +1,20 @@
 "use client";
 
-import { announcementFixtures, auditLogFixtures, eventFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
-import type { AdminUserSummary, AnnouncementSummary, AuditLogSummary, EventSummary, GymSummary, PostSummary, ReportSummary } from "@zac/shared";
+import { announcementFixtures, auditLogFixtures, eventFixtures, eventSourceFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
+import type { AdminUserSummary, AnnouncementSummary, AuditLogSummary, EventSourceSummary, EventSummary, GymSummary, PostSummary, ReportSummary } from "@zac/shared";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./api-client";
 import { getAdminSupabaseClient } from "./integration-provider";
 
-type AdminView = "dashboard" | "users" | "gyms" | "events" | "posts" | "reports" | "auditLogs" | "announcements";
+type AdminView = "dashboard" | "users" | "gyms" | "events" | "eventSources" | "posts" | "reports" | "auditLogs" | "announcements";
 
 const navItems: Array<{ id: AdminView; href: string; label: string }> = [
   { id: "dashboard", href: "/dashboard", label: "ダッシュボード" },
   { id: "users", href: "/users", label: "ユーザー" },
   { id: "gyms", href: "/gyms", label: "ジム" },
   { id: "events", href: "/events", label: "イベント" },
+  { id: "eventSources", href: "/event-sources", label: "取得源" },
   { id: "posts", href: "/posts", label: "投稿" },
   { id: "reports", href: "/reports", label: "通報" },
   { id: "auditLogs", href: "/audit-logs", label: "監査ログ" },
@@ -65,6 +66,7 @@ export function AdminDashboard({ view }: { view: AdminView }) {
         {view === "users" ? <UsersView /> : null}
         {view === "gyms" ? <GymsView /> : null}
         {view === "events" ? <EventsView /> : null}
+        {view === "eventSources" ? <EventSourcesView /> : null}
         {view === "posts" ? <PostsView /> : null}
         {view === "reports" ? <ReportsView /> : null}
         {view === "auditLogs" ? <AuditLogsView /> : null}
@@ -186,6 +188,7 @@ function DashboardView() {
         <Metric label="未対応通報" value={String(adminData.reports.filter((report) => report.status === "open").length)} />
         <Metric label="登録ジム" value={String(adminData.gyms.length)} />
         <Metric label="イベント" value={String(adminData.events.length)} />
+        <Metric label="取得源" value={String(adminData.eventSources.length)} />
         <Metric label="投稿" value={String(adminData.posts.length)} />
         <Metric label="お知らせ" value={String(adminData.announcements.length)} />
       </section>
@@ -263,6 +266,44 @@ function EventsView() {
           <EventEditorRow event={event} key={event.id} onSaved={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))} />
         ))}
         {items.length === 0 ? <EmptyAdminRow /> : null}
+      </section>
+    </>
+  );
+}
+
+function EventSourcesView() {
+  const { data: sources, message } = useAdminList<EventSourceSummary>("/v1/admin/event-sources", eventSourceFixtures);
+  const approvedCount = sources.filter((source) => source.status === "approved").length;
+  const candidateCount = sources.filter((source) => source.status === "candidate").length;
+
+  return (
+    <>
+      <div className="admin-title">
+        <h2>イベント取得源</h2>
+        <p>コンペバイブル起点の候補、公式サイト、専門メディアを確認します。</p>
+      </div>
+      <AdminDataStatus message={message} />
+      <section className="metric-grid compact-metrics">
+        <Metric label="承認済み" value={String(approvedCount)} />
+        <Metric label="候補" value={String(candidateCount)} />
+        <Metric label="合計" value={String(sources.length)} />
+      </section>
+      <section className="admin-table">
+        {sources.map((source) => (
+          <article className="admin-row source-row" key={source.id}>
+            <span>{source.displayName}</span>
+            <span>{source.platform}</span>
+            <span>{source.handle}</span>
+            <span>{source.sourceType}</span>
+            <span>{source.status}</span>
+            <span>{source.relationshipSourceHandle ?? "-"}</span>
+            <a href={source.sourceUrl} rel="noreferrer" target="_blank">
+              開く
+            </a>
+            <small>{source.discoveryNote}</small>
+          </article>
+        ))}
+        {sources.length === 0 ? <EmptyAdminRow /> : null}
       </section>
     </>
   );
@@ -715,14 +756,16 @@ function useAdminDashboardData() {
   const posts = useAdminList<PostSummary>("/v1/posts", postFixtures);
   const reports = useAdminList<ReportSummary>("/v1/reports", reportFixtures);
   const events = useAdminList<EventSummary>("/v1/admin/events", eventFixtures);
+  const eventSources = useAdminList<EventSourceSummary>("/v1/admin/event-sources", eventSourceFixtures);
   const announcements = useAdminList<AnnouncementSummary>("/v1/admin/announcements", announcementFixtures);
-  const message = [gyms.message, posts.message, reports.message, events.message, announcements.message].find(Boolean) ?? "";
+  const message = [gyms.message, posts.message, reports.message, events.message, eventSources.message, announcements.message].find(Boolean) ?? "";
 
   return {
     gyms: gyms.data,
     posts: posts.data,
     reports: reports.data,
     events: events.data,
+    eventSources: eventSources.data,
     announcements: announcements.data,
     message,
   };

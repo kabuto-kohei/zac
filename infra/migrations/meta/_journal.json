@@ -15,6 +15,34 @@
       "when": 1777378800000,
       "tag": "0001_enable_rls_defense",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1777379400000,
+      "tag": "0002_add_operational_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1777380000000,
+      "tag": "0003_integrate_official_source_data",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1777380600000,
+      "tag": "0004_event_source_accounts",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1778466900000,
+      "tag": "0005_add_gym_disciplines_text",
+      "breakpoints": true
     }
   ]
 }

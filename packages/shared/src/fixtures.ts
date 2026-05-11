@@ -1,3 +1,6 @@
+import { kantoGymFixtures } from "./kanto-gym-fixtures.js";
+import { kantoEventFixtures } from "./kanto-event-fixtures.js";
+
 export type GymSummary = {
   id: string;
   name: string;
@@ -5,6 +8,12 @@ export type GymSummary = {
   address: string;
   disciplines: string;
   openingHours: string;
+  websiteUrl?: string;
+  instagramHandle?: string;
+  instagramUrl?: string;
+  sourceUrl?: string;
+  sourceAttribution?: string;
+  sourceVerifiedAt?: string;
   saved: boolean;
 };
 
@@ -36,13 +45,43 @@ export type PostSummary = {
 
 export type EventSummary = {
   id: string;
+  category:
+    | "event"
+    | "lesson"
+    | "competition"
+    | "route_set"
+    | "opening_change"
+    | "private_booking"
+    | "construction"
+    | "notice"
+    | "recruit";
   title: string;
+  summary: string;
   description: string;
   gymName: string;
   startsAt: string;
   endsAt: string;
   capacity: string;
+  sourceUrl: string;
+  sourceLabel: string;
+  sourceQuote?: string;
   status: "draft" | "scheduled" | "closed";
+};
+
+export type EventSourceSummary = {
+  id: string;
+  platform: "instagram" | "web";
+  handle: string;
+  displayName: string;
+  sourceUrl: string;
+  sourceType: "aggregator_instagram" | "official_instagram" | "official_site" | "media_summary";
+  relationshipSourceHandle: string | null;
+  discoverySource: string;
+  discoveryNote: string;
+  ingestionPolicy: "summary_with_link";
+  lastCheckedAt: string;
+  sourceVerifiedAt: string | null;
+  status: "candidate" | "approved" | "paused" | "rejected";
 };
 
 export type AnnouncementSummary = {
@@ -113,29 +152,48 @@ export const gymFixtures: GymSummary[] = [
     id: "b-pump-tokyo",
     name: "B-PUMP Tokyo",
     area: "秋葉原",
-    address: "東京都千代田区",
+    address: "東京都文京区湯島1-1-8",
     disciplines: "ボルダー / リード",
-    openingHours: "平日 12:00-23:00",
+    openingHours: "平日 12:00-23:00 / 土祝 11:00-21:00 / 日 10:00-21:00",
+    websiteUrl: "https://pump-climbing.com/gym/akiba/",
+    instagramHandle: "bpumptokyo",
+    instagramUrl: "https://www.instagram.com/bpumptokyo/",
+    sourceUrl: "https://pump-climbing.com/gym/akiba/",
+    sourceAttribution: "B-PUMP TOKYO AKIHABARA 公式サイト",
+    sourceVerifiedAt: "2026-05-10",
     saved: true,
   },
   {
     id: "rocky-shinagawa",
     name: "Rocky Shinagawa",
     area: "品川",
-    address: "東京都港区",
-    disciplines: "ボルダー",
-    openingHours: "10:00-22:00",
+    address: "東京都港区港南5-4-38 松岡品川埠頭ビル103",
+    disciplines: "ボルダー / フィットネス",
+    openingHours: "平日 10:00-23:00 / 土日祝 10:00-21:00",
+    websiteUrl: "https://www.rockyclimbing.com/shinagawa/",
+    instagramHandle: "rocky_shinagawa",
+    instagramUrl: "https://www.instagram.com/rocky_shinagawa/",
+    sourceUrl: "https://www.rockyclimbing.com/shinagawa/",
+    sourceAttribution: "ROCKY Climbing & Fitness Gym 品川店 公式サイト",
+    sourceVerifiedAt: "2026-05-10",
     saved: false,
   },
   {
     id: "noborock-shibuya",
     name: "Noborock Shibuya",
     area: "渋谷",
-    address: "東京都渋谷区",
+    address: "東京都渋谷区桜丘町9-1 ビアンクォードビル B1",
     disciplines: "ボルダー",
-    openingHours: "平日 13:00-23:00",
+    openingHours: "平日 10:00-23:00 / 土日祝 10:00-22:00",
+    websiteUrl: "https://noborock-climbing.com/program/shibuya/",
+    instagramHandle: "noborock_shibuya",
+    instagramUrl: "https://www.instagram.com/noborock_shibuya/",
+    sourceUrl: "https://noborock-climbing.com/program/shibuya/",
+    sourceAttribution: "NOBOROCK 渋谷店 公式サイト",
+    sourceVerifiedAt: "2026-05-10",
     saved: true,
   },
+  ...kantoGymFixtures,
 ];
 
 export const planFixtures: PlanSummary[] = [
@@ -196,23 +254,112 @@ export const postFixtures: PostSummary[] = [
 export const eventFixtures: EventSummary[] = [
   {
     id: "b-pump-beginner-session",
-    title: "はじめてのボルダー講習",
-    description: "初心者向けに安全確認と基本ムーブを確認する少人数セッションです。",
+    category: "event",
+    title: "ビギナー道場",
+    summary: "土日祝の午後に開催される、スタッフ設定課題を参加者で登る初心者向けセッション。",
+    description: "B-PUMP Tokyo の道場情報に基づくイベント。開催日は公式NEWSやInstagramで最新情報を確認してください。",
     gymName: "B-PUMP Tokyo",
-    startsAt: "2026-05-02 19:00",
-    endsAt: "2026-05-02 20:30",
-    capacity: "12人",
+    startsAt: "2026-05-03 15:00",
+    endsAt: "2026-05-03 16:00",
+    capacity: "予約不要",
+    sourceUrl: "https://pump-climbing.com/gym/akiba/school/",
+    sourceLabel: "B-PUMP Tokyo 公式サイト",
+    sourceQuote: "土曜日・日曜日・祝日 ビギナー道場",
     status: "scheduled",
   },
   {
-    id: "rocky-morning-session",
-    title: "朝活セッション",
-    description: "開店直後の空いている時間帯に、それぞれの課題を持ち寄って登ります。",
-    gymName: "Rocky Shinagawa",
-    startsAt: "2026-05-05 08:00",
-    endsAt: "2026-05-05 10:00",
-    capacity: "8人",
+    id: "b-pump-rooftop-route-set",
+    category: "route_set",
+    title: "4F ROOF TOP セット営業変更",
+    summary: "4F ROOF TOP のルートセットに伴うクローズ/セット予定。",
+    description: "B-PUMP Tokyo 公式NEWSに基づくセット営業変更。来店前に公式ページで最新状況を確認してください。",
+    gymName: "B-PUMP Tokyo",
+    startsAt: "2026-05-11 22:30",
+    endsAt: "2026-05-15 12:00",
+    capacity: "営業変更",
+    sourceUrl: "https://pump-climbing.com/gym/akiba/",
+    sourceLabel: "B-PUMP Tokyo 公式サイト",
+    sourceQuote: "4F ROOF TOP SET",
     status: "scheduled",
+  },
+  {
+    id: "noborock-shibuya-route-set",
+    category: "route_set",
+    title: "渋谷店 ルートセット営業変更",
+    summary: "5/17は17:00クローズ、5/18はクローズ、5/19は18:30オープン予定。",
+    description: "NOBOROCK 渋谷店公式ページのルートセット告知に基づく営業変更。来店前に公式ページで最新状況を確認してください。",
+    gymName: "Noborock Shibuya",
+    startsAt: "2026-05-17 17:00",
+    endsAt: "2026-05-19 18:30",
+    capacity: "営業変更",
+    sourceUrl: "https://noborock-climbing.com/program/shibuya/",
+    sourceLabel: "NOBOROCK 渋谷店 公式サイト",
+    sourceQuote: "5/17(日) 17:00 close",
+    status: "scheduled",
+  },
+  ...kantoEventFixtures,
+];
+
+export const eventSourceFixtures: EventSourceSummary[] = [
+  {
+    id: "event-source-comp-bible",
+    platform: "instagram",
+    handle: "comp_bible",
+    displayName: "コンペバイブル",
+    sourceUrl: "https://www.instagram.com/comp_bible/",
+    sourceType: "aggregator_instagram",
+    relationshipSourceHandle: null,
+    discoverySource: "user_request",
+    discoveryNote: "クライミングコンペ/イベント情報の発見起点。正確なInstagram handleとフォロー一覧はユーザー確認後に確定する。",
+    ingestionPolicy: "summary_with_link",
+    lastCheckedAt: "2026-05-10",
+    sourceVerifiedAt: null,
+    status: "candidate",
+  },
+  {
+    id: "event-source-westrock-event",
+    platform: "web",
+    handle: "westrock-climbing-event",
+    displayName: "WESTROCK 公式イベント情報",
+    sourceUrl: "https://www.westrock-climbing.com/event/",
+    sourceType: "official_site",
+    relationshipSourceHandle: "comp_bible",
+    discoverySource: "manual_crosscheck",
+    discoveryNote: "STONE CIRCUIT Plus+ と TAMAX 2026 の確認元。",
+    ingestionPolicy: "summary_with_link",
+    lastCheckedAt: "2026-05-10",
+    sourceVerifiedAt: "2026-05-10",
+    status: "approved",
+  },
+  {
+    id: "event-source-base-camp-edogawabashi",
+    platform: "web",
+    handle: "base-camp-edogawabashi",
+    displayName: "BASE CAMP TOKYO 江戸川橋 公式サイト",
+    sourceUrl: "https://b-camp.jp/edogawabashi/",
+    sourceType: "official_site",
+    relationshipSourceHandle: "comp_bible",
+    discoverySource: "manual_crosscheck",
+    discoveryNote: "ルートセット/工事/エリア制限情報の確認元。",
+    ingestionPolicy: "summary_with_link",
+    lastCheckedAt: "2026-05-10",
+    sourceVerifiedAt: "2026-05-10",
+    status: "approved",
+  },
+  {
+    id: "event-source-climbers-bloc-2026",
+    platform: "web",
+    handle: "climbers-bloc-2026",
+    displayName: "CLIMBERS BLoC 2026記事",
+    sourceUrl: "https://www.climbers-web.jp/news/20260214-1/",
+    sourceType: "media_summary",
+    relationshipSourceHandle: "comp_bible",
+    discoverySource: "manual_crosscheck",
+    discoveryNote: "BLoC 2026の初期スケジュール確認元。公式BLoC/開催ジム情報で順次上書きする。",
+    ingestionPolicy: "summary_with_link",
+    lastCheckedAt: "2026-05-10",
+    sourceVerifiedAt: null,
+    status: "candidate",
   },
 ];
 
@@ -310,6 +457,10 @@ export function findPostFixture(postId: string) {
 
 export function findEventFixture(eventId: string) {
   return eventFixtures.find((event) => event.id === eventId);
+}
+
+export function findEventSourceFixture(eventSourceId: string) {
+  return eventSourceFixtures.find((source) => source.id === eventSourceId);
 }
 
 export function findAnnouncementFixture(announcementId: string) {

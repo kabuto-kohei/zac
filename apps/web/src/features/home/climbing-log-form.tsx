@@ -62,8 +62,8 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
         <div className="form-heading">
           <ZacIcon decorative icon="climbLog" size={48} />
           <div>
-            <p className="card-kind">記録作成</p>
-            <h2>登った内容を残す</h2>
+            <p className="card-kind">記録</p>
+            <h2>新規記録</h2>
           </div>
         </div>
         <div className="form-grid">
@@ -96,7 +96,7 @@ export function ClimbingLogForm({ gyms }: { gyms: GymOption[] }) {
           </label>
           <label>
             メモ
-            <textarea maxLength={2000} name="note" placeholder="足位置、ムーブ、次回試したいこと" />
+            <textarea maxLength={2000} name="note" placeholder="メモ" />
           </label>
           <ImageAttachmentField />
         </div>

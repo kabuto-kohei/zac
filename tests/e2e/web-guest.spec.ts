@@ -13,7 +13,6 @@ test.describe("web guest experience", () => {
   test("allows public browsing before login and guides protected actions to auth", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByText("公開情報はこのまま閲覧できます")).toBeVisible();
     const overview = page.getByLabel("Zac overview");
     await expect(overview.getByRole("link", { name: "Login" })).toBeVisible();
     await expect(overview.getByRole("link", { name: "予定作成" })).toHaveCount(0);
@@ -23,10 +22,31 @@ test.describe("web guest experience", () => {
     await expect(navigation.getByRole("link", { name: "予定" })).toHaveCount(0);
     await expect(navigation.getByRole("link", { name: "記録" })).toHaveCount(0);
     await expect(navigation.getByRole("link", { name: "マイ" })).toHaveCount(0);
-    const publicSummary = page.getByRole("region", { name: "Public summary" });
-    await expect(publicSummary.getByText("閲覧範囲")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Public summary" })).toHaveCount(0);
     await expect(page.getByRole("region", { name: "Weekly summary" })).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: "ジムとイベント" })).toBeVisible();
+    await expect(page.getByRole("region", { name: "トピック" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "イベント" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "ジム", exact: true })).toBeVisible();
+    const eventCalendar = page.getByRole("region", { name: "イベントカレンダー" });
+    await expect(eventCalendar).toBeVisible();
+    await expect(eventCalendar.getByText("2026年5月")).toBeVisible();
+    await expect(eventCalendar.getByRole("button", { name: "イベントだけ表示" })).toBeVisible();
+    await expect(eventCalendar.getByRole("button", { name: "コンペだけ表示" })).toBeVisible();
+    await expect(eventCalendar.getByRole("button", { name: "セットだけ表示" })).toBeVisible();
+    await expect(eventCalendar.getByRole("button", { name: "営業時間変更だけ表示" })).toBeVisible();
+    await expect(eventCalendar.getByRole("button", { name: "貸切だけ表示" })).toBeVisible();
+    await expect(eventCalendar.getByRole("link", { name: /STONE CIRCUIT Plus\+ 2026 Season2/ })).toBeVisible();
+    await expect(page.locator(".gym-card img")).toHaveCount(0);
+    await expect(page.getByRole("region", { name: "ジム一覧" })).toHaveCount(0);
+    await page.getByRole("button", { name: "表示", exact: true }).click();
+    await expect(page.getByRole("region", { name: "ジム一覧" }).getByRole("heading", { name: "B-PUMP Tokyo" })).toBeVisible();
+    await page.getByRole("button", { name: "閉じる" }).click();
+    await expect(page.getByRole("region", { name: "ジム一覧" })).toHaveCount(0);
+    await eventCalendar.getByRole("button", { name: /2026-05-17/ }).click();
+    await expect(eventCalendar.getByRole("link", { name: /渋谷店 ルートセット営業変更/ })).toBeVisible();
+    await eventCalendar.getByRole("button", { name: "翌月" }).click();
+    await expect(eventCalendar.getByText("2026年6月")).toBeVisible();
+    await expect(eventCalendar.getByRole("link", { name: /TAMAX 2026 BolBol LAB/ })).toBeVisible();
     await expect(page.getByRole("heading", { name: "火曜夜に軽く登る" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "垂壁の黄色を完登" })).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "週末セッション" })).toHaveCount(0);
@@ -84,6 +104,23 @@ test.describe("web guest experience", () => {
     await page.goto("/posts/yellow-wall-post");
     await expect(page.getByText("投稿詳細はログイン後に閲覧できます")).toBeVisible();
     await expect(page.getByRole("heading", { name: "垂壁の黄色を完登" })).toHaveCount(0);
+
+    await page.goto("/");
+    await page.getByRole("button", { name: /2026-05-11/ }).click();
+    await page.getByRole("link", { name: /STONE CIRCUIT Plus\+ 2026 Season2/ }).click();
+    await expect(page).toHaveURL(/\/events\/77777777-7777-4777-8777-000000000001$/);
+    await expect(page.locator(".hero-card img")).toHaveCount(0);
+    await expect(page.getByText(/2026-05-11 10:00 - 2026-05-17 21:00/)).toBeVisible();
+    await expect(page.getByRole("link", { name: /WESTROCK 公式イベント情報/ })).toBeVisible();
+    await page.getByRole("button", { name: "← 戻る" }).click();
+    await expect(page).toHaveURL(/\/$/);
+
+    await page.goto("/gyms/b-pump-tokyo");
+    await expect(page.getByRole("button", { name: "← 戻る" })).toBeVisible();
+    await expect(page.locator(".hero-card img")).toHaveCount(0);
+    await expect(page.getByRole("link", { name: /B-PUMP TOKYO AKIHABARA 公式サイト/ })).toBeVisible();
+    await page.getByRole("link", { name: /Zac/ }).click();
+    await expect(page).toHaveURL(/\/$/);
   });
 
   test("keeps protected forms private for guests", async ({ page }) => {
@@ -111,7 +148,7 @@ test.describe("web guest experience", () => {
 
     const overview = page.getByLabel("Zac overview");
     await expect(page.getByRole("region", { name: "ログイン後ホーム" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "今日のセッション管理" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "今日" })).toBeVisible();
     const weeklySummary = page.getByRole("region", { name: "Weekly summary" });
     await expect(weeklySummary.getByText("今週の予定", { exact: true })).toBeVisible();
     await expect(weeklySummary.getByText("保存ジム", { exact: true })).toBeVisible();
@@ -130,16 +167,32 @@ test.describe("web guest experience", () => {
   test("filters public gyms and events on explore", async ({ page }) => {
     await page.goto("/explore");
 
-    await expect(page.getByRole("heading", { name: "ジムとイベントを探す" })).toBeVisible();
-    await page.getByPlaceholder("秋葉原、B-PUMP、ボルダー").fill("品川");
+    await expect(page.getByRole("region", { name: "Public summary" })).toHaveCount(0);
+    await expect(page.getByText("Explore")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "探す" })).toHaveCount(0);
+    await expect(page.getByRole("region", { name: "ジム・イベント検索" })).toBeVisible();
+    await expect(page.getByText("平日 12:00-23:00 / 土祝 11:00-21:00 / 日 10:00-21:00")).toHaveCount(0);
+    await page.getByPlaceholder("検索").fill("B-PUMP Tokyo");
 
-    await expect(page.getByRole("heading", { name: "Rocky Shinagawa" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "B-PUMP Tokyo" })).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "B-PUMP Tokyo" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Rocky Shinagawa" })).toHaveCount(0);
 
-    await page.getByRole("button", { name: "リード" }).click();
-    await expect(page.getByText("ジムが見つかりません")).toBeVisible();
-    await page.getByRole("button", { name: "すべて" }).click();
-    await expect(page.getByRole("heading", { name: "Rocky Shinagawa" })).toBeVisible();
+    await page.getByRole("button", { name: /^リード \d+件$/ }).click();
+    await expect(page.getByRole("heading", { name: "ジムが見つかりません" })).toBeVisible();
+    await page.getByRole("button", { name: /^ボルダー \d+件$/ }).click();
+    await expect(page.getByRole("heading", { name: "B-PUMP Tokyo" })).toBeVisible();
+    await page.getByRole("button", { name: /^すべて \d+件$/ }).click();
+    await expect(page.getByRole("heading", { name: "B-PUMP Tokyo" })).toBeVisible();
+  });
+
+  test("centers auth forms and provides a close route for guests", async ({ page }) => {
+    await page.goto("/login");
+
+    const form = page.locator("form.auth-modal-card");
+    await expect(form).toBeVisible();
+    await expect(form.getByRole("link", { name: "閉じる" })).toHaveAttribute("href", "/");
+    await form.getByRole("link", { name: "閉じる" }).click();
+    await expect(page).toHaveURL(/\/$/);
   });
 });
 
@@ -184,7 +237,7 @@ test.describe("web authenticated local experience", () => {
     await routeCreationApis(page);
 
     await page.goto("/plans/new");
-    const planForm = page.locator("form").filter({ hasText: "次に登る予定" });
+    const planForm = page.locator("form").filter({ hasText: "新規予定" });
     await expect(planForm.getByLabel("タイトル")).toBeVisible();
     await planForm.getByLabel("タイトル").fill("E2E セッション");
     await planForm.getByLabel("ジム").selectOption("B-PUMP Tokyo");
@@ -197,7 +250,7 @@ test.describe("web authenticated local experience", () => {
     await expect(planForm.getByRole("link", { name: "作成した予定" })).toHaveAttribute("href", "/plans/e2e-plan");
 
     await page.goto("/logs/new");
-    const logForm = page.locator("form").filter({ hasText: "登った内容を残す" });
+    const logForm = page.locator("form").filter({ hasText: "新規記録" });
     await expect(logForm.getByLabel("日付")).toBeVisible();
     await logForm.getByLabel("日付").fill("2026-05-12");
     await logForm.getByLabel("ジム").selectOption("B-PUMP Tokyo");
@@ -210,7 +263,7 @@ test.describe("web authenticated local experience", () => {
     await expect(logForm.getByRole("link", { name: "作成した記録" })).toHaveAttribute("href", "/logs/e2e-log");
 
     await page.goto("/posts/new");
-    const postForm = page.locator("form").filter({ hasText: "登ったことを共有する" });
+    const postForm = page.locator("form").filter({ hasText: "新規投稿" });
     await expect(postForm.getByLabel("本文")).toBeVisible();
     await postForm.getByLabel("本文").fill("E2E 投稿テスト");
     await postForm.getByLabel("表示範囲").selectOption("public");

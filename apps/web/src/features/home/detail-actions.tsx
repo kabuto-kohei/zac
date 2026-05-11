@@ -81,7 +81,6 @@ export function PlanActions({ planId }: { planId: string }) {
     <article className="wide-card">
       <p className="card-kind">参加</p>
       <h3>{joined ? "参加中" : "未参加"}</h3>
-      <p>{completed ? "この予定は完了済みです。記録作成へ進めます。" : "参加状態と完了状態を保存できます。"}</p>
       <div className="action-row">
         <button className={joined ? "ghost-button is-active" : "primary-action"} disabled={isPending} onClick={submitJoin} type="button">
           {joined ? "参加キャンセル" : "参加する"}
@@ -149,7 +148,6 @@ export function PostActions({ postId }: { postId: string }) {
     <article className="wide-card">
       <p className="card-kind">リアクション</p>
       <h3>{liked ? "いいね済み" : "リアクションする"}</h3>
-      <p>いいねと保存をフィード整理に使えます。</p>
       <div className="action-row">
         <button className={liked ? "ghost-button is-active" : "ghost-button"} disabled={isPending} onClick={submitLike} type="button">
           {liked ? "いいね済み" : "いいね"}
@@ -190,7 +188,6 @@ export function GymActions({ gymId, initiallySaved }: { gymId: string; initially
     <article className="wide-card">
       <p className="card-kind">ジム</p>
       <h3>{saved ? "保存済み" : "保存して予定に使う"}</h3>
-      <p>保存ジムは予定作成や記録作成の候補に使います。</p>
       <div className="action-row">
         <button className={saved ? "ghost-button is-active" : "primary-action"} disabled={isPending} onClick={submitSave} type="button">
           {saved ? "保存解除" : "保存"}
@@ -228,7 +225,6 @@ export function EventActions({ eventId }: { eventId: string }) {
     <article className="wide-card">
       <p className="card-kind">イベント</p>
       <h3>{interested ? "興味あり" : "このイベントを検討する"}</h3>
-      <p>気になるイベントを保存して、あとから予定作成へつなげます。</p>
       <div className="action-row">
         <button className={interested ? "ghost-button is-active" : "ghost-button"} disabled={isPending} onClick={submitInterest} type="button">
           {interested ? "興味あり" : "興味あり"}
@@ -266,7 +262,6 @@ export function LogConvertActions({ logId }: { logId: string }) {
     <article className="wide-card">
       <p className="card-kind">投稿</p>
       <h3>記録から投稿へ</h3>
-      <p>登った内容を共有し、次の予定へつなげます。</p>
       <div className="action-row">
         {createdPostHref ? (
           <Link className="primary-action" href={createdPostHref}>

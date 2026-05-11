@@ -30,8 +30,7 @@ export function GymCard({ gym }: { gym: GymSummary }) {
   }
 
   return (
-    <article className="content-card">
-      <IconVisual className="gym-visual" icon="gym" />
+    <article className="content-card gym-card no-visual-card">
       <div>
         <p className="card-kind">{gym.area}</p>
         <h3>
@@ -39,12 +38,11 @@ export function GymCard({ gym }: { gym: GymSummary }) {
         </h3>
         <div className="card-meta-row">
           <span>{gym.disciplines}</span>
-          <span>{gym.openingHours}</span>
         </div>
+        <button className={saved ? "ghost-button is-active" : "ghost-button"} onClick={submitSave} type="button">
+          {saved ? "保存済み" : "保存"}
+        </button>
       </div>
-      <button className={saved ? "ghost-button is-active" : "ghost-button"} onClick={submitSave} type="button">
-        {saved ? "保存済み" : "保存"}
-      </button>
       {message ? <CardMessage message={message} /> : null}
     </article>
   );
@@ -52,10 +50,10 @@ export function GymCard({ gym }: { gym: GymSummary }) {
 
 export function EventCard({ event }: { event: EventSummary }) {
   return (
-    <article className="content-card">
-      <IconVisual className="event-visual" icon="lead" />
+    <article className="content-card no-visual-card">
       <div>
         <p className="card-kind">{event.gymName}</p>
+        <p className={`event-kind event-kind-${getEventDisplayGroup(event)}`}>{getEventDisplayLabel(event)}</p>
         <h3>
           <Link href={`/events/${event.id}`}>{event.title}</Link>
         </h3>
@@ -69,6 +67,43 @@ export function EventCard({ event }: { event: EventSummary }) {
       </Link>
     </article>
   );
+}
+
+function getEventDisplayGroup(event: EventSummary) {
+  if (event.category === "competition") {
+    return "competition";
+  }
+
+  if (event.category === "route_set") {
+    return "route-set";
+  }
+
+  if (event.category === "private_booking") {
+    return "private-booking";
+  }
+
+  if (event.category === "opening_change" || event.category === "construction" || event.category === "notice") {
+    return "opening-change";
+  }
+
+  return "event";
+}
+
+function getEventDisplayLabel(event: EventSummary) {
+  const group = getEventDisplayGroup(event);
+  if (group === "competition") {
+    return "コンペ";
+  }
+  if (group === "route-set") {
+    return "セット";
+  }
+  if (group === "private-booking") {
+    return "貸切";
+  }
+  if (group === "opening-change") {
+    return "営業時間変更";
+  }
+  return "イベント";
 }
 
 export function PlanCard({ plan }: { plan: PlanSummary }) {
@@ -181,16 +216,10 @@ function CardMessage({ message }: { message: string }) {
   );
 }
 
-function IconVisual({
-  className,
-  icon,
-}: {
-  className: string;
-  icon: ZacIconKey;
-}) {
+function IconVisual({ icon, className }: { icon: ZacIconKey; className?: string }) {
   return (
-    <div className={`card-visual icon-visual ${className}`}>
-      <ZacIcon decorative icon={icon} size={52} />
+    <div className={className ? `card-visual ${className}` : "card-visual"}>
+      <ZacIcon decorative icon={icon} size={24} />
     </div>
   );
 }

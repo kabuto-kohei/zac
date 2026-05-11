@@ -1,7 +1,7 @@
 # Source Monitor Run
 
-- Generated: 2026-05-11T08:59:43.785Z
-- Due approved sources: 10
+- Generated: 2026-05-11T09:17:05.429Z
+- Due approved sources: 13
 - Instagram post sources: 32
 - Candidate Instagram sources: 94
 - Upcoming event rechecks: 23
@@ -48,6 +48,8 @@
 8. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
 9. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
 10. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/
+11. B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama) - https://pump-climbing.com/gym/bpump2/
+12. Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama) - https://b-camp.jp/higashimurayama/
 
 ## Operator Batch
 

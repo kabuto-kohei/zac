@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T08:59:43.785Z",
+  "generatedAt": "2026-05-11T09:17:05.429Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -68,7 +68,7 @@
       "private_booking": 1,
       "route_set": 16
     },
-    "dueApprovedSources": 10,
+    "dueApprovedSources": 13,
     "instagramPostSources": 32,
     "candidateSources": 94,
     "upcomingEvents": 23,
@@ -167,6 +167,33 @@
         "sourceType": "official_instagram",
         "lastCheckedAt": "2026-05-11T02:20:00.000Z",
         "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "web",
+        "handle": "b-pump-yokohama",
+        "displayName": "B-PUMP YOKOHAMA 公式サイト",
+        "sourceUrl": "https://pump-climbing.com/gym/bpump2/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:05:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "base-camp-higashimurayama",
+        "displayName": "Boulder Park Base Camp 東村山 公式サイト",
+        "sourceUrl": "https://b-camp.jp/higashimurayama/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:05:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "urban-base-camp-shinjuku",
+        "displayName": "Urban Base Camp 新宿 公式サイト",
+        "sourceUrl": "https://b-camp.jp/shinjuku/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:05:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
       }
     ],
     "instagramPostInspection": [

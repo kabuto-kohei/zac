@@ -28,11 +28,18 @@ Run the full automation preflight and packet generation:
 pnpm sources:automation-run
 ```
 
+Check whether the automation is healthy enough to keep running unattended:
+
+```bash
+pnpm sources:automation-health
+```
+
 This command executes the remote DB verification, refresh planning, Instagram
 candidate matching, and source monitor generation in sequence. It writes:
 
 - `data/intake/source-automation-run.json`
 - `data/intake/source-automation-run.md`
+- `data/intake/source-automation-history.jsonl`
 - `data/intake/source-refresh-plan.json`
 - `data/intake/instagram-source-match-report.json`
 - `data/intake/source-monitor-run.json`
@@ -42,6 +49,12 @@ The first step is a public web preflight (`curl -I https://example.com`) so the
 routine can distinguish real official-source inspection capacity from stale
 local artifacts. If public web access is unavailable, the run must be treated as
 `blocked` and must not use a stale packet as a completed freshness pass.
+
+The runner also creates `data/intake/source-automation-run.lock.json` while it
+is active. A second run must stop with `blocked` instead of competing for the
+Supabase pooler. Locks older than `ZAC_AUTOMATION_LOCK_STALE_MINUTES` are
+treated as stale and replaced. Each completed, blocked, or degraded run appends
+a compact non-secret record to `data/intake/source-automation-history.jsonl`.
 
 Verify remote DB reachability and counts:
 
@@ -88,6 +101,15 @@ The monitor accepts optional batch-size environment variables:
 - `ZAC_SOURCE_EVENT_LIMIT`: upcoming event recheck batch size. Default: `120`.
 - `ZAC_GYM_DISCIPLINE_LIMIT`: gym discipline verification batch size. Default: `120`.
 
+The automation runner accepts operational environment variables:
+
+- `ZAC_AUTOMATION_COMMAND_ATTEMPTS`: retry attempts per command. Default: `5`.
+- `ZAC_AUTOMATION_RETRY_BASE_MS`: quadratic retry base delay. Default: `10000`.
+- `ZAC_AUTOMATION_COMMAND_TIMEOUT_MS`: per-command timeout. Default: `120000`.
+- `ZAC_AUTOMATION_LOCK_STALE_MINUTES`: stale lock threshold. Default: `45`.
+- `ZAC_AUTOMATION_DEGRADED_EXIT_ZERO`: set to `1` only when a caller explicitly wants degraded runs to exit zero. Default degraded exit is non-zero.
+- `ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY`: health-check failure threshold for consecutive blocked/degraded runs. Default: `3`.
+
 When no approved source is due, the monitor still emits `operatorBatch` from the
 approved-source rotation. Automations should keep processing that batch so the
 system does not wait passively for the next due threshold.
@@ -109,6 +131,7 @@ Codex app automation:
 - Interval: hourly after the cleanup pass
 - Workspace: `/Users/kkabuto/dev/zac`
 - Required first command: `pnpm sources:automation-run`
+- Required health check after run: `pnpm sources:automation-health`
 - Fallback command order when the orchestrator needs manual recovery:
   1. `pnpm db:verify:remote`
   2. `pnpm sources:plan-refresh`

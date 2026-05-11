@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import fsSync from "node:fs";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
@@ -9,6 +10,11 @@ const attempts = parsePositiveInt(process.env.ZAC_AUTOMATION_COMMAND_ATTEMPTS, 5
 const baseDelayMs = parsePositiveInt(process.env.ZAC_AUTOMATION_RETRY_BASE_MS, 10000);
 const staleHours = parsePositiveInt(process.env.ZAC_AUTOMATION_STALE_HOURS, 24);
 const allowNoPublicNetwork = process.env.ZAC_AUTOMATION_ALLOW_NO_PUBLIC_NETWORK === "1";
+const commandTimeoutMs = parsePositiveInt(process.env.ZAC_AUTOMATION_COMMAND_TIMEOUT_MS, 120000);
+const lockStaleMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_LOCK_STALE_MINUTES, 45);
+const lockPath = process.env.ZAC_AUTOMATION_LOCK_PATH ?? "data/intake/source-automation-run.lock.json";
+const historyPath = process.env.ZAC_AUTOMATION_HISTORY_PATH ?? "data/intake/source-automation-history.jsonl";
+const degradedExitCode = process.env.ZAC_AUTOMATION_DEGRADED_EXIT_ZERO === "1" ? 0 : 2;
 
 const commandPlan = [
   {
@@ -48,6 +54,25 @@ const run = {
 };
 
 await fs.mkdir(path.dirname(outputPath), { recursive: true });
+const lock = await acquireAutomationLock();
+
+if (!lock.acquired) {
+  run.status = "blocked";
+  run.blockedReason = "concurrent source automation run";
+  run.lock = lock.currentLock ?? null;
+  run.summary = await buildSummary();
+  run.nextActions = [
+    "Do not start another freshness pass while a previous run is still active.",
+    `If the lock is stale, remove ${lockPath} only after confirming no source automation process is running.`,
+    "Rerun pnpm sources:automation-run after the active run finishes.",
+  ];
+  await writeRun(run);
+  process.exitCode = 1;
+  process.exit();
+}
+
+run.lock = lock.record;
+registerLockCleanup(lock);
 
 const preflight = await runCommand(
   {
@@ -71,6 +96,7 @@ if (preflight.status !== "passed" && !allowNoPublicNetwork) {
     "Rerun pnpm sources:automation-run after network recovery; do not mark queue items complete from stale packets.",
   ];
   await writeRun(run);
+  await releaseAutomationLock(lock);
   process.exitCode = 1;
   process.exit();
 }
@@ -109,7 +135,8 @@ for (const step of commandPlan) {
           2,
         ),
       );
-      process.exit(0);
+      await releaseAutomationLock(lock);
+      process.exit(degradedExitCode);
     }
 
     run.status = "blocked";
@@ -119,6 +146,7 @@ for (const step of commandPlan) {
       "If the failure is not transient, inspect the command stderr in data/intake/source-automation-run.json.",
     ];
     await writeRun(run);
+    await releaseAutomationLock(lock);
     process.exitCode = 1;
     process.exit();
   }
@@ -129,6 +157,7 @@ run.summary = await buildSummary();
 run.summary.publicNetworkReachable = preflight.publicNetworkReachable;
 run.nextActions = buildNextActions(run.summary);
 await writeRun(run);
+await releaseAutomationLock(lock);
 
 console.log(`wrote ${outputPath}`);
 console.log(`wrote ${markdownPath}`);
@@ -158,6 +187,7 @@ async function runWithRetries(step) {
 
 async function runCommand(step, attempt) {
   const startedAt = new Date();
+  let timedOut = false;
   const child = spawn(step.command[0], step.command.slice(1), {
     cwd: process.cwd(),
     env: process.env,
@@ -170,22 +200,35 @@ async function runCommand(step, attempt) {
   child.stderr.on("data", (chunk) => stderrChunks.push(chunk));
 
   const exitCode = await new Promise((resolve) => {
+    const timeout = setTimeout(() => {
+      timedOut = true;
+      child.kill("SIGTERM");
+      setTimeout(() => {
+        if (child.exitCode === null && child.signalCode === null) {
+          child.kill("SIGKILL");
+        }
+      }, 5000).unref();
+    }, commandTimeoutMs);
+    timeout.unref();
     child.on("close", resolve);
+    child.on("close", () => clearTimeout(timeout));
   });
 
   const finishedAt = new Date();
+  const stderr = Buffer.concat(stderrChunks).toString("utf8");
   return {
     name: step.name,
     command: step.command.join(" "),
     attempt,
-    status: exitCode === 0 ? "passed" : "failed",
-    exitCode,
+    status: exitCode === 0 && !timedOut ? "passed" : "failed",
+    exitCode: timedOut ? 124 : exitCode,
     startedAt: startedAt.toISOString(),
     finishedAt: finishedAt.toISOString(),
     durationMs: finishedAt.getTime() - startedAt.getTime(),
     outputPath: step.output,
     stdout: truncate(Buffer.concat(stdoutChunks).toString("utf8")),
-    stderr: truncate(Buffer.concat(stderrChunks).toString("utf8")),
+    stderr: truncate(timedOut ? `${stderr}\nCommand timed out after ${commandTimeoutMs}ms.` : stderr),
+    timedOut,
   };
 }
 
@@ -306,6 +349,7 @@ async function writeRun(value) {
   value.updatedAt = new Date().toISOString();
   await fs.writeFile(outputPath, `${JSON.stringify(value, null, 2)}\n`);
   await fs.writeFile(markdownPath, renderMarkdown(value));
+  await appendRunHistory(value);
 }
 
 function renderMarkdown(value) {
@@ -365,4 +409,99 @@ function truncate(value) {
 function parsePositiveInt(value, fallback) {
   const parsed = Number.parseInt(String(value ?? ""), 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+async function acquireAutomationLock() {
+  await fs.mkdir(path.dirname(lockPath), { recursive: true });
+  const record = {
+    pid: process.pid,
+    startedAt: new Date().toISOString(),
+    lockPath,
+  };
+
+  try {
+    const existing = JSON.parse(await fs.readFile(lockPath, "utf8"));
+    if (!isStaleLock(existing)) {
+      return { acquired: false, currentLock: existing };
+    }
+
+    await fs.rm(lockPath, { force: true });
+  } catch (error) {
+    if (error.code !== "ENOENT") {
+      return { acquired: false, currentLock: { error: error.code ?? error.name, message: String(error.message ?? "") } };
+    }
+  }
+
+  try {
+    await fs.writeFile(lockPath, `${JSON.stringify(record, null, 2)}\n`, { flag: "wx" });
+    return { acquired: true, record };
+  } catch (error) {
+    const currentLock = await readJson(lockPath);
+    return { acquired: false, currentLock: currentLock ?? { error: error.code ?? error.name, message: String(error.message ?? "") } };
+  }
+}
+
+async function releaseAutomationLock(lock) {
+  if (!lock?.acquired) {
+    return;
+  }
+
+  const current = await readJson(lockPath);
+  if (current?.pid === process.pid && current?.startedAt === lock.record.startedAt) {
+    await fs.rm(lockPath, { force: true });
+  }
+}
+
+function registerLockCleanup(lock) {
+  if (!lock?.acquired) {
+    return;
+  }
+
+  const cleanup = () => {
+    try {
+      const current = JSON.parse(fsSync.readFileSync(lockPath, "utf8"));
+      if (current?.pid === process.pid && current?.startedAt === lock.record.startedAt) {
+        fsSync.rmSync(lockPath, { force: true });
+      }
+    } catch {
+      // Best-effort cleanup only; stale-lock handling covers abnormal exits.
+    }
+  };
+
+  process.once("exit", cleanup);
+  for (const signal of ["SIGINT", "SIGTERM"]) {
+    process.once(signal, () => {
+      cleanup();
+      process.exit(128 + (signal === "SIGINT" ? 2 : 15));
+    });
+  }
+}
+
+function isStaleLock(lock) {
+  const startedAtMs = Date.parse(lock?.startedAt ?? "");
+  if (!Number.isFinite(startedAtMs)) {
+    return true;
+  }
+
+  return Date.now() - startedAtMs > lockStaleMinutes * 60 * 1000;
+}
+
+async function appendRunHistory(value) {
+  await fs.mkdir(path.dirname(historyPath), { recursive: true });
+  const summary = value.summary ?? {};
+  const historyRecord = {
+    generatedAt: value.generatedAt,
+    updatedAt: value.updatedAt,
+    status: value.status,
+    blockedReason: value.blockedReason ?? null,
+    degradedReason: value.degradedReason ?? null,
+    publicNetworkReachable: summary.publicNetworkReachable ?? null,
+    databaseReachable: summary.databaseReachable ?? null,
+    instagramPostSources: summary.instagramPostSources ?? null,
+    dueApprovedSources: summary.dueApprovedSources ?? null,
+    upcomingEvents: summary.upcomingEvents ?? null,
+    commandCount: value.commands?.length ?? 0,
+  };
+
+  await fs.appendFile(historyPath, `${JSON.stringify(historyRecord)}\n`);
 }

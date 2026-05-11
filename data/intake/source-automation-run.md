@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-11T09:50:53.225Z
-- Updated: 2026-05-11T09:50:56.557Z
+- Generated: 2026-05-11T10:21:39.558Z
+- Updated: 2026-05-11T10:21:42.285Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (104ms, attempt 1)
-- passed: `pnpm db:verify:remote` (761ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (903ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (825ms, attempt 1)
-- passed: `pnpm sources:monitor` (735ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (62ms, attempt 1)
+- passed: `pnpm db:verify:remote` (519ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (576ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (615ms, attempt 1)
+- passed: `pnpm sources:monitor` (953ms, attempt 1)
 
 ## Summary
 
@@ -35,7 +35,7 @@
 - sourceType.official_site: 67
 - sourceType.operator_owned_page: 1
 - dueApprovedSources: 18
-- instagramPostSources: 32
+- instagramPostSources: 7
 - approvedSourceRotation: 96
 - operatorBatch: 16
 - candidateSources: 94
@@ -52,7 +52,7 @@
 
 ## Next Actions
 
-- Inspect official Instagram recent-post queue first (32 source(s)); record post URLs in source_post_observations or reproducible SQL patches.
+- Inspect official Instagram recent-post queue first (7 source(s)); record post URLs in source_post_observations or reproducible SQL patches.
 - Inspect 18 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
 - Recheck upcomingEventRecheck for items starting within the next 30 days (23 queued).

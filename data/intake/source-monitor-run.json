@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T09:50:56.017Z",
+  "generatedAt": "2026-05-11T10:21:41.537Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -69,7 +69,7 @@
       "route_set": 16
     },
     "dueApprovedSources": 18,
-    "instagramPostSources": 32,
+    "instagramPostSources": 7,
     "candidateSources": 94,
     "upcomingEvents": 23,
     "approvedSourceRotation": 96,
@@ -88,48 +88,12 @@
         "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
       },
       {
-        "platform": "instagram",
-        "handle": "bpumptokyo",
-        "displayName": "B-PUMP Tokyo",
-        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_takadanobaba",
-        "displayName": "NOBOROCK 高田馬場店",
-        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
         "platform": "web",
         "handle": "westrock-climbing-event",
         "displayName": "WESTROCK 公式イベント情報",
         "sourceUrl": "https://www.westrock-climbing.com/event/",
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_omiya",
-        "displayName": "NOBOROCK 大宮店",
-        "sourceUrl": "https://www.instagram.com/noborock_omiya/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_ikebukuro",
-        "displayName": "NOBOROCK 池袋店",
-        "sourceUrl": "https://www.instagram.com/noborock_ikebukuro/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
         "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
       },
       {
@@ -158,15 +122,6 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T02:20:00.000Z",
         "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_machida",
-        "displayName": "NOBOROCK 町田店",
-        "sourceUrl": "https://www.instagram.com/noborock_machida/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
       },
       {
         "platform": "web",
@@ -239,177 +194,54 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T03:45:00.000Z",
         "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "beta-climbing",
+        "displayName": "BETA Climbing Gym 公式サイト",
+        "sourceUrl": "https://beta-climbing.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "boulcom-kawasaki",
+        "displayName": "BOULCOM 川崎店 公式サイト",
+        "sourceUrl": "https://boulcom.jp/kawasaki/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "boulcom-tokyo",
+        "displayName": "BOULCOM 東京店 公式サイト",
+        "sourceUrl": "https://boulcom.jp/tokyo/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "everfree-climbing",
+        "displayName": "Everfree Climbing Gym 公式サイト",
+        "sourceUrl": "https://everfree-climbing.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "rocky-climbing",
+        "displayName": "ROCKY Climbing & Fitness Gym 公式サイト",
+        "sourceUrl": "https://www.rockyclimbing.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
       }
     ],
     "instagramPostInspection": [
-      {
-        "eventSourceId": "86b3a08a-8bae-454f-9eb0-241adab7b8ec",
-        "platform": "instagram",
-        "handle": "bpumptokyo",
-        "displayName": "B-PUMP Tokyo",
-        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "b2e46ff9-fa74-4413-9269-457f4a24775f",
-        "platform": "instagram",
-        "handle": "noborock_takadanobaba",
-        "displayName": "NOBOROCK 高田馬場店",
-        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "8ba066ee-20d7-4f42-ad91-55e680314a89",
-        "platform": "instagram",
-        "handle": "noborock_omiya",
-        "displayName": "NOBOROCK 大宮店",
-        "sourceUrl": "https://www.instagram.com/noborock_omiya/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "35fc4b76-689f-4343-b332-8f7fee0b3373",
-        "platform": "instagram",
-        "handle": "noborock_ikebukuro",
-        "displayName": "NOBOROCK 池袋店",
-        "sourceUrl": "https://www.instagram.com/noborock_ikebukuro/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "324f7646-af6a-4cf5-8c7f-eb995d1c4f2a",
-        "platform": "instagram",
-        "handle": "noborock_machida",
-        "displayName": "NOBOROCK 町田店",
-        "sourceUrl": "https://www.instagram.com/noborock_machida/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "b1262ae6-cfec-4910-a994-4a330d587420",
-        "platform": "instagram",
-        "handle": "boulcom_kawasaki",
-        "displayName": "BOULCOM 川崎店",
-        "sourceUrl": "https://www.instagram.com/boulcom_kawasaki/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "c1815b98-8699-40e4-9335-7d9a6ec49687",
-        "platform": "instagram",
-        "handle": "boulcom_tokyo",
-        "displayName": "BOULCOM 東京店",
-        "sourceUrl": "https://www.instagram.com/boulcom_tokyo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "442a5bb0-f6b3-4707-82f5-8783631d9087",
-        "platform": "instagram",
-        "handle": "funabashirocky",
-        "displayName": "ROCKY 船橋店",
-        "sourceUrl": "https://www.instagram.com/funabashirocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "01c23def-29c0-4c9a-8b43-6348526ac221",
-        "platform": "instagram",
-        "handle": "inzairocky",
-        "displayName": "ROCKY 印西店",
-        "sourceUrl": "https://www.instagram.com/inzairocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "083b264f-6eb5-4515-b254-8336009ea098",
-        "platform": "instagram",
-        "handle": "jyuku_rocky",
-        "displayName": "ROCKY 新宿曙橋店",
-        "sourceUrl": "https://www.instagram.com/jyuku_rocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "63c7e04c-a3ec-4afd-8bb9-867f912ecefa",
-        "platform": "instagram",
-        "handle": "shina_rocky",
-        "displayName": "ROCKY 品川店",
-        "sourceUrl": "https://www.instagram.com/shina_rocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "c252e276-e301-43f3-95d2-b7253f40cc09",
-        "platform": "instagram",
-        "handle": "tsukuba_ami_rocky",
-        "displayName": "ROCKY つくば阿見店",
-        "sourceUrl": "https://www.instagram.com/tsukuba_ami_rocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
       {
         "eventSourceId": "5992b14a-f6af-4bc0-a7a1-77efc68130e0",
         "platform": "instagram",
@@ -419,188 +251,6 @@
         "sourceType": "official_instagram",
         "lastCheckedAt": "2026-05-11T04:30:00.000Z",
         "sourceVerifiedAt": "2026-05-11T04:30:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "0688dbc6-21f6-42dc-99b5-6645f9aaf16e",
-        "platform": "instagram",
-        "handle": "and_energy_bouldering",
-        "displayName": "And Energy Bouldering",
-        "sourceUrl": "https://www.instagram.com/and_energy_bouldering/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "1c927437-7710-4318-9d77-e0e2104c9dc1",
-        "platform": "instagram",
-        "handle": "bpump_ogikubo",
-        "displayName": "B-PUMP OGIKUBO",
-        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:55:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "7046b655-8cd4-4087-a233-db5bb52aa729",
-        "platform": "instagram",
-        "handle": "energyurawa",
-        "displayName": "エナジークライミングジム浦和店公式Instagram",
-        "sourceUrl": "https://www.instagram.com/energyurawa/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "ae3bf68c-ef39-4336-8496-08ad3618b804",
-        "platform": "instagram",
-        "handle": "basecamp_shinjuku",
-        "displayName": "Urban Base Camp 新宿",
-        "sourceUrl": "https://www.instagram.com/basecamp_shinjuku/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.422Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "f21a8ded-faa9-459d-b8f1-ffe8cb96b45d",
-        "platform": "instagram",
-        "handle": "noborock_shibuya",
-        "displayName": "Noborock Shibuya",
-        "sourceUrl": "https://www.instagram.com/noborock_shibuya/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.422Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "82ebe4b8-1462-4498-a1cc-fa0a8c279489",
-        "platform": "instagram",
-        "handle": "rocky_shinagawa",
-        "displayName": "Rocky Shinagawa",
-        "sourceUrl": "https://www.instagram.com/rocky_shinagawa/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.422Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "fa3467fe-ca12-4ea6-a5ee-d24b88f3e674",
-        "platform": "instagram",
-        "handle": "ao_roc.climbing",
-        "displayName": "アオロク〖ao_roc.climbing〗",
-        "sourceUrl": "https://www.instagram.com/ao_roc.climbing/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "52558a73-2f55-4990-a8be-e17bc56f25a3",
-        "platform": "instagram",
-        "handle": "basecamp_edogawabashi",
-        "displayName": "Base Camp Tokyo 江戸川橋",
-        "sourceUrl": "https://www.instagram.com/basecamp_edogawabashi/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "0c7e2b25-fe74-440d-aceb-7da0aa7a35b5",
-        "platform": "instagram",
-        "handle": "basecamp_hanno",
-        "displayName": "Boulder Park Base Camp 飯能店",
-        "sourceUrl": "https://www.instagram.com/basecamp_hanno/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "89e0c101-bdf9-4b6e-a2f1-6fbcfe0b4243",
-        "platform": "instagram",
-        "handle": "basecamp_iruma",
-        "displayName": "Climb Park Base Camp 入間店",
-        "sourceUrl": "https://www.instagram.com/basecamp_iruma/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "682b12a0-d629-4aa7-9bdc-c26b6ad3868a",
-        "platform": "instagram",
-        "handle": "basecamp_kinshicho",
-        "displayName": "Base Camp Tokyo 錦糸町",
-        "sourceUrl": "https://www.instagram.com/basecamp_kinshicho/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "a03df26a-5459-4848-91b1-7c0ae5f3d938",
-        "platform": "instagram",
-        "handle": "basecamp_higashimurayama",
-        "displayName": "Boulder Park Base Camp 東村山",
-        "sourceUrl": "https://www.instagram.com/basecamp_higashimurayama/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:52.029Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:52.029Z",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
-      },
-      {
-        "eventSourceId": "7376a46b-7e28-446d-afe3-21f54866e8b8",
-        "platform": "instagram",
-        "handle": "basecamp_shinbashi",
-        "displayName": "Urban Base Camp 新橋",
-        "sourceUrl": "https://www.instagram.com/basecamp_shinbashi/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:52.029Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:52.029Z",
         "lastObservedAt": null,
         "observedPosts": 0,
         "priority": "instagram_recent_posts",
@@ -702,48 +352,12 @@
         "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
       },
       {
-        "platform": "instagram",
-        "handle": "bpumptokyo",
-        "displayName": "B-PUMP Tokyo",
-        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_takadanobaba",
-        "displayName": "NOBOROCK 高田馬場店",
-        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
         "platform": "web",
         "handle": "westrock-climbing-event",
         "displayName": "WESTROCK 公式イベント情報",
         "sourceUrl": "https://www.westrock-climbing.com/event/",
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_omiya",
-        "displayName": "NOBOROCK 大宮店",
-        "sourceUrl": "https://www.instagram.com/noborock_omiya/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_ikebukuro",
-        "displayName": "NOBOROCK 池袋店",
-        "sourceUrl": "https://www.instagram.com/noborock_ikebukuro/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
         "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
       },
       {
@@ -772,15 +386,6 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T02:20:00.000Z",
         "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_machida",
-        "displayName": "NOBOROCK 町田店",
-        "sourceUrl": "https://www.instagram.com/noborock_machida/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
       },
       {
         "platform": "web",
@@ -864,24 +469,6 @@
         "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
       },
       {
-        "platform": "instagram",
-        "handle": "boulcom_kawasaki",
-        "displayName": "BOULCOM 川崎店",
-        "sourceUrl": "https://www.instagram.com/boulcom_kawasaki/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "boulcom_tokyo",
-        "displayName": "BOULCOM 東京店",
-        "sourceUrl": "https://www.instagram.com/boulcom_tokyo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
-      },
-      {
         "platform": "web",
         "handle": "boulcom-kawasaki",
         "displayName": "BOULCOM 川崎店 公式サイト",
@@ -909,56 +496,11 @@
         "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
       },
       {
-        "platform": "instagram",
-        "handle": "funabashirocky",
-        "displayName": "ROCKY 船橋店",
-        "sourceUrl": "https://www.instagram.com/funabashirocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "inzairocky",
-        "displayName": "ROCKY 印西店",
-        "sourceUrl": "https://www.instagram.com/inzairocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "jyuku_rocky",
-        "displayName": "ROCKY 新宿曙橋店",
-        "sourceUrl": "https://www.instagram.com/jyuku_rocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
-      },
-      {
         "platform": "web",
         "handle": "rocky-climbing",
         "displayName": "ROCKY Climbing & Fitness Gym 公式サイト",
         "sourceUrl": "https://www.rockyclimbing.com/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "shina_rocky",
-        "displayName": "ROCKY 品川店",
-        "sourceUrl": "https://www.instagram.com/shina_rocky/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "tsukuba_ami_rocky",
-        "displayName": "ROCKY つくば阿見店",
-        "sourceUrl": "https://www.instagram.com/tsukuba_ami_rocky/",
-        "sourceType": "official_instagram",
         "lastCheckedAt": "2026-05-11T04:15:00.000Z",
         "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
       },
@@ -997,15 +539,6 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T04:30:00.000Z",
         "sourceVerifiedAt": "2026-05-11T04:30:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "and_energy_bouldering",
-        "displayName": "And Energy Bouldering",
-        "sourceUrl": "https://www.instagram.com/and_energy_bouldering/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
       },
       {
         "platform": "web",
@@ -1080,15 +613,6 @@
         "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
       },
       {
-        "platform": "instagram",
-        "handle": "bpump_ogikubo",
-        "displayName": "B-PUMP OGIKUBO",
-        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T04:55:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
-      },
-      {
         "platform": "web",
         "handle": "d-bouldering-plus-yachiyo",
         "displayName": "ディーボルダリングプラス八千代公式施設紹介",
@@ -1103,15 +627,6 @@
         "displayName": "エナジークライミングジム浦和店公式サイト",
         "sourceUrl": "https://energy-climbing.co.jp/urawa/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "energyurawa",
-        "displayName": "エナジークライミングジム浦和店公式Instagram",
-        "sourceUrl": "https://www.instagram.com/energyurawa/",
-        "sourceType": "official_instagram",
         "lastCheckedAt": "2026-05-11T05:45:00.000Z",
         "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
       },
@@ -1141,96 +656,6 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T05:45:00.000Z",
         "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_shinjuku",
-        "displayName": "Urban Base Camp 新宿",
-        "sourceUrl": "https://www.instagram.com/basecamp_shinjuku/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.422Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_shibuya",
-        "displayName": "Noborock Shibuya",
-        "sourceUrl": "https://www.instagram.com/noborock_shibuya/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.422Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "rocky_shinagawa",
-        "displayName": "Rocky Shinagawa",
-        "sourceUrl": "https://www.instagram.com/rocky_shinagawa/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.422Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "ao_roc.climbing",
-        "displayName": "アオロク〖ao_roc.climbing〗",
-        "sourceUrl": "https://www.instagram.com/ao_roc.climbing/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_edogawabashi",
-        "displayName": "Base Camp Tokyo 江戸川橋",
-        "sourceUrl": "https://www.instagram.com/basecamp_edogawabashi/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_hanno",
-        "displayName": "Boulder Park Base Camp 飯能店",
-        "sourceUrl": "https://www.instagram.com/basecamp_hanno/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_iruma",
-        "displayName": "Climb Park Base Camp 入間店",
-        "sourceUrl": "https://www.instagram.com/basecamp_iruma/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_kinshicho",
-        "displayName": "Base Camp Tokyo 錦糸町",
-        "sourceUrl": "https://www.instagram.com/basecamp_kinshicho/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:51.842Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_higashimurayama",
-        "displayName": "Boulder Park Base Camp 東村山",
-        "sourceUrl": "https://www.instagram.com/basecamp_higashimurayama/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:52.029Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:52.029Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_shinbashi",
-        "displayName": "Urban Base Camp 新橋",
-        "sourceUrl": "https://www.instagram.com/basecamp_shinbashi/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T06:01:52.029Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:52.029Z"
       },
       {
         "platform": "web",
@@ -1449,6 +874,231 @@
         "sourceVerifiedAt": "2026-05-11T08:15:00.000Z"
       },
       {
+        "platform": "instagram",
+        "handle": "basecamp_shinjuku",
+        "displayName": "Urban Base Camp 新宿",
+        "sourceUrl": "https://www.instagram.com/basecamp_shinjuku/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bpumptokyo",
+        "displayName": "B-PUMP Tokyo",
+        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_ikebukuro",
+        "displayName": "NOBOROCK 池袋店",
+        "sourceUrl": "https://www.instagram.com/noborock_ikebukuro/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_shibuya",
+        "displayName": "Noborock Shibuya",
+        "sourceUrl": "https://www.instagram.com/noborock_shibuya/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_takadanobaba",
+        "displayName": "NOBOROCK 高田馬場店",
+        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "rocky_shinagawa",
+        "displayName": "Rocky Shinagawa",
+        "sourceUrl": "https://www.instagram.com/rocky_shinagawa/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bpump_ogikubo",
+        "displayName": "B-PUMP OGIKUBO",
+        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "boulcom_kawasaki",
+        "displayName": "BOULCOM 川崎店",
+        "sourceUrl": "https://www.instagram.com/boulcom_kawasaki/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "boulcom_tokyo",
+        "displayName": "BOULCOM 東京店",
+        "sourceUrl": "https://www.instagram.com/boulcom_tokyo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "funabashirocky",
+        "displayName": "ROCKY 船橋店",
+        "sourceUrl": "https://www.instagram.com/funabashirocky/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "inzairocky",
+        "displayName": "ROCKY 印西店",
+        "sourceUrl": "https://www.instagram.com/inzairocky/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "jyuku_rocky",
+        "displayName": "ROCKY 新宿曙橋店",
+        "sourceUrl": "https://www.instagram.com/jyuku_rocky/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "shina_rocky",
+        "displayName": "ROCKY 品川店",
+        "sourceUrl": "https://www.instagram.com/shina_rocky/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "tsukuba_ami_rocky",
+        "displayName": "ROCKY つくば阿見店",
+        "sourceUrl": "https://www.instagram.com/tsukuba_ami_rocky/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "and_energy_bouldering",
+        "displayName": "And Energy Bouldering",
+        "sourceUrl": "https://www.instagram.com/and_energy_bouldering/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "energyurawa",
+        "displayName": "エナジークライミングジム浦和店公式Instagram",
+        "sourceUrl": "https://www.instagram.com/energyurawa/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "ao_roc.climbing",
+        "displayName": "アオロク〖ao_roc.climbing〗",
+        "sourceUrl": "https://www.instagram.com/ao_roc.climbing/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_edogawabashi",
+        "displayName": "Base Camp Tokyo 江戸川橋",
+        "sourceUrl": "https://www.instagram.com/basecamp_edogawabashi/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_hanno",
+        "displayName": "Boulder Park Base Camp 飯能店",
+        "sourceUrl": "https://www.instagram.com/basecamp_hanno/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_iruma",
+        "displayName": "Climb Park Base Camp 入間店",
+        "sourceUrl": "https://www.instagram.com/basecamp_iruma/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_kinshicho",
+        "displayName": "Base Camp Tokyo 錦糸町",
+        "sourceUrl": "https://www.instagram.com/basecamp_kinshicho/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_machida",
+        "displayName": "NOBOROCK 町田店",
+        "sourceUrl": "https://www.instagram.com/noborock_machida/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_omiya",
+        "displayName": "NOBOROCK 大宮店",
+        "sourceUrl": "https://www.instagram.com/noborock_omiya/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_higashimurayama",
+        "displayName": "Boulder Park Base Camp 東村山",
+        "sourceUrl": "https://www.instagram.com/basecamp_higashimurayama/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:52.029Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_shinbashi",
+        "displayName": "Urban Base Camp 新橋",
+        "sourceUrl": "https://www.instagram.com/basecamp_shinbashi/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-11T10:20:26.698Z",
+        "sourceVerifiedAt": "2026-05-11T06:01:52.029Z"
+      },
+      {
         "platform": "web",
         "handle": "bonobo-bouldering-space",
         "displayName": "BONOBO bouldering space 公式サイト",
@@ -1568,48 +1218,12 @@
         "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
       },
       {
-        "platform": "instagram",
-        "handle": "bpumptokyo",
-        "displayName": "B-PUMP Tokyo",
-        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_takadanobaba",
-        "displayName": "NOBOROCK 高田馬場店",
-        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
         "platform": "web",
         "handle": "westrock-climbing-event",
         "displayName": "WESTROCK 公式イベント情報",
         "sourceUrl": "https://www.westrock-climbing.com/event/",
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_omiya",
-        "displayName": "NOBOROCK 大宮店",
-        "sourceUrl": "https://www.instagram.com/noborock_omiya/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T01:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_ikebukuro",
-        "displayName": "NOBOROCK 池袋店",
-        "sourceUrl": "https://www.instagram.com/noborock_ikebukuro/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
         "sourceVerifiedAt": "2026-05-09T15:00:00.000Z"
       },
       {
@@ -1638,15 +1252,6 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T02:20:00.000Z",
         "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
-      },
-      {
-        "platform": "instagram",
-        "handle": "noborock_machida",
-        "displayName": "NOBOROCK 町田店",
-        "sourceUrl": "https://www.instagram.com/noborock_machida/",
-        "sourceType": "official_instagram",
-        "lastCheckedAt": "2026-05-11T02:20:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:01:51.842Z"
       },
       {
         "platform": "web",
@@ -1701,6 +1306,51 @@
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T03:45:00.000Z",
         "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "base-camp-tokyo-kinshicho",
+        "displayName": "Base Camp Tokyo 錦糸町 公式サイト",
+        "sourceUrl": "https://b-camp.jp/kinshicho/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "climbing-spider",
+        "displayName": "クライミングジムSPIDER 公式サイト",
+        "sourceUrl": "https://climbing-spider.com/shop/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T03:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T03:45:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "beta-climbing",
+        "displayName": "BETA Climbing Gym 公式サイト",
+        "sourceUrl": "https://beta-climbing.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "boulcom-kawasaki",
+        "displayName": "BOULCOM 川崎店 公式サイト",
+        "sourceUrl": "https://boulcom.jp/kawasaki/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "boulcom-tokyo",
+        "displayName": "BOULCOM 東京店 公式サイト",
+        "sourceUrl": "https://boulcom.jp/tokyo/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T04:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z"
       }
     ],
     "candidateVerification": [

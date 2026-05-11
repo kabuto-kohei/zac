@@ -28,6 +28,13 @@ Run the full automation preflight and packet generation:
 pnpm sources:automation-run
 ```
 
+Inspect the current official Instagram post queue and generate short
+observation records:
+
+```bash
+pnpm sources:inspect-instagram
+```
+
 Check whether the automation is healthy enough to keep running unattended:
 
 ```bash
@@ -156,6 +163,13 @@ The local LaunchAgent is the source-fetch execution path because it runs in the
 user's normal macOS network context. The Codex app cron remains useful for
 reporting and supervision, but it must not be the only source-fetch mechanism
 when its sandbox cannot resolve public web hosts.
+
+The local runner also executes `pnpm sources:inspect-instagram`, applies the
+generated `data/intake/instagram-post-observations.sql`, and reruns
+`sources:automation-run` so the latest queue counts reflect newly observed
+posts. If Instagram returns a rate-limit response, the failed source remains in
+`instagramPostInspection` and is retried by a later hourly run instead of being
+marked complete.
 
 The Supabase pooler can hit connection limits if DB commands run in parallel.
 Automation must run DB commands sequentially. `sources:automation-run` handles

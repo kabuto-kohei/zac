@@ -23,6 +23,9 @@ started_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "[$started_at] Zac source automation local runner starting"
 
 "$PNPM_BIN" sources:automation-run
+"$PNPM_BIN" sources:inspect-instagram
+"$PNPM_BIN" exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/instagram-post-observations.sql
+"$PNPM_BIN" sources:automation-run
 "$PNPM_BIN" sources:automation-health
 
 finished_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"

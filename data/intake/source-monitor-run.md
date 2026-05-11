@@ -1,8 +1,8 @@
 # Source Monitor Run
 
-- Generated: 2026-05-11T09:50:56.017Z
+- Generated: 2026-05-11T10:21:41.537Z
 - Due approved sources: 18
-- Instagram post sources: 32
+- Instagram post sources: 7
 - Candidate Instagram sources: 94
 - Upcoming event rechecks: 23
 - Gym discipline verification candidates: 119
@@ -11,64 +11,47 @@
 
 ## Instagram Post Inspection
 
-1. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/ - lastObserved: none - observedPosts: 0
-2. NOBOROCK 高田馬場店 (noborock_takadanobaba) - https://www.instagram.com/noborock_takadanobaba/ - lastObserved: none - observedPosts: 0
-3. NOBOROCK 大宮店 (noborock_omiya) - https://www.instagram.com/noborock_omiya/ - lastObserved: none - observedPosts: 0
-4. NOBOROCK 池袋店 (noborock_ikebukuro) - https://www.instagram.com/noborock_ikebukuro/ - lastObserved: none - observedPosts: 0
-5. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/ - lastObserved: none - observedPosts: 0
-6. BOULCOM 川崎店 (boulcom_kawasaki) - https://www.instagram.com/boulcom_kawasaki/ - lastObserved: none - observedPosts: 0
-7. BOULCOM 東京店 (boulcom_tokyo) - https://www.instagram.com/boulcom_tokyo/ - lastObserved: none - observedPosts: 0
-8. ROCKY 船橋店 (funabashirocky) - https://www.instagram.com/funabashirocky/ - lastObserved: none - observedPosts: 0
-9. ROCKY 印西店 (inzairocky) - https://www.instagram.com/inzairocky/ - lastObserved: none - observedPosts: 0
-10. ROCKY 新宿曙橋店 (jyuku_rocky) - https://www.instagram.com/jyuku_rocky/ - lastObserved: none - observedPosts: 0
-11. ROCKY 品川店 (shina_rocky) - https://www.instagram.com/shina_rocky/ - lastObserved: none - observedPosts: 0
-12. ROCKY つくば阿見店 (tsukuba_ami_rocky) - https://www.instagram.com/tsukuba_ami_rocky/ - lastObserved: none - observedPosts: 0
-13. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
-14. And Energy Bouldering (and_energy_bouldering) - https://www.instagram.com/and_energy_bouldering/ - lastObserved: none - observedPosts: 0
-15. B-PUMP OGIKUBO (bpump_ogikubo) - https://www.instagram.com/bpump_ogikubo/ - lastObserved: none - observedPosts: 0
-16. エナジークライミングジム浦和店公式Instagram (energyurawa) - https://www.instagram.com/energyurawa/ - lastObserved: none - observedPosts: 0
-17. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/ - lastObserved: none - observedPosts: 0
-18. Noborock Shibuya (noborock_shibuya) - https://www.instagram.com/noborock_shibuya/ - lastObserved: none - observedPosts: 0
-19. Rocky Shinagawa (rocky_shinagawa) - https://www.instagram.com/rocky_shinagawa/ - lastObserved: none - observedPosts: 0
-20. アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - https://www.instagram.com/ao_roc.climbing/ - lastObserved: none - observedPosts: 0
-21. Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - https://www.instagram.com/basecamp_edogawabashi/ - lastObserved: none - observedPosts: 0
-22. Boulder Park Base Camp 飯能店 (basecamp_hanno) - https://www.instagram.com/basecamp_hanno/ - lastObserved: none - observedPosts: 0
-23. Climb Park Base Camp 入間店 (basecamp_iruma) - https://www.instagram.com/basecamp_iruma/ - lastObserved: none - observedPosts: 0
-24. Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - https://www.instagram.com/basecamp_kinshicho/ - lastObserved: none - observedPosts: 0
+1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
+2. クライミングジムランボ公式Instagram (climbing_gym_ranbo) - https://www.instagram.com/climbing_gym_ranbo/ - lastObserved: none - observedPosts: 0
+3. クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - https://www.instagram.com/climbinggym_wallstreet/ - lastObserved: none - observedPosts: 0
+4. Climbing Gym Walrus公式Instagram (climbinggym_walrus) - https://www.instagram.com/climbinggym_walrus/ - lastObserved: none - observedPosts: 0
+5. クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - https://www.instagram.com/madrock.cg.jp_online/ - lastObserved: none - observedPosts: 0
+6. D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - https://www.instagram.com/dbouldering_soga/ - lastObserved: none - observedPosts: 0
+7. PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - https://www.instagram.com/pigletclimbinggym/ - lastObserved: none - observedPosts: 0
 
 ## Inspect Now
 
 1. BASE CAMP TOKYO 江戸川橋 公式サイト (base-camp-edogawabashi) - https://b-camp.jp/edogawabashi/
-2. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/
-3. NOBOROCK 高田馬場店 (noborock_takadanobaba) - https://www.instagram.com/noborock_takadanobaba/
-4. WESTROCK 公式イベント情報 (westrock-climbing-event) - https://www.westrock-climbing.com/event/
-5. NOBOROCK 大宮店 (noborock_omiya) - https://www.instagram.com/noborock_omiya/
-6. NOBOROCK 池袋店 (noborock_ikebukuro) - https://www.instagram.com/noborock_ikebukuro/
-7. NOBOROCK 池袋店 公式サイト (noborock-ikebukuro) - https://noborock-climbing.com/program/ikebukuro/
-8. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
-9. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
-10. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/
-11. B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama) - https://pump-climbing.com/gym/bpump2/
-12. Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama) - https://b-camp.jp/higashimurayama/
+2. WESTROCK 公式イベント情報 (westrock-climbing-event) - https://www.westrock-climbing.com/event/
+3. NOBOROCK 池袋店 公式サイト (noborock-ikebukuro) - https://noborock-climbing.com/program/ikebukuro/
+4. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
+5. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
+6. B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama) - https://pump-climbing.com/gym/bpump2/
+7. Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama) - https://b-camp.jp/higashimurayama/
+8. Urban Base Camp 新宿 公式サイト (urban-base-camp-shinjuku) - https://b-camp.jp/shinjuku/
+9. Boulder Park Base Camp 飯能店 公式サイト (base-camp-hanno) - https://b-camp.jp/hanno
+10. Climb Park Base Camp 入間店 公式サイト (base-camp-iruma) - https://b-camp.jp/iruma
+11. Base Camp Tokyo 江戸川橋 公式サイト (base-camp-tokyo-edogawabashi) - https://b-camp.jp/edogawabashi/
+12. Base Camp Tokyo 錦糸町 公式サイト (base-camp-tokyo-kinshicho) - https://b-camp.jp/kinshicho/
 
 ## Operator Batch
 
 1. BASE CAMP TOKYO 江戸川橋 公式サイト (base-camp-edogawabashi) - https://b-camp.jp/edogawabashi/
-2. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/
-3. NOBOROCK 高田馬場店 (noborock_takadanobaba) - https://www.instagram.com/noborock_takadanobaba/
-4. WESTROCK 公式イベント情報 (westrock-climbing-event) - https://www.westrock-climbing.com/event/
-5. NOBOROCK 大宮店 (noborock_omiya) - https://www.instagram.com/noborock_omiya/
-6. NOBOROCK 池袋店 (noborock_ikebukuro) - https://www.instagram.com/noborock_ikebukuro/
-7. NOBOROCK 池袋店 公式サイト (noborock-ikebukuro) - https://noborock-climbing.com/program/ikebukuro/
-8. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
-9. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
-10. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/
-11. B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama) - https://pump-climbing.com/gym/bpump2/
-12. Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama) - https://b-camp.jp/higashimurayama/
-13. Urban Base Camp 新宿 公式サイト (urban-base-camp-shinjuku) - https://b-camp.jp/shinjuku/
-14. Boulder Park Base Camp 飯能店 公式サイト (base-camp-hanno) - https://b-camp.jp/hanno
-15. Climb Park Base Camp 入間店 公式サイト (base-camp-iruma) - https://b-camp.jp/iruma
-16. Base Camp Tokyo 江戸川橋 公式サイト (base-camp-tokyo-edogawabashi) - https://b-camp.jp/edogawabashi/
+2. WESTROCK 公式イベント情報 (westrock-climbing-event) - https://www.westrock-climbing.com/event/
+3. NOBOROCK 池袋店 公式サイト (noborock-ikebukuro) - https://noborock-climbing.com/program/ikebukuro/
+4. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
+5. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
+6. B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama) - https://pump-climbing.com/gym/bpump2/
+7. Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama) - https://b-camp.jp/higashimurayama/
+8. Urban Base Camp 新宿 公式サイト (urban-base-camp-shinjuku) - https://b-camp.jp/shinjuku/
+9. Boulder Park Base Camp 飯能店 公式サイト (base-camp-hanno) - https://b-camp.jp/hanno
+10. Climb Park Base Camp 入間店 公式サイト (base-camp-iruma) - https://b-camp.jp/iruma
+11. Base Camp Tokyo 江戸川橋 公式サイト (base-camp-tokyo-edogawabashi) - https://b-camp.jp/edogawabashi/
+12. Base Camp Tokyo 錦糸町 公式サイト (base-camp-tokyo-kinshicho) - https://b-camp.jp/kinshicho/
+13. クライミングジムSPIDER 公式サイト (climbing-spider) - https://climbing-spider.com/shop/
+14. BETA Climbing Gym 公式サイト (beta-climbing) - https://beta-climbing.com/
+15. BOULCOM 川崎店 公式サイト (boulcom-kawasaki) - https://boulcom.jp/kawasaki/
+16. BOULCOM 東京店 公式サイト (boulcom-tokyo) - https://boulcom.jp/tokyo/
 
 ## Upcoming Event Recheck
 

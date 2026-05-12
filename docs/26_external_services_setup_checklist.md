@@ -38,6 +38,7 @@
 - [ ] `zac-web` projectを作成した
 - [ ] `zac-admin` projectを作成した
 - [ ] `zac-api` projectを作成した
+- [ ] 旧/重複project `zac` / `zac-seven.vercel.app` が存在しないことを確認した
 - [ ] GitHub repositoryと連携した
 - [ ] Node.js 22を設定した
 - [ ] install commandを `pnpm install --frozen-lockfile` にした

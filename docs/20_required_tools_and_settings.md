@@ -91,9 +91,10 @@ Deploy commands:
 - Admin: `pnpm vercel:deploy:admin`
 - API: `pnpm vercel:deploy:api`
 
-本番確認は上記3つのcanonical URLだけを見る。Vercel上に旧/重複project
-`zac` が存在する場合でも、これはcanonicalではない。`zac-seven.vercel.app`
-などの旧URLはユーザー向け確認・本番導線・自動化の参照先にしない。
+本番確認は上記3つのcanonical URLだけを見る。旧/重複project
+`zac` は2026-05-12に削除済み。`zac-seven.vercel.app`
+などの旧URLが再作成された場合でも、ユーザー向け確認・本番導線・自動化の
+参照先にしない。
 
 必要設定:
 

@@ -153,8 +153,8 @@ Local macOS runner:
 - Installed path: `~/Library/LaunchAgents/com.zac.source-freshness.plist`
 - Program: `scripts/run-source-automation-local.sh`
 - Cadence: hourly, plus `RunAtLoad`
-- Command order: `pnpm sources:automation-run` then
-  `pnpm sources:automation-health`
+- Command order: `pnpm sources:automation-run`, Instagram inspection, safe
+  observation promotion, then `pnpm sources:automation-health`
 - Logs:
   - `data/intake/source-automation-local.out.log`
   - `data/intake/source-automation-local.err.log`
@@ -165,11 +165,14 @@ reporting and supervision, but it must not be the only source-fetch mechanism
 when its sandbox cannot resolve public web hosts.
 
 The local runner also executes `pnpm sources:inspect-instagram`, applies the
-generated `data/intake/instagram-post-observations.sql`, and reruns
+generated `data/intake/instagram-post-observations.sql`, converts eligible
+pending observations into draft event candidates with
+`pnpm sources:promote-observations`, applies
+`data/intake/source-observation-promotions.sql`, and reruns
 `sources:automation-run` so the latest queue counts reflect newly observed
-posts. If Instagram returns a rate-limit response, the failed source remains in
-`instagramPostInspection` and is retried by a later hourly run instead of being
-marked complete.
+posts and newly staged candidates. If Instagram returns a rate-limit response,
+the failed source remains in `instagramPostInspection` and is retried by a later
+hourly run instead of being marked complete.
 
 The Supabase pooler can hit connection limits if DB commands run in parallel.
 Automation must run DB commands sequentially. `sources:automation-run` handles
@@ -217,6 +220,17 @@ Rules for Browser/Computer Use:
 
 Confirmed events should be reflected through reproducible seeds or explicit SQL
 patches.
+
+For Instagram-derived observations, the first reflection step is safer than
+direct publishing:
+
+1. `source_post_observations` stores the reviewed post URL and extracted
+   calendar fields.
+2. `pnpm sources:promote-observations` converts eligible future observations to
+   `events.status = draft` and `events.review_status = pending` by default.
+3. The public API serves only `review_status = approved` and non-draft events,
+   so operator review is required before a new Instagram-derived candidate
+   appears on the calendar.
 
 Required fields:
 

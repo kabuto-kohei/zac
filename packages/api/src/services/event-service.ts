@@ -77,6 +77,7 @@ export async function createEvent(input: UpsertAdminEventInput, actor: RequestAc
       sourceUrl: events.sourceUrl,
       sourceAccount: events.sourceAccount,
       sourceQuote: events.sourceQuote,
+      reviewStatus: events.reviewStatus,
       status: events.status,
     });
 
@@ -124,6 +125,7 @@ export async function updateEvent(eventId: string, input: UpsertAdminEventInput)
       sourceUrl: events.sourceUrl,
       sourceAccount: events.sourceAccount,
       sourceQuote: events.sourceQuote,
+      reviewStatus: events.reviewStatus,
       status: events.status,
     });
 
@@ -166,13 +168,14 @@ async function listPersistentEvents(includeDrafts: boolean) {
         sourceUrl: events.sourceUrl,
         sourceAccount: events.sourceAccount,
         sourceQuote: events.sourceQuote,
+        reviewStatus: events.reviewStatus,
         status: events.status,
       })
       .from(events)
       .where(isNull(events.deletedAt))
       .orderBy(asc(events.startsAt))
       .limit(50);
-    return Promise.all(rows.filter((row) => includeDrafts || row.status !== "draft").map(toEventSummary));
+    return Promise.all(rows.filter((row) => includeDrafts || isPublicEventRow(row)).map(toEventSummary));
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not list events.", 503);
@@ -203,6 +206,7 @@ async function getPersistentEvent(eventId: string) {
         sourceUrl: events.sourceUrl,
         sourceAccount: events.sourceAccount,
         sourceQuote: events.sourceQuote,
+        reviewStatus: events.reviewStatus,
         status: events.status,
         deletedAt: events.deletedAt,
       })
@@ -210,7 +214,7 @@ async function getPersistentEvent(eventId: string) {
       .where(eq(events.id, eventId))
       .limit(1);
 
-    return row && !row.deletedAt ? toEventSummary(row) : null;
+    return row && !row.deletedAt && isPublicEventRow(row) ? toEventSummary(row) : null;
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not load event.", 503);
@@ -232,6 +236,7 @@ async function toEventSummary(row: {
   sourceUrl: string | null;
   sourceAccount: string | null;
   sourceQuote: string | null;
+  reviewStatus?: string | null;
   status: string;
 }) {
   return {
@@ -249,6 +254,10 @@ async function toEventSummary(row: {
     ...(row.sourceQuote ? { sourceQuote: row.sourceQuote } : {}),
     status: parseEventStatus(row.status),
   } satisfies EventSummary;
+}
+
+function isPublicEventRow(row: { status: string; reviewStatus?: string | null }) {
+  return row.status !== "draft" && row.reviewStatus === "approved";
 }
 
 function toMemoryEvent(eventId: string, input: UpsertAdminEventInput) {

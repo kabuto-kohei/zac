@@ -22,6 +22,7 @@
     "db:verify:remote": "node --env-file=.env.local scripts/verify-db-data.mjs",
     "sources:match-instagram": "node --env-file=.env.local scripts/match-instagram-sources.mjs",
     "sources:inspect-instagram": "node --env-file=.env.local scripts/inspect-instagram-post-queue.mjs",
+    "sources:promote-observations": "node --env-file=.env.local scripts/promote-source-observations.mjs",
     "sources:monitor": "node --env-file=.env.local scripts/run-source-monitor.mjs",
     "sources:plan-refresh": "node --env-file=.env.local scripts/plan-source-refresh.mjs",
     "sources:automation-run": "node --env-file=.env.local scripts/run-source-automation.mjs",

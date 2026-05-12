@@ -25,6 +25,8 @@ echo "[$started_at] Zac source automation local runner starting"
 "$PNPM_BIN" sources:automation-run
 "$PNPM_BIN" sources:inspect-instagram
 "$PNPM_BIN" exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/instagram-post-observations.sql
+"$PNPM_BIN" sources:promote-observations
+"$PNPM_BIN" exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/source-observation-promotions.sql
 "$PNPM_BIN" sources:automation-run
 "$PNPM_BIN" sources:automation-health
 

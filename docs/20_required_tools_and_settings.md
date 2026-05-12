@@ -77,6 +77,24 @@ Projects:
 
 初期は同一monorepoから3 projectとして切る。
 
+Canonical production routing:
+
+| Project | Production URL | 用途 | Local link |
+|---|---|---|---|
+| `zac-web` | `https://zac-web.vercel.app` | ユーザー向けWeb本番 | `apps/web/.vercel/project.json` |
+| `zac-admin` | `https://zac-admin.vercel.app` | 管理画面本番 | `apps/admin/.vercel/project.json` |
+| `zac-api` | `https://zac-api.vercel.app` | API本番 | `packages/api/.vercel/project.json` |
+
+Deploy commands:
+
+- Web: `pnpm vercel:deploy:web`
+- Admin: `pnpm vercel:deploy:admin`
+- API: `pnpm vercel:deploy:api`
+
+本番確認は上記3つのcanonical URLだけを見る。Vercel上に旧/重複project
+`zac` が存在する場合でも、これはcanonicalではない。`zac-seven.vercel.app`
+などの旧URLはユーザー向け確認・本番導線・自動化の参照先にしない。
+
 必要設定:
 
 - Production/Preview environment variables

@@ -16,7 +16,7 @@ run(
     "packages/api/src/vercel-entry.ts",
     "--bundle",
     "--platform=node",
-    "--target=node24",
+    "--target=node22",
     "--format=cjs",
     "--sourcemap",
     "--outfile=packages/api/.vercel/output/functions/index.func/src/app.cjs",
@@ -26,7 +26,7 @@ run(
 
 const config = JSON.parse(await readFile(configPath, "utf8"));
 config.handler = "src/app.cjs";
-config.runtime = config.runtime || "nodejs24.x";
+config.runtime = "nodejs22.x";
 config.architecture = config.architecture || "arm64";
 config.framework = { slug: "hono" };
 config.launcherType = "Nodejs";

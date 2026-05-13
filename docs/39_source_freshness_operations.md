@@ -41,12 +41,21 @@ Check whether the automation is healthy enough to keep running unattended:
 pnpm sources:automation-health
 ```
 
+Run the same unattended local pipeline that launchd uses, with a durable
+per-step result packet:
+
+```bash
+pnpm sources:automation-local
+```
+
 This command executes the remote DB verification, refresh planning, Instagram
 candidate matching, and source monitor generation in sequence. It writes:
 
 - `data/intake/source-automation-run.json`
 - `data/intake/source-automation-run.md`
 - `data/intake/source-automation-history.jsonl`
+- `data/intake/source-automation-local-run.json`
+- `data/intake/source-automation-local-run.md`
 - `data/intake/source-refresh-plan.json`
 - `data/intake/instagram-source-match-report.json`
 - `data/intake/source-monitor-run.json`
@@ -113,9 +122,13 @@ The automation runner accepts operational environment variables:
 - `ZAC_AUTOMATION_COMMAND_ATTEMPTS`: retry attempts per command. Default: `5`.
 - `ZAC_AUTOMATION_RETRY_BASE_MS`: quadratic retry base delay. Default: `10000`.
 - `ZAC_AUTOMATION_COMMAND_TIMEOUT_MS`: per-command timeout. Default: `120000`.
+- `ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS`: per-command timeout for the local launchd pipeline. Default: `240000`.
 - `ZAC_AUTOMATION_LOCK_STALE_MINUTES`: stale lock threshold. Default: `45`.
 - `ZAC_AUTOMATION_DEGRADED_EXIT_ZERO`: set to `1` only when a caller explicitly wants degraded runs to exit zero. Default degraded exit is non-zero.
 - `ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY`: health-check failure threshold for consecutive blocked/degraded runs. Default: `3`.
+- `ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES`: maximum acceptable age for the latest automation run. Default: `150`.
+- `ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES`: maximum acceptable age for the latest local runner packet. Default: `150`.
+- `ZAC_AUTOMATION_REQUIRE_LOCAL_RUN`: set to `0` only for non-launchd development or CI checks. Default: enabled on macOS.
 
 When no approved source is due, the monitor still emits `operatorBatch` from the
 approved-source rotation. Automations should keep processing that batch so the
@@ -158,21 +171,34 @@ Local macOS runner:
 - Logs:
   - `data/intake/source-automation-local.out.log`
   - `data/intake/source-automation-local.err.log`
+- Durable local runner packet:
+  - `data/intake/source-automation-local-run.json`
+  - `data/intake/source-automation-local-run.md`
 
 The local LaunchAgent is the source-fetch execution path because it runs in the
 user's normal macOS network context. The Codex app cron remains useful for
 reporting and supervision, but it must not be the only source-fetch mechanism
 when its sandbox cannot resolve public web hosts.
 
-The local runner also executes `pnpm sources:inspect-instagram`, applies the
-generated `data/intake/instagram-post-observations.sql`, converts eligible
-pending observations into draft event candidates with
+The local runner delegates to `scripts/run-source-automation-local.mjs`. That
+orchestrator records every step, continues to the final health check whenever it
+can, and writes a non-secret local-run packet even when a required step fails.
+It executes `pnpm sources:inspect-instagram`, applies the generated
+`data/intake/instagram-post-observations.sql` only after a successful inspection,
+converts eligible pending observations into draft event candidates with
 `pnpm sources:promote-observations`, applies
-`data/intake/source-observation-promotions.sql`, and reruns
-`sources:automation-run` so the latest queue counts reflect newly observed
-posts and newly staged candidates. If Instagram returns a rate-limit response,
-the failed source remains in `instagramPostInspection` and is retried by a later
-hourly run instead of being marked complete.
+`data/intake/source-observation-promotions.sql` only after successful promotion,
+and reruns `sources:automation-run` so the latest queue counts reflect newly
+observed posts and newly staged candidates. If Instagram returns a rate-limit
+response, the failed source remains in `instagramPostInspection` and is retried
+by a later hourly run instead of being marked complete.
+
+`pnpm sources:automation-health` now checks more than the latest packet status:
+the latest run must be fresh, the local runner packet must be fresh, the
+LaunchAgent must be loaded, the previous launchd exit code must be successful,
+there must be no active lock, and recent history must not show repeated
+non-ready runs. This prevents a stale `ready_for_review` artifact from hiding a
+stopped local runner.
 
 The Supabase pooler can hit connection limits if DB commands run in parallel.
 Automation must run DB commands sequentially. `sources:automation-run` handles

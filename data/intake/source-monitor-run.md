@@ -1,10 +1,10 @@
 # Source Monitor Run
 
-- Generated: 2026-05-11T10:21:41.537Z
-- Due approved sources: 18
-- Instagram post sources: 7
+- Generated: 2026-05-13T03:52:38.696Z
+- Due approved sources: 64
+- Instagram post sources: 1
 - Candidate Instagram sources: 94
-- Upcoming event rechecks: 23
+- Upcoming event rechecks: 22
 - Gym discipline verification candidates: 119
 - Closure verification candidates: 80
 - Gyms with Instagram: 32/192
@@ -12,12 +12,6 @@
 ## Instagram Post Inspection
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
-2. クライミングジムランボ公式Instagram (climbing_gym_ranbo) - https://www.instagram.com/climbing_gym_ranbo/ - lastObserved: none - observedPosts: 0
-3. クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - https://www.instagram.com/climbinggym_wallstreet/ - lastObserved: none - observedPosts: 0
-4. Climbing Gym Walrus公式Instagram (climbinggym_walrus) - https://www.instagram.com/climbinggym_walrus/ - lastObserved: none - observedPosts: 0
-5. クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - https://www.instagram.com/madrock.cg.jp_online/ - lastObserved: none - observedPosts: 0
-6. D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - https://www.instagram.com/dbouldering_soga/ - lastObserved: none - observedPosts: 0
-7. PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - https://www.instagram.com/pigletclimbinggym/ - lastObserved: none - observedPosts: 0
 
 ## Inspect Now
 
@@ -55,18 +49,18 @@
 
 ## Upcoming Event Recheck
 
-1. route_set: 4F ROOF TOP セット営業変更 - 2026-05-11 22:30
-2. event: TAMAX 2026 ディーボルダリング八王子OPA - 2026-05-16 10:00
-3. route_set: 渋谷店 ルートセット営業変更 - 2026-05-17 17:00
-4. route_set: 5月全面ホールド替え - 2026-05-17 18:00
-5. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
-6. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
-7. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
-8. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
-9. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
-10. route_set: 錦糸町 リードエリア Leaning Tower セット - 2026-05-27 12:00
-11. event: TAMAX 2026 WESTROCK調布 - 2026-05-30 10:00
-12. route_set: YOKOHAMA 2F All Change - 2026-05-30 11:00
+1. event: TAMAX 2026 ディーボルダリング八王子OPA - 2026-05-16 10:00
+2. route_set: 渋谷店 ルートセット営業変更 - 2026-05-17 17:00
+3. route_set: 5月全面ホールド替え - 2026-05-17 18:00
+4. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
+5. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
+6. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
+7. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
+8. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
+9. route_set: 錦糸町 リードエリア Leaning Tower セット - 2026-05-27 12:00
+10. event: TAMAX 2026 WESTROCK調布 - 2026-05-30 10:00
+11. route_set: YOKOHAMA 2F All Change - 2026-05-30 11:00
+12. route_set: 高田馬場店 5/31 ルートセット営業変更 - 2026-05-31 17:00
 
 ## Existing Event Fingerprints
 

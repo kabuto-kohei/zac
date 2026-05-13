@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-11T10:21:40.665Z",
+  "generatedAt": "2026-05-13T03:52:36.545Z",
   "policy": {
     "publicDataOnly": true,
     "publishOnly": [
@@ -496,54 +496,6 @@
         "sourceVerifiedAt": "2026-05-11"
       },
       {
-        "platform": "instagram",
-        "handle": "climbing_gym_ranbo",
-        "displayName": "クライミングジムランボ公式Instagram",
-        "sourceUrl": "https://www.instagram.com/climbing_gym_ranbo/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "climbinggym_wallstreet",
-        "displayName": "クライミングジム・ウォールストリート公式Instagram",
-        "sourceUrl": "https://www.instagram.com/climbinggym_wallstreet/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "climbinggym_walrus",
-        "displayName": "Climbing Gym Walrus公式Instagram",
-        "sourceUrl": "https://www.instagram.com/climbinggym_walrus/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "madrock.cg.jp_online",
-        "displayName": "クライミングジム マッドロック公式Instagram",
-        "sourceUrl": "https://www.instagram.com/madrock.cg.jp_online/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
         "platform": "web",
         "handle": "climbing-gym-ranbo",
         "displayName": "クライミングジムランボ公式サイト",
@@ -700,30 +652,6 @@
         "sourceVerifiedAt": "2026-05-11"
       },
       {
-        "platform": "instagram",
-        "handle": "dbouldering_soga",
-        "displayName": "D.Bouldering Plus 蘇我公式Instagram",
-        "sourceUrl": "https://www.instagram.com/dbouldering_soga/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "pigletclimbinggym",
-        "displayName": "PIGLET CLIMBING GYM公式Instagram",
-        "sourceUrl": "https://www.instagram.com/pigletclimbinggym/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
         "platform": "web",
         "handle": "d-bouldering-plus-soga",
         "displayName": "D.Bouldering Plus 蘇我公式サイト",
@@ -760,6 +688,186 @@
         "sourceVerifiedAt": "2026-05-11"
       },
       {
+        "platform": "web",
+        "handle": "bonobo-bouldering-space",
+        "displayName": "BONOBO bouldering space 公式サイト",
+        "sourceUrl": "https://bonobo-bs.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "bouldering-spot-landmark",
+        "displayName": "Bouldering Spot Landmark 公式サイト",
+        "sourceUrl": "https://boulderingspot-landmark.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "caramba",
+        "displayName": "CARAMBA 公式サイト",
+        "sourceUrl": "https://www.caramba.jp/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "craze-kawaguchi",
+        "displayName": "craze bouldering gym 川口店 公式サイト",
+        "sourceUrl": "https://craze-climbing.com/kawaguchi/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "fish-and-bird",
+        "displayName": "Fish and Bird 公式サイト",
+        "sourceUrl": "https://fish-bird.co.jp/fishandbird/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "fits-climbing",
+        "displayName": "FITS CLIMBING GYM 公式サイト",
+        "sourceUrl": "https://www.fits-climbing.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "folk-bouldering-gym",
+        "displayName": "folk bouldering gym 公式サイト",
+        "sourceUrl": "https://folkboulderinggym.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "forge-bouldering",
+        "displayName": "Forge bouldering 公式サイト",
+        "sourceUrl": "https://www.forge-bouldering.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "hokimaboulders",
+        "displayName": "HOKIMABOULDERS 公式サイト",
+        "sourceUrl": "https://hokimaboulders.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "jetsetclimbing",
+        "displayName": "JET SET Climbing Gym 公式サイト",
+        "sourceUrl": "https://www.jetsetclimbing.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "kachill",
+        "displayName": "KaChill 公式サイト",
+        "sourceUrl": "https://kachill.jimdosite.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "headrock-climbing",
+        "displayName": "HEADROCK CLIMBING GYM 公式サイト",
+        "sourceUrl": "https://headrock-climbing.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "limestone-climbing-club",
+        "displayName": "LIMESTONE Climbing Club 公式サイト",
+        "sourceUrl": "https://www.limestone.jp/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "lutra-lutra",
+        "displayName": "Lutra Lutra 公式サイト",
+        "sourceUrl": "https://www.lutra-lutra.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "monolithe-bouldering-gym",
+        "displayName": "Monolithe Bouldering Gym 公式サイト",
+        "sourceUrl": "https://www.boulderinggym.jp/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-11",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
         "platform": "instagram",
         "handle": "basecamp_shinjuku",
         "displayName": "Urban Base Camp 新宿",
@@ -768,7 +876,7 @@
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09"
       },
       {
@@ -780,7 +888,7 @@
         "status": "approved",
         "relationshipSourceHandle": null,
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09"
       },
       {
@@ -792,7 +900,7 @@
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09"
       },
       {
@@ -804,7 +912,7 @@
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09"
       },
       {
@@ -816,7 +924,7 @@
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09"
       },
       {
@@ -828,7 +936,7 @@
         "status": "approved",
         "relationshipSourceHandle": null,
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09"
       },
       {
@@ -840,7 +948,7 @@
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11"
       },
       {
@@ -852,7 +960,7 @@
         "status": "approved",
         "relationshipSourceHandle": null,
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11"
       },
       {
@@ -864,7 +972,7 @@
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11"
       },
       {
@@ -876,7 +984,7 @@
         "status": "approved",
         "relationshipSourceHandle": null,
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11"
       },
       {
@@ -888,7 +996,7 @@
         "status": "approved",
         "relationshipSourceHandle": null,
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11"
       },
       {
@@ -900,115 +1008,7 @@
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "shina_rocky",
-        "displayName": "ROCKY 品川店",
-        "sourceUrl": "https://www.instagram.com/shina_rocky/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "tsukuba_ami_rocky",
-        "displayName": "ROCKY つくば阿見店",
-        "sourceUrl": "https://www.instagram.com/tsukuba_ami_rocky/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "and_energy_bouldering",
-        "displayName": "And Energy Bouldering",
-        "sourceUrl": "https://www.instagram.com/and_energy_bouldering/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "energyurawa",
-        "displayName": "エナジークライミングジム浦和店公式Instagram",
-        "sourceUrl": "https://www.instagram.com/energyurawa/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "ao_roc.climbing",
-        "displayName": "アオロク〖ao_roc.climbing〗",
-        "sourceUrl": "https://www.instagram.com/ao_roc.climbing/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_edogawabashi",
-        "displayName": "Base Camp Tokyo 江戸川橋",
-        "sourceUrl": "https://www.instagram.com/basecamp_edogawabashi/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_hanno",
-        "displayName": "Boulder Park Base Camp 飯能店",
-        "sourceUrl": "https://www.instagram.com/basecamp_hanno/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_iruma",
-        "displayName": "Climb Park Base Camp 入間店",
-        "sourceUrl": "https://www.instagram.com/basecamp_iruma/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "basecamp_kinshicho",
-        "displayName": "Base Camp Tokyo 錦糸町",
-        "sourceUrl": "https://www.instagram.com/basecamp_kinshicho/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11"
       }
     ],
@@ -1029,96 +1029,6 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "afc1e405-5c8a-42f9-b244-f084f79529f8",
-        "platform": "instagram",
-        "handle": "climbing_gym_ranbo",
-        "displayName": "クライミングジムランボ公式Instagram",
-        "sourceUrl": "https://www.instagram.com/climbing_gym_ranbo/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "383a857a-b8ee-49aa-9ba4-31d3b4f1e410",
-        "platform": "instagram",
-        "handle": "climbinggym_wallstreet",
-        "displayName": "クライミングジム・ウォールストリート公式Instagram",
-        "sourceUrl": "https://www.instagram.com/climbinggym_wallstreet/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "b76cb4ec-9f4c-40c1-986c-dfbad22c2725",
-        "platform": "instagram",
-        "handle": "climbinggym_walrus",
-        "displayName": "Climbing Gym Walrus公式Instagram",
-        "sourceUrl": "https://www.instagram.com/climbinggym_walrus/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "ade2f2c1-a869-4818-bc70-86283c894d21",
-        "platform": "instagram",
-        "handle": "madrock.cg.jp_online",
-        "displayName": "クライミングジム マッドロック公式Instagram",
-        "sourceUrl": "https://www.instagram.com/madrock.cg.jp_online/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "5c60bf4c-316b-4c7a-b8f8-19cf9fbf2821",
-        "platform": "instagram",
-        "handle": "dbouldering_soga",
-        "displayName": "D.Bouldering Plus 蘇我公式Instagram",
-        "sourceUrl": "https://www.instagram.com/dbouldering_soga/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "fdcb412f-e5a7-47d1-9820-62c76879ec84",
-        "platform": "instagram",
-        "handle": "pigletclimbinggym",
-        "displayName": "PIGLET CLIMBING GYM公式Instagram",
-        "sourceUrl": "https://www.instagram.com/pigletclimbinggym/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": null,
-        "observedPosts": 0,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
         "eventSourceId": "ae3bf68c-ef39-4336-8496-08ad3618b804",
         "platform": "instagram",
         "handle": "basecamp_shinjuku",
@@ -1127,9 +1037,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1142,9 +1052,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1157,10 +1067,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1172,10 +1082,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 2,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1187,10 +1097,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1202,9 +1112,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-09",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 1,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1217,10 +1127,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1232,10 +1142,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1247,10 +1157,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 5,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1262,10 +1172,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1277,9 +1187,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1292,9 +1202,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1307,9 +1217,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1322,10 +1232,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 5,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1337,10 +1247,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1352,9 +1262,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1367,10 +1277,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1382,10 +1292,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1397,10 +1307,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 6,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1412,9 +1322,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1427,10 +1337,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 3,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1442,10 +1352,10 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
-        "observedPosts": 2,
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 1,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1457,9 +1367,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1472,9 +1382,9 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
@@ -1487,9 +1397,99 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-11",
+        "lastCheckedAt": "2026-05-13",
         "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "afc1e405-5c8a-42f9-b244-f084f79529f8",
+        "platform": "instagram",
+        "handle": "climbing_gym_ranbo",
+        "displayName": "クライミングジムランボ公式Instagram",
+        "sourceUrl": "https://www.instagram.com/climbing_gym_ranbo/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "383a857a-b8ee-49aa-9ba4-31d3b4f1e410",
+        "platform": "instagram",
+        "handle": "climbinggym_wallstreet",
+        "displayName": "クライミングジム・ウォールストリート公式Instagram",
+        "sourceUrl": "https://www.instagram.com/climbinggym_wallstreet/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "b76cb4ec-9f4c-40c1-986c-dfbad22c2725",
+        "platform": "instagram",
+        "handle": "climbinggym_walrus",
+        "displayName": "Climbing Gym Walrus公式Instagram",
+        "sourceUrl": "https://www.instagram.com/climbinggym_walrus/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 5,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "ade2f2c1-a869-4818-bc70-86283c894d21",
+        "platform": "instagram",
+        "handle": "madrock.cg.jp_online",
+        "displayName": "クライミングジム マッドロック公式Instagram",
+        "sourceUrl": "https://www.instagram.com/madrock.cg.jp_online/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "5c60bf4c-316b-4c7a-b8f8-19cf9fbf2821",
+        "platform": "instagram",
+        "handle": "dbouldering_soga",
+        "displayName": "D.Bouldering Plus 蘇我公式Instagram",
+        "sourceUrl": "https://www.instagram.com/dbouldering_soga/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "fdcb412f-e5a7-47d1-9820-62c76879ec84",
+        "platform": "instagram",
+        "handle": "pigletclimbinggym",
+        "displayName": "PIGLET CLIMBING GYM公式Instagram",
+        "sourceUrl": "https://www.instagram.com/pigletclimbinggym/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       }
@@ -3019,16 +3019,6 @@
       }
     ],
     "upcomingEventReview": [
-      {
-        "category": "route_set",
-        "title": "4F ROOF TOP セット営業変更",
-        "startsAt": "2026-05-11 22:30",
-        "endsAt": "2026-05-15 12:00",
-        "sourceUrl": "https://pump-climbing.com/gym/akiba/",
-        "sourceLabel": "B-PUMP Tokyo 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.82"
-      },
       {
         "category": "event",
         "title": "TAMAX 2026 ディーボルダリング八王子OPA",

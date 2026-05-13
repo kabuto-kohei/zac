@@ -26,6 +26,7 @@
     "sources:monitor": "node --env-file=.env.local scripts/run-source-monitor.mjs",
     "sources:plan-refresh": "node --env-file=.env.local scripts/plan-source-refresh.mjs",
     "sources:automation-run": "node --env-file=.env.local scripts/run-source-automation.mjs",
+    "sources:automation-local": "node --env-file=.env.local scripts/run-source-automation-local.mjs",
     "sources:automation-health": "node scripts/check-source-automation-health.mjs",
     "openapi:generate": "node scripts/openapi-generate.mjs",
     "openapi:check": "node scripts/openapi-check.mjs",

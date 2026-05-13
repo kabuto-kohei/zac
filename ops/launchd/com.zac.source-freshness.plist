@@ -29,6 +29,8 @@
     <string>1000</string>
     <key>ZAC_AUTOMATION_COMMAND_TIMEOUT_MS</key>
     <string>180000</string>
+    <key>ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS</key>
+    <string>240000</string>
   </dict>
 </dict>
 </plist>

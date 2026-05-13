@@ -6,6 +6,7 @@ cd /Users/kkabuto/dev/zac
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export ZAC_AUTOMATION_RETRY_BASE_MS="${ZAC_AUTOMATION_RETRY_BASE_MS:-1000}"
 export ZAC_AUTOMATION_COMMAND_TIMEOUT_MS="${ZAC_AUTOMATION_COMMAND_TIMEOUT_MS:-180000}"
+export ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS="${ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS:-240000}"
 
 if [[ -z "${PNPM_BIN:-}" ]]; then
   PNPM_BIN="$(command -v pnpm || true)"
@@ -22,13 +23,10 @@ mkdir -p "$log_dir"
 started_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "[$started_at] Zac source automation local runner starting"
 
-"$PNPM_BIN" sources:automation-run
-"$PNPM_BIN" sources:inspect-instagram
-"$PNPM_BIN" exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/instagram-post-observations.sql
-"$PNPM_BIN" sources:promote-observations
-"$PNPM_BIN" exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/source-observation-promotions.sql
-"$PNPM_BIN" sources:automation-run
-"$PNPM_BIN" sources:automation-health
+runner_status=0
+"$PNPM_BIN" exec node scripts/run-source-automation-local.mjs || runner_status=$?
 
 finished_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "[$finished_at] Zac source automation local runner finished"
+
+exit "$runner_status"

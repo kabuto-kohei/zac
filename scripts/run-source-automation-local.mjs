@@ -64,6 +64,9 @@ const stepPlan = [
     name: "automationHealth",
     command: [pnpmBin, "sources:automation-health"],
     required: true,
+    env: {
+      ZAC_AUTOMATION_LOCAL_RUN_IN_PROGRESS: "1",
+    },
   },
 ];
 
@@ -124,7 +127,10 @@ async function runCommand(step) {
   let timedOut = false;
   const child = spawn(step.command[0], step.command.slice(1), {
     cwd: process.cwd(),
-    env: process.env,
+    env: {
+      ...process.env,
+      ...(step.env ?? {}),
+    },
     stdio: ["ignore", "pipe", "pipe"],
   });
 

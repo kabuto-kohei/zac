@@ -1,0 +1,230 @@
+{
+  "generatedAt": "2026-05-13T04:22:10.276Z",
+  "ok": true,
+  "scope": "unattended official-source collection, staging, and safety supervision",
+  "notInScope": [
+    "billing, purchases, subscription changes, or payment settings",
+    "publishing copied Instagram captions/images/videos",
+    "guessing closure or gym discipline without primary-source evidence",
+    "auto-publishing uncertain event candidates"
+  ],
+  "summary": {
+    "failedChecks": 0,
+    "warnings": 0,
+    "latestRunAgeMinutes": 7,
+    "localRunAgeMinutes": 7,
+    "consecutiveNonReady": 0,
+    "instagramFailureRatio": 1,
+    "failedInstagramSources": [
+      {
+        "handle": "dogwood_climbing_gym",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      }
+    ],
+    "launchAgent": {
+      "checked": true,
+      "label": "com.zac.source-freshness",
+      "loaded": true,
+      "running": false,
+      "lastExitCode": 0,
+      "runIntervalSeconds": 3600,
+      "runs": 1
+    },
+    "queues": {
+      "instagramPostInspection": 1,
+      "inspectNow": 64,
+      "operatorBatch": 16,
+      "approvedSourceRotation": 96,
+      "upcomingEventRecheck": 22,
+      "candidateVerification": 94,
+      "gymDisciplineVerification": 119,
+      "closureVerification": 80
+    }
+  },
+  "checks": [
+    {
+      "name": "package exposes sources:automation-local",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "package exposes sources:automation-health",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "package exposes sources:automation-readiness",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "latest automation run exists",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "latest automation run is ready_for_review",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "latest automation run is fresh",
+      "ok": true,
+      "detail": "7m",
+      "severity": "error"
+    },
+    {
+      "name": "latest run public web was reachable",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "latest run database was reachable",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "local runner packet exists",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "local runner is ready_for_review",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "local runner packet is fresh",
+      "ok": true,
+      "detail": "7m",
+      "severity": "error"
+    },
+    {
+      "name": "local runner required steps all passed",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "local runner optional failures are surfaced",
+      "ok": true,
+      "detail": "none",
+      "severity": "error"
+    },
+    {
+      "name": "launchd agent is loaded",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "launchd last exit is ok",
+      "ok": true,
+      "detail": "0",
+      "severity": "error"
+    },
+    {
+      "name": "launchd interval is hourly or faster",
+      "ok": true,
+      "detail": "3600",
+      "severity": "error"
+    },
+    {
+      "name": "installed LaunchAgent matches repo template",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "Codex supervisor automation is active",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "Codex supervisor uses readiness gate",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "Codex supervisor keeps health gate",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "history has no repeated non-ready streak",
+      "ok": true,
+      "detail": "0",
+      "severity": "error"
+    },
+    {
+      "name": "no active automation lock",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "monitor has Instagram queue visibility",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "monitor has upcoming-event recheck queue",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "monitor has closure-verification queue",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram inspection policy excludes media/captions",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram inspection failures are within budget or covered by official fallback",
+      "ok": true,
+      "detail": "100% failed; covered by official fallback",
+      "severity": "error"
+    },
+    {
+      "name": "observation promotion defaults to draft review",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "promotion policy blocks copied media/captions",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "runbook defines unattended health contract",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    }
+  ],
+  "nextActions": [
+    "Automation is ready for unattended official-source collection and candidate staging under the documented guardrails."
+  ]
+}

@@ -4,6 +4,64 @@ Zac's core data value is turning public official gym information into calendar
 items that help users decide where and when to climb. The pipeline should favor
 freshness, evidence, and source links without becoming an Instagram replacement.
 
+## Automation Role
+
+The official-source automation is Zac's data-quality operations layer. Its job
+is to keep the gym/event database fresh enough for product use while preserving
+legal, source, and review safety. It is responsible for:
+
+- Discovering and rotating official source checks across approved gym/operator
+  websites and official Instagram profiles.
+- Inspecting public official Instagram posts/reels and persisting minimal
+  `source_post_observations` so the same post is not reprocessed forever.
+- Classifying source observations into user-impact groups: event, competition,
+  route-set, construction/opening-change, private booking, notice, or recruit.
+- Staging eligible future observations as draft/pending event candidates.
+- Keeping closures, relocations, renames, and gym-discipline values conservative
+  until primary-source evidence is available.
+- Producing health/readiness evidence that tells an operator whether the system
+  can keep running unattended.
+
+It is not responsible for:
+
+- Billing, purchases, subscriptions, payment settings, or paid data access.
+- Republishing Instagram as a product, including copied captions, images, or
+  videos.
+- Guessing gym status, boulder/lead discipline, or event dates without source
+  evidence.
+- Auto-publishing weak or uncertain event candidates.
+
+The intended unattended outcome is therefore "official-source collection,
+deduped observation storage, safe candidate staging, and blocker visibility"
+rather than "unreviewed public publication of every extracted post."
+
+## Unattended OK Contract
+
+Zac may be considered safe for unattended official-source operation only when
+all of the following are true:
+
+1. `pnpm sources:automation-health` exits zero.
+2. `pnpm sources:automation-readiness` exits zero.
+3. Latest `data/intake/source-automation-run.json` is fresh and
+   `status = ready_for_review`.
+4. Latest `data/intake/source-automation-local-run.json` is fresh and
+   `status = ready_for_review`.
+5. LaunchAgent `com.zac.source-freshness` is loaded, hourly or faster, and its
+   latest exit code is zero.
+6. No stale active automation lock exists.
+7. Instagram inspection artifacts show that most queued sources were fetched;
+   temporary failures remain queued and visible instead of being marked done.
+   A single Instagram failure may remain unattended only when an official
+   non-Instagram fallback source for the same gym/operator is also in rotation.
+8. Observation promotion remains in `draft_review` mode unless a separate
+   reviewed release process explicitly enables approved publishing.
+9. Codex cron supervision is active and runs both health and readiness gates.
+10. The runbook, artifacts, and history are current enough for a future Codex
+    session to resume without private context.
+
+If any condition is false, the system is still useful, but it is not
+"completely unattended OK"; it is in operator-review mode.
+
 ## Operating Model
 
 Zac does not build an alternate Instagram viewer. Instagram is nevertheless the
@@ -48,7 +106,7 @@ per-step result packet:
 pnpm sources:automation-local
 ```
 
-This command executes the remote DB verification, refresh planning, Instagram
+The local command executes the remote DB verification, refresh planning, Instagram
 candidate matching, and source monitor generation in sequence. It writes:
 
 - `data/intake/source-automation-run.json`
@@ -61,10 +119,22 @@ candidate matching, and source monitor generation in sequence. It writes:
 - `data/intake/source-monitor-run.json`
 - `data/intake/source-monitor-run.md`
 
-The first step is a public web preflight (`curl -I https://example.com`) so the
-routine can distinguish real official-source inspection capacity from stale
-local artifacts. If public web access is unavailable, the run must be treated as
-`blocked` and must not use a stale packet as a completed freshness pass.
+Check whether the full unattended contract is satisfied:
+
+```bash
+pnpm sources:automation-readiness
+```
+
+This writes the latest readiness evidence to:
+
+- `data/intake/source-automation-readiness.json`
+- `data/intake/source-automation-readiness.md`
+
+The automation-run first step is a public web preflight
+(`curl -I https://example.com`) so the routine can distinguish real
+official-source inspection capacity from stale local artifacts. If public web
+access is unavailable, the run must be treated as `blocked` and must not use a
+stale packet as a completed freshness pass.
 
 The runner also creates `data/intake/source-automation-run.lock.json` while it
 is active. A second run must stop with `blocked` instead of competing for the
@@ -129,6 +199,7 @@ The automation runner accepts operational environment variables:
 - `ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES`: maximum acceptable age for the latest automation run. Default: `150`.
 - `ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES`: maximum acceptable age for the latest local runner packet. Default: `150`.
 - `ZAC_AUTOMATION_REQUIRE_LOCAL_RUN`: set to `0` only for non-launchd development or CI checks. Default: enabled on macOS.
+- `ZAC_AUTOMATION_MAX_INSTAGRAM_FAILURE_RATIO`: maximum acceptable failed-source ratio in the latest Instagram inspection. Default: `0.25`.
 
 When no approved source is due, the monitor still emits `operatorBatch` from the
 approved-source rotation. Automations should keep processing that batch so the
@@ -150,7 +221,9 @@ Codex app automation:
 - ID: `zac-official-source-freshness-monitor`
 - Interval: hourly after the local launchd pass
 - Workspace: `/Users/kkabuto/dev/zac`
-- Required first command for Codex cron: `pnpm sources:automation-health`
+- Required first commands for Codex cron:
+  1. `pnpm sources:automation-health`
+  2. `pnpm sources:automation-readiness`
 - Role: read the latest local-run artifacts and report blockers. Do not pretend
   Codex cron performed public-source inspection if its sandbox cannot reach the
   public web.
@@ -189,9 +262,14 @@ converts eligible pending observations into draft event candidates with
 `pnpm sources:promote-observations`, applies
 `data/intake/source-observation-promotions.sql` only after successful promotion,
 and reruns `sources:automation-run` so the latest queue counts reflect newly
-observed posts and newly staged candidates. If Instagram returns a rate-limit
-response, the failed source remains in `instagramPostInspection` and is retried
-by a later hourly run instead of being marked complete.
+observed posts and newly staged candidates. It then runs the health gate before
+marking the local runner ready. The readiness gate is intentionally run by the
+supervisor outside the local runner so it can judge a completed local-run packet
+instead of inspecting itself mid-run. If Instagram returns a rate-limit response,
+the failed source remains in `instagramPostInspection` and is retried by a later
+hourly run instead of being marked complete. Readiness may remain green only
+when the failed Instagram source has an official fallback source in the same
+rotation; otherwise it becomes operator-review work.
 
 `pnpm sources:automation-health` now checks more than the latest packet status:
 the latest run must be fresh, the local runner packet must be fresh, the

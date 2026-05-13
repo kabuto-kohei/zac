@@ -29,8 +29,9 @@ const localRunnerFresh = !requireLocalRunner || isFreshAge(localRunAgeMinutes, m
 const launchAgentLoaded = !requireLocalRunner || launchAgent.loaded;
 const launchAgentLastExitOk = !requireLocalRunner || launchAgent.lastExitCode === 0 || launchAgent.lastExitCode === null;
 const lockExpectedInProgress = Boolean(requireLocalRunner && lockActive && launchAgent.running);
+const explicitLocalRunnerInProgress = process.env.ZAC_AUTOMATION_LOCAL_RUN_IN_PROGRESS === "1";
 const localRunnerInProgress = Boolean(
-  requireLocalRunner && localRunnerFresh && launchAgent.running,
+  requireLocalRunner && localRunnerFresh && (launchAgent.running || explicitLocalRunnerInProgress),
 );
 const localRunnerReady = !requireLocalRunner || localRun?.status === "ready_for_review" || localRunnerInProgress;
 

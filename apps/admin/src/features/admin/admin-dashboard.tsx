@@ -7,13 +7,14 @@ import { useEffect, useState } from "react";
 import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./api-client";
 import { getAdminSupabaseClient } from "./integration-provider";
 
-type AdminView = "dashboard" | "users" | "gyms" | "events" | "eventSources" | "posts" | "reports" | "auditLogs" | "announcements";
+type AdminView = "dashboard" | "users" | "gyms" | "events" | "eventCandidates" | "eventSources" | "posts" | "reports" | "auditLogs" | "announcements";
 
 const navItems: Array<{ id: AdminView; href: string; label: string }> = [
   { id: "dashboard", href: "/dashboard", label: "ダッシュボード" },
   { id: "users", href: "/users", label: "ユーザー" },
   { id: "gyms", href: "/gyms", label: "ジム" },
   { id: "events", href: "/events", label: "イベント" },
+  { id: "eventCandidates", href: "/event-candidates", label: "候補レビュー" },
   { id: "eventSources", href: "/event-sources", label: "取得源" },
   { id: "posts", href: "/posts", label: "投稿" },
   { id: "reports", href: "/reports", label: "通報" },
@@ -66,6 +67,7 @@ export function AdminDashboard({ view }: { view: AdminView }) {
         {view === "users" ? <UsersView /> : null}
         {view === "gyms" ? <GymsView /> : null}
         {view === "events" ? <EventsView /> : null}
+        {view === "eventCandidates" ? <EventCandidatesView /> : null}
         {view === "eventSources" ? <EventSourcesView /> : null}
         {view === "posts" ? <PostsView /> : null}
         {view === "reports" ? <ReportsView /> : null}
@@ -309,6 +311,41 @@ function EventSourcesView() {
   );
 }
 
+function EventCandidatesView() {
+  const { data: candidates, message } = useAdminList<EventSummary>("/v1/admin/event-candidates", eventFixtures.filter((event) => event.status === "draft" || event.reviewStatus === "pending"));
+  const [items, setItems] = useState(candidates);
+  const pendingCount = items.filter((event) => event.reviewStatus !== "approved").length;
+
+  useEffect(() => {
+    setItems(candidates);
+  }, [candidates]);
+
+  return (
+    <>
+      <div className="admin-title">
+        <h2>候補レビュー</h2>
+        <p>自動収集した候補を確認し、公開するものだけ承認します。</p>
+      </div>
+      <AdminDataStatus message={message} />
+      <section className="metric-grid compact-metrics">
+        <Metric label="確認待ち" value={String(pendingCount)} />
+        <Metric label="候補合計" value={String(items.length)} />
+        <Metric label="公開済み" value={String(items.filter((event) => event.reviewStatus === "approved").length)} />
+      </section>
+      <section className="admin-table">
+        {items.map((event) => (
+          <EventCandidateRow
+            event={event}
+            key={event.id}
+            onReviewed={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))}
+          />
+        ))}
+        {items.length === 0 ? <EmptyAdminRow /> : null}
+      </section>
+    </>
+  );
+}
+
 function PostsView() {
   const { data: posts, message } = useAdminList<PostSummary>("/v1/posts", postFixtures);
 
@@ -524,6 +561,65 @@ function GymModerationRow({ gym }: { gym: GymSummary }) {
       </select>
       <input aria-label="対応理由" maxLength={1000} name="reason" placeholder="理由" />
       <button type="submit">更新</button>
+      <StatusMessage message={message} status={status} />
+    </form>
+  );
+}
+
+function EventCandidateRow({ event, onReviewed }: { event: EventSummary; onReviewed: (event: EventSummary) => void }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function submit(formData: FormData) {
+    setMessage("");
+    const action = formData.get("action")?.toString() === "reject" ? "reject" : "approve";
+    const response = await patchAdminApi<EventSummary>(`/v1/admin/events/${event.id}/review`, {
+      action,
+      reason: formData.get("reason")?.toString() || null,
+    });
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage(action === "approve" ? "公開候補を承認しました。" : "候補を却下しました。");
+    onReviewed(response.data);
+  }
+
+  return (
+    <form action={submit} className="admin-row candidate-row">
+      <span>
+        <strong>{event.title}</strong>
+        <small>{event.gymName}</small>
+      </span>
+      <span>
+        <strong>{event.category}</strong>
+        <small>{event.startsAt}</small>
+      </span>
+      <span>
+        <strong>{event.reviewStatus ?? "pending"}</strong>
+        <small>{event.extractionConfidence == null ? "信頼度 -" : `信頼度 ${Math.round(event.extractionConfidence * 100)}%`}</small>
+      </span>
+      <span>
+        <strong>{event.sourceLabel}</strong>
+        {event.sourceUrl ? (
+          <a href={event.sourceUrl} rel="noreferrer" target="_blank">
+            情報源
+          </a>
+        ) : (
+          <small>情報源なし</small>
+        )}
+      </span>
+      <input aria-label="レビュー理由" maxLength={1000} name="reason" placeholder="理由" />
+      <button name="action" type="submit" value="approve">
+        承認
+      </button>
+      <button className="secondary-admin-action" name="action" type="submit" value="reject">
+        却下
+      </button>
       <StatusMessage message={message} status={status} />
     </form>
   );

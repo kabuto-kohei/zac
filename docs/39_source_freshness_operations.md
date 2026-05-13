@@ -33,7 +33,9 @@ It is not responsible for:
 
 The intended unattended outcome is therefore "official-source collection,
 deduped observation storage, safe candidate staging, and blocker visibility"
-rather than "unreviewed public publication of every extracted post."
+rather than "unreviewed public publication of every extracted post." The final
+publication step is handled by the Admin candidate-review surface, which lets an
+operator approve or reject staged event candidates with an audit trail.
 
 ## Unattended OK Contract
 
@@ -58,6 +60,9 @@ all of the following are true:
 9. Codex cron supervision is active and runs both health and readiness gates.
 10. The runbook, artifacts, and history are current enough for a future Codex
     session to resume without private context.
+11. Admin candidate review is available at `/event-candidates`, backed by
+    `/v1/admin/event-candidates` and `/v1/admin/events/:eventId/review`, so
+    staged candidates can be approved or rejected without database surgery.
 
 If any condition is false, the system is still useful, but it is not
 "completely unattended OK"; it is in operator-review mode.
@@ -335,6 +340,8 @@ direct publishing:
 3. The public API serves only `review_status = approved` and non-draft events,
    so operator review is required before a new Instagram-derived candidate
    appears on the calendar.
+4. Admin candidate review exposes pending/draft candidates, links back to the
+   original source, and records approve/reject decisions through the Admin API.
 
 Required fields:
 

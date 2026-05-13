@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-13T04:15:00.350Z",
+  "generatedAt": "2026-05-13T08:08:38.970Z",
   "policy": {
     "publicDataOnly": true,
     "publishOnly": [
@@ -941,18 +941,6 @@
       },
       {
         "platform": "instagram",
-        "handle": "bpump_ogikubo",
-        "displayName": "B-PUMP OGIKUBO",
-        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-13",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
         "handle": "boulcom_kawasaki",
         "displayName": "BOULCOM 川崎店",
         "sourceUrl": "https://www.instagram.com/boulcom_kawasaki/",
@@ -1004,6 +992,18 @@
         "handle": "jyuku_rocky",
         "displayName": "ROCKY 新宿曙橋店",
         "sourceUrl": "https://www.instagram.com/jyuku_rocky/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "instagram",
+        "handle": "shina_rocky",
+        "displayName": "ROCKY 品川店",
+        "sourceUrl": "https://www.instagram.com/shina_rocky/",
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
@@ -1116,21 +1116,6 @@
         "sourceVerifiedAt": "2026-05-09",
         "lastObservedAt": "2026-05-13",
         "observedPosts": 1,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "1c927437-7710-4318-9d77-e0e2104c9dc1",
-        "platform": "instagram",
-        "handle": "bpump_ogikubo",
-        "displayName": "B-PUMP OGIKUBO",
-        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-13",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-13",
-        "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1329,21 +1314,6 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "682b12a0-d629-4aa7-9bdc-c26b6ad3868a",
-        "platform": "instagram",
-        "handle": "basecamp_kinshicho",
-        "displayName": "Base Camp Tokyo 錦糸町",
-        "sourceUrl": "https://www.instagram.com/basecamp_kinshicho/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-13",
-        "sourceVerifiedAt": "2026-05-11",
-        "lastObservedAt": "2026-05-13",
-        "observedPosts": 4,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
         "eventSourceId": "324f7646-af6a-4cf5-8c7f-eb995d1c4f2a",
         "platform": "instagram",
         "handle": "noborock_machida",
@@ -1464,11 +1434,11 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "5c60bf4c-316b-4c7a-b8f8-19cf9fbf2821",
+        "eventSourceId": "fdcb412f-e5a7-47d1-9820-62c76879ec84",
         "platform": "instagram",
-        "handle": "dbouldering_soga",
-        "displayName": "D.Bouldering Plus 蘇我公式Instagram",
-        "sourceUrl": "https://www.instagram.com/dbouldering_soga/",
+        "handle": "pigletclimbinggym",
+        "displayName": "PIGLET CLIMBING GYM公式Instagram",
+        "sourceUrl": "https://www.instagram.com/pigletclimbinggym/",
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
@@ -1479,11 +1449,41 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "fdcb412f-e5a7-47d1-9820-62c76879ec84",
+        "eventSourceId": "1c927437-7710-4318-9d77-e0e2104c9dc1",
         "platform": "instagram",
-        "handle": "pigletclimbinggym",
-        "displayName": "PIGLET CLIMBING GYM公式Instagram",
-        "sourceUrl": "https://www.instagram.com/pigletclimbinggym/",
+        "handle": "bpump_ogikubo",
+        "displayName": "B-PUMP OGIKUBO",
+        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "682b12a0-d629-4aa7-9bdc-c26b6ad3868a",
+        "platform": "instagram",
+        "handle": "basecamp_kinshicho",
+        "displayName": "Base Camp Tokyo 錦糸町",
+        "sourceUrl": "https://www.instagram.com/basecamp_kinshicho/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "lastCheckedAt": "2026-05-13",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-13",
+        "observedPosts": 4,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "5c60bf4c-316b-4c7a-b8f8-19cf9fbf2821",
+        "platform": "instagram",
+        "handle": "dbouldering_soga",
+        "displayName": "D.Bouldering Plus 蘇我公式Instagram",
+        "sourceUrl": "https://www.instagram.com/dbouldering_soga/",
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",

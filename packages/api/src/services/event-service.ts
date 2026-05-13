@@ -1,5 +1,5 @@
-import { and, asc, eq, eventSaves, events, gyms, isNull } from "@zac/db";
-import { eventFixtures, findEventFixture, type EventSummary, type UpsertAdminEventInput } from "@zac/shared";
+import { and, asc, desc, eq, eventSaves, events, gyms, isNull, sourcePostObservations } from "@zac/db";
+import { eventFixtures, findEventFixture, type EventSummary, type ReviewAdminEventInput, type UpsertAdminEventInput } from "@zac/shared";
 import type { RequestActor } from "../auth.js";
 import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
@@ -16,6 +16,15 @@ export async function listEvents(options: { includeDrafts?: boolean } = {}) {
     return rows;
   }
   return rows.length > 0 ? rows : [...memoryRows, ...eventFixtures.filter((event) => options.includeDrafts || event.status !== "draft")];
+}
+
+export async function listEventCandidates() {
+  const rows = await listPersistentEventCandidates();
+  if (!isRuntimeFallbackAllowed()) {
+    return rows;
+  }
+
+  return rows.length > 0 ? rows : eventFixtures.filter((event) => event.status === "draft" || event.reviewStatus === "pending");
 }
 
 export async function getEvent(eventId: string) {
@@ -64,22 +73,7 @@ export async function createEvent(input: UpsertAdminEventInput, actor: RequestAc
       status: input.status,
       createdBy: actor.userId,
     })
-    .returning({
-      id: events.id,
-      category: events.category,
-      title: events.title,
-      summary: events.summary,
-      description: events.description,
-      gymId: events.gymId,
-      startsAt: events.startsAt,
-      endsAt: events.endsAt,
-      capacityText: events.capacityText,
-      sourceUrl: events.sourceUrl,
-      sourceAccount: events.sourceAccount,
-      sourceQuote: events.sourceQuote,
-      reviewStatus: events.reviewStatus,
-      status: events.status,
-    });
+    .returning(eventReturningFields);
 
   if (!row) {
     throw new ApiError("service_unavailable", "Could not create event.", 503);
@@ -112,27 +106,72 @@ export async function updateEvent(eventId: string, input: UpsertAdminEventInput)
       updatedAt: new Date(),
     })
     .where(eq(events.id, eventId))
-    .returning({
-      id: events.id,
-      category: events.category,
-      title: events.title,
-      summary: events.summary,
-      description: events.description,
-      gymId: events.gymId,
-      startsAt: events.startsAt,
-      endsAt: events.endsAt,
-      capacityText: events.capacityText,
-      sourceUrl: events.sourceUrl,
-      sourceAccount: events.sourceAccount,
-      sourceQuote: events.sourceQuote,
-      reviewStatus: events.reviewStatus,
-      status: events.status,
-    });
+    .returning(eventReturningFields);
 
   if (!row) {
     throw new ApiError("not_found", "Event not found.", 404);
   }
 
+  return toEventSummary(row);
+}
+
+export async function reviewEventCandidate(eventId: string, input: ReviewAdminEventInput, actor: RequestActor) {
+  const db = getDatabase();
+
+  if (!db || !isUuid(eventId)) {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("not_found", "Event not found.", 404);
+    }
+
+    const current = memoryEvents.get(eventId);
+    if (!current) {
+      throw new ApiError("not_found", "Event not found.", 404);
+    }
+
+    const next = {
+      ...current,
+      status: input.action === "approve" ? "scheduled" : "draft",
+      reviewStatus: input.action === "approve" ? "approved" : "rejected",
+    } satisfies EventSummary;
+    memoryEvents.set(eventId, next);
+    void actor;
+    return next;
+  }
+
+  const now = new Date();
+  const nextReviewStatus = input.action === "approve" ? "approved" : "rejected";
+  const nextStatus = input.action === "approve" ? "scheduled" : "draft";
+  const decisionNote =
+    input.reason ??
+    (input.action === "approve" ? "Approved from admin candidate review." : "Rejected from admin candidate review.");
+
+  const [row] = await db
+    .update(events)
+    .set({
+      reviewStatus: nextReviewStatus,
+      reviewedAt: now,
+      status: nextStatus,
+      updatedAt: now,
+    })
+    .where(eq(events.id, eventId))
+    .returning(eventReturningFields);
+
+  if (!row) {
+    throw new ApiError("not_found", "Event not found.", 404);
+  }
+
+  if (row.sourceUrl) {
+    await db
+      .update(sourcePostObservations)
+      .set({
+        reviewStatus: input.action === "approve" ? "approved" : "ignored",
+        decisionNote,
+        updatedAt: now,
+      })
+      .where(eq(sourcePostObservations.sourceUrl, row.sourceUrl));
+  }
+
+  void actor;
   return toEventSummary(row);
 }
 
@@ -156,20 +195,7 @@ async function listPersistentEvents(includeDrafts: boolean) {
   try {
     const rows = await db
       .select({
-        id: events.id,
-        category: events.category,
-        title: events.title,
-        summary: events.summary,
-        description: events.description,
-        gymId: events.gymId,
-        startsAt: events.startsAt,
-        endsAt: events.endsAt,
-        capacityText: events.capacityText,
-        sourceUrl: events.sourceUrl,
-        sourceAccount: events.sourceAccount,
-        sourceQuote: events.sourceQuote,
-        reviewStatus: events.reviewStatus,
-        status: events.status,
+        ...eventReturningFields,
       })
       .from(events)
       .where(isNull(events.deletedAt))
@@ -179,6 +205,32 @@ async function listPersistentEvents(includeDrafts: boolean) {
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not list events.", 503);
+    }
+    return [];
+  }
+}
+
+async function listPersistentEventCandidates() {
+  const db = getDatabase();
+
+  if (!db) {
+    return [];
+  }
+
+  try {
+    const rows = await db
+      .select({
+        ...eventReturningFields,
+      })
+      .from(events)
+      .where(isNull(events.deletedAt))
+      .orderBy(desc(events.createdAt))
+      .limit(100);
+
+    return Promise.all(rows.filter((row) => row.reviewStatus !== "approved" || row.status === "draft").map(toEventSummary));
+  } catch {
+    if (!isRuntimeFallbackAllowed()) {
+      throw new ApiError("service_unavailable", "Could not list event candidates.", 503);
     }
     return [];
   }
@@ -194,20 +246,7 @@ async function getPersistentEvent(eventId: string) {
   try {
     const [row] = await db
       .select({
-        id: events.id,
-        category: events.category,
-        title: events.title,
-        summary: events.summary,
-        description: events.description,
-        gymId: events.gymId,
-        startsAt: events.startsAt,
-        endsAt: events.endsAt,
-        capacityText: events.capacityText,
-        sourceUrl: events.sourceUrl,
-        sourceAccount: events.sourceAccount,
-        sourceQuote: events.sourceQuote,
-        reviewStatus: events.reviewStatus,
-        status: events.status,
+        ...eventReturningFields,
         deletedAt: events.deletedAt,
       })
       .from(events)
@@ -237,6 +276,7 @@ async function toEventSummary(row: {
   sourceAccount: string | null;
   sourceQuote: string | null;
   reviewStatus?: string | null;
+  extractionConfidence?: string | null;
   status: string;
 }) {
   return {
@@ -252,6 +292,8 @@ async function toEventSummary(row: {
     sourceUrl: row.sourceUrl ?? "",
     sourceLabel: row.sourceAccount ?? "公式情報",
     ...(row.sourceQuote ? { sourceQuote: row.sourceQuote } : {}),
+    reviewStatus: parseEventReviewStatus(row.reviewStatus),
+    extractionConfidence: row.extractionConfidence ? Number(row.extractionConfidence) : null,
     status: parseEventStatus(row.status),
   } satisfies EventSummary;
 }
@@ -273,9 +315,29 @@ function toMemoryEvent(eventId: string, input: UpsertAdminEventInput) {
     capacity: "定員未設定",
     sourceUrl: "",
     sourceLabel: "管理画面",
+    reviewStatus: input.status === "scheduled" ? "approved" : "pending",
+    extractionConfidence: null,
     status: input.status,
   } satisfies EventSummary;
 }
+
+const eventReturningFields = {
+  id: events.id,
+  category: events.category,
+  title: events.title,
+  summary: events.summary,
+  description: events.description,
+  gymId: events.gymId,
+  startsAt: events.startsAt,
+  endsAt: events.endsAt,
+  capacityText: events.capacityText,
+  sourceUrl: events.sourceUrl,
+  sourceAccount: events.sourceAccount,
+  sourceQuote: events.sourceQuote,
+  extractionConfidence: events.extractionConfidence,
+  reviewStatus: events.reviewStatus,
+  status: events.status,
+};
 
 function parseEventCategory(category: string): EventSummary["category"] {
   if (
@@ -300,6 +362,14 @@ function parseEventStatus(status: string): EventSummary["status"] {
   }
 
   return "scheduled";
+}
+
+function parseEventReviewStatus(reviewStatus: string | null | undefined): NonNullable<EventSummary["reviewStatus"]> {
+  if (reviewStatus === "approved" || reviewStatus === "rejected" || reviewStatus === "event_candidate" || reviewStatus === "ignored") {
+    return reviewStatus;
+  }
+
+  return "pending";
 }
 
 async function getGymName(gymId: string | null) {

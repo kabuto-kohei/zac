@@ -664,6 +664,9 @@ test("admin content list routes require admin", async () => {
   const eventSourcesResponse = await createApp().request("/v1/admin/event-sources", {
     headers: adminAuth,
   });
+  const eventCandidatesResponse = await createApp().request("/v1/admin/event-candidates", {
+    headers: adminAuth,
+  });
   const announcementsResponse = await createApp().request("/v1/admin/announcements", {
     headers: adminAuth,
   });
@@ -671,6 +674,7 @@ test("admin content list routes require admin", async () => {
 
   assert.equal(eventsResponse.status, 200);
   assert.equal(eventSourcesResponse.status, 200);
+  assert.equal(eventCandidatesResponse.status, 200);
   assert.equal(eventSourcesBody.data.some((source: { handle: string }) => source.handle === "comp_bible"), true);
   assert.equal(announcementsResponse.status, 200);
 });
@@ -755,6 +759,44 @@ test("admin content mutations create and update events and announcements", async
   assert.equal(publishAnnouncementBody.data.status, "published");
   assert.equal(publicAnnouncementResponse.status, 200);
   assert.equal(publicAnnouncementBody.data.body, "公開済みの本文です。");
+});
+
+test("admin event candidate review approves draft event for public listing", async () => {
+  const app = createApp();
+  const eventResponse = await app.request("/v1/admin/events", {
+    method: "POST",
+    body: JSON.stringify({
+      title: "候補イベント",
+      description: "自動収集候補です。",
+      startsAt: "2026-06-01T10:00:00+09:00",
+      endsAt: "2026-06-01T12:00:00+09:00",
+      status: "draft",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const eventBody = await eventResponse.json();
+  const reviewResponse = await app.request(`/v1/admin/events/${eventBody.data.id}/review`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      action: "approve",
+      reason: "公式情報を確認済み",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const reviewBody = await reviewResponse.json();
+  const publicEventResponse = await app.request(`/v1/events/${eventBody.data.id}`);
+
+  assert.equal(eventResponse.status, 201);
+  assert.equal(reviewResponse.status, 200);
+  assert.equal(reviewBody.data.status, "scheduled");
+  assert.equal(reviewBody.data.reviewStatus, "approved");
+  assert.equal(publicEventResponse.status, 200);
 });
 
 test("admin report status mutation writes audit log", async () => {

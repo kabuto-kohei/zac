@@ -224,10 +224,21 @@ p {
   grid-template-columns: minmax(150px, 1.2fr) minmax(90px, 0.6fr) minmax(120px, 0.9fr) minmax(130px, 0.9fr) minmax(90px, 0.7fr) minmax(120px, 0.9fr) 64px minmax(220px, 1.4fr);
 }
 
+.candidate-row {
+  grid-template-columns: minmax(180px, 1.4fr) minmax(140px, 0.9fr) minmax(120px, 0.8fr) minmax(140px, 0.9fr) minmax(160px, 1fr) 76px 76px;
+}
+
+.candidate-row span {
+  display: grid;
+  gap: 4px;
+}
+
 .moderation-row {
   grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(130px, 0.8fr) minmax(150px, 1fr) 88px;
 }
 
+.candidate-row input,
+.candidate-row button,
 .moderation-row select,
 .moderation-row input,
 .moderation-row button {
@@ -240,17 +251,25 @@ p {
   font: inherit;
 }
 
+.candidate-row input,
 .moderation-row select,
 .moderation-row input {
   padding: 10px 11px;
 }
 
+.candidate-row button,
 .moderation-row button {
   padding: 10px 12px;
   background: var(--brand);
   color: #ffffff;
   font-weight: 700;
   cursor: pointer;
+}
+
+.candidate-row .secondary-admin-action {
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--ink);
 }
 
 .admin-editor-form {
@@ -364,6 +383,10 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .candidate-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .admin-editor-wide {
     grid-column: 1 / -1;
   }
@@ -371,8 +394,9 @@ p {
 
 @media (max-width: 520px) {
   .metric-grid,
-  .admin-row,
-  .moderation-row,
+    .admin-row,
+  .candidate-row,
+    .moderation-row,
   .admin-editor-form,
   .content-editor-row,
   .announcement-editor-row {

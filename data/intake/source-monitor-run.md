@@ -1,8 +1,8 @@
 # Source Monitor Run
 
-- Generated: 2026-05-13T04:15:01.757Z
+- Generated: 2026-05-13T08:08:40.896Z
 - Due approved sources: 64
-- Instagram post sources: 1
+- Instagram post sources: 29
 - Candidate Instagram sources: 94
 - Upcoming event rechecks: 22
 - Gym discipline verification candidates: 119
@@ -12,6 +12,29 @@
 ## Instagram Post Inspection
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
+2. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+3. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+4. NOBOROCK 池袋店 (noborock_ikebukuro) - https://www.instagram.com/noborock_ikebukuro/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
+5. Noborock Shibuya (noborock_shibuya) - https://www.instagram.com/noborock_shibuya/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+6. NOBOROCK 高田馬場店 (noborock_takadanobaba) - https://www.instagram.com/noborock_takadanobaba/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
+7. Rocky Shinagawa (rocky_shinagawa) - https://www.instagram.com/rocky_shinagawa/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 1
+8. BOULCOM 川崎店 (boulcom_kawasaki) - https://www.instagram.com/boulcom_kawasaki/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
+9. BOULCOM 東京店 (boulcom_tokyo) - https://www.instagram.com/boulcom_tokyo/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 5
+10. ROCKY 船橋店 (funabashirocky) - https://www.instagram.com/funabashirocky/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
+11. ROCKY 印西店 (inzairocky) - https://www.instagram.com/inzairocky/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+12. ROCKY 新宿曙橋店 (jyuku_rocky) - https://www.instagram.com/jyuku_rocky/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+13. ROCKY 品川店 (shina_rocky) - https://www.instagram.com/shina_rocky/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+14. ROCKY つくば阿見店 (tsukuba_ami_rocky) - https://www.instagram.com/tsukuba_ami_rocky/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 5
+15. And Energy Bouldering (and_energy_bouldering) - https://www.instagram.com/and_energy_bouldering/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
+16. エナジークライミングジム浦和店公式Instagram (energyurawa) - https://www.instagram.com/energyurawa/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+17. アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - https://www.instagram.com/ao_roc.climbing/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
+18. Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - https://www.instagram.com/basecamp_edogawabashi/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
+19. Boulder Park Base Camp 飯能店 (basecamp_hanno) - https://www.instagram.com/basecamp_hanno/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 6
+20. Climb Park Base Camp 入間店 (basecamp_iruma) - https://www.instagram.com/basecamp_iruma/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+21. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 1
+22. NOBOROCK 大宮店 (noborock_omiya) - https://www.instagram.com/noborock_omiya/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+23. Boulder Park Base Camp 東村山 (basecamp_higashimurayama) - https://www.instagram.com/basecamp_higashimurayama/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+24. Urban Base Camp 新橋 (basecamp_shinbashi) - https://www.instagram.com/basecamp_shinbashi/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
 
 ## Inspect Now
 

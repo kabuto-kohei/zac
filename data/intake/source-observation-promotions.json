@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-13T04:14:53.751Z",
+  "generatedAt": "2026-05-13T08:08:33.097Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -50,16 +50,16 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "ef37ab7d-4eb9-4dec-96da-9f55bffe4a8f",
-      "sourceUrl": "https://www.instagram.com/p/DWk63erkerK/",
-      "title": "🔶大宮店ルートセットのお知らせ🔶",
-      "reason": "past start date"
-    },
-    {
       "id": "2d94754b-7272-4a49-8930-d0d71be7c341",
       "sourceUrl": "https://www.instagram.com/p/DWqMXOzEcVD/",
       "title": "馬場店、次回ホールド替えのお知らせ",
       "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "ef37ab7d-4eb9-4dec-96da-9f55bffe4a8f",
+      "sourceUrl": "https://www.instagram.com/p/DWk63erkerK/",
+      "title": "🔶大宮店ルートセットのお知らせ🔶",
+      "reason": "past start date"
     },
     {
       "id": "298dee53-8ead-453a-84e1-7050ce9d43eb",
@@ -98,16 +98,16 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "8ca2a77d-823b-4b45-b13b-073bf0c077eb",
-      "sourceUrl": "https://www.instagram.com/p/DXrCdNQD5PJ/",
-      "title": ".",
-      "reason": "title is too weak for event candidate"
-    },
-    {
       "id": "88c7c3a6-2660-4481-a2ae-cc6b7bfed1e2",
       "sourceUrl": "https://www.instagram.com/p/DXn0YnKkrD_/",
       "title": "5月の営業案内",
       "reason": "past start date"
+    },
+    {
+      "id": "8ca2a77d-823b-4b45-b13b-073bf0c077eb",
+      "sourceUrl": "https://www.instagram.com/p/DXrCdNQD5PJ/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
     },
     {
       "id": "473da251-bd49-4cdf-9981-7a6fa5751d88",
@@ -212,16 +212,16 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "18f4326d-8801-4dc8-9902-85bcccd2d2d2",
-      "sourceUrl": "https://www.instagram.com/p/DXHComvEz5I/",
-      "title": "開催発表",
-      "reason": "source URL already exists in events"
-    },
-    {
       "id": "306fc8a7-af43-4404-84a8-d38dd9a87e8d",
       "sourceUrl": "https://www.instagram.com/p/DYOn4RhEU6L/",
       "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
       "reason": "no matching published gym"
+    },
+    {
+      "id": "18f4326d-8801-4dc8-9902-85bcccd2d2d2",
+      "sourceUrl": "https://www.instagram.com/p/DXHComvEz5I/",
+      "title": "開催発表",
+      "reason": "source URL already exists in events"
     },
     {
       "id": "110d6668-6890-41a4-a67e-53e80de72a51",

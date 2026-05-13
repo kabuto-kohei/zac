@@ -156,6 +156,7 @@ export const adminModerationActionSchema = z.enum(["hide_post", "delete_comment"
 export const adminGymStatusSchema = z.enum(["draft", "published", "closed"]);
 export const adminEventStatusSchema = z.enum(["draft", "scheduled", "closed"]);
 export const adminAnnouncementStatusSchema = z.enum(["draft", "published"]);
+export const adminEventReviewActionSchema = z.enum(["approve", "reject"]);
 
 export const updateReportStatusSchema = z.object({
   status: adminReportStatusSchema,
@@ -170,6 +171,11 @@ export const moderatePostSchema = z.object({
 
 export const updateGymStatusSchema = z.object({
   status: adminGymStatusSchema,
+  reason: z.string().max(1000).nullable().optional(),
+});
+
+export const reviewAdminEventSchema = z.object({
+  action: adminEventReviewActionSchema,
   reason: z.string().max(1000).nullable().optional(),
 });
 
@@ -217,5 +223,6 @@ export type AttachMediaInput = z.infer<typeof attachMediaSchema>;
 export type UpdateReportStatusInput = z.infer<typeof updateReportStatusSchema>;
 export type ModeratePostInput = z.infer<typeof moderatePostSchema>;
 export type UpdateGymStatusInput = z.infer<typeof updateGymStatusSchema>;
+export type ReviewAdminEventInput = z.infer<typeof reviewAdminEventSchema>;
 export type UpsertAdminEventInput = z.infer<typeof upsertAdminEventSchema>;
 export type UpsertAdminAnnouncementInput = z.infer<typeof upsertAdminAnnouncementSchema>;

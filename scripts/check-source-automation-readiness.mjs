@@ -17,6 +17,9 @@ const paths = {
   readinessJson: "data/intake/source-automation-readiness.json",
   readinessMd: "data/intake/source-automation-readiness.md",
   historyJsonl: "data/intake/source-automation-history.jsonl",
+  adminEventCandidatePage: "apps/admin/app/event-candidates/page.tsx",
+  adminRoutes: "packages/api/src/routes/admin.ts",
+  eventService: "packages/api/src/services/event-service.ts",
   launchAgentTemplate: "ops/launchd/com.zac.source-freshness.plist",
   installedLaunchAgent: path.join(os.homedir(), "Library/LaunchAgents/com.zac.source-freshness.plist"),
   codexAutomationToml:
@@ -30,6 +33,33 @@ const maxLocalRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LO
 const maxConsecutiveNonReady = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY, 3);
 const maxInstagramFailureRatio = parseRatio(process.env.ZAC_AUTOMATION_MAX_INSTAGRAM_FAILURE_RATIO, 0.25);
 const label = process.env.ZAC_AUTOMATION_LAUNCH_AGENT_LABEL ?? "com.zac.source-freshness";
+const officialFallbackRules = [
+  {
+    name: "PUMP climbing official network",
+    domains: ["pump-climbing.com"],
+    tokens: ["bpump", "b-pump", "pump"],
+  },
+  {
+    name: "NOBOROCK official network",
+    domains: ["noborock-climbing.com"],
+    tokens: ["noborock"],
+  },
+  {
+    name: "ROCKY official network",
+    domains: ["rockyclimbing.com"],
+    tokens: ["rocky"],
+  },
+  {
+    name: "Base Camp official network",
+    domains: ["b-camp.jp"],
+    tokens: ["basecamp", "base-camp", "boulderingparkbasecamp", "urbanbasecamp"],
+  },
+  {
+    name: "ao_roc official network",
+    domains: ["aoroc.jp"],
+    tokens: ["aoroc", "ao_roc"],
+  },
+];
 
 const packageJson = await readJson(paths.packageJson);
 const run = await readJson(paths.runJson);
@@ -42,6 +72,9 @@ const launchAgentTemplate = await readText(paths.launchAgentTemplate);
 const installedLaunchAgent = await readText(paths.installedLaunchAgent);
 const codexAutomationToml = await readText(paths.codexAutomationToml);
 const runbook = await readText(paths.runbook);
+const adminEventCandidatePage = await readText(paths.adminEventCandidatePage);
+const adminRoutes = await readText(paths.adminRoutes);
+const eventService = await readText(paths.eventService);
 const launchAgent = await readLaunchAgentStatus(label);
 
 const latestRunAgeMinutes = ageMinutes(run?.updatedAt ?? run?.generatedAt);
@@ -91,6 +124,9 @@ const checks = [
   ),
   check("observation promotion defaults to draft review", promotion?.mode === "draft_review"),
   check("promotion policy blocks copied media/captions", /full captions/u.test(promotion?.policy?.excludedFields ?? "") && /images/u.test(promotion?.policy?.excludedFields ?? "")),
+  check("Admin candidate review page exists", /eventCandidates/u.test(adminEventCandidatePage)),
+  check("Admin API exposes candidate list and review mutation", /event-candidates/u.test(adminRoutes) && /:eventId\/review/u.test(adminRoutes)),
+  check("event review approval can publish approved candidates", /reviewEventCandidate/u.test(eventService) && /reviewStatus: nextReviewStatus/u.test(eventService)),
   check("runbook defines unattended health contract", /unattended/i.test(runbook) && /LaunchAgent/u.test(runbook) && /ready_for_review/u.test(runbook)),
 ];
 
@@ -267,6 +303,7 @@ function ratio(numerator, denominator) {
 
 function hasOfficialFallback(inspectionItem, monitorValue) {
   const baseName = normalizeSourceBaseName(inspectionItem.displayName ?? inspectionItem.handle ?? "");
+  const inspectionFingerprint = sourceFingerprint(inspectionItem);
   const queues = monitorValue?.queues ?? {};
   const candidates = [
     ...(queues.inspectNow ?? []),
@@ -281,7 +318,33 @@ function hasOfficialFallback(inspectionItem, monitorValue) {
     }
 
     const candidateName = normalizeSourceBaseName(source.displayName ?? source.handle ?? "");
-    return candidateName.length > 0 && baseName.length > 0 && candidateName === baseName;
+    if (candidateName.length > 0 && baseName.length > 0 && candidateName === baseName) {
+      return true;
+    }
+
+    const candidateFingerprint = sourceFingerprint(source);
+    if (sharedStableHandle(inspectionFingerprint.handleKey, candidateFingerprint.handleKey)) {
+      return true;
+    }
+
+    const candidateDomain = domainFromUrl(sourceUrl);
+    return officialFallbackRules.some((rule) => {
+      const domainMatches = rule.domains.some((domain) => candidateDomain === domain || candidateDomain.endsWith(`.${domain}`));
+      if (!domainMatches) {
+        return false;
+      }
+
+      return rule.tokens.some((token) => {
+        const normalizedToken = normalizeCompact(token);
+        return (
+          inspectionFingerprint.compact.includes(normalizedToken) ||
+          inspectionFingerprint.handleKey.includes(normalizedToken) ||
+          inspectionFingerprint.urlKey.includes(normalizedToken) ||
+          candidateFingerprint.compact.includes(normalizedToken) ||
+          candidateFingerprint.handleKey.includes(normalizedToken)
+        );
+      });
+    });
   });
 }
 
@@ -293,6 +356,42 @@ function normalizeSourceBaseName(value) {
     .replace(/\s+/gu, " ")
     .trim()
     .toLowerCase();
+}
+
+function sourceFingerprint(source) {
+  return {
+    compact: normalizeCompact(`${source.displayName ?? ""} ${source.handle ?? ""}`),
+    handleKey: normalizeCompact(source.handle ?? ""),
+    urlKey: normalizeCompact(source.sourceUrl ?? ""),
+  };
+}
+
+function normalizeCompact(value) {
+  return String(value)
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[^a-z0-9ぁ-んァ-ン一-龥]/gu, "");
+}
+
+function sharedStableHandle(left, right) {
+  if (!left || !right) {
+    return false;
+  }
+
+  if (left === right) {
+    return true;
+  }
+
+  const [shorter, longer] = left.length <= right.length ? [left, right] : [right, left];
+  return shorter.length >= 8 && longer.includes(shorter);
+}
+
+function domainFromUrl(value) {
+  try {
+    return new URL(value).hostname.replace(/^www\./u, "").toLowerCase();
+  } catch {
+    return "";
+  }
 }
 
 function parsePositiveInt(value, fallback) {

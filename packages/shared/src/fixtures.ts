@@ -65,6 +65,8 @@ export type EventSummary = {
   sourceUrl: string;
   sourceLabel: string;
   sourceQuote?: string;
+  reviewStatus?: "pending" | "approved" | "rejected" | "event_candidate" | "ignored";
+  extractionConfidence?: number | null;
   status: "draft" | "scheduled" | "closed";
 };
 

@@ -1,10 +1,10 @@
-import { moderatePostSchema, updateGymStatusSchema, updateReportStatusSchema, upsertAdminAnnouncementSchema, upsertAdminEventSchema } from "@zac/shared";
+import { moderatePostSchema, reviewAdminEventSchema, updateGymStatusSchema, updateReportStatusSchema, upsertAdminAnnouncementSchema, upsertAdminEventSchema } from "@zac/shared";
 import { Hono } from "hono";
 import { resolveRequestActor } from "../auth.js";
 import { dataResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createAnnouncement, listAnnouncements, updateAnnouncement } from "../services/announcement-service.js";
 import { listAdminUsers, listAuditLogs, moderatePost, recordAdminAudit, requireAdminActor, updateGymStatus, updateReportStatus } from "../services/admin-service.js";
-import { createEvent, listEvents, updateEvent } from "../services/event-service.js";
+import { createEvent, listEventCandidates, listEvents, reviewEventCandidate, updateEvent } from "../services/event-service.js";
 import { listEventSources } from "../services/event-source-service.js";
 
 export function createAdminRoutes() {
@@ -26,6 +26,12 @@ export function createAdminRoutes() {
     const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
     void actor;
     return context.json(paginatedResponse(await listEvents({ includeDrafts: true })));
+  });
+
+  app.get("/event-candidates", async (context) => {
+    const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
+    void actor;
+    return context.json(paginatedResponse(await listEventCandidates()));
   });
 
   app.get("/event-sources", async (context) => {
@@ -57,6 +63,19 @@ export function createAdminRoutes() {
     const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
     const event = await updateEvent(context.req.param("eventId"), result.data);
     await recordAdminAudit(actor, { action: "event_update", targetType: "event", targetId: event.id, metadata: result.data });
+    return context.json(dataResponse(event));
+  });
+
+  app.patch("/events/:eventId/review", async (context) => {
+    const result = reviewAdminEventSchema.safeParse(await context.req.json());
+
+    if (!result.success) {
+      return context.json(validationErrorResponse(result.error.flatten()), 422);
+    }
+
+    const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
+    const event = await reviewEventCandidate(context.req.param("eventId"), result.data, actor);
+    await recordAdminAudit(actor, { action: `event_candidate_${result.data.action}`, targetType: "event", targetId: event.id, metadata: result.data });
     return context.json(dataResponse(event));
   });
 

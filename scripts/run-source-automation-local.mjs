@@ -5,6 +5,7 @@ import path from "node:path";
 const outputPath = process.env.ZAC_AUTOMATION_LOCAL_RUN_PATH ?? "data/intake/source-automation-local-run.json";
 const markdownPath = outputPath.replace(/\.json$/u, ".md");
 const commandTimeoutMs = parsePositiveInt(process.env.ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS, 240000);
+const instagramInspectionTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS, 900000);
 const pnpmBin = process.env.PNPM_BIN ?? "pnpm";
 
 const run = {
@@ -34,6 +35,7 @@ const stepPlan = [
     command: [pnpmBin, "sources:inspect-instagram"],
     required: false,
     skipUnlessPassed: ["automationRunInitial"],
+    timeoutMs: instagramInspectionTimeoutMs,
   },
   {
     name: "applyInstagramObservations",
@@ -145,6 +147,7 @@ async function runCommand(step) {
     stderrChunks.push(chunk);
   });
 
+  const timeoutMs = step.timeoutMs ?? commandTimeoutMs;
   const exitCode = await new Promise((resolve) => {
     const timeout = setTimeout(() => {
       timedOut = true;
@@ -154,7 +157,7 @@ async function runCommand(step) {
           child.kill("SIGKILL");
         }
       }, 5000).unref();
-    }, commandTimeoutMs);
+    }, timeoutMs);
     timeout.unref();
     child.on("close", resolve);
     child.on("close", () => clearTimeout(timeout));

@@ -31,6 +31,10 @@
     <string>180000</string>
     <key>ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS</key>
     <string>240000</string>
+    <key>ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS</key>
+    <string>900000</string>
+    <key>ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS</key>
+    <string>8000</string>
   </dict>
 </dict>
 </plist>

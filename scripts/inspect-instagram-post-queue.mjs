@@ -7,6 +7,7 @@ const outputSqlPath = process.env.ZAC_INSTAGRAM_INSPECTION_SQL ?? "data/intake/i
 const postsPerSource = parsePositiveInt(process.env.ZAC_INSTAGRAM_POSTS_PER_SOURCE, 3);
 const sourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_SOURCE_LIMIT, 64);
 const requestDelayMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_REQUEST_DELAY_MS, 2000);
+const requestTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS, 8000);
 const generatedAt = new Date();
 const generatedAtSql = toSqlTimestamp(generatedAt);
 
@@ -114,6 +115,7 @@ async function fetchProfile(handle) {
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36 ZacSourceMonitor/1.0",
           "x-ig-app-id": "936619743392459",
         },
+        signal: AbortSignal.timeout(requestTimeoutMs),
       });
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);

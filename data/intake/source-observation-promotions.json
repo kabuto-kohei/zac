@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-13T08:08:33.097Z",
+  "generatedAt": "2026-05-13T15:06:05.895Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -7,11 +7,58 @@
     "excludedFields": "full captions, images, videos"
   },
   "summary": {
-    "observationsRead": 38,
-    "promotions": 0,
-    "skipped": 38
+    "observationsRead": 43,
+    "promotions": 2,
+    "skipped": 41
   },
-  "promotions": [],
+  "promotions": [
+    {
+      "eventId": "0d769202-6769-4a8e-b788-362b2eabb832",
+      "observationId": "e00b42e4-af97-45ed-a32b-38242aca35b2",
+      "gymId": "281a38e4-520e-4875-a216-aa4973c8c063",
+      "gymName": "ROCKY Climbing & Fitness Gym 新宿曙橋店",
+      "category": "event",
+      "title": "🔥宿ロキでもMOVING3開催間近‼️🔥",
+      "summary": "ROCKY 新宿曙橋店の公式Instagram投稿をイベントとして確認。 日付候補は2026/05/19。公開UIに出す前に詳細確認が必要。",
+      "description": "ROCKY 新宿曙橋店の公式Instagram投稿をイベントとして確認。 日付候補は2026/05/19。公開UIに出す前に詳細確認が必要。 詳細や続報は公式Instagramで確認してください。",
+      "startsAt": "2026-05-19T01:00:00.000Z",
+      "endsAt": "2026-05-23T12:00:00.000Z",
+      "capacityText": "公式Instagramで確認",
+      "sourceType": "official_instagram",
+      "sourceUrl": "https://www.instagram.com/p/DYRxikUpUZV/",
+      "sourceAccount": "ROCKY 新宿曙橋店",
+      "sourcePublishedAt": "2026-05-13T11:50:37.000Z",
+      "sourceFetchedAt": "2026-05-13T15:02:03.357Z",
+      "sourceQuote": "🔥宿ロキでもMOVING3開催間近‼️🔥",
+      "extractionConfidence": "0.72",
+      "reviewStatus": "pending",
+      "reviewedAt": null,
+      "status": "draft"
+    },
+    {
+      "eventId": "6251d1eb-7a30-4087-b86a-fc82569ae051",
+      "observationId": "37e00f5c-76bc-4425-b2b8-1c5b447d17e9",
+      "gymId": "e8c46135-1765-4bdc-a9c0-8c21d1864256",
+      "gymName": "NOBOROCK 高田馬場店",
+      "category": "private_booking",
+      "title": "📢短縮営業のお知らせ📢",
+      "summary": "NOBOROCK 高田馬場店の公式Instagram投稿を貸切として確認。 日付候補は2026/05/28。公開UIに出す前に詳細確認が必要。",
+      "description": "NOBOROCK 高田馬場店の公式Instagram投稿を貸切として確認。 日付候補は2026/05/28。公開UIに出す前に詳細確認が必要。 詳細や続報は公式Instagramで確認してください。",
+      "startsAt": "2026-05-28T01:00:00.000Z",
+      "endsAt": "2026-05-28T02:00:00.000Z",
+      "capacityText": "公式Instagramで確認",
+      "sourceType": "official_instagram",
+      "sourceUrl": "https://www.instagram.com/p/DYRnWvgRwY-/",
+      "sourceAccount": "NOBOROCK 高田馬場店",
+      "sourcePublishedAt": "2026-05-13T10:21:02.000Z",
+      "sourceFetchedAt": "2026-05-13T15:02:03.357Z",
+      "sourceQuote": "📢短縮営業のお知らせ📢",
+      "extractionConfidence": "0.72",
+      "reviewStatus": "pending",
+      "reviewedAt": null,
+      "status": "draft"
+    }
+  ],
   "skipped": [
     {
       "id": "5842b5ab-8946-43e4-8d8c-9489c13e9355",
@@ -32,15 +79,21 @@
       "reason": "past start date"
     },
     {
+      "id": "fe27e755-9eeb-4f28-99e8-320ee71abbab",
+      "sourceUrl": "https://www.instagram.com/p/DXZNH4lyNjC/",
+      "title": "MOVING3 Round1",
+      "reason": "past start date"
+    },
+    {
       "id": "ce02a13f-d64f-4f8a-985f-1dd02e732f38",
       "sourceUrl": "https://www.instagram.com/p/DYPQbuHzbpp/",
       "title": "オススメ課題紹介⑥",
       "reason": "past start date"
     },
     {
-      "id": "fe27e755-9eeb-4f28-99e8-320ee71abbab",
-      "sourceUrl": "https://www.instagram.com/p/DXZNH4lyNjC/",
-      "title": "MOVING3 Round1",
+      "id": "417be15b-0d99-4f9e-a39a-fee41d630f17",
+      "sourceUrl": "https://www.instagram.com/p/DYRqVqYJ-N2/",
+      "title": "オススメ課題紹介⑦",
       "reason": "past start date"
     },
     {
@@ -50,16 +103,16 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "2d94754b-7272-4a49-8930-d0d71be7c341",
-      "sourceUrl": "https://www.instagram.com/p/DWqMXOzEcVD/",
-      "title": "馬場店、次回ホールド替えのお知らせ",
-      "reason": "post looks like an announcement, not a calendar item"
-    },
-    {
       "id": "ef37ab7d-4eb9-4dec-96da-9f55bffe4a8f",
       "sourceUrl": "https://www.instagram.com/p/DWk63erkerK/",
       "title": "🔶大宮店ルートセットのお知らせ🔶",
       "reason": "past start date"
+    },
+    {
+      "id": "2d94754b-7272-4a49-8930-d0d71be7c341",
+      "sourceUrl": "https://www.instagram.com/p/DWqMXOzEcVD/",
+      "title": "馬場店、次回ホールド替えのお知らせ",
+      "reason": "post looks like an announcement, not a calendar item"
     },
     {
       "id": "298dee53-8ead-453a-84e1-7050ce9d43eb",
@@ -98,16 +151,16 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "88c7c3a6-2660-4481-a2ae-cc6b7bfed1e2",
-      "sourceUrl": "https://www.instagram.com/p/DXn0YnKkrD_/",
-      "title": "5月の営業案内",
-      "reason": "past start date"
-    },
-    {
       "id": "8ca2a77d-823b-4b45-b13b-073bf0c077eb",
       "sourceUrl": "https://www.instagram.com/p/DXrCdNQD5PJ/",
       "title": ".",
       "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "88c7c3a6-2660-4481-a2ae-cc6b7bfed1e2",
+      "sourceUrl": "https://www.instagram.com/p/DXn0YnKkrD_/",
+      "title": "5月の営業案内",
+      "reason": "past start date"
     },
     {
       "id": "473da251-bd49-4cdf-9981-7a6fa5751d88",
@@ -164,16 +217,16 @@
       "reason": "title is too weak for event candidate"
     },
     {
-      "id": "ff6cdb59-f271-4283-819f-ef08f51ba5fb",
-      "sourceUrl": "https://www.instagram.com/p/DXA2xVuiQCO/",
-      "title": "BLoC2026 round2",
-      "reason": "no matching published gym"
-    },
-    {
       "id": "0c22f3ff-089d-4dd8-835a-29660503d100",
       "sourceUrl": "https://www.instagram.com/p/DXHC4snEnUU/",
       "title": "🌟コンペ開催🌟",
       "reason": "source URL already exists in events"
+    },
+    {
+      "id": "ff6cdb59-f271-4283-819f-ef08f51ba5fb",
+      "sourceUrl": "https://www.instagram.com/p/DXA2xVuiQCO/",
+      "title": "BLoC2026 round2",
+      "reason": "no matching published gym"
     },
     {
       "id": "7aa4b38c-a350-4b48-bfbf-970308a51f64",
@@ -236,10 +289,22 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
+      "id": "9a7bf1ff-6e04-4a20-b366-be9ad8287517",
+      "sourceUrl": "https://www.instagram.com/p/DYQ1KRZPV2S/",
+      "title": "🧠110° 3D🧠",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
       "id": "0e24c6b8-89db-456d-af03-9e86a620e498",
       "sourceUrl": "https://www.instagram.com/p/DXoQhIKjtIc/",
       "title": ".",
       "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "846010d7-c361-4bdc-8b44-a549bfcee697",
+      "sourceUrl": "https://www.instagram.com/p/DYQwrvJB6Kk/",
+      "title": "今年のBLOC",
+      "reason": "no matching published gym"
     }
   ]
 }

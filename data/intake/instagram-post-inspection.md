@@ -1,13 +1,13 @@
 # Instagram Post Inspection
 
-- Generated: 2026-05-13T08:05:00.374Z
+- Generated: 2026-05-13T15:02:03.357Z
 - Sources queued: 32
-- Sources fetched: 3
-- Sources failed: 29
-- Observed posts: 9
-- Pending posts: 5
-- Ignored posts: 4
-- Calendar candidates: 4
+- Sources fetched: 18
+- Sources failed: 14
+- Observed posts: 52
+- Pending posts: 30
+- Ignored posts: 22
+- Calendar candidates: 25
 
 ## Policy
 
@@ -17,38 +17,58 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 
 - DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed
   - no posts
-- Urban Base Camp 新宿 (basecamp_shinjuku) - fetch failed
-  - no posts
-- B-PUMP Tokyo (bpumptokyo) - fetch failed
-  - no posts
-- NOBOROCK 池袋店 (noborock_ikebukuro) - fetch failed
-  - no posts
+- NOBOROCK 池袋店 (noborock_ikebukuro)
+  - pending: competition | ROCK ON 2026 | https://www.instagram.com/p/DXJTc9HkRei/
+  - pending: opening_change | 💁‍♂️Next Set Info💁‍♂️ | https://www.instagram.com/p/DW3ewwXE-e5/
+  - pending: opening_change | 🧠110° 3D🧠 | https://www.instagram.com/p/DYQ1KRZPV2S/
 - Noborock Shibuya (noborock_shibuya) - fetch failed
   - no posts
-- NOBOROCK 高田馬場店 (noborock_takadanobaba) - fetch failed
-  - no posts
-- Rocky Shinagawa (rocky_shinagawa) - fetch failed
-  - no posts
-- BOULCOM 川崎店 (boulcom_kawasaki) - fetch failed
-  - no posts
-- BOULCOM 東京店 (boulcom_tokyo) - fetch failed
-  - no posts
-- ROCKY 船橋店 (funabashirocky) - fetch failed
-  - no posts
-- ROCKY 印西店 (inzairocky) - fetch failed
-  - no posts
-- ROCKY 新宿曙橋店 (jyuku_rocky) - fetch failed
-  - no posts
-- ROCKY 品川店 (shina_rocky) - fetch failed
-  - no posts
-- ROCKY つくば阿見店 (tsukuba_ami_rocky) - fetch failed
-  - no posts
-- And Energy Bouldering (and_energy_bouldering) - fetch failed
-  - no posts
-- エナジークライミングジム浦和店公式Instagram (energyurawa) - fetch failed
-  - no posts
-- アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - fetch failed
-  - no posts
+- NOBOROCK 高田馬場店 (noborock_takadanobaba)
+  - pending: private_booking | 📢短縮営業のお知らせ📢 | https://www.instagram.com/p/DYRnWvgRwY-/
+  - pending: private_booking | 📢短縮営業のお知らせ📢 | https://www.instagram.com/p/DXgNdraEfr6/
+  - pending: opening_change | 馬場店、次回ホールド替えのお知らせ | https://www.instagram.com/p/DWqMXOzEcVD/
+- Rocky Shinagawa (rocky_shinagawa)
+  - pending: opening_change | 自粛モード真っ盛りの渋谷ハチ公前、スクランブル交差点 | https://www.instagram.com/p/B_uyPWGDI5X/
+- BOULCOM 川崎店 (boulcom_kawasaki)
+  - pending: event | BOULCOM KIDS SCHOOL生徒大募集✨ | https://www.instagram.com/p/DXA9RBcieUz/
+  - ignored: recruit | スタッフ募集中💡✨✨ | https://www.instagram.com/p/DVaRVWNk8dK/
+  - pending: route_set | オススメ課題紹介⑦ | https://www.instagram.com/p/DYRqVqYJ-N2/
+- BOULCOM 東京店 (boulcom_tokyo)
+  - pending: competition | BOULCOM TOKYO | https://www.instagram.com/p/DXgR7FAE4dK/
+  - ignored: notice | お友達紹介キャンペーン!!! | https://www.instagram.com/p/DAI9ARZSG3i/
+  - pending: competition | BOULCOMP　セッター紹介④ | https://www.instagram.com/p/DYQ1U9SkwwU/
+- ROCKY 船橋店 (funabashirocky)
+  - ignored: notice | ROAD TO BEAST 2026🔥🔥 | https://www.instagram.com/p/DU2tsToklaQ/
+  - ignored: notice | 👉NEW SETS👉 | https://www.instagram.com/p/DYR5f5XErE7/
+  - ignored: notice | BombLeft 1D | https://www.instagram.com/p/DYPAd2eB_sy/
+- ROCKY 印西店 (inzairocky)
+  - ignored: notice | ✨New Sets pickup動画集✨ | https://www.instagram.com/p/DX9AnkMjzmQ/
+  - pending: competition | 🎡ENTRY20 × BIGHOP CUP抽選発表🎡 | https://www.instagram.com/p/DX8OnWQvWUY/
+  - ignored: notice | New Sets Movies | https://www.instagram.com/p/DX1PyRBv0ob/
+- ROCKY 新宿曙橋店 (jyuku_rocky)
+  - ignored: notice | クライミングデートしてみませんか？ | https://www.instagram.com/p/DWbBwrZlKdx/
+  - ignored: notice | オープンいたしました㊗️ | https://www.instagram.com/p/C5ZyU2gSSSt/
+  - pending: event | 🔥宿ロキでもMOVING3開催間近‼️🔥 | https://www.instagram.com/p/DYRxikUpUZV/
+- ROCKY 品川店 (shina_rocky)
+  - pending: competition | もちろん今年もやります！！！！コンペ日程が確定🎉🎉 | https://www.instagram.com/p/DWs85LWiV5Q/
+  - pending: event | ご要望が多かったため、すべてのスクール開始時刻が30分遅くなりました】Rocky 品川店にて 2026年1月より、小学生・中学生向けのキッズスクールが開校され… | https://www.instagram.com/p/DTJkFARkqoD/
+  - pending: event | 今週末よりリニューアルオープンいたしました〜㊗️㊗️㊗️ | https://www.instagram.com/p/C9enmHRyWQ3/
+- ROCKY つくば阿見店 (tsukuba_ami_rocky)
+  - pending: competition | 🌟コンペ開催🌟 | https://www.instagram.com/p/DXHC4snEnUU/
+  - pending: competition | 5月の営業案内 | https://www.instagram.com/p/DXn0YnKkrD_/
+  - ignored: notice | 🌟Welcome A & Bのデモ動画🎥公開🌟 | https://www.instagram.com/p/DYPAcIMknhV/
+- And Energy Bouldering (and_energy_bouldering)
+  - pending: opening_change | 初めてご来店の方へ | https://www.instagram.com/p/DX3MuX0E3bW/
+  - ignored: notice | ルーフ・コーナーエリア | https://www.instagram.com/p/DYO_ezEkzbs/
+  - pending: route_set | ルーフ・コーナーエリア | https://www.instagram.com/p/DYMXL06E9rK/
+- エナジークライミングジム浦和店公式Instagram (energyurawa)
+  - ignored: notice | 平素よりエナジークライミングジム浦和店にご来店頂き、誠にありがとうございます | https://www.instagram.com/p/DXvXu8jj-OZ/
+  - ignored: notice | 浦和店の5月営業スケジュールをお知らせしております | https://www.instagram.com/p/DXviDzfjzRx/
+  - ignored: notice | 外岩の冬は寒さが厳しいですよね🥶 | https://www.instagram.com/p/DErxuUPS2th/
+- アオロク〖ao_roc.climbing〗 (ao_roc.climbing)
+  - pending: competition | 5月カレンダー&お知らせ】〈追記〉 | https://www.instagram.com/p/DXyvVscEYjV/
+  - pending: competition | BLoC2026 round2 | https://www.instagram.com/p/DXA2xVuiQCO/
+  - pending: competition | 今年のBLOC | https://www.instagram.com/p/DYQwrvJB6Kk/
 - Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - fetch failed
   - no posts
 - Boulder Park Base Camp 飯能店 (basecamp_hanno) - fetch failed
@@ -71,12 +91,16 @@ Store source links, short summaries, and short quotes only. Do not store full ca
   - no posts
 - クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - fetch failed
   - no posts
-- D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga)
-  - pending: route_set | . | https://www.instagram.com/p/DXrCdNQD5PJ/
-  - pending: event | . | https://www.instagram.com/p/DVk58TxD90z/
-  - ignored: notice | . | https://www.instagram.com/p/DYJAeESjy-l/
 - PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - fetch failed
   - no posts
+- Urban Base Camp 新宿 (basecamp_shinjuku)
+  - ignored: notice | 料金改定とサマーキャンペーンのお知らせ | https://www.instagram.com/p/DYEikGAlG11/
+  - ignored: notice | 5月のセットスケジュールのお知らせです🙋 | https://www.instagram.com/p/DXvtiJ_FF3q/
+  - ignored: notice | リソール受付について | https://www.instagram.com/p/DV0PguWFNV-/
+- B-PUMP Tokyo (bpumptokyo)
+  - ignored: recruit | アルバイト募集中 | https://www.instagram.com/p/DW_E5wyAaNI/
+  - pending: event | 5月のボルダリングガイダンス | https://www.instagram.com/p/DXwBG9kjhYr/
+  - pending: opening_change | 4月カレンダー🗓️ | https://www.instagram.com/p/DXwABbbDtGJ/
 - B-PUMP OGIKUBO (bpump_ogikubo)
   - pending: competition | . | https://www.instagram.com/p/DXy0HKeElJ0/
   - pending: competition | 開催発表 | https://www.instagram.com/p/DXHComvEz5I/
@@ -85,3 +109,7 @@ Store source links, short summaries, and short quotes only. Do not store full ca
   - ignored: notice | 🎥CHECK THE MOVE 🎥 | https://www.instagram.com/p/DYOhwiosqjd/
   - ignored: notice | 🎥 CHECK THE MOVE 🎥 | https://www.instagram.com/p/DYMH2-PlF8C/
   - ignored: notice | 🎥CHECK THE MOVE 🎥 | https://www.instagram.com/p/DYG-6SIs_d8/
+- D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga)
+  - pending: route_set | . | https://www.instagram.com/p/DXrCdNQD5PJ/
+  - pending: event | . | https://www.instagram.com/p/DVk58TxD90z/
+  - ignored: notice | . | https://www.instagram.com/p/DYJAeESjy-l/

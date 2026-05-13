@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-13T08:37:57.498Z",
+  "generatedAt": "2026-05-13T15:12:37.132Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,10 +11,10 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 29,
-    "localRunAgeMinutes": 29,
+    "latestRunAgeMinutes": 6,
+    "localRunAgeMinutes": 6,
     "consecutiveNonReady": 0,
-    "instagramFailureRatio": 0.90625,
+    "instagramFailureRatio": 0.4375,
     "failedInstagramSources": [
       {
         "handle": "dogwood_climbing_gym",
@@ -22,82 +22,7 @@
         "hasOfficialFallback": true
       },
       {
-        "handle": "basecamp_shinjuku",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "bpumptokyo",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "noborock_ikebukuro",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
         "handle": "noborock_shibuya",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "noborock_takadanobaba",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "rocky_shinagawa",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "boulcom_kawasaki",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "boulcom_tokyo",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "funabashirocky",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "inzairocky",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "jyuku_rocky",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "shina_rocky",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "tsukuba_ami_rocky",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "and_energy_bouldering",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "energyurawa",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "ao_roc.climbing",
         "error": "profile_fetch_failed",
         "hasOfficialFallback": true
       },
@@ -169,10 +94,10 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 3600,
-      "runs": 5
+      "runs": 1
     },
     "queues": {
-      "instagramPostInspection": 29,
+      "instagramPostInspection": 14,
       "inspectNow": 64,
       "operatorBatch": 16,
       "approvedSourceRotation": 96,
@@ -216,7 +141,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "29m",
+      "detail": "6m",
       "severity": "error"
     },
     {
@@ -246,7 +171,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "29m",
+      "detail": "6m",
       "severity": "error"
     },
     {
@@ -256,7 +181,7 @@
       "severity": "error"
     },
     {
-      "name": "local runner optional failures are surfaced",
+      "name": "local runner optional steps completed or were intentionally skipped",
       "ok": true,
       "detail": "none",
       "severity": "error"
@@ -342,7 +267,7 @@
     {
       "name": "Instagram inspection failures are within budget or covered by official fallback",
       "ok": true,
-      "detail": "91% failed; covered by official fallback",
+      "detail": "44% failed; covered by official fallback",
       "severity": "error"
     },
     {

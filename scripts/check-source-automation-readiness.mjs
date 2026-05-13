@@ -101,7 +101,11 @@ const checks = [
   check("local runner is ready_for_review", localRun?.status === "ready_for_review"),
   check("local runner packet is fresh", isFreshAge(localRunAgeMinutes, maxLocalRunAgeMinutes), `${localRunAgeMinutes ?? "unknown"}m`),
   check("local runner required steps all passed", failedRequiredLocalSteps.length === 0, failedRequiredLocalSteps.map((step) => step.name).join(", ")),
-  check("local runner optional failures are surfaced", true, failedOptionalLocalSteps.length ? failedOptionalLocalSteps.map((step) => step.name).join(", ") : "none"),
+  check(
+    "local runner optional steps completed or were intentionally skipped",
+    failedOptionalLocalSteps.length === 0,
+    failedOptionalLocalSteps.length ? failedOptionalLocalSteps.map((step) => step.name).join(", ") : "none",
+  ),
   check("launchd agent is loaded", launchAgent.loaded, launchAgent.message),
   check("launchd last exit is ok", launchAgent.lastExitCode === 0 || launchAgent.lastExitCode === null, String(launchAgent.lastExitCode)),
   check("launchd interval is hourly or faster", typeof launchAgent.runIntervalSeconds === "number" && launchAgent.runIntervalSeconds <= 3600, String(launchAgent.runIntervalSeconds)),

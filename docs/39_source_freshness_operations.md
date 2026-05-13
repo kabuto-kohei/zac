@@ -51,10 +51,10 @@ all of the following are true:
 5. LaunchAgent `com.zac.source-freshness` is loaded, hourly or faster, and its
    latest exit code is zero.
 6. No stale active automation lock exists.
-7. Instagram inspection artifacts show that most queued sources were fetched;
-   temporary failures remain queued and visible instead of being marked done.
-   A single Instagram failure may remain unattended only when an official
-   non-Instagram fallback source for the same gym/operator is also in rotation.
+7. The local runner has no optional step failures. Instagram profile-level
+   fetch failures may remain in the artifact only when the inspection command
+   itself completed, generated SQL was applied, and an official non-Instagram
+   fallback source for the same gym/operator is also in rotation.
 8. Observation promotion remains in `draft_review` mode unless a separate
    reviewed release process explicitly enables approved publishing.
 9. Codex cron supervision is active and runs both health and readiness gates.
@@ -198,6 +198,8 @@ The automation runner accepts operational environment variables:
 - `ZAC_AUTOMATION_RETRY_BASE_MS`: quadratic retry base delay. Default: `10000`.
 - `ZAC_AUTOMATION_COMMAND_TIMEOUT_MS`: per-command timeout. Default: `120000`.
 - `ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS`: per-command timeout for the local launchd pipeline. Default: `240000`.
+- `ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS`: local-run timeout for the Instagram inspection step. Default: `900000`.
+- `ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS`: per-request timeout for Instagram profile fetches. Default: `8000`.
 - `ZAC_AUTOMATION_LOCK_STALE_MINUTES`: stale lock threshold. Default: `45`.
 - `ZAC_AUTOMATION_DEGRADED_EXIT_ZERO`: set to `1` only when a caller explicitly wants degraded runs to exit zero. Default degraded exit is non-zero.
 - `ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY`: health-check failure threshold for consecutive blocked/degraded runs. Default: `3`.
@@ -272,9 +274,13 @@ marking the local runner ready. The readiness gate is intentionally run by the
 supervisor outside the local runner so it can judge a completed local-run packet
 instead of inspecting itself mid-run. If Instagram returns a rate-limit response,
 the failed source remains in `instagramPostInspection` and is retried by a later
-hourly run instead of being marked complete. Readiness may remain green only
-when the failed Instagram source has an official fallback source in the same
-rotation; otherwise it becomes operator-review work.
+hourly run instead of being marked complete. A hung Instagram request is bounded
+by `ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS`, and the inspection step has a longer
+`ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS` budget so it can process a meaningful
+batch without stalling the whole LaunchAgent. Readiness may remain green only
+when the Instagram inspection command completed and each failed Instagram source
+has an official fallback source in the same rotation; otherwise it becomes
+operator-review work.
 
 `pnpm sources:automation-health` now checks more than the latest packet status:
 the latest run must be fresh, the local runner packet must be fresh, the

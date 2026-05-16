@@ -62,6 +62,8 @@ for (const source of queue) {
 }
 
 const flatPosts = inspections.flatMap((inspection) => inspection.posts);
+const reusedPreviousSources = inspections.filter((inspection) => inspection.reusedPrevious).length;
+const successfullyFetchedSources = inspections.filter((inspection) => inspection.ok && !inspection.reusedPrevious).length;
 const result = {
   generatedAt: generatedAt.toISOString(),
   policy: {
@@ -70,7 +72,9 @@ const result = {
   },
   summary: {
     sourcesQueued: queue.length,
-    sourcesFetched: inspections.filter((inspection) => inspection.ok).length,
+    sourcesFetched: successfullyFetchedSources,
+    sourcesReusedPrevious: reusedPreviousSources,
+    sourcesAvailable: successfullyFetchedSources + reusedPreviousSources,
     sourcesFailed: inspections.filter((inspection) => !inspection.ok).length,
     observedPosts: flatPosts.length,
     pendingPosts: flatPosts.filter((post) => post.reviewStatus === "pending").length,
@@ -121,7 +125,7 @@ async function fetchProfile(handle) {
         signal: AbortSignal.timeout(requestTimeoutMs),
       });
       if (!response.ok) {
-        lastFailure = classifyHttpFailure(response.status);
+        lastFailure = await classifyHttpFailure(response);
         if (!isRetryableInstagramFailure(lastFailure.failureCategory) || attempt === 3) {
           return lastFailure;
         }
@@ -158,20 +162,35 @@ async function fetchProfile(handle) {
   return lastFailure ?? { error: "profile_fetch_failed", failureCategory: "unknown", failureDetail: "unknown failure" };
 }
 
-function classifyHttpFailure(status) {
+async function classifyHttpFailure(response) {
+  const status = response.status;
+  const detail = await readFailureDetail(response);
   if (status === 401 || status === 403) {
-    return { error: "profile_fetch_failed", failureCategory: "access_restricted", failureDetail: `HTTP ${status}` };
+    return { error: "profile_fetch_failed", failureCategory: "access_restricted", failureDetail: detail || `HTTP ${status}` };
   }
   if (status === 404) {
-    return { error: "profile_not_found", failureCategory: "profile_not_found", failureDetail: "HTTP 404" };
+    return { error: "profile_not_found", failureCategory: "profile_not_found", failureDetail: detail || "HTTP 404" };
   }
   if (status === 429) {
-    return { error: "profile_fetch_failed", failureCategory: "rate_limited", failureDetail: "HTTP 429" };
+    return { error: "profile_fetch_failed", failureCategory: "rate_limited", failureDetail: detail || "HTTP 429" };
   }
   if (status >= 500) {
-    return { error: "profile_fetch_failed", failureCategory: "api_unavailable", failureDetail: `HTTP ${status}` };
+    return { error: "profile_fetch_failed", failureCategory: "api_unavailable", failureDetail: detail || `HTTP ${status}` };
   }
-  return { error: "profile_fetch_failed", failureCategory: "api_response", failureDetail: `HTTP ${status}` };
+  return { error: "profile_fetch_failed", failureCategory: "api_response", failureDetail: detail || `HTTP ${status}` };
+}
+
+async function readFailureDetail(response) {
+  try {
+    const text = await response.text();
+    const json = JSON.parse(text);
+    const message = [json.message, json.require_login ? "require_login=true" : "", json.status ? `status=${json.status}` : ""]
+      .filter(Boolean)
+      .join("; ");
+    return truncate(`HTTP ${response.status}: ${message || text}`, 160);
+  } catch {
+    return `HTTP ${response.status}`;
+  }
 }
 
 function classifyThrownFailure(error, fallbackCategory = "network_or_timeout") {

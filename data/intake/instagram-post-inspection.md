@@ -1,13 +1,13 @@
 # Instagram Post Inspection
 
-- Generated: 2026-05-16T00:23:40.841Z
+- Generated: 2026-05-16T09:06:30.577Z
 - Sources queued: 48
-- Sources fetched: 7
-- Sources failed: 41
-- Observed posts: 21
-- Pending posts: 10
-- Ignored posts: 11
-- Calendar candidates: 7
+- Sources fetched: 0
+- Sources failed: 48
+- Observed posts: 0
+- Pending posts: 0
+- Ignored posts: 0
+- Calendar candidates: 0
 
 ## Policy
 
@@ -16,28 +16,6 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 ## Inspections
 
 - DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed
-  - no posts
-- ディーボルダリングプラス津田沼 (dbouldering_tsudanuma) - fetch failed
-  - no posts
-- ディーボルダリング 綱島 (dbouldering_tsunashima) - fetch failed
-  - no posts
-- ディーボルダリングプラス八千代 (dbouldering_yachiyo) - fetch failed
-  - no posts
-- ECHOES CLIMBING（エコーズ クライミング） (echoesclimbing) - fetch failed
-  - no posts
-- エナジークライミングジム 柏店 (energy_kashiwa) - fetch failed
-  - no posts
-- folk（フォーク） ボルダリングジム (folk_boulderinggym) - fetch failed
-  - no posts
-- ボルダリングジム フライハイト (freiheit_bouldering) - fetch failed
-  - no posts
-- 深谷クライミングヴィレッジ (fukayaclimbingvillage) - fetch failed
-  - no posts
-- ボルダリングジム GRANNY（グラニー） 南流山店 (granny_bouldering) - fetch failed
-  - no posts
-- ボルダリングジム ジャムセッション三鷹 (jamsessionmitaka) - fetch failed
-  - no posts
-- スポーツクライミングスクール・ジム J&S 池袋 (jands_ikebukuro) - fetch failed
   - no posts
 - JET SET（ジェットセット） climbing gym (jetsetclimbing) - fetch failed
   - no posts
@@ -61,34 +39,6 @@ Store source links, short summaries, and short quotes only. Do not store full ca
   - no posts
 - クライミングジム Project（プロジェクト） (project_climbing_gym) - fetch failed
   - no posts
-- クライミングパーク カルチェロッシュ (quartier_de_roche)
-  - ignored: notice | ウィークリー課題を更新しました‼︎ | https://www.instagram.com/p/DYT94slSzAx/
-  - ignored: notice | WALL to WALLにご参加いただいた会員さま、お疲れさまでした！ | https://www.instagram.com/p/DYGaPgWEu6j/
-  - ignored: notice | 今月のスピードレッスンのお知らせです！ | https://www.instagram.com/p/DX6sMdPkmqO/
-- Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori)
-  - ignored: notice | ご利用料金改定のお知らせ | https://www.instagram.com/p/Cyzb02uSFtx/
-  - ignored: notice | Bloc参加者の皆様お疲れ様でした🔥🔥🔥 | https://www.instagram.com/p/Cx0Gxc2y60t/
-  - pending: event | ⭐️お知らせ⭐️ | https://www.instagram.com/p/CiZhBneu6Xv/
-- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta)
-  - pending: opening_change | 日曜日はジム開店時でこんなに雪が積もっていました | https://www.instagram.com/p/DUhxBMzkgyj/
-  - ignored: notice | とつぜん始まったいちごパーティ！ | https://www.instagram.com/p/DHqVCQ8yxFI/
-  - ignored: notice | 昨晩の八王子は枝も白くてクルマもまばらで静かな夜でした | https://www.instagram.com/p/DG0C04LShX8/
-- クライミングジム SLOTH（スロース） (sloth.gym)
-  - pending: opening_change | climbing gym SLOTH 初めてのご来店のお客様へ！ | https://www.instagram.com/p/ClIvV33ymfp/
-  - pending: opening_change | こんにちは！今日からGWですね！ | https://www.instagram.com/p/DX0T1EBgVOV/
-  - ignored: notice | 4/19（日） 4/26（日）は無人営業となります | https://www.instagram.com/p/DXDcxJsge_8/
-- クライミングジム THREE PEAKS（スリーピークス） (three_peaks_climbing)
-  - ignored: notice | 大切なお知らせ：THREE PEAKSより皆様へ | https://www.instagram.com/p/DXyY9uxkeZL/
-  - ignored: notice | . | https://www.instagram.com/p/DYAvO9vkXYZ/
-  - ignored: notice | .NEW SLAB | https://www.instagram.com/p/DX-KcUmE6Sx/
-- スポドリ！ (tokyodomecity_spodori)
-  - pending: opening_change | <バッティングエリアのご紹介> | https://www.instagram.com/p/C-AIA0OSRou/
-  - pending: opening_change | 駅から徒歩3分、東京ドームの敷地内にありますレジャー施設です | https://www.instagram.com/p/C9zlD1cyaYm/
-  - pending: route_set | G・H壁ホールド替え完了のお知らせ | https://www.instagram.com/p/DXVcRKikonH/
-- クライミングジム TRIP (tripclimbing)
-  - pending: event | TRIPの小・中学生対象キッズボルダリングスクールは、カラダだけじゃない❗️ | https://www.instagram.com/p/DTR22LmEwiV/
-  - pending: opening_change | 軽やかリズムコンディショニング♪ | https://www.instagram.com/p/DWvW80ME-22/
-  - pending: event | 幼児（4～６歳）対象 | https://www.instagram.com/p/DTpArm7E1a9/
 - THE STONE SESSION TOKYO (tsstokyo) - fetch failed
   - no posts
 - ボルダリングジム UNDERGROUND（アンダーグラウンド） (underground_bouldering_gym) - fetch failed
@@ -124,4 +74,40 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 - 小鹿野町クライミングパーク 神怡舘 (shinnikan) - fetch failed
   - no posts
 - クライミングジム RocKY’N（ロッキン） (climbing_gym_rockyn0429) - fetch failed
+  - no posts
+- クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands) - fetch failed
+  - no posts
+- クライミングジム WESTROCK（ウエストロック） 調布店 (westrock_climbing) - fetch failed
+  - no posts
+- BOULCOM 川崎店 (boulcom_kawasaki) - fetch failed
+  - no posts
+- Boulder Park Base Camp 東村山 (basecamp_higashimurayama) - fetch failed
+  - no posts
+- Climb Park Base Camp 入間店 (basecamp_iruma) - fetch failed
+  - no posts
+- クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - fetch failed
+  - no posts
+- bonobo_bs (bonobo_bs) - fetch failed
+  - no posts
+- ボルダリングスペース HAT（ハット） (boulderingspace_hat) - fetch failed
+  - no posts
+- Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - fetch failed
+  - no posts
+- Urban Base Camp 新橋 (basecamp_shinbashi) - fetch failed
+  - no posts
+- Urban Base Camp 新宿 (basecamp_shinjuku) - fetch failed
+  - no posts
+- BOULCOM 東京店 (boulcom_tokyo) - fetch failed
+  - no posts
+- B-PUMP OGIKUBO (bpump_ogikubo) - fetch failed
+  - no posts
+- B-PUMP Tokyo (bpumptokyo) - fetch failed
+  - no posts
+- クライミングジムランボ公式Instagram (climbing_gym_ranbo) - fetch failed
+  - no posts
+- クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - fetch failed
+  - no posts
+- Climbing Gym Walrus公式Instagram (climbinggym_walrus) - fetch failed
+  - no posts
+- D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - fetch failed
   - no posts

@@ -1,13 +1,13 @@
 # Source Observation Promotions
 
-Generated: 2026-05-16T00:28:30.763Z
+Generated: 2026-05-16T09:12:29.647Z
 Mode: draft_review
 
 ## Summary
 
-- observationsRead: 96
+- observationsRead: 91
 - promotions: 0
-- skipped: 96
+- skipped: 91
 
 ## Promotions
 
@@ -39,17 +39,17 @@ Mode: draft_review
 - past start date: 5/1(金)、2日(土)は臨時休業となりますのでお間違えなく🙇 | https://www.instagram.com/p/DXtqXRFAjcK/
 - title is too weak for event candidate: . | https://www.instagram.com/p/DX1JXMHEqFH/
 - past start date: 5月スケジュール | https://www.instagram.com/p/DXrDJf0E9Nl/
-- post looks like an announcement, not a calendar item: 5月営業カレンダーのお知らせ | https://www.instagram.com/p/DXiRvAVDxGK/
 - past start date: 5月カレンダー📅 | https://www.instagram.com/p/DXvueiuGrMm/
 - title is too weak for event candidate: . | https://www.instagram.com/p/DXbafbMkjuq/
+- post looks like an announcement, not a calendar item: 5月営業カレンダーのお知らせ | https://www.instagram.com/p/DXiRvAVDxGK/
 - past start date: 5月のスケジュール | https://www.instagram.com/p/DXxtB78mTfe/
 - post looks like an announcement, not a calendar item: 5月カレンダー&お知らせ】〈追記〉 | https://www.instagram.com/p/DXyvVscEYjV/
 - post looks like an announcement, not a calendar item: 5月カレンダー🗓️ | https://www.instagram.com/p/DXqm-vIAVHF/
 - title is too weak for event candidate: . | https://www.instagram.com/p/DXySzXKjxBc/
 - post looks like an announcement, not a calendar item: 🎏 5月の営業カレンダー | https://www.instagram.com/p/DXjGiomgaRn/
 - past start date: ルートセット | https://www.instagram.com/p/DXsy1zNietN/
-- past start date: こんにちは！BONOBOです！ | https://www.instagram.com/p/DXk15ISCRUO/
 - post looks like an announcement, not a calendar item: おはようございます！BONOBO です！ | https://www.instagram.com/p/DXskMRxCbSn/
+- past start date: こんにちは！BONOBOです！ | https://www.instagram.com/p/DXk15ISCRUO/
 - post looks like an announcement, not a calendar item: こんにちは🎏 | https://www.instagram.com/p/DXTpx-dGrdB/
 - past start date: 今月、第２週に強傾斜壁、第４週に緩傾斜壁のセットがありますのでご確認お願いします‼️ | https://www.instagram.com/p/DXyb7P_k70p/
 - post looks like an announcement, not a calendar item: 💁‍♂️Next Set Info💁‍♂️ | https://www.instagram.com/p/DW3ewwXE-e5/
@@ -81,24 +81,20 @@ Mode: draft_review
 - post looks like an announcement, not a calendar item: 次回Monthly Guest | https://www.instagram.com/p/DYJm6jDkf09/
 - title is too weak for event candidate: . | https://www.instagram.com/p/DXlkuO2gRAA/
 - title is too weak for event candidate: .. | https://www.instagram.com/p/DX-sEGCD-Mc/
-- source URL already exists in events: ▶︎▶︎▶︎ | https://www.instagram.com/p/DXn9phGkdqY/
 - source URL already exists in events: 1F LEFTをルートセットします！ | https://www.instagram.com/p/DYRsJPOmhPJ/
 - source URL already exists in events: 🔥宿ロキでもMOVING3開催間近‼️🔥 | https://www.instagram.com/p/DYRxikUpUZV/
 - title is too weak for event candidate: ・ | https://www.instagram.com/p/DXoaEezEemy/
-- source URL already exists in events: 🌟コンペ開催🌟 | https://www.instagram.com/p/DXHC4snEnUU/
 - end date is before start date: BLoC2026 round2 | https://www.instagram.com/p/DXA2xVuiQCO/
 - post looks like an announcement, not a calendar item: 神怡舘information | https://www.instagram.com/p/DWTUK8bEhfC/
 - same gym/category/start date already exists: 📢短縮営業のお知らせ📢 | https://www.instagram.com/p/DXgNdraEfr6/
 - source URL already exists in events: 📢短縮営業のお知らせ📢 | https://www.instagram.com/p/DYRnWvgRwY-/
-- source URL already exists in events: ▶︎▶︎▶︎ | https://www.instagram.com/p/DX0yS5Rkcko/
 - post looks like an announcement, not a calendar item: 今日のNOBOROCK高田馬場 | https://www.instagram.com/p/DYJgLtZRpcd/
 - post looks like an announcement, not a calendar item: 今日のNOBOROCK高田馬場 | https://www.instagram.com/p/DYOsj0Sxq3E/
 - title is too weak for event candidate: ・ | https://www.instagram.com/p/DX0vO-6kcUd/
 - post looks like an announcement, not a calendar item: 今日のNOBOROCK大宮店！ | https://www.instagram.com/p/DYMWQE2RvIB/
-- post looks like an announcement, not a calendar item: 📢【月パス料金体系変更のお知らせ】📢 | https://www.instagram.com/p/DXyHWysGju7/
 - post looks like an announcement, not a calendar item: 料金改定とサマーキャンペーンのお知らせ | https://www.instagram.com/p/DYEuzBDE0xZ/
-- source URL already exists in events: 開催発表 | https://www.instagram.com/p/DXHComvEz5I/
-- source URL already exists in events: 今年も開催致します！！ | https://www.instagram.com/p/DX1LlLHFJmn/
+- post looks like an announcement, not a calendar item: 📢【月パス料金体系変更のお知らせ】📢 | https://www.instagram.com/p/DXyHWysGju7/
+- source URL already exists in events: 屋内クラック講習 受講者募集 | https://www.instagram.com/p/DYBoWJ7lDRn/
 - post looks like an announcement, not a calendar item: 🩷100° 2D🩷 | https://www.instagram.com/p/DYJGvGavpn9/
 - post looks like an announcement, not a calendar item: ⚫️🎀125° 1D🎀⚫️ | https://www.instagram.com/p/DYOQYWfv9l0/
 - post looks like an announcement, not a calendar item: 🧠110° 3D🧠 | https://www.instagram.com/p/DYQ1KRZPV2S/
@@ -107,6 +103,5 @@ Mode: draft_review
 - title is too weak for event candidate: . | https://www.instagram.com/p/DXoQhIKjtIc/
 - title is too weak for event candidate: . | https://www.instagram.com/p/DYTqs6-kd10/
 - end date is before start date: BLoC2026 round3 | https://www.instagram.com/p/DXa8bCVCQtY/
-- source URL already exists in events: 今年のBLOC | https://www.instagram.com/p/DYQwrvJB6Kk/
 - title is too weak for event candidate: . | https://www.instagram.com/p/DYRr6n1zMGs/
 - title is too weak for event candidate: . | https://www.instagram.com/p/DWbMesCiYOI/

@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-16T00:28:33.014Z
-- Updated: 2026-05-16T00:28:38.370Z
+- Generated: 2026-05-16T09:12:32.000Z
+- Updated: 2026-05-16T09:12:37.491Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (305ms, attempt 1)
-- passed: `pnpm db:verify:remote` (1042ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (1199ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (997ms, attempt 1)
-- passed: `pnpm sources:monitor` (1808ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (241ms, attempt 1)
+- passed: `pnpm db:verify:remote` (1434ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1151ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (905ms, attempt 1)
+- passed: `pnpm sources:monitor` (1754ms, attempt 1)
 
 ## Summary
 
@@ -21,13 +21,15 @@
 - gyms.with_instagram: 97
 - gyms.official_site_verified: 76
 - gyms.directory_only: 116
-- eventsByReviewStatus.approved: 31
-- eventsByReviewStatus.pending: 20
-- scheduledEventsByCategory.competition: 7
+- eventsByReviewStatus.approved: 45
+- eventsByReviewStatus.pending: 5
+- eventsByReviewStatus.rejected: 1
+- scheduledEventsByCategory.competition: 16
 - scheduledEventsByCategory.construction: 1
-- scheduledEventsByCategory.event: 6
+- scheduledEventsByCategory.event: 8
+- scheduledEventsByCategory.opening_change: 1
 - scheduledEventsByCategory.private_booking: 1
-- scheduledEventsByCategory.route_set: 16
+- scheduledEventsByCategory.route_set: 18
 - sourceStatus.approved: 175
 - sourceStatus.candidate: 1
 - sourceStatus.paused: 20
@@ -47,7 +49,7 @@
 - candidateMatches.highConfidence: 0
 - candidateMatches.needsReview: 0
 - candidateMatches.unmatched: 0
-- upcomingEvents: 22
+- upcomingEvents: 35
 - gymDisciplineCandidates: 119
 - closureVerificationCandidates: 80
 - publicNetworkReachable: true
@@ -57,6 +59,6 @@
 - Inspect official Instagram recent-post queue first (48 source(s)); record post URLs in source_post_observations or reproducible SQL patches.
 - Inspect 64 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
-- Recheck upcomingEventRecheck for items starting within the next 30 days (22 queued).
+- Recheck upcomingEventRecheck for items starting within the next 30 days (35 queued).
 - Classify gym disciplines only from official site/SNS evidence; leave directory-only rows as クライミング (119 queued).
 - Verify closure, relocation, and rename risk with official evidence first; require two independent current sources if the official source is unavailable (80 queued).

@@ -1,14 +1,14 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-16T00:34:17.974Z
+- generatedAt: 2026-05-16T09:34:14.497Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 6
-- localRunAgeMinutes: 6
+- latestRunAgeMinutes: 22
+- localRunAgeMinutes: 22
 - consecutiveNonReady: 0
-- instagramFailureRatio: 0.8541666666666666
+- instagramFailureRatio: 1
 
 ## Queues
 
@@ -16,7 +16,7 @@
 - inspectNow: 64
 - operatorBatch: 16
 - approvedSourceRotation: 96
-- upcomingEventRecheck: 22
+- upcomingEventRecheck: 35
 - candidateVerification: 0
 - gymDisciplineVerification: 119
 - closureVerification: 80
@@ -27,7 +27,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 3600
-- runs: 12
+- runs: 20
 
 ## Failed Checks
 
@@ -36,17 +36,6 @@
 ## Failed Instagram Sources
 
 - dogwood_climbing_gym: profile_fetch_failed; officialFallback=true
-- dbouldering_tsudanuma: profile_fetch_failed; officialFallback=true
-- dbouldering_tsunashima: profile_fetch_failed; officialFallback=true
-- dbouldering_yachiyo: profile_fetch_failed; officialFallback=true
-- echoesclimbing: profile_fetch_failed; officialFallback=true
-- energy_kashiwa: profile_fetch_failed; officialFallback=true
-- folk_boulderinggym: profile_fetch_failed; officialFallback=true
-- freiheit_bouldering: profile_fetch_failed; officialFallback=true
-- fukayaclimbingvillage: profile_fetch_failed; officialFallback=true
-- granny_bouldering: profile_fetch_failed; officialFallback=true
-- jamsessionmitaka: profile_fetch_failed; officialFallback=true
-- jands_ikebukuro: profile_fetch_failed; officialFallback=true
 - jetsetclimbing: profile_fetch_failed; officialFallback=true
 - kachill_climbing: profile_fetch_failed; officialFallback=true
 - lostcanyon_official: profile_fetch_failed; officialFallback=true
@@ -76,6 +65,24 @@
 - maboo.insta: profile_fetch_failed; officialFallback=true
 - shinnikan: profile_fetch_failed; officialFallback=true
 - climbing_gym_rockyn0429: profile_fetch_failed; officialFallback=true
+- climbinggym_rocklands: profile_fetch_failed; officialFallback=true
+- westrock_climbing: profile_fetch_failed; officialFallback=true
+- boulcom_kawasaki: profile_fetch_failed; officialFallback=true
+- basecamp_higashimurayama: profile_fetch_failed; officialFallback=true
+- basecamp_iruma: profile_fetch_failed; officialFallback=true
+- climbingzerosaitama: profile_fetch_failed; officialFallback=true
+- bonobo_bs: profile_fetch_failed; officialFallback=true
+- boulderingspace_hat: profile_fetch_failed; officialFallback=true
+- basecamp_kinshicho: profile_fetch_failed; officialFallback=true
+- basecamp_shinbashi: profile_fetch_failed; officialFallback=true
+- basecamp_shinjuku: profile_fetch_failed; officialFallback=true
+- boulcom_tokyo: profile_fetch_failed; officialFallback=true
+- bpump_ogikubo: profile_fetch_failed; officialFallback=true
+- bpumptokyo: profile_fetch_failed; officialFallback=true
+- climbing_gym_ranbo: profile_fetch_failed; officialFallback=true
+- climbinggym_wallstreet: profile_fetch_failed; officialFallback=true
+- climbinggym_walrus: profile_fetch_failed; officialFallback=true
+- dbouldering_soga: profile_fetch_failed; officialFallback=true
 
 ## Next Actions
 

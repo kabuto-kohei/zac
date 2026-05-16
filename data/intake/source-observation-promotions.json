@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-16T00:28:30.763Z",
+  "generatedAt": "2026-05-16T09:12:29.647Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -7,9 +7,9 @@
     "excludedFields": "full captions, images, videos"
   },
   "summary": {
-    "observationsRead": 96,
+    "observationsRead": 91,
     "promotions": 0,
-    "skipped": 96
+    "skipped": 91
   },
   "promotions": [],
   "skipped": [
@@ -164,12 +164,6 @@
       "reason": "past start date"
     },
     {
-      "id": "578e7429-dc72-4903-b402-0b95a3cb4ffa",
-      "sourceUrl": "https://www.instagram.com/p/DXiRvAVDxGK/",
-      "title": "5月営業カレンダーのお知らせ",
-      "reason": "post looks like an announcement, not a calendar item"
-    },
-    {
       "id": "42b6bc1f-5900-4437-b1e2-ed23e2abe6f0",
       "sourceUrl": "https://www.instagram.com/p/DXvueiuGrMm/",
       "title": "5月カレンダー📅",
@@ -180,6 +174,12 @@
       "sourceUrl": "https://www.instagram.com/p/DXbafbMkjuq/",
       "title": ".",
       "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "578e7429-dc72-4903-b402-0b95a3cb4ffa",
+      "sourceUrl": "https://www.instagram.com/p/DXiRvAVDxGK/",
+      "title": "5月営業カレンダーのお知らせ",
+      "reason": "post looks like an announcement, not a calendar item"
     },
     {
       "id": "8d2e8341-13b9-439b-927b-62b635b44f64",
@@ -218,16 +218,16 @@
       "reason": "past start date"
     },
     {
-      "id": "bff90d35-4af0-4493-a8a4-f9203e44682b",
-      "sourceUrl": "https://www.instagram.com/p/DXk15ISCRUO/",
-      "title": "こんにちは！BONOBOです！",
-      "reason": "past start date"
-    },
-    {
       "id": "2249b320-ab6b-4a54-8af9-0bbed3c61f61",
       "sourceUrl": "https://www.instagram.com/p/DXskMRxCbSn/",
       "title": "おはようございます！BONOBO です！",
       "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "bff90d35-4af0-4493-a8a4-f9203e44682b",
+      "sourceUrl": "https://www.instagram.com/p/DXk15ISCRUO/",
+      "title": "こんにちは！BONOBOです！",
+      "reason": "past start date"
     },
     {
       "id": "ebe3192f-001c-4808-855f-e9247f8d0505",
@@ -416,12 +416,6 @@
       "reason": "title is too weak for event candidate"
     },
     {
-      "id": "72252f96-42f3-4a75-8a0e-9eb8a38171f4",
-      "sourceUrl": "https://www.instagram.com/p/DXn9phGkdqY/",
-      "title": "▶︎▶︎▶︎",
-      "reason": "source URL already exists in events"
-    },
-    {
       "id": "26f0e9eb-80ee-4e41-a498-586098a6993a",
       "sourceUrl": "https://www.instagram.com/p/DYRsJPOmhPJ/",
       "title": "1F LEFTをルートセットします！",
@@ -438,12 +432,6 @@
       "sourceUrl": "https://www.instagram.com/p/DXoaEezEemy/",
       "title": "・",
       "reason": "title is too weak for event candidate"
-    },
-    {
-      "id": "0c22f3ff-089d-4dd8-835a-29660503d100",
-      "sourceUrl": "https://www.instagram.com/p/DXHC4snEnUU/",
-      "title": "🌟コンペ開催🌟",
-      "reason": "source URL already exists in events"
     },
     {
       "id": "ff6cdb59-f271-4283-819f-ef08f51ba5fb",
@@ -467,12 +455,6 @@
       "id": "37e00f5c-76bc-4425-b2b8-1c5b447d17e9",
       "sourceUrl": "https://www.instagram.com/p/DYRnWvgRwY-/",
       "title": "📢短縮営業のお知らせ📢",
-      "reason": "source URL already exists in events"
-    },
-    {
-      "id": "6f18941f-b6dc-414b-92bf-3366be916a19",
-      "sourceUrl": "https://www.instagram.com/p/DX0yS5Rkcko/",
-      "title": "▶︎▶︎▶︎",
       "reason": "source URL already exists in events"
     },
     {
@@ -500,27 +482,21 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "f8bd590f-3b65-49d3-90a8-50252b07fb5b",
-      "sourceUrl": "https://www.instagram.com/p/DXyHWysGju7/",
-      "title": "📢【月パス料金体系変更のお知らせ】📢",
-      "reason": "post looks like an announcement, not a calendar item"
-    },
-    {
       "id": "9a2de0ef-c2fa-454b-8697-cb181f91adba",
       "sourceUrl": "https://www.instagram.com/p/DYEuzBDE0xZ/",
       "title": "料金改定とサマーキャンペーンのお知らせ",
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "18f4326d-8801-4dc8-9902-85bcccd2d2d2",
-      "sourceUrl": "https://www.instagram.com/p/DXHComvEz5I/",
-      "title": "開催発表",
-      "reason": "source URL already exists in events"
+      "id": "f8bd590f-3b65-49d3-90a8-50252b07fb5b",
+      "sourceUrl": "https://www.instagram.com/p/DXyHWysGju7/",
+      "title": "📢【月パス料金体系変更のお知らせ】📢",
+      "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "a81ce19a-3ff5-4111-a9da-7c82385f3f91",
-      "sourceUrl": "https://www.instagram.com/p/DX1LlLHFJmn/",
-      "title": "今年も開催致します！！",
+      "id": "787263ee-4aac-46a5-94f3-7b8547d2254c",
+      "sourceUrl": "https://www.instagram.com/p/DYBoWJ7lDRn/",
+      "title": "屋内クラック講習 受講者募集",
       "reason": "source URL already exists in events"
     },
     {
@@ -570,12 +546,6 @@
       "sourceUrl": "https://www.instagram.com/p/DXa8bCVCQtY/",
       "title": "BLoC2026 round3",
       "reason": "end date is before start date"
-    },
-    {
-      "id": "846010d7-c361-4bdc-8b44-a549bfcee697",
-      "sourceUrl": "https://www.instagram.com/p/DYQwrvJB6Kk/",
-      "title": "今年のBLOC",
-      "reason": "source URL already exists in events"
     },
     {
       "id": "82f58f0e-e512-4710-a0e4-2c2134bb3958",

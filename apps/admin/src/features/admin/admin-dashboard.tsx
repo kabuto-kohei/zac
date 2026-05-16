@@ -575,6 +575,7 @@ function GymModerationRow({ gym }: { gym: GymSummary }) {
 function EventCandidateRow({ event, onReviewed }: { event: EventSummary; onReviewed: (event: EventSummary) => void }) {
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
+  const reviewReason = buildCandidateReviewReason(event);
 
   async function submit(formData: FormData) {
     setMessage("");
@@ -619,6 +620,11 @@ function EventCandidateRow({ event, onReviewed }: { event: EventSummary; onRevie
           <small>情報源なし</small>
         )}
       </span>
+      <span>
+        <strong>確認理由</strong>
+        <small>{reviewReason}</small>
+        {event.sourceQuote ? <small>根拠: {event.sourceQuote}</small> : null}
+      </span>
       <input aria-label="レビュー理由" maxLength={1000} name="reason" placeholder="理由" />
       <button name="action" type="submit" value="approve">
         承認
@@ -629,6 +635,12 @@ function EventCandidateRow({ event, onReviewed }: { event: EventSummary; onRevie
       <StatusMessage message={message} status={status} />
     </form>
   );
+}
+
+function buildCandidateReviewReason(event: EventSummary) {
+  const confidence = event.extractionConfidence == null ? "信頼度未算出" : `信頼度 ${Math.round(event.extractionConfidence * 100)}%`;
+  const source = event.sourceUrl ? "証拠URLあり" : "証拠URLなし";
+  return `${event.gymName} / ${event.startsAt} / ${event.category} / ${source} / ${confidence}`;
 }
 
 function EventEditorForm({ onSaved }: { onSaved: (event: EventSummary) => void }) {

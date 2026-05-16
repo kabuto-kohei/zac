@@ -28,8 +28,9 @@ const paths = {
   runbook: "docs/39_source_freshness_operations.md",
 };
 
-const maxRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES, 150);
-const maxLocalRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES, 150);
+const expectedLaunchAgentIntervalSeconds = parsePositiveInt(process.env.ZAC_AUTOMATION_EXPECTED_INTERVAL_SECONDS, 10800);
+const maxRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES, 390);
+const maxLocalRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES, 390);
 const maxConsecutiveNonReady = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY, 3);
 const maxInstagramFailureRatio = parseRatio(process.env.ZAC_AUTOMATION_MAX_INSTAGRAM_FAILURE_RATIO, 0.25);
 const label = process.env.ZAC_AUTOMATION_LAUNCH_AGENT_LABEL ?? "com.zac.source-freshness";
@@ -108,7 +109,11 @@ const checks = [
   ),
   check("launchd agent is loaded", launchAgent.loaded, launchAgent.message),
   check("launchd last exit is ok", launchAgent.lastExitCode === 0 || launchAgent.lastExitCode === null, String(launchAgent.lastExitCode)),
-  check("launchd interval is hourly or faster", typeof launchAgent.runIntervalSeconds === "number" && launchAgent.runIntervalSeconds <= 3600, String(launchAgent.runIntervalSeconds)),
+  check(
+    "launchd interval matches configured cadence",
+    typeof launchAgent.runIntervalSeconds === "number" && launchAgent.runIntervalSeconds === expectedLaunchAgentIntervalSeconds,
+    String(launchAgent.runIntervalSeconds),
+  ),
   check("installed LaunchAgent matches repo template", Boolean(launchAgentTemplate) && launchAgentTemplate === installedLaunchAgent),
   check("Codex supervisor automation is active", /status = "ACTIVE"/u.test(codexAutomationToml)),
   check("Codex supervisor uses readiness gate", /sources:automation-readiness/u.test(codexAutomationToml)),

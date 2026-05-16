@@ -1,6 +1,6 @@
 # Source Monitor Run
 
-- Generated: 2026-05-16T09:12:35.959Z
+- Generated: 2026-05-16T12:05:23.797Z
 - Due approved sources: 64
 - Instagram post sources: 48
 - Candidate Instagram sources: 0
@@ -38,37 +38,37 @@
 
 ## Inspect Now
 
-1. BASE CAMP TOKYO 江戸川橋 公式サイト (base-camp-edogawabashi) - https://b-camp.jp/edogawabashi/
-2. WESTROCK 公式イベント情報 (westrock-climbing-event) - https://www.westrock-climbing.com/event/
-3. NOBOROCK 池袋店 公式サイト (noborock-ikebukuro) - https://noborock-climbing.com/program/ikebukuro/
-4. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
-5. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
-6. B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama) - https://pump-climbing.com/gym/bpump2/
-7. Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama) - https://b-camp.jp/higashimurayama/
-8. Urban Base Camp 新宿 公式サイト (urban-base-camp-shinjuku) - https://b-camp.jp/shinjuku/
-9. Boulder Park Base Camp 飯能店 公式サイト (base-camp-hanno) - https://b-camp.jp/hanno
-10. Climb Park Base Camp 入間店 公式サイト (base-camp-iruma) - https://b-camp.jp/iruma
-11. Base Camp Tokyo 江戸川橋 公式サイト (base-camp-tokyo-edogawabashi) - https://b-camp.jp/edogawabashi/
-12. Base Camp Tokyo 錦糸町 公式サイト (base-camp-tokyo-kinshicho) - https://b-camp.jp/kinshicho/
+1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/
+2. BEAKS Climbing Studio 公式サイト (beaks-climbing-studio) - https://beaksc.wixsite.com/beaks
+3. BERRY WALL Climbing Gym 公式サイト (berry-wall) - https://www.berrywall.com/
+4. Blue Bird Bouldering Gym 公式サイト (blue-bird-bouldering) - https://climbing-bluebird.jp/
+5. BolBol 公式サイト (bolbol) - https://bol-bol.com/
+6. B-PUMP OGIKUBO 公式サイト (b-pump-ogikubo) - https://pump-climbing.com/gym/bpump/
+7. ディーボルダリングプラス八千代公式施設紹介 (d-bouldering-plus-yachiyo) - https://www.d-b-c.jp/yachiyo-news/facility
+8. エナジークライミングジム浦和店公式サイト (energy-climbing-urawa) - https://energy-climbing.co.jp/urawa/
+9. ジャムセッション三鷹公式サイト (jam-session-mitaka) - https://xn--xckbj6a9jra6a4gy403a4b6j.com/
+10. クライミングジムPenguin公式サイト (penguin-climb) - https://penguin-climb.com/
+11. TSUKUBA MONKEY MAGIC公式サイト (tsukuba-monkey-magic) - https://tsukuba-mm.jp/
+12. 壬生町総合運動場体育館 公式ページ (mibu-general-gymnasium) - https://www.town.mibu.tochigi.jp/docs/2015021200047/
 
 ## Operator Batch
 
-1. BASE CAMP TOKYO 江戸川橋 公式サイト (base-camp-edogawabashi) - https://b-camp.jp/edogawabashi/
-2. WESTROCK 公式イベント情報 (westrock-climbing-event) - https://www.westrock-climbing.com/event/
-3. NOBOROCK 池袋店 公式サイト (noborock-ikebukuro) - https://noborock-climbing.com/program/ikebukuro/
-4. NOBOROCK 町田店 公式サイト (noborock-machida) - https://noborock-climbing.com/program/machida/
-5. NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi) - https://noborock-climbing.com/program/mizonokuchi/
-6. B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama) - https://pump-climbing.com/gym/bpump2/
-7. Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama) - https://b-camp.jp/higashimurayama/
-8. Urban Base Camp 新宿 公式サイト (urban-base-camp-shinjuku) - https://b-camp.jp/shinjuku/
-9. Boulder Park Base Camp 飯能店 公式サイト (base-camp-hanno) - https://b-camp.jp/hanno
-10. Climb Park Base Camp 入間店 公式サイト (base-camp-iruma) - https://b-camp.jp/iruma
-11. Base Camp Tokyo 江戸川橋 公式サイト (base-camp-tokyo-edogawabashi) - https://b-camp.jp/edogawabashi/
-12. Base Camp Tokyo 錦糸町 公式サイト (base-camp-tokyo-kinshicho) - https://b-camp.jp/kinshicho/
-13. クライミングジムSPIDER 公式サイト (climbing-spider) - https://climbing-spider.com/shop/
-14. BETA Climbing Gym 公式サイト (beta-climbing) - https://beta-climbing.com/
-15. BOULCOM 川崎店 公式サイト (boulcom-kawasaki) - https://boulcom.jp/kawasaki/
-16. BOULCOM 東京店 公式サイト (boulcom-tokyo) - https://boulcom.jp/tokyo/
+1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/
+2. BEAKS Climbing Studio 公式サイト (beaks-climbing-studio) - https://beaksc.wixsite.com/beaks
+3. BERRY WALL Climbing Gym 公式サイト (berry-wall) - https://www.berrywall.com/
+4. Blue Bird Bouldering Gym 公式サイト (blue-bird-bouldering) - https://climbing-bluebird.jp/
+5. BolBol 公式サイト (bolbol) - https://bol-bol.com/
+6. B-PUMP OGIKUBO 公式サイト (b-pump-ogikubo) - https://pump-climbing.com/gym/bpump/
+7. ディーボルダリングプラス八千代公式施設紹介 (d-bouldering-plus-yachiyo) - https://www.d-b-c.jp/yachiyo-news/facility
+8. エナジークライミングジム浦和店公式サイト (energy-climbing-urawa) - https://energy-climbing.co.jp/urawa/
+9. ジャムセッション三鷹公式サイト (jam-session-mitaka) - https://xn--xckbj6a9jra6a4gy403a4b6j.com/
+10. クライミングジムPenguin公式サイト (penguin-climb) - https://penguin-climb.com/
+11. TSUKUBA MONKEY MAGIC公式サイト (tsukuba-monkey-magic) - https://tsukuba-mm.jp/
+12. 壬生町総合運動場体育館 公式ページ (mibu-general-gymnasium) - https://www.town.mibu.tochigi.jp/docs/2015021200047/
+13. SPOLE CLIMBING GYM公式サイト (spole-climbing-gym) - https://spoleclimbinggym.com/
+14. クライミングジムランボ公式サイト (climbing-gym-ranbo) - https://ranbo.jp/
+15. クライミングジム・ウォールストリート公式サイト (climbing-gym-wall-street) - https://wallst.jp/
+16. Climbing Gym Walrus公式サイト (climbing-gym-walrus) - https://www.walrus.co.jp/
 
 ## Upcoming Event Recheck
 

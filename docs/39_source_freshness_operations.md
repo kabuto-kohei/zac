@@ -48,8 +48,8 @@ all of the following are true:
    `status = ready_for_review`.
 4. Latest `data/intake/source-automation-local-run.json` is fresh and
    `status = ready_for_review`.
-5. LaunchAgent `com.zac.source-freshness` is loaded, hourly or faster, and its
-   latest exit code is zero.
+5. LaunchAgent `com.zac.source-freshness` is loaded, configured for the current
+   three-hour cadence, and its latest exit code is zero.
 6. No stale active automation lock exists.
 7. The local runner has no optional step failures. Instagram profile-level
    fetch failures may remain in the artifact only when the inspection command
@@ -203,8 +203,9 @@ The automation runner accepts operational environment variables:
 - `ZAC_AUTOMATION_LOCK_STALE_MINUTES`: stale lock threshold. Default: `45`.
 - `ZAC_AUTOMATION_DEGRADED_EXIT_ZERO`: set to `1` only when a caller explicitly wants degraded runs to exit zero. Default degraded exit is non-zero.
 - `ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY`: health-check failure threshold for consecutive blocked/degraded runs. Default: `3`.
-- `ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES`: maximum acceptable age for the latest automation run. Default: `150`.
-- `ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES`: maximum acceptable age for the latest local runner packet. Default: `150`.
+- `ZAC_AUTOMATION_EXPECTED_INTERVAL_SECONDS`: expected LaunchAgent interval. Default: `3600`.
+- `ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES`: maximum acceptable age for the latest automation run. Default: `390`.
+- `ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES`: maximum acceptable age for the latest local runner packet. Default: `390`.
 - `ZAC_AUTOMATION_REQUIRE_LOCAL_RUN`: set to `0` only for non-launchd development or CI checks. Default: enabled on macOS.
 - `ZAC_AUTOMATION_MAX_INSTAGRAM_FAILURE_RATIO`: maximum acceptable failed-source ratio in the latest Instagram inspection. Default: `0.25`.
 
@@ -216,7 +217,8 @@ system does not wait passively for the next due threshold.
 
 Recommended cadence:
 
-- Hourly quick pulse: verify DB and inspect `instagramPostInspection` first.
+- Every 3 hours: verify DB and inspect `instagramPostInspection` plus due
+  official-site sources first.
 - Every 6 hours: inspect broader approved official Instagram/site rotation and recheck upcoming calendar items.
 - Daily: verify candidate Instagram sources and promote only officially confirmed profiles.
 - Weekly: backfill missing gym Instagram accounts through official sites, chain pages, and public business profiles.
@@ -226,7 +228,7 @@ Codex app automation:
 
 - Name: `Zac official source freshness monitor`
 - ID: `zac-official-source-freshness-monitor`
-- Interval: hourly after the local launchd pass
+- Interval: every 3 hours after the local launchd pass
 - Workspace: `/Users/kkabuto/dev/zac`
 - Required first commands for Codex cron:
   1. `pnpm sources:automation-health`
@@ -245,9 +247,10 @@ Local macOS runner:
 - LaunchAgent template: `ops/launchd/com.zac.source-freshness.plist`
 - Installed path: `~/Library/LaunchAgents/com.zac.source-freshness.plist`
 - Program: `scripts/run-source-automation-local.sh`
-- Cadence: hourly, plus `RunAtLoad`
-- Command order: `pnpm sources:automation-run`, Instagram inspection, safe
-  observation promotion, then `pnpm sources:automation-health`
+- Cadence: every 3 hours, plus `RunAtLoad`
+- Command order: `pnpm sources:automation-run`, Instagram inspection,
+  official-site inspection, safe observation promotion, then
+  `pnpm sources:automation-health`
 - Logs:
   - `data/intake/source-automation-local.out.log`
   - `data/intake/source-automation-local.err.log`
@@ -274,7 +277,7 @@ marking the local runner ready. The readiness gate is intentionally run by the
 supervisor outside the local runner so it can judge a completed local-run packet
 instead of inspecting itself mid-run. If Instagram returns a rate-limit response,
 the failed source remains in `instagramPostInspection` and is retried by a later
-hourly run instead of being marked complete. A hung Instagram request is bounded
+later three-hour run instead of being marked complete. A hung Instagram request is bounded
 by `ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS`, and the inspection step has a longer
 `ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS` budget so it can process a meaningful
 batch without stalling the whole LaunchAgent. Readiness may remain green only

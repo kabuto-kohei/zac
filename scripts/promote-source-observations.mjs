@@ -57,6 +57,10 @@ const data = await withDatabaseClient(
           lower(coalesce(g.instagram_handle, '')) = lower(o.handle)
           OR g.instagram_url = es.source_url
           OR g.instagram_url = o.source_url
+          OR g.website_url = es.source_url
+          OR g.website_url = split_part(o.source_url, '#', 1)
+          OR g.source_url = es.source_url
+          OR g.source_url = split_part(o.source_url, '#', 1)
        )
       WHERE o.deleted_at IS NULL
         AND o.review_status = 'pending'
@@ -83,6 +87,7 @@ const skipped = [];
 
 for (const row of data.observations) {
   if (seenObservationIds.has(row.id)) {
+    skipped.push({ id: row.id, sourceUrl: row.source_url, title: row.title, reason: "duplicate observation row from source/gym matching" });
     continue;
   }
   seenObservationIds.add(row.id);
@@ -184,6 +189,7 @@ function buildPromotion(row, category) {
   const title = normalizeWhitespace(row.title ?? "");
   const summary = normalizeWhitespace(row.summary ?? `${title} の公式Instagram投稿に基づく候補。`);
   const sourceAccount = normalizeWhitespace(row.display_name ?? row.handle);
+  const reviewReason = buildReviewReason(row, category);
 
   return {
     eventId: randomUUID(),
@@ -193,7 +199,7 @@ function buildPromotion(row, category) {
     category,
     title,
     summary,
-    description: `${summary} 詳細や続報は公式Instagramで確認してください。`,
+    description: `${summary} ${reviewReason}`,
     startsAt: startsAt.toISOString(),
     endsAt: endsAt.toISOString(),
     capacityText: "公式Instagramで確認",
@@ -208,6 +214,15 @@ function buildPromotion(row, category) {
     reviewedAt: publishApproved ? generatedAt.toISOString() : null,
     status: publishApproved ? "scheduled" : "draft",
   };
+}
+
+function buildReviewReason(row, category) {
+  const sourceType = row.source_type === "official_site" ? "公式サイト" : "公式Instagram";
+  const date = asDate(row.starts_at);
+  const dateText = date ? `日付候補は${toJstDateKey(date)}。` : "日付候補は未確定。";
+  const quote = normalizeWhitespace(row.source_quote ?? "");
+  const quoteText = quote ? `根拠抜粋: ${quote}` : "根拠抜粋は未取得。";
+  return `Admin確認理由: ${sourceType}由来の${category}候補。${dateText}${quoteText}`;
 }
 
 function buildExistingIndex(events) {

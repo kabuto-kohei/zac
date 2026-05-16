@@ -45,6 +45,19 @@ const stepPlan = [
     requiredFile: "data/intake/instagram-post-observations.sql",
   },
   {
+    name: "inspectOfficialSites",
+    command: [pnpmBin, "sources:inspect-official-sites"],
+    required: false,
+    skipUnlessPassed: ["automationRunInitial"],
+  },
+  {
+    name: "applyOfficialSiteObservations",
+    command: [pnpmBin, "exec", "node", "--env-file=.env.local", "scripts/apply-sql-files.mjs", "data/intake/official-site-observations.sql"],
+    required: false,
+    skipUnlessPassed: ["inspectOfficialSites"],
+    requiredFile: "data/intake/official-site-observations.sql",
+  },
+  {
     name: "promoteObservations",
     command: [pnpmBin, "sources:promote-observations"],
     required: false,

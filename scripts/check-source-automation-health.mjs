@@ -9,8 +9,8 @@ const localRunPath = process.env.ZAC_AUTOMATION_LOCAL_RUN_PATH ?? "data/intake/s
 const launchAgentLabel = process.env.ZAC_AUTOMATION_LAUNCH_AGENT_LABEL ?? "com.zac.source-freshness";
 const lockStaleMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_LOCK_STALE_MINUTES, 45);
 const maxConsecutiveNonReady = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY, 3);
-const maxLatestRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES, 150);
-const maxLocalRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES, 150);
+const maxLatestRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES, 390);
+const maxLocalRunAgeMinutes = parsePositiveInt(process.env.ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES, 390);
 const requireLocalRunner = parseBoolean(process.env.ZAC_AUTOMATION_REQUIRE_LOCAL_RUN, process.platform === "darwin");
 
 const execFileAsync = promisify(execFile);

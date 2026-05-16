@@ -1,12 +1,12 @@
 # Instagram Post Inspection
 
-- Generated: 2026-05-16T09:06:30.577Z
+- Generated: 2026-05-16T12:02:31.550Z
 - Sources queued: 48
-- Sources fetched: 0
-- Sources failed: 48
-- Observed posts: 0
-- Pending posts: 0
-- Ignored posts: 0
+- Sources fetched: 1
+- Sources failed: 47
+- Observed posts: 3
+- Pending posts: 2
+- Ignored posts: 1
 - Calendar candidates: 0
 
 ## Policy
@@ -15,99 +15,101 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 
 ## Inspections
 
-- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed
+- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed (access_restricted)
   - no posts
-- JET SET（ジェットセット） climbing gym (jetsetclimbing) - fetch failed
+- JET SET（ジェットセット） climbing gym (jetsetclimbing) - fetch failed (access_restricted)
   - no posts
-- KaChill カチル (kachill_climbing) - fetch failed
+- KaChill カチル (kachill_climbing) - fetch failed (access_restricted)
   - no posts
-- クライミングジム LOST CANYON（ロストキャニオン） (lostcanyon_official) - fetch failed
+- クライミングジム LOST CANYON（ロストキャニオン） (lostcanyon_official) - fetch failed (access_restricted)
   - no posts
-- Lutra Lutra（ルトラルトラ） (lutra_lutra_climb_park_) - fetch failed
+- Lutra Lutra（ルトラルトラ） (lutra_lutra_climb_park_) - fetch failed (access_restricted)
   - no posts
-- ロッククライミング 三鷹ジム (mitaka_gym) - fetch failed
+- ロッククライミング 三鷹ジム (mitaka_gym) - fetch failed (access_restricted)
   - no posts
-- MOUNTAIN CLIFF（マウンテンクリフ） (mountain_cliff_climbing) - fetch failed
+- MOUNTAIN CLIFF（マウンテンクリフ） (mountain_cliff_climbing) - fetch failed (access_restricted)
   - no posts
-- Next Gen Bouldering（ネクストジェンボルダリング） (nextgen.bouldering) - fetch failed
+- Next Gen Bouldering（ネクストジェンボルダリング） (nextgen.bouldering) - fetch failed (access_restricted)
   - no posts
-- クライミングジム NOSE（ノーズ） 町田店 (nose_machida_climbinggym) - fetch failed
+- クライミングジム NOSE（ノーズ） 町田店 (nose_machida_climbinggym) - fetch failed (access_restricted)
   - no posts
-- クライミングジム OliOli（オリオリ） (olioli_climbing.gym) - fetch failed
+- クライミングジム OliOli（オリオリ） (olioli_climbing.gym) - fetch failed (access_restricted)
   - no posts
-- PERADORA（ペルアドラ） クライミングジム 横浜 (peradra_gym) - fetch failed
+- PERADORA（ペルアドラ） クライミングジム 横浜 (peradra_gym) - fetch failed (access_restricted)
   - no posts
-- クライミングジム Project（プロジェクト） (project_climbing_gym) - fetch failed
+- クライミングジム Project（プロジェクト） (project_climbing_gym) - fetch failed (access_restricted)
   - no posts
-- THE STONE SESSION TOKYO (tsstokyo) - fetch failed
+- THE STONE SESSION TOKYO (tsstokyo) - fetch failed (access_restricted)
   - no posts
-- ボルダリングジム UNDERGROUND（アンダーグラウンド） (underground_bouldering_gym) - fetch failed
+- ボルダリングジム UNDERGROUND（アンダーグラウンド） (underground_bouldering_gym) - fetch failed (access_restricted)
   - no posts
-- Rocky Shinagawa (rocky_shinagawa) - fetch failed
+- Rocky Shinagawa (rocky_shinagawa) - fetch failed (access_restricted)
   - no posts
-- ROCKY 船橋店 (funabashirocky) - fetch failed
+- ROCKY 船橋店 (funabashirocky) - fetch failed (access_restricted)
   - no posts
-- ROCKY 印西店 (inzairocky) - fetch failed
+- ROCKY 印西店 (inzairocky) - fetch failed (access_restricted)
   - no posts
-- ROCKY 新宿曙橋店 (jyuku_rocky) - fetch failed
+- ROCKY 新宿曙橋店 (jyuku_rocky) - fetch failed (access_restricted)
   - no posts
-- ROCKY 品川店 (shina_rocky) - fetch failed
+- ROCKY 品川店 (shina_rocky) - fetch failed (access_restricted)
   - no posts
-- ROCKY つくば阿見店 (tsukuba_ami_rocky) - fetch failed
+- ROCKY つくば阿見店 (tsukuba_ami_rocky) - fetch failed (access_restricted)
   - no posts
-- PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - fetch failed
+- PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - fetch failed (access_restricted)
   - no posts
-- And Energy Bouldering (and_energy_bouldering) - fetch failed
+- And Energy Bouldering (and_energy_bouldering) - fetch failed (access_restricted)
   - no posts
-- アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - fetch failed
+- アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - fetch failed (access_restricted)
   - no posts
-- Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - fetch failed
+- Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - fetch failed (access_restricted)
   - no posts
-- Boulder Park Base Camp 飯能店 (basecamp_hanno) - fetch failed
+- Boulder Park Base Camp 飯能店 (basecamp_hanno) - fetch failed (access_restricted)
   - no posts
-- クライミングジム VOLNY（ボルニー） (volny_climbing) - fetch failed
+- クライミングジム VOLNY（ボルニー） (volny_climbing) - fetch failed (access_restricted)
   - no posts
-- クライミングジム ZE-RO（ゼロ） 水戸店 (zeromito0123) - fetch failed
+- クライミングジム ZE-RO（ゼロ） 水戸店 (zeromito0123) - fetch failed (access_restricted)
   - no posts
-- クライミングジム MABOO（マーブー） (maboo.insta) - fetch failed
+- クライミングジム MABOO（マーブー） (maboo.insta) - fetch failed (access_restricted)
   - no posts
-- 小鹿野町クライミングパーク 神怡舘 (shinnikan) - fetch failed
+- 小鹿野町クライミングパーク 神怡舘 (shinnikan) - fetch failed (access_restricted)
   - no posts
-- クライミングジム RocKY’N（ロッキン） (climbing_gym_rockyn0429) - fetch failed
+- クライミングジム RocKY’N（ロッキン） (climbing_gym_rockyn0429)
+  - pending: event | クライミングジムロッキンでは | https://www.instagram.com/p/DKtnWbyRDB4/
+  - pending: competition | ロッキンでは　キッズスクール生を | https://www.instagram.com/p/DPPtj6lkq04/
+  - ignored: notice | 今　世界で話題のGPソール | https://www.instagram.com/p/DYJAhb4Ei03/
+- クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands) - fetch failed (access_restricted)
   - no posts
-- クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands) - fetch failed
+- クライミングジム WESTROCK（ウエストロック） 調布店 (westrock_climbing) - fetch failed (access_restricted)
   - no posts
-- クライミングジム WESTROCK（ウエストロック） 調布店 (westrock_climbing) - fetch failed
+- BOULCOM 川崎店 (boulcom_kawasaki) - fetch failed (access_restricted)
   - no posts
-- BOULCOM 川崎店 (boulcom_kawasaki) - fetch failed
+- Boulder Park Base Camp 東村山 (basecamp_higashimurayama) - fetch failed (access_restricted)
   - no posts
-- Boulder Park Base Camp 東村山 (basecamp_higashimurayama) - fetch failed
+- Climb Park Base Camp 入間店 (basecamp_iruma) - fetch failed (access_restricted)
   - no posts
-- Climb Park Base Camp 入間店 (basecamp_iruma) - fetch failed
+- クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - fetch failed (access_restricted)
   - no posts
-- クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - fetch failed
+- bonobo_bs (bonobo_bs) - fetch failed (access_restricted)
   - no posts
-- bonobo_bs (bonobo_bs) - fetch failed
+- ボルダリングスペース HAT（ハット） (boulderingspace_hat) - fetch failed (access_restricted)
   - no posts
-- ボルダリングスペース HAT（ハット） (boulderingspace_hat) - fetch failed
+- Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - fetch failed (access_restricted)
   - no posts
-- Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - fetch failed
+- Urban Base Camp 新橋 (basecamp_shinbashi) - fetch failed (access_restricted)
   - no posts
-- Urban Base Camp 新橋 (basecamp_shinbashi) - fetch failed
+- Urban Base Camp 新宿 (basecamp_shinjuku) - fetch failed (access_restricted)
   - no posts
-- Urban Base Camp 新宿 (basecamp_shinjuku) - fetch failed
+- BOULCOM 東京店 (boulcom_tokyo) - fetch failed (access_restricted)
   - no posts
-- BOULCOM 東京店 (boulcom_tokyo) - fetch failed
+- B-PUMP OGIKUBO (bpump_ogikubo) - fetch failed (access_restricted)
   - no posts
-- B-PUMP OGIKUBO (bpump_ogikubo) - fetch failed
+- B-PUMP Tokyo (bpumptokyo) - fetch failed (access_restricted)
   - no posts
-- B-PUMP Tokyo (bpumptokyo) - fetch failed
+- クライミングジムランボ公式Instagram (climbing_gym_ranbo) - fetch failed (access_restricted)
   - no posts
-- クライミングジムランボ公式Instagram (climbing_gym_ranbo) - fetch failed
+- クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - fetch failed (access_restricted)
   - no posts
-- クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - fetch failed
+- Climbing Gym Walrus公式Instagram (climbinggym_walrus) - fetch failed (access_restricted)
   - no posts
-- Climbing Gym Walrus公式Instagram (climbinggym_walrus) - fetch failed
-  - no posts
-- D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - fetch failed
+- D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - fetch failed (access_restricted)
   - no posts

@@ -12,7 +12,7 @@
   <key>WorkingDirectory</key>
   <string>/Users/kkabuto/dev/zac</string>
   <key>StartInterval</key>
-  <integer>3600</integer>
+  <integer>10800</integer>
   <key>RunAtLoad</key>
   <true/>
   <key>StandardOutPath</key>

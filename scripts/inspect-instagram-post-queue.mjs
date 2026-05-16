@@ -54,6 +54,8 @@ for (const source of queue) {
     ok: shouldUsePrevious ? true : Boolean(profile && !profile.error),
     posts: shouldUsePrevious ? previous.posts : posts,
     error: shouldUsePrevious ? null : (profile?.error ?? null),
+    failureCategory: shouldUsePrevious ? null : (profile?.failureCategory ?? null),
+    failureDetail: shouldUsePrevious ? null : (profile?.failureDetail ?? null),
     reusedPrevious: shouldUsePrevious,
   });
   await sleep(requestDelayMs);
@@ -102,6 +104,7 @@ console.log(
 
 async function fetchProfile(handle) {
   const url = `https://www.instagram.com/api/v1/users/web_profile_info/?username=${encodeURIComponent(handle)}`;
+  let lastFailure = null;
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
       const response = await fetch(url, {
@@ -118,21 +121,74 @@ async function fetchProfile(handle) {
         signal: AbortSignal.timeout(requestTimeoutMs),
       });
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        lastFailure = classifyHttpFailure(response.status);
+        if (!isRetryableInstagramFailure(lastFailure.failureCategory) || attempt === 3) {
+          return lastFailure;
+        }
+        await sleep(750 * attempt * attempt);
+        continue;
       }
-      const json = await response.json();
+      let json;
+      try {
+        json = await response.json();
+      } catch (error) {
+        lastFailure = classifyThrownFailure(error, "instagram_response_parse_failed");
+        if (attempt === 3) {
+          return lastFailure;
+        }
+        await sleep(750 * attempt * attempt);
+        continue;
+      }
       if (json?.status === "fail") {
-        return { error: json.message || "instagram_api_failed" };
+        return {
+          error: json.message || "instagram_api_failed",
+          failureCategory: "api_response",
+          failureDetail: truncate(String(json.message ?? "status=fail"), 120),
+        };
       }
-      return json?.data?.user ?? { error: "profile_not_found" };
-    } catch {
+      return json?.data?.user ?? { error: "profile_not_found", failureCategory: "profile_not_found", failureDetail: "missing data.user" };
+    } catch (error) {
+      lastFailure = classifyThrownFailure(error);
       if (attempt === 3) {
-        return { error: "profile_fetch_failed" };
+        return lastFailure;
       }
       await sleep(750 * attempt * attempt);
     }
   }
-  return null;
+  return lastFailure ?? { error: "profile_fetch_failed", failureCategory: "unknown", failureDetail: "unknown failure" };
+}
+
+function classifyHttpFailure(status) {
+  if (status === 401 || status === 403) {
+    return { error: "profile_fetch_failed", failureCategory: "access_restricted", failureDetail: `HTTP ${status}` };
+  }
+  if (status === 404) {
+    return { error: "profile_not_found", failureCategory: "profile_not_found", failureDetail: "HTTP 404" };
+  }
+  if (status === 429) {
+    return { error: "profile_fetch_failed", failureCategory: "rate_limited", failureDetail: "HTTP 429" };
+  }
+  if (status >= 500) {
+    return { error: "profile_fetch_failed", failureCategory: "api_unavailable", failureDetail: `HTTP ${status}` };
+  }
+  return { error: "profile_fetch_failed", failureCategory: "api_response", failureDetail: `HTTP ${status}` };
+}
+
+function classifyThrownFailure(error, fallbackCategory = "network_or_timeout") {
+  const name = String(error?.name ?? "");
+  const message = String(error?.message ?? "");
+  const code = String(error?.code ?? "");
+  if (name === "TimeoutError" || /timeout|aborted/i.test(message)) {
+    return { error: "profile_fetch_failed", failureCategory: "timeout", failureDetail: truncate(message || name, 120) };
+  }
+  if (/ENOTFOUND|EAI_AGAIN|ECONNRESET|ECONNREFUSED|network|fetch failed/i.test(`${code} ${message}`)) {
+    return { error: "profile_fetch_failed", failureCategory: "network", failureDetail: truncate(`${code} ${message}`.trim(), 120) };
+  }
+  return { error: "profile_fetch_failed", failureCategory: fallbackCategory, failureDetail: truncate(message || name || "unknown failure", 120) };
+}
+
+function isRetryableInstagramFailure(category) {
+  return category === "timeout" || category === "network" || category === "rate_limited" || category === "api_unavailable";
 }
 
 async function readPreviousResult(file) {
@@ -357,15 +413,15 @@ SELECT
   handle,
   source_url,
   source_external_id,
-  source_posted_at,
+  source_posted_at::timestamptz,
   ${sqlString(generatedAtSql)}::timestamptz,
   classification,
   title,
   summary,
-  starts_at,
-  ends_at,
+  starts_at::timestamptz,
+  ends_at::timestamptz,
   source_quote,
-  extraction_confidence,
+  extraction_confidence::numeric,
   review_status,
   decision_note
 FROM observed_posts
@@ -407,7 +463,8 @@ function renderMarkdown(result) {
       const posts = inspection.posts
         .map((post) => `  - ${post.reviewStatus}: ${post.classification} | ${post.title} | ${post.sourceUrl}`)
         .join("\n");
-      return `- ${inspection.displayName} (${inspection.handle})${inspection.ok ? "" : " - fetch failed"}\n${posts || "  - no posts"}`;
+      const failure = inspection.ok ? "" : ` - fetch failed (${inspection.failureCategory ?? "unknown"})`;
+      return `- ${inspection.displayName} (${inspection.handle})${failure}\n${posts || "  - no posts"}`;
     })
     .join("\n");
   return `# Instagram Post Inspection
@@ -432,7 +489,7 @@ ${grouped}
 }
 
 function sqlTimestampOrNull(value) {
-  return value ? `${sqlString(toSqlTimestamp(new Date(value)))}::timestamptz` : "NULL";
+  return value ? `${sqlString(toSqlTimestamp(new Date(value)))}::timestamptz` : "NULL::timestamptz";
 }
 
 function toSqlTimestamp(value) {

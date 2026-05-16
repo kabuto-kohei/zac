@@ -1,14 +1,14 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-16T09:34:14.497Z
+- generatedAt: 2026-05-16T12:07:34.138Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 22
-- localRunAgeMinutes: 22
+- latestRunAgeMinutes: 2
+- localRunAgeMinutes: 2
 - consecutiveNonReady: 0
-- instagramFailureRatio: 1
+- instagramFailureRatio: 0.9791666666666666
 
 ## Queues
 
@@ -26,8 +26,8 @@
 - loaded: true
 - running: false
 - lastExitCode: 0
-- runIntervalSeconds: 3600
-- runs: 20
+- runIntervalSeconds: 10800
+- runs: 1
 
 ## Failed Checks
 
@@ -64,7 +64,6 @@
 - zeromito0123: profile_fetch_failed; officialFallback=true
 - maboo.insta: profile_fetch_failed; officialFallback=true
 - shinnikan: profile_fetch_failed; officialFallback=true
-- climbing_gym_rockyn0429: profile_fetch_failed; officialFallback=true
 - climbinggym_rocklands: profile_fetch_failed; officialFallback=true
 - westrock_climbing: profile_fetch_failed; officialFallback=true
 - boulcom_kawasaki: profile_fetch_failed; officialFallback=true

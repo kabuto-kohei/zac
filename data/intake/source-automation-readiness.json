@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-16T09:34:14.497Z",
+  "generatedAt": "2026-05-16T12:07:34.138Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,10 +11,10 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 22,
-    "localRunAgeMinutes": 22,
+    "latestRunAgeMinutes": 2,
+    "localRunAgeMinutes": 2,
     "consecutiveNonReady": 0,
-    "instagramFailureRatio": 1,
+    "instagramFailureRatio": 0.9791666666666666,
     "failedInstagramSources": [
       {
         "handle": "dogwood_climbing_gym",
@@ -162,11 +162,6 @@
         "hasOfficialFallback": true
       },
       {
-        "handle": "climbing_gym_rockyn0429",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
         "handle": "climbinggym_rocklands",
         "error": "profile_fetch_failed",
         "hasOfficialFallback": true
@@ -263,8 +258,8 @@
       "loaded": true,
       "running": false,
       "lastExitCode": 0,
-      "runIntervalSeconds": 3600,
-      "runs": 20
+      "runIntervalSeconds": 10800,
+      "runs": 1
     },
     "queues": {
       "instagramPostInspection": 48,
@@ -311,7 +306,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "22m",
+      "detail": "2m",
       "severity": "error"
     },
     {
@@ -341,7 +336,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "22m",
+      "detail": "2m",
       "severity": "error"
     },
     {
@@ -369,9 +364,9 @@
       "severity": "error"
     },
     {
-      "name": "launchd interval is hourly or faster",
+      "name": "launchd interval matches configured cadence",
       "ok": true,
-      "detail": "3600",
+      "detail": "10800",
       "severity": "error"
     },
     {
@@ -437,7 +432,7 @@
     {
       "name": "Instagram inspection failures are within budget or covered by official fallback",
       "ok": true,
-      "detail": "100% failed; covered by official fallback",
+      "detail": "98% failed; covered by official fallback",
       "severity": "error"
     },
     {

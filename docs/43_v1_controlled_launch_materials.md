@@ -55,8 +55,12 @@ Daily during the controlled launch:
 4. Check official source URLs before changing public data.
 5. Open `https://zac-admin.vercel.app/event-candidates`.
 6. Approve only candidates backed by official evidence.
-7. Reject or leave pending weak evidence.
-8. Mark handled update requests `resolved`.
+7. Open `https://zac-admin.vercel.app/instagram-review`.
+8. For blocked official Instagram sources, open the profile and official site;
+   create a candidate only when the evidence URL, title, category, and date are
+   clear.
+9. Reject or leave pending weak evidence.
+10. Mark handled update requests `resolved`.
 
 Approval rules:
 

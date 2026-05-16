@@ -1,13 +1,43 @@
 "use client";
 
-import { announcementFixtures, auditLogFixtures, eventFixtures, eventSourceFixtures, gymFixtures, postFixtures, reportFixtures } from "@zac/shared";
-import type { AdminUserSummary, AnnouncementSummary, AuditLogSummary, EventSourceSummary, EventSummary, GymSummary, PostSummary, ReportSummary } from "@zac/shared";
+import {
+  announcementFixtures,
+  auditLogFixtures,
+  eventFixtures,
+  eventSourceFixtures,
+  gymFixtures,
+  instagramReviewQueueFixtures,
+  postFixtures,
+  reportFixtures,
+} from "@zac/shared";
+import type {
+  AdminUserSummary,
+  AnnouncementSummary,
+  AuditLogSummary,
+  EventSourceSummary,
+  EventSummary,
+  GymSummary,
+  InstagramReviewQueueItem,
+  PostSummary,
+  ReportSummary,
+} from "@zac/shared";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./api-client";
 import { getAdminSupabaseClient } from "./integration-provider";
 
-type AdminView = "dashboard" | "users" | "gyms" | "events" | "eventCandidates" | "eventSources" | "posts" | "reports" | "auditLogs" | "announcements";
+type AdminView =
+  | "dashboard"
+  | "users"
+  | "gyms"
+  | "events"
+  | "eventCandidates"
+  | "eventSources"
+  | "instagramReview"
+  | "posts"
+  | "reports"
+  | "auditLogs"
+  | "announcements";
 type AdminListState<T> = {
   data: T[];
   loading: boolean;
@@ -22,6 +52,7 @@ const navItems: Array<{ id: AdminView; href: string; label: string }> = [
   { id: "events", href: "/events", label: "イベント" },
   { id: "eventCandidates", href: "/event-candidates", label: "候補レビュー" },
   { id: "eventSources", href: "/event-sources", label: "取得源" },
+  { id: "instagramReview", href: "/instagram-review", label: "Instagram確認" },
   { id: "posts", href: "/posts", label: "投稿" },
   { id: "reports", href: "/reports", label: "通報" },
   { id: "auditLogs", href: "/audit-logs", label: "監査ログ" },
@@ -75,6 +106,7 @@ export function AdminDashboard({ view }: { view: AdminView }) {
         {view === "events" ? <EventsView /> : null}
         {view === "eventCandidates" ? <EventCandidatesView /> : null}
         {view === "eventSources" ? <EventSourcesView /> : null}
+        {view === "instagramReview" ? <InstagramReviewQueueView /> : null}
         {view === "posts" ? <PostsView /> : null}
         {view === "reports" ? <ReportsView /> : null}
         {view === "auditLogs" ? <AuditLogsView /> : null}
@@ -312,6 +344,38 @@ function EventSourcesView() {
           </article>
         ))}
         <AdminEmptyState state={sources} emptyMessage="取得源はまだありません。" />
+      </section>
+    </>
+  );
+}
+
+function InstagramReviewQueueView() {
+  const queue = useAdminList<InstagramReviewQueueItem>("/v1/admin/instagram-review-queue", instagramReviewQueueFixtures);
+  const [items, setItems] = useState(queue.data);
+  const highPriorityCount = items.filter((item) => item.priority === "high").length;
+  const fallbackCount = items.filter((item) => item.fallbackAvailable).length;
+
+  useEffect(() => {
+    setItems(queue.data);
+  }, [queue.data]);
+
+  return (
+    <>
+      <div className="admin-title">
+        <h2>Instagram確認</h2>
+        <p>自動取得できない公式Instagramを開き、確認済みの公開情報だけを候補化します。</p>
+      </div>
+      <AdminDataStatus state={queue} />
+      <section className="metric-grid compact-metrics">
+        <Metric label="確認待ち" value={String(items.length)} />
+        <Metric label="優先度高" value={String(highPriorityCount)} />
+        <Metric label="公式サイトあり" value={String(fallbackCount)} />
+      </section>
+      <section className="admin-table">
+        {items.map((item) => (
+          <InstagramReviewQueueRow item={item} key={item.id} onRecorded={(sourceId) => setItems((current) => current.filter((next) => next.sourceId !== sourceId))} />
+        ))}
+        <AdminEmptyState dataLength={items.length} state={queue} emptyMessage="Instagram確認待ちはありません。" />
       </section>
     </>
   );
@@ -569,6 +633,118 @@ function GymModerationRow({ gym }: { gym: GymSummary }) {
       <button type="submit">更新</button>
       <StatusMessage message={message} status={status} />
     </form>
+  );
+}
+
+function InstagramReviewQueueRow({ item, onRecorded }: { item: InstagramReviewQueueItem; onRecorded: (sourceId: string) => void }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function createCandidate(formData: FormData) {
+    setMessage("");
+    const body = {
+      gymId: item.gymId,
+      sourceId: item.sourceId,
+      sourceUrl: formData.get("sourceUrl")?.toString() || item.sourceUrl,
+      title: formData.get("title")?.toString() ?? "",
+      category: formData.get("category")?.toString() || "event",
+      startsAt: toIsoDateTime(formData.get("startsAt")?.toString()) ?? "",
+      endsAt: toIsoDateTime(formData.get("endsAt")?.toString()),
+      sourceQuote: formData.get("sourceQuote")?.toString() || null,
+      reason: formData.get("reason")?.toString() || item.reviewReason,
+    };
+    const response = await postAdminApi<EventSummary>("/v1/admin/instagram-review-queue/candidates", body);
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage("候補レビューに追加しました。");
+    onRecorded(item.sourceId);
+  }
+
+  async function recordAction(action: "no_info" | "recheck") {
+    setMessage("");
+    const response = await postAdminApi<{ sourceId: string; action: string; recorded: boolean }>(`/v1/admin/instagram-review-queue/${item.sourceId}/actions`, {
+      action,
+      reason: action === "no_info" ? "公開プロフィールと公式サイトを確認したが掲載候補はありません。" : item.reviewReason,
+    });
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage(action === "no_info" ? "情報なしとして記録しました。" : "再確認対象として記録しました。");
+    onRecorded(item.sourceId);
+  }
+
+  return (
+    <article className="admin-row instagram-review-row">
+      <span>
+        <strong>{item.gymName}</strong>
+        <small>
+          {item.area || "-"} / @{item.handle}
+        </small>
+        <small>{item.reviewReason}</small>
+      </span>
+      <span>
+        <strong>{item.priority}</strong>
+        <small>{item.failureCategory}</small>
+        <small>{item.failureDetail}</small>
+      </span>
+      <span>
+        <strong>確認日</strong>
+        <small>最終確認 {item.lastCheckedAt || "-"}</small>
+        <small>観測 {item.observedPosts}件 / 最新 {item.lastObservedAt || "-"}</small>
+      </span>
+      <span className="admin-link-stack">
+        <a href={item.sourceUrl} rel="noreferrer" target="_blank">
+          Instagram
+        </a>
+        {item.officialSiteUrl ? (
+          <a href={item.officialSiteUrl} rel="noreferrer" target="_blank">
+            公式サイト
+          </a>
+        ) : (
+          <small>公式サイトなし</small>
+        )}
+      </span>
+      <form action={createCandidate} className="instagram-candidate-form">
+        <input aria-label="候補タイトル" maxLength={120} name="title" placeholder="適切な掲載タイトル" required />
+        <select aria-label="カテゴリ" defaultValue="event" name="category">
+          <option value="event">イベント</option>
+          <option value="competition">コンペ</option>
+          <option value="route_set">セット</option>
+          <option value="lesson">レッスン</option>
+          <option value="opening_change">営業時間変更</option>
+          <option value="private_booking">貸切</option>
+          <option value="construction">工事</option>
+          <option value="notice">お知らせ</option>
+          <option value="recruit">募集</option>
+        </select>
+        <input aria-label="開始日時" name="startsAt" required type="datetime-local" />
+        <input aria-label="終了日時" name="endsAt" type="datetime-local" />
+        <input aria-label="証拠URL" defaultValue={item.sourceUrl} maxLength={500} name="sourceUrl" required />
+        <input aria-label="根拠引用" maxLength={300} name="sourceQuote" placeholder="短い根拠メモ" />
+        <input aria-label="候補化理由" maxLength={1000} name="reason" placeholder="Admin確認理由" />
+        <button type="submit">候補化</button>
+      </form>
+      <div className="instagram-review-actions">
+        <button className="secondary-admin-action" onClick={() => void recordAction("no_info")} type="button">
+          情報なし
+        </button>
+        <button className="secondary-admin-action" onClick={() => void recordAction("recheck")} type="button">
+          再確認
+        </button>
+      </div>
+      <StatusMessage message={message} status={status} />
+    </article>
   );
 }
 

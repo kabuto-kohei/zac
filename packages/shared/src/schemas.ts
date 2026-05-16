@@ -162,6 +162,21 @@ export const adminGymStatusSchema = z.enum(["draft", "published", "closed"]);
 export const adminEventStatusSchema = z.enum(["draft", "scheduled", "closed"]);
 export const adminAnnouncementStatusSchema = z.enum(["draft", "published"]);
 export const adminEventReviewActionSchema = z.enum(["approve", "reject"]);
+export const adminEventCategorySchema = z.enum([
+  "event",
+  "lesson",
+  "competition",
+  "route_set",
+  "opening_change",
+  "private_booking",
+  "construction",
+  "notice",
+  "recruit",
+]);
+export const instagramReviewQueueActionSchema = z.object({
+  action: z.enum(["no_info", "recheck", "needs_followup"]),
+  reason: z.string().max(1000).nullable().optional(),
+});
 
 export const updateReportStatusSchema = z.object({
   status: adminReportStatusSchema,
@@ -203,6 +218,28 @@ export const upsertAdminEventSchema = z
     }
   });
 
+export const createInstagramEventCandidateSchema = z
+  .object({
+    gymId: z.string().min(1).max(120),
+    sourceId: z.string().min(1).max(120).nullish(),
+    sourceUrl: z.string().url().max(500),
+    title: z.string().min(1).max(120),
+    category: adminEventCategorySchema.default("event"),
+    startsAt: z.string().datetime({ offset: true }),
+    endsAt: z.string().datetime({ offset: true }).nullable().optional(),
+    sourceQuote: z.string().max(300).nullable().optional(),
+    reason: z.string().max(1000).nullable().optional(),
+  })
+  .superRefine((value, context) => {
+    if (value.endsAt && Date.parse(value.startsAt) >= Date.parse(value.endsAt)) {
+      context.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "startsAt must be before endsAt.",
+        path: ["startsAt"],
+      });
+    }
+  });
+
 export const upsertAdminAnnouncementSchema = z.object({
   title: z.string().min(1).max(120),
   body: z.string().min(1).max(4000),
@@ -230,4 +267,6 @@ export type ModeratePostInput = z.infer<typeof moderatePostSchema>;
 export type UpdateGymStatusInput = z.infer<typeof updateGymStatusSchema>;
 export type ReviewAdminEventInput = z.infer<typeof reviewAdminEventSchema>;
 export type UpsertAdminEventInput = z.infer<typeof upsertAdminEventSchema>;
+export type InstagramReviewQueueActionInput = z.infer<typeof instagramReviewQueueActionSchema>;
+export type CreateInstagramEventCandidateInput = z.infer<typeof createInstagramEventCandidateSchema>;
 export type UpsertAdminAnnouncementInput = z.infer<typeof upsertAdminAnnouncementSchema>;

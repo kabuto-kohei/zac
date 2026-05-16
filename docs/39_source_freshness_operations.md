@@ -63,6 +63,9 @@ all of the following are true:
 11. Admin candidate review is available at `/event-candidates`, backed by
     `/v1/admin/event-candidates` and `/v1/admin/events/:eventId/review`, so
     staged candidates can be approved or rejected without database surgery.
+12. Admin Instagram review is available at `/instagram-review`, backed by
+    `/v1/admin/instagram-review-queue`, so sources blocked by Instagram login
+    or rate limits can still be reviewed through an operator-confirmed path.
 
 If any condition is false, the system is still useful, but it is not
 "completely unattended OK"; it is in operator-review mode.
@@ -78,6 +81,21 @@ baseline and cross-check source. The operating model has five stages:
 3. Use Browser/Computer Use or a normal browser to inspect public official pages.
 4. Record inspected Instagram post URLs in `source_post_observations`.
 5. Reflect only confirmed updates into `events` / `gyms` as structured data.
+
+When Instagram direct fetch returns login or rate-limit responses, the source
+does not become complete. It moves into Admin Instagram review:
+
+1. Open `/instagram-review`.
+2. Open the official Instagram profile and official website link from the row.
+3. If a public post/reel contains a calendar-worthy fact, enter an appropriate
+   Zac title, category, date/time, evidence URL, short quote, and reason.
+4. Submit it as a draft/pending event candidate.
+5. If no publishable fact is visible, record `情報なし`; if the source needs a
+   later automated pass, record `再確認`.
+
+This path is deliberately manual. It is for confirming public facts from the
+operator's normal browser session, not for copying Instagram media or full
+captions into Zac.
 
 The public UI may show only title, short summary, category, date/time, source
 link, source label, and a minimal short quote. It must not show copied images,
@@ -351,6 +369,9 @@ direct publishing:
    appears on the calendar.
 4. Admin candidate review exposes pending/draft candidates, links back to the
    original source, and records approve/reject decisions through the Admin API.
+5. Admin Instagram review can also create the same draft/pending event
+   candidates directly from a confirmed public Instagram URL when automatic
+   profile inspection is blocked.
 
 Required fields:
 

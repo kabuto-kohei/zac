@@ -733,16 +733,64 @@ test("admin content list routes require admin", async () => {
   const eventCandidatesResponse = await createApp().request("/v1/admin/event-candidates", {
     headers: adminAuth,
   });
+  const instagramReviewResponse = await createApp().request("/v1/admin/instagram-review-queue", {
+    headers: adminAuth,
+  });
   const announcementsResponse = await createApp().request("/v1/admin/announcements", {
     headers: adminAuth,
   });
   const eventSourcesBody = await eventSourcesResponse.json();
+  const instagramReviewBody = await instagramReviewResponse.json();
 
   assert.equal(eventsResponse.status, 200);
   assert.equal(eventSourcesResponse.status, 200);
   assert.equal(eventCandidatesResponse.status, 200);
+  assert.equal(instagramReviewResponse.status, 200);
   assert.equal(eventSourcesBody.data.some((source: { handle: string }) => source.handle === "comp_bible"), true);
+  assert.equal(instagramReviewBody.data.some((item: { handle: string }) => item.handle === "bpumptokyo"), true);
   assert.equal(announcementsResponse.status, 200);
+});
+
+test("admin Instagram review queue records actions and creates event candidates", async () => {
+  const app = createApp();
+  const candidateResponse = await app.request("/v1/admin/instagram-review-queue/candidates", {
+    method: "POST",
+    body: JSON.stringify({
+      gymId: "b-pump-tokyo",
+      sourceId: "event-source-b-pump-tokyo-instagram",
+      sourceUrl: "https://www.instagram.com/p/test-post/",
+      title: "B-PUMP Tokyo セット情報",
+      category: "route_set",
+      startsAt: "2026-06-10T10:00:00+09:00",
+      endsAt: "2026-06-10T12:00:00+09:00",
+      sourceQuote: "セット告知",
+      reason: "公開Instagram投稿をAdminで確認済み",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const candidateBody = await candidateResponse.json();
+  const actionResponse = await app.request("/v1/admin/instagram-review-queue/event-source-b-pump-tokyo-instagram/actions", {
+    method: "POST",
+    body: JSON.stringify({
+      action: "no_info",
+      reason: "掲載候補なし",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const actionBody = await actionResponse.json();
+
+  assert.equal(candidateResponse.status, 201);
+  assert.equal(candidateBody.data.status, "draft");
+  assert.equal(candidateBody.data.reviewStatus, "pending");
+  assert.equal(candidateBody.data.sourceUrl, "https://www.instagram.com/p/test-post/");
+  assert.equal(actionResponse.status, 200);
+  assert.equal(actionBody.data.action, "no_info");
 });
 
 test("admin content mutations create and update events and announcements", async () => {

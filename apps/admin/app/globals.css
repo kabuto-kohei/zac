@@ -228,9 +228,26 @@ p {
   grid-template-columns: minmax(170px, 1.2fr) minmax(130px, 0.8fr) minmax(110px, 0.7fr) minmax(130px, 0.8fr) minmax(180px, 1.1fr) minmax(150px, 0.9fr) 76px 76px;
 }
 
+.instagram-review-row {
+  grid-template-columns: minmax(180px, 1fr) minmax(150px, 0.9fr) minmax(130px, 0.7fr) minmax(110px, 0.6fr) minmax(360px, 1.8fr) minmax(98px, 0.5fr);
+}
+
 .candidate-row span {
   display: grid;
   gap: 4px;
+}
+
+.instagram-review-row span,
+.admin-link-stack,
+.instagram-review-actions {
+  display: grid;
+  gap: 4px;
+}
+
+.instagram-candidate-form {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) minmax(120px, 0.7fr) minmax(145px, 0.8fr) minmax(145px, 0.8fr);
+  gap: 8px;
 }
 
 .moderation-row {
@@ -239,6 +256,10 @@ p {
 
 .candidate-row input,
 .candidate-row button,
+.instagram-candidate-form input,
+.instagram-candidate-form select,
+.instagram-candidate-form button,
+.instagram-review-actions button,
 .moderation-row select,
 .moderation-row input,
 .moderation-row button {
@@ -252,12 +273,16 @@ p {
 }
 
 .candidate-row input,
+.instagram-candidate-form input,
+.instagram-candidate-form select,
 .moderation-row select,
 .moderation-row input {
   padding: 10px 11px;
 }
 
 .candidate-row button,
+.instagram-candidate-form button,
+.instagram-review-actions button,
 .moderation-row button {
   padding: 10px 12px;
   background: var(--brand);
@@ -267,6 +292,12 @@ p {
 }
 
 .candidate-row .secondary-admin-action {
+  border-color: var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.instagram-review-actions .secondary-admin-action {
   border-color: var(--line);
   background: var(--surface);
   color: var(--ink);
@@ -387,6 +418,11 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .instagram-review-row,
+  .instagram-candidate-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .admin-editor-wide {
     grid-column: 1 / -1;
   }
@@ -396,6 +432,8 @@ p {
   .metric-grid,
     .admin-row,
   .candidate-row,
+  .instagram-review-row,
+  .instagram-candidate-form,
     .moderation-row,
   .admin-editor-form,
   .content-editor-row,

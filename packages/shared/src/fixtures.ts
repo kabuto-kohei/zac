@@ -86,6 +86,26 @@ export type EventSourceSummary = {
   status: "candidate" | "approved" | "paused" | "rejected";
 };
 
+export type InstagramReviewQueueItem = {
+  id: string;
+  sourceId: string;
+  gymId: string;
+  gymName: string;
+  area: string;
+  handle: string;
+  sourceUrl: string;
+  officialSiteUrl: string;
+  fallbackAvailable: boolean;
+  lastCheckedAt: string;
+  lastObservedAt: string;
+  observedPosts: number;
+  failureCategory: "access_restricted" | "no_recent_posts" | "not_checked" | "unknown";
+  failureDetail: string;
+  priority: "high" | "normal" | "low";
+  status: "needs_human_review" | "recently_checked" | "candidate_available";
+  reviewReason: string;
+};
+
 export type AnnouncementSummary = {
   id: string;
   title: string;
@@ -362,6 +382,28 @@ export const eventSourceFixtures: EventSourceSummary[] = [
     lastCheckedAt: "2026-05-10",
     sourceVerifiedAt: null,
     status: "candidate",
+  },
+];
+
+export const instagramReviewQueueFixtures: InstagramReviewQueueItem[] = [
+  {
+    id: "instagram-review-b-pump-tokyo",
+    sourceId: "event-source-b-pump-tokyo-instagram",
+    gymId: "b-pump-tokyo",
+    gymName: "B-PUMP Tokyo",
+    area: "秋葉原",
+    handle: "bpumptokyo",
+    sourceUrl: "https://www.instagram.com/bpumptokyo/",
+    officialSiteUrl: "https://pump-climbing.com/gym/akiba/",
+    fallbackAvailable: true,
+    lastCheckedAt: "2026-05-16",
+    lastObservedAt: "",
+    observedPosts: 0,
+    failureCategory: "access_restricted",
+    failureDetail: "Instagram public endpoint requires login or rate-limits direct access. Open the profile manually and create candidates only from confirmed public facts.",
+    priority: "high",
+    status: "needs_human_review",
+    reviewReason: "Instagram直取得が不安定なため、管理者が公開プロフィールと公式サイトを確認して候補化します。",
   },
 ];
 

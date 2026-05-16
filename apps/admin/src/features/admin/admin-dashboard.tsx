@@ -8,6 +8,12 @@ import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./
 import { getAdminSupabaseClient } from "./integration-provider";
 
 type AdminView = "dashboard" | "users" | "gyms" | "events" | "eventCandidates" | "eventSources" | "posts" | "reports" | "auditLogs" | "announcements";
+type AdminListState<T> = {
+  data: T[];
+  loading: boolean;
+  message: string;
+  failed: boolean;
+};
 
 const navItems: Array<{ id: AdminView; href: string; label: string }> = [
   { id: "dashboard", href: "/dashboard", label: "ダッシュボード" },
@@ -185,7 +191,7 @@ function DashboardView() {
         <h2>ダッシュボード</h2>
         <p>通報、投稿、予定、ジム更新を確認します。</p>
       </div>
-      <AdminDataStatus message={adminData.message} />
+      <AdminDataStatus message={adminData.message} loading={adminData.loading} />
       <section className="metric-grid">
         <Metric label="未対応通報" value={String(adminData.reports.filter((report) => report.status === "open").length)} />
         <Metric label="登録ジム" value={String(adminData.gyms.length)} />
@@ -199,7 +205,7 @@ function DashboardView() {
 }
 
 function UsersView() {
-  const { data: users, message } = useAdminList<AdminUserSummary>("/v1/admin/users", adminUserFallback);
+  const users = useAdminList<AdminUserSummary>("/v1/admin/users", adminUserFallback);
 
   return (
     <>
@@ -207,9 +213,9 @@ function UsersView() {
         <h2>ユーザー管理</h2>
         <p>認証済みユーザーとプロフィール状態を確認します。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={users} />
       <section className="admin-table">
-        {users.map((user) => (
+        {users.data.map((user) => (
           <article className="admin-row" key={user.id}>
             <span>{user.displayName}</span>
             <span>{user.email}</span>
@@ -217,14 +223,14 @@ function UsersView() {
             <span>{user.area || "未設定"}</span>
           </article>
         ))}
-        {users.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState state={users} emptyMessage="ユーザーはまだありません。" />
       </section>
     </>
   );
 }
 
 function GymsView() {
-  const { data: gyms, message } = useAdminList<GymSummary>("/v1/gyms", gymFixtures);
+  const gyms = useAdminList<GymSummary>("/v1/gyms", gymFixtures);
 
   return (
     <>
@@ -232,24 +238,24 @@ function GymsView() {
         <h2>ジム管理</h2>
         <p>ジム情報は公開情報または許諾済み情報のみ登録します。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={gyms} />
       <section className="admin-table">
-        {gyms.map((gym) => (
+        {gyms.data.map((gym) => (
           <GymModerationRow gym={gym} key={gym.id} />
         ))}
-        {gyms.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState state={gyms} emptyMessage="ジムはまだ登録されていません。" />
       </section>
     </>
   );
 }
 
 function EventsView() {
-  const { data: events, message } = useAdminList<EventSummary>("/v1/admin/events", eventFixtures);
-  const [items, setItems] = useState(events);
+  const events = useAdminList<EventSummary>("/v1/admin/events", eventFixtures);
+  const [items, setItems] = useState(events.data);
 
   useEffect(() => {
-    setItems(events);
-  }, [events]);
+    setItems(events.data);
+  }, [events.data]);
 
   return (
     <>
@@ -257,7 +263,7 @@ function EventsView() {
         <h2>イベント管理</h2>
         <p>イベント掲載内容を作成・編集し、下書きと公開状態を切り替えます。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={events} />
       <EventEditorForm
         onSaved={(event) => {
           setItems((current) => [event, ...current.filter((item) => item.id !== event.id)]);
@@ -267,16 +273,16 @@ function EventsView() {
         {items.map((event) => (
           <EventEditorRow event={event} key={event.id} onSaved={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))} />
         ))}
-        {items.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState dataLength={items.length} state={events} emptyMessage="イベントはまだありません。" />
       </section>
     </>
   );
 }
 
 function EventSourcesView() {
-  const { data: sources, message } = useAdminList<EventSourceSummary>("/v1/admin/event-sources", eventSourceFixtures);
-  const approvedCount = sources.filter((source) => source.status === "approved").length;
-  const candidateCount = sources.filter((source) => source.status === "candidate").length;
+  const sources = useAdminList<EventSourceSummary>("/v1/admin/event-sources", eventSourceFixtures);
+  const approvedCount = sources.data.filter((source) => source.status === "approved").length;
+  const candidateCount = sources.data.filter((source) => source.status === "candidate").length;
 
   return (
     <>
@@ -284,14 +290,14 @@ function EventSourcesView() {
         <h2>イベント取得源</h2>
         <p>コンペバイブル起点の候補、公式サイト、専門メディアを確認します。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={sources} />
       <section className="metric-grid compact-metrics">
         <Metric label="承認済み" value={String(approvedCount)} />
         <Metric label="候補" value={String(candidateCount)} />
-        <Metric label="合計" value={String(sources.length)} />
+        <Metric label="合計" value={String(sources.data.length)} />
       </section>
       <section className="admin-table">
-        {sources.map((source) => (
+        {sources.data.map((source) => (
           <article className="admin-row source-row" key={source.id}>
             <span>{source.displayName}</span>
             <span>{source.platform}</span>
@@ -305,20 +311,20 @@ function EventSourcesView() {
             <small>{source.discoveryNote}</small>
           </article>
         ))}
-        {sources.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState state={sources} emptyMessage="取得源はまだありません。" />
       </section>
     </>
   );
 }
 
 function EventCandidatesView() {
-  const { data: candidates, message } = useAdminList<EventSummary>("/v1/admin/event-candidates", eventFixtures.filter((event) => event.status === "draft" || event.reviewStatus === "pending"));
-  const [items, setItems] = useState(candidates);
+  const candidates = useAdminList<EventSummary>("/v1/admin/event-candidates", eventFixtures.filter((event) => event.status === "draft" || event.reviewStatus === "pending"));
+  const [items, setItems] = useState(candidates.data);
   const pendingCount = items.filter((event) => event.reviewStatus !== "approved").length;
 
   useEffect(() => {
-    setItems(candidates);
-  }, [candidates]);
+    setItems(candidates.data);
+  }, [candidates.data]);
 
   return (
     <>
@@ -326,7 +332,7 @@ function EventCandidatesView() {
         <h2>候補レビュー</h2>
         <p>自動収集した候補を確認し、公開するものだけ承認します。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={candidates} />
       <section className="metric-grid compact-metrics">
         <Metric label="確認待ち" value={String(pendingCount)} />
         <Metric label="候補合計" value={String(items.length)} />
@@ -340,14 +346,14 @@ function EventCandidatesView() {
             onReviewed={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))}
           />
         ))}
-        {items.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState dataLength={items.length} state={candidates} emptyMessage="確認待ちの候補はありません。" />
       </section>
     </>
   );
 }
 
 function PostsView() {
-  const { data: posts, message } = useAdminList<PostSummary>("/v1/posts", postFixtures);
+  const posts = useAdminList<PostSummary>("/v1/posts", postFixtures);
 
   return (
     <>
@@ -355,19 +361,19 @@ function PostsView() {
         <h2>投稿管理</h2>
         <p>非表示操作は管理APIへ送信され、監査ログに記録されます。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={posts} />
       <section className="admin-table">
-        {posts.map((post) => (
+        {posts.data.map((post) => (
           <PostModerationRow post={post} key={post.id} />
         ))}
-        {posts.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState state={posts} emptyMessage="投稿はまだありません。" />
       </section>
     </>
   );
 }
 
 function ReportsView() {
-  const { data: reports, message } = useAdminList<ReportSummary>("/v1/reports", reportFixtures);
+  const reports = useAdminList<ReportSummary>("/v1/reports", reportFixtures);
 
   return (
     <>
@@ -375,19 +381,19 @@ function ReportsView() {
         <h2>通報管理</h2>
         <p>通報状態の更新は管理APIへ送信され、監査ログに記録されます。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={reports} />
       <section className="admin-table">
-        {reports.map((report) => (
+        {reports.data.map((report) => (
           <ReportModerationRow report={report} key={report.id} />
         ))}
-        {reports.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState state={reports} emptyMessage="通報はありません。" />
       </section>
     </>
   );
 }
 
 function AuditLogsView() {
-  const { data: auditLogs, message } = useAdminList<AuditLogSummary>("/v1/admin/audit-logs", auditLogFixtures);
+  const auditLogs = useAdminList<AuditLogSummary>("/v1/admin/audit-logs", auditLogFixtures);
 
   return (
     <>
@@ -395,28 +401,28 @@ function AuditLogsView() {
         <h2>監査ログ</h2>
         <p>管理者操作は必ず監査ログに残します。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={auditLogs} />
       <section className="admin-table">
-        {auditLogs.map((log) => (
+        {auditLogs.data.map((log) => (
           <article className="admin-row" key={log.id}>
             <span>{log.action}</span>
             <span>{log.targetType}</span>
             <span>{log.createdAt}</span>
           </article>
         ))}
-        {auditLogs.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState state={auditLogs} emptyMessage="監査ログはまだありません。" />
       </section>
     </>
   );
 }
 
 function AnnouncementsView() {
-  const { data: announcements, message } = useAdminList<AnnouncementSummary>("/v1/admin/announcements", announcementFixtures);
-  const [items, setItems] = useState(announcements);
+  const announcements = useAdminList<AnnouncementSummary>("/v1/admin/announcements", announcementFixtures);
+  const [items, setItems] = useState(announcements.data);
 
   useEffect(() => {
-    setItems(announcements);
-  }, [announcements]);
+    setItems(announcements.data);
+  }, [announcements.data]);
 
   return (
     <>
@@ -424,7 +430,7 @@ function AnnouncementsView() {
         <h2>お知らせ管理</h2>
         <p>利用者向けのお知らせを作成・編集し、公開と下書きを切り替えます。</p>
       </div>
-      <AdminDataStatus message={message} />
+      <AdminDataStatus state={announcements} />
       <AnnouncementEditorForm
         onSaved={(announcement) => {
           setItems((current) => [announcement, ...current.filter((item) => item.id !== announcement.id)]);
@@ -434,7 +440,7 @@ function AnnouncementsView() {
         {items.map((announcement) => (
           <AnnouncementEditorRow announcement={announcement} key={announcement.id} onSaved={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))} />
         ))}
-        {items.length === 0 ? <EmptyAdminRow /> : null}
+        <AdminEmptyState dataLength={items.length} state={announcements} emptyMessage="お知らせはまだありません。" />
       </section>
     </>
   );
@@ -829,22 +835,39 @@ function StatusMessage({ message, status }: { message: string; status: string })
   return <span className={status === "error" ? "admin-status error" : "admin-status"}>{message}</span>;
 }
 
-function EmptyAdminRow() {
+function AdminEmptyState<T>({ dataLength, emptyMessage, state }: { dataLength?: number; emptyMessage: string; state: AdminListState<T> }) {
+  const length = dataLength ?? state.data.length;
+
+  if (state.loading || length > 0) {
+    return null;
+  }
+
+  return <EmptyAdminRow detail={state.failed ? state.message : emptyMessage} title={state.failed ? "データを取得できませんでした。" : emptyMessage} />;
+}
+
+function EmptyAdminRow({ detail, title }: { detail: string; title: string }) {
   return (
     <article className="admin-row">
-      <span>データを取得できませんでした。</span>
-      <span>API接続または権限を確認してください。</span>
+      <span>{title}</span>
+      <span>{detail}</span>
       <span />
     </article>
   );
 }
 
-function AdminDataStatus({ message }: { message: string }) {
-  if (!message) {
+function AdminDataStatus<T>({ loading, message, state }: { loading?: boolean; message?: string; state?: AdminListState<T> }) {
+  const isLoading = loading ?? state?.loading ?? false;
+  const text = message ?? state?.message ?? "";
+
+  if (isLoading) {
+    return <p className="admin-data-status">データを読み込んでいます。</p>;
+  }
+
+  if (!text) {
     return null;
   }
 
-  return <p className="admin-data-status">{message}</p>;
+  return <p className="admin-data-status">{text}</p>;
 }
 
 function useAdminDashboardData() {
@@ -855,6 +878,7 @@ function useAdminDashboardData() {
   const eventSources = useAdminList<EventSourceSummary>("/v1/admin/event-sources", eventSourceFixtures);
   const announcements = useAdminList<AnnouncementSummary>("/v1/admin/announcements", announcementFixtures);
   const message = [gyms.message, posts.message, reports.message, events.message, eventSources.message, announcements.message].find(Boolean) ?? "";
+  const loading = [gyms.loading, posts.loading, reports.loading, events.loading, eventSources.loading, announcements.loading].some(Boolean);
 
   return {
     gyms: gyms.data,
@@ -863,19 +887,24 @@ function useAdminDashboardData() {
     events: events.data,
     eventSources: eventSources.data,
     announcements: announcements.data,
+    loading,
     message,
   };
 }
 
-function useAdminList<T>(path: string, localFallback: T[]) {
+function useAdminList<T>(path: string, localFallback: T[]): AdminListState<T> {
   const liveMode = isAdminLiveApiMode();
   const [data, setData] = useState<T[]>(liveMode ? [] : localFallback);
+  const [loading, setLoading] = useState(liveMode);
   const [message, setMessage] = useState("");
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     let active = true;
 
     async function load() {
+      setLoading(true);
+      setFailed(false);
       const response = await getAdminApi<T[]>(path);
 
       if (!active) {
@@ -884,12 +913,16 @@ function useAdminList<T>(path: string, localFallback: T[]) {
 
       if (response.ok) {
         setData(response.data);
+        setFailed(false);
         setMessage("");
+        setLoading(false);
         return;
       }
 
       setData(liveMode ? [] : localFallback);
+      setFailed(true);
       setMessage(liveMode ? response.message : "");
+      setLoading(false);
     }
 
     void load();
@@ -899,5 +932,5 @@ function useAdminList<T>(path: string, localFallback: T[]) {
     };
   }, [path, liveMode, localFallback]);
 
-  return { data, message };
+  return { data, failed, loading, message };
 }

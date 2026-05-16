@@ -1,0 +1,1580 @@
+{
+  "generatedAt": "2026-05-14T03:58:57.413Z",
+  "mode": "applied",
+  "summary": {
+    "gymsScanned": 192,
+    "discovered": 36,
+    "matchedExistingEventSources": 35,
+    "skipped": 156
+  },
+  "discovered": [
+    {
+      "gymId": "dbad9049-ebe0-421b-9819-6de399a13f31",
+      "gymName": "And Energy Bouldering（アンドエネルギーボルダリング）",
+      "area": "沼田市",
+      "officialSiteUrl": "https://www.andenergy-bouldering.com/",
+      "instagramHandle": "and_energy_bouldering",
+      "instagramUrl": "https://www.instagram.com/and_energy_bouldering/",
+      "eventSourceId": "0688dbc6-21f6-42dc-99b5-6645f9aaf16e",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "and_energy_bouldering",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "6ba89b09-84db-4769-864c-2f8b62a3a384",
+      "gymName": "ao_roc.（アオロク） climbing",
+      "area": "鹿嶋市",
+      "officialSiteUrl": "https://aoroc.jp/",
+      "instagramHandle": "ao_roc.climbing",
+      "instagramUrl": "https://www.instagram.com/ao_roc.climbing/",
+      "eventSourceId": "fa3467fe-ca12-4ea6-a5ee-d24b88f3e674",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "ao_roc.climbing",
+          "score": 14,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "6d6885be-a886-4941-a7e2-31c18f7adff4",
+      "gymName": "B-PUMP OGIKUBO 荻窪",
+      "area": "杉並区",
+      "officialSiteUrl": "https://pump-climbing.com/gym/bpump/",
+      "instagramHandle": "bpump_ogikubo",
+      "instagramUrl": "https://www.instagram.com/bpump_ogikubo/",
+      "eventSourceId": "1c927437-7710-4318-9d77-e0e2104c9dc1",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "bpump_ogikubo",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "11111111-1111-4111-8111-111111111111",
+      "gymName": "B-PUMP Tokyo",
+      "area": "秋葉原",
+      "officialSiteUrl": "https://pump-climbing.com/gym/akiba/",
+      "instagramHandle": "bpumptokyo",
+      "instagramUrl": "https://www.instagram.com/bpumptokyo/",
+      "eventSourceId": "86b3a08a-8bae-454f-9eb0-241adab7b8ec",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "bpumptokyo",
+          "score": 38,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "87def3e0-ebbc-440b-9200-a415b5937ffe",
+      "gymName": "B-PUMP YOKOHAMA 横浜",
+      "area": "横浜市",
+      "officialSiteUrl": "https://pump-climbing.com/gym/bpump2/",
+      "instagramHandle": "bpumpyokohama",
+      "instagramUrl": "https://www.instagram.com/bpumpyokohama/",
+      "eventSourceId": null,
+      "eventSourceStatus": null,
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "bpumpyokohama",
+          "score": 52,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "aab85c70-b162-4af7-8431-95c41a23dcc5",
+      "gymName": "Base Camp Tokyo 江戸川橋",
+      "area": "文京区",
+      "officialSiteUrl": "https://b-camp.jp/edogawabashi/",
+      "instagramHandle": "basecamp_edogawabashi",
+      "instagramUrl": "https://www.instagram.com/basecamp_edogawabashi/",
+      "eventSourceId": "52558a73-2f55-4990-a8be-e17bc56f25a3",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "basecamp_edogawabashi",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "4845a910-ce76-4f8e-98a7-001d189e6dc0",
+      "gymName": "Base Camp Tokyo（ベースキャンプ東京）錦糸町店",
+      "area": "江東区",
+      "officialSiteUrl": "https://b-camp.jp/kinshicho/",
+      "instagramHandle": "basecamp_kinshicho",
+      "instagramUrl": "https://www.instagram.com/basecamp_kinshicho/",
+      "eventSourceId": "682b12a0-d629-4aa7-9bdc-c26b6ad3868a",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "basecamp_kinshicho",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "70805f78-3154-405b-953a-4bf9c98b07da",
+      "gymName": "Be born（ビーボーン） クライミングジム",
+      "area": "越谷市",
+      "officialSiteUrl": "https://beborn.boy.jp/",
+      "instagramHandle": "be_born_climbing_gym",
+      "instagramUrl": "https://www.instagram.com/be_born_climbing_gym/",
+      "eventSourceId": "8dd8d0fc-d295-40af-bd1c-a676b1d8ea4a",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "be_born_climbing_gym",
+          "score": 14,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "8e34f066-654f-4b39-b057-324f7f9c9fa2",
+      "gymName": "BETA Climbing Gym 新宿店",
+      "area": "新宿区",
+      "officialSiteUrl": "https://beta-climbing.com/",
+      "instagramHandle": "betaclimb",
+      "instagramUrl": "https://www.instagram.com/betaclimb/",
+      "eventSourceId": "b2ab778c-54a5-4985-b493-0f2a92d4f338",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "betaclimb",
+          "score": 38,
+          "eventSourceStatus": "candidate"
+        },
+        {
+          "handle": "betaclimb.odawara",
+          "score": 38,
+          "eventSourceStatus": "candidate"
+        },
+        {
+          "handle": "betaclimb.lesson_practice",
+          "score": 38,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "7366ee64-2013-481f-8e06-ac4274afd2cd",
+      "gymName": "Blue Bird（ブルーバード） ボルダリングジム",
+      "area": "太田市",
+      "officialSiteUrl": "https://climbing-bluebird.jp/",
+      "instagramHandle": "bluebird_bouldering_gym",
+      "instagramUrl": "https://www.instagram.com/bluebird_bouldering_gym/",
+      "eventSourceId": "b4d8e7df-566f-48f4-98d1-e837a1850b9c",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 28,
+      "linkedHandles": [
+        {
+          "handle": "bluebird_bouldering_gym",
+          "score": 28,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "41d4bef6-5247-411b-ae2d-de3e0715c8cf",
+      "gymName": "BONOBO（ボノボ） ボルダリングスペース",
+      "area": "上尾市",
+      "officialSiteUrl": "https://bonobo-bs.com/",
+      "instagramHandle": "bonobo_bs",
+      "instagramUrl": "https://www.instagram.com/bonobo_bs/",
+      "eventSourceId": "fe6959b7-2e09-42fe-9379-a1394c1824c6",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "bonobo_bs",
+          "score": 14,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "a56d217b-c30f-49ce-b654-205f427597f9",
+      "gymName": "BOULCOM 東京店",
+      "area": "千代田区",
+      "officialSiteUrl": "https://boulcom.jp/tokyo/",
+      "instagramHandle": "boulcom_tokyo",
+      "instagramUrl": "https://www.instagram.com/boulcom_tokyo/",
+      "eventSourceId": "c1815b98-8699-40e4-9335-7d9a6ec49687",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "boulcom_tokyo",
+          "score": 38,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "1aa151b5-62bd-4ffb-8b18-bc033c5d847a",
+      "gymName": "BOULCOM（ボルコム） 川崎店",
+      "area": "川崎市",
+      "officialSiteUrl": "https://boulcom.jp/kawasaki/",
+      "instagramHandle": "boulcom_kawasaki",
+      "instagramUrl": "https://www.instagram.com/boulcom_kawasaki/",
+      "eventSourceId": "b1262ae6-cfec-4910-a994-4a330d587420",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "boulcom_kawasaki",
+          "score": 38,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "be7690a9-3e94-42f6-9ac0-53e3f5c9a2e9",
+      "gymName": "Boulder Park Base Camp 東村山",
+      "area": "東村山市",
+      "officialSiteUrl": "https://b-camp.jp/higashimurayama/",
+      "instagramHandle": "basecamp_higashimurayama",
+      "instagramUrl": "https://www.instagram.com/basecamp_higashimurayama/",
+      "eventSourceId": "a03df26a-5459-4848-91b1-7c0ae5f3d938",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "basecamp_higashimurayama",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "c23725ac-e3d2-48d2-8bc2-c5af1d11913d",
+      "gymName": "Boulder Park Base Camp（ベースキャンプ） 飯能店",
+      "area": "飯能市",
+      "officialSiteUrl": "https://b-camp.jp/hanno",
+      "instagramHandle": "basecamp_hanno",
+      "instagramUrl": "https://www.instagram.com/basecamp_hanno/",
+      "eventSourceId": "0c7e2b25-fe74-440d-aceb-7da0aa7a35b5",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "basecamp_hanno",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "90ce8d00-fbfb-41b5-bd58-e1ea30db2a6d",
+      "gymName": "BOULDERS（ボルダーズ） クライミングジム",
+      "area": "足立区",
+      "officialSiteUrl": "https://hokimaboulders.com/",
+      "instagramHandle": "bouldersclimbing",
+      "instagramUrl": "https://www.instagram.com/bouldersclimbing/",
+      "eventSourceId": "8d5c3132-0ac0-43ef-ad5b-759066747b96",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "bouldersclimbing",
+          "score": 14,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "a016fd15-aeb5-483b-9d45-a59e827de8e3",
+      "gymName": "Climb Park Base Camp（ベースキャンプ） 入間店",
+      "area": "入間市",
+      "officialSiteUrl": "https://b-camp.jp/iruma",
+      "instagramHandle": "basecamp_iruma",
+      "instagramUrl": "https://www.instagram.com/basecamp_iruma/",
+      "eventSourceId": "89e0c101-bdf9-4b6e-a2f1-6fbcfe0b4243",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "basecamp_iruma",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "21193105-49e7-4314-a55f-c4f52095150f",
+      "gymName": "Fish and Bird（フィッシュアンドバード）",
+      "area": "江東区",
+      "officialSiteUrl": "https://fish-bird.co.jp/fishandbird/",
+      "instagramHandle": "fishandbird_toyocho",
+      "instagramUrl": "https://www.instagram.com/fishandbird_toyocho/",
+      "eventSourceId": "7af896be-33b1-487b-b917-c1d19c4b01e1",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 66,
+      "linkedHandles": [
+        {
+          "handle": "fishandbird_toyocho",
+          "score": 66,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "9f4715d4-7790-4801-979e-9462002b66f1",
+      "gymName": "HEADROCK（ヘッドロック） クライミングジム",
+      "area": "墨田区",
+      "officialSiteUrl": "https://headrock-climbing.com/",
+      "instagramHandle": "headrockcg",
+      "instagramUrl": "https://www.instagram.com/headrockcg/",
+      "eventSourceId": "29729a2e-530f-4bd6-a77f-f3d9a586f18e",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "headrockcg",
+          "score": 14,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "33333333-3333-4333-8333-333333333333",
+      "gymName": "Noborock Shibuya",
+      "area": "渋谷",
+      "officialSiteUrl": "https://noborock-climbing.com/program/shibuya/",
+      "instagramHandle": "noborock_shibuya",
+      "instagramUrl": "https://www.instagram.com/noborock_shibuya/",
+      "eventSourceId": "f21a8ded-faa9-459d-b8f1-ffe8cb96b45d",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "noborock_shibuya",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        },
+        {
+          "handle": "noborock_gym",
+          "score": 38,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "e8c46135-1765-4bdc-a9c0-8c21d1864256",
+      "gymName": "NOBOROCK 高田馬場店",
+      "area": "新宿区",
+      "officialSiteUrl": "https://noborock-climbing.com/program/takadanobaba/",
+      "instagramHandle": "noborock_takadanobaba",
+      "instagramUrl": "https://www.instagram.com/noborock_takadanobaba/",
+      "eventSourceId": "b2e46ff9-fa74-4413-9269-457f4a24775f",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "noborock_takadanobaba",
+          "score": 38,
+          "eventSourceStatus": "approved"
+        },
+        {
+          "handle": "noborock_gym",
+          "score": 38,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "14f418b5-1f87-48dd-bf05-e41f2096cec4",
+      "gymName": "NOBOROCK 池袋店",
+      "area": "豊島区",
+      "officialSiteUrl": "https://noborock-climbing.com/program/ikebukuro/",
+      "instagramHandle": "noborock_ikebukuro",
+      "instagramUrl": "https://www.instagram.com/noborock_ikebukuro/",
+      "eventSourceId": "35fc4b76-689f-4343-b332-8f7fee0b3373",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "noborock_ikebukuro",
+          "score": 38,
+          "eventSourceStatus": "approved"
+        },
+        {
+          "handle": "noborock_gym",
+          "score": 38,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "0df637aa-549f-4676-acd7-2f89fe812d42",
+      "gymName": "NOBOROCK（ノボロック） 大宮",
+      "area": "さいたま市",
+      "officialSiteUrl": "https://noborock-climbing.com/program/omiya/",
+      "instagramHandle": "noborock_omiya",
+      "instagramUrl": "https://www.instagram.com/noborock_omiya/",
+      "eventSourceId": "8ba066ee-20d7-4f42-ad91-55e680314a89",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "noborock_omiya",
+          "score": 38,
+          "eventSourceStatus": "approved"
+        },
+        {
+          "handle": "noborock_gym",
+          "score": 38,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "f5aa43a2-1eda-4720-99ad-74a42b23c5c0",
+      "gymName": "NOBOROCK（ノボロック） 町田店",
+      "area": "町田市",
+      "officialSiteUrl": "https://noborock-climbing.com/program/machida/",
+      "instagramHandle": "noborock_machida",
+      "instagramUrl": "https://www.instagram.com/noborock_machida/",
+      "eventSourceId": "324f7646-af6a-4cf5-8c7f-eb995d1c4f2a",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 38,
+      "linkedHandles": [
+        {
+          "handle": "noborock_machida",
+          "score": 38,
+          "eventSourceStatus": "approved"
+        },
+        {
+          "handle": "noborock_gym",
+          "score": 38,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "36b6934f-dc48-4524-9953-c9f9edbc25a9",
+      "gymName": "Urban Base Camp 新橋",
+      "area": "港区",
+      "officialSiteUrl": "https://b-camp.jp/shinbashi/",
+      "instagramHandle": "basecamp_shinbashi",
+      "instagramUrl": "https://www.instagram.com/basecamp_shinbashi/",
+      "eventSourceId": "7376a46b-7e28-446d-afe3-21f54866e8b8",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "basecamp_shinbashi",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "e55b9ba4-f1a0-4e2c-b11d-89fb11f58f45",
+      "gymName": "Urban Base Camp 新宿",
+      "area": "新宿区",
+      "officialSiteUrl": "https://b-camp.jp/shinjuku/",
+      "instagramHandle": "basecamp_shinjuku",
+      "instagramUrl": "https://www.instagram.com/basecamp_shinjuku/",
+      "eventSourceId": "ae3bf68c-ef39-4336-8496-08ad3618b804",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 52,
+      "linkedHandles": [
+        {
+          "handle": "basecamp_shinjuku",
+          "score": 52,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "43ade9dc-abe8-4f5d-a5f7-8de0058c63bc",
+      "gymName": "エナジークライミングジム 浦和店",
+      "area": "さいたま市",
+      "officialSiteUrl": "https://energy-climbing.co.jp/urawa/",
+      "instagramHandle": "energyurawa",
+      "instagramUrl": "https://www.instagram.com/energyurawa/",
+      "eventSourceId": "7046b655-8cd4-4087-a233-db5bb52aa729",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 0,
+      "linkedHandles": [
+        {
+          "handle": "energyurawa",
+          "score": 0,
+          "eventSourceStatus": "approved"
+        },
+        {
+          "handle": "energy_kashiwa",
+          "score": 0,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "2d397dc1-37b7-427d-9380-f4de8eb246b6",
+      "gymName": "クライミングジム Penguin（ペンギン）",
+      "area": "さいたま市",
+      "officialSiteUrl": "https://penguin-climb.com/",
+      "instagramHandle": "penguinclimb",
+      "instagramUrl": "https://www.instagram.com/penguinclimb/",
+      "eventSourceId": "980b0f60-2f81-4f01-b602-b141409f808e",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "penguinclimb",
+          "score": 14,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "3365883b-6d08-4540-9776-2b8109210e3d",
+      "gymName": "クライミングジム RANBO（ランボ）",
+      "area": "伊勢崎市",
+      "officialSiteUrl": "https://ranbo.jp/",
+      "instagramHandle": "climbing_gym_ranbo",
+      "instagramUrl": "https://www.instagram.com/climbing_gym_ranbo/",
+      "eventSourceId": "afc1e405-5c8a-42f9-b244-f084f79529f8",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "climbing_gym_ranbo",
+          "score": 14,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "1033b74b-b601-4e9c-ae3a-8a804b2476f1",
+      "gymName": "クライミングジム Walrus（ウォルラス）",
+      "area": "久喜市",
+      "officialSiteUrl": "https://www.walrus.co.jp/",
+      "instagramHandle": "climbinggym_walrus",
+      "instagramUrl": "https://www.instagram.com/climbinggym_walrus/",
+      "eventSourceId": "b76cb4ec-9f4c-40c1-986c-dfbad22c2725",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 14,
+      "linkedHandles": [
+        {
+          "handle": "climbinggym_walrus",
+          "score": 14,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "a9e715eb-8376-4563-803d-19292241f031",
+      "gymName": "クライミングジム ウォールストリート",
+      "area": "前橋市",
+      "officialSiteUrl": "https://wallst.jp/",
+      "instagramHandle": "climbinggym_wallstreet",
+      "instagramUrl": "https://www.instagram.com/climbinggym_wallstreet/",
+      "eventSourceId": "383a857a-b8ee-49aa-9ba4-31d3b4f1e410",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 0,
+      "linkedHandles": [
+        {
+          "handle": "climbinggym_wallstreet",
+          "score": 0,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "3af6f862-964f-40de-bd7a-540e86d7d929",
+      "gymName": "クライミングジム マッドロック",
+      "area": "八王子市",
+      "officialSiteUrl": "https://www.bouldering-climbinggym-madrock.com/",
+      "instagramHandle": "madrock.cg.jp_online",
+      "instagramUrl": "https://www.instagram.com/madrock.cg.jp_online/",
+      "eventSourceId": "ade2f2c1-a869-4818-bc70-86283c894d21",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 0,
+      "linkedHandles": [
+        {
+          "handle": "madrock.cg.jp_online",
+          "score": 0,
+          "eventSourceStatus": "approved"
+        },
+        {
+          "handle": "climbinggym_madrock",
+          "score": 0,
+          "eventSourceStatus": null
+        }
+      ]
+    },
+    {
+      "gymId": "eb6a45ce-f6ec-4499-a598-022ee69d2627",
+      "gymName": "クライミングハウス OKKU ROCK（オックロック）",
+      "area": "南埼玉郡",
+      "officialSiteUrl": "https://okkurock.com/",
+      "instagramHandle": "okkurock",
+      "instagramUrl": "https://www.instagram.com/okkurock/",
+      "eventSourceId": "130a0146-a8f8-4f45-bb5d-8f7680b3cc24",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 28,
+      "linkedHandles": [
+        {
+          "handle": "okkurock",
+          "score": 28,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "a386da17-465f-4830-b5b6-44aa399e883e",
+      "gymName": "スポーツクライミングジム エキサイティング三茶",
+      "area": "世田谷区",
+      "officialSiteUrl": "https://exciting-sancha.com/about/",
+      "instagramHandle": "exciting_sancha",
+      "instagramUrl": "https://www.instagram.com/exciting_sancha/",
+      "eventSourceId": "924eff10-8759-4291-8975-8c9afb0f9ace",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 0,
+      "linkedHandles": [
+        {
+          "handle": "exciting_sancha",
+          "score": 0,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    },
+    {
+      "gymId": "470799de-9fc1-4398-9162-78d682438b76",
+      "gymName": "ディーボルダリングプラス蘇我",
+      "area": "千葉市",
+      "officialSiteUrl": "https://www.d-b-c.jp/top/soga/",
+      "instagramHandle": "dbouldering_soga",
+      "instagramUrl": "https://www.instagram.com/dbouldering_soga/",
+      "eventSourceId": "5c60bf4c-316b-4c7a-b8f8-19cf9fbf2821",
+      "eventSourceStatus": "approved",
+      "confidenceScore": 0,
+      "linkedHandles": [
+        {
+          "handle": "dbouldering_soga",
+          "score": 0,
+          "eventSourceStatus": "approved"
+        }
+      ]
+    },
+    {
+      "gymId": "5d874629-48ea-424a-9321-b8c24d25548b",
+      "gymName": "ディーボルダリングプラス八千代",
+      "area": "八千代市",
+      "officialSiteUrl": "https://www.d-b-c.jp/yachiyo-news/facility",
+      "instagramHandle": "dbouldering_yachiyo",
+      "instagramUrl": "https://www.instagram.com/dbouldering_yachiyo/",
+      "eventSourceId": "b9a76512-a0d2-4a4b-8ca3-0a8796cea018",
+      "eventSourceStatus": "candidate",
+      "confidenceScore": 0,
+      "linkedHandles": [
+        {
+          "handle": "dbouldering_yachiyo",
+          "score": 0,
+          "eventSourceStatus": "candidate"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "gymId": "d00b694f-ef48-4bca-ae13-56c11194465b",
+      "gymName": "Aladdin（アラジン） クライミング",
+      "sourceUrl": "https://www7a.biglobe.ne.jp/~aladdinclimbing/",
+      "handles": [
+        "aladdinclimbing"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "a3ef4def-5c09-4e49-ac12-c556018e8c2c",
+      "gymName": "ALTIOR（アルティオール）クライミングジム",
+      "sourceUrl": "https://altior-gym.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "d4331503-ad3f-4573-b526-046037701a2c",
+      "gymName": "BEAKS（ビークス） クライミングスタジオ",
+      "sourceUrl": "https://beaksc.wixsite.com/beaks",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "df5c505f-3ba8-4d96-874a-0b460e2a90be",
+      "gymName": "BERRY WALL（ベリーウォール ） クライミングジム",
+      "sourceUrl": "https://www.berrywall.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "7cec0c32-6095-41b8-a69a-b4e10b149400",
+      "gymName": "BolBol（ボルボル）",
+      "sourceUrl": "https://bol-bol.com/",
+      "handles": [
+        "bolbol4928"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "f20503e6-913b-4a7c-b18a-d33355c10ca0",
+      "gymName": "Bouldering Spot Landmark（ボルダリングスポットランドマーク）",
+      "sourceUrl": "https://boulderingspot-landmark.com/",
+      "handles": [
+        "bouldering_spot_landmark"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "9ed7f459-5a99-4c7b-8932-fb8ef79c0947",
+      "gymName": "CLIMBING FRONT CARAMBA（カランバ）",
+      "sourceUrl": "https://www.caramba.jp/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "d4836ff2-71a6-42b1-a421-c3f6a9c30851",
+      "gymName": "Community Park Yashio",
+      "sourceUrl": "https://coubic.com/communitypark-yashio",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "aa4584fd-5e59-4281-b05c-4624516e7205",
+      "gymName": "craze（クレイズ） ボルダリングジム 川口店",
+      "sourceUrl": "https://craze-climbing.com/kawaguchi/",
+      "handles": [
+        "craze.bouldering.gym"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "618a4428-855f-4f24-9877-4fa7f8bce26d",
+      "gymName": "DOGWOOD（ドッグウッド） クライミングジム 高津店",
+      "sourceUrl": "https://dogwood-climbing.jp/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "c195b585-0fab-4952-8894-c7f7959f7314",
+      "gymName": "ECHOES CLIMBING（エコーズ クライミング）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "9a5974fc-44ab-4631-b75d-2dd5c20fda66",
+      "gymName": "Everfree Climbing Gym",
+      "sourceUrl": "https://everfree-climbing.com/",
+      "handles": [
+        "everfreeclimbinggym"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "97041ec7-1e2d-4c36-86c4-706d11892ced",
+      "gymName": "Fits（フィッツ） クライミングジム",
+      "sourceUrl": "https://www.fits-climbing.com/",
+      "handles": [
+        "fits_climbing_gym"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "d67b3692-ad47-4ec8-bf62-712a0d61e13b",
+      "gymName": "folk（フォーク） ボルダリングジム",
+      "sourceUrl": "https://folkboulderinggym.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "fb172082-0b72-477e-b234-dcc5e0851511",
+      "gymName": "Forge bouldering",
+      "sourceUrl": "https://www.forge-bouldering.com/",
+      "handles": [
+        "forge.bouldering"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "45d64c24-db93-466f-a268-29604a15c410",
+      "gymName": "GRIMROCK（グリムロック） クライミングジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "1c8f6b8f-7f7e-46ae-91d0-fb26487cc781",
+      "gymName": "JET SET（ジェットセット） climbing gym",
+      "sourceUrl": "https://www.jetsetclimbing.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "616c2465-f322-46de-9edf-0a7e6a8b4649",
+      "gymName": "KaChill カチル",
+      "sourceUrl": "https://kachill.jimdosite.com/",
+      "reason": "http 403"
+    },
+    {
+      "gymId": "38666c03-224b-4d2e-a443-724979fb8739",
+      "gymName": "KALMA（カルマ） クライミングジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "9b320430-1a6d-4dde-be1f-86c0e00637e6",
+      "gymName": "LIMESTONE（ライムストーン） クライミングクラブ",
+      "sourceUrl": "https://www.limestone.jp/",
+      "handles": [
+        "limestone_climbing"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "3a637988-6507-4130-92a6-5bbea1b5068f",
+      "gymName": "livedoor URBAN SPORTS PARK（ライブドアアーバンスポーツパーク）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "d54e0f56-e258-4189-8a93-eb1fbe49ca94",
+      "gymName": "Lutra Lutra（ルトラルトラ）",
+      "sourceUrl": "https://www.lutra-lutra.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "3f3cc1a9-eddb-4599-bcad-984d41864d79",
+      "gymName": "MAMMUT ボルダリングジム 横浜",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "413a4d8f-e672-4729-880b-ec21f5d65786",
+      "gymName": "Monolithe（モノリス） ボルダリングジム",
+      "sourceUrl": "https://www.boulderinggym.jp/",
+      "handles": [
+        "monolithe.254",
+        "monolithe.sakado"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "758f06cb-1f38-48fb-8bdf-d9b7355a383e",
+      "gymName": "MOUNTAIN CLIFF（マウンテンクリフ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "fda8f369-fb63-441e-9a7c-4a615528e7a9",
+      "gymName": "Next Gen Bouldering（ネクストジェンボルダリング）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "6bb2d947-c42f-4b7b-bb84-a9b1b38a7cd3",
+      "gymName": "NOBOROCK（ノボロック） 溝ノ口店",
+      "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/",
+      "handles": [
+        "noborock_gym",
+        "noborock_mizonokuchi"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "354bc104-0d50-43bd-8f15-fc81562e5635",
+      "gymName": "PARKERS TOKYO",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "0908158f-d62f-4bf3-85a5-530724e4d443",
+      "gymName": "PERADORA（ペルアドラ） クライミングジム 横浜",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "cd59c9ad-53f9-4b70-accc-db11b4a08f50",
+      "gymName": "PIGLET（ピグレット） クライミングジム",
+      "sourceUrl": "https://piglet-climb.com/",
+      "reason": "fetch failed"
+    },
+    {
+      "gymId": "f7b19721-dbf6-4ab5-9ddf-a54c280721b8",
+      "gymName": "PRIME CLIMBING",
+      "sourceUrl": "https://primeclimbing.com/",
+      "handles": [
+        "primeclimbing"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "22f54f25-ec31-4cfa-bf9c-ad65595024c3",
+      "gymName": "Prost（プロスト） クライミングクラブ",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "c403e95d-7590-4edc-8f52-9b2c374a4b65",
+      "gymName": "PUMP2 川崎",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "5dd6d614-c619-446f-8786-68858971307e",
+      "gymName": "Quail（クエール） クライミングジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "b32b8de0-764d-460e-8d7e-ca2dc03e5208",
+      "gymName": "Rhino and Bird（ライノアンドバード）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "2266b88e-0fad-41bb-81b0-161599ff5108",
+      "gymName": "ROCK CUBE（ロックキューブ） クライミングジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "6d32ce37-8266-418f-a2ba-45e912e7d34b",
+      "gymName": "ROCKCRAFT（ロッククラフト）川越",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "281a38e4-520e-4875-a216-aa4973c8c063",
+      "gymName": "ROCKY Climbing & Fitness Gym 新宿曙橋店",
+      "sourceUrl": "https://www.rockyclimbing.com/shinjukuakebonobashi/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "22222222-2222-4222-8222-222222222222",
+      "gymName": "Rocky Shinagawa",
+      "sourceUrl": "https://www.rockyclimbing.com/shinagawa/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "73e20f65-a73f-4c13-bedb-2093a2b8c034",
+      "gymName": "ROCKY（ロッキー） つくば阿見店",
+      "sourceUrl": "https://www.rockyclimbing.com/tsukubaami/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "b896981d-3641-44fa-bdc1-588e4d5fb3af",
+      "gymName": "ROCKY（ロッキー） 印西店",
+      "sourceUrl": "https://www.rockyclimbing.com/inzai/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "00a033a3-21bd-477d-86aa-93ffaff982f0",
+      "gymName": "ROCKY（ロッキー） 船橋店",
+      "sourceUrl": "https://www.rockyclimbing.com/funabashi/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "b1322186-0a0a-4e46-8ade-c96de0935181",
+      "gymName": "Rout f（ルートエフ） ボルダリングジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "c6371975-6177-4f22-86a8-1c4255a8968d",
+      "gymName": "Spole（スポーレ） クライミングジム",
+      "sourceUrl": "https://spoleclimbinggym.com/",
+      "handles": [
+        "spoleclimbinggym"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "aaedbee1-37d4-4d7c-a935-9b9e817bd0eb",
+      "gymName": "SUNCUL（サンカル）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "ffe1064a-cbe2-416e-a204-d0fd2d81d413",
+      "gymName": "the FACTORY（ファクトリー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "9eace5d0-5841-4cfc-b7b6-db2cf34f2b61",
+      "gymName": "THE STONE SESSION TOKYO",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "ab478326-7a56-4b55-96b4-fe96ff3cca7c",
+      "gymName": "TRICK STAR（トリックスター） クライミングジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "b8a81a6b-bf2f-41c8-89bb-0f6070becb4a",
+      "gymName": "エナジークライミングジム 柏店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "2e92a7f5-e693-4d97-948a-22bdcfc2fea0",
+      "gymName": "ギャラクシティ",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "4e24b66e-e080-4da5-9ccc-d2f1dfe3ce8f",
+      "gymName": "クライミング Wisteria（ウィステリア）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "537c4d32-a25f-4723-89b7-7384e2384220",
+      "gymName": "クライミングカフェ isara（イサラ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "cf795188-0312-4b77-be43-63df182b9c42",
+      "gymName": "クライミングジム CELL（セル）",
+      "sourceUrl": "https://www.climb-cell.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "df349dc8-1848-4f8d-9a52-b6cdcde2bcc8",
+      "gymName": "クライミングジム Cipher（サイファー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "bb53776f-eef0-4004-92e6-dc3d1ce8ae94",
+      "gymName": "クライミングジム COZY",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "279864ef-39d3-4cc6-849e-debd0a939142",
+      "gymName": "クライミングジム FLASH（フラッシュ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "4ec4c90d-1fa9-437f-b95b-20964503148e",
+      "gymName": "クライミングジム GIRI.GIRI（ギリギリ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "a48a7d03-b65c-494e-998f-47c51875d092",
+      "gymName": "クライミングジム GooFee（グーフィー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "bb1899bd-c62f-4b11-9b48-78487085c185",
+      "gymName": "クライミングジム hangout（ハングアウト）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "6370b542-9ae1-4434-9dc3-e7ad20e6b04a",
+      "gymName": "クライミングジム Hutte（ヒュッテ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "a60314ad-1fdf-4492-a16e-6cdda0e97a98",
+      "gymName": "クライミングジム J-WALL",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "d7c8da4d-f80e-4b89-ab96-01b37555ebfa",
+      "gymName": "クライミングジム LOST CANYON（ロストキャニオン）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "1122c275-59a8-4d1c-ab84-bf81a47c29a2",
+      "gymName": "クライミングジム MABOO（マーブー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "4f7b5d98-1487-46b9-9c00-edec1b36554d",
+      "gymName": "クライミングジム MARU（マル）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "f71b56c0-7f53-4b87-a401-d4478d76f964",
+      "gymName": "クライミングジム NICO（ニコ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "a4daae09-1443-480a-9788-d04329529f79",
+      "gymName": "クライミングジム NOSE（ノーズ） 町田店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "2b3d3240-f860-4465-9b88-079b1c3c196d",
+      "gymName": "クライミングジム OliOli（オリオリ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "e63241e7-0d15-4435-b546-a268d11f9c05",
+      "gymName": "クライミングジム POCKET（ポケット）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "f5b55f14-9b0f-4c30-84a6-ef94cee55516",
+      "gymName": "クライミングジム prob（プロブ）",
+      "sourceUrl": "https://prob.pupu.jp/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "e6c7a098-e7c6-4365-a5ca-68939a3a09a8",
+      "gymName": "クライミングジム Project（プロジェクト）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "a5a38cf7-3271-43c7-8086-66e1d523156a",
+      "gymName": "クライミングジム PUMP1 川口",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "3dea42ce-1435-4fa7-9bf6-0c2c28c60d46",
+      "gymName": "クライミングジム RISE（ライズ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "05452936-36ab-49c0-9d29-f80c4fd02e7e",
+      "gymName": "クライミングジム ROCKBEANS（ロックビーンズ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "29e987a9-d66a-4f55-81c4-aa1eb1ff0a2b",
+      "gymName": "クライミングジム ROCKLANDS（ロックランズ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "aba2fbd5-b248-467e-8d2d-9fdea51d002a",
+      "gymName": "クライミングジム RocKY’N（ロッキン）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "393493cd-08a0-4fa3-afaf-30cf937aaf39",
+      "gymName": "クライミングジム SEA ROCK（シーロック）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "0f76961b-e826-4126-a7ee-5ee8fbcbcc26",
+      "gymName": "クライミングジム SLOTH（スロース）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "a0dba24d-1c5a-4665-ab69-0c65781000fe",
+      "gymName": "クライミングジム THREE PEAKS（スリーピークス）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "d6b1b755-7174-47cd-a555-8f96a4225466",
+      "gymName": "クライミングジム TRIP",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "5592bd8e-61ec-44c3-8aff-07f155f97f7c",
+      "gymName": "クライミングジム VOLNY（ボルニー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "7f590210-a711-4f8f-bd5f-e5d90a80dbe0",
+      "gymName": "クライミングジム WESTROCK（ウエストロック） 府中店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "119ecc3f-3d1b-43ff-8fb3-253253afd387",
+      "gymName": "クライミングジム WESTROCK（ウエストロック） 調布店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "99918b92-0718-4018-8260-e52194cf9514",
+      "gymName": "クライミングジム WHITE ROCK（ホワイトロック）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "8fee5af3-9ed8-41e2-8de8-33fe65d46309",
+      "gymName": "クライミングジム ZE-RO（ゼロ） さいたま店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "7c4fae00-9b1d-4999-86a1-01ef14a171b9",
+      "gymName": "クライミングジム ZE-RO（ゼロ） 伊勢崎店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "4d359a38-6b50-4074-bf4e-7c2649aa2110",
+      "gymName": "クライミングジム ZE-RO（ゼロ） 宇都宮下栗店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "c04d21a1-8aa6-47e6-b8f1-f52363610977",
+      "gymName": "クライミングジム ZE-RO（ゼロ） 宇都宮店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "64ba8d62-c103-436a-baa0-0750d31e6440",
+      "gymName": "クライミングジム ZE-RO（ゼロ） 水戸店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "25eea3be-7d7c-4069-b523-eb9486c31e11",
+      "gymName": "クライミングジム アーク",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "05df7861-2dc5-4153-aab4-e94f3fe2bb91",
+      "gymName": "クライミングジム ドラセナ",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "fc608aa3-138a-4b0a-8efa-8ada13306d38",
+      "gymName": "クライミングジム ビッグロック 日吉店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "eebbc39a-1464-4eab-9786-547d07acb35b",
+      "gymName": "クライミングジム ランナウト",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "ce949920-ca8c-4b2f-8c02-6d6b6f51acc2",
+      "gymName": "クライミングジム＆ヨガスタジオ PLAY",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "870837c6-629e-41bd-953c-f2e21fc38e3d",
+      "gymName": "クライミングジムSPIDER",
+      "sourceUrl": "https://climbing-spider.com/",
+      "handles": [
+        "climbinggymspider"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "76be8e0b-1748-436b-818e-eb612f47dd21",
+      "gymName": "クライミングジム猿吉",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "6e26b45f-b9f8-49d4-b358-534fd1fdbe4f",
+      "gymName": "クライミングスタジオ カメロパルダリス",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "f12c580e-8b6d-4c1e-a162-6163e4ae9f48",
+      "gymName": "クライミングスペース Ledge（レッジ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "719f9b7d-e7c9-45a5-90f8-e9468434a661",
+      "gymName": "クライミングパーク STONE MAGIC（ストーンマジック）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "c98cdb87-1b8c-45c5-8539-eb3595bcebfc",
+      "gymName": "クライミングパーク カルチェロッシュ",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "b7f3ac25-fd42-4d9e-b5b5-93e8a82cee0c",
+      "gymName": "クライミングバム 横浜店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "2d3d401f-6757-454c-8102-eca078fb18d0",
+      "gymName": "クライミング飛鳥",
+      "sourceUrl": "https://climbing-aska.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "d6eae2b7-c781-4896-b037-6654cd82c36f",
+      "gymName": "コナミスポーツクラブ 川越",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "f4b04a90-061f-4086-93a3-6376c5fcfe0d",
+      "gymName": "コナミスポーツクラブ 池袋",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "96a7aff1-4586-470e-bc1c-b81fe7084c53",
+      "gymName": "スポーツクライミングスクール・ジム J&S 池袋",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "32cfe543-e1f3-4fb9-9a79-527189c01d22",
+      "gymName": "スポドリ！",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "29496220-79f8-4f54-8847-998ff34aef64",
+      "gymName": "ディーボルダリング 八王子",
+      "sourceUrl": "https://www.d-b-c.jp/top/hachioji/",
+      "handles": [
+        "dbouldering_hachioji"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "dfb30d0f-f030-4327-a8d9-fc5f9aa261c1",
+      "gymName": "ディーボルダリング 綱島",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "1fcb2b73-9389-4a1d-9ed9-cd3b58a9075a",
+      "gymName": "ディーボルダリングプラス 西八王子",
+      "sourceUrl": "https://www.d-b-c.jp/top/nishihachioji/",
+      "handles": [
+        "dbouldering_plus_nishihachioji"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "6ce51abf-a950-4b93-907a-6885b1d14f17",
+      "gymName": "ディーボルダリングプラスリード海浜幕張",
+      "sourceUrl": "https://www.d-b-c.jp/top/kaihin-makuhari/",
+      "handles": [
+        "dbouldering_kaihinmakuhari"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "6492c8bc-ed33-4fb4-b75f-671fda28602e",
+      "gymName": "ディーボルダリングプラスリード立川",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "95f0b476-aeae-4794-af5d-dd1add4e149d",
+      "gymName": "ディーボルダリングプラス津田沼",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "24327f0d-e3f7-4700-aa39-5d153779ed3a",
+      "gymName": "ディーボルダリング本厚木",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "e7776d13-4476-4d93-8542-d0feea5ccf47",
+      "gymName": "ノースパークビル ボルダリングジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "c7e5a0ee-7f07-40f6-8669-14d08e0f9f75",
+      "gymName": "はだの丹沢クライミングパーク",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "11bdaa63-cf23-4308-959c-2e2b6da0a01c",
+      "gymName": "フィットネスクライミングスタジオ LAGO（ラーゴ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "541bf15d-891a-4905-a0b8-88a272be37e6",
+      "gymName": "ボルダリング deer（ディア）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "ac07308f-4495-4614-a2b4-ae4dccf79bdc",
+      "gymName": "ボルダリングガレージ FUNNY（ファニー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "910e96b0-7ecd-4be9-9652-108e708deb7e",
+      "gymName": "ボルダリングサイトB3春日部",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "b488733f-fc4d-46f1-88f7-350ecbffcbee",
+      "gymName": "ボルダリングジム BEAR’S ROCK（ベアーズロック）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "0c920fd2-faca-4a9e-b981-b65c28556164",
+      "gymName": "ボルダリングジム Boulder Boys Klub",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "47fc54ea-1964-4b79-9156-8ae850a24e16",
+      "gymName": "ボルダリングジム GRANNY（グラニー） 南流山店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "13633f0d-3c10-4289-a030-6a6a57d8cd42",
+      "gymName": "ボルダリングジム Lamp+（ランププラス） 愛甲石田店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "309015ec-d7ce-4f6e-b6c7-fbda9b54eced",
+      "gymName": "ボルダリングジム OVERGROUND（オーバーグラウンド）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "590e9606-2e87-4986-8cef-2df8e25a92e4",
+      "gymName": "ボルダリングジム POP IN（ポップイン）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "48b56c70-b0cf-463d-a538-5408a3bcbaaf",
+      "gymName": "ボルダリングジム Rock&Wall（ロックアンドウォール）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "caabea21-36c1-452c-bc3f-79e8ed47bab5",
+      "gymName": "ボルダリングジム ROCKSPOT（ロックスポット）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "44f13bfb-1982-4208-b148-08ee73d6ed62",
+      "gymName": "ボルダリングジム Share（シェア）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "13aa5fbe-4fd7-40b8-bbd9-bce49dda98f0",
+      "gymName": "ボルダリングジム SPEEDY（スピーディー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "19158ef6-d0ca-41ad-bc2e-33fce961e89b",
+      "gymName": "ボルダリングジム Style crew",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "f348ddd2-172f-45e9-a8ea-916729d8f33c",
+      "gymName": "ボルダリングジム T-Rox（ティーロックス）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "5e5d15e0-3cc4-48cf-b41e-2ad0bdf2987a",
+      "gymName": "ボルダリングジム UNDERGROUND（アンダーグラウンド）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "07c57f88-55b5-4802-ad5e-c59393be2e37",
+      "gymName": "ボルダリングジム Vortex（ボルテックス）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "95d97ea2-0aa6-44c7-864e-a3892404e2ed",
+      "gymName": "ボルダリングジム ZONE（ゾーン）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "53e096cb-2701-4191-9484-404297837f5c",
+      "gymName": "ボルダリングジム グラニー 東上野店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "eb9ae1ec-4769-4a7c-9b4d-817ff21e0b02",
+      "gymName": "ボルダリングジム ジャムセッション三鷹",
+      "sourceUrl": "https://xn--xckbj6a9jra6a4gy403a4b6j.com/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "143e39c8-78ed-4732-94e0-90310adf3239",
+      "gymName": "ボルダリングジム フライハイト",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "ab954ca2-669d-4046-885d-160d7f3e29a3",
+      "gymName": "ボルダリングジム モンキーマジック つくばQ’t",
+      "sourceUrl": "https://tsukuba-mm.jp/",
+      "handles": [
+        "monkeymagic_tsukuba"
+      ],
+      "reason": "instagram links found, but none confidently match this gym"
+    },
+    {
+      "gymId": "4274da34-a6c7-44c5-8a9c-6fa37d2d6621",
+      "gymName": "ボルダリングジム 攀（HANN1） 寒川店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "e8757066-bae3-4a47-8d44-8b56175302f7",
+      "gymName": "ボルダリングジム 攀（HANN2） 厚木店",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "5f9b2226-0616-4e1d-a36a-5acec13cc389",
+      "gymName": "ボルダリングジム 登攀道場",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "d141e505-341e-4dbc-bd1d-edb0ae8bd6e0",
+      "gymName": "ボルダリングジム 空の向こうへ四足歩行（そらよん）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "a3c7ab12-837a-41b4-9ff7-de76c3cb8679",
+      "gymName": "ボルダリングスペース BLEAU（ブロー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "7da08be9-2f03-49ec-9dbb-a361050befa2",
+      "gymName": "ボルダリングスペース H（エイチ）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "6528d082-231d-41b7-9de8-d0fb10c0e393",
+      "gymName": "ボルダリングスペース HAT（ハット）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "8e173f34-e242-4d4c-b744-5366cb12f34f",
+      "gymName": "マグレブエスト",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "95b60b78-05f9-4201-9ed3-e87ac5c463e2",
+      "gymName": "ロッククライミング 三鷹ジム",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "dab8f5da-a2df-4efe-a6d7-d48bdb32c1a6",
+      "gymName": "三宅村レクリエーションセンター",
+      "sourceUrl": "https://www.vill.miyake.tokyo.jp/recreation/shisetsu.html",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "a73a0a3d-a606-4af5-b1a3-2dc7dafc39e4",
+      "gymName": "加須市民体育館",
+      "sourceUrl": "https://www.city.kazo.lg.jp/benriservice/map/shisetsu/sisetugaiyou_supotu/30292.html",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "b5eecfe8-c8e3-4aec-b994-de6b7bba9759",
+      "gymName": "壬生町総合運動場 ボルダリング施設",
+      "sourceUrl": "https://www.town.mibu.tochigi.jp/docs/2015021200047/",
+      "reason": "no instagram link on official site"
+    },
+    {
+      "gymId": "7f7bdd1d-4bcf-4929-bc72-8543961c087e",
+      "gymName": "小鹿野町クライミングパーク 神怡舘",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "ce1b5a53-c90b-4c1f-83bc-046d68231fbf",
+      "gymName": "松山下公園総合体育館",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "81333fbc-fe45-46d3-9c1e-c2a2f2dab96c",
+      "gymName": "水戸シティロックジム avue（アヴュー）",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "c728b4f7-78c0-4e46-ba9c-ad047d5b78e7",
+      "gymName": "深川スポーツセンター",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "cbd8fa20-13e8-4330-9bb1-acbe2829c6b7",
+      "gymName": "深谷クライミングヴィレッジ",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "fb9cf779-5a9d-41b1-99f6-859fa2207305",
+      "gymName": "神奈川県立 山岳スポーツセンター",
+      "reason": "no official site url"
+    },
+    {
+      "gymId": "a6ddc7ae-81c8-4768-956c-a8b0c89debf8",
+      "gymName": "葛飾区東金町運動場 スポーツクライミングセンター",
+      "reason": "no official site url"
+    }
+  ]
+}

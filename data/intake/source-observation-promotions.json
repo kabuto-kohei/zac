@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-13T15:06:05.895Z",
+  "generatedAt": "2026-05-16T00:28:30.763Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -7,58 +7,11 @@
     "excludedFields": "full captions, images, videos"
   },
   "summary": {
-    "observationsRead": 43,
-    "promotions": 2,
-    "skipped": 41
+    "observationsRead": 96,
+    "promotions": 0,
+    "skipped": 96
   },
-  "promotions": [
-    {
-      "eventId": "0d769202-6769-4a8e-b788-362b2eabb832",
-      "observationId": "e00b42e4-af97-45ed-a32b-38242aca35b2",
-      "gymId": "281a38e4-520e-4875-a216-aa4973c8c063",
-      "gymName": "ROCKY Climbing & Fitness Gym 新宿曙橋店",
-      "category": "event",
-      "title": "🔥宿ロキでもMOVING3開催間近‼️🔥",
-      "summary": "ROCKY 新宿曙橋店の公式Instagram投稿をイベントとして確認。 日付候補は2026/05/19。公開UIに出す前に詳細確認が必要。",
-      "description": "ROCKY 新宿曙橋店の公式Instagram投稿をイベントとして確認。 日付候補は2026/05/19。公開UIに出す前に詳細確認が必要。 詳細や続報は公式Instagramで確認してください。",
-      "startsAt": "2026-05-19T01:00:00.000Z",
-      "endsAt": "2026-05-23T12:00:00.000Z",
-      "capacityText": "公式Instagramで確認",
-      "sourceType": "official_instagram",
-      "sourceUrl": "https://www.instagram.com/p/DYRxikUpUZV/",
-      "sourceAccount": "ROCKY 新宿曙橋店",
-      "sourcePublishedAt": "2026-05-13T11:50:37.000Z",
-      "sourceFetchedAt": "2026-05-13T15:02:03.357Z",
-      "sourceQuote": "🔥宿ロキでもMOVING3開催間近‼️🔥",
-      "extractionConfidence": "0.72",
-      "reviewStatus": "pending",
-      "reviewedAt": null,
-      "status": "draft"
-    },
-    {
-      "eventId": "6251d1eb-7a30-4087-b86a-fc82569ae051",
-      "observationId": "37e00f5c-76bc-4425-b2b8-1c5b447d17e9",
-      "gymId": "e8c46135-1765-4bdc-a9c0-8c21d1864256",
-      "gymName": "NOBOROCK 高田馬場店",
-      "category": "private_booking",
-      "title": "📢短縮営業のお知らせ📢",
-      "summary": "NOBOROCK 高田馬場店の公式Instagram投稿を貸切として確認。 日付候補は2026/05/28。公開UIに出す前に詳細確認が必要。",
-      "description": "NOBOROCK 高田馬場店の公式Instagram投稿を貸切として確認。 日付候補は2026/05/28。公開UIに出す前に詳細確認が必要。 詳細や続報は公式Instagramで確認してください。",
-      "startsAt": "2026-05-28T01:00:00.000Z",
-      "endsAt": "2026-05-28T02:00:00.000Z",
-      "capacityText": "公式Instagramで確認",
-      "sourceType": "official_instagram",
-      "sourceUrl": "https://www.instagram.com/p/DYRnWvgRwY-/",
-      "sourceAccount": "NOBOROCK 高田馬場店",
-      "sourcePublishedAt": "2026-05-13T10:21:02.000Z",
-      "sourceFetchedAt": "2026-05-13T15:02:03.357Z",
-      "sourceQuote": "📢短縮営業のお知らせ📢",
-      "extractionConfidence": "0.72",
-      "reviewStatus": "pending",
-      "reviewedAt": null,
-      "status": "draft"
-    }
-  ],
+  "promotions": [],
   "skipped": [
     {
       "id": "5842b5ab-8946-43e4-8d8c-9489c13e9355",
@@ -67,21 +20,75 @@
       "reason": "title is too weak for event candidate"
     },
     {
+      "id": "81295f20-4ea3-461c-96eb-50326de63a9a",
+      "sourceUrl": "https://www.instagram.com/p/DSwhsfnEidc/",
+      "title": "#年末年始のお知らせ",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "af94e13c-9542-4078-95b8-50e3aadeff9d",
+      "sourceUrl": "https://www.instagram.com/p/DTR22LmEwiV/",
+      "title": "TRIPの小・中学生対象キッズボルダリングスクールは、カラダだけじゃない❗️",
+      "reason": "past start date"
+    },
+    {
+      "id": "b0b0dff7-6197-42ee-a19b-4d4e74d4b30b",
+      "sourceUrl": "https://www.instagram.com/p/DS4Jx-3D8Qg/",
+      "title": "府中店【B-SCORE 7th Season",
+      "reason": "past start date"
+    },
+    {
+      "id": "17e9dd87-0ad3-4e5c-8a8e-cf1d37fda25c",
+      "sourceUrl": "https://www.instagram.com/p/DTpArm7E1a9/",
+      "title": "幼児（4～６歳）対象",
+      "reason": "past start date"
+    },
+    {
+      "id": "56f4c1fb-fcc4-44c5-b28d-f8db1f192589",
+      "sourceUrl": "https://www.instagram.com/p/DUhxBMzkgyj/",
+      "title": "日曜日はジム開店時でこんなに雪が積もっていました",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "92a9cd9f-c0d7-48e2-844b-b48f16c5f483",
+      "sourceUrl": "https://www.instagram.com/p/DApzIrpS9xN/",
+      "title": "▶︎▶︎▶︎",
+      "reason": "past start date"
+    },
+    {
+      "id": "2aeac2dc-6dd6-468b-8d45-c3f0924dd769",
+      "sourceUrl": "https://www.instagram.com/p/DU7Cm_TgSMt/",
+      "title": "エナジー柏店大改革📢】（第二弾）",
+      "reason": "past start date"
+    },
+    {
+      "id": "a2b50262-d3a8-46eb-a2fe-2327771d5883",
+      "sourceUrl": "https://www.instagram.com/p/DWqDdeSibEa/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
       "id": "b4eb4cc5-950d-4a1a-a1d4-101c896c3007",
       "sourceUrl": "https://www.instagram.com/p/DWTzQZygfZG/",
       "title": "2026シリーズ戦AOCUP開幕！！",
-      "reason": "no matching published gym"
+      "reason": "past start date"
+    },
+    {
+      "id": "6fb1a225-3684-4d13-9b7d-7054fa631177",
+      "sourceUrl": "https://www.instagram.com/p/DW3pcIuAXwc/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "3c384b5a-b4d9-4d58-8171-8e0acac0d9f7",
+      "sourceUrl": "https://www.instagram.com/p/DWjSOmTAbgZ/",
+      "title": "4月スケジュール🌸",
+      "reason": "past start date"
     },
     {
       "id": "3f322f62-337f-444e-87a8-af84ce2b6f98",
       "sourceUrl": "https://www.instagram.com/p/DYJimoxpCeS/",
       "title": "オススメ課題紹介⑤",
-      "reason": "past start date"
-    },
-    {
-      "id": "fe27e755-9eeb-4f28-99e8-320ee71abbab",
-      "sourceUrl": "https://www.instagram.com/p/DXZNH4lyNjC/",
-      "title": "MOVING3 Round1",
       "reason": "past start date"
     },
     {
@@ -97,9 +104,27 @@
       "reason": "past start date"
     },
     {
+      "id": "fe27e755-9eeb-4f28-99e8-320ee71abbab",
+      "sourceUrl": "https://www.instagram.com/p/DXZNH4lyNjC/",
+      "title": "MOVING3 Round1",
+      "reason": "past start date"
+    },
+    {
       "id": "62b54b8d-e7bd-47a2-9476-9bec01b7311d",
       "sourceUrl": "https://www.instagram.com/p/DXwABbbDtGJ/",
       "title": "4月カレンダー🗓️",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "7c87e17e-b6d3-4354-98b5-5b95fbe7a5a4",
+      "sourceUrl": "https://www.instagram.com/p/DXlJicaEXEo/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "2d94754b-7272-4a49-8930-d0d71be7c341",
+      "sourceUrl": "https://www.instagram.com/p/DWqMXOzEcVD/",
+      "title": "馬場店、次回ホールド替えのお知らせ",
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
@@ -107,12 +132,6 @@
       "sourceUrl": "https://www.instagram.com/p/DWk63erkerK/",
       "title": "🔶大宮店ルートセットのお知らせ🔶",
       "reason": "past start date"
-    },
-    {
-      "id": "2d94754b-7272-4a49-8930-d0d71be7c341",
-      "sourceUrl": "https://www.instagram.com/p/DWqMXOzEcVD/",
-      "title": "馬場店、次回ホールド替えのお知らせ",
-      "reason": "post looks like an announcement, not a calendar item"
     },
     {
       "id": "298dee53-8ead-453a-84e1-7050ce9d43eb",
@@ -127,16 +146,94 @@
       "reason": "past start date"
     },
     {
+      "id": "872f9d13-dac3-4ad4-836d-dea9660cdd91",
+      "sourceUrl": "https://www.instagram.com/p/DXtqXRFAjcK/",
+      "title": "5/1(金)、2日(土)は臨時休業となりますのでお間違えなく🙇",
+      "reason": "past start date"
+    },
+    {
+      "id": "af7fc2a4-1286-4bb9-957c-beee144e0991",
+      "sourceUrl": "https://www.instagram.com/p/DX1JXMHEqFH/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "9bfdcafe-9bbb-4878-b90d-ae0b4262eea4",
+      "sourceUrl": "https://www.instagram.com/p/DXrDJf0E9Nl/",
+      "title": "5月スケジュール",
+      "reason": "past start date"
+    },
+    {
+      "id": "578e7429-dc72-4903-b402-0b95a3cb4ffa",
+      "sourceUrl": "https://www.instagram.com/p/DXiRvAVDxGK/",
+      "title": "5月営業カレンダーのお知らせ",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "42b6bc1f-5900-4437-b1e2-ed23e2abe6f0",
+      "sourceUrl": "https://www.instagram.com/p/DXvueiuGrMm/",
+      "title": "5月カレンダー📅",
+      "reason": "past start date"
+    },
+    {
       "id": "3d66284c-0b7b-4494-916d-71ad2d3ac14c",
       "sourceUrl": "https://www.instagram.com/p/DXbafbMkjuq/",
       "title": ".",
       "reason": "title is too weak for event candidate"
     },
     {
+      "id": "8d2e8341-13b9-439b-927b-62b635b44f64",
+      "sourceUrl": "https://www.instagram.com/p/DXxtB78mTfe/",
+      "title": "5月のスケジュール",
+      "reason": "past start date"
+    },
+    {
       "id": "209c33ac-05fe-4536-af36-7571d9abc190",
       "sourceUrl": "https://www.instagram.com/p/DXyvVscEYjV/",
       "title": "5月カレンダー&お知らせ】〈追記〉",
-      "reason": "no matching published gym"
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "727cabc2-d722-441b-b274-58d9105f1d33",
+      "sourceUrl": "https://www.instagram.com/p/DXqm-vIAVHF/",
+      "title": "5月カレンダー🗓️",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "e52a79fc-645b-4ac4-a8db-e34dcf209494",
+      "sourceUrl": "https://www.instagram.com/p/DXySzXKjxBc/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "967da39f-a4de-4686-ac78-8c93b09f84c1",
+      "sourceUrl": "https://www.instagram.com/p/DXjGiomgaRn/",
+      "title": "🎏 5月の営業カレンダー",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "f8a5a001-ee43-438b-949a-6bc814db87ed",
+      "sourceUrl": "https://www.instagram.com/p/DXsy1zNietN/",
+      "title": "ルートセット",
+      "reason": "past start date"
+    },
+    {
+      "id": "bff90d35-4af0-4493-a8a4-f9203e44682b",
+      "sourceUrl": "https://www.instagram.com/p/DXk15ISCRUO/",
+      "title": "こんにちは！BONOBOです！",
+      "reason": "past start date"
+    },
+    {
+      "id": "2249b320-ab6b-4a54-8af9-0bbed3c61f61",
+      "sourceUrl": "https://www.instagram.com/p/DXskMRxCbSn/",
+      "title": "おはようございます！BONOBO です！",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "ebe3192f-001c-4808-855f-e9247f8d0505",
+      "sourceUrl": "https://www.instagram.com/p/DXTpx-dGrdB/",
+      "title": "こんにちは🎏",
+      "reason": "post looks like an announcement, not a calendar item"
     },
     {
       "id": "ae654ac4-f8de-4332-962c-885a03241e4a",
@@ -151,16 +248,16 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "8ca2a77d-823b-4b45-b13b-073bf0c077eb",
-      "sourceUrl": "https://www.instagram.com/p/DXrCdNQD5PJ/",
-      "title": ".",
-      "reason": "title is too weak for event candidate"
-    },
-    {
       "id": "88c7c3a6-2660-4481-a2ae-cc6b7bfed1e2",
       "sourceUrl": "https://www.instagram.com/p/DXn0YnKkrD_/",
       "title": "5月の営業案内",
       "reason": "past start date"
+    },
+    {
+      "id": "8ca2a77d-823b-4b45-b13b-073bf0c077eb",
+      "sourceUrl": "https://www.instagram.com/p/DXrCdNQD5PJ/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
     },
     {
       "id": "473da251-bd49-4cdf-9981-7a6fa5751d88",
@@ -169,8 +266,38 @@
       "reason": "past start date"
     },
     {
+      "id": "89e8caf3-bc4d-428c-9ded-0b59a340e068",
+      "sourceUrl": "https://www.instagram.com/p/DXvjWm8j0py/",
+      "title": "5月の営業スケジュールをお知らせしております",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "46c12c41-7a7c-4ff7-83d6-b55833f45fbc",
+      "sourceUrl": "https://www.instagram.com/p/DX8XN3xKROE/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "f7b5b7ba-6c74-4530-b324-5de026fc63ef",
+      "sourceUrl": "https://www.instagram.com/p/DYEV77iE7wb/",
+      "title": "📣📣VORTEX 9th ANNIV. くじ引き大会！",
+      "reason": "past start date"
+    },
+    {
+      "id": "cbeeccc5-6bf6-46c1-8e61-1a0d9632d566",
+      "sourceUrl": "https://www.instagram.com/p/DYEr-HijyhU/",
+      "title": "府中店B-Score🍀",
+      "reason": "past start date"
+    },
+    {
       "id": "3c1b41cc-880c-4100-97c0-29d7af08fde9",
       "sourceUrl": "https://www.instagram.com/p/DXwTcG_k_xv/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "b72c64cc-b357-4da6-883f-53d56d153a53",
+      "sourceUrl": "https://www.instagram.com/p/DXyHT3zEYAx/",
       "title": ".",
       "reason": "title is too weak for event candidate"
     },
@@ -193,10 +320,58 @@
       "reason": "title is too weak for event candidate"
     },
     {
+      "id": "02289b53-93de-4a10-a18e-c7f6b3a2638d",
+      "sourceUrl": "https://www.instagram.com/p/DYODiuWp120/",
+      "title": "5月12日(火)",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "af8bf057-b0e9-42ab-97a0-d78ea36c2a1f",
+      "sourceUrl": "https://www.instagram.com/p/DYKEZ-DDxj4/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "3cd2e83b-b750-4da6-9db8-4a59170fe94d",
+      "sourceUrl": "https://www.instagram.com/p/DXOFnLaEzXe/",
+      "title": "⁡",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "b6f6316d-d435-4b31-8aa1-87ae38587de7",
+      "sourceUrl": "https://www.instagram.com/p/DXlKiftE6Gj/",
+      "title": "🗓️5月の営業カレンダー🗓️",
+      "reason": "past start date"
+    },
+    {
+      "id": "c5a28dc5-7a0a-4b87-983a-103160d640e9",
+      "sourceUrl": "https://www.instagram.com/p/DXtRYtuCcVI/",
+      "title": "GW始まりましたね",
+      "reason": "past start date"
+    },
+    {
+      "id": "f139df46-feed-4b74-a7e1-7849e3185760",
+      "sourceUrl": "https://www.instagram.com/p/DYEb-B4Cfn8/",
+      "title": "🛠️ルートセット情報🛠️",
+      "reason": "past start date"
+    },
+    {
+      "id": "6a8d130d-3710-4670-9cd9-605f7810db42",
+      "sourceUrl": "https://www.instagram.com/p/DYQlbH1Njjf/",
+      "title": "5月13日(水)",
+      "reason": "title is too weak for event candidate"
+    },
+    {
       "id": "e0ffa51b-c4f2-4163-8973-810f6860f598",
       "sourceUrl": "https://www.instagram.com/p/DXwQSJ3ktak/",
       "title": "5月Schedule",
       "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "7a44865c-3522-4314-b38d-7d464efff86c",
+      "sourceUrl": "https://www.instagram.com/p/DYTg28Bq2uu/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
     },
     {
       "id": "c73e1a85-dcb7-438d-8880-d5029eeee488",
@@ -205,10 +380,58 @@
       "reason": "title is too weak for event candidate"
     },
     {
+      "id": "0f346c13-1b95-47d9-8976-e80d1323a370",
+      "sourceUrl": "https://www.instagram.com/p/DYTOEBqpCFL/",
+      "title": "5月14日(木)",
+      "reason": "title is too weak for event candidate"
+    },
+    {
       "id": "12eb6aa8-437e-4351-ac91-b355ca3af3f8",
       "sourceUrl": "https://www.instagram.com/p/DX8OnWQvWUY/",
       "title": "🎡ENTRY20 × BIGHOP CUP抽選発表🎡",
       "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "982f6b08-26e4-4525-af01-3a6d6ce7badd",
+      "sourceUrl": "https://www.instagram.com/p/DYUOVQORUlN/",
+      "title": "セッター紹介",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "5c6e043f-ae3a-444b-8087-e1dab660f8af",
+      "sourceUrl": "https://www.instagram.com/p/DYJm6jDkf09/",
+      "title": "次回Monthly Guest",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "d2aa072d-08e4-4f47-b09d-1b1f62812300",
+      "sourceUrl": "https://www.instagram.com/p/DXlkuO2gRAA/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "6421a362-fa78-48ea-a97a-ba611683c2b6",
+      "sourceUrl": "https://www.instagram.com/p/DX-sEGCD-Mc/",
+      "title": "..",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "72252f96-42f3-4a75-8a0e-9eb8a38171f4",
+      "sourceUrl": "https://www.instagram.com/p/DXn9phGkdqY/",
+      "title": "▶︎▶︎▶︎",
+      "reason": "source URL already exists in events"
+    },
+    {
+      "id": "26f0e9eb-80ee-4e41-a498-586098a6993a",
+      "sourceUrl": "https://www.instagram.com/p/DYRsJPOmhPJ/",
+      "title": "1F LEFTをルートセットします！",
+      "reason": "source URL already exists in events"
+    },
+    {
+      "id": "e00b42e4-af97-45ed-a32b-38242aca35b2",
+      "sourceUrl": "https://www.instagram.com/p/DYRxikUpUZV/",
+      "title": "🔥宿ロキでもMOVING3開催間近‼️🔥",
+      "reason": "source URL already exists in events"
     },
     {
       "id": "c8f58dc2-f751-4d8e-9da4-a9a9607572be",
@@ -226,13 +449,31 @@
       "id": "ff6cdb59-f271-4283-819f-ef08f51ba5fb",
       "sourceUrl": "https://www.instagram.com/p/DXA2xVuiQCO/",
       "title": "BLoC2026 round2",
-      "reason": "no matching published gym"
+      "reason": "end date is before start date"
+    },
+    {
+      "id": "a6b11b56-f356-40ac-88da-44908f314941",
+      "sourceUrl": "https://www.instagram.com/p/DWTUK8bEhfC/",
+      "title": "神怡舘information",
+      "reason": "post looks like an announcement, not a calendar item"
     },
     {
       "id": "7aa4b38c-a350-4b48-bfbf-970308a51f64",
       "sourceUrl": "https://www.instagram.com/p/DXgNdraEfr6/",
       "title": "📢短縮営業のお知らせ📢",
       "reason": "same gym/category/start date already exists"
+    },
+    {
+      "id": "37e00f5c-76bc-4425-b2b8-1c5b447d17e9",
+      "sourceUrl": "https://www.instagram.com/p/DYRnWvgRwY-/",
+      "title": "📢短縮営業のお知らせ📢",
+      "reason": "source URL already exists in events"
+    },
+    {
+      "id": "6f18941f-b6dc-414b-92bf-3366be916a19",
+      "sourceUrl": "https://www.instagram.com/p/DX0yS5Rkcko/",
+      "title": "▶︎▶︎▶︎",
+      "reason": "source URL already exists in events"
     },
     {
       "id": "35e79046-bdb1-4de4-84b1-a8bdcc0b07e3",
@@ -259,21 +500,27 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
+      "id": "f8bd590f-3b65-49d3-90a8-50252b07fb5b",
+      "sourceUrl": "https://www.instagram.com/p/DXyHWysGju7/",
+      "title": "📢【月パス料金体系変更のお知らせ】📢",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
       "id": "9a2de0ef-c2fa-454b-8697-cb181f91adba",
       "sourceUrl": "https://www.instagram.com/p/DYEuzBDE0xZ/",
       "title": "料金改定とサマーキャンペーンのお知らせ",
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "306fc8a7-af43-4404-84a8-d38dd9a87e8d",
-      "sourceUrl": "https://www.instagram.com/p/DYOn4RhEU6L/",
-      "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
-      "reason": "no matching published gym"
-    },
-    {
       "id": "18f4326d-8801-4dc8-9902-85bcccd2d2d2",
       "sourceUrl": "https://www.instagram.com/p/DXHComvEz5I/",
       "title": "開催発表",
+      "reason": "source URL already exists in events"
+    },
+    {
+      "id": "a81ce19a-3ff5-4111-a9da-7c82385f3f91",
+      "sourceUrl": "https://www.instagram.com/p/DX1LlLHFJmn/",
+      "title": "今年も開催致します！！",
       "reason": "source URL already exists in events"
     },
     {
@@ -295,16 +542,52 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
+      "id": "e2f16424-f87b-411f-9f5e-50cffddc2d50",
+      "sourceUrl": "https://www.instagram.com/p/DYGh7gwE_Gz/",
+      "title": "🔩Next Set Info🔩",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "2095709a-9e7d-4c1b-b135-a23c6bc7f6fe",
+      "sourceUrl": "https://www.instagram.com/p/DYV-yerP-Q9/",
+      "title": "🦩90° 2級🦩",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
       "id": "0e24c6b8-89db-456d-af03-9e86a620e498",
       "sourceUrl": "https://www.instagram.com/p/DXoQhIKjtIc/",
       "title": ".",
       "reason": "title is too weak for event candidate"
     },
     {
+      "id": "9d6ab7be-f8f9-402c-9768-1dfce35cf0e6",
+      "sourceUrl": "https://www.instagram.com/p/DYTqs6-kd10/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "7db4d454-3752-462d-8097-1a4d4ea184fc",
+      "sourceUrl": "https://www.instagram.com/p/DXa8bCVCQtY/",
+      "title": "BLoC2026 round3",
+      "reason": "end date is before start date"
+    },
+    {
       "id": "846010d7-c361-4bdc-8b44-a549bfcee697",
       "sourceUrl": "https://www.instagram.com/p/DYQwrvJB6Kk/",
       "title": "今年のBLOC",
-      "reason": "no matching published gym"
+      "reason": "source URL already exists in events"
+    },
+    {
+      "id": "82f58f0e-e512-4710-a0e4-2c2134bb3958",
+      "sourceUrl": "https://www.instagram.com/p/DYRr6n1zMGs/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
+    },
+    {
+      "id": "dbca0c60-5eea-4b54-ae8b-6adc3d6dad49",
+      "sourceUrl": "https://www.instagram.com/p/DWbMesCiYOI/",
+      "title": ".",
+      "reason": "title is too weak for event candidate"
     }
   ]
 }

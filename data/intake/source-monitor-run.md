@@ -1,30 +1,40 @@
 # Source Monitor Run
 
-- Generated: 2026-05-13T15:06:12.579Z
+- Generated: 2026-05-16T00:28:36.780Z
 - Due approved sources: 64
-- Instagram post sources: 14
-- Candidate Instagram sources: 94
+- Instagram post sources: 48
+- Candidate Instagram sources: 0
 - Upcoming event rechecks: 22
 - Gym discipline verification candidates: 119
 - Closure verification candidates: 80
-- Gyms with Instagram: 32/192
+- Gyms with Instagram: 97/192
 
 ## Instagram Post Inspection
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
-2. Noborock Shibuya (noborock_shibuya) - https://www.instagram.com/noborock_shibuya/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
-3. Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - https://www.instagram.com/basecamp_edogawabashi/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
-4. Boulder Park Base Camp 飯能店 (basecamp_hanno) - https://www.instagram.com/basecamp_hanno/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 6
-5. Climb Park Base Camp 入間店 (basecamp_iruma) - https://www.instagram.com/basecamp_iruma/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
-6. NOBOROCK 町田店 (noborock_machida) - https://www.instagram.com/noborock_machida/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 1
-7. NOBOROCK 大宮店 (noborock_omiya) - https://www.instagram.com/noborock_omiya/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
-8. Boulder Park Base Camp 東村山 (basecamp_higashimurayama) - https://www.instagram.com/basecamp_higashimurayama/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
-9. Urban Base Camp 新橋 (basecamp_shinbashi) - https://www.instagram.com/basecamp_shinbashi/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 4
-10. クライミングジムランボ公式Instagram (climbing_gym_ranbo) - https://www.instagram.com/climbing_gym_ranbo/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
-11. クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - https://www.instagram.com/climbinggym_wallstreet/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
-12. Climbing Gym Walrus公式Instagram (climbinggym_walrus) - https://www.instagram.com/climbinggym_walrus/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 5
-13. クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - https://www.instagram.com/madrock.cg.jp_online/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
-14. PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - https://www.instagram.com/pigletclimbinggym/ - lastObserved: 2026-05-13T03:44:43.958Z - observedPosts: 3
+2. ディーボルダリングプラス津田沼 (dbouldering_tsudanuma) - https://www.instagram.com/dbouldering_tsudanuma/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+3. ディーボルダリング 綱島 (dbouldering_tsunashima) - https://www.instagram.com/dbouldering_tsunashima/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+4. ディーボルダリングプラス八千代 (dbouldering_yachiyo) - https://www.instagram.com/dbouldering_yachiyo/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+5. ECHOES CLIMBING（エコーズ クライミング） (echoesclimbing) - https://www.instagram.com/echoesclimbing/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+6. エナジークライミングジム 柏店 (energy_kashiwa) - https://www.instagram.com/energy_kashiwa/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+7. folk（フォーク） ボルダリングジム (folk_boulderinggym) - https://www.instagram.com/folk_boulderinggym/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+8. ボルダリングジム フライハイト (freiheit_bouldering) - https://www.instagram.com/freiheit_bouldering/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+9. 深谷クライミングヴィレッジ (fukayaclimbingvillage) - https://www.instagram.com/fukayaclimbingvillage/ - lastObserved: 2026-05-14T12:29:03.451Z - observedPosts: 3
+10. ボルダリングジム GRANNY（グラニー） 南流山店 (granny_bouldering) - https://www.instagram.com/granny_bouldering/ - lastObserved: 2026-05-14T13:34:02.111Z - observedPosts: 3
+11. ボルダリングジム ジャムセッション三鷹 (jamsessionmitaka) - https://www.instagram.com/jamsessionmitaka/ - lastObserved: 2026-05-14T13:34:02.111Z - observedPosts: 3
+12. スポーツクライミングスクール・ジム J&S 池袋 (jands_ikebukuro) - https://www.instagram.com/jands_ikebukuro/ - lastObserved: 2026-05-14T13:34:02.111Z - observedPosts: 3
+13. JET SET（ジェットセット） climbing gym (jetsetclimbing) - https://www.instagram.com/jetsetclimbing/ - lastObserved: 2026-05-14T13:34:02.111Z - observedPosts: 3
+14. KaChill カチル (kachill_climbing) - https://www.instagram.com/kachill_climbing/ - lastObserved: 2026-05-14T13:34:02.111Z - observedPosts: 3
+15. クライミングジム LOST CANYON（ロストキャニオン） (lostcanyon_official) - https://www.instagram.com/lostcanyon_official/ - lastObserved: 2026-05-14T14:39:16.533Z - observedPosts: 3
+16. Lutra Lutra（ルトラルトラ） (lutra_lutra_climb_park_) - https://www.instagram.com/lutra_lutra_climb_park_/ - lastObserved: 2026-05-14T14:39:16.533Z - observedPosts: 3
+17. ロッククライミング 三鷹ジム (mitaka_gym) - https://www.instagram.com/mitaka_gym/ - lastObserved: 2026-05-14T14:39:16.533Z - observedPosts: 3
+18. MOUNTAIN CLIFF（マウンテンクリフ） (mountain_cliff_climbing) - https://www.instagram.com/mountain_cliff_climbing/ - lastObserved: 2026-05-14T16:49:14.302Z - observedPosts: 3
+19. Next Gen Bouldering（ネクストジェンボルダリング） (nextgen.bouldering) - https://www.instagram.com/nextgen.bouldering/ - lastObserved: 2026-05-14T16:49:14.302Z - observedPosts: 3
+20. クライミングジム NOSE（ノーズ） 町田店 (nose_machida_climbinggym) - https://www.instagram.com/nose_machida_climbinggym/ - lastObserved: 2026-05-14T16:49:14.302Z - observedPosts: 3
+21. クライミングジム OliOli（オリオリ） (olioli_climbing.gym) - https://www.instagram.com/olioli_climbing.gym/ - lastObserved: 2026-05-14T16:49:14.302Z - observedPosts: 3
+22. PERADORA（ペルアドラ） クライミングジム 横浜 (peradra_gym) - https://www.instagram.com/peradra_gym/ - lastObserved: 2026-05-14T16:49:14.302Z - observedPosts: 3
+23. クライミングジム Project（プロジェクト） (project_climbing_gym) - https://www.instagram.com/project_climbing_gym/ - lastObserved: 2026-05-14T16:49:14.302Z - observedPosts: 3
+24. THE STONE SESSION TOKYO (tsstokyo) - https://www.instagram.com/tsstokyo/ - lastObserved: 2026-05-14T16:49:14.302Z - observedPosts: 3
 
 ## Inspect Now
 
@@ -100,53 +110,53 @@
 2. クライミングジム Walrus（ウォルラス） (久喜市) - クライミング - https://www.walrus.co.jp/
 3. ALTIOR（アルティオール）クライミングジム (柏市) - クライミング - https://altior-gym.com/
 4. ECHOES CLIMBING（エコーズ クライミング） (つくばみらい市) - クライミング - https://rockgym.jp/gym-all/ibaraki/
-5. GRIMROCK（グリムロック） クライミングジム (横浜市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
-6. KALMA（カルマ） クライミングジム (坂戸市) - クライミング - https://rockgym.jp/gym-all/saitama/
-7. livedoor URBAN SPORTS PARK（ライブドアアーバンスポーツパーク） (江東区) - クライミング - https://rockgym.jp/gym-all/tokyo/
-8. MAMMUT ボルダリングジム 横浜 (横浜市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
-9. MOUNTAIN CLIFF（マウンテンクリフ） (足利市) - クライミング - https://rockgym.jp/gym-all/tochigi/
-10. Next Gen Bouldering（ネクストジェンボルダリング） (新座市) - クライミング - https://rockgym.jp/gym-all/saitama/
-11. PARKERS TOKYO (新宿区) - クライミング - https://rockgym.jp/gym-all/tokyo/
-12. PERADORA（ペルアドラ） クライミングジム 横浜 (横浜市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
-13. Prost（プロスト） クライミングクラブ (小山市) - クライミング - https://rockgym.jp/gym-all/tochigi/
-14. PUMP2 川崎 (川崎市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
-15. Quail（クエール） クライミングジム (練馬区) - クライミング - https://rockgym.jp/gym-all/tokyo/
-16. Rhino and Bird（ライノアンドバード） (荒川区) - クライミング - https://rockgym.jp/gym-all/tokyo/
-17. ROCK CUBE（ロックキューブ） クライミングジム (越谷市) - クライミング - https://rockgym.jp/gym-all/saitama/
-18. ROCKCRAFT（ロッククラフト）川越 (川越市) - クライミング - https://rockgym.jp/gym-all/saitama/
-19. Rout f（ルートエフ） ボルダリングジム (新座市) - クライミング - https://rockgym.jp/gym-all/saitama/
-20. SUNCUL（サンカル） (宇都宮市) - クライミング - https://rockgym.jp/gym-all/tochigi/
-21. the FACTORY（ファクトリー） (板橋区) - クライミング - https://rockgym.jp/gym-all/tokyo/
-22. THE STONE SESSION TOKYO (墨田区) - クライミング - https://rockgym.jp/gym-all/tokyo/
-23. TRICK STAR（トリックスター） クライミングジム (飯能市) - クライミング - https://rockgym.jp/gym-all/saitama/
-24. エナジークライミングジム 柏店 (柏市) - クライミング - https://rockgym.jp/gym-all/chiba/
+5. MOUNTAIN CLIFF（マウンテンクリフ） (足利市) - クライミング - https://rockgym.jp/gym-all/tochigi/
+6. Next Gen Bouldering（ネクストジェンボルダリング） (新座市) - クライミング - https://rockgym.jp/gym-all/saitama/
+7. PERADORA（ペルアドラ） クライミングジム 横浜 (横浜市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
+8. Rhino and Bird（ライノアンドバード） (荒川区) - クライミング - https://rockgym.jp/gym-all/tokyo/
+9. THE STONE SESSION TOKYO (墨田区) - クライミング - https://rockgym.jp/gym-all/tokyo/
+10. エナジークライミングジム 柏店 (柏市) - クライミング - https://rockgym.jp/gym-all/chiba/
+11. クライミングジム COZY (みどり市) - クライミング - https://rockgym.jp/gym-all/gunma/
+12. クライミングジム FLASH（フラッシュ） (宇都宮市) - クライミング - https://rockgym.jp/gym-all/tochigi/
+13. クライミングジム Hutte（ヒュッテ） (荒川区) - クライミング - https://rockgym.jp/gym-all/tokyo/
+14. クライミングジム LOST CANYON（ロストキャニオン） (宇都宮市) - クライミング - https://rockgym.jp/gym-all/tochigi/
+15. クライミングジム NOSE（ノーズ） 町田店 (町田市) - クライミング - https://rockgym.jp/gym-all/tokyo/
+16. クライミングジム OliOli（オリオリ） (長生郡) - クライミング - https://rockgym.jp/gym-all/chiba/
+17. クライミングジム Project（プロジェクト） (横浜市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
+18. クライミングジム RISE（ライズ） (横浜市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
+19. クライミングジム ROCKBEANS（ロックビーンズ） (八王子市) - クライミング - https://rockgym.jp/gym-all/tokyo/
+20. クライミングジム SLOTH（スロース） (平塚市) - クライミング - https://rockgym.jp/gym-all/kanagawa/
+21. クライミングジム THREE PEAKS（スリーピークス） (本庄市) - クライミング - https://rockgym.jp/gym-all/saitama/
+22. クライミングジム TRIP (坂戸市) - クライミング - https://rockgym.jp/gym-all/saitama/
+23. クライミングジム VOLNY（ボルニー） (武蔵野市) - クライミング - https://rockgym.jp/gym-all/tokyo/
+24. クライミングジム ZE-RO（ゼロ） さいたま店 (北足立郡) - クライミング - https://rockgym.jp/gym-all/saitama/
 
 ## Closure / Relocation / Rename Verification
 
-1. ECHOES CLIMBING（エコーズ クライミング） (つくばみらい市) - https://rockgym.jp/gym-all/ibaraki/ - directory_crosscheck
-2. クライミングジム COZY (みどり市) - https://rockgym.jp/gym-all/gunma/ - directory_crosscheck
-3. クライミングカフェ isara（イサラ） (三鷹市) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
-4. クライミングジム ZE-RO（ゼロ） 伊勢崎店 (伊勢崎市) - https://rockgym.jp/gym-all/gunma/ - directory_crosscheck
-5. クライミングジム ROCKBEANS（ロックビーンズ） (八王子市) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
-6. ボルダリングジム UNDERGROUND（アンダーグラウンド） (北区) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
-7. クライミングジム ZE-RO（ゼロ） さいたま店 (北足立郡) - https://rockgym.jp/gym-all/saitama/ - directory_crosscheck
-8. ボルダリングジム 登攀道場 (千葉市) - https://rockgym.jp/gym-all/chiba/ - directory_crosscheck
-9. 松山下公園総合体育館 (印西市) - https://rockgym.jp/gym-all/chiba/ - directory_crosscheck
-10. ディーボルダリング本厚木 (厚木市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
-11. ボルダリングジム Lamp+（ランププラス） 愛甲石田店 (厚木市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
-12. ボルダリングジム 攀（HANN2） 厚木店 (厚木市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
-13. ボルダリングジム グラニー 東上野店 (台東区) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
-14. クライミングジム ランナウト (国分寺市) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
-15. ボルダリングジム フライハイト (土浦市) - https://rockgym.jp/gym-all/ibaraki/ - directory_crosscheck
-16. KALMA（カルマ） クライミングジム (坂戸市) - https://rockgym.jp/gym-all/saitama/ - directory_crosscheck
-17. クライミングジム TRIP (坂戸市) - https://rockgym.jp/gym-all/saitama/ - directory_crosscheck
-18. マグレブエスト (多摩市) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
-19. ボルダリングスペース HAT（ハット） (大和市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
-20. ボルダリングジム POP IN（ポップイン） (大田区) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
-21. クライミングジム アーク (大田原市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
-22. SUNCUL（サンカル） (宇都宮市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
-23. クライミングジム FLASH（フラッシュ） (宇都宮市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
-24. クライミングジム LOST CANYON（ロストキャニオン） (宇都宮市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
+1. クライミングカフェ isara（イサラ） (三鷹市) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
+2. クライミングジム ZE-RO（ゼロ） 伊勢崎店 (伊勢崎市) - https://rockgym.jp/gym-all/gunma/ - directory_crosscheck
+3. 松山下公園総合体育館 (印西市) - https://rockgym.jp/gym-all/chiba/ - directory_crosscheck
+4. ディーボルダリング本厚木 (厚木市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
+5. ボルダリングジム Lamp+（ランププラス） 愛甲石田店 (厚木市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
+6. ボルダリングジム 攀（HANN2） 厚木店 (厚木市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
+7. ボルダリングジム グラニー 東上野店 (台東区) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
+8. クライミングジム ランナウト (国分寺市) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
+9. KALMA（カルマ） クライミングジム (坂戸市) - https://rockgym.jp/gym-all/saitama/ - directory_crosscheck
+10. マグレブエスト (多摩市) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
+11. ボルダリングジム POP IN（ポップイン） (大田区) - https://rockgym.jp/gym-all/tokyo/ - directory_crosscheck
+12. クライミングジム アーク (大田原市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
+13. SUNCUL（サンカル） (宇都宮市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
+14. クライミングジム ZE-RO（ゼロ） 宇都宮下栗店 (宇都宮市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
+15. クライミングジム ZE-RO（ゼロ） 宇都宮店 (宇都宮市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
+16. Prost（プロスト） クライミングクラブ (小山市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
+17. ボルダリングスペース H（エイチ） (小山市) - https://rockgym.jp/gym-all/tochigi/ - directory_crosscheck
+18. クライミング Wisteria（ウィステリア） (小田原市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
+19. クライミングジム MARU（マル） (川口市) - https://rockgym.jp/gym-all/saitama/ - directory_crosscheck
+20. クライミングジム PUMP1 川口 (川口市) - https://rockgym.jp/gym-all/saitama/ - directory_crosscheck
+21. PUMP2 川崎 (川崎市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
+22. クライミングジム POCKET（ポケット） (川崎市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
+23. ボルダリングジム Boulder Boys Klub (川崎市) - https://rockgym.jp/gym-all/kanagawa/ - directory_crosscheck
+24. ROCKCRAFT（ロッククラフト）川越 (川越市) - https://rockgym.jp/gym-all/saitama/ - directory_crosscheck
 
 ## Rules
 

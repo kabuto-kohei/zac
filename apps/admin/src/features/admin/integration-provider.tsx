@@ -25,8 +25,8 @@ async function initBrowserMonitoring() {
   const Sentry = await import("@sentry/browser");
   Sentry.init({
     dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-    environment: process.env.NEXT_PUBLIC_APP_ENV || "local",
-    tracesSampleRate: process.env.NEXT_PUBLIC_APP_ENV === "production" ? 0.1 : 0,
+    environment: getBrowserAppEnvironment(),
+    tracesSampleRate: getBrowserAppEnvironment() === "production" ? 0.1 : 0,
     sendDefaultPii: false,
   });
 }
@@ -58,4 +58,16 @@ export function getAdminSupabaseClient() {
   }
 
   return supabaseClient;
+}
+
+function getBrowserAppEnvironment() {
+  if (process.env.NEXT_PUBLIC_APP_ENV === "production") {
+    return "production";
+  }
+
+  if (process.env.NEXT_PUBLIC_API_URL && !process.env.NEXT_PUBLIC_API_URL.includes("localhost")) {
+    return "production";
+  }
+
+  return process.env.NEXT_PUBLIC_APP_ENV || "local";
 }

@@ -65,12 +65,13 @@ export function createApp() {
 
 export type ZacApi = ReturnType<typeof createApp>;
 
+const defaultAllowedOrigins = ["https://zac-web.vercel.app", "https://zac-admin.vercel.app", "http://localhost:3000", "http://localhost:3001"];
+
 function getAllowedOrigins() {
-  return [
+  return Array.from(new Set([
     process.env.APP_URL,
     process.env.WEB_URL,
     process.env.ADMIN_URL,
-    "http://localhost:3000",
-    "http://localhost:3001",
-  ].filter((origin): origin is string => Boolean(origin));
+    ...defaultAllowedOrigins,
+  ].filter((origin): origin is string => Boolean(origin))));
 }

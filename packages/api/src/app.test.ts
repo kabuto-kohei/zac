@@ -17,6 +17,31 @@ test("GET /v1/health returns ok", async () => {
   assert.equal(body.data.ok, true);
 });
 
+test("CORS allows the production admin origin without env-only configuration", async () => {
+  const response = await createApp().request("/v1/admin/event-candidates", {
+    headers: {
+      origin: "https://zac-admin.vercel.app",
+    },
+  });
+
+  assert.equal(response.headers.get("access-control-allow-origin"), "https://zac-admin.vercel.app");
+});
+
+test("CORS preflight allows admin authorization headers", async () => {
+  const response = await createApp().request("/v1/admin/event-candidates", {
+    method: "OPTIONS",
+    headers: {
+      origin: "https://zac-admin.vercel.app",
+      "access-control-request-method": "GET",
+      "access-control-request-headers": "authorization,content-type",
+    },
+  });
+
+  assert.equal(response.status, 204);
+  assert.equal(response.headers.get("access-control-allow-origin"), "https://zac-admin.vercel.app");
+  assert.equal(response.headers.get("access-control-allow-headers"), "authorization,content-type");
+});
+
 test("GET /v1/gyms returns fixtures", async () => {
   const response = await createApp().request("/v1/gyms");
   const body = await response.json();

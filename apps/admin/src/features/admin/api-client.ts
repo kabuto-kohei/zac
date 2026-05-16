@@ -2,7 +2,9 @@
 
 import { getAdminSupabaseClient } from "./integration-provider";
 
-type ApiResult<T> = { ok: true; data: T } | { ok: false; message: string };
+type ApiErrorKind = "auth" | "permission" | "config" | "network" | "server";
+
+type ApiResult<T> = { ok: true; data: T } | { ok: false; kind: ApiErrorKind; message: string; status?: number; code?: string };
 
 type DataResponse<T> = {
   data: T;
@@ -22,6 +24,15 @@ export async function getAdminApi<T>(path: string): Promise<ApiResult<T>> {
 
 async function sendAdminApi<T>(method: "GET" | "PATCH" | "POST", path: string, body?: unknown): Promise<ApiResult<T>> {
   let response: Response;
+  const apiBaseUrl = getApiBaseUrl();
+
+  if (!apiBaseUrl) {
+    return {
+      ok: false,
+      kind: "config",
+      message: "管理API URLが未設定です。Vercel の NEXT_PUBLIC_API_URL を確認してください。",
+    };
+  }
 
   try {
     const init: RequestInit = {
@@ -33,20 +44,27 @@ async function sendAdminApi<T>(method: "GET" | "PATCH" | "POST", path: string, b
       init.body = JSON.stringify(body);
     }
 
-    response = await fetch(`${getApiBaseUrl()}${path}`, init);
+    response = await fetch(`${apiBaseUrl}${path}`, init);
   } catch {
     return {
       ok: false,
-      message: "APIに接続できません。ローカルでは `pnpm dev:api` を起動してください。",
+      kind: "network",
+      message: isRemoteApiMode()
+        ? "管理APIに接続できません。zac-api のデプロイ状態と NEXT_PUBLIC_API_URL を確認してください。"
+        : "管理APIに接続できません。ローカルでは `pnpm dev:api` を起動してください。",
     };
   }
 
   const payload = await response.json().catch(() => null);
 
   if (!response.ok) {
+    const code = payload?.error?.code;
     return {
       ok: false,
-      message: payload?.error?.message ?? "管理操作に失敗しました。",
+      kind: getErrorKind(response.status, code),
+      status: response.status,
+      code,
+      message: formatAdminApiError(response.status, code, payload?.error?.message),
     };
   }
 
@@ -57,7 +75,11 @@ async function sendAdminApi<T>(method: "GET" | "PATCH" | "POST", path: string, b
 }
 
 function getApiBaseUrl() {
-  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787";
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+
+  return process.env.NEXT_PUBLIC_APP_ENV === "production" ? "" : "http://localhost:8787";
 }
 
 async function getJsonHeaders() {
@@ -76,5 +98,37 @@ async function getJsonHeaders() {
 }
 
 export function isAdminLiveApiMode() {
-  return process.env.NEXT_PUBLIC_APP_ENV === "production";
+  return process.env.NEXT_PUBLIC_APP_ENV === "production" || isRemoteApiMode();
+}
+
+function isRemoteApiMode() {
+  return Boolean(process.env.NEXT_PUBLIC_API_URL && !process.env.NEXT_PUBLIC_API_URL.includes("localhost"));
+}
+
+function getErrorKind(status: number, code?: string): ApiErrorKind {
+  if (status === 401 || code === "unauthorized") {
+    return "auth";
+  }
+
+  if (status === 403 || code === "forbidden") {
+    return "permission";
+  }
+
+  return status >= 500 ? "server" : "config";
+}
+
+function formatAdminApiError(status: number, code?: string, fallback?: string) {
+  if (status === 401 || code === "unauthorized") {
+    return "管理者ログインが必要です。ログインし直してください。";
+  }
+
+  if (status === 403 || code === "forbidden") {
+    return "このアカウントには管理者権限がありません。admin_memberships の登録状態を確認してください。";
+  }
+
+  if (status >= 500) {
+    return fallback ?? "管理API側でエラーが発生しました。zac-api のログを確認してください。";
+  }
+
+  return fallback ?? "管理APIのリクエスト設定を確認してください。";
 }

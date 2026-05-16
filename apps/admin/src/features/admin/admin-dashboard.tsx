@@ -686,53 +686,76 @@ function InstagramReviewQueueRow({ item, onRecorded }: { item: InstagramReviewQu
 
   return (
     <article className="admin-row instagram-review-row">
-      <span>
-        <strong>{item.gymName}</strong>
-        <small>
-          {item.area || "-"} / @{item.handle}
-        </small>
-        <small>{item.reviewReason}</small>
-      </span>
-      <span>
-        <strong>{item.priority}</strong>
-        <small>{item.failureCategory}</small>
-        <small>{item.failureDetail}</small>
-      </span>
-      <span>
-        <strong>確認日</strong>
-        <small>最終確認 {item.lastCheckedAt || "-"}</small>
-        <small>観測 {item.observedPosts}件 / 最新 {item.lastObservedAt || "-"}</small>
-      </span>
-      <span className="admin-link-stack">
-        <a href={item.sourceUrl} rel="noreferrer" target="_blank">
-          Instagram
-        </a>
-        {item.officialSiteUrl ? (
-          <a href={item.officialSiteUrl} rel="noreferrer" target="_blank">
-            公式サイト
+      <div className="instagram-review-summary">
+        <span>
+          <strong>{item.gymName}</strong>
+          <small>
+            {item.area || "-"} / @{item.handle}
+          </small>
+          <small>{item.reviewReason}</small>
+        </span>
+        <span>
+          <strong>{item.priority}</strong>
+          <small>{item.failureCategory}</small>
+          <small>{item.failureDetail}</small>
+        </span>
+        <span>
+          <strong>確認日</strong>
+          <small>最終確認 {item.lastCheckedAt || "-"}</small>
+          <small>観測 {item.observedPosts}件 / 最新 {item.lastObservedAt || "-"}</small>
+        </span>
+        <span className="admin-link-stack">
+          <a href={item.sourceUrl} rel="noreferrer" target="_blank">
+            Instagram
           </a>
-        ) : (
-          <small>公式サイトなし</small>
-        )}
-      </span>
+          {item.officialSiteUrl ? (
+            <a href={item.officialSiteUrl} rel="noreferrer" target="_blank">
+              公式サイト
+            </a>
+          ) : (
+            <small>公式サイトなし</small>
+          )}
+        </span>
+      </div>
       <form action={createCandidate} className="instagram-candidate-form">
-        <input aria-label="候補タイトル" maxLength={120} name="title" placeholder="適切な掲載タイトル" required />
-        <select aria-label="カテゴリ" defaultValue="event" name="category">
-          <option value="event">イベント</option>
-          <option value="competition">コンペ</option>
-          <option value="route_set">セット</option>
-          <option value="lesson">レッスン</option>
-          <option value="opening_change">営業時間変更</option>
-          <option value="private_booking">貸切</option>
-          <option value="construction">工事</option>
-          <option value="notice">お知らせ</option>
-          <option value="recruit">募集</option>
-        </select>
-        <input aria-label="開始日時" name="startsAt" required type="datetime-local" />
-        <input aria-label="終了日時" name="endsAt" type="datetime-local" />
-        <input aria-label="証拠URL" defaultValue={item.sourceUrl} maxLength={500} name="sourceUrl" required />
-        <input aria-label="根拠引用" maxLength={300} name="sourceQuote" placeholder="短い根拠メモ" />
-        <input aria-label="候補化理由" maxLength={1000} name="reason" placeholder="Admin確認理由" />
+        <label className="admin-field admin-field-title">
+          タイトル
+          <input maxLength={120} name="title" placeholder="適切な掲載タイトル" required />
+        </label>
+        <label className="admin-field">
+          カテゴリ
+          <select defaultValue="event" name="category">
+            <option value="event">イベント</option>
+            <option value="competition">コンペ</option>
+            <option value="route_set">セット</option>
+            <option value="lesson">レッスン</option>
+            <option value="opening_change">営業時間変更</option>
+            <option value="private_booking">貸切</option>
+            <option value="construction">工事</option>
+            <option value="notice">お知らせ</option>
+            <option value="recruit">募集</option>
+          </select>
+        </label>
+        <label className="admin-field">
+          開始
+          <input name="startsAt" required type="datetime-local" />
+        </label>
+        <label className="admin-field">
+          終了
+          <input name="endsAt" type="datetime-local" />
+        </label>
+        <label className="admin-field admin-field-url">
+          証拠URL
+          <input defaultValue={item.sourceUrl} maxLength={500} name="sourceUrl" required />
+        </label>
+        <label className="admin-field">
+          根拠
+          <input maxLength={300} name="sourceQuote" placeholder="短い根拠メモ" />
+        </label>
+        <label className="admin-field">
+          理由
+          <input maxLength={1000} name="reason" placeholder="Admin確認理由" />
+        </label>
         <button type="submit">候補化</button>
       </form>
       <div className="instagram-review-actions">
@@ -774,40 +797,44 @@ function EventCandidateRow({ event, onReviewed }: { event: EventSummary; onRevie
 
   return (
     <form action={submit} className="admin-row candidate-row">
-      <span>
-        <strong>{event.title}</strong>
-        <small>{event.gymName}</small>
-      </span>
-      <span>
-        <strong>{event.category}</strong>
-        <small>{event.startsAt}</small>
-      </span>
-      <span>
-        <strong>{event.reviewStatus ?? "pending"}</strong>
-        <small>{event.extractionConfidence == null ? "信頼度 -" : `信頼度 ${Math.round(event.extractionConfidence * 100)}%`}</small>
-      </span>
-      <span>
-        <strong>{event.sourceLabel}</strong>
-        {event.sourceUrl ? (
-          <a href={event.sourceUrl} rel="noreferrer" target="_blank">
-            情報源
-          </a>
-        ) : (
-          <small>情報源なし</small>
-        )}
-      </span>
-      <span>
-        <strong>確認理由</strong>
-        <small>{reviewReason}</small>
-        {event.sourceQuote ? <small>根拠: {event.sourceQuote}</small> : null}
-      </span>
-      <input aria-label="レビュー理由" maxLength={1000} name="reason" placeholder="理由" />
-      <button name="action" type="submit" value="approve">
-        承認
-      </button>
-      <button className="secondary-admin-action" name="action" type="submit" value="reject">
-        却下
-      </button>
+      <div className="candidate-summary">
+        <span>
+          <strong>{event.title}</strong>
+          <small>{event.gymName}</small>
+        </span>
+        <span>
+          <strong>{event.category}</strong>
+          <small>{event.startsAt}</small>
+        </span>
+        <span>
+          <strong>{event.reviewStatus ?? "pending"}</strong>
+          <small>{event.extractionConfidence == null ? "信頼度 -" : `信頼度 ${Math.round(event.extractionConfidence * 100)}%`}</small>
+        </span>
+        <span>
+          <strong>{event.sourceLabel}</strong>
+          {event.sourceUrl ? (
+            <a href={event.sourceUrl} rel="noreferrer" target="_blank">
+              情報源
+            </a>
+          ) : (
+            <small>情報源なし</small>
+          )}
+        </span>
+        <span>
+          <strong>確認理由</strong>
+          <small>{reviewReason}</small>
+          {event.sourceQuote ? <small>根拠: {event.sourceQuote}</small> : null}
+        </span>
+      </div>
+      <div className="candidate-actions">
+        <input aria-label="レビュー理由" maxLength={1000} name="reason" placeholder="理由" />
+        <button name="action" type="submit" value="approve">
+          承認
+        </button>
+        <button className="secondary-admin-action" name="action" type="submit" value="reject">
+          却下
+        </button>
+      </div>
       <StatusMessage message={message} status={status} />
     </form>
   );

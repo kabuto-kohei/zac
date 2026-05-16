@@ -95,6 +95,7 @@ p {
   align-content: start;
   gap: 18px;
   padding: 28px;
+  min-width: 0;
 }
 
 .admin-login-panel {
@@ -186,14 +187,14 @@ p {
 
 .admin-table {
   display: grid;
-  overflow: hidden;
+  overflow: clip;
 }
 
 .admin-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  align-items: center;
+  align-items: start;
   border-bottom: 1px solid var(--line);
   padding: 14px 16px;
 }
@@ -225,19 +226,37 @@ p {
 }
 
 .candidate-row {
-  grid-template-columns: minmax(170px, 1.2fr) minmax(130px, 0.8fr) minmax(110px, 0.7fr) minmax(130px, 0.8fr) minmax(180px, 1.1fr) minmax(150px, 0.9fr) 76px 76px;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 18px;
 }
 
 .instagram-review-row {
-  grid-template-columns: minmax(180px, 1fr) minmax(150px, 0.9fr) minmax(130px, 0.7fr) minmax(110px, 0.6fr) minmax(360px, 1.8fr) minmax(98px, 0.5fr);
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 18px;
 }
 
-.candidate-row span {
+.candidate-summary,
+.instagram-review-summary {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.25fr) minmax(150px, 0.9fr) minmax(140px, 0.8fr) minmax(110px, 0.65fr) minmax(200px, 1.2fr);
+  gap: 14px;
+  min-width: 0;
+}
+
+.instagram-review-summary {
+  grid-template-columns: minmax(220px, 1.25fr) minmax(170px, 0.9fr) minmax(150px, 0.75fr) minmax(110px, 0.55fr);
+}
+
+.candidate-row span,
+.candidate-summary span {
   display: grid;
   gap: 4px;
 }
 
 .instagram-review-row span,
+.instagram-review-summary span,
 .admin-link-stack,
 .instagram-review-actions {
   display: grid;
@@ -246,8 +265,32 @@ p {
 
 .instagram-candidate-form {
   display: grid;
-  grid-template-columns: minmax(150px, 1fr) minmax(120px, 0.7fr) minmax(145px, 0.8fr) minmax(145px, 0.8fr);
+  grid-template-columns: minmax(180px, 1.2fr) minmax(130px, 0.7fr) minmax(150px, 0.8fr) minmax(150px, 0.8fr);
   gap: 8px;
+  align-items: end;
+  min-width: 0;
+}
+
+.candidate-actions {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 92px 92px;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+}
+
+.admin-field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-field-title,
+.admin-field-url {
+  grid-column: span 2;
 }
 
 .moderation-row {
@@ -256,6 +299,8 @@ p {
 
 .candidate-row input,
 .candidate-row button,
+.candidate-actions input,
+.candidate-actions button,
 .instagram-candidate-form input,
 .instagram-candidate-form select,
 .instagram-candidate-form button,
@@ -273,6 +318,7 @@ p {
 }
 
 .candidate-row input,
+.candidate-actions input,
 .instagram-candidate-form input,
 .instagram-candidate-form select,
 .moderation-row select,
@@ -281,6 +327,7 @@ p {
 }
 
 .candidate-row button,
+.candidate-actions button,
 .instagram-candidate-form button,
 .instagram-review-actions button,
 .moderation-row button {
@@ -415,12 +462,23 @@ p {
   }
 
   .candidate-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .instagram-review-row,
   .instagram-candidate-form {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+  }
+
+  .candidate-summary,
+  .instagram-review-summary,
+  .candidate-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-field-title,
+  .admin-field-url {
+    grid-column: auto;
   }
 
   .admin-editor-wide {

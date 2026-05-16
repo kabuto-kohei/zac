@@ -60,6 +60,18 @@ test("formatEventDisplayTitle replaces noisy competition source text with contex
   );
 });
 
+test("formatEventDisplayTitle replaces generic announcement labels with contextual titles", () => {
+  assert.equal(
+    formatEventDisplayTitle({
+      category: "route_set",
+      gymName: "ALTIOR",
+      startsAt: "2026-06-07 17:00",
+      title: "参考動画",
+    }),
+    "ALTIOR 6/7 セット替え",
+  );
+});
+
 test("createSessionPlanSchema accepts a valid gym plan", () => {
   const result = createSessionPlanSchema.safeParse({
     title: "火曜夜にB-PUMPで登る",

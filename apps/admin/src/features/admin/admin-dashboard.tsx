@@ -22,6 +22,7 @@ import type {
   ReportSummary,
 } from "@zac/shared";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { getAdminApi, isAdminLiveApiMode, patchAdminApi, postAdminApi } from "./api-client";
 import { getAdminSupabaseClient } from "./integration-provider";
@@ -219,10 +220,7 @@ function DashboardView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>ダッシュボード</h2>
-        <p>通報、投稿、予定、ジム更新を確認します。</p>
-      </div>
+      <AdminViewHeader title="ダッシュボード" description="通報、投稿、予定、ジム更新を確認します。" />
       <AdminDataStatus message={adminData.message} loading={adminData.loading} />
       <section className="metric-grid">
         <Metric label="未対応通報" value={String(adminData.reports.filter((report) => report.status === "open").length)} />
@@ -241,22 +239,19 @@ function UsersView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>ユーザー管理</h2>
-        <p>認証済みユーザーとプロフィール状態を確認します。</p>
-      </div>
+      <AdminViewHeader title="ユーザー管理" description="認証済みユーザーとプロフィール状態を確認します。" />
       <AdminDataStatus state={users} />
-      <section className="admin-table">
+      <AdminTable>
         {users.data.map((user) => (
           <article className="admin-row" key={user.id}>
-            <span>{user.displayName}</span>
-            <span>{user.email}</span>
-            <span>{user.status}</span>
-            <span>{user.area || "未設定"}</span>
+            <AdminInfoCell label="表示名">{user.displayName}</AdminInfoCell>
+            <AdminInfoCell label="メール">{user.email}</AdminInfoCell>
+            <AdminInfoCell label="状態">{user.status}</AdminInfoCell>
+            <AdminInfoCell label="エリア">{user.area || "未設定"}</AdminInfoCell>
           </article>
         ))}
         <AdminEmptyState state={users} emptyMessage="ユーザーはまだありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -266,17 +261,14 @@ function GymsView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>ジム管理</h2>
-        <p>ジム情報は公開情報または許諾済み情報のみ登録します。</p>
-      </div>
+      <AdminViewHeader title="ジム管理" description="ジム情報は公開情報または許諾済み情報のみ登録します。" />
       <AdminDataStatus state={gyms} />
-      <section className="admin-table">
+      <AdminTable>
         {gyms.data.map((gym) => (
           <GymModerationRow gym={gym} key={gym.id} />
         ))}
         <AdminEmptyState state={gyms} emptyMessage="ジムはまだ登録されていません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -291,22 +283,19 @@ function EventsView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>イベント管理</h2>
-        <p>イベント掲載内容を作成・編集し、下書きと公開状態を切り替えます。</p>
-      </div>
+      <AdminViewHeader title="イベント管理" description="イベント掲載内容を作成・編集し、下書きと公開状態を切り替えます。" />
       <AdminDataStatus state={events} />
       <EventEditorForm
         onSaved={(event) => {
           setItems((current) => [event, ...current.filter((item) => item.id !== event.id)]);
         }}
       />
-      <section className="admin-table">
+      <AdminTable>
         {items.map((event) => (
           <EventEditorRow event={event} key={event.id} onSaved={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))} />
         ))}
         <AdminEmptyState dataLength={items.length} state={events} emptyMessage="イベントはまだありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -318,25 +307,22 @@ function EventSourcesView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>イベント取得源</h2>
-        <p>コンペバイブル起点の候補、公式サイト、専門メディアを確認します。</p>
-      </div>
+      <AdminViewHeader title="イベント取得源" description="コンペバイブル起点の候補、公式サイト、専門メディアを確認します。" />
       <AdminDataStatus state={sources} />
       <section className="metric-grid compact-metrics">
         <Metric label="承認済み" value={String(approvedCount)} />
         <Metric label="候補" value={String(candidateCount)} />
         <Metric label="合計" value={String(sources.data.length)} />
       </section>
-      <section className="admin-table">
+      <AdminTable>
         {sources.data.map((source) => (
           <article className="admin-row source-row" key={source.id}>
-            <span>{source.displayName}</span>
-            <span>{source.platform}</span>
-            <span>{source.handle}</span>
-            <span>{source.sourceType}</span>
-            <span>{source.status}</span>
-            <span>{source.relationshipSourceHandle ?? "-"}</span>
+            <AdminInfoCell label="名称">{source.displayName}</AdminInfoCell>
+            <AdminInfoCell label="媒体">{source.platform}</AdminInfoCell>
+            <AdminInfoCell label="ハンドル">{source.handle}</AdminInfoCell>
+            <AdminInfoCell label="種別">{source.sourceType}</AdminInfoCell>
+            <AdminInfoCell label="状態">{source.status}</AdminInfoCell>
+            <AdminInfoCell label="関連">{source.relationshipSourceHandle ?? "-"}</AdminInfoCell>
             <a href={source.sourceUrl} rel="noreferrer" target="_blank">
               開く
             </a>
@@ -344,7 +330,7 @@ function EventSourcesView() {
           </article>
         ))}
         <AdminEmptyState state={sources} emptyMessage="取得源はまだありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -361,22 +347,19 @@ function InstagramReviewQueueView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>Instagram確認</h2>
-        <p>自動取得できない公式Instagramを開き、確認済みの公開情報だけを候補化します。</p>
-      </div>
+      <AdminViewHeader title="Instagram確認" description="自動取得できない公式Instagramを開き、確認済みの公開情報だけを候補化します。" />
       <AdminDataStatus state={queue} />
       <section className="metric-grid compact-metrics">
         <Metric label="確認待ち" value={String(items.length)} />
         <Metric label="優先度高" value={String(highPriorityCount)} />
         <Metric label="公式サイトあり" value={String(fallbackCount)} />
       </section>
-      <section className="admin-table">
+      <AdminTable>
         {items.map((item) => (
           <InstagramReviewQueueRow item={item} key={item.id} onRecorded={(sourceId) => setItems((current) => current.filter((next) => next.sourceId !== sourceId))} />
         ))}
         <AdminEmptyState dataLength={items.length} state={queue} emptyMessage="Instagram確認待ちはありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -392,17 +375,14 @@ function EventCandidatesView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>候補レビュー</h2>
-        <p>自動収集した候補を確認し、公開するものだけ承認します。</p>
-      </div>
+      <AdminViewHeader title="候補レビュー" description="自動収集した候補を確認し、公開するものだけ承認します。" />
       <AdminDataStatus state={candidates} />
       <section className="metric-grid compact-metrics">
         <Metric label="確認待ち" value={String(pendingCount)} />
         <Metric label="候補合計" value={String(items.length)} />
         <Metric label="公開済み" value={String(items.filter((event) => event.reviewStatus === "approved").length)} />
       </section>
-      <section className="admin-table">
+      <AdminTable>
         {items.map((event) => (
           <EventCandidateRow
             event={event}
@@ -411,7 +391,7 @@ function EventCandidatesView() {
           />
         ))}
         <AdminEmptyState dataLength={items.length} state={candidates} emptyMessage="確認待ちの候補はありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -421,17 +401,14 @@ function PostsView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>投稿管理</h2>
-        <p>非表示操作は管理APIへ送信され、監査ログに記録されます。</p>
-      </div>
+      <AdminViewHeader title="投稿管理" description="非表示操作は管理APIへ送信され、監査ログに記録されます。" />
       <AdminDataStatus state={posts} />
-      <section className="admin-table">
+      <AdminTable>
         {posts.data.map((post) => (
           <PostModerationRow post={post} key={post.id} />
         ))}
         <AdminEmptyState state={posts} emptyMessage="投稿はまだありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -441,17 +418,14 @@ function ReportsView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>更新申請・通報管理</h2>
-        <p>V1 のジム・イベント更新申請と通報を確認し、対応状態を監査ログに残します。</p>
-      </div>
+      <AdminViewHeader title="更新申請・通報管理" description="V1 のジム・イベント更新申請と通報を確認し、対応状態を監査ログに残します。" />
       <AdminDataStatus state={reports} />
-      <section className="admin-table">
+      <AdminTable>
         {reports.data.map((report) => (
           <ReportModerationRow report={report} key={report.id} />
         ))}
         <AdminEmptyState state={reports} emptyMessage="更新申請・通報はありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -461,21 +435,18 @@ function AuditLogsView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>監査ログ</h2>
-        <p>管理者操作は必ず監査ログに残します。</p>
-      </div>
+      <AdminViewHeader title="監査ログ" description="管理者操作は必ず監査ログに残します。" />
       <AdminDataStatus state={auditLogs} />
-      <section className="admin-table">
+      <AdminTable>
         {auditLogs.data.map((log) => (
           <article className="admin-row" key={log.id}>
-            <span>{log.action}</span>
-            <span>{log.targetType}</span>
-            <span>{log.createdAt}</span>
+            <AdminInfoCell label="操作">{log.action}</AdminInfoCell>
+            <AdminInfoCell label="対象">{log.targetType}</AdminInfoCell>
+            <AdminInfoCell label="日時">{log.createdAt}</AdminInfoCell>
           </article>
         ))}
         <AdminEmptyState state={auditLogs} emptyMessage="監査ログはまだありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -490,22 +461,19 @@ function AnnouncementsView() {
 
   return (
     <>
-      <div className="admin-title">
-        <h2>お知らせ管理</h2>
-        <p>利用者向けのお知らせを作成・編集し、公開と下書きを切り替えます。</p>
-      </div>
+      <AdminViewHeader title="お知らせ管理" description="利用者向けのお知らせを作成・編集し、公開と下書きを切り替えます。" />
       <AdminDataStatus state={announcements} />
       <AnnouncementEditorForm
         onSaved={(announcement) => {
           setItems((current) => [announcement, ...current.filter((item) => item.id !== announcement.id)]);
         }}
       />
-      <section className="admin-table">
+      <AdminTable>
         {items.map((announcement) => (
           <AnnouncementEditorRow announcement={announcement} key={announcement.id} onSaved={(next) => setItems((current) => current.map((item) => (item.id === next.id ? next : item)))} />
         ))}
         <AdminEmptyState dataLength={items.length} state={announcements} emptyMessage="お知らせはまだありません。" />
-      </section>
+      </AdminTable>
     </>
   );
 }
@@ -516,6 +484,29 @@ function Metric({ label, value }: { label: string; value: string }) {
       <span>{label}</span>
       <strong>{value}</strong>
     </article>
+  );
+}
+
+function AdminViewHeader({ description, title }: { description: string; title: string }) {
+  return (
+    <div className="admin-title">
+      <h2>{title}</h2>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+function AdminTable({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <section className={["admin-table", className].filter(Boolean).join(" ")}>{children}</section>;
+}
+
+function AdminInfoCell({ children, detail, label }: { children: ReactNode; detail?: ReactNode; label?: string }) {
+  return (
+    <span className="admin-info-cell">
+      {label ? <small className="admin-cell-label">{label}</small> : null}
+      <strong>{children}</strong>
+      {detail ? <small>{detail}</small> : null}
+    </span>
   );
 }
 
@@ -544,15 +535,21 @@ function ReportModerationRow({ report }: { report: ReportSummary }) {
 
   return (
     <form action={submit} className="admin-row moderation-row">
-      <span>{report.id}</span>
-      <span>{report.category}</span>
-      <span>{report.status}</span>
-      <select aria-label="申請状態" defaultValue="reviewing" name="status">
-        <option value="reviewing">reviewing</option>
-        <option value="resolved">resolved</option>
-        <option value="open">open</option>
-      </select>
-      <input aria-label="対応理由" maxLength={1000} name="reason" placeholder="理由" />
+      <AdminInfoCell label="ID">{report.id}</AdminInfoCell>
+      <AdminInfoCell label="種別">{report.category}</AdminInfoCell>
+      <AdminInfoCell label="現在">{report.status}</AdminInfoCell>
+      <label className="admin-field">
+        変更後
+        <select defaultValue="reviewing" name="status">
+          <option value="reviewing">reviewing</option>
+          <option value="resolved">resolved</option>
+          <option value="open">open</option>
+        </select>
+      </label>
+      <label className="admin-field">
+        対応理由
+        <input maxLength={1000} name="reason" placeholder="理由" />
+      </label>
       <button type="submit">更新</button>
       <StatusMessage message={message} status={status} />
     </form>
@@ -583,14 +580,20 @@ function PostModerationRow({ post }: { post: PostSummary }) {
 
   return (
     <form action={submit} className="admin-row moderation-row">
-      <span>{post.sourceLabel}</span>
-      <span>{post.visibility}</span>
-      <span>{post.authorName}</span>
-      <select aria-label="投稿操作" defaultValue="hide_post" name="action">
-        <option value="hide_post">hide_post</option>
-        <option value="dismiss_report">dismiss_report</option>
-      </select>
-      <input aria-label="対応理由" maxLength={1000} name="reason" placeholder="理由" />
+      <AdminInfoCell label="投稿元">{post.sourceLabel}</AdminInfoCell>
+      <AdminInfoCell label="公開状態">{post.visibility}</AdminInfoCell>
+      <AdminInfoCell label="投稿者">{post.authorName}</AdminInfoCell>
+      <label className="admin-field">
+        操作
+        <select defaultValue="hide_post" name="action">
+          <option value="hide_post">hide_post</option>
+          <option value="dismiss_report">dismiss_report</option>
+        </select>
+      </label>
+      <label className="admin-field">
+        対応理由
+        <input maxLength={1000} name="reason" placeholder="理由" />
+      </label>
       <button type="submit">実行</button>
       <StatusMessage message={message} status={status} />
     </form>
@@ -621,15 +624,21 @@ function GymModerationRow({ gym }: { gym: GymSummary }) {
 
   return (
     <form action={submit} className="admin-row moderation-row">
-      <span>{gym.name}</span>
-      <span>{gym.area}</span>
-      <span>{gym.disciplines}</span>
-      <select aria-label="ジム状態" defaultValue="published" name="status">
-        <option value="published">published</option>
-        <option value="draft">draft</option>
-        <option value="closed">closed</option>
-      </select>
-      <input aria-label="対応理由" maxLength={1000} name="reason" placeholder="理由" />
+      <AdminInfoCell label="ジム">{gym.name}</AdminInfoCell>
+      <AdminInfoCell label="エリア">{gym.area}</AdminInfoCell>
+      <AdminInfoCell label="種目">{gym.disciplines}</AdminInfoCell>
+      <label className="admin-field">
+        状態
+        <select defaultValue="published" name="status">
+          <option value="published">published</option>
+          <option value="draft">draft</option>
+          <option value="closed">closed</option>
+        </select>
+      </label>
+      <label className="admin-field">
+        対応理由
+        <input maxLength={1000} name="reason" placeholder="理由" />
+      </label>
       <button type="submit">更新</button>
       <StatusMessage message={message} status={status} />
     </form>
@@ -827,7 +836,10 @@ function EventCandidateRow({ event, onReviewed }: { event: EventSummary; onRevie
         </span>
       </div>
       <div className="candidate-actions">
-        <input aria-label="レビュー理由" maxLength={1000} name="reason" placeholder="理由" />
+        <label className="admin-field">
+          レビュー理由
+          <input maxLength={1000} name="reason" placeholder="理由" />
+        </label>
         <button name="action" type="submit" value="approve">
           承認
         </button>
@@ -919,16 +931,31 @@ function EventEditorRow({ event, onSaved }: { event: EventSummary; onSaved: (eve
 
   return (
     <form action={submit} className="admin-row content-editor-row">
-      <input aria-label="イベント名" defaultValue={event.title} maxLength={120} name="title" required />
-      <span>{event.gymName}</span>
-      <input aria-label="開始" defaultValue={toDateTimeLocal(event.startsAt)} name="startsAt" required type="datetime-local" />
-      <input aria-label="終了" defaultValue={toDateTimeLocal(event.endsAt)} name="endsAt" type="datetime-local" />
-      <select aria-label="イベント状態" defaultValue={event.status} name="status">
-        <option value="draft">draft</option>
-        <option value="scheduled">scheduled</option>
-        <option value="closed">closed</option>
-      </select>
-      <input aria-label="説明" defaultValue={event.description} maxLength={2000} name="description" placeholder="説明" />
+      <label className="admin-field">
+        イベント名
+        <input defaultValue={event.title} maxLength={120} name="title" required />
+      </label>
+      <AdminInfoCell label="ジム">{event.gymName}</AdminInfoCell>
+      <label className="admin-field">
+        開始
+        <input defaultValue={toDateTimeLocal(event.startsAt)} name="startsAt" required type="datetime-local" />
+      </label>
+      <label className="admin-field">
+        終了
+        <input defaultValue={toDateTimeLocal(event.endsAt)} name="endsAt" type="datetime-local" />
+      </label>
+      <label className="admin-field">
+        状態
+        <select defaultValue={event.status} name="status">
+          <option value="draft">draft</option>
+          <option value="scheduled">scheduled</option>
+          <option value="closed">closed</option>
+        </select>
+      </label>
+      <label className="admin-field">
+        説明
+        <input defaultValue={event.description} maxLength={2000} name="description" placeholder="説明" />
+      </label>
       <button type="submit">更新</button>
       <StatusMessage message={message} status={status} />
     </form>
@@ -998,13 +1025,22 @@ function AnnouncementEditorRow({ announcement, onSaved }: { announcement: Announ
 
   return (
     <form action={submit} className="admin-row announcement-editor-row">
-      <input aria-label="お知らせタイトル" defaultValue={announcement.title} maxLength={120} name="title" required />
-      <textarea aria-label="お知らせ本文" defaultValue={announcement.body} maxLength={4000} name="body" required />
-      <select aria-label="お知らせ状態" defaultValue={announcement.status} name="status">
-        <option value="draft">draft</option>
-        <option value="published">published</option>
-      </select>
-      <span>{announcement.publishedAt || "未公開"}</span>
+      <label className="admin-field">
+        タイトル
+        <input defaultValue={announcement.title} maxLength={120} name="title" required />
+      </label>
+      <label className="admin-field">
+        本文
+        <textarea defaultValue={announcement.body} maxLength={4000} name="body" required />
+      </label>
+      <label className="admin-field">
+        状態
+        <select defaultValue={announcement.status} name="status">
+          <option value="draft">draft</option>
+          <option value="published">published</option>
+        </select>
+      </label>
+      <AdminInfoCell label="公開日">{announcement.publishedAt || "未公開"}</AdminInfoCell>
       <button type="submit">更新</button>
       <StatusMessage message={message} status={status} />
     </form>
@@ -1062,10 +1098,10 @@ function AdminEmptyState<T>({ dataLength, emptyMessage, state }: { dataLength?: 
 
 function EmptyAdminRow({ detail, title }: { detail: string; title: string }) {
   return (
-    <article className="admin-row">
-      <span>{title}</span>
-      <span>{detail}</span>
-      <span />
+    <article className="admin-row admin-empty-row">
+      <AdminInfoCell detail={detail} label="状態">
+        {title}
+      </AdminInfoCell>
     </article>
   );
 }

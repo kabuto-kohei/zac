@@ -2,11 +2,22 @@
   color-scheme: light;
   --bg: #f6f7f8;
   --surface: #ffffff;
+  --surface-muted: #f8faf9;
   --ink: #17201d;
   --muted: #64706b;
   --line: #dfe5e1;
+  --line-strong: #cbd5d0;
   --brand: #0f766e;
+  --brand-soft: #ecfdf5;
   --warning: #b45309;
+  --danger: #991b1b;
+  --radius: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --control-height: 40px;
 }
 
 * {
@@ -32,6 +43,19 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+button {
+  border: 1px solid transparent;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 .admin-shell {
@@ -79,14 +103,14 @@ p {
 
 .admin-nav {
   display: block;
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 11px 12px;
   color: var(--muted);
   font-weight: 700;
 }
 
 .admin-nav.active {
-  background: #ecfdf5;
+  background: var(--brand-soft);
   color: var(--brand);
 }
 
@@ -103,7 +127,7 @@ p {
   gap: 14px;
   width: min(100%, 480px);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 24px;
   background: var(--surface);
 }
@@ -119,7 +143,7 @@ p {
 .admin-login-panel button {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   color: var(--ink);
   font: inherit;
 }
@@ -139,13 +163,14 @@ p {
 
 .admin-title {
   display: grid;
-  gap: 2px;
+  gap: 4px;
+  min-width: 0;
 }
 
 .admin-data-status {
   margin: 0;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 10px 12px;
   background: #fff7ed;
   color: var(--warning);
@@ -165,7 +190,7 @@ p {
 .admin-card,
 .admin-table {
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--surface);
 }
 
@@ -193,18 +218,25 @@ p {
 .admin-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 12px 14px;
   align-items: start;
   border-bottom: 1px solid var(--line);
   padding: 14px 16px;
+  min-width: 0;
 }
 
 .admin-row:last-child {
   border-bottom: 0;
 }
 
-.admin-row span {
+.admin-row span,
+.admin-row label,
+.admin-row form,
+.admin-row div {
   min-width: 0;
+}
+
+.admin-row span {
   overflow-wrap: anywhere;
 }
 
@@ -221,20 +253,46 @@ p {
   overflow-wrap: anywhere;
 }
 
+.admin-info-cell {
+  display: grid;
+  gap: 3px;
+  align-content: start;
+}
+
+.admin-info-cell strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.admin-cell-label {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.admin-empty-row {
+  grid-template-columns: 1fr;
+  background: var(--surface-muted);
+}
+
 .source-row {
-  grid-template-columns: minmax(150px, 1.2fr) minmax(90px, 0.6fr) minmax(120px, 0.9fr) minmax(130px, 0.9fr) minmax(90px, 0.7fr) minmax(120px, 0.9fr) 64px minmax(220px, 1.4fr);
+  grid-template-columns: minmax(170px, 1.2fr) minmax(90px, 0.55fr) minmax(120px, 0.8fr) minmax(120px, 0.75fr) minmax(90px, 0.6fr) minmax(120px, 0.8fr) 64px minmax(220px, 1.4fr);
 }
 
 .candidate-row {
   grid-template-columns: 1fr;
   gap: 14px;
-  padding: 18px;
+  padding: 16px;
 }
 
 .instagram-review-row {
   grid-template-columns: 1fr;
   gap: 14px;
-  padding: 18px;
+  padding: 16px;
 }
 
 .candidate-summary,
@@ -295,12 +353,16 @@ p {
 
 .moderation-row {
   grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(130px, 0.8fr) minmax(150px, 1fr) 88px;
+  align-items: end;
 }
 
 .candidate-row input,
 .candidate-row button,
 .candidate-actions input,
 .candidate-actions button,
+.admin-field input,
+.admin-field select,
+.admin-field textarea,
 .instagram-candidate-form input,
 .instagram-candidate-form select,
 .instagram-candidate-form button,
@@ -311,7 +373,7 @@ p {
   width: 100%;
   min-width: 0;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--surface);
   color: var(--ink);
   font: inherit;
@@ -319,11 +381,20 @@ p {
 
 .candidate-row input,
 .candidate-actions input,
+.admin-field input,
+.admin-field select,
 .instagram-candidate-form input,
 .instagram-candidate-form select,
 .moderation-row select,
 .moderation-row input {
+  min-height: var(--control-height);
   padding: 10px 11px;
+}
+
+.admin-field textarea {
+  min-height: 72px;
+  padding: 10px 11px;
+  resize: vertical;
 }
 
 .candidate-row button,
@@ -331,6 +402,7 @@ p {
 .instagram-candidate-form button,
 .instagram-review-actions button,
 .moderation-row button {
+  min-height: var(--control-height);
   padding: 10px 12px;
   background: var(--brand);
   color: #ffffff;
@@ -356,7 +428,7 @@ p {
   gap: 12px;
   align-items: end;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   padding: 16px;
   background: var(--surface);
 }
@@ -383,7 +455,7 @@ p {
   width: 100%;
   min-width: 0;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius);
   background: var(--surface);
   color: var(--ink);
 }
@@ -449,11 +521,25 @@ p {
     border-bottom: 1px solid var(--line);
   }
 
+  .admin-sidebar nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+
+  .admin-nav {
+    flex: 0 0 auto;
+  }
+
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .admin-editor-form {
+  .admin-editor-form,
+  .moderation-row,
+  .content-editor-row,
+  .announcement-editor-row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -488,14 +574,18 @@ p {
 
 @media (max-width: 520px) {
   .metric-grid,
-    .admin-row,
+  .admin-row,
   .candidate-row,
   .instagram-review-row,
   .instagram-candidate-form,
-    .moderation-row,
+  .moderation-row,
   .admin-editor-form,
   .content-editor-row,
   .announcement-editor-row {
     grid-template-columns: 1fr;
+  }
+
+  .admin-content {
+    padding: 20px;
   }
 }

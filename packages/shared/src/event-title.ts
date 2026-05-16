@@ -6,6 +6,8 @@ const genericTitlePatterns = [
   /^▶+$/,
   /^[-ー—―]+$/,
   /^期間イベント$/,
+  /^check(?:check)*$/i,
+  /^今年のbloc$/i,
   /^information$/i,
   /information$/i,
   /^お知らせ$/,
@@ -31,6 +33,8 @@ function cleanEventTitle(title: string) {
   return title
     .normalize("NFKC")
     .replace(/[\u{1F300}-\u{1FAFF}]/gu, "")
+    .replace(/[\u2600-\u27BF]/g, "")
+    .replace(/\uFE0F/g, "")
     .replace(/[🙏😭]/g, "")
     .replace(/\s+/g, " ")
     .trim();
@@ -51,7 +55,7 @@ function shouldUseContextualTitle(title: string, category: EventSummary["categor
   }
 
   if (!isOperationalCategory(category)) {
-    return false;
+    return title.length > 42;
   }
 
   return title.length > 34 || /^\d{1,2}[月/]\d{1,2}/.test(title);

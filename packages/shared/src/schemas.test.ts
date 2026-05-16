@@ -48,6 +48,18 @@ test("formatEventDisplayTitle replaces long operational source text with context
   );
 });
 
+test("formatEventDisplayTitle replaces noisy competition source text with contextual titles", () => {
+  assert.equal(
+    formatEventDisplayTitle({
+      category: "competition",
+      gymName: "クライミングジム RISE",
+      startsAt: "2026-08-29 10:00",
+      title: "⚡️Check⚡️Check⚡️Check⚡️",
+    }),
+    "クライミングジム RISE 8/29 コンペ",
+  );
+});
+
 test("createSessionPlanSchema accepts a valid gym plan", () => {
   const result = createSessionPlanSchema.safeParse({
     title: "火曜夜にB-PUMPで登る",

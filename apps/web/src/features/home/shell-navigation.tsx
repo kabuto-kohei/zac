@@ -2,17 +2,16 @@
 
 import Link from "next/link";
 import { useAuthStatus } from "./auth-state";
-import { ZacIcon, type ZacIconKey } from "./zac-icons";
 import type { Tab } from "./app-shell";
 
-const publicNavItems: Array<{ id: Tab; href: string; label: string; icon?: ZacIconKey; textIcon?: string }> = [
-  { id: "home", href: "/", label: "カレンダー", textIcon: "⌂" },
-  { id: "explore", href: "/explore", label: "ジム", icon: "gym" },
+const publicNavItems: Array<{ id: Tab; href: string; label: string }> = [
+  { id: "home", href: "/", label: "カレンダー" },
+  { id: "explore", href: "/explore", label: "ジム" },
 ];
 
-const memberNavItems: Array<{ id: Tab; href: string; label: string; icon?: ZacIconKey; textIcon?: string }> = [
+const memberNavItems: Array<{ id: Tab; href: string; label: string }> = [
   ...publicNavItems,
-  { id: "me", href: "/me", label: "アカウント", textIcon: "○" },
+  { id: "me", href: "/me", label: "アカウント" },
 ];
 
 export function ShellNavigation({ activeTab }: { activeTab: Tab }) {
@@ -28,11 +27,6 @@ export function ShellNavigation({ activeTab }: { activeTab: Tab }) {
           href={item.href}
           key={item.id}
         >
-          {item.icon ? (
-            <ZacIcon decorative icon={item.icon} size={24} />
-          ) : (
-            <span aria-hidden="true">{item.textIcon}</span>
-          )}
           {item.label}
         </Link>
       ))}

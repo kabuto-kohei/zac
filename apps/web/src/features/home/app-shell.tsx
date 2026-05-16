@@ -38,17 +38,14 @@ export function AppShell({
 export function MetricStripView({
   events,
   gyms,
-  requests,
 }: {
   events: number;
   gyms: number;
-  requests: string;
 }) {
   return (
     <section className="metric-strip" aria-label="V1 scope summary">
       <Metric label="掲載イベント" value={String(events)} />
       <Metric label="掲載ジム" value={String(gyms)} />
-      <Metric label="更新申請" value={requests} />
     </section>
   );
 }

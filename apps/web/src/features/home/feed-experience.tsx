@@ -24,7 +24,7 @@ function GuestHomeExperience({ data }: { data: HomeViewData }) {
   const [showGyms, setShowGyms] = useState(false);
   const gyms = useMemo(() => getSortedGyms(data.gyms), [data.gyms]);
   const calendarEvents = getCalendarEvents(data.events);
-  const upcomingEvents = calendarEvents.slice(0, 8);
+  const upcomingEvents = getUpcomingWeekEvents(calendarEvents);
 
   return (
     <section className="stack">
@@ -216,6 +216,16 @@ function getCalendarEvents(events: HomeViewData["events"]) {
     .sort((left, right) => left.startsAt.localeCompare(right.startsAt));
 }
 
+function getUpcomingWeekEvents(events: HomeViewData["events"]) {
+  const todayKey = getTodayDateKey();
+  const endKey = addDaysToDateKey(todayKey, 7);
+
+  return events.filter((event) => {
+    const eventDateKey = getEventJstDateKey(event);
+    return Boolean(eventDateKey && eventDateKey >= todayKey && eventDateKey < endKey);
+  });
+}
+
 function getInitialCalendarMonth(events: HomeViewData["events"]) {
   const scheduledEvents = getCalendarEvents(events);
   const upcomingEvents = scheduledEvents.filter((event) => {
@@ -340,6 +350,19 @@ function getEventDateKey(event: HomeViewData["events"][number] | undefined) {
   return event?.startsAt.match(/^\d{4}-\d{2}-\d{2}/)?.[0] ?? null;
 }
 
+function getEventJstDateKey(event: HomeViewData["events"][number] | undefined) {
+  if (!event) {
+    return null;
+  }
+
+  const parsed = Date.parse(event.startsAt.replace(" ", "T"));
+  if (Number.isNaN(parsed)) {
+    return getEventDateKey(event);
+  }
+
+  return getJstDateKey(new Date(parsed));
+}
+
 function startOfToday() {
   const now = new Date();
   now.setHours(0, 0, 0, 0);
@@ -352,8 +375,24 @@ function getCurrentMonthKey() {
 }
 
 function getTodayDateKey() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+  return getJstDateKey(new Date());
+}
+
+function getJstDateKey(date: Date) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    day: "2-digit",
+    month: "2-digit",
+    timeZone: "Asia/Tokyo",
+    year: "numeric",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function addDaysToDateKey(dateKey: string, days: number) {
+  const [year = 1970, month = 1, day = 1] = dateKey.split("-").map(Number);
+  const date = new Date(Date.UTC(year, month - 1, day + days));
+  return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
 }
 
 function getSortedGyms(gyms: HomeViewData["gyms"]) {

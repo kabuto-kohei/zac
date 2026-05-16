@@ -59,7 +59,7 @@ async function listPersistentGyms() {
 
   try {
     const rows = await db
-      .select()
+      .select(gymSummaryFields)
       .from(gyms)
       .where(and(isNull(gyms.deletedAt), eq(gyms.status, "published")))
       .orderBy(asc(gyms.area), asc(gyms.name))
@@ -81,7 +81,7 @@ async function getPersistentGym(gymId: string) {
   }
 
   try {
-    const [row] = await db.select().from(gyms).where(eq(gyms.id, gymId)).limit(1);
+    const [row] = await db.select({ ...gymSummaryFields, deletedAt: gyms.deletedAt, status: gyms.status }).from(gyms).where(eq(gyms.id, gymId)).limit(1);
     return row && !row.deletedAt && row.status === "published" ? toGymSummary(row) : null;
   } catch {
     if (!isRuntimeFallbackAllowed()) {
@@ -91,7 +91,35 @@ async function getPersistentGym(gymId: string) {
   }
 }
 
-function toGymSummary(row: typeof gyms.$inferSelect) {
+const gymSummaryFields = {
+  id: gyms.id,
+  name: gyms.name,
+  area: gyms.area,
+  address: gyms.address,
+  disciplinesText: gyms.disciplinesText,
+  openingHoursText: gyms.openingHoursText,
+  websiteUrl: gyms.websiteUrl,
+  instagramHandle: gyms.instagramHandle,
+  instagramUrl: gyms.instagramUrl,
+  sourceUrl: gyms.sourceUrl,
+  sourceAttribution: gyms.sourceAttribution,
+  sourceVerifiedAt: gyms.sourceVerifiedAt,
+};
+
+function toGymSummary(row: {
+  id: string;
+  name: string;
+  area: string | null;
+  address: string | null;
+  disciplinesText: string | null;
+  openingHoursText: string | null;
+  websiteUrl: string | null;
+  instagramHandle: string | null;
+  instagramUrl: string | null;
+  sourceUrl: string | null;
+  sourceAttribution: string | null;
+  sourceVerifiedAt: Date | null;
+}) {
   return {
     id: row.id,
     name: row.name,

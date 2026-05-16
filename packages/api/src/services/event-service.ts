@@ -8,9 +8,12 @@ import { isUuid } from "./ids.js";
 
 const savedEventIds = new Set<string>();
 const memoryEvents = new Map<string, EventSummary>();
+let publicEventListCache: { expiresAt: number; events: EventSummary[] } | null = null;
+const publicEventDetailCache = new Map<string, { expiresAt: number; event: EventSummary }>();
+const publicEventCacheTtlMs = 60_000;
 
 export async function listEvents(options: { includeDrafts?: boolean } = {}) {
-  const rows = await listPersistentEvents(options.includeDrafts ?? false);
+  const rows = options.includeDrafts ? await listPersistentEvents(true) : await listCachedPersistentPublicEvents();
   const memoryRows = [...memoryEvents.values()].filter((event) => options.includeDrafts || event.status !== "draft");
   if (!isRuntimeFallbackAllowed()) {
     return rows;
@@ -35,7 +38,7 @@ export async function getEvent(eventId: string) {
   }
 
   if (isUuid(eventId)) {
-    const row = await getPersistentEvent(eventId);
+    const row = await getCachedPersistentPublicEvent(eventId);
 
     if (row) {
       return row;
@@ -79,6 +82,7 @@ export async function createEvent(input: UpsertAdminEventInput, actor: RequestAc
     throw new ApiError("service_unavailable", "Could not create event.", 503);
   }
 
+  clearEventCache();
   return toEventSummary(row);
 }
 
@@ -112,6 +116,7 @@ export async function updateEvent(eventId: string, input: UpsertAdminEventInput)
     throw new ApiError("not_found", "Event not found.", 404);
   }
 
+  clearEventCache(eventId);
   return toEventSummary(row);
 }
 
@@ -172,6 +177,7 @@ export async function reviewEventCandidate(eventId: string, input: ReviewAdminEv
   }
 
   void actor;
+  clearEventCache(eventId);
   return toEventSummary(row);
 }
 
@@ -183,6 +189,28 @@ export async function saveEvent(eventId: string, actorId?: string) {
   }
 
   return { eventId, saved: true };
+}
+
+function clearEventCache(eventId?: string) {
+  publicEventListCache = null;
+  if (eventId) {
+    publicEventDetailCache.delete(eventId);
+  } else {
+    publicEventDetailCache.clear();
+  }
+}
+
+async function listCachedPersistentPublicEvents() {
+  const now = Date.now();
+  if (publicEventListCache && publicEventListCache.expiresAt > now) {
+    return publicEventListCache.events;
+  }
+
+  const rows = await listPersistentEvents(false);
+  if (rows.length > 0) {
+    publicEventListCache = { expiresAt: now + publicEventCacheTtlMs, events: rows };
+  }
+  return rows;
 }
 
 async function listPersistentEvents(includeDrafts: boolean) {
@@ -234,6 +262,20 @@ async function listPersistentEventCandidates() {
     }
     return [];
   }
+}
+
+async function getCachedPersistentPublicEvent(eventId: string) {
+  const now = Date.now();
+  const cached = publicEventDetailCache.get(eventId);
+  if (cached && cached.expiresAt > now) {
+    return cached.event;
+  }
+
+  const event = await getPersistentEvent(eventId);
+  if (event) {
+    publicEventDetailCache.set(eventId, { expiresAt: now + publicEventCacheTtlMs, event });
+  }
+  return event;
 }
 
 async function getPersistentEvent(eventId: string) {

@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, eventSaves, events, gyms, isNull, sourcePostObservations } from "@zac/db";
+import { and, asc, desc, eq, eventSaves, events, gyms, inArray, isNull, sourcePostObservations } from "@zac/db";
 import { eventFixtures, findEventFixture, type EventSummary, type ReviewAdminEventInput, type UpsertAdminEventInput } from "@zac/shared";
 import type { RequestActor } from "../auth.js";
 import { ApiError } from "../errors.js";
@@ -196,14 +196,12 @@ async function listPersistentEvents(includeDrafts: boolean) {
     const rows = await db
       .select({
         ...eventReturningFields,
-        gymName: gyms.name,
       })
       .from(events)
-      .leftJoin(gyms, eq(events.gymId, gyms.id))
       .where(isNull(events.deletedAt))
       .orderBy(asc(events.startsAt))
       .limit(50);
-    return Promise.all(rows.filter((row) => includeDrafts || isPublicEventRow(row)).map(toEventSummary));
+    return toEventSummaries(rows.filter((row) => includeDrafts || isPublicEventRow(row)));
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not list events.", 503);
@@ -223,15 +221,13 @@ async function listPersistentEventCandidates() {
     const rows = await db
       .select({
         ...eventReturningFields,
-        gymName: gyms.name,
       })
       .from(events)
-      .leftJoin(gyms, eq(events.gymId, gyms.id))
       .where(isNull(events.deletedAt))
       .orderBy(desc(events.createdAt))
       .limit(100);
 
-    return Promise.all(rows.filter((row) => row.reviewStatus !== "approved" || row.status === "draft").map(toEventSummary));
+    return toEventSummaries(rows.filter((row) => row.reviewStatus !== "approved" || row.status === "draft"));
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not list event candidates.", 503);
@@ -251,11 +247,9 @@ async function getPersistentEvent(eventId: string) {
     const [row] = await db
       .select({
         ...eventReturningFields,
-        gymName: gyms.name,
         deletedAt: events.deletedAt,
       })
       .from(events)
-      .leftJoin(gyms, eq(events.gymId, gyms.id))
       .where(eq(events.id, eventId))
       .limit(1);
 
@@ -268,7 +262,7 @@ async function getPersistentEvent(eventId: string) {
   }
 }
 
-async function toEventSummary(row: {
+type EventSummaryRow = {
   id: string;
   category: string;
   title: string;
@@ -285,7 +279,14 @@ async function toEventSummary(row: {
   reviewStatus?: string | null;
   extractionConfidence?: string | null;
   status: string;
-}) {
+};
+
+async function toEventSummaries(rows: EventSummaryRow[]) {
+  const gymNames = await getGymNames(rows.map((row) => row.gymId));
+  return Promise.all(rows.map((row) => toEventSummary({ ...row, gymName: row.gymId ? (gymNames.get(row.gymId) ?? null) : null })));
+}
+
+async function toEventSummary(row: EventSummaryRow) {
   return {
     id: row.id,
     category: parseEventCategory(row.category),
@@ -391,6 +392,22 @@ async function getGymName(gymId: string | null) {
     return row?.name ?? "Zac";
   } catch {
     return "Zac";
+  }
+}
+
+async function getGymNames(gymIds: Array<string | null>) {
+  const db = getDatabase();
+  const uniqueGymIds = [...new Set(gymIds.filter((gymId): gymId is string => Boolean(gymId)))];
+
+  if (!db || uniqueGymIds.length === 0) {
+    return new Map<string, string>();
+  }
+
+  try {
+    const rows = await db.select({ id: gyms.id, name: gyms.name }).from(gyms).where(inArray(gyms.id, uniqueGymIds));
+    return new Map(rows.map((row) => [row.id, row.name]));
+  } catch {
+    return new Map<string, string>();
   }
 }
 

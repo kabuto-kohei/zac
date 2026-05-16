@@ -17,6 +17,14 @@ test("GET /v1/health returns ok", async () => {
   assert.equal(body.data.ok, true);
 });
 
+test("responses include request timing headers", async () => {
+  const response = await createApp().request("/v1/health");
+
+  assert.match(response.headers.get("x-zac-request-id") ?? "", /^[0-9a-f-]{36}$/u);
+  assert.match(response.headers.get("server-timing") ?? "", /^app;dur=\d+\.\d$/u);
+  assert.match(response.headers.get("x-zac-duration-ms") ?? "", /^\d+$/u);
+});
+
 test("CORS allows the production admin origin without env-only configuration", async () => {
   const response = await createApp().request("/v1/admin/event-candidates", {
     headers: {

@@ -196,8 +196,10 @@ async function listPersistentEvents(includeDrafts: boolean) {
     const rows = await db
       .select({
         ...eventReturningFields,
+        gymName: gyms.name,
       })
       .from(events)
+      .leftJoin(gyms, eq(events.gymId, gyms.id))
       .where(isNull(events.deletedAt))
       .orderBy(asc(events.startsAt))
       .limit(50);
@@ -221,8 +223,10 @@ async function listPersistentEventCandidates() {
     const rows = await db
       .select({
         ...eventReturningFields,
+        gymName: gyms.name,
       })
       .from(events)
+      .leftJoin(gyms, eq(events.gymId, gyms.id))
       .where(isNull(events.deletedAt))
       .orderBy(desc(events.createdAt))
       .limit(100);
@@ -247,9 +251,11 @@ async function getPersistentEvent(eventId: string) {
     const [row] = await db
       .select({
         ...eventReturningFields,
+        gymName: gyms.name,
         deletedAt: events.deletedAt,
       })
       .from(events)
+      .leftJoin(gyms, eq(events.gymId, gyms.id))
       .where(eq(events.id, eventId))
       .limit(1);
 
@@ -275,6 +281,7 @@ async function toEventSummary(row: {
   sourceUrl: string | null;
   sourceAccount: string | null;
   sourceQuote: string | null;
+  gymName?: string | null;
   reviewStatus?: string | null;
   extractionConfidence?: string | null;
   status: string;
@@ -285,7 +292,7 @@ async function toEventSummary(row: {
     title: row.title,
     summary: row.summary ?? row.description ?? "",
     description: row.description ?? "",
-    gymName: await getGymName(row.gymId),
+    gymName: row.gymName ?? (await getGymName(row.gymId)),
     startsAt: formatDateTime(row.startsAt),
     endsAt: row.endsAt ? formatDateTime(row.endsAt) : "",
     capacity: row.capacityText ?? "定員未設定",

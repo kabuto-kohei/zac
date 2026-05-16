@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { toErrorResponse } from "./errors.js";
 import { captureException, initMonitoring } from "./integrations/monitoring.js";
+import { requestTiming } from "./middleware/request-timing.js";
 import { createAdminRoutes } from "./routes/admin.js";
 import { createAnnouncementRoutes } from "./routes/announcements.js";
 import { createEventRoutes } from "./routes/events.js";
@@ -31,6 +32,7 @@ export function createApp() {
       credentials: false,
     }),
   );
+  app.use("*", requestTiming);
 
   app.route("/v1/health", createHealthRoutes());
   app.route("/v1/integrations", createIntegrationRoutes());

@@ -29,6 +29,7 @@
     "sources:automation-local": "node --env-file=.env.local scripts/run-source-automation-local.mjs",
     "sources:automation-health": "node scripts/check-source-automation-health.mjs",
     "sources:automation-readiness": "node scripts/check-source-automation-readiness.mjs",
+    "perf:api-baseline": "node scripts/measure-api-routes.mjs",
     "openapi:generate": "node scripts/openapi-generate.mjs",
     "openapi:check": "node scripts/openapi-check.mjs",
     "config:audit": "node scripts/config-audit.mjs",

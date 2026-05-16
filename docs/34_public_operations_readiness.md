@@ -1,5 +1,10 @@
 # Zac MVP 公開運用Runbook
 
+> Current V1 note: the active V1 public scope is narrower than the original MVP
+> described below. For the current controlled launch checklist, use
+> `docs/42_v1_controlled_launch_runbook.md` first. This document remains as the
+> broader public-operations reference for V2 or later social/activity features.
+
 作成日: 2026-04-30
 
 ## 目的

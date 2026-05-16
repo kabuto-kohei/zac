@@ -30,6 +30,7 @@
     "sources:automation-health": "node scripts/check-source-automation-health.mjs",
     "sources:automation-readiness": "node scripts/check-source-automation-readiness.mjs",
     "perf:api-baseline": "node scripts/measure-api-routes.mjs",
+    "v1:launch-smoke": "node scripts/v1-controlled-launch-smoke.mjs",
     "openapi:generate": "node scripts/openapi-generate.mjs",
     "openapi:check": "node scripts/openapi-check.mjs",
     "config:audit": "node scripts/config-audit.mjs",

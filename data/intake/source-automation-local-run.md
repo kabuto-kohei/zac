@@ -1,20 +1,20 @@
 # Source Automation Local Run
 
-- Generated: 2026-05-16T12:02:23.588Z
-- Updated: 2026-05-16T12:05:26.139Z
+- Generated: 2026-05-16T15:05:26.398Z
+- Updated: 2026-05-16T15:09:38.077Z
 - Status: ready_for_review
 
 ## Steps
 
-- required passed: `/opt/homebrew/bin/pnpm sources:automation-run` (7765ms)
-- optional passed: `/opt/homebrew/bin/pnpm sources:inspect-instagram` (109753ms)
-- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/instagram-post-observations.sql` (1399ms)
-- optional passed: `/opt/homebrew/bin/pnpm sources:inspect-official-sites` (52506ms)
-- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/official-site-observations.sql` (2602ms)
-- optional passed: `/opt/homebrew/bin/pnpm sources:promote-observations` (1276ms)
-- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/source-observation-promotions.sql` (961ms)
-- required passed: `/opt/homebrew/bin/pnpm sources:automation-run` (6054ms)
-- required passed: `/opt/homebrew/bin/pnpm sources:automation-health` (224ms)
+- required passed: `/opt/homebrew/bin/pnpm sources:automation-run` (18129ms)
+- optional passed: `/opt/homebrew/bin/pnpm sources:inspect-instagram` (117000ms)
+- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/instagram-post-observations.sql` (1380ms)
+- optional passed: `/opt/homebrew/bin/pnpm sources:inspect-official-sites` (96030ms)
+- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/official-site-observations.sql` (1546ms)
+- optional passed: `/opt/homebrew/bin/pnpm sources:promote-observations` (2863ms)
+- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/source-observation-promotions.sql` (1235ms)
+- required passed: `/opt/homebrew/bin/pnpm sources:automation-run` (13281ms)
+- required passed: `/opt/homebrew/bin/pnpm sources:automation-health` (202ms)
 
 ## Summary
 

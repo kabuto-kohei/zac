@@ -1,6 +1,6 @@
 # Source Monitor Run
 
-- Generated: 2026-05-16T12:05:23.797Z
+- Generated: 2026-05-16T15:09:32.674Z
 - Due approved sources: 64
 - Instagram post sources: 48
 - Candidate Instagram sources: 0
@@ -39,36 +39,36 @@
 ## Inspect Now
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/
-2. BEAKS Climbing Studio 公式サイト (beaks-climbing-studio) - https://beaksc.wixsite.com/beaks
-3. BERRY WALL Climbing Gym 公式サイト (berry-wall) - https://www.berrywall.com/
-4. Blue Bird Bouldering Gym 公式サイト (blue-bird-bouldering) - https://climbing-bluebird.jp/
-5. BolBol 公式サイト (bolbol) - https://bol-bol.com/
-6. B-PUMP OGIKUBO 公式サイト (b-pump-ogikubo) - https://pump-climbing.com/gym/bpump/
-7. ディーボルダリングプラス八千代公式施設紹介 (d-bouldering-plus-yachiyo) - https://www.d-b-c.jp/yachiyo-news/facility
-8. エナジークライミングジム浦和店公式サイト (energy-climbing-urawa) - https://energy-climbing.co.jp/urawa/
-9. ジャムセッション三鷹公式サイト (jam-session-mitaka) - https://xn--xckbj6a9jra6a4gy403a4b6j.com/
-10. クライミングジムPenguin公式サイト (penguin-climb) - https://penguin-climb.com/
-11. TSUKUBA MONKEY MAGIC公式サイト (tsukuba-monkey-magic) - https://tsukuba-mm.jp/
-12. 壬生町総合運動場体育館 公式ページ (mibu-general-gymnasium) - https://www.town.mibu.tochigi.jp/docs/2015021200047/
+2. B-PUMP OGIKUBO 公式サイト (b-pump-ogikubo) - https://pump-climbing.com/gym/bpump/
+3. 加須市民体育館公式ページ (kazo-citizen-gymnasium) - https://www.city.kazo.lg.jp/benriservice/map/shisetsu/sisetugaiyou_supotu/30292.html
+4. D.Bouldering Plus 蘇我公式サイト (d-bouldering-plus-soga) - https://www.d-b-c.jp/top/soga/
+5. クライミングハウス オックロック公式サイト (okku-rock) - https://okkurock.com/
+6. PIGLET CLIMBING GYM公式サイト (piglet-climbing-gym) - https://piglet-climb.com/
+7. BONOBO bouldering space 公式サイト (bonobo-bouldering-space) - https://bonobo-bs.com/
+8. Bouldering Spot Landmark 公式サイト (bouldering-spot-landmark) - https://boulderingspot-landmark.com/
+9. CARAMBA 公式サイト (caramba) - https://www.caramba.jp/
+10. craze bouldering gym 川口店 公式サイト (craze-kawaguchi) - https://craze-climbing.com/kawaguchi/
+11. Fish and Bird 公式サイト (fish-and-bird) - https://fish-bird.co.jp/fishandbird/
+12. FITS CLIMBING GYM 公式サイト (fits-climbing) - https://www.fits-climbing.com/
 
 ## Operator Batch
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/
-2. BEAKS Climbing Studio 公式サイト (beaks-climbing-studio) - https://beaksc.wixsite.com/beaks
-3. BERRY WALL Climbing Gym 公式サイト (berry-wall) - https://www.berrywall.com/
-4. Blue Bird Bouldering Gym 公式サイト (blue-bird-bouldering) - https://climbing-bluebird.jp/
-5. BolBol 公式サイト (bolbol) - https://bol-bol.com/
-6. B-PUMP OGIKUBO 公式サイト (b-pump-ogikubo) - https://pump-climbing.com/gym/bpump/
-7. ディーボルダリングプラス八千代公式施設紹介 (d-bouldering-plus-yachiyo) - https://www.d-b-c.jp/yachiyo-news/facility
-8. エナジークライミングジム浦和店公式サイト (energy-climbing-urawa) - https://energy-climbing.co.jp/urawa/
-9. ジャムセッション三鷹公式サイト (jam-session-mitaka) - https://xn--xckbj6a9jra6a4gy403a4b6j.com/
-10. クライミングジムPenguin公式サイト (penguin-climb) - https://penguin-climb.com/
-11. TSUKUBA MONKEY MAGIC公式サイト (tsukuba-monkey-magic) - https://tsukuba-mm.jp/
-12. 壬生町総合運動場体育館 公式ページ (mibu-general-gymnasium) - https://www.town.mibu.tochigi.jp/docs/2015021200047/
-13. SPOLE CLIMBING GYM公式サイト (spole-climbing-gym) - https://spoleclimbinggym.com/
-14. クライミングジムランボ公式サイト (climbing-gym-ranbo) - https://ranbo.jp/
-15. クライミングジム・ウォールストリート公式サイト (climbing-gym-wall-street) - https://wallst.jp/
-16. Climbing Gym Walrus公式サイト (climbing-gym-walrus) - https://www.walrus.co.jp/
+2. B-PUMP OGIKUBO 公式サイト (b-pump-ogikubo) - https://pump-climbing.com/gym/bpump/
+3. 加須市民体育館公式ページ (kazo-citizen-gymnasium) - https://www.city.kazo.lg.jp/benriservice/map/shisetsu/sisetugaiyou_supotu/30292.html
+4. D.Bouldering Plus 蘇我公式サイト (d-bouldering-plus-soga) - https://www.d-b-c.jp/top/soga/
+5. クライミングハウス オックロック公式サイト (okku-rock) - https://okkurock.com/
+6. PIGLET CLIMBING GYM公式サイト (piglet-climbing-gym) - https://piglet-climb.com/
+7. BONOBO bouldering space 公式サイト (bonobo-bouldering-space) - https://bonobo-bs.com/
+8. Bouldering Spot Landmark 公式サイト (bouldering-spot-landmark) - https://boulderingspot-landmark.com/
+9. CARAMBA 公式サイト (caramba) - https://www.caramba.jp/
+10. craze bouldering gym 川口店 公式サイト (craze-kawaguchi) - https://craze-climbing.com/kawaguchi/
+11. Fish and Bird 公式サイト (fish-and-bird) - https://fish-bird.co.jp/fishandbird/
+12. FITS CLIMBING GYM 公式サイト (fits-climbing) - https://www.fits-climbing.com/
+13. folk bouldering gym 公式サイト (folk-bouldering-gym) - https://folkboulderinggym.com/
+14. Forge bouldering 公式サイト (forge-bouldering) - https://www.forge-bouldering.com/
+15. HOKIMABOULDERS 公式サイト (hokimaboulders) - https://hokimaboulders.com/
+16. JET SET Climbing Gym 公式サイト (jetsetclimbing) - https://www.jetsetclimbing.com/
 
 ## Upcoming Event Recheck
 

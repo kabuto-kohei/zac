@@ -1,14 +1,14 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-16T12:07:34.138Z
+- generatedAt: 2026-05-16T15:40:52.454Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 2
-- localRunAgeMinutes: 2
+- latestRunAgeMinutes: 31
+- localRunAgeMinutes: 31
 - consecutiveNonReady: 0
-- instagramFailureRatio: 0.9791666666666666
+- instagramFailureRatio: 1
 
 ## Queues
 
@@ -27,7 +27,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 1
+- runs: 2
 
 ## Failed Checks
 
@@ -82,6 +82,7 @@
 - climbinggym_wallstreet: profile_fetch_failed; officialFallback=true
 - climbinggym_walrus: profile_fetch_failed; officialFallback=true
 - dbouldering_soga: profile_fetch_failed; officialFallback=true
+- energyurawa: profile_fetch_failed; officialFallback=true
 
 ## Next Actions
 

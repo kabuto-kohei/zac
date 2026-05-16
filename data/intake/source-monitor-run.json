@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-16T12:05:23.797Z",
+  "generatedAt": "2026-05-16T15:09:32.674Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -92,219 +92,12 @@
       },
       {
         "platform": "web",
-        "handle": "beaks-climbing-studio",
-        "displayName": "BEAKS Climbing Studio 公式サイト",
-        "sourceUrl": "https://beaksc.wixsite.com/beaks",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "berry-wall",
-        "displayName": "BERRY WALL Climbing Gym 公式サイト",
-        "sourceUrl": "https://www.berrywall.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "blue-bird-bouldering",
-        "displayName": "Blue Bird Bouldering Gym 公式サイト",
-        "sourceUrl": "https://climbing-bluebird.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "bolbol",
-        "displayName": "BolBol 公式サイト",
-        "sourceUrl": "https://bol-bol.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
         "handle": "b-pump-ogikubo",
         "displayName": "B-PUMP OGIKUBO 公式サイト",
         "sourceUrl": "https://pump-climbing.com/gym/bpump/",
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T04:55:00.000Z",
         "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-plus-yachiyo",
-        "displayName": "ディーボルダリングプラス八千代公式施設紹介",
-        "sourceUrl": "https://www.d-b-c.jp/yachiyo-news/facility",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "energy-climbing-urawa",
-        "displayName": "エナジークライミングジム浦和店公式サイト",
-        "sourceUrl": "https://energy-climbing.co.jp/urawa/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "jam-session-mitaka",
-        "displayName": "ジャムセッション三鷹公式サイト",
-        "sourceUrl": "https://xn--xckbj6a9jra6a4gy403a4b6j.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "penguin-climb",
-        "displayName": "クライミングジムPenguin公式サイト",
-        "sourceUrl": "https://penguin-climb.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "tsukuba-monkey-magic",
-        "displayName": "TSUKUBA MONKEY MAGIC公式サイト",
-        "sourceUrl": "https://tsukuba-mm.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "mibu-general-gymnasium",
-        "displayName": "壬生町総合運動場体育館 公式ページ",
-        "sourceUrl": "https://www.town.mibu.tochigi.jp/docs/2015021200047/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T06:10:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:10:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "spole-climbing-gym",
-        "displayName": "SPOLE CLIMBING GYM公式サイト",
-        "sourceUrl": "https://spoleclimbinggym.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T06:10:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:10:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-ranbo",
-        "displayName": "クライミングジムランボ公式サイト",
-        "sourceUrl": "https://ranbo.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-wall-street",
-        "displayName": "クライミングジム・ウォールストリート公式サイト",
-        "sourceUrl": "https://wallst.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-walrus",
-        "displayName": "Climbing Gym Walrus公式サイト",
-        "sourceUrl": "https://www.walrus.co.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbinggym-prob",
-        "displayName": "ClimbingGym PROB公式サイト",
-        "sourceUrl": "https://prob.pupu.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-hachioji",
-        "displayName": "D.Bouldering Hachioji公式サイト",
-        "sourceUrl": "https://www.d-b-c.jp/top/hachioji/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-plus-nishi-hachioji",
-        "displayName": "ディーボルダリングプラス西八王子公式サイト",
-        "sourceUrl": "https://www.d-b-c.jp/top/nishihachioji/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "exciting-sancha",
-        "displayName": "スポーツクライミングジム エキサイティング三茶公式サイト",
-        "sourceUrl": "https://exciting-sancha.com/about/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "madrock-climbing-gym",
-        "displayName": "クライミングジム マッドロック公式サイト",
-        "sourceUrl": "https://www.bouldering-climbinggym-madrock.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "miyake-recreation-center",
-        "displayName": "三宅村レクリエーションセンター公式ページ",
-        "sourceUrl": "https://www.vill.miyake.tokyo.jp/recreation/shisetsu.html",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-aska",
-        "displayName": "クライミング飛鳥公式サイト",
-        "sourceUrl": "https://climbing-aska.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-cell",
-        "displayName": "クライミングジムCELL公式サイト",
-        "sourceUrl": "https://www.climb-cell.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-plus-lead-kaihin-makuhari",
-        "displayName": "D.Bouldering Plus Lead 海浜幕張公式サイト",
-        "sourceUrl": "https://www.d-b-c.jp/top/kaihin-makuhari/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:45:00.000Z"
       },
       {
         "platform": "web",
@@ -656,6 +449,213 @@
         "sourceType": "official_instagram",
         "lastCheckedAt": "2026-05-14T19:00:21.958Z",
         "sourceVerifiedAt": "2026-05-11T08:15:00.000Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "and_energy_bouldering",
+        "displayName": "And Energy Bouldering",
+        "sourceUrl": "https://www.instagram.com/and_energy_bouldering/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "ao_roc.climbing",
+        "displayName": "アオロク〖ao_roc.climbing〗",
+        "sourceUrl": "https://www.instagram.com/ao_roc.climbing/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_edogawabashi",
+        "displayName": "Base Camp Tokyo 江戸川橋",
+        "sourceUrl": "https://www.instagram.com/basecamp_edogawabashi/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_hanno",
+        "displayName": "Boulder Park Base Camp 飯能店",
+        "sourceUrl": "https://www.instagram.com/basecamp_hanno/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "volny_climbing",
+        "displayName": "クライミングジム VOLNY（ボルニー）",
+        "sourceUrl": "https://www.instagram.com/volny_climbing/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "zeromito0123",
+        "displayName": "クライミングジム ZE-RO（ゼロ） 水戸店",
+        "sourceUrl": "https://www.instagram.com/zeromito0123/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "maboo.insta",
+        "displayName": "クライミングジム MABOO（マーブー）",
+        "sourceUrl": "https://www.instagram.com/maboo.insta/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T04:08:12.732Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "shinnikan",
+        "displayName": "小鹿野町クライミングパーク 神怡舘",
+        "sourceUrl": "https://www.instagram.com/shinnikan/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T04:08:12.732Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "climbinggym_rocklands",
+        "displayName": "クライミングジム ROCKLANDS（ロックランズ）",
+        "sourceUrl": "https://www.instagram.com/climbinggym_rocklands/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T04:11:45.399Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "westrock_climbing",
+        "displayName": "クライミングジム WESTROCK（ウエストロック） 調布店",
+        "sourceUrl": "https://www.instagram.com/westrock_climbing/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T19:00:21.958Z",
+        "sourceVerifiedAt": "2026-05-14T04:11:45.399Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "boulcom_kawasaki",
+        "displayName": "BOULCOM 川崎店",
+        "sourceUrl": "https://www.instagram.com/boulcom_kawasaki/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-14T23:21:34.475Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_higashimurayama",
+        "displayName": "Boulder Park Base Camp 東村山",
+        "sourceUrl": "https://www.instagram.com/basecamp_higashimurayama/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T02:38:08.516Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_iruma",
+        "displayName": "Climb Park Base Camp 入間店",
+        "sourceUrl": "https://www.instagram.com/basecamp_iruma/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T02:38:08.516Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "climbingzerosaitama",
+        "displayName": "クライミングジム ZE-RO（ゼロ） さいたま店",
+        "sourceUrl": "https://www.instagram.com/climbingzerosaitama/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T04:49:06.063Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bonobo_bs",
+        "displayName": "bonobo_bs",
+        "sourceUrl": "https://www.instagram.com/bonobo_bs/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T08:05:57.693Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "boulderingspace_hat",
+        "displayName": "ボルダリングスペース HAT（ハット）",
+        "sourceUrl": "https://www.instagram.com/boulderingspace_hat/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T08:05:57.693Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_kinshicho",
+        "displayName": "Base Camp Tokyo 錦糸町",
+        "sourceUrl": "https://www.instagram.com/basecamp_kinshicho/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T09:11:32.668Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_shinbashi",
+        "displayName": "Urban Base Camp 新橋",
+        "sourceUrl": "https://www.instagram.com/basecamp_shinbashi/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T14:20:37.797Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "basecamp_shinjuku",
+        "displayName": "Urban Base Camp 新宿",
+        "sourceUrl": "https://www.instagram.com/basecamp_shinjuku/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T14:20:37.797Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "boulcom_tokyo",
+        "displayName": "BOULCOM 東京店",
+        "sourceUrl": "https://www.instagram.com/boulcom_tokyo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T14:20:37.797Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bpump_ogikubo",
+        "displayName": "B-PUMP OGIKUBO",
+        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T14:20:37.797Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bpumptokyo",
+        "displayName": "B-PUMP Tokyo",
+        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T14:20:37.797Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "climbing_gym_ranbo",
+        "displayName": "クライミングジムランボ公式Instagram",
+        "sourceUrl": "https://www.instagram.com/climbing_gym_ranbo/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T14:20:37.797Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
       }
     ],
     "instagramPostInspection": [
@@ -1344,219 +1344,12 @@
       },
       {
         "platform": "web",
-        "handle": "beaks-climbing-studio",
-        "displayName": "BEAKS Climbing Studio 公式サイト",
-        "sourceUrl": "https://beaksc.wixsite.com/beaks",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "berry-wall",
-        "displayName": "BERRY WALL Climbing Gym 公式サイト",
-        "sourceUrl": "https://www.berrywall.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "blue-bird-bouldering",
-        "displayName": "Blue Bird Bouldering Gym 公式サイト",
-        "sourceUrl": "https://climbing-bluebird.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "bolbol",
-        "displayName": "BolBol 公式サイト",
-        "sourceUrl": "https://bol-bol.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
         "handle": "b-pump-ogikubo",
         "displayName": "B-PUMP OGIKUBO 公式サイト",
         "sourceUrl": "https://pump-climbing.com/gym/bpump/",
         "sourceType": "official_site",
         "lastCheckedAt": "2026-05-11T04:55:00.000Z",
         "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-plus-yachiyo",
-        "displayName": "ディーボルダリングプラス八千代公式施設紹介",
-        "sourceUrl": "https://www.d-b-c.jp/yachiyo-news/facility",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "energy-climbing-urawa",
-        "displayName": "エナジークライミングジム浦和店公式サイト",
-        "sourceUrl": "https://energy-climbing.co.jp/urawa/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "jam-session-mitaka",
-        "displayName": "ジャムセッション三鷹公式サイト",
-        "sourceUrl": "https://xn--xckbj6a9jra6a4gy403a4b6j.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "penguin-climb",
-        "displayName": "クライミングジムPenguin公式サイト",
-        "sourceUrl": "https://penguin-climb.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "tsukuba-monkey-magic",
-        "displayName": "TSUKUBA MONKEY MAGIC公式サイト",
-        "sourceUrl": "https://tsukuba-mm.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "mibu-general-gymnasium",
-        "displayName": "壬生町総合運動場体育館 公式ページ",
-        "sourceUrl": "https://www.town.mibu.tochigi.jp/docs/2015021200047/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T06:10:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:10:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "spole-climbing-gym",
-        "displayName": "SPOLE CLIMBING GYM公式サイト",
-        "sourceUrl": "https://spoleclimbinggym.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T06:10:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:10:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-ranbo",
-        "displayName": "クライミングジムランボ公式サイト",
-        "sourceUrl": "https://ranbo.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-wall-street",
-        "displayName": "クライミングジム・ウォールストリート公式サイト",
-        "sourceUrl": "https://wallst.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-walrus",
-        "displayName": "Climbing Gym Walrus公式サイト",
-        "sourceUrl": "https://www.walrus.co.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbinggym-prob",
-        "displayName": "ClimbingGym PROB公式サイト",
-        "sourceUrl": "https://prob.pupu.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-hachioji",
-        "displayName": "D.Bouldering Hachioji公式サイト",
-        "sourceUrl": "https://www.d-b-c.jp/top/hachioji/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-plus-nishi-hachioji",
-        "displayName": "ディーボルダリングプラス西八王子公式サイト",
-        "sourceUrl": "https://www.d-b-c.jp/top/nishihachioji/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "exciting-sancha",
-        "displayName": "スポーツクライミングジム エキサイティング三茶公式サイト",
-        "sourceUrl": "https://exciting-sancha.com/about/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "madrock-climbing-gym",
-        "displayName": "クライミングジム マッドロック公式サイト",
-        "sourceUrl": "https://www.bouldering-climbinggym-madrock.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "miyake-recreation-center",
-        "displayName": "三宅村レクリエーションセンター公式ページ",
-        "sourceUrl": "https://www.vill.miyake.tokyo.jp/recreation/shisetsu.html",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-aska",
-        "displayName": "クライミング飛鳥公式サイト",
-        "sourceUrl": "https://climbing-aska.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-cell",
-        "displayName": "クライミングジムCELL公式サイト",
-        "sourceUrl": "https://www.climb-cell.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:45:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-plus-lead-kaihin-makuhari",
-        "displayName": "D.Bouldering Plus Lead 海浜幕張公式サイト",
-        "sourceUrl": "https://www.d-b-c.jp/top/kaihin-makuhari/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:45:00.000Z"
       },
       {
         "platform": "web",
@@ -2196,6 +1989,213 @@
         "sourceType": "official_instagram",
         "lastCheckedAt": "2026-05-15T16:45:20.195Z",
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bpumpyokohama",
+        "displayName": "B-PUMP YOKOHAMA 横浜",
+        "sourceUrl": "https://www.instagram.com/bpumpyokohama/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "exciting_sancha",
+        "displayName": "exciting_sancha",
+        "sourceUrl": "https://www.instagram.com/exciting_sancha/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "madrock.cg.jp_online",
+        "displayName": "クライミングジム マッドロック公式Instagram",
+        "sourceUrl": "https://www.instagram.com/madrock.cg.jp_online/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_ikebukuro",
+        "displayName": "NOBOROCK 池袋店",
+        "sourceUrl": "https://www.instagram.com/noborock_ikebukuro/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_machida",
+        "displayName": "NOBOROCK 町田店",
+        "sourceUrl": "https://www.instagram.com/noborock_machida/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_omiya",
+        "displayName": "NOBOROCK 大宮店",
+        "sourceUrl": "https://www.instagram.com/noborock_omiya/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_shibuya",
+        "displayName": "Noborock Shibuya",
+        "sourceUrl": "https://www.instagram.com/noborock_shibuya/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "noborock_takadanobaba",
+        "displayName": "NOBOROCK 高田馬場店",
+        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T16:45:20.195Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "fishandbird_toyocho",
+        "displayName": "fishandbird_toyocho",
+        "sourceUrl": "https://www.instagram.com/fishandbird_toyocho/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "headrockcg",
+        "displayName": "headrockcg",
+        "sourceUrl": "https://www.instagram.com/headrockcg/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "okkurock",
+        "displayName": "okkurock",
+        "sourceUrl": "https://www.instagram.com/okkurock/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "penguinclimb",
+        "displayName": "penguinclimb",
+        "sourceUrl": "https://www.instagram.com/penguinclimb/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "310_avue",
+        "displayName": "水戸シティロックジム avue（アヴュー）",
+        "sourceUrl": "https://www.instagram.com/310_avue/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "altior_climbing_gym1",
+        "displayName": "ALTIOR（アルティオール）クライミングジム",
+        "sourceUrl": "https://www.instagram.com/altior_climbing_gym1/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "b.g.funny",
+        "displayName": "ボルダリングガレージ FUNNY（ファニー）",
+        "sourceUrl": "https://www.instagram.com/b.g.funny/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "beaks.climbing",
+        "displayName": "BEAKS（ビークス） クライミングスタジオ",
+        "sourceUrl": "https://www.instagram.com/beaks.climbing/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bouldering_gym_share",
+        "displayName": "ボルダリングジム Share（シェア）",
+        "sourceUrl": "https://www.instagram.com/bouldering_gym_share/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bouldering_gym_tohandoujou",
+        "displayName": "ボルダリングジム 登攀道場",
+        "sourceUrl": "https://www.instagram.com/bouldering_gym_tohandoujou/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "bouldering_space_bleau",
+        "displayName": "ボルダリングスペース BLEAU（ブロー）",
+        "sourceUrl": "https://www.instagram.com/bouldering_space_bleau/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "climbing_aska",
+        "displayName": "クライミング飛鳥",
+        "sourceUrl": "https://www.instagram.com/climbing_aska/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "climbing_gym_cozy",
+        "displayName": "クライミングジム COZY",
+        "sourceUrl": "https://www.instagram.com/climbing_gym_cozy/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "climbinggym_hutte",
+        "displayName": "クライミングジム Hutte（ヒュッテ）",
+        "sourceUrl": "https://www.instagram.com/climbinggym_hutte/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
+      },
+      {
+        "platform": "instagram",
+        "handle": "climbinggymflash",
+        "displayName": "クライミングジム FLASH（フラッシュ）",
+        "sourceUrl": "https://www.instagram.com/climbinggymflash/",
+        "sourceType": "official_instagram",
+        "lastCheckedAt": "2026-05-15T18:56:31.371Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
       }
     ],
     "operatorBatch": [
@@ -2210,42 +2210,6 @@
       },
       {
         "platform": "web",
-        "handle": "beaks-climbing-studio",
-        "displayName": "BEAKS Climbing Studio 公式サイト",
-        "sourceUrl": "https://beaksc.wixsite.com/beaks",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "berry-wall",
-        "displayName": "BERRY WALL Climbing Gym 公式サイト",
-        "sourceUrl": "https://www.berrywall.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "blue-bird-bouldering",
-        "displayName": "Blue Bird Bouldering Gym 公式サイト",
-        "sourceUrl": "https://climbing-bluebird.jp/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "bolbol",
-        "displayName": "BolBol 公式サイト",
-        "sourceUrl": "https://bol-bol.com/",
-        "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T04:35:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T04:35:00.000Z"
-      },
-      {
-        "platform": "web",
         "handle": "b-pump-ogikubo",
         "displayName": "B-PUMP OGIKUBO 公式サイト",
         "sourceUrl": "https://pump-climbing.com/gym/bpump/",
@@ -2255,93 +2219,129 @@
       },
       {
         "platform": "web",
-        "handle": "d-bouldering-plus-yachiyo",
-        "displayName": "ディーボルダリングプラス八千代公式施設紹介",
-        "sourceUrl": "https://www.d-b-c.jp/yachiyo-news/facility",
+        "handle": "kazo-citizen-gymnasium",
+        "displayName": "加須市民体育館公式ページ",
+        "sourceUrl": "https://www.city.kazo.lg.jp/benriservice/map/shisetsu/sisetugaiyou_supotu/30292.html",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
+        "lastCheckedAt": "2026-05-11T07:45:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T07:45:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "energy-climbing-urawa",
-        "displayName": "エナジークライミングジム浦和店公式サイト",
-        "sourceUrl": "https://energy-climbing.co.jp/urawa/",
+        "handle": "d-bouldering-plus-soga",
+        "displayName": "D.Bouldering Plus 蘇我公式サイト",
+        "sourceUrl": "https://www.d-b-c.jp/top/soga/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
+        "lastCheckedAt": "2026-05-11T08:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T08:15:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "jam-session-mitaka",
-        "displayName": "ジャムセッション三鷹公式サイト",
-        "sourceUrl": "https://xn--xckbj6a9jra6a4gy403a4b6j.com/",
+        "handle": "okku-rock",
+        "displayName": "クライミングハウス オックロック公式サイト",
+        "sourceUrl": "https://okkurock.com/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
+        "lastCheckedAt": "2026-05-11T08:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T08:15:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "penguin-climb",
-        "displayName": "クライミングジムPenguin公式サイト",
-        "sourceUrl": "https://penguin-climb.com/",
+        "handle": "piglet-climbing-gym",
+        "displayName": "PIGLET CLIMBING GYM公式サイト",
+        "sourceUrl": "https://piglet-climb.com/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
+        "lastCheckedAt": "2026-05-11T08:15:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T08:15:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "tsukuba-monkey-magic",
-        "displayName": "TSUKUBA MONKEY MAGIC公式サイト",
-        "sourceUrl": "https://tsukuba-mm.jp/",
+        "handle": "bonobo-bouldering-space",
+        "displayName": "BONOBO bouldering space 公式サイト",
+        "sourceUrl": "https://bonobo-bs.com/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T05:45:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T05:45:00.000Z"
+        "lastCheckedAt": "2026-05-11T12:35:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T12:35:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "mibu-general-gymnasium",
-        "displayName": "壬生町総合運動場体育館 公式ページ",
-        "sourceUrl": "https://www.town.mibu.tochigi.jp/docs/2015021200047/",
+        "handle": "bouldering-spot-landmark",
+        "displayName": "Bouldering Spot Landmark 公式サイト",
+        "sourceUrl": "https://boulderingspot-landmark.com/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T06:10:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:10:00.000Z"
+        "lastCheckedAt": "2026-05-11T12:35:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T12:35:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "spole-climbing-gym",
-        "displayName": "SPOLE CLIMBING GYM公式サイト",
-        "sourceUrl": "https://spoleclimbinggym.com/",
+        "handle": "caramba",
+        "displayName": "CARAMBA 公式サイト",
+        "sourceUrl": "https://www.caramba.jp/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T06:10:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T06:10:00.000Z"
+        "lastCheckedAt": "2026-05-11T12:35:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T12:35:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "climbing-gym-ranbo",
-        "displayName": "クライミングジムランボ公式サイト",
-        "sourceUrl": "https://ranbo.jp/",
+        "handle": "craze-kawaguchi",
+        "displayName": "craze bouldering gym 川口店 公式サイト",
+        "sourceUrl": "https://craze-climbing.com/kawaguchi/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
+        "lastCheckedAt": "2026-05-11T12:35:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T12:35:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "climbing-gym-wall-street",
-        "displayName": "クライミングジム・ウォールストリート公式サイト",
-        "sourceUrl": "https://wallst.jp/",
+        "handle": "fish-and-bird",
+        "displayName": "Fish and Bird 公式サイト",
+        "sourceUrl": "https://fish-bird.co.jp/fishandbird/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
+        "lastCheckedAt": "2026-05-11T13:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T13:20:00.000Z"
       },
       {
         "platform": "web",
-        "handle": "climbing-gym-walrus",
-        "displayName": "Climbing Gym Walrus公式サイト",
-        "sourceUrl": "https://www.walrus.co.jp/",
+        "handle": "fits-climbing",
+        "displayName": "FITS CLIMBING GYM 公式サイト",
+        "sourceUrl": "https://www.fits-climbing.com/",
         "sourceType": "official_site",
-        "lastCheckedAt": "2026-05-11T07:25:00.000Z",
-        "sourceVerifiedAt": "2026-05-11T07:25:00.000Z"
+        "lastCheckedAt": "2026-05-11T13:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T13:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "folk-bouldering-gym",
+        "displayName": "folk bouldering gym 公式サイト",
+        "sourceUrl": "https://folkboulderinggym.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T13:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T13:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "forge-bouldering",
+        "displayName": "Forge bouldering 公式サイト",
+        "sourceUrl": "https://www.forge-bouldering.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T13:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T13:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "hokimaboulders",
+        "displayName": "HOKIMABOULDERS 公式サイト",
+        "sourceUrl": "https://hokimaboulders.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T13:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T13:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "jetsetclimbing",
+        "displayName": "JET SET Climbing Gym 公式サイト",
+        "sourceUrl": "https://www.jetsetclimbing.com/",
+        "sourceType": "official_site",
+        "lastCheckedAt": "2026-05-11T13:20:00.000Z",
+        "sourceVerifiedAt": "2026-05-11T13:20:00.000Z"
       }
     ],
     "candidateVerification": [],

@@ -1,12 +1,12 @@
 # Official Site Inspection
 
-- Generated: 2026-05-16T12:04:22.719Z
+- Generated: 2026-05-16T15:07:43.112Z
 - Sources queued: 24
-- Sources fetched: 24
-- Sources failed: 0
-- Observed items: 54
-- Pending items: 54
-- Calendar candidates: 54
+- Sources fetched: 23
+- Sources failed: 1
+- Observed items: 43
+- Pending items: 43
+- Calendar candidates: 43
 
 ## Policy
 
@@ -14,86 +14,79 @@ Store source links, short summaries, and short quotes only. Do not store full pa
 
 ## Inspections
 
-- BASE CAMP TOKYO 江戸川橋 公式サイト (base-camp-edogawabashi)
-  - pending: opening_change | BASE CAMP TOKYO 江戸川橋 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-05-09-opening_change-1
-  - pending: opening_change | BASE CAMP TOKYO 江戸川橋 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-04-27-opening_change-2
-  - pending: opening_change | BASE CAMP TOKYO 江戸川橋 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-05-19-opening_change-3
-- WESTROCK 公式イベント情報 (westrock-climbing-event)
-  - pending: competition | WESTROCK 公式イベント情報 東京都内 | https://www.westrock-climbing.com/event/#zac-2026-05-09-competition-1
-  - pending: competition | WESTROCK 公式イベント情報 東京都内 | https://www.westrock-climbing.com/event/#zac-2026-04-24-competition-2
-  - pending: competition | WESTROCK 公式イベント情報 B-SCORE 7th SEASON | https://www.westrock-climbing.com/event/#zac-2026-04-11-competition-3
-- NOBOROCK 池袋店 公式サイト (noborock-ikebukuro)
-  - pending: route_set | NOBOROCK 池袋店 公式サイト ルートセット | https://noborock-climbing.com/program/ikebukuro/#zac-2026-04-07-route_set-1
-  - pending: route_set | NOBOROCK 池袋店 公式サイト ルートセット | https://noborock-climbing.com/program/ikebukuro/#zac-2026-05-06-route_set-2
-  - pending: route_set | NOBOROCK 池袋店 公式サイト ルートセット | https://noborock-climbing.com/program/ikebukuro/#zac-2026-05-07-route_set-3
-- NOBOROCK 町田店 公式サイト (noborock-machida)
-  - pending: route_set | NOBOROCK 町田店 公式サイト ルートセット | https://noborock-climbing.com/program/machida/#zac-2026-04-14-route_set-1
-  - pending: route_set | NOBOROCK 町田店 公式サイト ルートセット | https://noborock-climbing.com/program/machida/#zac-2026-05-10-route_set-2
-  - pending: route_set | NOBOROCK 町田店 公式サイト ルートセット | https://noborock-climbing.com/program/machida/#zac-2026-05-11-route_set-3
-- NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi)
-  - pending: route_set | NOBOROCK 溝ノ口店 公式サイト ルートセット | https://noborock-climbing.com/program/mizonokuchi/#zac-2026-04-14-route_set-1
-  - pending: route_set | NOBOROCK 溝ノ口店 公式サイト ルートセット | https://noborock-climbing.com/program/mizonokuchi/#zac-2026-05-10-route_set-2
-  - pending: route_set | NOBOROCK 溝ノ口店 公式サイト ルートセット | https://noborock-climbing.com/program/mizonokuchi/#zac-2026-05-11-route_set-3
-- B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama)
-  - pending: construction | B-PUMP YOKOHAMA 公式サイト BAMBI’S BOULDER SCHOOL | https://pump-climbing.com/gym/bpump2/#zac-2026-04-01-construction-1
-  - pending: construction | B-PUMP YOKOHAMA 公式サイト BAMBI’S BOULDER SCHOOL | https://pump-climbing.com/gym/bpump2/#zac-2026-05-01-construction-2
-  - pending: construction | B-PUMP YOKOHAMA 公式サイト この日なら行けるのに…！ | https://pump-climbing.com/gym/bpump2/#zac-2026-04-03-construction-3
-- Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama)
-  - pending: opening_change | Boulder Park Base Camp 東村山 公式サイト 02/01 営業情報 | https://b-camp.jp/higashimurayama/#zac-2026-02-01-opening_change-1
-  - pending: opening_change | Boulder Park Base Camp 東村山 公式サイト 01/11 営業情報 | https://b-camp.jp/higashimurayama/#zac-2026-01-11-opening_change-2
-  - pending: opening_change | Boulder Park Base Camp 東村山 公式サイト 04/01 営業情報 | https://b-camp.jp/higashimurayama/#zac-2026-04-01-opening_change-3
-- Urban Base Camp 新宿 公式サイト (urban-base-camp-shinjuku)
-  - pending: opening_change | Urban Base Camp 新宿 公式サイト Body movin&#8217; | https://b-camp.jp/shinjuku/#zac-2026-05-08-opening_change-1
-  - pending: opening_change | Urban Base Camp 新宿 公式サイト Body movin&#8217; | https://b-camp.jp/shinjuku/#zac-2026-03-29-opening_change-2
-  - pending: opening_change | Urban Base Camp 新宿 公式サイト Body movin&#8217; | https://b-camp.jp/shinjuku/#zac-2026-03-12-opening_change-3
-- Boulder Park Base Camp 飯能店 公式サイト (base-camp-hanno)
-  - pending: competition | Boulder Park Base Camp 飯能店 公式サイト 08/08 コンペ情報 | https://b-camp.jp/hanno#zac-2018-08-08-competition-1
-  - pending: competition | Boulder Park Base Camp 飯能店 公式サイト 05/11 コンペ情報 | https://b-camp.jp/hanno#zac-2026-05-11-competition-2
-  - pending: competition | Boulder Park Base Camp 飯能店 公式サイト 05/01 コンペ情報 | https://b-camp.jp/hanno#zac-2026-05-01-competition-3
-- Climb Park Base Camp 入間店 公式サイト (base-camp-iruma)
-  - pending: opening_change | Climb Park Base Camp 入間店 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/iruma#zac-2019-05-27-opening_change-1
-  - pending: opening_change | Climb Park Base Camp 入間店 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/iruma#zac-2026-05-08-opening_change-2
-  - pending: opening_change | Climb Park Base Camp 入間店 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/iruma#zac-2026-04-25-opening_change-3
-- Base Camp Tokyo 江戸川橋 公式サイト (base-camp-tokyo-edogawabashi)
-  - pending: opening_change | Base Camp Tokyo 江戸川橋 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-05-09-opening_change-1
-  - pending: opening_change | Base Camp Tokyo 江戸川橋 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-04-27-opening_change-2
-  - pending: opening_change | Base Camp Tokyo 江戸川橋 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-05-19-opening_change-3
-- Base Camp Tokyo 錦糸町 公式サイト (base-camp-tokyo-kinshicho)
-  - pending: construction | Base Camp Tokyo 錦糸町 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/kinshicho/#zac-2026-05-08-construction-1
-  - pending: construction | Base Camp Tokyo 錦糸町 公式サイト 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/kinshicho/#zac-2026-04-28-construction-2
-  - pending: opening_change | Base Camp Tokyo 錦糸町 公式サイト 04/28 営業情報 | https://b-camp.jp/kinshicho/#zac-2026-04-28-opening_change-3
-- クライミングジムSPIDER 公式サイト (climbing-spider)
-  - pending: opening_change | クライミングジムSPIDER 公式サイト 09/15 営業情報 | https://climbing-spider.com/shop/#zac-2024-09-15-opening_change-1
-  - pending: opening_change | クライミングジムSPIDER 公式サイト 08/03 営業情報 | https://climbing-spider.com/shop/#zac-2024-08-03-opening_change-2
-- BETA Climbing Gym 公式サイト (beta-climbing)
+- BEAKS Climbing Studio 公式サイト (beaks-climbing-studio)
   - no candidates
-- BOULCOM 川崎店 公式サイト (boulcom-kawasaki)
-  - pending: private_booking | BOULCOM 川崎店 公式サイト 東京店 | https://boulcom.jp/kawasaki/#zac-2026-02-07-private_booking-1
-  - pending: private_booking | BOULCOM 川崎店 公式サイト 東京店 | https://boulcom.jp/kawasaki/#zac-2026-03-31-private_booking-2
-  - pending: private_booking | BOULCOM 川崎店 公式サイト 川崎店 | https://boulcom.jp/kawasaki/#zac-2026-02-23-private_booking-3
-- BOULCOM 東京店 公式サイト (boulcom-tokyo)
-  - pending: competition | BOULCOM 東京店 公式サイト BOULコン | https://boulcom.jp/tokyo/#zac-2026-06-06-competition-1
-  - pending: opening_change | BOULCOM 東京店 公式サイト 東京店 | https://boulcom.jp/tokyo/#zac-2026-04-11-opening_change-2
-  - pending: competition | BOULCOM 東京店 公式サイト 東京店 | https://boulcom.jp/tokyo/#zac-2026-02-07-competition-3
-- Everfree Climbing Gym 公式サイト (everfree-climbing)
+- BERRY WALL Climbing Gym 公式サイト (berry-wall)
+  - pending: event | BERRY WALL Climbing Gym 公式サイト 07/01 イベント情報 | https://www.berrywall.com/#zac-2025-07-01-event-1
+  - pending: route_set | BERRY WALL Climbing Gym 公式サイト 04/28 セット情報 | https://www.berrywall.com/#zac-2026-04-28-route_set-2
+  - pending: route_set | BERRY WALL Climbing Gym 公式サイト 04/28 セット情報 | https://www.berrywall.com/#zac-2026-04-28-route_set-3
+- Blue Bird Bouldering Gym 公式サイト (blue-bird-bouldering)
   - no candidates
-- ROCKY Climbing & Fitness Gym 公式サイト (rocky-climbing)
-  - pending: opening_change | ROCKY Climbing & Fitness Gym 公式サイト 12/15 営業情報 | https://www.rockyclimbing.com/#zac-2025-12-15-opening_change-1
-  - pending: opening_change | ROCKY Climbing & Fitness Gym 公式サイト 07/27 営業情報 | https://www.rockyclimbing.com/#zac-2025-07-27-opening_change-2
-  - pending: opening_change | ROCKY Climbing & Fitness Gym 公式サイト 07/17 営業情報 | https://www.rockyclimbing.com/#zac-2025-07-17-opening_change-3
-- クライミングジム「アラジン」公式サイト (aladdin-climbing)
+- BolBol 公式サイト (bolbol)
+  - pending: competition | BolBol 公式サイト もっと上達したい | https://bol-bol.com/#zac-2025-12-11-competition-1
+  - pending: competition | BolBol 公式サイト コンペ課題、9/28まで開放中！🔥 | https://bol-bol.com/#zac-2025-12-11-competition-2
+  - pending: competition | BolBol 公式サイト コンペ課題、9/28まで開放中！🔥 | https://bol-bol.com/#zac-2025-11-29-competition-3
+- B-PUMP OGIKUBO 公式サイト (b-pump-ogikubo) - fetch failed (timeout)
   - no candidates
-- ALTIORクライミングジム公式サイト (altior-gym)
+- ディーボルダリングプラス八千代公式施設紹介 (d-bouldering-plus-yachiyo)
+  - pending: private_booking | ディーボルダリングプラス八千代公式施設紹介 施設のご紹介 | https://www.d-b-c.jp/yachiyo-news/facility#zac-2025-02-06-private_booking-1
+  - pending: event | ディーボルダリングプラス八千代公式施設紹介 お詫びと自主回収のお知らせ | https://www.d-b-c.jp/yachiyo-news/facility#zac-2025-06-05-event-2
+  - pending: private_booking | ディーボルダリングプラス八千代公式施設紹介 施設のご紹介 | https://www.d-b-c.jp/yachiyo-news/facility#zac-2025-12-20-private_booking-3
+- エナジークライミングジム浦和店公式サイト (energy-climbing-urawa)
+  - pending: opening_change | エナジークライミングジム浦和店公式サイト 年パス10％OFF | https://energy-climbing.co.jp/urawa/#zac-2026-04-30-opening_change-1
+  - pending: opening_change | エナジークライミングジム浦和店公式サイト 年パス10％OFF | https://energy-climbing.co.jp/urawa/#zac-2025-12-27-opening_change-2
+  - pending: route_set | エナジークライミングジム浦和店公式サイト 年パス10％OFF | https://energy-climbing.co.jp/urawa/#zac-2025-01-14-route_set-3
+- ジャムセッション三鷹公式サイト (jam-session-mitaka)
+  - pending: opening_change | ジャムセッション三鷹公式サイト 外岩クラック講習（8月、9月、10月）参加募集 | https://xn--xckbj6a9jra6a4gy403a4b6j.com/#zac-2026-05-10-opening_change-1
+  - pending: opening_change | ジャムセッション三鷹公式サイト 外岩クラック講習（8月、9月、10月）参加募集 | https://xn--xckbj6a9jra6a4gy403a4b6j.com/#zac-2026-05-04-opening_change-2
+  - pending: opening_change | ジャムセッション三鷹公式サイト 外岩クラック講習（8月、9月、10月）参加募集 | https://xn--xckbj6a9jra6a4gy403a4b6j.com/#zac-2026-04-29-opening_change-3
+- クライミングジムPenguin公式サイト (penguin-climb)
+  - pending: event | クライミングジムPenguin公式サイト 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-1
+  - pending: event | クライミングジムPenguin公式サイト 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-2
+  - pending: event | クライミングジムPenguin公式サイト 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-3
+- TSUKUBA MONKEY MAGIC公式サイト (tsukuba-monkey-magic)
+  - pending: event | TSUKUBA MONKEY MAGIC公式サイト 03/28 イベント情報 | https://tsukuba-mm.jp/#zac-2026-03-28-event-1
+  - pending: opening_change | TSUKUBA MONKEY MAGIC公式サイト 04/27 営業情報 | https://tsukuba-mm.jp/#zac-2026-04-27-opening_change-2
+  - pending: opening_change | TSUKUBA MONKEY MAGIC公式サイト 04/27 営業情報 | https://tsukuba-mm.jp/#zac-2026-04-27-opening_change-3
+- 壬生町総合運動場体育館 公式ページ (mibu-general-gymnasium)
+  - pending: opening_change | 壬生町総合運動場体育館 公式ページ 05/26 営業情報 | https://www.town.mibu.tochigi.jp/docs/2015021200047/#zac-2023-05-26-opening_change-1
+  - pending: opening_change | 壬生町総合運動場体育館 公式ページ 04/01 営業情報 | https://www.town.mibu.tochigi.jp/docs/2015021200047/#zac-2025-04-01-opening_change-2
+- SPOLE CLIMBING GYM公式サイト (spole-climbing-gym)
+  - pending: private_booking | SPOLE CLIMBING GYM公式サイト つくばユーワールド | https://spoleclimbinggym.com/#zac-2026-04-29-private_booking-1
+  - pending: private_booking | SPOLE CLIMBING GYM公式サイト つくばユーワールド | https://spoleclimbinggym.com/#zac-2026-03-31-private_booking-2
+  - pending: private_booking | SPOLE CLIMBING GYM公式サイト つくばユーワールド | https://spoleclimbinggym.com/#zac-2026-02-27-private_booking-3
+- クライミングジムランボ公式サイト (climbing-gym-ranbo)
+  - pending: competition | クライミングジムランボ公式サイト 11/03 コンペ情報 | https://ranbo.jp/#zac-2025-11-03-competition-1
+  - pending: competition | クライミングジムランボ公式サイト 5月の営業カレンダー | https://ranbo.jp/#zac-2026-04-29-competition-2
+- クライミングジム・ウォールストリート公式サイト (climbing-gym-wall-street)
+  - pending: competition | クライミングジム・ウォールストリート公式サイト  JKBC2025  | https://wallst.jp/#zac-2026-04-05-competition-1
+  - pending: competition | クライミングジム・ウォールストリート公式サイト  JKBC2025  | https://wallst.jp/#zac-2025-12-07-competition-2
+  - pending: competition | クライミングジム・ウォールストリート公式サイト  JKBC2025  | https://wallst.jp/#zac-2025-04-13-competition-3
+- Climbing Gym Walrus公式サイト (climbing-gym-walrus)
   - no candidates
-- DOGWOOD Climbing Gym 公式サイト (dogwood-climbing-gym)
-  - pending: event | DOGWOOD Climbing Gym 公式サイト 04/26 イベント情報 | https://dogwood-climbing.jp/#zac-2026-04-26-event-1
-  - pending: event | DOGWOOD Climbing Gym 公式サイト 03/19 イベント情報 | https://dogwood-climbing.jp/#zac-2025-03-19-event-2
-  - pending: event | DOGWOOD Climbing Gym 公式サイト 02/03 イベント情報 | https://dogwood-climbing.jp/#zac-2025-02-03-event-3
-- And Energy Bouldering 公式サイト (and-energy-bouldering)
-  - pending: opening_change | And Energy Bouldering 公式サイト 02/28 営業情報 | https://www.andenergy-bouldering.com/#zac-2025-02-28-opening_change-1
-- ao_roc.climbing 公式サイト (aoroc)
+- ClimbingGym PROB公式サイト (climbinggym-prob)
   - no candidates
-- Be born Climbing gym 公式サイト (be-born)
-  - pending: opening_change | Be born Climbing gym 公式サイト  NEW 水曜初級クラス新設 | https://beborn.boy.jp/#zac-2026-04-01-opening_change-1
-  - pending: opening_change | Be born Climbing gym 公式サイト メディア出演情報 | https://beborn.boy.jp/#zac-2026-11-02-opening_change-2
-  - pending: opening_change | Be born Climbing gym 公式サイト メディア出演情報 | https://beborn.boy.jp/#zac-2015-10-03-opening_change-3
+- D.Bouldering Hachioji公式サイト (d-bouldering-hachioji)
+  - pending: event | D.Bouldering Hachioji公式サイト 05/11 イベント情報 | https://www.d-b-c.jp/top/hachioji/#zac-2026-05-11-event-1
+  - pending: event | D.Bouldering Hachioji公式サイト 04/28 イベント情報 | https://www.d-b-c.jp/top/hachioji/#zac-2026-04-28-event-2
+  - pending: event | D.Bouldering Hachioji公式サイト もう一手 | https://www.d-b-c.jp/top/hachioji/#zac-2026-03-30-event-3
+- ディーボルダリングプラス西八王子公式サイト (d-bouldering-plus-nishi-hachioji)
+  - no candidates
+- スポーツクライミングジム エキサイティング三茶公式サイト (exciting-sancha)
+  - pending: private_booking | スポーツクライミングジム エキサイティング三茶公式サイト 12/22 貸切情報 | https://exciting-sancha.com/about/#zac-2020-12-22-private_booking-1
+  - pending: private_booking | スポーツクライミングジム エキサイティング三茶公式サイト 04/03 貸切情報 | https://exciting-sancha.com/about/#zac-2026-04-03-private_booking-2
+  - pending: private_booking | スポーツクライミングジム エキサイティング三茶公式サイト 03/29 貸切情報 | https://exciting-sancha.com/about/#zac-2026-03-29-private_booking-3
+- クライミングジム マッドロック公式サイト (madrock-climbing-gym)
+  - pending: competition | クライミングジム マッドロック公式サイト 5月の営業に関して | https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-29-competition-1
+  - pending: competition | クライミングジム マッドロック公式サイト 5月の営業に関して | https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-02-competition-2
+  - pending: competition | クライミングジム マッドロック公式サイト TAMAX 2026 | https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-27-competition-3
+- 三宅村レクリエーションセンター公式ページ (miyake-recreation-center)
+  - no candidates
+- クライミング飛鳥公式サイト (climbing-aska)
+  - no candidates
+- クライミングジムCELL公式サイト (climbing-gym-cell)
+  - no candidates
+- D.Bouldering Plus Lead 海浜幕張公式サイト (d-bouldering-plus-lead-kaihin-makuhari)
+  - pending: private_booking | D.Bouldering Plus Lead 海浜幕張公式サイト 04/27 貸切情報 | https://www.d-b-c.jp/top/kaihin-makuhari/#zac-2026-04-27-private_booking-1
+  - pending: private_booking | D.Bouldering Plus Lead 海浜幕張公式サイト 04/26 貸切情報 | https://www.d-b-c.jp/top/kaihin-makuhari/#zac-2026-04-26-private_booking-2
+  - pending: event | D.Bouldering Plus Lead 海浜幕張公式サイト 03/31 イベント情報 | https://www.d-b-c.jp/top/kaihin-makuhari/#zac-2026-03-31-event-3

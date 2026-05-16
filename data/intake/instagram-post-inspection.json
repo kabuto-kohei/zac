@@ -1,16 +1,18 @@
 {
-  "generatedAt": "2026-05-16T12:02:31.550Z",
+  "generatedAt": "2026-05-16T15:05:44.719Z",
   "policy": {
     "savedFields": "post URL, shortcode, posted date, classification, short summary, short quote, review status",
     "excludedFields": "full captions, images, videos"
   },
   "summary": {
     "sourcesQueued": 48,
-    "sourcesFetched": 1,
-    "sourcesFailed": 47,
-    "observedPosts": 3,
-    "pendingPosts": 2,
-    "ignoredPosts": 1,
+    "sourcesFetched": 0,
+    "sourcesReusedPrevious": 0,
+    "sourcesAvailable": 0,
+    "sourcesFailed": 48,
+    "observedPosts": 0,
+    "pendingPosts": 0,
+    "ignoredPosts": 0,
     "calendarCandidates": 0
   },
   "inspections": [
@@ -23,7 +25,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -35,7 +37,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -47,7 +49,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -59,7 +61,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -71,7 +73,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -83,7 +85,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -95,7 +97,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -107,7 +109,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -119,7 +121,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -131,7 +133,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -143,7 +145,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -155,7 +157,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -167,7 +169,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -179,7 +181,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -191,7 +193,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -203,7 +205,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -215,7 +217,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -227,7 +229,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -239,7 +241,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -251,7 +253,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -263,7 +265,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -275,7 +277,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -287,7 +289,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -299,7 +301,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -311,7 +313,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -323,7 +325,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -335,7 +337,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -347,7 +349,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -359,72 +361,8 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
-    },
-    {
-      "eventSourceId": "4afeef09-e278-4b3c-90e0-ef1c87150149",
-      "handle": "climbing_gym_rockyn0429",
-      "displayName": "クライミングジム RocKY’N（ロッキン）",
-      "sourceUrl": "https://www.instagram.com/climbing_gym_rockyn0429/",
-      "ok": true,
-      "posts": [
-        {
-          "eventSourceId": "4afeef09-e278-4b3c-90e0-ef1c87150149",
-          "handle": "climbing_gym_rockyn0429",
-          "displayName": "クライミングジム RocKY’N（ロッキン）",
-          "sourceUrl": "https://www.instagram.com/p/DKtnWbyRDB4/",
-          "sourceExternalId": "DKtnWbyRDB4",
-          "sourcePostedAt": "2025-06-10T07:58:19.000Z",
-          "classification": "event",
-          "title": "クライミングジムロッキンでは",
-          "summary": "クライミングジム RocKY’N（ロッキン）の公式Instagram投稿をイベントとして確認。公開UIに出す前に詳細確認が必要。",
-          "startsAt": null,
-          "endsAt": null,
-          "sourceQuote": "クライミングジムロッキンでは",
-          "extractionConfidence": "0.55",
-          "reviewStatus": "pending",
-          "decisionNote": "Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion."
-        },
-        {
-          "eventSourceId": "4afeef09-e278-4b3c-90e0-ef1c87150149",
-          "handle": "climbing_gym_rockyn0429",
-          "displayName": "クライミングジム RocKY’N（ロッキン）",
-          "sourceUrl": "https://www.instagram.com/p/DPPtj6lkq04/",
-          "sourceExternalId": "DPPtj6lkq04",
-          "sourcePostedAt": "2025-09-30T23:52:20.000Z",
-          "classification": "competition",
-          "title": "ロッキンでは　キッズスクール生を",
-          "summary": "クライミングジム RocKY’N（ロッキン）の公式Instagram投稿をコンペ・大会として確認。公開UIに出す前に詳細確認が必要。",
-          "startsAt": null,
-          "endsAt": null,
-          "sourceQuote": "ロッキンでは　キッズスクール生を",
-          "extractionConfidence": "0.55",
-          "reviewStatus": "pending",
-          "decisionNote": "Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion."
-        },
-        {
-          "eventSourceId": "4afeef09-e278-4b3c-90e0-ef1c87150149",
-          "handle": "climbing_gym_rockyn0429",
-          "displayName": "クライミングジム RocKY’N（ロッキン）",
-          "sourceUrl": "https://www.instagram.com/p/DYJAhb4Ei03/",
-          "sourceExternalId": "DYJAhb4Ei03",
-          "sourcePostedAt": "2026-05-10T02:07:57.000Z",
-          "classification": "notice",
-          "title": "今　世界で話題のGPソール",
-          "summary": "クライミングジム RocKY’N（ロッキン）の公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。",
-          "startsAt": null,
-          "endsAt": null,
-          "sourceQuote": "今　世界で話題のGPソール",
-          "extractionConfidence": "0.40",
-          "reviewStatus": "ignored",
-          "decisionNote": "No calendar-worthy event signal found in the inspected caption preview."
-        }
-      ],
-      "error": null,
-      "failureCategory": null,
-      "failureDetail": null,
-      "reusedPrevious": true
     },
     {
       "eventSourceId": "1ebafa86-034c-4e70-a20d-34cca87c512c",
@@ -435,7 +373,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -447,7 +385,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -459,7 +397,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -471,7 +409,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -483,7 +421,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -495,7 +433,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -507,7 +445,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -519,7 +457,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -531,7 +469,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -543,7 +481,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -555,7 +493,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -567,7 +505,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -579,7 +517,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -591,7 +529,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -603,7 +541,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -615,7 +553,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -627,7 +565,7 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
     },
     {
@@ -639,8 +577,19 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
       "reusedPrevious": false
+    },
+    {
+      "eventSourceId": "7046b655-8cd4-4087-a233-db5bb52aa729",
+      "handle": "energyurawa",
+      "displayName": "エナジークライミングジム浦和店公式Instagram",
+      "sourceUrl": "https://www.instagram.com/energyurawa/",
+      "ok": false,
+      "posts": [],
+      "error": "profile_fetch_failed",
+      "failureCategory": "access_restricted",
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail"
     }
   ]
 }

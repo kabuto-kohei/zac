@@ -1,12 +1,12 @@
 # Instagram Post Inspection
 
-- Generated: 2026-05-16T12:02:31.550Z
+- Generated: 2026-05-16T15:05:44.719Z
 - Sources queued: 48
-- Sources fetched: 1
-- Sources failed: 47
-- Observed posts: 3
-- Pending posts: 2
-- Ignored posts: 1
+- Sources fetched: 0
+- Sources failed: 48
+- Observed posts: 0
+- Pending posts: 0
+- Ignored posts: 0
 - Calendar candidates: 0
 
 ## Policy
@@ -73,10 +73,6 @@ Store source links, short summaries, and short quotes only. Do not store full ca
   - no posts
 - 小鹿野町クライミングパーク 神怡舘 (shinnikan) - fetch failed (access_restricted)
   - no posts
-- クライミングジム RocKY’N（ロッキン） (climbing_gym_rockyn0429)
-  - pending: event | クライミングジムロッキンでは | https://www.instagram.com/p/DKtnWbyRDB4/
-  - pending: competition | ロッキンでは　キッズスクール生を | https://www.instagram.com/p/DPPtj6lkq04/
-  - ignored: notice | 今　世界で話題のGPソール | https://www.instagram.com/p/DYJAhb4Ei03/
 - クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands) - fetch failed (access_restricted)
   - no posts
 - クライミングジム WESTROCK（ウエストロック） 調布店 (westrock_climbing) - fetch failed (access_restricted)
@@ -112,4 +108,6 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 - Climbing Gym Walrus公式Instagram (climbinggym_walrus) - fetch failed (access_restricted)
   - no posts
 - D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - fetch failed (access_restricted)
+  - no posts
+- エナジークライミングジム浦和店公式Instagram (energyurawa) - fetch failed (access_restricted)
   - no posts

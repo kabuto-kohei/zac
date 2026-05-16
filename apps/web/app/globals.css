@@ -164,7 +164,7 @@ p {
 
 .metric-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin: 0 0 28px;
   padding: 14px;
@@ -1295,7 +1295,7 @@ p{line-height:1.45;}
 .nav-item.active::after{right:18px;left:18px;height:2px;border-radius:999px;background:var(--ink);}
 .stack,.feed-grid,.home-shortcuts,.member-dashboard-grid,.member-dashboard-list,.featured-event-grid,.mini-list{gap:0;}
 .topbar,.metric-strip,.composer-card,.guest-banner,.auth-required-note,.digest-card,.member-dashboard,.home-shortcut,.featured-events,.featured-event,.content-card,.wide-card,.profile-panel,.profile-dashboard,.form-panel,.empty-state,.explore-hero,.search-panel,.hero-card,.mini-list-item,.comment-item{border-radius:0;background:transparent;box-shadow:none;}
-.metric-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;border:0;border-bottom:var(--threads-divider);padding:0;}
+.metric-strip{grid-template-columns:repeat(2,minmax(0,1fr));gap:0;margin:0;border:0;border-bottom:var(--threads-divider);padding:0;}
 .metric{min-height:86px;justify-content:center;border-right:var(--threads-divider);padding:14px 8px;}
 .metric:last-child{border-right:0;}
 .metric span,.card-meta-row span,.card-message,.featured-event small,.mini-list-item span,.mini-empty,.field-help,.home-shortcut small,.member-link small,.comment-item span{color:var(--muted);font-size:var(--threads-font-meta);font-weight:400;line-height:1.35;}

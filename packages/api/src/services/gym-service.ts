@@ -6,9 +6,11 @@ import { isRuntimeFallbackAllowed } from "../integrations/env.js";
 import { isUuid } from "./ids.js";
 
 const savedGymIds = new Set<string>();
+let gymListCache: { expiresAt: number; gyms: GymSummary[] } | null = null;
+const gymListCacheTtlMs = 60_000;
 
 export async function listGyms() {
-  const rows = await listPersistentGyms();
+  const rows = await listCachedPersistentGyms();
   const gyms = rows.length > 0 || !isRuntimeFallbackAllowed() ? rows : gymFixtures;
   return gyms.map((gym) => ({ ...gym, saved: gym.saved || savedGymIds.has(gym.id) }));
 }
@@ -48,6 +50,23 @@ export async function unsaveGym(gymId: string, actorId?: string) {
   }
 
   return { gymId, saved: false };
+}
+
+export function clearGymCache() {
+  gymListCache = null;
+}
+
+async function listCachedPersistentGyms() {
+  const now = Date.now();
+  if (gymListCache && gymListCache.expiresAt > now) {
+    return gymListCache.gyms;
+  }
+
+  const rows = await listPersistentGyms();
+  if (rows.length > 0) {
+    gymListCache = { expiresAt: now + gymListCacheTtlMs, gyms: rows };
+  }
+  return rows;
 }
 
 async function listPersistentGyms() {

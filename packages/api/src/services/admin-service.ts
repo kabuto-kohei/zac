@@ -4,6 +4,7 @@ import type { RequestActor } from "../auth.js";
 import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
 import { isRuntimeFallbackAllowed } from "../integrations/env.js";
+import { clearGymCache } from "./gym-service.js";
 import { isUuid } from "./ids.js";
 
 type AuditTarget = {
@@ -205,6 +206,7 @@ async function persistGymStatus(gymId: string, input: UpdateGymStatusInput) {
   }
 
   await db.update(gyms).set({ status: input.status, updatedAt: new Date() }).where(eq(gyms.id, gymId));
+  clearGymCache();
 }
 
 async function writeAuditLog(actor: RequestActor, target: AuditTarget) {

@@ -14,7 +14,7 @@ export async function GymDetail({ gymId }: { gymId: string }) {
   return (
     <AppShell activeTab="explore" action={<Link className="primary-action" href={`/reports/new?targetType=gym&targetId=${gym.id}`}>更新申請</Link>}>
       <div className="detail-back-row">
-        <DetailBackButton />
+        <DetailBackButton fallbackHref="/explore" />
       </div>
       <section className="hero-card no-visual-hero">
         <div>

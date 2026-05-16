@@ -7,7 +7,7 @@ export default function TermsPage() {
       <article className="form-panel">
         <p className="card-kind">Legal</p>
         <h1>利用規約</h1>
-        <p>Zacは、クライミングの予定作成、記録、投稿、イベント確認を支援するMVPサービスです。</p>
+        <p>Zacは、クライミングジムとイベントの公式情報確認を支援するサービスです。</p>
         <section className="stack">
           <h2>利用条件</h2>
           <p>ユーザーは、正確なプロフィール情報を登録し、他者の安全、プライバシー、権利を尊重して利用します。</p>

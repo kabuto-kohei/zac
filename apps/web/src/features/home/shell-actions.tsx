@@ -28,14 +28,7 @@ export function ShellActions({ children }: { children?: ReactNode }) {
 
   return (
     <div className="action-row">
-      <Link className="ghost-button" href="/notifications">
-        通知
-      </Link>
-      {children ?? (
-        <Link className="primary-action" href="/plans/new">
-          予定作成
-        </Link>
-      )}
+      {children}
       <button className="ghost-button" onClick={logout} type="button">
         ログアウト
       </button>

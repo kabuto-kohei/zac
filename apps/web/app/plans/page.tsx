@@ -1,6 +1,5 @@
-import { WebAppHome } from "../../src/features/home/web-app-home";
+import { redirect } from "next/navigation";
 
 export default function PlansPage() {
-  return <WebAppHome activeTab="plans" />;
+  redirect("/");
 }
-

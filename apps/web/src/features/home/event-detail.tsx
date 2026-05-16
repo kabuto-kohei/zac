@@ -14,7 +14,7 @@ export async function EventDetail({ eventId }: { eventId: string }) {
   return (
     <AppShell activeTab="home" action={<Link className="primary-action" href={`/reports/new?targetType=event&targetId=${event.id}`}>更新申請</Link>}>
       <div className="detail-back-row">
-        <DetailBackButton />
+        <DetailBackButton fallbackHref="/" />
       </div>
       <section className="hero-card no-visual-hero">
         <div>

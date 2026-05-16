@@ -1,5 +1,5 @@
-import { V2PlaceholderPage } from "../../../src/features/home/v2-placeholder";
+import { redirect } from "next/navigation";
 
 export default function NewPostPage() {
-  return <V2PlaceholderPage featureName="投稿作成" />;
+  redirect("/");
 }

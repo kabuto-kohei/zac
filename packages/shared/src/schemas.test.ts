@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { formatEventDisplayTitle } from "./event-title.js";
 import {
   attachMediaSchema,
   createClimbingLogSchema,
@@ -10,6 +11,42 @@ import {
   localSessionSchema,
   onboardingProfileSchema,
 } from "./schemas.js";
+
+test("formatEventDisplayTitle keeps useful official titles", () => {
+  assert.equal(
+    formatEventDisplayTitle({
+      category: "competition",
+      gymName: "ディーボルダリング 八王子",
+      startsAt: "2026-05-16 10:00",
+      title: "TAMAX 2026 ディーボルダリング八王子OPA",
+    }),
+    "TAMAX 2026 ディーボルダリング八王子OPA",
+  );
+});
+
+test("formatEventDisplayTitle replaces generic source titles with contextual titles", () => {
+  assert.equal(
+    formatEventDisplayTitle({
+      category: "route_set",
+      gymName: "HEADROCK",
+      startsAt: "2026-05-18 13:00",
+      title: "▶︎▶︎▶︎",
+    }),
+    "HEADROCK 5/18 セット替え",
+  );
+});
+
+test("formatEventDisplayTitle replaces long operational source text with contextual titles", () => {
+  assert.equal(
+    formatEventDisplayTitle({
+      category: "opening_change",
+      gymName: "クライミングジム Hutte",
+      startsAt: "2026-05-20 10:00",
+      title: "5/20〜22日まで急遽臨時休業となります😭臨時休業に伴い壁の改装工事が大幅に遅れるかもしれません🙏",
+    }),
+    "クライミングジム Hutte 5/20 営業情報",
+  );
+});
 
 test("createSessionPlanSchema accepts a valid gym plan", () => {
   const result = createSessionPlanSchema.safeParse({

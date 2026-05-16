@@ -36,9 +36,10 @@ const checks = [
     expectText: ["Zac"],
   },
   {
-    name: "web.v2-placeholder",
+    name: "web.v1-hidden-route",
     url: `${defaults.webUrl}/plans/new`,
-    expectText: ["V2"],
+    expectText: ["Zac"],
+    forbidText: ["V2", "予定作成"],
   },
   {
     name: "admin.reports",
@@ -69,8 +70,9 @@ for (const check of checks) {
     } else {
       const text = await response.text();
       const missing = check.expectText.filter((fragment) => !text.includes(fragment));
-      contentOk = missing.length === 0;
-      detail = contentOk ? "text ok" : `missing text: ${missing.join(", ")}`;
+      const forbidden = (check.forbidText ?? []).filter((fragment) => text.includes(fragment));
+      contentOk = missing.length === 0 && forbidden.length === 0;
+      detail = contentOk ? "text ok" : `missing text: ${missing.join(", ")} forbidden text: ${forbidden.join(", ")}`;
     }
 
     results.push({

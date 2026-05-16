@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { AppShell } from "./app-shell";
 import { AuthGate } from "./auth-gate";
+import { DetailBackButton } from "./detail-back-button";
 import { postApi } from "./api-client";
 import { SubmitButton } from "./submit-button";
 
@@ -48,6 +49,9 @@ export function ReportForm({
 
   return (
     <AppShell activeTab="home">
+      <div className="detail-back-row">
+        <DetailBackButton fallbackHref={initialTargetType === "gym" ? "/explore" : "/"} />
+      </div>
       <AuthGate action="情報更新申請はログイン後に送信できます">
         <form action={submit} className="form-panel">
         <p className="card-kind">情報更新申請</p>

@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, eventSaves, events, gyms, inArray, isNull, sourcePostObservations } from "@zac/db";
-import { eventFixtures, findEventFixture, type EventSummary, type ReviewAdminEventInput, type UpsertAdminEventInput } from "@zac/shared";
+import { eventFixtures, findEventFixture, formatEventDisplayTitle, type EventSummary, type ReviewAdminEventInput, type UpsertAdminEventInput } from "@zac/shared";
 import type { RequestActor } from "../auth.js";
 import { ApiError } from "../errors.js";
 import { getDatabase } from "../integrations/database.js";
@@ -329,14 +329,23 @@ async function toEventSummaries(rows: EventSummaryRow[]) {
 }
 
 async function toEventSummary(row: EventSummaryRow) {
+  const category = parseEventCategory(row.category);
+  const gymName = row.gymName ?? (await getGymName(row.gymId));
+  const startsAt = formatDateTime(row.startsAt);
+
   return {
     id: row.id,
-    category: parseEventCategory(row.category),
-    title: row.title,
+    category,
+    title: formatEventDisplayTitle({
+      category,
+      gymName,
+      startsAt,
+      title: row.title,
+    }),
     summary: row.summary ?? row.description ?? "",
     description: row.description ?? "",
-    gymName: row.gymName ?? (await getGymName(row.gymId)),
-    startsAt: formatDateTime(row.startsAt),
+    gymName,
+    startsAt,
     endsAt: row.endsAt ? formatDateTime(row.endsAt) : "",
     capacity: row.capacityText ?? "定員未設定",
     sourceUrl: row.sourceUrl ?? "",

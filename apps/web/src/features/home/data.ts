@@ -2,6 +2,7 @@ import {
   findEventFixture,
   findGymFixture,
   eventFixtures,
+  formatEventDisplayTitle,
   gymFixtures,
   type EventSummary,
   type GymSummary,
@@ -50,7 +51,7 @@ export async function getHomeViewData(activeTab: Tab): Promise<HomeViewData> {
 
   return {
     activeTab,
-    events,
+    events: events.map(toDisplayEvent),
     gyms,
     plans: [],
     logs: [],
@@ -73,7 +74,8 @@ export async function getGymDetailData(gymId: string) {
 }
 
 export async function getEventDetailData(eventId: string) {
-  return getApiData<EventSummary>(`/v1/events/${encodeURIComponent(eventId)}`, findEventFixture(eventId) ?? null);
+  const event = await getApiData<EventSummary>(`/v1/events/${encodeURIComponent(eventId)}`, findEventFixture(eventId) ?? null);
+  return event ? toDisplayEvent(event) : null;
 }
 
 export async function getGymOptions(): Promise<GymOption[]> {
@@ -121,4 +123,11 @@ function getApiBaseUrl() {
 
 function isLiveApiMode() {
   return process.env.APP_ENV === "production" || process.env.NEXT_PUBLIC_APP_ENV === "production";
+}
+
+function toDisplayEvent(event: EventSummary): EventSummary {
+  return {
+    ...event,
+    title: formatEventDisplayTitle(event),
+  };
 }

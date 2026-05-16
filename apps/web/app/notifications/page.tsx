@@ -1,5 +1,5 @@
-import { NotificationsPanel } from "../../src/features/home/notifications-panel";
+import { V2PlaceholderPage } from "../../src/features/home/v2-placeholder";
 
 export default function NotificationsPage() {
-  return <NotificationsPanel />;
+  return <V2PlaceholderPage featureName="通知" />;
 }

@@ -22,7 +22,7 @@ export function AppShell({
           <ZacIcon icon="logo" size={56} />
           <div>
             <h1>Zac</h1>
-            <p className="topbar-subtitle">次のセッションを決める</p>
+            <p className="topbar-subtitle">ジムとイベントの公式情報カレンダー</p>
           </div>
         </Link>
         <ShellActions>{action}</ShellActions>
@@ -36,19 +36,19 @@ export function AppShell({
 }
 
 export function MetricStripView({
-  weeklyPlans,
-  savedGyms,
-  logs,
+  events,
+  gyms,
+  requests,
 }: {
-  weeklyPlans: number;
-  savedGyms: number;
-  logs: number;
+  events: number;
+  gyms: number;
+  requests: string;
 }) {
   return (
-    <section className="metric-strip" aria-label="Weekly summary">
-      <Metric label="今週の予定" value={String(weeklyPlans)} />
-      <Metric label="保存ジム" value={String(savedGyms)} />
-      <Metric label="記録" value={String(logs)} />
+    <section className="metric-strip" aria-label="V1 scope summary">
+      <Metric label="掲載イベント" value={String(events)} />
+      <Metric label="掲載ジム" value={String(gyms)} />
+      <Metric label="更新申請" value={requests} />
     </section>
   );
 }

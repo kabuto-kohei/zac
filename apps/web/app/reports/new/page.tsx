@@ -6,5 +6,5 @@ export default async function NewReportPage({
   searchParams: Promise<{ targetId?: string; targetType?: string }>;
 }) {
   const params = await searchParams;
-  return <ReportForm initialTargetId={params.targetId ?? ""} initialTargetType={params.targetType ?? "post"} />;
+  return <ReportForm initialTargetId={params.targetId ?? ""} initialTargetType={params.targetType ?? "gym"} />;
 }

@@ -91,6 +91,11 @@ export const createPostSchema = z.object({
 });
 
 export const reportCategorySchema = z.enum([
+  "gym_info_update",
+  "event_info_update",
+  "new_event_request",
+  "closure_or_relocation",
+  "source_link_update",
   "harassment",
   "spam",
   "inappropriate_image",
@@ -102,7 +107,7 @@ export const reportCategorySchema = z.enum([
 ]);
 
 export const createReportSchema = z.object({
-  targetType: z.enum(["post", "comment", "session_plan", "climbing_log", "user"]),
+  targetType: z.enum(["gym", "event", "post", "comment", "session_plan", "climbing_log", "user"]),
   targetId: z.string().min(1).max(120),
   category: reportCategorySchema,
   note: z.string().max(1000).nullable().optional(),

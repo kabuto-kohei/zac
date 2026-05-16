@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { AppShell } from "./app-shell";
 import { getEventDetailData } from "./data";
 import { DetailBackButton } from "./detail-back-button";
-import { EventActions } from "./detail-actions";
 
 export async function EventDetail({ eventId }: { eventId: string }) {
   const event = await getEventDetailData(eventId);
@@ -13,7 +12,7 @@ export async function EventDetail({ eventId }: { eventId: string }) {
   }
 
   return (
-    <AppShell activeTab="explore" action={<Link className="primary-action" href="/plans/new">予定作成</Link>}>
+    <AppShell activeTab="home" action={<Link className="primary-action" href={`/reports/new?targetType=event&targetId=${event.id}`}>更新申請</Link>}>
       <div className="detail-back-row">
         <DetailBackButton />
       </div>
@@ -38,7 +37,20 @@ export async function EventDetail({ eventId }: { eventId: string }) {
       </section>
 
       <section className="stack">
-        <EventActions eventId={event.id} />
+        <article className="empty-state">
+          <h3>掲載内容の修正を申請できます</h3>
+          <p>日程、種別、公式リンク、説明の誤りはログイン後に運営へ送信できます。</p>
+          <div className="action-row">
+            <Link className="primary-action" href={`/reports/new?targetType=event&targetId=${event.id}`}>
+              更新申請
+            </Link>
+            {event.sourceUrl ? (
+              <a className="ghost-button" href={event.sourceUrl} rel="noreferrer" target="_blank">
+                公式情報
+              </a>
+            ) : null}
+          </div>
+        </article>
       </section>
     </AppShell>
   );

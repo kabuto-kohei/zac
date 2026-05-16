@@ -6,15 +6,13 @@ import { ZacIcon, type ZacIconKey } from "./zac-icons";
 import type { Tab } from "./app-shell";
 
 const publicNavItems: Array<{ id: Tab; href: string; label: string; icon?: ZacIconKey; textIcon?: string }> = [
-  { id: "home", href: "/", label: "ホーム", textIcon: "⌂" },
-  { id: "explore", href: "/explore", label: "探す", icon: "gym" },
+  { id: "home", href: "/", label: "カレンダー", textIcon: "⌂" },
+  { id: "explore", href: "/explore", label: "ジム", icon: "gym" },
 ];
 
 const memberNavItems: Array<{ id: Tab; href: string; label: string; icon?: ZacIconKey; textIcon?: string }> = [
   ...publicNavItems,
-  { id: "plans", href: "/plans", label: "予定", icon: "sessionPlan" },
-  { id: "logs", href: "/logs", label: "記録", icon: "climbLog" },
-  { id: "me", href: "/me", label: "マイ", textIcon: "○" },
+  { id: "me", href: "/me", label: "アカウント", textIcon: "○" },
 ];
 
 export function ShellNavigation({ activeTab }: { activeTab: Tab }) {

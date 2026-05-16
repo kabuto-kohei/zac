@@ -8,11 +8,11 @@ import { AuthGate } from "./auth-gate";
 import { postApi } from "./api-client";
 import { SubmitButton } from "./submit-button";
 
-type FieldErrors = Partial<Record<"targetId" | "category", string>>;
+type FieldErrors = Partial<Record<"targetId" | "category" | "note", string>>;
 
 export function ReportForm({
   initialTargetId = "",
-  initialTargetType = "post",
+  initialTargetType = "gym",
 }: {
   initialTargetId?: string;
   initialTargetType?: string;
@@ -32,14 +32,14 @@ export function ReportForm({
     if (result.success) {
       setErrors({});
       const response = await postApi<{ id: string }>("/v1/reports", result.data);
-      setSavedMessage(response.ok ? "通報を運営キューへ送信しました。" : response.message);
+      setSavedMessage(response.ok ? "更新申請を運営キューへ送信しました。" : response.message);
       return;
     }
 
     const nextErrors: FieldErrors = {};
     for (const issue of result.error.issues) {
       const field = issue.path[0];
-      if (field === "targetId" || field === "category") {
+      if (field === "targetId" || field === "category" || field === "note") {
         nextErrors[field] = issue.message;
       }
     }
@@ -48,43 +48,44 @@ export function ReportForm({
 
   return (
     <AppShell activeTab="home">
-      <AuthGate action="通報はログイン後に送信できます">
+      <AuthGate action="情報更新申請はログイン後に送信できます">
         <form action={submit} className="form-panel">
-        <p className="card-kind">通報</p>
-        <h2>運営に知らせる</h2>
+        <p className="card-kind">情報更新申請</p>
+        <h2>掲載情報の修正を申請する</h2>
         <div className="form-grid">
           <label>
-            対象
+            対象ID
             <input aria-describedby={errors.targetId ? "report-target-error" : undefined} defaultValue={initialTargetId} maxLength={120} name="targetId" />
             {errors.targetId ? <span className="field-error" id="report-target-error">{errors.targetId}</span> : null}
           </label>
           <label>
             対象種別
             <select defaultValue={initialTargetType} name="targetType">
-              <option value="post">投稿</option>
-              <option value="comment">コメント</option>
-              <option value="session_plan">予定</option>
-              <option value="climbing_log">記録</option>
-              <option value="user">ユーザー</option>
+              <option value="gym">ジム</option>
+              <option value="event">イベント</option>
             </select>
           </label>
           <label>
-            カテゴリ
-            <select aria-describedby={errors.category ? "report-category-error" : undefined} defaultValue="spam" name="category">
-              <option value="harassment">ハラスメント</option>
-              <option value="spam">スパム</option>
-              <option value="inappropriate_image">不適切画像</option>
-              <option value="dangerous_behavior">危険行為の助長</option>
-              <option value="personal_information">個人情報の晒し</option>
-              <option value="copyright">著作権侵害</option>
-              <option value="impersonation">なりすまし</option>
+            申請内容
+            <select aria-describedby={errors.category ? "report-category-error" : undefined} defaultValue={initialTargetType === "event" ? "event_info_update" : "gym_info_update"} name="category">
+              <option value="gym_info_update">ジム情報の修正</option>
+              <option value="event_info_update">イベント情報の修正</option>
+              <option value="new_event_request">新規イベント掲載</option>
+              <option value="closure_or_relocation">閉店・移転・長期休業</option>
+              <option value="source_link_update">公式リンク・SNS の修正</option>
               <option value="other">その他</option>
             </select>
             {errors.category ? <span className="field-error" id="report-category-error">{errors.category}</span> : null}
           </label>
           <label>
-            補足
-            <textarea maxLength={1000} name="note" placeholder="確認してほしい内容" />
+            申請理由・参考URL
+            <textarea
+              aria-describedby={errors.note ? "report-note-error" : undefined}
+              maxLength={1000}
+              name="note"
+              placeholder="例: 公式サイトでは5/30にセット替えと案内されています。URL: https://..."
+            />
+            {errors.note ? <span className="field-error" id="report-note-error">{errors.note}</span> : null}
           </label>
         </div>
         {savedMessage ? (
@@ -92,12 +93,12 @@ export function ReportForm({
             <p className="success-message">{savedMessage}</p>
             <div className="action-row">
               <Link className="ghost-button" href="/">
-                フィードへ戻る
+                カレンダーへ戻る
               </Link>
             </div>
           </div>
         ) : null}
-        <SubmitButton pendingLabel="送信中">確認</SubmitButton>
+        <SubmitButton pendingLabel="送信中">申請を送信</SubmitButton>
         </form>
       </AuthGate>
     </AppShell>

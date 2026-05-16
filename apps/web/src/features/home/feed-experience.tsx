@@ -3,9 +3,8 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useAuthStatus } from "./auth-state";
-import { GymCard, LogCard, PlanCard, PostCard } from "./cards";
+import { EventCard, GymCard, LogCard, PlanCard, PostCard } from "./cards";
 import type { HomeFeedItem, HomeViewData } from "./data";
-import { MemberActivityState, type MemberActivityLoadState } from "./member-activity-data";
 import { ZacIcon } from "./zac-icons";
 
 type FeedFilter = "all" | HomeFeedItem["type"];
@@ -17,17 +16,7 @@ const filterLabels: Array<{ value: FeedFilter; label: string }> = [
   { value: "post", label: "投稿" },
 ];
 
-export function FeedExperience({ data, memberState }: { data: HomeViewData; memberState: MemberActivityLoadState }) {
-  const { authenticated, checking } = useAuthStatus();
-
-  if (!checking && authenticated) {
-    if (memberState.status !== "ready") {
-      return <MemberActivityState state={memberState} />;
-    }
-
-    return <MemberHomeExperience data={memberState.data} />;
-  }
-
+export function FeedExperience({ data }: { data: HomeViewData }) {
   return <GuestHomeExperience data={data} />;
 }
 
@@ -35,13 +24,31 @@ function GuestHomeExperience({ data }: { data: HomeViewData }) {
   const [showGyms, setShowGyms] = useState(false);
   const gyms = useMemo(() => getSortedGyms(data.gyms), [data.gyms]);
   const calendarEvents = getCalendarEvents(data.events);
+  const upcomingEvents = calendarEvents.slice(0, 8);
 
   return (
     <section className="stack">
       <EventCalendar events={calendarEvents} />
       <div className="section-title">
         <div>
-          <h2>ジム</h2>
+          <h2>直近の予定</h2>
+        </div>
+        <span>{upcomingEvents.length}件</span>
+      </div>
+      {upcomingEvents.length > 0 ? (
+        <section className="feed-grid" aria-label="直近の予定">
+          {upcomingEvents.map((event) => (
+            <EventCard event={event} key={event.id} />
+          ))}
+        </section>
+      ) : (
+        <div className="empty-state compact-empty">
+          <h3>掲載予定はまだありません</h3>
+        </div>
+      )}
+      <div className="section-title">
+        <div>
+          <h2>掲載ジム</h2>
         </div>
         <span>{data.gyms.length}件</span>
         <button className="ghost-button section-toggle" onClick={() => setShowGyms((current) => !current)} type="button">

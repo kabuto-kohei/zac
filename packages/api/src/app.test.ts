@@ -570,6 +570,39 @@ test("POST /v1/reports creates a report", async () => {
   assert.ok(listBody.data.some((report: { id: string }) => report.id === body.data.id));
 });
 
+test("POST /v1/reports accepts V1 gym and event update requests", async () => {
+  const app = createApp();
+  const gymResponse = await app.request("/v1/reports", {
+    method: "POST",
+    body: JSON.stringify({
+      targetType: "gym",
+      targetId: "b-pump-tokyo",
+      category: "gym_info_update",
+      note: "公式サイトの営業時間が変わっています。",
+    }),
+    headers: userJsonHeaders,
+  });
+  const eventResponse = await app.request("/v1/reports", {
+    method: "POST",
+    body: JSON.stringify({
+      targetType: "event",
+      targetId: "b-pump-beginner-session",
+      category: "event_info_update",
+      note: "開催時間の確認をお願いします。",
+    }),
+    headers: userJsonHeaders,
+  });
+  const gymBody = await gymResponse.json();
+  const eventBody = await eventResponse.json();
+
+  assert.equal(gymResponse.status, 201);
+  assert.equal(gymBody.data.targetType, "gym");
+  assert.equal(gymBody.data.category, "gym_info_update");
+  assert.equal(eventResponse.status, 201);
+  assert.equal(eventBody.data.targetType, "event");
+  assert.equal(eventBody.data.category, "event_info_update");
+});
+
 test("POST /v1/media/upload-urls rejects unauthenticated requests", async () => {
   const response = await createApp().request("/v1/media/upload-urls", {
     method: "POST",

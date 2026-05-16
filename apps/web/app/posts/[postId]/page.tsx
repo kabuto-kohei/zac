@@ -1,7 +1,6 @@
-import { PostDetail } from "../../../src/features/home/post-detail";
+import { V2PlaceholderPage } from "../../../src/features/home/v2-placeholder";
 
 export default async function PostDetailPage({ params }: { params: Promise<{ postId: string }> }) {
-  const { postId } = await params;
-  return <PostDetail postId={postId} />;
+  await params;
+  return <V2PlaceholderPage featureName="投稿詳細" />;
 }
-

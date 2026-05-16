@@ -9,26 +9,6 @@ import { useLocalToggle } from "./local-toggle";
 import { ZacIcon, type ZacIconKey } from "./zac-icons";
 
 export function GymCard({ gym }: { gym: GymSummary }) {
-  const [saved, toggleSaved] = useLocalToggle(`zac.gym.saved.${gym.id}`, gym.saved);
-  const { authenticated, checking } = useAuthStatus();
-  const [message, setMessage] = useState("");
-
-  async function submitSave() {
-    if (!checking && !authenticated) {
-      setMessage("ログインするとジムを保存できます。");
-      return;
-    }
-
-    const response = saved ? await deleteApi<{ saved: boolean }>(`/v1/gyms/${gym.id}/save`) : await postApi<{ saved: boolean }>(`/v1/gyms/${gym.id}/save`, {});
-    if (response.ok) {
-      toggleSaved();
-      setMessage(response.data.saved ? "保存しました。" : "保存を解除しました。");
-      return;
-    }
-
-    setMessage(response.message);
-  }
-
   return (
     <article className="content-card gym-card no-visual-card">
       <div>
@@ -39,11 +19,15 @@ export function GymCard({ gym }: { gym: GymSummary }) {
         <div className="card-meta-row">
           <span>{gym.disciplines}</span>
         </div>
-        <button className={saved ? "ghost-button is-active" : "ghost-button"} onClick={submitSave} type="button">
-          {saved ? "保存済み" : "保存"}
-        </button>
       </div>
-      {message ? <CardMessage message={message} /> : null}
+      <div className="action-row">
+        <Link className="ghost-button" href={`/gyms/${gym.id}`}>
+          詳細
+        </Link>
+        <Link className="ghost-button" href={`/reports/new?targetType=gym&targetId=${gym.id}`}>
+          更新申請
+        </Link>
+      </div>
     </article>
   );
 }
@@ -62,9 +46,14 @@ export function EventCard({ event }: { event: EventSummary }) {
           <span>{event.capacity}</span>
         </div>
       </div>
-      <Link className="ghost-button" href={`/events/${event.id}`}>
-        詳細
-      </Link>
+      <div className="action-row">
+        <Link className="ghost-button" href={`/events/${event.id}`}>
+          詳細
+        </Link>
+        <Link className="ghost-button" href={`/reports/new?targetType=event&targetId=${event.id}`}>
+          更新申請
+        </Link>
+      </div>
     </article>
   );
 }

@@ -141,7 +141,7 @@ export function MemberLogsPanel({ data }: { data: HomeViewData }) {
 }
 
 export function MemberProfilePanel({ data }: { data: HomeViewData }) {
-  return <ProfilePanel data={data} />;
+  return <ProfilePanel />;
 }
 
 export function ActivityMetricStrip({

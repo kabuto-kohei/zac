@@ -378,15 +378,15 @@ function ReportsView() {
   return (
     <>
       <div className="admin-title">
-        <h2>通報管理</h2>
-        <p>通報状態の更新は管理APIへ送信され、監査ログに記録されます。</p>
+        <h2>更新申請・通報管理</h2>
+        <p>V1 のジム・イベント更新申請と通報を確認し、対応状態を監査ログに残します。</p>
       </div>
       <AdminDataStatus state={reports} />
       <section className="admin-table">
         {reports.data.map((report) => (
           <ReportModerationRow report={report} key={report.id} />
         ))}
-        <AdminEmptyState state={reports} emptyMessage="通報はありません。" />
+        <AdminEmptyState state={reports} emptyMessage="更新申請・通報はありません。" />
       </section>
     </>
   );
@@ -483,7 +483,7 @@ function ReportModerationRow({ report }: { report: ReportSummary }) {
       <span>{report.id}</span>
       <span>{report.category}</span>
       <span>{report.status}</span>
-      <select aria-label="通報状態" defaultValue="reviewing" name="status">
+      <select aria-label="申請状態" defaultValue="reviewing" name="status">
         <option value="reviewing">reviewing</option>
         <option value="resolved">resolved</option>
         <option value="open">open</option>

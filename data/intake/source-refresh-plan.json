@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T07:59:17.266Z",
+  "generatedAt": "2026-05-17T12:00:28.031Z",
   "policy": {
     "publicDataOnly": true,
     "publishOnly": [
@@ -2782,26 +2782,6 @@
     "upcomingEventReview": [
       {
         "category": "route_set",
-        "title": "渋谷店 ルートセット営業変更",
-        "startsAt": "2026-05-17 17:00",
-        "endsAt": "2026-05-19 18:30",
-        "sourceUrl": "https://noborock-climbing.com/program/shibuya/",
-        "sourceLabel": "NOBOROCK 渋谷店 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.92"
-      },
-      {
-        "category": "route_set",
-        "title": "5月全面ホールド替え",
-        "startsAt": "2026-05-17 18:00",
-        "endsAt": "2026-05-19 18:00",
-        "sourceUrl": "https://b-camp.jp/shinbashi/",
-        "sourceLabel": "Urban Base Camp 新橋 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.88"
-      },
-      {
-        "category": "route_set",
         "title": "▶︎▶︎▶︎",
         "startsAt": "2026-05-18 13:00",
         "endsAt": "2026-05-27 21:00",
@@ -2962,21 +2942,21 @@
       },
       {
         "category": "route_set",
-        "title": "高田馬場店 5/31 ルートセット営業変更",
-        "startsAt": "2026-05-31 17:00",
-        "endsAt": "2026-06-02 18:30",
-        "sourceUrl": "https://noborock-climbing.com/program/takadanobaba/",
-        "sourceLabel": "NOBOROCK 高田馬場店 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.90"
-      },
-      {
-        "category": "route_set",
         "title": "大宮店 5/31 ルートセット営業変更",
         "startsAt": "2026-05-31 17:00",
         "endsAt": "2026-06-02 18:30",
         "sourceUrl": "https://noborock-climbing.com/program/omiya/",
         "sourceLabel": "NOBOROCK 大宮店 公式サイト",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.90"
+      },
+      {
+        "category": "route_set",
+        "title": "高田馬場店 5/31 ルートセット営業変更",
+        "startsAt": "2026-05-31 17:00",
+        "endsAt": "2026-06-02 18:30",
+        "sourceUrl": "https://noborock-climbing.com/program/takadanobaba/",
+        "sourceLabel": "NOBOROCK 高田馬場店 公式サイト",
         "reviewStatus": "approved",
         "extractionConfidence": "0.90"
       },

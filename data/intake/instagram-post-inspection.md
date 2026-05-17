@@ -1,9 +1,17 @@
-# Instagram Post Inspection
+# Instagram Browser Roller Inspection
 
-- Generated: 2026-05-17T07:57:17.316Z
-- Sources queued: 48
-- Sources fetched: 0
-- Sources failed: 48
+- Generated: 2026-05-17T12:08:55.034Z
+- Mode: browser_roller
+- Browser session: login_required (77 source(s) surfaced a login-required page during the roller run.)
+- Target cadence: 2 runs/day (09:00, 18:00 JST)
+- Sources queued: 78
+- Sources visited: 78
+- Sources succeeded: 0
+- Sources failed: 78
+- Sources deferred: 0
+- Posts seen: 0
+- New posts opened: 0
+- Duplicate posts skipped: 0
 - Observed posts: 0
 - Pending posts: 0
 - Ignored posts: 0
@@ -11,103 +19,163 @@
 
 ## Policy
 
-Store source links, short summaries, and short quotes only. Do not store full captions, images, or videos.
+Only approved official Instagram sources are eligible. Store source links, short summaries, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
 
 ## Inspections
 
-- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed (access_restricted)
-  - no posts
-- bonobo_bs (bonobo_bs) - fetch failed (access_restricted)
-  - no posts
-- ボルダリングスペース HAT（ハット） (boulderingspace_hat) - fetch failed (access_restricted)
-  - no posts
-- Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - fetch failed (access_restricted)
-  - no posts
-- Urban Base Camp 新橋 (basecamp_shinbashi) - fetch failed (access_restricted)
-  - no posts
-- Urban Base Camp 新宿 (basecamp_shinjuku) - fetch failed (access_restricted)
-  - no posts
-- BOULCOM 東京店 (boulcom_tokyo) - fetch failed (access_restricted)
-  - no posts
-- B-PUMP OGIKUBO (bpump_ogikubo) - fetch failed (access_restricted)
-  - no posts
-- B-PUMP Tokyo (bpumptokyo) - fetch failed (access_restricted)
-  - no posts
-- クライミングジムランボ公式Instagram (climbing_gym_ranbo) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - fetch failed (access_restricted)
-  - no posts
-- Climbing Gym Walrus公式Instagram (climbinggym_walrus) - fetch failed (access_restricted)
-  - no posts
-- D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - fetch failed (access_restricted)
-  - no posts
-- エナジークライミングジム浦和店公式Instagram (energyurawa) - fetch failed (access_restricted)
-  - no posts
-- ボルダリングジム Vortex（ボルテックス） (climb.vortex) - fetch failed (access_restricted)
-  - no posts
-- be_born_climbing_gym (be_born_climbing_gym) - fetch failed (access_restricted)
-  - no posts
-- betaclimb (betaclimb) - fetch failed (access_restricted)
-  - no posts
-- bluebird_bouldering_gym (bluebird_bouldering_gym) - fetch failed (access_restricted)
-  - no posts
-- bouldersclimbing (bouldersclimbing) - fetch failed (access_restricted)
-  - no posts
-- B-PUMP YOKOHAMA 横浜 (bpumpyokohama) - fetch failed (access_restricted)
-  - no posts
-- exciting_sancha (exciting_sancha) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - fetch failed (access_restricted)
-  - no posts
-- NOBOROCK 池袋店 (noborock_ikebukuro) - fetch failed (access_restricted)
-  - no posts
-- NOBOROCK 町田店 (noborock_machida) - fetch failed (access_restricted)
-  - no posts
-- NOBOROCK 大宮店 (noborock_omiya) - fetch failed (access_restricted)
-  - no posts
-- Noborock Shibuya (noborock_shibuya) - fetch failed (access_restricted)
-  - no posts
-- NOBOROCK 高田馬場店 (noborock_takadanobaba) - fetch failed (access_restricted)
-  - no posts
-- fishandbird_toyocho (fishandbird_toyocho) - fetch failed (access_restricted)
-  - no posts
-- headrockcg (headrockcg) - fetch failed (access_restricted)
-  - no posts
-- okkurock (okkurock) - fetch failed (access_restricted)
-  - no posts
-- penguinclimb (penguinclimb) - fetch failed (access_restricted)
-  - no posts
-- 水戸シティロックジム avue（アヴュー） (310_avue) - fetch failed (access_restricted)
-  - no posts
-- ALTIOR（アルティオール）クライミングジム (altior_climbing_gym1) - fetch failed (access_restricted)
-  - no posts
-- ボルダリングガレージ FUNNY（ファニー） (b.g.funny) - fetch failed (access_restricted)
-  - no posts
-- ボルダリングジム Share（シェア） (bouldering_gym_share) - fetch failed (access_restricted)
-  - no posts
-- ボルダリングジム 登攀道場 (bouldering_gym_tohandoujou) - fetch failed (access_restricted)
-  - no posts
-- ボルダリングスペース BLEAU（ブロー） (bouldering_space_bleau) - fetch failed (access_restricted)
-  - no posts
-- クライミング飛鳥 (climbing_aska) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム COZY (climbing_gym_cozy) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム Hutte（ヒュッテ） (climbinggym_hutte) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム FLASH（フラッシュ） (climbinggymflash) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム RISE（ライズ） (climbrise2016) - fetch failed (access_restricted)
-  - no posts
-- クライミングパーク カルチェロッシュ (quartier_de_roche) - fetch failed (access_restricted)
-  - no posts
-- Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム SLOTH（スロース） (sloth.gym) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム THREE PEAKS（スリーピークス） (three_peaks_climbing) - fetch failed (access_restricted)
-  - no posts
-- スポドリ！ (tokyodomecity_spodori) - fetch failed (access_restricted)
-  - no posts
+- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - failed (login_required)
+  - no new posts
+- bonobo_bs (bonobo_bs) - failed (login_required)
+  - no new posts
+- ボルダリングスペース HAT（ハット） (boulderingspace_hat) - failed (login_required)
+  - no new posts
+- Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - failed (login_required)
+  - no new posts
+- Urban Base Camp 新橋 (basecamp_shinbashi) - failed (login_required)
+  - no new posts
+- Urban Base Camp 新宿 (basecamp_shinjuku) - failed (login_required)
+  - no new posts
+- BOULCOM 東京店 (boulcom_tokyo) - failed (login_required)
+  - no new posts
+- B-PUMP OGIKUBO (bpump_ogikubo) - failed (login_required)
+  - no new posts
+- B-PUMP Tokyo (bpumptokyo) - failed (login_required)
+  - no new posts
+- クライミングジムランボ公式Instagram (climbing_gym_ranbo) - failed (login_required)
+  - no new posts
+- クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - failed (login_required)
+  - no new posts
+- Climbing Gym Walrus公式Instagram (climbinggym_walrus) - failed (login_required)
+  - no new posts
+- D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - failed (login_required)
+  - no new posts
+- エナジークライミングジム浦和店公式Instagram (energyurawa) - failed (login_required)
+  - no new posts
+- ボルダリングジム Vortex（ボルテックス） (climb.vortex) - failed (login_required)
+  - no new posts
+- be_born_climbing_gym (be_born_climbing_gym) - failed (login_required)
+  - no new posts
+- betaclimb (betaclimb) - failed (login_required)
+  - no new posts
+- bluebird_bouldering_gym (bluebird_bouldering_gym) - failed (login_required)
+  - no new posts
+- bouldersclimbing (bouldersclimbing) - failed (login_required)
+  - no new posts
+- B-PUMP YOKOHAMA 横浜 (bpumpyokohama) - failed (login_required)
+  - no new posts
+- exciting_sancha (exciting_sancha) - failed (login_required)
+  - no new posts
+- クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - failed (login_required)
+  - no new posts
+- NOBOROCK 池袋店 (noborock_ikebukuro) - failed (login_required)
+  - no new posts
+- NOBOROCK 町田店 (noborock_machida) - failed (login_required)
+  - no new posts
+- NOBOROCK 大宮店 (noborock_omiya) - failed (login_required)
+  - no new posts
+- Noborock Shibuya (noborock_shibuya) - failed (login_required)
+  - no new posts
+- NOBOROCK 高田馬場店 (noborock_takadanobaba) - failed (login_required)
+  - no new posts
+- fishandbird_toyocho (fishandbird_toyocho) - failed (login_required)
+  - no new posts
+- headrockcg (headrockcg) - failed (login_required)
+  - no new posts
+- okkurock (okkurock) - failed (login_required)
+  - no new posts
+- penguinclimb (penguinclimb) - failed (login_required)
+  - no new posts
+- 水戸シティロックジム avue（アヴュー） (310_avue) - failed (login_required)
+  - no new posts
+- ALTIOR（アルティオール）クライミングジム (altior_climbing_gym1) - failed (login_required)
+  - no new posts
+- ボルダリングガレージ FUNNY（ファニー） (b.g.funny) - failed (login_required)
+  - no new posts
+- ボルダリングジム Share（シェア） (bouldering_gym_share) - failed (login_required)
+  - no new posts
+- ボルダリングジム 登攀道場 (bouldering_gym_tohandoujou) - failed (login_required)
+  - no new posts
+- ボルダリングスペース BLEAU（ブロー） (bouldering_space_bleau) - failed (login_required)
+  - no new posts
+- クライミング飛鳥 (climbing_aska) - failed (login_required)
+  - no new posts
+- クライミングジム COZY (climbing_gym_cozy) - failed (login_required)
+  - no new posts
+- クライミングジム Hutte（ヒュッテ） (climbinggym_hutte) - failed (login_required)
+  - no new posts
+- クライミングジム FLASH（フラッシュ） (climbinggymflash) - failed (login_required)
+  - no new posts
+- クライミングジム RISE（ライズ） (climbrise2016) - failed (login_required)
+  - no new posts
+- クライミングパーク カルチェロッシュ (quartier_de_roche) - failed (post_links_unavailable)
+  - no new posts
+- Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori) - failed (login_required)
+  - no new posts
+- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) - failed (login_required)
+  - no new posts
+- クライミングジム SLOTH（スロース） (sloth.gym) - failed (login_required)
+  - no new posts
+- クライミングジム THREE PEAKS（スリーピークス） (three_peaks_climbing) - failed (login_required)
+  - no new posts
+- スポドリ！ (tokyodomecity_spodori) - failed (login_required)
+  - no new posts
+- クライミングジム TRIP (tripclimbing) - failed (login_required)
+  - no new posts
+- ディーボルダリングプラス津田沼 (dbouldering_tsudanuma) - failed (login_required)
+  - no new posts
+- ディーボルダリング 綱島 (dbouldering_tsunashima) - failed (login_required)
+  - no new posts
+- ディーボルダリングプラス八千代 (dbouldering_yachiyo) - failed (login_required)
+  - no new posts
+- ECHOES CLIMBING（エコーズ クライミング） (echoesclimbing) - failed (login_required)
+  - no new posts
+- エナジークライミングジム 柏店 (energy_kashiwa) - failed (login_required)
+  - no new posts
+- folk（フォーク） ボルダリングジム (folk_boulderinggym) - failed (login_required)
+  - no new posts
+- ボルダリングジム フライハイト (freiheit_bouldering) - failed (login_required)
+  - no new posts
+- 深谷クライミングヴィレッジ (fukayaclimbingvillage) - failed (login_required)
+  - no new posts
+- ボルダリングジム GRANNY（グラニー） 南流山店 (granny_bouldering) - failed (login_required)
+  - no new posts
+- ボルダリングジム ジャムセッション三鷹 (jamsessionmitaka) - failed (login_required)
+  - no new posts
+- スポーツクライミングスクール・ジム J&S 池袋 (jands_ikebukuro) - failed (login_required)
+  - no new posts
+- クライミングジム RocKY’N（ロッキン） (climbing_gym_rockyn0429) - failed (login_required)
+  - no new posts
+- Rocky Shinagawa (rocky_shinagawa) - failed (login_required)
+  - no new posts
+- ROCKY 船橋店 (funabashirocky) - failed (login_required)
+  - no new posts
+- ROCKY 印西店 (inzairocky) - failed (login_required)
+  - no new posts
+- ROCKY 新宿曙橋店 (jyuku_rocky) - failed (login_required)
+  - no new posts
+- JET SET（ジェットセット） climbing gym (jetsetclimbing) - failed (login_required)
+  - no new posts
+- KaChill カチル (kachill_climbing) - failed (login_required)
+  - no new posts
+- クライミングジム LOST CANYON（ロストキャニオン） (lostcanyon_official) - failed (login_required)
+  - no new posts
+- Lutra Lutra（ルトラルトラ） (lutra_lutra_climb_park_) - failed (login_required)
+  - no new posts
+- ロッククライミング 三鷹ジム (mitaka_gym) - failed (login_required)
+  - no new posts
+- MOUNTAIN CLIFF（マウンテンクリフ） (mountain_cliff_climbing) - failed (login_required)
+  - no new posts
+- Next Gen Bouldering（ネクストジェンボルダリング） (nextgen.bouldering) - failed (login_required)
+  - no new posts
+- クライミングジム NOSE（ノーズ） 町田店 (nose_machida_climbinggym) - failed (login_required)
+  - no new posts
+- クライミングジム OliOli（オリオリ） (olioli_climbing.gym) - failed (login_required)
+  - no new posts
+- PERADORA（ペルアドラ） クライミングジム 横浜 (peradra_gym) - failed (login_required)
+  - no new posts
+- クライミングジム Project（プロジェクト） (project_climbing_gym) - failed (login_required)
+  - no new posts
+- THE STONE SESSION TOKYO (tsstokyo) - failed (login_required)
+  - no new posts
+- ボルダリングジム UNDERGROUND（アンダーグラウンド） (underground_bouldering_gym) - failed (login_required)
+  - no new posts

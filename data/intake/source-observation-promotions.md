@@ -1,6 +1,6 @@
 # Source Observation Promotions
 
-Generated: 2026-05-17T07:59:12.698Z
+Generated: 2026-05-17T12:00:23.455Z
 Mode: draft_review
 
 ## Summary

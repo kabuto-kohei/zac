@@ -1,7 +1,7 @@
--- Official Instagram post observations generated from instagramPostInspection.
--- Generated: 2026-05-17T07:57:17.316Z
--- Policy: store source links, short summaries, and short quotes only; do not store full captions or media.
+-- Official Instagram browser roller observations.
+-- Generated: 2026-05-17T12:08:55.034Z
+-- Policy: store source links, short summaries, and short quotes only; do not store passwords, cookies, full captions, images, videos, comments, DMs, or stories.
 
--- No successfully fetched sources in this run.
+-- No successfully inspected sources in this run.
 
--- No observed posts in this run.
+-- No new observed posts in this run.

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T07:59:18.645Z",
+  "generatedAt": "2026-05-17T12:00:29.314Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -24,7 +24,7 @@
       "copied images/videos",
       "unreviewed raw text"
     ],
-    "instagramTrackingRule": "Track recent public posts/reels by source URL. Store observation metadata and short summaries only; never store copied images/videos or full captions for public redistribution.",
+    "instagramTrackingRule": "Track approved official Instagram profiles through the browser roller twice per day. Store observation metadata and short summaries only; never store copied images/videos, full captions, comments, DMs, stories, passwords, cookies, or session tokens.",
     "calendarRule": "Multi-day events are marked on the start date only; the full period is shown on the detail page.",
     "eventSplitRule": "Classify each source item by primary user impact: competition, event/lesson, route_set, private_booking, opening_change, construction, notice, or recruit. If a route-set announcement includes closure/opening times, keep category route_set and store the closure/opening period in startsAt/endsAt. If a post is only a private rental closure, use private_booking. If it is only hours/temporary closure, use opening_change. If it is wall/area work, use construction.",
     "candidateFormatRule": "Before Admin candidate review, normalize each calendar-worthy observation with the category-specific source-candidate formatter: title, summary, description, capacityText, sourceQuote, decisionNote, and extractionConfidence must use the same category shape across Instagram, official-site, and promotion steps.",
@@ -73,9 +73,9 @@
       "route_set": 19
     },
     "dueApprovedSources": 64,
-    "instagramPostSources": 48,
+    "instagramPostSources": 78,
     "candidateSources": 0,
-    "upcomingEvents": 39,
+    "upcomingEvents": 37,
     "approvedSourceRotation": 96,
     "gymDisciplineCandidates": 119,
     "closureVerificationCandidates": 80
@@ -866,8 +866,9 @@
         "sourceVerifiedAt": "2026-05-11T04:30:00.000Z",
         "lastObservedAt": null,
         "observedPosts": 0,
+        "knownPostUrls": [],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "fe6959b7-2e09-42fe-9379-a1394c1824c6",
@@ -883,8 +884,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T08:05:57.693Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXq1h11iWEx/",
+          "https://www.instagram.com/p/DXk15ISCRUO/",
+          "https://www.instagram.com/p/DXskMRxCbSn/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "1aed95ed-0c31-45e8-a032-25756daae189",
@@ -900,8 +906,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T08:05:57.693Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYGWiseD4R7/",
+          "https://www.instagram.com/p/DX5kYp3D6Ya/",
+          "https://www.instagram.com/p/DYQZvuxk-cc/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "682b12a0-d629-4aa7-9bdc-c26b6ad3868a",
@@ -917,8 +928,16 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T09:11:32.668Z",
         "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYOhwiosqjd/",
+          "https://www.instagram.com/p/DYT5gYcM65y/",
+          "https://www.instagram.com/p/DYNxXbnS1Xu/",
+          "https://www.instagram.com/p/DYMH2-PlF8C/",
+          "https://www.instagram.com/p/DYG-6SIs_d8/",
+          "https://www.instagram.com/p/DYEiNsNFB6S/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "7376a46b-7e28-446d-afe3-21f54866e8b8",
@@ -934,8 +953,16 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXTUAbYmfwo/",
+          "https://www.instagram.com/p/DXYipx1Euv0/",
+          "https://www.instagram.com/p/DYTg4YbtBxm/",
+          "https://www.instagram.com/p/DYRUOjwtekq/",
+          "https://www.instagram.com/p/DYOpbbRtNXH/",
+          "https://www.instagram.com/p/DYL2ZWWtO2d/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "ae3bf68c-ef39-4336-8496-08ad3618b804",
@@ -951,8 +978,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYEikGAlG11/",
+          "https://www.instagram.com/p/DXvtiJ_FF3q/",
+          "https://www.instagram.com/p/DV0PguWFNV-/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "c1815b98-8699-40e4-9335-7d9a6ec49687",
@@ -968,8 +1000,16 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYQ1U9SkwwU/",
+          "https://www.instagram.com/p/DAI9ARZSG3i/",
+          "https://www.instagram.com/p/DXgR7FAE4dK/",
+          "https://www.instagram.com/p/DYO5msCzceC/",
+          "https://www.instagram.com/p/DYOUs26k5ii/",
+          "https://www.instagram.com/p/DYMJRvOk_PO/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "1c927437-7710-4318-9d77-e0e2104c9dc1",
@@ -985,8 +1025,15 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 5,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXy0HKeElJ0/",
+          "https://www.instagram.com/p/DXHComvEz5I/",
+          "https://www.instagram.com/p/DYRr6n1zMGs/",
+          "https://www.instagram.com/p/DYMhcMQEr9t/",
+          "https://www.instagram.com/p/DYE6Su0EvnU/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "86b3a08a-8bae-454f-9eb0-241adab7b8ec",
@@ -1002,8 +1049,14 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXwBG9kjhYr/",
+          "https://www.instagram.com/p/DW_E5wyAaNI/",
+          "https://www.instagram.com/p/DXwABbbDtGJ/",
+          "https://www.instagram.com/p/DXWQBNzjiuY/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "afc1e405-5c8a-42f9-b244-f084f79529f8",
@@ -1019,8 +1072,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DX0vbywjwP0/",
+          "https://www.instagram.com/p/DYMcgsPj8Hm/",
+          "https://www.instagram.com/p/DM0A280SWWg/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "383a857a-b8ee-49aa-9ba4-31d3b4f1e410",
@@ -1036,8 +1094,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DTUUXCIEZqD/",
+          "https://www.instagram.com/p/DX16fz0EfOP/",
+          "https://www.instagram.com/p/DTCNnnBkU5I/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "b76cb4ec-9f4c-40c1-986c-dfbad22c2725",
@@ -1053,8 +1116,17 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 7,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYTWKA8E1l8/",
+          "https://www.instagram.com/p/DYWkxu_jsG9/",
+          "https://www.instagram.com/p/DXoQhIKjtIc/",
+          "https://www.instagram.com/p/DYOfkxCkwgP/",
+          "https://www.instagram.com/p/DYOtikRk04W/",
+          "https://www.instagram.com/p/DX4DWNek0-I/",
+          "https://www.instagram.com/p/DXwTcG_k_xv/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "5c60bf4c-316b-4c7a-b8f8-19cf9fbf2821",
@@ -1070,8 +1142,15 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 5,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYTRtxYD-Ed/",
+          "https://www.instagram.com/p/DXrCdNQD5PJ/",
+          "https://www.instagram.com/p/DYUDGwhSXZR/",
+          "https://www.instagram.com/p/DVk58TxD90z/",
+          "https://www.instagram.com/p/DYJAeESjy-l/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "7046b655-8cd4-4087-a233-db5bb52aa729",
@@ -1087,8 +1166,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXviDzfjzRx/",
+          "https://www.instagram.com/p/DXvXu8jj-OZ/",
+          "https://www.instagram.com/p/DErxuUPS2th/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "7061a581-458e-485a-8a88-b9c9adf269e1",
@@ -1104,8 +1188,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYD37_6EzXm/",
+          "https://www.instagram.com/p/DXu0MCQE-Kc/",
+          "https://www.instagram.com/p/DYEV77iE7wb/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "8dd8d0fc-d295-40af-bd1c-a676b1d8ea4a",
@@ -1121,8 +1210,14 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DSv4tB_k7qf/",
+          "https://www.instagram.com/p/DYUPHBHE8cF/",
+          "https://www.instagram.com/p/DYMUu0tkzsC/",
+          "https://www.instagram.com/p/DXyqvzfk5Tx/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "b2ab778c-54a5-4985-b493-0f2a92d4f338",
@@ -1138,8 +1233,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYOgaI7Eto6/",
+          "https://www.instagram.com/p/DYOl57pyBf4/",
+          "https://www.instagram.com/p/DYMb9jxS4Sh/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "b4d8e7df-566f-48f4-98d1-e837a1850b9c",
@@ -1155,8 +1255,15 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 5,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYXIrmIo_a_/",
+          "https://www.instagram.com/p/DYUpKNrmhBQ/",
+          "https://www.instagram.com/p/DYR-5KtIYSj/",
+          "https://www.instagram.com/p/DYPaggNmgiM/",
+          "https://www.instagram.com/p/DYJ_KBZmj7e/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "8d5c3132-0ac0-43ef-ad5b-759066747b96",
@@ -1172,8 +1279,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DX80w4sJrQN/",
+          "https://www.instagram.com/p/DYOs383JWQL/",
+          "https://www.instagram.com/p/DX80FxZJ2D_/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "05a589fb-d85c-4a7a-8a11-cd99d5a0f625",
@@ -1189,8 +1301,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXvueiuGrMm/",
+          "https://www.instagram.com/p/DYRsJPOmhPJ/",
+          "https://www.instagram.com/p/DXwQ2xJmt10/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "924eff10-8759-4291-8975-8c9afb0f9ace",
@@ -1206,8 +1323,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DW3S5GXEWMb/",
+          "https://www.instagram.com/p/DYExyIHka9C/",
+          "https://www.instagram.com/p/DYDemF2k_DD/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "ade2f2c1-a869-4818-bc70-86283c894d21",
@@ -1223,8 +1345,14 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXtfPuajtlP/",
+          "https://www.instagram.com/p/DYUG2glk6rS/",
+          "https://www.instagram.com/p/DLroZvQxwcO/",
+          "https://www.instagram.com/p/DYMeyyuTnLj/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "35fc4b76-689f-4343-b332-8f7fee0b3373",
@@ -1240,8 +1368,17 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 7,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXJTc9HkRei/",
+          "https://www.instagram.com/p/DYV-yerP-Q9/",
+          "https://www.instagram.com/p/DYGh7gwE_Gz/",
+          "https://www.instagram.com/p/DW3ewwXE-e5/",
+          "https://www.instagram.com/p/DYQ1KRZPV2S/",
+          "https://www.instagram.com/p/DYOQYWfv9l0/",
+          "https://www.instagram.com/p/DYJGvGavpn9/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "324f7646-af6a-4cf5-8c7f-eb995d1c4f2a",
@@ -1257,8 +1394,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYVt1XuErSD/",
+          "https://www.instagram.com/p/DVqO4ZBksMV/",
+          "https://www.instagram.com/p/DVaBYodktoM/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "8ba066ee-20d7-4f42-ad91-55e680314a89",
@@ -1274,8 +1416,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DWk63erkerK/",
+          "https://www.instagram.com/p/DXoiKwWkdRJ/",
+          "https://www.instagram.com/p/DYMWQE2RvIB/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "f21a8ded-faa9-459d-b8f1-ffe8cb96b45d",
@@ -1291,8 +1438,12 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 2,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXbafbMkjuq/",
+          "https://www.instagram.com/p/DXZNH4lyNjC/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "b2e46ff9-fa74-4413-9269-457f4a24775f",
@@ -1308,8 +1459,15 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T16:45:20.195Z",
         "observedPosts": 5,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DWqMXOzEcVD/",
+          "https://www.instagram.com/p/DXgNdraEfr6/",
+          "https://www.instagram.com/p/DYRnWvgRwY-/",
+          "https://www.instagram.com/p/DYOsj0Sxq3E/",
+          "https://www.instagram.com/p/DYJgLtZRpcd/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "7af896be-33b1-487b-b917-c1d19c4b01e1",
@@ -1325,8 +1483,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DW_GkPWErK_/",
+          "https://www.instagram.com/p/DVm61nbkhQe/",
+          "https://www.instagram.com/p/DX1JXMHEqFH/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "29729a2e-530f-4bd6-a77f-f3d9a586f18e",
@@ -1342,8 +1505,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXn9phGkdqY/",
+          "https://www.instagram.com/p/DX0yS5Rkcko/",
+          "https://www.instagram.com/p/DApzIrpS9xN/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "130a0146-a8f8-4f45-bb5d-8f7680b3cc24",
@@ -1359,8 +1527,14 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYV8QZOzRzJ/",
+          "https://www.instagram.com/p/DU9l-QME5YJ/",
+          "https://www.instagram.com/p/CqwbjXuSFu1/",
+          "https://www.instagram.com/p/DXamWcGE9LO/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "980b0f60-2f81-4f01-b602-b141409f808e",
@@ -1376,8 +1550,13 @@
         "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DPk6pIqkqJQ/",
+          "https://www.instagram.com/p/DRTt0ARkr2o/",
+          "https://www.instagram.com/p/CrC2LU8yMlP/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "96041608-b9fa-4d73-96b0-2d309eed77cc",
@@ -1393,8 +1572,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DW3pcIuAXwc/",
+          "https://www.instagram.com/p/DXlkuO2gRAA/",
+          "https://www.instagram.com/p/DYRNtXhTT6n/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "ed6409de-0b0a-474c-abbe-ad215b26e67e",
@@ -1410,8 +1594,14 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYV989Tz52V/",
+          "https://www.instagram.com/p/DXlKiftE6Gj/",
+          "https://www.instagram.com/p/DWsbvXak5ew/",
+          "https://www.instagram.com/p/DXOFnLaEzXe/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "1e1c5950-4893-4760-bb9c-d11891dc09e5",
@@ -1427,8 +1617,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DWA-bECE43H/",
+          "https://www.instagram.com/p/DXojaeRE8QD/",
+          "https://www.instagram.com/p/DXtnAZBk2Gv/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "230beec0-b638-4d8d-acb9-b0d6c2dd6750",
@@ -1444,8 +1639,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/C5vEZ6ry51L/",
+          "https://www.instagram.com/p/DWiwJnzE-3g/",
+          "https://www.instagram.com/p/DXxtB78mTfe/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "648ced30-ae3a-4738-b269-4fc2e71adc0d",
@@ -1461,8 +1661,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DX1LlLHFJmn/",
+          "https://www.instagram.com/p/DXqy7_wlDhn/",
+          "https://www.instagram.com/p/DYOmNbVgwsd/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "a34de41e-10b8-455b-a4c1-d780eaffa087",
@@ -1478,8 +1683,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DWQTc1zAetN/",
+          "https://www.instagram.com/p/DRA87GpkiHu/",
+          "https://www.instagram.com/p/DXqm-vIAVHF/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "22716039-0247-4093-8b82-e8e1aa18cbfd",
@@ -1495,8 +1705,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DW7tAf-PWhd/",
+          "https://www.instagram.com/p/C7IjvgWSoTi/",
+          "https://www.instagram.com/p/DONH2hHD5xx/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "1f04c6db-0b8f-4dc0-94a4-9416dfa234fb",
@@ -1512,8 +1727,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYCE8DBARiY/",
+          "https://www.instagram.com/p/DXssntzAUMG/",
+          "https://www.instagram.com/p/DIAASkszrLy/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "15beb98e-1f8b-40b2-badc-791514039786",
@@ -1529,8 +1749,14 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DX_M7RMmTpU/",
+          "https://www.instagram.com/p/DYXYCvEmX_Z/",
+          "https://www.instagram.com/p/DYPsAgHmcpc/",
+          "https://www.instagram.com/p/DXtqXRFAjcK/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "97cfd6d2-9988-4777-ae47-c1511d4816f4",
@@ -1546,8 +1772,15 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 5,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYW1tq2lDBM/",
+          "https://www.instagram.com/p/DYOV5D4Sog-/",
+          "https://www.instagram.com/p/DYW0LsMFPRL/",
+          "https://www.instagram.com/p/DX8_kSslBXw/",
+          "https://www.instagram.com/p/DYHSMs7FLLp/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "33933782-2ad8-4000-afae-772c5f05ecce",
@@ -1563,8 +1796,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-15T18:56:31.371Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DJK5PFGyAgk/",
+          "https://www.instagram.com/p/DXOsBIqE6-H/",
+          "https://www.instagram.com/p/C5StuT3SM-r/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "86e485c9-55ea-48ea-b4bc-be876064ff75",
@@ -1580,8 +1818,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-16T00:23:40.841Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYT94slSzAx/",
+          "https://www.instagram.com/p/DX6sMdPkmqO/",
+          "https://www.instagram.com/p/DYGaPgWEu6j/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "02d44afc-a542-4d6e-8e36-042215e7a55e",
@@ -1597,8 +1840,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-16T00:23:40.841Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/CiZhBneu6Xv/",
+          "https://www.instagram.com/p/Cx0Gxc2y60t/",
+          "https://www.instagram.com/p/Cyzb02uSFtx/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "8e81426f-f0ee-45a1-ac86-6625148f8e1d",
@@ -1614,8 +1862,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-16T00:23:40.841Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DG0C04LShX8/",
+          "https://www.instagram.com/p/DHqVCQ8yxFI/",
+          "https://www.instagram.com/p/DUhxBMzkgyj/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "f5d7c62a-37fb-4253-ab25-f7135be773db",
@@ -1631,8 +1884,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-16T00:23:40.841Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXDcxJsge_8/",
+          "https://www.instagram.com/p/ClIvV33ymfp/",
+          "https://www.instagram.com/p/DX0T1EBgVOV/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "ed678020-82d3-4a89-975c-b2c590fcf7a6",
@@ -1648,8 +1906,13 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-16T00:23:40.841Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXyY9uxkeZL/",
+          "https://www.instagram.com/p/DX-KcUmE6Sx/",
+          "https://www.instagram.com/p/DYAvO9vkXYZ/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "ddecdf49-2c84-4697-b4e7-2763b75d7d3d",
@@ -1665,8 +1928,691 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-16T00:23:40.841Z",
         "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/C9zlD1cyaYm/",
+          "https://www.instagram.com/p/DXVcRKikonH/",
+          "https://www.instagram.com/p/C-AIA0OSRou/"
+        ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "2d9191d2-93c2-46c2-bb58-49134333c448",
+        "platform": "instagram",
+        "handle": "tripclimbing",
+        "displayName": "クライミングジム TRIP",
+        "sourceUrl": "https://www.instagram.com/tripclimbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "tripclimbing",
+        "gymInstagramUrl": "https://www.instagram.com/tripclimbing/",
+        "lastCheckedAt": "2026-05-16T00:23:40.841Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T00:23:40.841Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DTpArm7E1a9/",
+          "https://www.instagram.com/p/DTR22LmEwiV/",
+          "https://www.instagram.com/p/DWvW80ME-22/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "f328ae42-2dd0-45da-b667-62b6c5a479ef",
+        "platform": "instagram",
+        "handle": "dbouldering_tsudanuma",
+        "displayName": "ディーボルダリングプラス津田沼",
+        "sourceUrl": "https://www.instagram.com/dbouldering_tsudanuma/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "dbouldering_tsudanuma",
+        "gymInstagramUrl": "https://www.instagram.com/dbouldering_tsudanuma/",
+        "lastCheckedAt": "2026-05-16T03:39:38.672Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T03:39:38.672Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DVaJVOVE2jJ/",
+          "https://www.instagram.com/p/DXlA6F0k-vX/",
+          "https://www.instagram.com/p/DVcUpmXk3UY/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "d138f4f5-4298-42bc-8905-703e7dde222a",
+        "platform": "instagram",
+        "handle": "dbouldering_tsunashima",
+        "displayName": "ディーボルダリング 綱島",
+        "sourceUrl": "https://www.instagram.com/dbouldering_tsunashima/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "dbouldering_tsunashima",
+        "gymInstagramUrl": "https://www.instagram.com/dbouldering_tsunashima/",
+        "lastCheckedAt": "2026-05-16T03:39:38.672Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T03:39:38.672Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXrDJf0E9Nl/",
+          "https://www.instagram.com/p/C3rrNsqyO8k/",
+          "https://www.instagram.com/p/DUC8M-iE8fb/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "b9a76512-a0d2-4a4b-8ca3-0a8796cea018",
+        "platform": "instagram",
+        "handle": "dbouldering_yachiyo",
+        "displayName": "ディーボルダリングプラス八千代",
+        "sourceUrl": "https://www.instagram.com/dbouldering_yachiyo/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.d-b-c.jp/yachiyo-news/facility",
+        "gymInstagramHandle": "dbouldering_yachiyo",
+        "gymInstagramUrl": "https://www.instagram.com/dbouldering_yachiyo/",
+        "lastCheckedAt": "2026-05-16T03:39:38.672Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T03:39:38.672Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DVS-GSdj-Dm/",
+          "https://www.instagram.com/p/DXyHWysGju7/",
+          "https://www.instagram.com/p/DXTpx-dGrdB/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "806b9f74-2b0b-418f-89df-a1b0ffe51a91",
+        "platform": "instagram",
+        "handle": "echoesclimbing",
+        "displayName": "ECHOES CLIMBING（エコーズ クライミング）",
+        "sourceUrl": "https://www.instagram.com/echoesclimbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "echoesclimbing",
+        "gymInstagramUrl": "https://www.instagram.com/echoesclimbing/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYJm6jDkf09/",
+          "https://www.instagram.com/p/DXYh40IkeEj/",
+          "https://www.instagram.com/p/DYY74ksRR-m/",
+          "https://www.instagram.com/p/DYUOVQORUlN/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "680a3c97-067c-4738-a08d-0679a77adbab",
+        "platform": "instagram",
+        "handle": "energy_kashiwa",
+        "displayName": "エナジークライミングジム 柏店",
+        "sourceUrl": "https://www.instagram.com/energy_kashiwa/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "energy_kashiwa",
+        "gymInstagramUrl": "https://www.instagram.com/energy_kashiwa/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DU7Cm_TgSMt/",
+          "https://www.instagram.com/p/DYV2pp6B_b_/",
+          "https://www.instagram.com/p/DXvjWm8j0py/",
+          "https://www.instagram.com/p/DYQelvJB9ue/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "78a8cba8-4553-4856-8ec3-fd587d39fb78",
+        "platform": "instagram",
+        "handle": "folk_boulderinggym",
+        "displayName": "folk（フォーク） ボルダリングジム",
+        "sourceUrl": "https://www.instagram.com/folk_boulderinggym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://folkboulderinggym.com/",
+        "gymInstagramHandle": "folk_boulderinggym",
+        "gymInstagramUrl": "https://www.instagram.com/folk_boulderinggym/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYEgNmMCbSc/",
+          "https://www.instagram.com/p/DXyl_CHmeuZ/",
+          "https://www.instagram.com/p/DXsy1zNietN/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "97c74f76-a5e5-4eb3-8090-a103f6a7966c",
+        "platform": "instagram",
+        "handle": "freiheit_bouldering",
+        "displayName": "ボルダリングジム フライハイト",
+        "sourceUrl": "https://www.instagram.com/freiheit_bouldering/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "freiheit_bouldering",
+        "gymInstagramUrl": "https://www.instagram.com/freiheit_bouldering/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DSJ3VGeEr7x/",
+          "https://www.instagram.com/p/DSJ7dOqkshh/",
+          "https://www.instagram.com/p/DXiRvAVDxGK/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "371aa48c-dff9-4d32-95ae-1cfd69c5f969",
+        "platform": "instagram",
+        "handle": "fukayaclimbingvillage",
+        "displayName": "深谷クライミングヴィレッジ",
+        "sourceUrl": "https://www.instagram.com/fukayaclimbingvillage/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "fukayaclimbingvillage",
+        "gymInstagramUrl": "https://www.instagram.com/fukayaclimbingvillage/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DX4Ep7lgZtY/",
+          "https://www.instagram.com/p/DX4BHd_gYrS/",
+          "https://www.instagram.com/p/DYYPvriAyW5/",
+          "https://www.instagram.com/p/DX0PLgNkyC8/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "c4471313-b931-43cc-9608-c32a49fbbf96",
+        "platform": "instagram",
+        "handle": "granny_bouldering",
+        "displayName": "ボルダリングジム GRANNY（グラニー） 南流山店",
+        "sourceUrl": "https://www.instagram.com/granny_bouldering/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "granny_bouldering",
+        "gymInstagramUrl": "https://www.instagram.com/granny_bouldering/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DTWlkgFAVd8/",
+          "https://www.instagram.com/p/DVTS-3zgT3L/",
+          "https://www.instagram.com/p/DXjGiomgaRn/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "7d0ba32b-f13d-4e05-8712-494ae423873a",
+        "platform": "instagram",
+        "handle": "jamsessionmitaka",
+        "displayName": "ボルダリングジム ジャムセッション三鷹",
+        "sourceUrl": "https://www.instagram.com/jamsessionmitaka/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://xn--xckbj6a9jra6a4gy403a4b6j.com/",
+        "gymInstagramHandle": "jamsessionmitaka",
+        "gymInstagramUrl": "https://www.instagram.com/jamsessionmitaka/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DJqheRxSily/",
+          "https://www.instagram.com/p/DYBoWJ7lDRn/",
+          "https://www.instagram.com/p/DJTC5sLS4oT/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "60a38ea2-fbc2-4b56-a765-44b3c8421581",
+        "platform": "instagram",
+        "handle": "jands_ikebukuro",
+        "displayName": "スポーツクライミングスクール・ジム J&S 池袋",
+        "sourceUrl": "https://www.instagram.com/jands_ikebukuro/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "jands_ikebukuro",
+        "gymInstagramUrl": "https://www.instagram.com/jands_ikebukuro/",
+        "lastCheckedAt": "2026-05-16T06:55:54.102Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T06:55:54.102Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DSwhsfnEidc/",
+          "https://www.instagram.com/p/DSwg3ntkpbI/",
+          "https://www.instagram.com/p/DXs4iRikgXN/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "4afeef09-e278-4b3c-90e0-ef1c87150149",
+        "platform": "instagram",
+        "handle": "climbing_gym_rockyn0429",
+        "displayName": "クライミングジム RocKY’N（ロッキン）",
+        "sourceUrl": "https://www.instagram.com/climbing_gym_rockyn0429/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "climbing_gym_rockyn0429",
+        "gymInstagramUrl": "https://www.instagram.com/climbing_gym_rockyn0429/",
+        "lastCheckedAt": "2026-05-16T12:02:31.550Z",
+        "sourceVerifiedAt": "2026-05-14T04:11:45.399Z",
+        "lastObservedAt": "2026-05-16T12:02:31.550Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYJAhb4Ei03/",
+          "https://www.instagram.com/p/DPPtj6lkq04/",
+          "https://www.instagram.com/p/DKtnWbyRDB4/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "82ebe4b8-1462-4498-a1cc-fa0a8c279489",
+        "platform": "instagram",
+        "handle": "rocky_shinagawa",
+        "displayName": "Rocky Shinagawa",
+        "sourceUrl": "https://www.instagram.com/rocky_shinagawa/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": null,
+        "gymInstagramUrl": null,
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 1,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/B_uyPWGDI5X/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "442a5bb0-f6b3-4707-82f5-8783631d9087",
+        "platform": "instagram",
+        "handle": "funabashirocky",
+        "displayName": "ROCKY 船橋店",
+        "sourceUrl": "https://www.instagram.com/funabashirocky/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.rockyclimbing.com/funabashi/",
+        "gymInstagramHandle": "funabashirocky",
+        "gymInstagramUrl": "https://www.instagram.com/funabashirocky/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 7,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DU2tsToklaQ/",
+          "https://www.instagram.com/p/DYUKEr3yh1h/",
+          "https://www.instagram.com/p/DYZTqKkEtpj/",
+          "https://www.instagram.com/p/DYR5f5XErE7/",
+          "https://www.instagram.com/p/DYPAd2eB_sy/",
+          "https://www.instagram.com/p/DX-oO2gyAvk/",
+          "https://www.instagram.com/p/DXwQSJ3ktak/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "01c23def-29c0-4c9a-8b43-6348526ac221",
+        "platform": "instagram",
+        "handle": "inzairocky",
+        "displayName": "ROCKY 印西店",
+        "sourceUrl": "https://www.instagram.com/inzairocky/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.rockyclimbing.com/inzai/",
+        "gymInstagramHandle": "inzairocky",
+        "gymInstagramUrl": "https://www.instagram.com/inzairocky/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYUM40ijyBk/",
+          "https://www.instagram.com/p/DYZUv6oP9x1/",
+          "https://www.instagram.com/p/DYW7HThD1Jm/",
+          "https://www.instagram.com/p/DX8OnWQvWUY/",
+          "https://www.instagram.com/p/DX9AnkMjzmQ/",
+          "https://www.instagram.com/p/DX1PyRBv0ob/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "083b264f-6eb5-4515-b254-8336009ea098",
+        "platform": "instagram",
+        "handle": "jyuku_rocky",
+        "displayName": "ROCKY 新宿曙橋店",
+        "sourceUrl": "https://www.instagram.com/jyuku_rocky/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.rockyclimbing.com/shinjukuakebonobashi/",
+        "gymInstagramHandle": "jyuku_rocky",
+        "gymInstagramUrl": "https://www.instagram.com/jyuku_rocky/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYRxikUpUZV/",
+          "https://www.instagram.com/p/C5ZyU2gSSSt/",
+          "https://www.instagram.com/p/DWbBwrZlKdx/",
+          "https://www.instagram.com/p/DYE0rt8ypSH/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "528c7d5a-ffb5-45d5-ae64-9f976e5fb7d3",
+        "platform": "instagram",
+        "handle": "jetsetclimbing",
+        "displayName": "JET SET（ジェットセット） climbing gym",
+        "sourceUrl": "https://www.instagram.com/jetsetclimbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.jetsetclimbing.com/",
+        "gymInstagramHandle": "jetsetclimbing",
+        "gymInstagramUrl": "https://www.instagram.com/jetsetclimbing/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DWlLtgAE8ZW/",
+          "https://www.instagram.com/p/DVU7FRkj6e_/",
+          "https://www.instagram.com/p/DXy5zjRkzYP/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "49962ae9-aeb3-4ef4-bb4c-5c7c0db9f955",
+        "platform": "instagram",
+        "handle": "kachill_climbing",
+        "displayName": "KaChill カチル",
+        "sourceUrl": "https://www.instagram.com/kachill_climbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://kachill.jimdosite.com/",
+        "gymInstagramHandle": "kachill_climbing",
+        "gymInstagramUrl": "https://www.instagram.com/kachill_climbing/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/Cyh1hnSSFHZ/",
+          "https://www.instagram.com/p/DTFGGHBD_pl/",
+          "https://www.instagram.com/p/C5Z3C68yBl5/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "392263d8-d012-46c3-ac69-67f09f069002",
+        "platform": "instagram",
+        "handle": "lostcanyon_official",
+        "displayName": "クライミングジム LOST CANYON（ロストキャニオン）",
+        "sourceUrl": "https://www.instagram.com/lostcanyon_official/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "lostcanyon_official",
+        "gymInstagramUrl": "https://www.instagram.com/lostcanyon_official/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYYpE03pGyo/",
+          "https://www.instagram.com/p/DYEb-B4Cfn8/",
+          "https://www.instagram.com/p/DXtRYtuCcVI/",
+          "https://www.instagram.com/p/DYR6hWvJt92/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "87b53873-e1ee-45c4-9e23-adf2eef76897",
+        "platform": "instagram",
+        "handle": "lutra_lutra_climb_park_",
+        "displayName": "Lutra Lutra（ルトラルトラ）",
+        "sourceUrl": "https://www.instagram.com/lutra_lutra_climb_park_/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.lutra-lutra.com/",
+        "gymInstagramHandle": "lutra_lutra_climb_park_",
+        "gymInstagramUrl": "https://www.instagram.com/lutra_lutra_climb_park_/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYY5Ca9k0Fm/",
+          "https://www.instagram.com/p/DXwACLQE5La/",
+          "https://www.instagram.com/p/DYOqo8uk6h1/",
+          "https://www.instagram.com/p/DXI4VT1k2z7/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "974238ef-edfa-4ba4-b9ed-55d0753b3e24",
+        "platform": "instagram",
+        "handle": "mitaka_gym",
+        "displayName": "ロッククライミング 三鷹ジム",
+        "sourceUrl": "https://www.instagram.com/mitaka_gym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "mitaka_gym",
+        "gymInstagramUrl": "https://www.instagram.com/mitaka_gym/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYR67epkp_W/",
+          "https://www.instagram.com/p/DYAVI_MyFoR/",
+          "https://www.instagram.com/p/DYAVQYxSKqo/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "5e5112eb-5589-4f15-9b5f-d1d5ddca4352",
+        "platform": "instagram",
+        "handle": "mountain_cliff_climbing",
+        "displayName": "MOUNTAIN CLIFF（マウンテンクリフ）",
+        "sourceUrl": "https://www.instagram.com/mountain_cliff_climbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "mountain_cliff_climbing",
+        "gymInstagramUrl": "https://www.instagram.com/mountain_cliff_climbing/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DX8XN3xKROE/",
+          "https://www.instagram.com/p/DYTg28Bq2uu/",
+          "https://www.instagram.com/p/DYYljB7Kn9E/",
+          "https://www.instagram.com/p/DYGxdi9qoAl/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "712daf70-fa1a-4141-a3dc-bed0f208e5de",
+        "platform": "instagram",
+        "handle": "nextgen.bouldering",
+        "displayName": "Next Gen Bouldering（ネクストジェンボルダリング）",
+        "sourceUrl": "https://www.instagram.com/nextgen.bouldering/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "nextgen.bouldering",
+        "gymInstagramUrl": "https://www.instagram.com/nextgen.bouldering/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXjYvo6kfT1/",
+          "https://www.instagram.com/p/DMxOtsrx5UV/",
+          "https://www.instagram.com/p/DHHtG_QTjf8/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "ff2b6ea6-a8a3-4ccf-b412-c376367d3811",
+        "platform": "instagram",
+        "handle": "nose_machida_climbinggym",
+        "displayName": "クライミングジム NOSE（ノーズ） 町田店",
+        "sourceUrl": "https://www.instagram.com/nose_machida_climbinggym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "nose_machida_climbinggym",
+        "gymInstagramUrl": "https://www.instagram.com/nose_machida_climbinggym/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYCO--pxym1/",
+          "https://www.instagram.com/p/DXwOvHakWIP/",
+          "https://www.instagram.com/p/DX9OyqGRsH6/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "982daabc-c544-4fb7-a48f-6f08615905d7",
+        "platform": "instagram",
+        "handle": "olioli_climbing.gym",
+        "displayName": "クライミングジム OliOli（オリオリ）",
+        "sourceUrl": "https://www.instagram.com/olioli_climbing.gym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "olioli_climbing.gym",
+        "gymInstagramUrl": "https://www.instagram.com/olioli_climbing.gym/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXPHEPik48y/",
+          "https://www.instagram.com/p/DQf35NYE1pd/",
+          "https://www.instagram.com/p/DTK63_uE3ar/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "331021a2-09cf-4f4e-ad8b-0c9e23b45c4f",
+        "platform": "instagram",
+        "handle": "peradra_gym",
+        "displayName": "PERADORA（ペルアドラ） クライミングジム 横浜",
+        "sourceUrl": "https://www.instagram.com/peradra_gym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "peradra_gym",
+        "gymInstagramUrl": "https://www.instagram.com/peradra_gym/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 5,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYChjoGAdoM/",
+          "https://www.instagram.com/p/DYPdDh0s0me/",
+          "https://www.instagram.com/p/DYPP-99hprN/",
+          "https://www.instagram.com/p/DWjSOmTAbgZ/",
+          "https://www.instagram.com/p/DWhrj-vgRmK/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "0f1b2bed-d5b1-46ae-b673-d4ec2f0a2855",
+        "platform": "instagram",
+        "handle": "project_climbing_gym",
+        "displayName": "クライミングジム Project（プロジェクト）",
+        "sourceUrl": "https://www.instagram.com/project_climbing_gym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "project_climbing_gym",
+        "gymInstagramUrl": "https://www.instagram.com/project_climbing_gym/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYXHbo_JvWo/",
+          "https://www.instagram.com/p/DYWaAPwpgfd/",
+          "https://www.instagram.com/p/DYYSB8myue0/",
+          "https://www.instagram.com/p/DYTOEBqpCFL/",
+          "https://www.instagram.com/p/DYQlbH1Njjf/",
+          "https://www.instagram.com/p/DYODiuWp120/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "bfce83e9-d839-4975-b264-9bafc5cbbb09",
+        "platform": "instagram",
+        "handle": "tsstokyo",
+        "displayName": "THE STONE SESSION TOKYO",
+        "sourceUrl": "https://www.instagram.com/tsstokyo/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "tsstokyo",
+        "gymInstagramUrl": "https://www.instagram.com/tsstokyo/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYWVmf6h0Dv/",
+          "https://www.instagram.com/p/DSt1ao3gU2D/",
+          "https://www.instagram.com/p/DVAjkTVgeOG/",
+          "https://www.instagram.com/p/DYTvMvghvtM/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "dc335d7d-2ae4-472e-b319-40544fddffab",
+        "platform": "instagram",
+        "handle": "underground_bouldering_gym",
+        "displayName": "ボルダリングジム UNDERGROUND（アンダーグラウンド）",
+        "sourceUrl": "https://www.instagram.com/underground_bouldering_gym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "underground_bouldering_gym",
+        "gymInstagramUrl": "https://www.instagram.com/underground_bouldering_gym/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXyHT3zEYAx/",
+          "https://www.instagram.com/p/DYTqs6-kd10/",
+          "https://www.instagram.com/p/DXlJicaEXEo/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       }
     ],
     "approvedSourceRotation": [
@@ -6130,28 +7076,6 @@
     ],
     "upcomingEventRecheck": [
       {
-        "id": "66666666-6666-4666-8666-666666666666",
-        "category": "route_set",
-        "title": "渋谷店 ルートセット営業変更",
-        "startsAt": "2026-05-17 17:00",
-        "endsAt": "2026-05-19 18:30",
-        "sourceUrl": "https://noborock-climbing.com/program/shibuya/",
-        "sourceLabel": "NOBOROCK 渋谷店 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.92"
-      },
-      {
-        "id": "77777777-7777-4777-8777-000000000016",
-        "category": "route_set",
-        "title": "5月全面ホールド替え",
-        "startsAt": "2026-05-17 18:00",
-        "endsAt": "2026-05-19 18:00",
-        "sourceUrl": "https://b-camp.jp/shinbashi/",
-        "sourceLabel": "Urban Base Camp 新橋 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.88"
-      },
-      {
         "id": "60b1690c-45a9-4de2-a042-a3c2362d912d",
         "category": "route_set",
         "title": "▶︎▶︎▶︎",
@@ -6328,17 +7252,6 @@
         "extractionConfidence": "0.86"
       },
       {
-        "id": "77777777-7777-4777-8777-000000000019",
-        "category": "route_set",
-        "title": "高田馬場店 5/31 ルートセット営業変更",
-        "startsAt": "2026-05-31 17:00",
-        "endsAt": "2026-06-02 18:30",
-        "sourceUrl": "https://noborock-climbing.com/program/takadanobaba/",
-        "sourceLabel": "NOBOROCK 高田馬場店 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.90"
-      },
-      {
         "id": "77777777-7777-4777-8777-000000000018",
         "category": "route_set",
         "title": "大宮店 5/31 ルートセット営業変更",
@@ -6346,6 +7259,17 @@
         "endsAt": "2026-06-02 18:30",
         "sourceUrl": "https://noborock-climbing.com/program/omiya/",
         "sourceLabel": "NOBOROCK 大宮店 公式サイト",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.90"
+      },
+      {
+        "id": "77777777-7777-4777-8777-000000000019",
+        "category": "route_set",
+        "title": "高田馬場店 5/31 ルートセット営業変更",
+        "startsAt": "2026-05-31 17:00",
+        "endsAt": "2026-06-02 18:30",
+        "sourceUrl": "https://noborock-climbing.com/program/takadanobaba/",
+        "sourceLabel": "NOBOROCK 高田馬場店 公式サイト",
         "reviewStatus": "approved",
         "extractionConfidence": "0.90"
       },
@@ -7022,7 +7946,7 @@
     ]
   },
   "operatorChecklist": [
-    "Open instagramPostInspection first. For each official Instagram source, inspect recent public posts/reels since the last observation and record each relevant post URL in source_post_observations or a reproducible SQL patch.",
+    "Run the Instagram browser roller first. It may inspect only approved official Instagram sources, open the profile in a logged-in browser session, scan the latest three posts/reels, and record only new relevant post URLs in source_post_observations or a reproducible SQL patch.",
     "After Instagram post inspection, open inspectNow; if it is empty, process approvedSourceRotation in order. Use large batches and stop only at the configured source limit or a human gate.",
     "Look only for public, official updates that affect visit planning: competitions, lessons, route sets, construction, opening changes, closures, or recruitment.",
     "Before inserting an event, compare against queues.existingEventFingerprints by category, gym, normalized title, start date, and source host.",

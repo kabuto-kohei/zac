@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-17T07:59:37.779Z",
-  "ok": true,
+  "generatedAt": "2026-05-17T12:13:33.497Z",
+  "ok": false,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
     "billing, purchases, subscription changes, or payment settings",
@@ -9,254 +9,493 @@
     "auto-publishing uncertain event candidates"
   ],
   "summary": {
-    "failedChecks": 0,
+    "failedChecks": 2,
     "warnings": 0,
-    "latestRunAgeMinutes": 0,
-    "localRunAgeMinutes": 0,
+    "latestRunAgeMinutes": 13,
+    "localRunAgeMinutes": 13,
     "consecutiveNonReady": 0,
     "instagramFailureRatio": 1,
     "failedInstagramSources": [
       {
         "handle": "dogwood_climbing_gym",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bonobo_bs",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "boulderingspace_hat",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "basecamp_kinshicho",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "basecamp_shinbashi",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "basecamp_shinjuku",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "boulcom_tokyo",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bpump_ogikubo",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bpumptokyo",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbing_gym_ranbo",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbinggym_wallstreet",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbinggym_walrus",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "dbouldering_soga",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "energyurawa",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climb.vortex",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "be_born_climbing_gym",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "betaclimb",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bluebird_bouldering_gym",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bouldersclimbing",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bpumpyokohama",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "exciting_sancha",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "madrock.cg.jp_online",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "noborock_ikebukuro",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "noborock_machida",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "noborock_omiya",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "noborock_shibuya",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "noborock_takadanobaba",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "fishandbird_toyocho",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "headrockcg",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "okkurock",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "penguinclimb",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "310_avue",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "altior_climbing_gym1",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "b.g.funny",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bouldering_gym_share",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bouldering_gym_tohandoujou",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "bouldering_space_bleau",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbing_aska",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbing_gym_cozy",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbinggym_hutte",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbinggymflash",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "climbrise2016",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "quartier_de_roche",
-        "error": "profile_fetch_failed",
+        "error": "post_links_unavailable",
+        "failureCategory": "post_links_unavailable",
         "hasOfficialFallback": true
       },
       {
         "handle": "rhinoandbird_nishinippori",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "rockbeans.insta",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "sloth.gym",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "three_peaks_climbing",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       },
       {
         "handle": "tokyodomecity_spodori",
-        "error": "profile_fetch_failed",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "tripclimbing",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "dbouldering_tsudanuma",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "dbouldering_tsunashima",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "dbouldering_yachiyo",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "echoesclimbing",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "energy_kashiwa",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "folk_boulderinggym",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "freiheit_bouldering",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "fukayaclimbingvillage",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "granny_bouldering",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "jamsessionmitaka",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "jands_ikebukuro",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "climbing_gym_rockyn0429",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "rocky_shinagawa",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "funabashirocky",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "inzairocky",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "jyuku_rocky",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "jetsetclimbing",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "kachill_climbing",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "lostcanyon_official",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "lutra_lutra_climb_park_",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "mitaka_gym",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "mountain_cliff_climbing",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "nextgen.bouldering",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "nose_machida_climbinggym",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "olioli_climbing.gym",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "peradra_gym",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "project_climbing_gym",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "tsstokyo",
+        "error": "login_required",
+        "failureCategory": "login_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "underground_bouldering_gym",
+        "error": "login_required",
+        "failureCategory": "login_required",
         "hasOfficialFallback": true
       }
     ],
+    "instagramBrowserSessionState": "login_required",
+    "instagramBrowserRoller": {
+      "sourcesVisited": 78,
+      "sourcesSucceeded": 0,
+      "sourcesFailed": 78,
+      "sourcesDeferred": 0,
+      "postsSeen": 0,
+      "newPostsOpened": 0,
+      "observedPosts": 0,
+      "calendarCandidates": 0
+    },
     "launchAgent": {
       "checked": true,
       "label": "com.zac.source-freshness",
@@ -264,14 +503,14 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 10800,
-      "runs": 7
+      "runs": 1
     },
     "queues": {
-      "instagramPostInspection": 48,
+      "instagramPostInspection": 78,
       "inspectNow": 64,
       "operatorBatch": 16,
       "approvedSourceRotation": 96,
-      "upcomingEventRecheck": 39,
+      "upcomingEventRecheck": 37,
       "candidateVerification": 0,
       "gymDisciplineVerification": 119,
       "closureVerification": 80
@@ -311,7 +550,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "0m",
+      "detail": "13m",
       "severity": "error"
     },
     {
@@ -341,7 +580,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "0m",
+      "detail": "13m",
       "severity": "error"
     },
     {
@@ -429,9 +668,39 @@
       "severity": "error"
     },
     {
-      "name": "Instagram inspection policy excludes media/captions",
+      "name": "Instagram inspection uses browser roller contract",
       "ok": true,
-      "detail": "",
+      "detail": "browser_roller",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram browser session is ready",
+      "ok": false,
+      "detail": "login_required",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram browser roller made source progress",
+      "ok": false,
+      "detail": "queued=78 succeeded=0 observed=0",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram browser roller limits source eligibility",
+      "ok": true,
+      "detail": "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories Never publish automatically. …",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram inspection policy excludes secrets/media/captions",
+      "ok": true,
+      "detail": "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories Never publish automatically. …",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram browser observations require Admin review before public publication",
+      "ok": true,
+      "detail": "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories Never publish automatically. …",
       "severity": "error"
     },
     {
@@ -478,6 +747,7 @@
     }
   ],
   "nextActions": [
-    "Automation is ready for unattended official-source collection and candidate staging under the documented guardrails."
+    "Fix: Instagram browser session is ready (login_required)",
+    "Fix: Instagram browser roller made source progress (queued=78 succeeded=0 observed=0)"
   ]
 }

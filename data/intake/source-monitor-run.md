@@ -1,10 +1,10 @@
 # Source Monitor Run
 
-- Generated: 2026-05-17T07:59:18.645Z
+- Generated: 2026-05-17T12:00:29.314Z
 - Due approved sources: 64
-- Instagram post sources: 48
+- Instagram post sources: 78
 - Candidate Instagram sources: 0
-- Upcoming event rechecks: 39
+- Upcoming event rechecks: 37
 - Gym discipline verification candidates: 119
 - Closure verification candidates: 80
 - Gyms with Instagram: 97/192
@@ -72,18 +72,18 @@
 
 ## Upcoming Event Recheck
 
-1. route_set: 渋谷店 ルートセット営業変更 - 2026-05-17 17:00
-2. route_set: 5月全面ホールド替え - 2026-05-17 18:00
-3. route_set: ▶︎▶︎▶︎ - 2026-05-18 13:00
-4. route_set: 1F LEFTをルートセットします！ - 2026-05-18 20:00
-5. event: 🔥宿ロキでもMOVING3開催間近‼️🔥 - 2026-05-19 10:00
-6. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
-7. opening_change: 5/20〜22日まで急遽臨時休業となります😭臨時休業に伴い壁の改装工事が大幅に遅れるかもしれません🙏 - 2026-05-20 10:00
-8. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
-9. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
-10. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
-11. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
-12. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
+1. route_set: ▶︎▶︎▶︎ - 2026-05-18 13:00
+2. route_set: 1F LEFTをルートセットします！ - 2026-05-18 20:00
+3. event: 🔥宿ロキでもMOVING3開催間近‼️🔥 - 2026-05-19 10:00
+4. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
+5. opening_change: 5/20〜22日まで急遽臨時休業となります😭臨時休業に伴い壁の改装工事が大幅に遅れるかもしれません🙏 - 2026-05-20 10:00
+6. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
+7. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
+8. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
+9. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
+10. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
+11. event: 神怡舘information - 2026-05-27 10:00
+12. route_set: 錦糸町 リードエリア Leaning Tower セット - 2026-05-27 12:00
 
 ## Existing Event Fingerprints
 

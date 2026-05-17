@@ -1,6 +1,6 @@
 # Source Monitor Run
 
-- Generated: 2026-05-17T07:38:53.256Z
+- Generated: 2026-05-17T07:59:18.645Z
 - Due approved sources: 64
 - Instagram post sources: 48
 - Candidate Instagram sources: 0

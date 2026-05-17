@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T07:38:51.991Z",
+  "generatedAt": "2026-05-17T07:59:17.266Z",
   "policy": {
     "publicDataOnly": true,
     "publishOnly": [
@@ -810,42 +810,6 @@
         "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "climbing-aska",
-        "displayName": "クライミング飛鳥公式サイト",
-        "sourceUrl": "https://climbing-aska.com/",
-        "sourceType": "official_site",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "web",
-        "handle": "climbing-gym-cell",
-        "displayName": "クライミングジムCELL公式サイト",
-        "sourceUrl": "https://www.climb-cell.com/",
-        "sourceType": "official_site",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "web",
-        "handle": "d-bouldering-plus-lead-kaihin-makuhari",
-        "displayName": "D.Bouldering Plus Lead 海浜幕張公式サイト",
-        "sourceUrl": "https://www.d-b-c.jp/top/kaihin-makuhari/",
-        "sourceType": "official_site",
-        "status": "approved",
-        "relationshipSourceHandle": null,
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
-      },
-      {
         "platform": "instagram",
         "handle": "rocky_shinagawa",
         "displayName": "Rocky Shinagawa",
@@ -1006,6 +970,42 @@
         "handle": "peradra_gym",
         "displayName": "PERADORA（ペルアドラ） クライミングジム 横浜",
         "sourceUrl": "https://www.instagram.com/peradra_gym/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-16",
+        "sourceVerifiedAt": "2026-05-14"
+      },
+      {
+        "platform": "instagram",
+        "handle": "project_climbing_gym",
+        "displayName": "クライミングジム Project（プロジェクト）",
+        "sourceUrl": "https://www.instagram.com/project_climbing_gym/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-16",
+        "sourceVerifiedAt": "2026-05-14"
+      },
+      {
+        "platform": "instagram",
+        "handle": "tsstokyo",
+        "displayName": "THE STONE SESSION TOKYO",
+        "sourceUrl": "https://www.instagram.com/tsstokyo/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-16",
+        "sourceVerifiedAt": "2026-05-14"
+      },
+      {
+        "platform": "instagram",
+        "handle": "underground_bouldering_gym",
+        "displayName": "ボルダリングジム UNDERGROUND（アンダーグラウンド）",
+        "sourceUrl": "https://www.instagram.com/underground_bouldering_gym/",
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",

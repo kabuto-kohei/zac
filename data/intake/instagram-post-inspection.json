@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T07:36:01.409Z",
+  "generatedAt": "2026-05-17T07:57:17.316Z",
   "policy": {
     "savedFields": "post URL, shortcode, posted date, classification, short summary, short quote, review status",
     "excludedFields": "full captions, images, videos"
@@ -589,7 +589,8 @@
       "posts": [],
       "error": "profile_fetch_failed",
       "failureCategory": "access_restricted",
-      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail"
+      "failureDetail": "HTTP 401: Please wait a few minutes before you try again.; require_login=true; status=fail",
+      "reusedPrevious": false
     }
   ]
 }

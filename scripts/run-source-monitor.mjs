@@ -13,12 +13,12 @@ const now = new Date();
 const approvedSourceLimit = parsePositiveInt(process.env.ZAC_SOURCE_APPROVED_LIMIT, 96);
 const staleSourceLimit = parsePositiveInt(process.env.ZAC_SOURCE_STALE_LIMIT, 64);
 const candidateSourceLimit = parsePositiveInt(process.env.ZAC_SOURCE_CANDIDATE_LIMIT, 96);
-const instagramPostSourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_POST_SOURCE_LIMIT, 48);
+const instagramPostSourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_POST_SOURCE_LIMIT, 100);
 const upcomingEventLimit = parsePositiveInt(process.env.ZAC_SOURCE_EVENT_LIMIT, 120);
 const gymDisciplineLimit = parsePositiveInt(process.env.ZAC_GYM_DISCIPLINE_LIMIT, 120);
 const closureVerificationLimit = parsePositiveInt(process.env.ZAC_GYM_CLOSURE_LIMIT, 80);
 const dueIntervalHours = parsePositiveInt(process.env.ZAC_SOURCE_DUE_HOURS, 6);
-const instagramDueIntervalHours = parsePositiveInt(process.env.ZAC_INSTAGRAM_DUE_HOURS, 1);
+const instagramDueIntervalHours = parsePositiveInt(process.env.ZAC_INSTAGRAM_DUE_HOURS, 12);
 
 if (!databaseUrl) {
   console.error("DATABASE_URL is required.");
@@ -76,7 +76,11 @@ try {
         g.instagram_handle as gym_instagram_handle,
         g.instagram_url as gym_instagram_url,
         max(o.observed_at) as last_observed_at,
-        count(o.id)::int as observed_posts
+        count(o.id)::int as observed_posts,
+        coalesce(
+          array_remove(array_agg(o.source_url order by o.observed_at desc) filter (where o.source_url is not null), null),
+          '{}'::text[]
+        ) as known_post_urls
       from event_sources s
       left join gyms g
         on g.deleted_at is null
@@ -257,7 +261,7 @@ try {
       publicOutput: ["title", "summary", "category", "startsAt", "endsAt", "sourceUrl", "sourceLabel", "shortQuote"],
       neverPublicOutput: ["full Instagram captions", "copied images/videos", "unreviewed raw text"],
       instagramTrackingRule:
-        "Track recent public posts/reels by source URL. Store observation metadata and short summaries only; never store copied images/videos or full captions for public redistribution.",
+        "Track approved official Instagram profiles through the browser roller twice per day. Store observation metadata and short summaries only; never store copied images/videos, full captions, comments, DMs, stories, passwords, cookies, or session tokens.",
       calendarRule: "Multi-day events are marked on the start date only; the full period is shown on the detail page.",
       eventSplitRule:
         "Classify each source item by primary user impact: competition, event/lesson, route_set, private_booking, opening_change, construction, notice, or recruit. If a route-set announcement includes closure/opening times, keep category route_set and store the closure/opening period in startsAt/endsAt. If a post is only a private rental closure, use private_booking. If it is only hours/temporary closure, use opening_change. If it is wall/area work, use construction.",
@@ -300,7 +304,7 @@ try {
       existingEventFingerprints: eventFingerprints.map(formatEventFingerprint),
     },
     operatorChecklist: [
-      "Open instagramPostInspection first. For each official Instagram source, inspect recent public posts/reels since the last observation and record each relevant post URL in source_post_observations or a reproducible SQL patch.",
+      "Run the Instagram browser roller first. It may inspect only approved official Instagram sources, open the profile in a logged-in browser session, scan the latest three posts/reels, and record only new relevant post URLs in source_post_observations or a reproducible SQL patch.",
       "After Instagram post inspection, open inspectNow; if it is empty, process approvedSourceRotation in order. Use large batches and stop only at the configured source limit or a human gate.",
       "Look only for public, official updates that affect visit planning: competitions, lessons, route sets, construction, opening changes, closures, or recruitment.",
       "Before inserting an event, compare against queues.existingEventFingerprints by category, gym, normalized title, start date, and source host.",
@@ -394,9 +398,10 @@ function formatInstagramPostSource(source) {
     sourceVerifiedAt: formatNullableDateTime(source.source_verified_at),
     lastObservedAt: formatNullableDateTime(source.last_observed_at),
     observedPosts: source.observed_posts ?? 0,
+    knownPostUrls: Array.isArray(source.known_post_urls) ? source.known_post_urls.filter(Boolean).slice(0, 30) : [],
     priority: "instagram_recent_posts",
     inspectionRule:
-      "Inspect recent public posts/reels. Record post URL, posted date if visible, classification, short summary, and decision. Do not store full captions or media.",
+      "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens.",
   };
 }
 

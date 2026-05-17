@@ -1,0 +1,20 @@
+{
+  "browserSessionState": "authenticated",
+  "sources": [
+    {
+      "handle": "fixture_gym",
+      "posts": [
+        {
+          "sourceUrl": "https://www.instagram.com/p/KNOWNPOST/",
+          "sourcePostedAt": "2026-05-15T00:00:00.000Z",
+          "text": "既知投稿です"
+        },
+        {
+          "sourceUrl": "https://www.instagram.com/p/NEWROUTESET/",
+          "sourcePostedAt": "2026-05-16T00:00:00.000Z",
+          "text": "6月20日 ルートセットを行います。対象エリアは2Fです。"
+        }
+      ]
+    }
+  ]
+}

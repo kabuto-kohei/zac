@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-17T00:16:57.871Z
-- Updated: 2026-05-17T00:17:03.359Z
+- Generated: 2026-05-17T03:19:25.204Z
+- Updated: 2026-05-17T03:19:30.538Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (233ms, attempt 1)
-- passed: `pnpm db:verify:remote` (994ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (1212ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (1006ms, attempt 1)
-- passed: `pnpm sources:monitor` (2039ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (224ms, attempt 1)
+- passed: `pnpm db:verify:remote` (977ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1286ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (985ms, attempt 1)
+- passed: `pnpm sources:monitor` (1857ms, attempt 1)
 
 ## Summary
 
@@ -49,7 +49,7 @@
 - candidateMatches.highConfidence: 0
 - candidateMatches.needsReview: 0
 - candidateMatches.unmatched: 0
-- upcomingEvents: 35
+- upcomingEvents: 34
 - gymDisciplineCandidates: 119
 - closureVerificationCandidates: 80
 - publicNetworkReachable: true
@@ -59,6 +59,6 @@
 - Inspect official Instagram recent-post queue first (48 source(s)); record post URLs in source_post_observations or reproducible SQL patches.
 - Inspect 64 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
-- Recheck upcomingEventRecheck for items starting within the next 30 days (35 queued).
+- Recheck upcomingEventRecheck for items starting within the next 30 days (34 queued).
 - Classify gym disciplines only from official site/SNS evidence; leave directory-only rows as クライミング (119 queued).
 - Verify closure, relocation, and rename risk with official evidence first; require two independent current sources if the official source is unavailable (80 queued).

@@ -1,7 +1,150 @@
 -- Official Instagram post observations generated from instagramPostInspection.
--- Generated: 2026-05-17T00:15:00.630Z
+-- Generated: 2026-05-17T03:17:10.169Z
 -- Policy: store source links, short summaries, and short quotes only; do not store full captions or media.
 
--- No successfully fetched sources in this run.
+WITH checked_sources (id, handle) AS (
+  VALUES
+    ('63c7e04c-a3ec-4afd-8bb9-867f912ecefa'::uuid, 'shina_rocky'),
+    ('c252e276-e301-43f3-95d2-b7253f40cc09'::uuid, 'tsukuba_ami_rocky'),
+    ('fdcb412f-e5a7-47d1-9820-62c76879ec84'::uuid, 'pigletclimbinggym'),
+    ('0688dbc6-21f6-42dc-99b5-6645f9aaf16e'::uuid, 'and_energy_bouldering'),
+    ('fa3467fe-ca12-4ea6-a5ee-d24b88f3e674'::uuid, 'ao_roc.climbing'),
+    ('52558a73-2f55-4990-a8be-e17bc56f25a3'::uuid, 'basecamp_edogawabashi'),
+    ('0c7e2b25-fe74-440d-aceb-7da0aa7a35b5'::uuid, 'basecamp_hanno'),
+    ('20fddaf6-bd4f-4800-95e1-40c8ccd47d67'::uuid, 'volny_climbing'),
+    ('ede8f1f4-8b42-4a10-94ba-c68640395a2d'::uuid, 'zeromito0123'),
+    ('d6be4bd8-1768-4ff9-8f75-4819938c7aa0'::uuid, 'maboo.insta'),
+    ('ff355838-8ee0-4922-a29a-5811ddbc5b61'::uuid, 'shinnikan'),
+    ('1ebafa86-034c-4e70-a20d-34cca87c512c'::uuid, 'climbinggym_rocklands'),
+    ('c87d0d74-8680-4c30-bbb6-9ac8be720d8f'::uuid, 'westrock_climbing'),
+    ('b1262ae6-cfec-4910-a994-4a330d587420'::uuid, 'boulcom_kawasaki'),
+    ('a03df26a-5459-4848-91b1-7c0ae5f3d938'::uuid, 'basecamp_higashimurayama'),
+    ('89e0c101-bdf9-4b6e-a2f1-6fbcfe0b4243'::uuid, 'basecamp_iruma')
+)
+UPDATE "event_sources" s
+SET
+  "last_checked_at" = '2026-05-17 03:17:10.169+00'::timestamptz,
+  "updated_at" = now()
+FROM checked_sources c
+WHERE s."id" = c.id
+  AND s."handle" = c.handle;
 
--- No observed posts in this run.
+WITH observed_posts (
+  event_source_id,
+  handle,
+  source_url,
+  source_external_id,
+  source_posted_at,
+  classification,
+  title,
+  summary,
+  starts_at,
+  ends_at,
+  source_quote,
+  extraction_confidence,
+  review_status,
+  decision_note
+) AS (
+  VALUES
+    ('63c7e04c-a3ec-4afd-8bb9-867f912ecefa'::uuid, 'shina_rocky', 'https://www.instagram.com/p/DWs85LWiV5Q/', 'DWs85LWiV5Q', '2026-04-04 08:22:26.000+00'::timestamptz, 'competition', 'もちろん今年もやります！！！！コンペ日程が確定🎉🎉', 'ROCKY 品川店の公式Instagram投稿をコンペ・大会として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, 'もちろん今年もやります！！！！コンペ日程が確定🎉🎉', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('63c7e04c-a3ec-4afd-8bb9-867f912ecefa'::uuid, 'shina_rocky', 'https://www.instagram.com/p/DTJkFARkqoD/', 'DTJkFARkqoD', '2026-01-06 00:39:36.000+00'::timestamptz, 'event', 'ご要望が多かったため、すべてのスクール開始時刻が30分遅くなりました】Rocky 品川店にて 2026年1月より、小学生・中学生向けのキッズスクールが開校され…', 'ROCKY 品川店の公式Instagram投稿をイベントとして確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '【ご要望が多かったため、すべてのスクール開始時刻が30分遅くなりました】Rocky 品川店にて 2026年1月より、小学生・中学生向けのキッズスクールが開校さ…', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('63c7e04c-a3ec-4afd-8bb9-867f912ecefa'::uuid, 'shina_rocky', 'https://www.instagram.com/p/C9enmHRyWQ3/', 'C9enmHRyWQ3', '2024-07-16 09:23:43.000+00'::timestamptz, 'event', '今週末よりリニューアルオープンいたしました〜㊗️㊗️㊗️', 'ROCKY 品川店の公式Instagram投稿をイベントとして確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '今週末よりリニューアルオープンいたしました〜㊗️㊗️㊗️', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('c252e276-e301-43f3-95d2-b7253f40cc09'::uuid, 'tsukuba_ami_rocky', 'https://www.instagram.com/p/DXHC4snEnUU/', 'DXHC4snEnUU', '2026-04-14 11:16:40.000+00'::timestamptz, 'competition', '🌟コンペ開催🌟', 'ROCKY つくば阿見店の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/05/23。公開UIに出す前に詳細確認が必要。', '2026-05-23 01:00:00.000+00'::timestamptz, '2026-05-23 02:00:00.000+00'::timestamptz, '🌟コンペ開催🌟', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('c252e276-e301-43f3-95d2-b7253f40cc09'::uuid, 'tsukuba_ami_rocky', 'https://www.instagram.com/p/DXn0YnKkrD_/', 'DXn0YnKkrD_', '2026-04-27 04:56:28.000+00'::timestamptz, 'competition', '5月の営業案内', 'ROCKY つくば阿見店の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/05/07。公開UIに出す前に詳細確認が必要。', '2026-05-07 01:00:00.000+00'::timestamptz, '2026-05-08 12:00:00.000+00'::timestamptz, '【5月の営業案内】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('c252e276-e301-43f3-95d2-b7253f40cc09'::uuid, 'tsukuba_ami_rocky', 'https://www.instagram.com/p/DYWuxFdhQf8/', 'DYWuxFdhQf8', '2026-05-15 10:00:00.000+00'::timestamptz, 'competition', '✨✨エントリーリスト公開✨✨', 'ROCKY つくば阿見店の公式Instagram投稿をコンペ・大会として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '✨✨エントリーリスト公開✨✨', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('fdcb412f-e5a7-47d1-9820-62c76879ec84'::uuid, 'pigletclimbinggym', 'https://www.instagram.com/p/DYZMLdbj0Jx/', 'DYZMLdbj0Jx', '2026-05-16 08:55:35.000+00'::timestamptz, 'route_set', '強傾斜側のホールド替えが近づいてきましたね！', 'PIGLET CLIMBING GYM公式Instagramの公式Instagram投稿をセット替えとして確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '強傾斜側のホールド替えが近づいてきましたね！', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('fdcb412f-e5a7-47d1-9820-62c76879ec84'::uuid, 'pigletclimbinggym', 'https://www.instagram.com/p/DYUbmhTP0mj/', 'DYUbmhTP0mj', '2026-05-14 12:37:20.000+00'::timestamptz, 'notice', 'ジムTシャツじゃないけど、珍しいTシャツが被ったので写真撮りました👍', 'PIGLET CLIMBING GYM公式Instagramの公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, 'ジムTシャツじゃないけど、珍しいTシャツが被ったので写真撮りました👍', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('fdcb412f-e5a7-47d1-9820-62c76879ec84'::uuid, 'pigletclimbinggym', 'https://www.instagram.com/p/DYR3rFcj246/', 'DYR3rFcj246', '2026-05-13 12:41:43.000+00'::timestamptz, 'notice', '頑張っているコースの手順足順、重心移動の仕方、遠いホールドを取りに行く時どのタイミングで手を離すか、そんなことを子どもたち同士で話し合っているのをきくとしっか…', 'PIGLET CLIMBING GYM公式Instagramの公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '頑張っているコースの手順足順、重心移動の仕方、遠いホールドを取りに行く時どのタイミングで手を離すか、そんなことを子どもたち同士で話し合っているのをきくとしっか…', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('0688dbc6-21f6-42dc-99b5-6645f9aaf16e'::uuid, 'and_energy_bouldering', 'https://www.instagram.com/p/DX3MuX0E3bW/', 'DX3MuX0E3bW', '2026-05-03 04:06:11.000+00'::timestamptz, 'opening_change', '初めてご来店の方へ', 'And Energy Boulderingの公式Instagram投稿を営業時間変更として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '【初めてご来店の方へ】', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('0688dbc6-21f6-42dc-99b5-6645f9aaf16e'::uuid, 'and_energy_bouldering', 'https://www.instagram.com/p/DYa6I5uzYWn/', 'DYa6I5uzYWn', '2026-05-17 01:02:35.000+00'::timestamptz, 'notice', 'NEW SET 参考動画🔥', 'And Energy Boulderingの公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, 'NEW SET 参考動画🔥', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('0688dbc6-21f6-42dc-99b5-6645f9aaf16e'::uuid, 'and_energy_bouldering', 'https://www.instagram.com/p/DYZfqulTiVw/', 'DYZfqulTiVw', '2026-05-16 11:48:26.000+00'::timestamptz, 'notice', '6日間のお休みをあけて、', 'And Energy Boulderingの公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '6日間のお休みをあけて、', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('fa3467fe-ca12-4ea6-a5ee-d24b88f3e674'::uuid, 'ao_roc.climbing', 'https://www.instagram.com/p/DXyvVscEYjV/', 'DXyvVscEYjV', '2026-05-01 10:36:16.000+00'::timestamptz, 'competition', '5月カレンダー&お知らせ】〈追記〉', 'アオロク〖ao_roc.climbing〗の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/05/03。公開UIに出す前に詳細確認が必要。', '2026-05-03 01:00:00.000+00'::timestamptz, '2026-05-23 12:00:00.000+00'::timestamptz, '【5月カレンダー&お知らせ】〈追記〉', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('fa3467fe-ca12-4ea6-a5ee-d24b88f3e674'::uuid, 'ao_roc.climbing', 'https://www.instagram.com/p/DXA2xVuiQCO/', 'DXA2xVuiQCO', '2026-04-12 01:35:21.000+00'::timestamptz, 'competition', 'BLoC2026 round2', 'アオロク〖ao_roc.climbing〗の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/05/23。公開UIに出す前に詳細確認が必要。', '2026-05-23 01:00:00.000+00'::timestamptz, '2026-05-21 12:00:00.000+00'::timestamptz, '【BLoC2026 round2】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('fa3467fe-ca12-4ea6-a5ee-d24b88f3e674'::uuid, 'ao_roc.climbing', 'https://www.instagram.com/p/DYVb6E9E0LK/', 'DYVb6E9E0LK', '2026-05-14 21:56:04.000+00'::timestamptz, 'competition', 'Round.2 ao_roc.climbing Time Table', 'アオロク〖ao_roc.climbing〗の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/05/23。公開UIに出す前に詳細確認が必要。', '2026-05-23 01:00:00.000+00'::timestamptz, '2026-05-23 02:00:00.000+00'::timestamptz, '《Round.2 ao_roc.climbing Time Table》', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('52558a73-2f55-4990-a8be-e17bc56f25a3'::uuid, 'basecamp_edogawabashi', 'https://www.instagram.com/p/DYE2f9zia1r/', 'DYE2f9zia1r', '2026-05-08 11:21:20.000+00'::timestamptz, 'notice', '・', 'Base Camp Tokyo 江戸川橋の公式Instagram投稿を一般告知として確認。 日付候補は2026/06/01。公開UIに出す前に詳細確認が必要。', '2026-06-01 01:00:00.000+00'::timestamptz, '2026-06-01 12:00:00.000+00'::timestamptz, '・', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('52558a73-2f55-4990-a8be-e17bc56f25a3'::uuid, 'basecamp_edogawabashi', 'https://www.instagram.com/p/DXoaEezEemy/', 'DXoaEezEemy', '2026-04-27 10:14:11.000+00'::timestamptz, 'route_set', '・', 'Base Camp Tokyo 江戸川橋の公式Instagram投稿をセット替えとして確認。 日付候補は2026/05/19。公開UIに出す前に詳細確認が必要。', '2026-05-19 03:00:00.000+00'::timestamptz, '2026-05-22 12:00:00.000+00'::timestamptz, '・', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('52558a73-2f55-4990-a8be-e17bc56f25a3'::uuid, 'basecamp_edogawabashi', 'https://www.instagram.com/p/DX0vO-6kcUd/', 'DX0vO-6kcUd', '2026-05-02 05:10:00.000+00'::timestamptz, 'route_set', '・', 'Base Camp Tokyo 江戸川橋の公式Instagram投稿をセット替えとして確認。 日付候補は2026/05/31。公開UIに出す前に詳細確認が必要。', '2026-05-31 09:00:00.000+00'::timestamptz, '2026-05-31 12:00:00.000+00'::timestamptz, '・', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('0c7e2b25-fe74-440d-aceb-7da0aa7a35b5'::uuid, 'basecamp_hanno', 'https://www.instagram.com/p/DXymojwj8Vu/', 'DXymojwj8Vu', '2026-05-01 09:16:22.000+00'::timestamptz, 'route_set', '.', 'Boulder Park Base Camp 飯能店の公式Instagram投稿をセット替えとして確認。 日付候補は2026/05/11。公開UIに出す前に詳細確認が必要。', '2026-05-11 09:00:00.000+00'::timestamptz, '2026-05-29 12:00:00.000+00'::timestamptz, '.', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('0c7e2b25-fe74-440d-aceb-7da0aa7a35b5'::uuid, 'basecamp_hanno', 'https://www.instagram.com/p/DXxt2MRk_c6/', 'DXxt2MRk_c6', '2026-05-01 01:00:10.000+00'::timestamptz, 'notice', '新店舗のお知らせ', 'Boulder Park Base Camp 飯能店の公式Instagram投稿を一般告知として確認。 日付候補は2026/04/08。公開UIに出す前に詳細確認が必要。', '2026-04-08 01:00:00.000+00'::timestamptz, '2026-04-08 02:00:00.000+00'::timestamptz, '【新店舗のお知らせ】', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('0c7e2b25-fe74-440d-aceb-7da0aa7a35b5'::uuid, 'basecamp_hanno', 'https://www.instagram.com/p/DYMkwCCGsqr/', 'DYMkwCCGsqr', '2026-05-11 11:20:10.000+00'::timestamptz, 'notice', '・', 'Boulder Park Base Camp 飯能店の公式Instagram投稿を一般告知として確認。 日付候補は2026/06/01。公開UIに出す前に詳細確認が必要。', '2026-06-01 01:00:00.000+00'::timestamptz, '2026-06-01 12:00:00.000+00'::timestamptz, '・', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('20fddaf6-bd4f-4800-95e1-40c8ccd47d67'::uuid, 'volny_climbing', 'https://www.instagram.com/p/DWi-r8gE40i/', 'DWi-r8gE40i', '2026-03-31 11:10:31.000+00'::timestamptz, 'opening_change', '2026.4月から有人営業、無人営業時間を変更します', 'クライミングジム VOLNY（ボルニー）の公式Instagram投稿を営業時間変更として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '2026.4月から有人営業、無人営業時間を変更します。', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('20fddaf6-bd4f-4800-95e1-40c8ccd47d67'::uuid, 'volny_climbing', 'https://www.instagram.com/p/C92kk1zuhSw/', 'C92kk1zuhSw', '2024-07-25 16:44:24.000+00'::timestamptz, 'notice', 'First stop with Stōkt on tour… @volny_climbing ! It’s all about hard, tradition…', 'クライミングジム VOLNY（ボルニー）の公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, 'First stop with Stōkt on tour… @volny_climbing ! It’s all about hard, tradition…', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('20fddaf6-bd4f-4800-95e1-40c8ccd47d67'::uuid, 'volny_climbing', 'https://www.instagram.com/p/DWDUVpSkxg8/', 'DWDUVpSkxg8', '2026-03-19 04:05:13.000+00'::timestamptz, 'notice', '・', 'クライミングジム VOLNY（ボルニー）の公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '・', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('ede8f1f4-8b42-4a10-94ba-c68640395a2d'::uuid, 'zeromito0123', 'https://www.instagram.com/p/DYPKukLPq2i/', 'DYPKukLPq2i', '2026-05-12 11:37:22.000+00'::timestamptz, 'competition', '🚩ボルダーキッズツアー2026🚩', 'クライミングジム ZE-RO（ゼロ） 水戸店の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/06/06。公開UIに出す前に詳細確認が必要。', '2026-06-06 01:00:00.000+00'::timestamptz, '2026-06-06 12:00:00.000+00'::timestamptz, '🚩ボルダーキッズツアー2026🚩', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('ede8f1f4-8b42-4a10-94ba-c68640395a2d'::uuid, 'zeromito0123', 'https://www.instagram.com/p/DWbMesCiYOI/', 'DWbMesCiYOI', '2026-03-28 10:33:54.000+00'::timestamptz, 'event', '.', 'クライミングジム ZE-RO（ゼロ） 水戸店の公式Instagram投稿をイベントとして確認。 日付候補は2026/08/09。公開UIに出す前に詳細確認が必要。', '2026-08-09 01:00:00.000+00'::timestamptz, '2026-08-09 02:00:00.000+00'::timestamptz, '.', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('ede8f1f4-8b42-4a10-94ba-c68640395a2d'::uuid, 'zeromito0123', 'https://www.instagram.com/p/DYWlalgP_QB/', 'DYWlalgP_QB', '2026-05-15 08:41:12.000+00'::timestamptz, 'competition', '.', 'クライミングジム ZE-RO（ゼロ） 水戸店の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/04/28。公開UIに出す前に詳細確認が必要。', '2026-04-28 01:00:00.000+00'::timestamptz, '2026-04-28 02:00:00.000+00'::timestamptz, '.', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('d6be4bd8-1768-4ff9-8f75-4819938c7aa0'::uuid, 'maboo.insta', 'https://www.instagram.com/p/DWp_p48k7dV/', 'DWp_p48k7dV', '2026-04-03 04:30:27.000+00'::timestamptz, 'competition', 'Maboo Kanshasai – Climbing Festival', 'クライミングジム MABOO（マーブー）の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/06/13。公開UIに出す前に詳細確認が必要。', '2026-06-13 00:00:00.000+00'::timestamptz, '2026-06-13 01:00:00.000+00'::timestamptz, 'Maboo Kanshasai – Climbing Festival', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('d6be4bd8-1768-4ff9-8f75-4819938c7aa0'::uuid, 'maboo.insta', 'https://www.instagram.com/p/DUAffeUE_n1/', 'DUAffeUE_n1', '2026-01-27 10:23:55.000+00'::timestamptz, 'notice', '「保持壁」', 'クライミングジム MABOO（マーブー）の公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '「保持壁」', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('d6be4bd8-1768-4ff9-8f75-4819938c7aa0'::uuid, 'maboo.insta', 'https://www.instagram.com/p/DSb8pSGk81i/', 'DSb8pSGk81i', '2025-12-19 07:29:12.000+00'::timestamptz, 'competition', '.', 'クライミングジム MABOO（マーブー）の公式Instagram投稿をコンペ・大会として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '.', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('ff355838-8ee0-4922-a29a-5811ddbc5b61'::uuid, 'shinnikan', 'https://www.instagram.com/p/DXy7rMMGTYa/', 'DXy7rMMGTYa', '2026-05-01 12:20:14.000+00'::timestamptz, 'event', '神怡舘information', '小鹿野町クライミングパーク 神怡舘の公式Instagram投稿をイベントとして確認。 日付候補は2026/05/27。公開UIに出す前に詳細確認が必要。', '2026-05-27 01:00:00.000+00'::timestamptz, '2026-05-31 12:00:00.000+00'::timestamptz, '【神怡舘information】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('ff355838-8ee0-4922-a29a-5811ddbc5b61'::uuid, 'shinnikan', 'https://www.instagram.com/p/DXbpjGhmeDN/', 'DXbpjGhmeDN', '2026-04-22 11:19:19.000+00'::timestamptz, 'event', '神怡舘information', '小鹿野町クライミングパーク 神怡舘の公式Instagram投稿をイベントとして確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '【神怡舘information】', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('ff355838-8ee0-4922-a29a-5811ddbc5b61'::uuid, 'shinnikan', 'https://www.instagram.com/p/DWTUK8bEhfC/', 'DWTUK8bEhfC', '2026-03-25 09:07:12.000+00'::timestamptz, 'opening_change', '神怡舘information', '小鹿野町クライミングパーク 神怡舘の公式Instagram投稿を営業時間変更として確認。 日付候補は2026/05/24。公開UIに出す前に詳細確認が必要。', '2026-05-24 01:00:00.000+00'::timestamptz, '2026-05-24 12:00:00.000+00'::timestamptz, '【神怡舘information】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('1ebafa86-034c-4e70-a20d-34cca87c512c'::uuid, 'climbinggym_rocklands', 'https://www.instagram.com/p/DYGsHrAif5s/', 'DYGsHrAif5s', '2026-05-09 04:29:07.000+00'::timestamptz, 'notice', '⁡', 'クライミングジム ROCKLANDS（ロックランズ）の公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '⁡', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('1ebafa86-034c-4e70-a20d-34cca87c512c'::uuid, 'climbinggym_rocklands', 'https://www.instagram.com/p/DXa8bCVCQtY/', 'DXa8bCVCQtY', '2026-04-22 04:45:00.000+00'::timestamptz, 'competition', 'BLoC2026 round3', 'クライミングジム ROCKLANDS（ロックランズ）の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/06/27。公開UIに出す前に詳細確認が必要。', '2026-06-27 01:00:00.000+00'::timestamptz, '2026-06-24 12:00:00.000+00'::timestamptz, '【BLoC2026 round3】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('1ebafa86-034c-4e70-a20d-34cca87c512c'::uuid, 'climbinggym_rocklands', 'https://www.instagram.com/p/DWqDdeSibEa/', 'DWqDdeSibEa', '2026-04-03 05:03:42.000+00'::timestamptz, 'competition', '.', 'クライミングジム ROCKLANDS（ロックランズ）の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/04/08。公開UIに出す前に詳細確認が必要。', '2026-04-08 01:00:00.000+00'::timestamptz, '2026-04-29 12:00:00.000+00'::timestamptz, '.', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('c87d0d74-8680-4c30-bbb6-9ac8be720d8f'::uuid, 'westrock_climbing', 'https://www.instagram.com/p/DYEr-HijyhU/', 'DYEr-HijyhU', '2026-05-08 09:52:05.000+00'::timestamptz, 'competition', '府中店B-Score🍀', 'クライミングジム WESTROCK（ウエストロック） 調布店の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/05/09。公開UIに出す前に詳細確認が必要。', '2026-05-09 08:00:00.000+00'::timestamptz, '2026-05-09 09:00:00.000+00'::timestamptz, '府中店B-Score🍀', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('c87d0d74-8680-4c30-bbb6-9ac8be720d8f'::uuid, 'westrock_climbing', 'https://www.instagram.com/p/DW3Xt-5E21Z/', 'DW3Xt-5E21Z', '2026-04-08 09:10:51.000+00'::timestamptz, 'competition', 'TAMAX 2026 開催スケジュール', 'クライミングジム WESTROCK（ウエストロック） 調布店の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/05/16。公開UIに出す前に詳細確認が必要。', '2026-05-16 01:00:00.000+00'::timestamptz, '2026-05-30 12:00:00.000+00'::timestamptz, '【TAMAX 2026 開催スケジュール】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('c87d0d74-8680-4c30-bbb6-9ac8be720d8f'::uuid, 'westrock_climbing', 'https://www.instagram.com/p/DS4Jx-3D8Qg/', 'DS4Jx-3D8Qg', '2025-12-30 06:22:44.000+00'::timestamptz, 'competition', '府中店【B-SCORE 7th Season', 'クライミングジム WESTROCK（ウエストロック） 調布店の公式Instagram投稿をコンペ・大会として確認。 日付候補は2026/02/02。公開UIに出す前に詳細確認が必要。', '2026-02-02 01:00:00.000+00'::timestamptz, '2026-02-02 02:00:00.000+00'::timestamptz, '府中店【B-SCORE 7th Season】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('b1262ae6-cfec-4910-a994-4a330d587420'::uuid, 'boulcom_kawasaki', 'https://www.instagram.com/p/DXA9RBcieUz/', 'DXA9RBcieUz', '2026-04-12 02:32:07.000+00'::timestamptz, 'event', 'BOULCOM KIDS SCHOOL生徒大募集✨', 'BOULCOM 川崎店の公式Instagram投稿をイベントとして確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '【BOULCOM KIDS SCHOOL生徒大募集✨】', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('b1262ae6-cfec-4910-a994-4a330d587420'::uuid, 'boulcom_kawasaki', 'https://www.instagram.com/p/DVaRVWNk8dK/', 'DVaRVWNk8dK', '2026-03-03 05:25:41.000+00'::timestamptz, 'recruit', 'スタッフ募集中💡✨✨', 'BOULCOM 川崎店の公式Instagram投稿を採用として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '【スタッフ募集中💡✨✨】', 0.40::numeric, 'ignored', 'Recruiting post; tracked to avoid repeated inspection but not a public calendar item.'),
+    ('b1262ae6-cfec-4910-a994-4a330d587420'::uuid, 'boulcom_kawasaki', 'https://www.instagram.com/p/DYZJzcFpV_C/', 'DYZJzcFpV_C', '2026-05-16 08:40:57.000+00'::timestamptz, 'route_set', 'オススメ課題紹介11', 'BOULCOM 川崎店の公式Instagram投稿をセット替えとして確認。 日付候補は2026/04/22。公開UIに出す前に詳細確認が必要。', '2026-04-22 01:00:00.000+00'::timestamptz, '2026-04-22 02:00:00.000+00'::timestamptz, '【オススメ課題紹介11】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('a03df26a-5459-4848-91b1-7c0ae5f3d938'::uuid, 'basecamp_higashimurayama', 'https://www.instagram.com/p/DYEuzBDE0xZ/', 'DYEuzBDE0xZ', '2026-05-08 10:14:02.000+00'::timestamptz, 'route_set', '料金改定とサマーキャンペーンのお知らせ', 'Boulder Park Base Camp 東村山の公式Instagram投稿をセット替えとして確認。 日付候補は2026/06/01。公開UIに出す前に詳細確認が必要。', '2026-06-01 01:00:00.000+00'::timestamptz, '2026-06-01 12:00:00.000+00'::timestamptz, '【料金改定とサマーキャンペーンのお知らせ】', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('a03df26a-5459-4848-91b1-7c0ae5f3d938'::uuid, 'basecamp_higashimurayama', 'https://www.instagram.com/p/DXtgSr-kwbW/', 'DXtgSr-kwbW', '2026-04-29 09:44:45.000+00'::timestamptz, 'route_set', '４月から新しくボルダリングを始めた方や今ハマっててもっとうまくなりたいと思っている方は必見！', 'Boulder Park Base Camp 東村山の公式Instagram投稿をセット替えとして確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '４月から新しくボルダリングを始めた方や今ハマっててもっとうまくなりたいと思っている方は必見！', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('a03df26a-5459-4848-91b1-7c0ae5f3d938'::uuid, 'basecamp_higashimurayama', 'https://www.instagram.com/p/DXyb7P_k70p/', 'DXyb7P_k70p', '2026-05-01 07:42:48.000+00'::timestamptz, 'route_set', '今月、第２週に強傾斜壁、第４週に緩傾斜壁のセットがありますのでご確認お願いします‼️', 'Boulder Park Base Camp 東村山の公式Instagram投稿をセット替えとして確認。 日付候補は2026/05/06。公開UIに出す前に詳細確認が必要。', '2026-05-06 05:00:00.000+00'::timestamptz, '2026-05-07 12:00:00.000+00'::timestamptz, '今月、第２週に強傾斜壁、第４週に緩傾斜壁のセットがありますのでご確認お願いします‼️', 0.72::numeric, 'pending', 'Potential calendar candidate from official Instagram; keep pending until human/source cross-check.'),
+    ('89e0c101-bdf9-4b6e-a2f1-6fbcfe0b4243'::uuid, 'basecamp_iruma', 'https://www.instagram.com/p/DYGklTZuvRY/', 'DYGklTZuvRY', '2026-05-09 03:33:08.000+00'::timestamptz, 'notice', 'ボルダー緩傾斜 new set', 'Climb Park Base Camp 入間店の公式Instagram投稿を一般告知として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '【ボルダー緩傾斜 new set】', 0.40::numeric, 'ignored', 'No calendar-worthy event signal found in the inspected caption preview.'),
+    ('89e0c101-bdf9-4b6e-a2f1-6fbcfe0b4243'::uuid, 'basecamp_iruma', 'https://www.instagram.com/p/DWI2I4qjuaw/', 'DWI2I4qjuaw', '2026-03-21 07:36:34.000+00'::timestamptz, 'event', 'ジュニアスクール　ホリデークラス　開講のお知らせ📣', 'Climb Park Base Camp 入間店の公式Instagram投稿をイベントとして確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '【ジュニアスクール　ホリデークラス　開講のお知らせ📣】', 0.55::numeric, 'pending', 'Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.'),
+    ('89e0c101-bdf9-4b6e-a2f1-6fbcfe0b4243'::uuid, 'basecamp_iruma', 'https://www.instagram.com/p/DWdF-JlDpmS/', 'DWdF-JlDpmS', '2026-03-29 04:20:12.000+00'::timestamptz, 'recruit', '.', 'Climb Park Base Camp 入間店の公式Instagram投稿を採用として確認。公開UIに出す前に詳細確認が必要。', NULL::timestamptz, NULL::timestamptz, '.', 0.40::numeric, 'ignored', 'Recruiting post; tracked to avoid repeated inspection but not a public calendar item.')
+)
+INSERT INTO "source_post_observations" (
+  "event_source_id",
+  "platform",
+  "handle",
+  "source_url",
+  "source_external_id",
+  "source_posted_at",
+  "observed_at",
+  "classification",
+  "title",
+  "summary",
+  "starts_at",
+  "ends_at",
+  "source_quote",
+  "extraction_confidence",
+  "review_status",
+  "decision_note"
+)
+SELECT
+  event_source_id,
+  'instagram',
+  handle,
+  source_url,
+  source_external_id,
+  source_posted_at::timestamptz,
+  '2026-05-17 03:17:10.169+00'::timestamptz,
+  classification,
+  title,
+  summary,
+  starts_at::timestamptz,
+  ends_at::timestamptz,
+  source_quote,
+  extraction_confidence::numeric,
+  review_status,
+  decision_note
+FROM observed_posts
+ON CONFLICT ("source_url") DO UPDATE SET
+  "event_source_id" = EXCLUDED."event_source_id",
+  "handle" = EXCLUDED."handle",
+  "source_external_id" = EXCLUDED."source_external_id",
+  "source_posted_at" = EXCLUDED."source_posted_at",
+  "observed_at" = EXCLUDED."observed_at",
+  "classification" = EXCLUDED."classification",
+  "title" = EXCLUDED."title",
+  "summary" = EXCLUDED."summary",
+  "starts_at" = EXCLUDED."starts_at",
+  "ends_at" = EXCLUDED."ends_at",
+  "source_quote" = EXCLUDED."source_quote",
+  "extraction_confidence" = EXCLUDED."extraction_confidence",
+  "review_status" = EXCLUDED."review_status",
+  "decision_note" = EXCLUDED."decision_note",
+  "updated_at" = now(),
+  "deleted_at" = NULL;

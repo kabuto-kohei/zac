@@ -1,14 +1,14 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-17T02:55:30.851Z
+- generatedAt: 2026-05-17T03:42:31.932Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 158
-- localRunAgeMinutes: 158
+- latestRunAgeMinutes: 23
+- localRunAgeMinutes: 23
 - consecutiveNonReady: 0
-- instagramFailureRatio: 1
+- instagramFailureRatio: 0.6666666666666666
 
 ## Queues
 
@@ -16,7 +16,7 @@
 - inspectNow: 64
 - operatorBatch: 16
 - approvedSourceRotation: 96
-- upcomingEventRecheck: 35
+- upcomingEventRecheck: 34
 - candidateVerification: 0
 - gymDisciplineVerification: 119
 - closureVerification: 80
@@ -27,7 +27,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 5
+- runs: 6
 
 ## Failed Checks
 
@@ -35,23 +35,7 @@
 
 ## Failed Instagram Sources
 
-- dogwood_climbing_gym: profile_fetch_failed; officialFallback=true
-- shina_rocky: profile_fetch_failed; officialFallback=true
-- tsukuba_ami_rocky: profile_fetch_failed; officialFallback=true
-- pigletclimbinggym: profile_fetch_failed; officialFallback=true
-- and_energy_bouldering: profile_fetch_failed; officialFallback=true
-- ao_roc.climbing: profile_fetch_failed; officialFallback=true
-- basecamp_edogawabashi: profile_fetch_failed; officialFallback=true
-- basecamp_hanno: profile_fetch_failed; officialFallback=true
-- volny_climbing: profile_fetch_failed; officialFallback=true
-- zeromito0123: profile_fetch_failed; officialFallback=true
-- maboo.insta: profile_fetch_failed; officialFallback=true
-- shinnikan: profile_fetch_failed; officialFallback=true
-- climbinggym_rocklands: profile_fetch_failed; officialFallback=true
-- westrock_climbing: profile_fetch_failed; officialFallback=true
-- boulcom_kawasaki: profile_fetch_failed; officialFallback=true
-- basecamp_higashimurayama: profile_fetch_failed; officialFallback=true
-- basecamp_iruma: profile_fetch_failed; officialFallback=true
+- dogwood_climbing_gym: profile_not_found; officialFallback=true
 - climbingzerosaitama: profile_fetch_failed; officialFallback=true
 - bonobo_bs: profile_fetch_failed; officialFallback=true
 - boulderingspace_hat: profile_fetch_failed; officialFallback=true

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T00:16:51.616Z",
+  "generatedAt": "2026-05-17T03:19:19.025Z",
   "policy": {
     "savedFields": "page URL, derived source fragment, classification, short summary, short quote, review status",
     "excludedFields": "full page text, copied images, copied videos, HTML snapshots"

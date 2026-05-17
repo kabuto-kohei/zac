@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T00:16:55.574Z",
+  "generatedAt": "2026-05-17T03:19:23.109Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -206,12 +206,6 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "887ad556-fc17-40f4-846e-a383655353f8",
-      "sourceUrl": "https://penguin-climb.com/#zac-2025-12-06-event-3",
-      "title": "クライミングジムPenguin公式サイト 1時間体験プラン",
-      "reason": "past start date"
-    },
-    {
       "id": "947e41d6-5882-4281-8bd5-cc1c96701661",
       "sourceUrl": "https://penguin-climb.com/#zac-2025-12-06-event-1",
       "title": "クライミングジムPenguin公式サイト 1時間体験プラン",
@@ -224,21 +218,27 @@
       "reason": "past start date"
     },
     {
+      "id": "887ad556-fc17-40f4-846e-a383655353f8",
+      "sourceUrl": "https://penguin-climb.com/#zac-2025-12-06-event-3",
+      "title": "クライミングジムPenguin公式サイト 1時間体験プラン",
+      "reason": "past start date"
+    },
+    {
       "id": "a01bfe9e-5120-4c65-a640-10f18bb163c9",
       "sourceUrl": "https://wallst.jp/#zac-2025-12-07-competition-2",
       "title": "クライミングジム・ウォールストリート公式サイト  JKBC2025 ",
       "reason": "past start date"
     },
     {
-      "id": "becff5be-edf8-4064-b412-f9ece7ff555a",
-      "sourceUrl": "https://bol-bol.com/#zac-2025-12-11-competition-2",
-      "title": "BolBol 公式サイト コンペ課題、9/28まで開放中！🔥",
-      "reason": "post looks like an announcement, not a calendar item"
-    },
-    {
       "id": "29e76773-0e42-4832-b631-45b656169c95",
       "sourceUrl": "https://bol-bol.com/#zac-2025-12-11-competition-1",
       "title": "BolBol 公式サイト もっと上達したい",
+      "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "becff5be-edf8-4064-b412-f9ece7ff555a",
+      "sourceUrl": "https://bol-bol.com/#zac-2025-12-11-competition-2",
+      "title": "BolBol 公式サイト コンペ課題、9/28まで開放中！🔥",
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
@@ -440,15 +440,15 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "107d807d-8670-4040-aaa5-76f54d92d2b6",
-      "sourceUrl": "https://www.d-b-c.jp/top/kaihin-makuhari/#zac-2026-03-31-event-3",
-      "title": "D.Bouldering Plus Lead 海浜幕張公式サイト 03/31 イベント情報",
-      "reason": "past start date"
-    },
-    {
       "id": "eb29f64a-4200-47ec-847c-86853221ebff",
       "sourceUrl": "https://spoleclimbinggym.com/#zac-2026-03-31-private_booking-2",
       "title": "SPOLE CLIMBING GYM公式サイト つくばユーワールド",
+      "reason": "past start date"
+    },
+    {
+      "id": "107d807d-8670-4040-aaa5-76f54d92d2b6",
+      "sourceUrl": "https://www.d-b-c.jp/top/kaihin-makuhari/#zac-2026-03-31-event-3",
+      "title": "D.Bouldering Plus Lead 海浜幕張公式サイト 03/31 イベント情報",
       "reason": "past start date"
     },
     {
@@ -470,15 +470,15 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "20a17d94-48a6-4769-bc48-d632707e689f",
-      "sourceUrl": "https://beborn.boy.jp/#zac-2026-04-01-opening_change-1",
-      "title": "Be born Climbing gym 公式サイト  NEW 水曜初級クラス新設",
-      "reason": "past start date"
-    },
-    {
       "id": "e6d79024-0275-4c1b-88f5-6608f311d173",
       "sourceUrl": "https://pump-climbing.com/gym/bpump2/#zac-2026-04-01-construction-1",
       "title": "B-PUMP YOKOHAMA 公式サイト BAMBI’S BOULDER SCHOOL",
+      "reason": "past start date"
+    },
+    {
+      "id": "20a17d94-48a6-4769-bc48-d632707e689f",
+      "sourceUrl": "https://beborn.boy.jp/#zac-2026-04-01-opening_change-1",
+      "title": "Be born Climbing gym 公式サイト  NEW 水曜初級クラス新設",
       "reason": "past start date"
     },
     {
@@ -578,16 +578,16 @@
       "reason": "past start date"
     },
     {
+      "id": "2e75dd7b-4e7f-48a4-ab92-967b5742bf5d",
+      "sourceUrl": "https://www.instagram.com/p/DYZJzcFpV_C/",
+      "title": "オススメ課題紹介11",
+      "reason": "past start date"
+    },
+    {
       "id": "62b54b8d-e7bd-47a2-9476-9bec01b7311d",
       "sourceUrl": "https://www.instagram.com/p/DXwABbbDtGJ/",
       "title": "4月カレンダー🗓️",
       "reason": "post looks like an announcement, not a calendar item"
-    },
-    {
-      "id": "24881937-8bdc-4ddd-9014-ab1479b2e79c",
-      "sourceUrl": "https://www.westrock-climbing.com/event/#zac-2026-04-24-competition-2",
-      "title": "WESTROCK 公式イベント情報 東京都内",
-      "reason": "no matching published gym"
     }
   ]
 }

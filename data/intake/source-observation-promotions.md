@@ -1,6 +1,6 @@
 # Source Observation Promotions
 
-Generated: 2026-05-17T00:16:55.574Z
+Generated: 2026-05-17T03:19:23.109Z
 Mode: draft_review
 
 ## Summary
@@ -46,12 +46,12 @@ Mode: draft_review
 - title is too weak for event candidate: . | https://www.instagram.com/p/DM0A280SWWg/
 - past start date: クライミングジムランボ公式サイト 11/03 コンペ情報 | https://ranbo.jp/#zac-2025-11-03-competition-1
 - post looks like an announcement, not a calendar item: BolBol 公式サイト コンペ課題、9/28まで開放中！🔥 | https://bol-bol.com/#zac-2025-11-29-competition-3
-- past start date: クライミングジムPenguin公式サイト 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-3
 - past start date: クライミングジムPenguin公式サイト 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-1
 - past start date: クライミングジムPenguin公式サイト 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-2
+- past start date: クライミングジムPenguin公式サイト 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-3
 - past start date: クライミングジム・ウォールストリート公式サイト  JKBC2025  | https://wallst.jp/#zac-2025-12-07-competition-2
-- post looks like an announcement, not a calendar item: BolBol 公式サイト コンペ課題、9/28まで開放中！🔥 | https://bol-bol.com/#zac-2025-12-11-competition-2
 - post looks like an announcement, not a calendar item: BolBol 公式サイト もっと上達したい | https://bol-bol.com/#zac-2025-12-11-competition-1
+- post looks like an announcement, not a calendar item: BolBol 公式サイト コンペ課題、9/28まで開放中！🔥 | https://bol-bol.com/#zac-2025-12-11-competition-2
 - post looks like an announcement, not a calendar item: ROCKY Climbing & Fitness Gym 公式サイト 12/15 営業情報 | https://www.rockyclimbing.com/#zac-2025-12-15-opening_change-1
 - duplicate observation row from source/gym matching: ROCKY Climbing & Fitness Gym 公式サイト 12/15 営業情報 | https://www.rockyclimbing.com/#zac-2025-12-15-opening_change-1
 - duplicate observation row from source/gym matching: ROCKY Climbing & Fitness Gym 公式サイト 12/15 営業情報 | https://www.rockyclimbing.com/#zac-2025-12-15-opening_change-1
@@ -85,13 +85,13 @@ Mode: draft_review
 - past start date: HEADROCK CLIMBING GYM 公式サイト 3月末まで延長 | https://headrock-climbing.com/#zac-2026-03-29-event-2
 - post looks like an announcement, not a calendar item: D.Bouldering Hachioji公式サイト もう一手 | https://www.d-b-c.jp/top/hachioji/#zac-2026-03-30-event-3
 - post looks like an announcement, not a calendar item: BOULCOM 川崎店 公式サイト 東京店 | https://boulcom.jp/kawasaki/#zac-2026-03-31-private_booking-2
-- past start date: D.Bouldering Plus Lead 海浜幕張公式サイト 03/31 イベント情報 | https://www.d-b-c.jp/top/kaihin-makuhari/#zac-2026-03-31-event-3
 - past start date: SPOLE CLIMBING GYM公式サイト つくばユーワールド | https://spoleclimbinggym.com/#zac-2026-03-31-private_booking-2
+- past start date: D.Bouldering Plus Lead 海浜幕張公式サイト 03/31 イベント情報 | https://www.d-b-c.jp/top/kaihin-makuhari/#zac-2026-03-31-event-3
 - past start date: Lutra Lutra 公式サイト 03/31 コンペ情報 | https://www.lutra-lutra.com/#zac-2026-03-31-competition-1
 - past start date: HEADROCK CLIMBING GYM 公式サイト 3月末まで延長 | https://headrock-climbing.com/#zac-2026-03-31-event-1
 - post looks like an announcement, not a calendar item: Boulder Park Base Camp 東村山 公式サイト 04/01 営業情報 | https://b-camp.jp/higashimurayama/#zac-2026-04-01-opening_change-3
-- past start date: Be born Climbing gym 公式サイト  NEW 水曜初級クラス新設 | https://beborn.boy.jp/#zac-2026-04-01-opening_change-1
 - past start date: B-PUMP YOKOHAMA 公式サイト BAMBI’S BOULDER SCHOOL | https://pump-climbing.com/gym/bpump2/#zac-2026-04-01-construction-1
+- past start date: Be born Climbing gym 公式サイト  NEW 水曜初級クラス新設 | https://beborn.boy.jp/#zac-2026-04-01-opening_change-1
 - past start date: B-PUMP YOKOHAMA 公式サイト この日なら行けるのに…！ | https://pump-climbing.com/gym/bpump2/#zac-2026-04-03-construction-3
 - past start date: スポーツクライミングジム エキサイティング三茶公式サイト 04/03 貸切情報 | https://exciting-sancha.com/about/#zac-2026-04-03-private_booking-2
 - past start date: クライミングジム・ウォールストリート公式サイト  JKBC2025  | https://wallst.jp/#zac-2026-04-05-competition-1
@@ -108,5 +108,5 @@ Mode: draft_review
 - past start date: オススメ課題紹介⑥ | https://www.instagram.com/p/DYPQbuHzbpp/
 - past start date: オススメ課題紹介⑦ | https://www.instagram.com/p/DYRqVqYJ-N2/
 - past start date: MOVING3 Round1 | https://www.instagram.com/p/DXZNH4lyNjC/
+- past start date: オススメ課題紹介11 | https://www.instagram.com/p/DYZJzcFpV_C/
 - post looks like an announcement, not a calendar item: 4月カレンダー🗓️ | https://www.instagram.com/p/DXwABbbDtGJ/
-- no matching published gym: WESTROCK 公式イベント情報 東京都内 | https://www.westrock-climbing.com/event/#zac-2026-04-24-competition-2

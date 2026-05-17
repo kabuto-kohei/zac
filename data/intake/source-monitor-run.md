@@ -1,10 +1,10 @@
 # Source Monitor Run
 
-- Generated: 2026-05-17T00:17:01.540Z
+- Generated: 2026-05-17T03:19:28.905Z
 - Due approved sources: 64
 - Instagram post sources: 48
 - Candidate Instagram sources: 0
-- Upcoming event rechecks: 35
+- Upcoming event rechecks: 34
 - Gym discipline verification candidates: 119
 - Closure verification candidates: 80
 - Gyms with Instagram: 97/192
@@ -12,78 +12,78 @@
 ## Instagram Post Inspection
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
-2. ROCKY 品川店 (shina_rocky) - https://www.instagram.com/shina_rocky/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 3
-3. ROCKY つくば阿見店 (tsukuba_ami_rocky) - https://www.instagram.com/tsukuba_ami_rocky/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 6
-4. PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - https://www.instagram.com/pigletclimbinggym/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 5
-5. And Energy Bouldering (and_energy_bouldering) - https://www.instagram.com/and_energy_bouldering/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 4
-6. アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - https://www.instagram.com/ao_roc.climbing/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 5
-7. Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - https://www.instagram.com/basecamp_edogawabashi/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 4
-8. Boulder Park Base Camp 飯能店 (basecamp_hanno) - https://www.instagram.com/basecamp_hanno/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 6
-9. クライミングジム VOLNY（ボルニー） (volny_climbing) - https://www.instagram.com/volny_climbing/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 3
-10. クライミングジム ZE-RO（ゼロ） 水戸店 (zeromito0123) - https://www.instagram.com/zeromito0123/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 2
-11. クライミングジム MABOO（マーブー） (maboo.insta) - https://www.instagram.com/maboo.insta/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 3
-12. 小鹿野町クライミングパーク 神怡舘 (shinnikan) - https://www.instagram.com/shinnikan/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 3
-13. クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands) - https://www.instagram.com/climbinggym_rocklands/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 3
-14. クライミングジム WESTROCK（ウエストロック） 調布店 (westrock_climbing) - https://www.instagram.com/westrock_climbing/ - lastObserved: 2026-05-14T19:00:21.958Z - observedPosts: 3
-15. BOULCOM 川崎店 (boulcom_kawasaki) - https://www.instagram.com/boulcom_kawasaki/ - lastObserved: 2026-05-14T23:21:34.475Z - observedPosts: 5
-16. Boulder Park Base Camp 東村山 (basecamp_higashimurayama) - https://www.instagram.com/basecamp_higashimurayama/ - lastObserved: 2026-05-15T02:38:08.516Z - observedPosts: 3
-17. Climb Park Base Camp 入間店 (basecamp_iruma) - https://www.instagram.com/basecamp_iruma/ - lastObserved: 2026-05-15T02:38:08.516Z - observedPosts: 3
-18. クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - https://www.instagram.com/climbingzerosaitama/ - lastObserved: 2026-05-15T04:49:06.063Z - observedPosts: 3
-19. bonobo_bs (bonobo_bs) - https://www.instagram.com/bonobo_bs/ - lastObserved: 2026-05-15T08:05:57.693Z - observedPosts: 3
-20. ボルダリングスペース HAT（ハット） (boulderingspace_hat) - https://www.instagram.com/boulderingspace_hat/ - lastObserved: 2026-05-15T08:05:57.693Z - observedPosts: 3
-21. Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - https://www.instagram.com/basecamp_kinshicho/ - lastObserved: 2026-05-15T09:11:32.668Z - observedPosts: 6
-22. Urban Base Camp 新橋 (basecamp_shinbashi) - https://www.instagram.com/basecamp_shinbashi/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 6
-23. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
-24. BOULCOM 東京店 (boulcom_tokyo) - https://www.instagram.com/boulcom_tokyo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 6
+2. クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - https://www.instagram.com/climbingzerosaitama/ - lastObserved: 2026-05-15T04:49:06.063Z - observedPosts: 2
+3. bonobo_bs (bonobo_bs) - https://www.instagram.com/bonobo_bs/ - lastObserved: 2026-05-15T08:05:57.693Z - observedPosts: 3
+4. ボルダリングスペース HAT（ハット） (boulderingspace_hat) - https://www.instagram.com/boulderingspace_hat/ - lastObserved: 2026-05-15T08:05:57.693Z - observedPosts: 3
+5. Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - https://www.instagram.com/basecamp_kinshicho/ - lastObserved: 2026-05-15T09:11:32.668Z - observedPosts: 6
+6. Urban Base Camp 新橋 (basecamp_shinbashi) - https://www.instagram.com/basecamp_shinbashi/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 6
+7. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+8. BOULCOM 東京店 (boulcom_tokyo) - https://www.instagram.com/boulcom_tokyo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 6
+9. B-PUMP OGIKUBO (bpump_ogikubo) - https://www.instagram.com/bpump_ogikubo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 5
+10. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 4
+11. クライミングジムランボ公式Instagram (climbing_gym_ranbo) - https://www.instagram.com/climbing_gym_ranbo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+12. クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - https://www.instagram.com/climbinggym_wallstreet/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+13. Climbing Gym Walrus公式Instagram (climbinggym_walrus) - https://www.instagram.com/climbinggym_walrus/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 7
+14. D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - https://www.instagram.com/dbouldering_soga/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 5
+15. エナジークライミングジム浦和店公式Instagram (energyurawa) - https://www.instagram.com/energyurawa/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+16. ボルダリングジム Vortex（ボルテックス） (climb.vortex) - https://www.instagram.com/climb.vortex/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+17. be_born_climbing_gym (be_born_climbing_gym) - https://www.instagram.com/be_born_climbing_gym/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 4
+18. betaclimb (betaclimb) - https://www.instagram.com/betaclimb/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 3
+19. bluebird_bouldering_gym (bluebird_bouldering_gym) - https://www.instagram.com/bluebird_bouldering_gym/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 5
+20. bouldersclimbing (bouldersclimbing) - https://www.instagram.com/bouldersclimbing/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 3
+21. B-PUMP YOKOHAMA 横浜 (bpumpyokohama) - https://www.instagram.com/bpumpyokohama/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 3
+22. exciting_sancha (exciting_sancha) - https://www.instagram.com/exciting_sancha/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 3
+23. クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - https://www.instagram.com/madrock.cg.jp_online/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 4
+24. NOBOROCK 池袋店 (noborock_ikebukuro) - https://www.instagram.com/noborock_ikebukuro/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 7
 
 ## Inspect Now
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/
 2. PIGLET CLIMBING GYM公式サイト (piglet-climbing-gym) - https://piglet-climb.com/
 3. KaChill 公式サイト (kachill) - https://kachill.jimdosite.com/
-4. ROCKY 品川店 (shina_rocky) - https://www.instagram.com/shina_rocky/
-5. ROCKY つくば阿見店 (tsukuba_ami_rocky) - https://www.instagram.com/tsukuba_ami_rocky/
-6. PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - https://www.instagram.com/pigletclimbinggym/
-7. And Energy Bouldering (and_energy_bouldering) - https://www.instagram.com/and_energy_bouldering/
-8. アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - https://www.instagram.com/ao_roc.climbing/
-9. Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - https://www.instagram.com/basecamp_edogawabashi/
-10. Boulder Park Base Camp 飯能店 (basecamp_hanno) - https://www.instagram.com/basecamp_hanno/
-11. クライミングジム VOLNY（ボルニー） (volny_climbing) - https://www.instagram.com/volny_climbing/
-12. クライミングジム ZE-RO（ゼロ） 水戸店 (zeromito0123) - https://www.instagram.com/zeromito0123/
+4. クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - https://www.instagram.com/climbingzerosaitama/
+5. bonobo_bs (bonobo_bs) - https://www.instagram.com/bonobo_bs/
+6. ボルダリングスペース HAT（ハット） (boulderingspace_hat) - https://www.instagram.com/boulderingspace_hat/
+7. Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - https://www.instagram.com/basecamp_kinshicho/
+8. Urban Base Camp 新橋 (basecamp_shinbashi) - https://www.instagram.com/basecamp_shinbashi/
+9. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/
+10. BOULCOM 東京店 (boulcom_tokyo) - https://www.instagram.com/boulcom_tokyo/
+11. B-PUMP OGIKUBO (bpump_ogikubo) - https://www.instagram.com/bpump_ogikubo/
+12. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/
 
 ## Operator Batch
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/
 2. PIGLET CLIMBING GYM公式サイト (piglet-climbing-gym) - https://piglet-climb.com/
 3. KaChill 公式サイト (kachill) - https://kachill.jimdosite.com/
-4. ROCKY 品川店 (shina_rocky) - https://www.instagram.com/shina_rocky/
-5. ROCKY つくば阿見店 (tsukuba_ami_rocky) - https://www.instagram.com/tsukuba_ami_rocky/
-6. PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym) - https://www.instagram.com/pigletclimbinggym/
-7. And Energy Bouldering (and_energy_bouldering) - https://www.instagram.com/and_energy_bouldering/
-8. アオロク〖ao_roc.climbing〗 (ao_roc.climbing) - https://www.instagram.com/ao_roc.climbing/
-9. Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi) - https://www.instagram.com/basecamp_edogawabashi/
-10. Boulder Park Base Camp 飯能店 (basecamp_hanno) - https://www.instagram.com/basecamp_hanno/
-11. クライミングジム VOLNY（ボルニー） (volny_climbing) - https://www.instagram.com/volny_climbing/
-12. クライミングジム ZE-RO（ゼロ） 水戸店 (zeromito0123) - https://www.instagram.com/zeromito0123/
-13. クライミングジム MABOO（マーブー） (maboo.insta) - https://www.instagram.com/maboo.insta/
-14. 小鹿野町クライミングパーク 神怡舘 (shinnikan) - https://www.instagram.com/shinnikan/
-15. クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands) - https://www.instagram.com/climbinggym_rocklands/
-16. クライミングジム WESTROCK（ウエストロック） 調布店 (westrock_climbing) - https://www.instagram.com/westrock_climbing/
+4. クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - https://www.instagram.com/climbingzerosaitama/
+5. bonobo_bs (bonobo_bs) - https://www.instagram.com/bonobo_bs/
+6. ボルダリングスペース HAT（ハット） (boulderingspace_hat) - https://www.instagram.com/boulderingspace_hat/
+7. Base Camp Tokyo 錦糸町 (basecamp_kinshicho) - https://www.instagram.com/basecamp_kinshicho/
+8. Urban Base Camp 新橋 (basecamp_shinbashi) - https://www.instagram.com/basecamp_shinbashi/
+9. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/
+10. BOULCOM 東京店 (boulcom_tokyo) - https://www.instagram.com/boulcom_tokyo/
+11. B-PUMP OGIKUBO (bpump_ogikubo) - https://www.instagram.com/bpump_ogikubo/
+12. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/
+13. クライミングジムランボ公式Instagram (climbing_gym_ranbo) - https://www.instagram.com/climbing_gym_ranbo/
+14. クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) - https://www.instagram.com/climbinggym_wallstreet/
+15. Climbing Gym Walrus公式Instagram (climbinggym_walrus) - https://www.instagram.com/climbinggym_walrus/
+16. D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - https://www.instagram.com/dbouldering_soga/
 
 ## Upcoming Event Recheck
 
-1. event: 期間イベント - 2026-05-17 10:00
-2. route_set: 渋谷店 ルートセット営業変更 - 2026-05-17 17:00
-3. route_set: 5月全面ホールド替え - 2026-05-17 18:00
-4. route_set: ▶︎▶︎▶︎ - 2026-05-18 13:00
-5. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
-6. opening_change: 5/20〜22日まで急遽臨時休業となります😭臨時休業に伴い壁の改装工事が大幅に遅れるかもしれません🙏 - 2026-05-20 10:00
-7. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
-8. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
-9. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
-10. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
-11. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
-12. event: 神怡舘information - 2026-05-27 10:00
+1. route_set: 渋谷店 ルートセット営業変更 - 2026-05-17 17:00
+2. route_set: 5月全面ホールド替え - 2026-05-17 18:00
+3. route_set: ▶︎▶︎▶︎ - 2026-05-18 13:00
+4. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
+5. opening_change: 5/20〜22日まで急遽臨時休業となります😭臨時休業に伴い壁の改装工事が大幅に遅れるかもしれません🙏 - 2026-05-20 10:00
+6. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
+7. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
+8. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
+9. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
+10. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
+11. event: 神怡舘information - 2026-05-27 10:00
+12. route_set: 錦糸町 リードエリア Leaning Tower セット - 2026-05-27 12:00
 
 ## Existing Event Fingerprints
 

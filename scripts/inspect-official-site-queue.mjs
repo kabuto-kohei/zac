@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { categoryLabel, formatSourceCandidate } from "./source-candidate-format.mjs";
 
 const monitorPath = process.env.ZAC_SOURCE_MONITOR_PATH ?? "data/intake/source-monitor-run.json";
 const outputJsonPath = process.env.ZAC_OFFICIAL_SITE_INSPECTION_JSON ?? "data/intake/official-site-inspection.json";
@@ -12,9 +13,7 @@ const generatedAt = new Date();
 const generatedAtSql = toSqlTimestamp(generatedAt);
 
 const monitor = JSON.parse(await fs.readFile(monitorPath, "utf8"));
-const queue = (monitor.queues?.inspectNow ?? [])
-  .filter((source) => source.sourceType === "official_site" && /^https?:\/\//u.test(source.sourceUrl ?? ""))
-  .slice(0, sourceLimit);
+const queue = buildOfficialSiteQueue(monitor).slice(0, sourceLimit);
 
 const inspections = [];
 
@@ -130,20 +129,30 @@ function extractCandidates(text, source) {
     }
     seen.add(key);
 
-    const title = buildTitle(source.displayName, classification, startsAt, context);
+    const endsAt = new Date(startsAt.getTime() + 60 * 60 * 1000);
+    const formatted = formatSourceCandidate({
+      category: classification,
+      sourceName: source.displayName,
+      sourceType: "official_site",
+      rawTitle: extractTitleHint(context) || buildFallbackTitle(source.displayName, classification, startsAt),
+      startsAt,
+      endsAt,
+      sourceQuote: context,
+      extractionConfidence: "0.60",
+    });
     candidates.push({
       handle: source.handle,
       sourceUrl: `${source.sourceUrl}#zac-${toJstDateKey(startsAt)}-${classification}-${candidates.length + 1}`,
       sourceExternalId: `official-site:${source.handle}:${toJstDateKey(startsAt)}:${classification}:${candidates.length + 1}`,
       classification,
-      title,
-      summary: `${source.displayName}の公式サイト上で${categoryLabel(classification)}に関連する日付候補を検出。Adminで情報源ページを確認して公開可否を判断してください。`,
+      title: formatted.title,
+      summary: formatted.summary,
       startsAt: startsAt.toISOString(),
-      endsAt: new Date(startsAt.getTime() + 60 * 60 * 1000).toISOString(),
-      sourceQuote: truncate(context, 120),
-      extractionConfidence: "0.60",
+      endsAt: endsAt.toISOString(),
+      sourceQuote: formatted.sourceQuote,
+      extractionConfidence: formatted.extractionConfidence,
       reviewStatus: "pending",
-      decisionNote: "Potential calendar candidate from official site text; human review required before publishing.",
+      decisionNote: formatted.decisionNote,
     });
   }
 
@@ -160,24 +169,24 @@ function classifyText(value) {
   return "notice";
 }
 
-function buildTitle(displayName, classification, startsAt, context) {
-  const date = formatDate(startsAt);
-  const label = categoryLabel(classification);
-  const named = context.match(/(?:【([^】]{3,40})】|「([^」]{3,40})」|『([^』]{3,40})』)/u);
-  const name = named?.[1] ?? named?.[2] ?? named?.[3] ?? "";
-  return truncate(name ? `${displayName} ${name}` : `${displayName} ${date} ${label}`, 80);
+function buildOfficialSiteQueue(monitor) {
+  return dedupeBy(
+    [
+      ...(monitor.queues?.inspectNow ?? []),
+      ...(monitor.queues?.operatorBatch ?? []),
+      ...(monitor.queues?.approvedSourceRotation ?? []),
+    ].filter((source) => source.sourceType === "official_site" && /^https?:\/\//u.test(source.sourceUrl ?? "")),
+    (source) => `${source.handle}:${source.sourceUrl}`,
+  );
 }
 
-function categoryLabel(classification) {
-  return {
-    competition: "コンペ情報",
-    route_set: "セット情報",
-    opening_change: "営業情報",
-    private_booking: "貸切情報",
-    construction: "工事情報",
-    event: "イベント情報",
-    notice: "告知",
-  }[classification];
+function extractTitleHint(context) {
+  const named = context.match(/(?:【([^】]{3,40})】|「([^」]{3,40})」|『([^』]{3,40})』)/u);
+  return named?.[1] ?? named?.[2] ?? named?.[3] ?? "";
+}
+
+function buildFallbackTitle(displayName, classification, startsAt) {
+  return `${displayName} ${formatDate(startsAt)} ${categoryLabel(classification)}`;
 }
 
 function renderSql(result) {
@@ -277,7 +286,7 @@ ON CONFLICT ("source_url") DO UPDATE SET
   "deleted_at" = NULL;`
       : "-- No official-site observations in this run.";
 
-  return `-- Official-site observations generated from inspectNow official-site queue.
+  return `-- Official-site observations generated from official-site fallback queues.
 -- Generated: ${result.generatedAt}
 -- Policy: store source links, short summaries, and short quotes only; do not store full page text or media.
 

@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { createRequire } from "node:module";
 import { withDatabaseClient } from "./db-runtime.mjs";
+import { formatSourceCandidate, normalizeObservationCategory } from "./source-candidate-format.mjs";
 
 const requireFromDbPackage = createRequire(new URL("../packages/db/package.json", import.meta.url));
 const postgres = requireFromDbPackage("postgres");
@@ -186,10 +187,17 @@ function evaluateObservation(row, existing) {
 function buildPromotion(row, category) {
   const startsAt = asDate(row.starts_at);
   const endsAt = asDate(row.ends_at) ?? startsAt;
-  const title = normalizeWhitespace(row.title ?? "");
-  const summary = normalizeWhitespace(row.summary ?? `${title} の公式Instagram投稿に基づく候補。`);
   const sourceAccount = normalizeWhitespace(row.display_name ?? row.handle);
-  const reviewReason = buildReviewReason(row, category);
+  const formatted = formatSourceCandidate({
+    category,
+    sourceName: row.gym_name ?? sourceAccount,
+    sourceType: row.source_type === "official_site" ? "official_site" : "official_instagram",
+    rawTitle: row.title,
+    startsAt,
+    endsAt,
+    sourceQuote: row.source_quote,
+    extractionConfidence: row.extraction_confidence,
+  });
 
   return {
     eventId: randomUUID(),
@@ -197,32 +205,23 @@ function buildPromotion(row, category) {
     gymId: row.gym_id,
     gymName: row.gym_name,
     category,
-    title,
-    summary,
-    description: `${summary} ${reviewReason}`,
+    title: formatted.title,
+    summary: formatted.summary,
+    description: formatted.description,
     startsAt: startsAt.toISOString(),
     endsAt: endsAt.toISOString(),
-    capacityText: "公式Instagramで確認",
+    capacityText: formatted.capacityText,
     sourceType: row.source_type === "official_site" ? "official_site" : "official_instagram",
     sourceUrl: row.source_url,
     sourceAccount,
     sourcePublishedAt: asDate(row.source_posted_at)?.toISOString() ?? null,
     sourceFetchedAt: asDate(row.observed_at)?.toISOString() ?? generatedAt.toISOString(),
-    sourceQuote: normalizeWhitespace(row.source_quote ?? ""),
-    extractionConfidence: Number(row.extraction_confidence ?? 0.7).toFixed(2),
+    sourceQuote: formatted.sourceQuote,
+    extractionConfidence: formatted.extractionConfidence,
     reviewStatus: publishApproved ? "approved" : "pending",
     reviewedAt: publishApproved ? generatedAt.toISOString() : null,
     status: publishApproved ? "scheduled" : "draft",
   };
-}
-
-function buildReviewReason(row, category) {
-  const sourceType = row.source_type === "official_site" ? "公式サイト" : "公式Instagram";
-  const date = asDate(row.starts_at);
-  const dateText = date ? `日付候補は${toJstDateKey(date)}。` : "日付候補は未確定。";
-  const quote = normalizeWhitespace(row.source_quote ?? "");
-  const quoteText = quote ? `根拠抜粋: ${quote}` : "根拠抜粋は未取得。";
-  return `Admin確認理由: ${sourceType}由来の${category}候補。${dateText}${quoteText}`;
 }
 
 function buildExistingIndex(events) {
@@ -244,20 +243,7 @@ function buildExistingIndex(events) {
 }
 
 function normalizeCategory(value) {
-  if (value === "lesson") {
-    return "event";
-  }
-  if (
-    value === "event" ||
-    value === "competition" ||
-    value === "route_set" ||
-    value === "opening_change" ||
-    value === "private_booking" ||
-    value === "construction"
-  ) {
-    return value;
-  }
-  return null;
+  return normalizeObservationCategory(value);
 }
 
 function fingerprintFor(gymId, category, startsAt) {

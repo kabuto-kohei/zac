@@ -376,7 +376,8 @@ direct publishing:
 
 Required fields:
 
-- `category`: `competition`, `event`, `lesson`, `route_set`, `notice`, `recruit`
+- `category`: `competition`, `event`, `route_set`, `opening_change`,
+  `private_booking`, `construction`
 - `title`
 - `summary`
 - `starts_at`
@@ -387,7 +388,22 @@ Required fields:
 - `review_status`
 - `status = scheduled`
 
-`route_set`, `notice`, `construction`, and `opening-change` must not be mixed
+Before Admin candidate review, calendar-worthy observations must pass through
+the category-specific source-candidate formatter. The formatter owns the shape
+of `title`, `summary`, `description`, `capacity_text`, `source_quote`,
+`decision_note`, and `extraction_confidence` so Instagram, official-site, and
+promotion output stays consistent.
+
+Category shapes:
+
+- `competition`: コンペ・大会。Review focus is開催日、対象店舗、参加条件、申込要否。
+- `event`: 一般イベント・講習。Review focus is開催日、内容、参加条件。
+- `route_set`: セット・ホールド替え。Review focus is対象エリア、作業期間、利用制限。
+- `opening_change`: 営業時間・休業変更。Review focus is変更日、営業時間、休業/短縮営業の範囲。
+- `private_booking`: 貸切・利用制限。Review focus is貸切日時、一般利用への影響。
+- `construction`: 工事・メンテナンス。Review focus is工事期間、対象エリア、営業影響。
+
+`route_set`, `construction`, `opening_change`, and `private_booking` must not be mixed
 with competitions or general events in UI. They belong in the set/operations
 group.
 

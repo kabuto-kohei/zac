@@ -248,6 +248,8 @@ try {
       calendarRule: "Multi-day events are marked on the start date only; the full period is shown on the detail page.",
       eventSplitRule:
         "Classify each source item by primary user impact: competition, event/lesson, route_set, private_booking, opening_change, construction, notice, or recruit. If a route-set announcement includes closure/opening times, keep category route_set and store the closure/opening period in startsAt/endsAt. If a post is only a private rental closure, use private_booking. If it is only hours/temporary closure, use opening_change. If it is wall/area work, use construction.",
+      candidateFormatRule:
+        "Before Admin candidate review, normalize each calendar-worthy observation with the category-specific source-candidate formatter: title, summary, description, capacityText, sourceQuote, decisionNote, and extractionConfidence must use the same category shape across Instagram, official-site, and promotion steps.",
       closureRule:
         "A gym can be marked closed only with an official closure notice, or with two independent current sources when the official source is unavailable. If evidence is partial, keep the gym published and record it for recheck instead of guessing.",
       publicGrouping: {

@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { formatSourceCandidate } from "./source-candidate-format.mjs";
 
 const monitorPath = process.env.ZAC_SOURCE_MONITOR_PATH ?? "data/intake/source-monitor-run.json";
 const outputJsonPath = process.env.ZAC_INSTAGRAM_INSPECTION_JSON ?? "data/intake/instagram-post-inspection.json";
@@ -241,7 +242,16 @@ function inspectPost(post, source) {
   const dateRange = extractDateRange(post.caption);
   const reviewStatus = classification === "notice" || classification === "recruit" ? "ignored" : "pending";
   const title = buildTitle(post.caption, classification, source.displayName);
-  const summary = buildSummary(source.displayName, classification, dateRange);
+  const formatted = formatSourceCandidate({
+    category: classification,
+    sourceName: source.displayName,
+    sourceType: "official_instagram",
+    rawTitle: title,
+    startsAt: dateRange?.startsAt ?? null,
+    endsAt: dateRange?.endsAt ?? null,
+    sourceQuote: buildQuote(post.caption),
+    extractionConfidence: scoreConfidence(classification, dateRange),
+  });
 
   return {
     eventSourceId: source.eventSourceId,
@@ -251,14 +261,14 @@ function inspectPost(post, source) {
     sourceExternalId: post.shortcode,
     sourcePostedAt: post.sourcePostedAt?.toISOString() ?? null,
     classification,
-    title,
-    summary,
+    title: formatted.title,
+    summary: formatted.summary,
     startsAt: dateRange?.startsAt?.toISOString() ?? null,
     endsAt: dateRange?.endsAt?.toISOString() ?? null,
-    sourceQuote: buildQuote(post.caption),
-    extractionConfidence: scoreConfidence(classification, dateRange),
+    sourceQuote: formatted.sourceQuote,
+    extractionConfidence: formatted.extractionConfidence,
     reviewStatus,
-    decisionNote: buildDecisionNote(classification, dateRange),
+    decisionNote: reviewStatus === "pending" ? formatted.decisionNote : buildDecisionNote(classification, dateRange),
   };
 }
 
@@ -334,20 +344,6 @@ function buildTitle(caption, classification, displayName) {
     notice: "投稿確認",
   }[classification];
   return truncate(firstLine || `${displayName} ${fallback}`, 80);
-}
-
-function buildSummary(displayName, classification, dateRange) {
-  const label = {
-    competition: "コンペ・大会",
-    route_set: "セット替え",
-    opening_change: "営業時間変更",
-    private_booking: "貸切",
-    event: "イベント",
-    recruit: "採用",
-    notice: "一般告知",
-  }[classification];
-  const dateText = dateRange ? ` 日付候補は${formatDate(dateRange.startsAt)}。` : "";
-  return `${displayName}の公式Instagram投稿を${label}として確認。${dateText}公開UIに出す前に詳細確認が必要。`;
 }
 
 function buildQuote(caption) {
@@ -526,15 +522,6 @@ function normalizeWhitespace(value) {
 
 function truncate(value, max) {
   return value.length > max ? `${value.slice(0, max - 1)}…` : value;
-}
-
-function formatDate(value) {
-  return new Intl.DateTimeFormat("ja-JP", {
-    timeZone: "Asia/Tokyo",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(value);
 }
 
 function sleep(ms) {

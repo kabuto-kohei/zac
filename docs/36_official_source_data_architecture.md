@@ -146,9 +146,15 @@ MVP seed は、以下を公式ソース付きで投入する。
 将来の収集ジョブは、外部投稿を直接 UI に出さず、以下の流れで正規テーブルに反映する。
 
 1. 公式ソースを取得する。
-2. `source_raw_text` に内部保存する。
-3. `summary`, `category`, `starts_at`, `ends_at`, `capacity_text`, `source_quote` を抽出する。
-4. `review_status = pending` で保存する。
+2. 取得元 URL、投稿日時、短い根拠抜粋だけを保存する。キャプション全文、HTML 全文、画像、動画は保存しない。
+3. `category`, `title`, `summary`, `starts_at`, `ends_at`, `capacity_text`, `source_quote`, `decision_note` を抽出する。
+4. カレンダー候補はカテゴリ別の整形型に通してから `review_status = pending` で保存する。
 5. 人間またはルールベース検査で承認後、公開 API に出す。
+
+カテゴリ別の整形型は `competition`, `event`, `route_set`,
+`opening_change`, `private_booking`, `construction` を基本単位にする。
+各型はタイトル接尾辞、要約名、Admin が確認すべき観点、容量/申込欄の
+初期値を持つ。これにより、Instagram 由来・公式サイト由来・候補昇格後の
+表示が同じ粒度になる。
 
 これにより、Zac は Instagram の代替表示ではなく、ジム公式情報へのナビゲーションと予定判断のための構造化レイヤーになる。

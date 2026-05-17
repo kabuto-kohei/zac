@@ -84,7 +84,7 @@ async function listPersistentInstagramReviewQueue() {
         and(
           eq(eventSources.platform, "instagram"),
           inArray(eventSources.sourceType, ["official_instagram", "aggregator_instagram"]),
-          inArray(eventSources.status, ["candidate", "approved", "paused"]),
+          inArray(eventSources.status, ["candidate", "paused"]),
           isNull(eventSources.deletedAt),
         ),
       )

@@ -666,7 +666,9 @@ function InstagramReviewQueueRow({ item, onRecorded }: { item: InstagramReviewQu
 
     setStatus("success");
     setMessage(action === "confirm_official" ? "公式Instagramとして承認しました。" : action === "reject_official" ? "非公式として却下しました。" : "保留として記録しました。");
-    onRecorded(item.sourceId);
+    if (action === "confirm_official" || action === "reject_official") {
+      onRecorded(item.sourceId);
+    }
   }
 
   return (

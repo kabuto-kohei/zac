@@ -314,16 +314,16 @@ function hasOfficialFallback(inspectionItem, monitorValue) {
   const baseName = normalizeSourceBaseName(inspectionItem.displayName ?? inspectionItem.handle ?? "");
   const inspectionFingerprint = sourceFingerprint(inspectionItem);
   const queues = monitorValue?.queues ?? {};
-  const candidates = [
-    ...(queues.inspectNow ?? []),
-    ...(queues.operatorBatch ?? []),
-    ...(queues.approvedSourceRotation ?? []),
-  ];
+  const candidates = Object.values(queues).flatMap((queue) => (Array.isArray(queue) ? queue.filter((item) => item && typeof item === "object") : []));
 
   return candidates.some((source) => {
-    const sourceUrl = String(source.sourceUrl ?? "");
-    if (/instagram\.com/u.test(sourceUrl)) {
+    const sourceUrl = fallbackSourceUrl(source);
+    if (!sourceUrl || /instagram\.com/u.test(sourceUrl)) {
       return false;
+    }
+
+    if (sameInstagramSource(inspectionItem, source)) {
+      return true;
     }
 
     const candidateName = normalizeSourceBaseName(source.displayName ?? source.handle ?? "");
@@ -355,6 +355,41 @@ function hasOfficialFallback(inspectionItem, monitorValue) {
       });
     });
   });
+}
+
+function fallbackSourceUrl(source) {
+  const fallbackUrl = String(source.fallbackUrl ?? "");
+  if (/^https?:\/\//u.test(fallbackUrl)) {
+    return fallbackUrl;
+  }
+
+  const websiteUrl = String(source.websiteUrl ?? "");
+  if (/^https?:\/\//u.test(websiteUrl)) {
+    return websiteUrl;
+  }
+
+  const sourceUrl = String(source.sourceUrl ?? "");
+  return /^https?:\/\//u.test(sourceUrl) ? sourceUrl : "";
+}
+
+function sameInstagramSource(inspectionItem, source) {
+  const leftUrl = normalizeInstagramUrl(inspectionItem.sourceUrl);
+  const rightUrl = normalizeInstagramUrl(source.instagramUrl ?? source.gymInstagramUrl);
+  if (leftUrl && rightUrl && leftUrl === rightUrl) {
+    return true;
+  }
+
+  const leftHandle = normalizeCompact(inspectionItem.handle ?? "");
+  const rightHandle = normalizeCompact(source.instagramHandle ?? source.gymInstagramHandle ?? "");
+  return Boolean(leftHandle && rightHandle && leftHandle === rightHandle);
+}
+
+function normalizeInstagramUrl(value) {
+  return String(value ?? "")
+    .toLowerCase()
+    .replace(/^https?:\/\/(www\.)?instagram\.com\//u, "")
+    .replace(/[/?#].*$/u, "")
+    .trim();
 }
 
 function normalizeSourceBaseName(value) {

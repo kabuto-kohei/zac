@@ -72,9 +72,19 @@ try {
         s.source_type,
         s.last_checked_at,
         s.source_verified_at,
+        g.website_url as fallback_url,
+        g.instagram_handle as gym_instagram_handle,
+        g.instagram_url as gym_instagram_url,
         max(o.observed_at) as last_observed_at,
         count(o.id)::int as observed_posts
       from event_sources s
+      left join gyms g
+        on g.deleted_at is null
+        and g.status = 'published'
+        and (
+          lower(coalesce(g.instagram_handle, '')) = lower(s.handle)
+          or g.instagram_url = s.source_url
+        )
       left join source_post_observations o
         on o.deleted_at is null
         and o.event_source_id = s.id
@@ -101,7 +111,10 @@ try {
         s.source_url,
         s.source_type,
         s.last_checked_at,
-        s.source_verified_at
+        s.source_verified_at,
+        g.website_url,
+        g.instagram_handle,
+        g.instagram_url
       order by
         max(o.observed_at) asc nulls first,
         s.last_checked_at asc nulls first,
@@ -340,6 +353,9 @@ function formatSource(source) {
     displayName: source.display_name ?? source.handle,
     sourceUrl: source.source_url,
     sourceType: source.source_type,
+    fallbackUrl: source.fallback_url ?? null,
+    gymInstagramHandle: source.gym_instagram_handle ?? null,
+    gymInstagramUrl: source.gym_instagram_url ?? null,
     lastCheckedAt: formatNullableDateTime(source.last_checked_at),
     sourceVerifiedAt: formatNullableDateTime(source.source_verified_at),
   };
@@ -371,6 +387,9 @@ function formatInstagramPostSource(source) {
     displayName: source.display_name ?? source.handle,
     sourceUrl: source.source_url,
     sourceType: source.source_type,
+    fallbackUrl: source.fallback_url ?? null,
+    gymInstagramHandle: source.gym_instagram_handle ?? null,
+    gymInstagramUrl: source.gym_instagram_url ?? null,
     lastCheckedAt: formatNullableDateTime(source.last_checked_at),
     sourceVerifiedAt: formatNullableDateTime(source.source_verified_at),
     lastObservedAt: formatNullableDateTime(source.last_observed_at),

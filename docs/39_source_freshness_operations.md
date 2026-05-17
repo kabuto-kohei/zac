@@ -394,14 +394,23 @@ of `title`, `summary`, `description`, `capacity_text`, `source_quote`,
 `decision_note`, and `extraction_confidence` so Instagram, official-site, and
 promotion output stays consistent.
 
+The formatter separates public text from operator text:
+
+- Public `summary`, `description`, and `capacity_text` use a short factual tone:
+  official-source based, no hype, no copied caption wording, and no internal
+  words such as "candidate" or "Admin".
+- Operator `decision_note` states why the item was extracted, which category
+  shape was used, which date was detected, and what evidence quote should be
+  checked before approval.
+
 Category shapes:
 
-- `competition`: コンペ・大会。Review focus is開催日、対象店舗、参加条件、申込要否。
-- `event`: 一般イベント・講習。Review focus is開催日、内容、参加条件。
-- `route_set`: セット・ホールド替え。Review focus is対象エリア、作業期間、利用制限。
-- `opening_change`: 営業時間・休業変更。Review focus is変更日、営業時間、休業/短縮営業の範囲。
-- `private_booking`: 貸切・利用制限。Review focus is貸切日時、一般利用への影響。
-- `construction`: 工事・メンテナンス。Review focus is工事期間、対象エリア、営業影響。
+- `competition`: public noun isコンペ・大会情報。Capacity text is申込・定員は公式情報で確認。Review focus is開催日、対象店舗、参加条件、申込要否。
+- `event`: public noun isイベント情報。Capacity text is参加条件・申込は公式情報で確認。Review focus is開催日、内容、参加条件。
+- `route_set`: public noun isセット・ホールド替え情報。Capacity text is対象エリア・利用制限は公式情報で確認。Review focus is対象エリア、作業期間、利用制限。
+- `opening_change`: public noun is営業変更情報。Capacity text is営業時間・営業影響は公式情報で確認。Review focus is変更日、営業時間、休業/短縮営業の範囲。
+- `private_booking`: public noun is貸切・利用制限情報。Capacity text is一般利用への影響は公式情報で確認。Review focus is貸切日時、一般利用への影響。
+- `construction`: public noun is工事・メンテナンス情報。Capacity text is対象エリア・営業影響は公式情報で確認。Review focus is工事期間、対象エリア、営業影響。
 
 `route_set`, `construction`, `opening_change`, and `private_booking` must not be mixed
 with competitions or general events in UI. They belong in the set/operations

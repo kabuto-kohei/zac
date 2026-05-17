@@ -367,7 +367,7 @@ function buildDecisionNote(classification, dateRange) {
 }
 
 function renderSql(result) {
-  const rows = dedupeBy(result.inspections.flatMap((inspection) => inspection.posts), (post) => post.sourceUrl);
+  const rows = dedupeBy(result.inspections.flatMap((inspection) => inspection.posts), (post) => post.sourceExternalId || post.sourceUrl);
   const checkedSources = result.inspections.filter((inspection) => inspection.ok);
   const checkedSourceSql =
     checkedSources.length > 0
@@ -440,9 +440,10 @@ SELECT
   review_status,
   decision_note
 FROM observed_posts
-ON CONFLICT ("source_url") DO UPDATE SET
+ON CONFLICT ("platform", "source_external_id") WHERE "source_external_id" IS NOT NULL DO UPDATE SET
   "event_source_id" = EXCLUDED."event_source_id",
   "handle" = EXCLUDED."handle",
+  "source_url" = EXCLUDED."source_url",
   "source_external_id" = EXCLUDED."source_external_id",
   "source_posted_at" = EXCLUDED."source_posted_at",
   "observed_at" = EXCLUDED."observed_at",

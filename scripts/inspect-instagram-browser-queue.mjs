@@ -112,21 +112,6 @@ try {
     }
 
     const flatPosts = result.inspections.flatMap((inspection) => inspection.posts);
-    const loginRequiredSources = result.inspections.filter((inspection) => inspection.failureCategory === "login_required").length;
-    const checkpointSources = result.inspections.filter((inspection) => inspection.failureCategory === "checkpoint_required").length;
-    if (checkpointSources > 0) {
-      result.browserSession = {
-        ...result.browserSession,
-        state: "checkpoint_required",
-        reason: `${checkpointSources} source(s) surfaced a checkpoint-required page during the roller run.`,
-      };
-    } else if (loginRequiredSources > 0) {
-      result.browserSession = {
-        ...result.browserSession,
-        state: "login_required",
-        reason: `${loginRequiredSources} source(s) surfaced a login-required page during the roller run.`,
-      };
-    }
     result.summary.pendingPosts = flatPosts.filter((post) => post.reviewStatus === "pending").length;
     result.summary.ignoredPosts = flatPosts.filter((post) => post.reviewStatus === "ignored").length;
     result.summary.calendarCandidates = flatPosts.filter((post) => post.startsAt).length;
@@ -555,7 +540,7 @@ function extractPostedAtFromPageText(text) {
 }
 
 function renderSql(value) {
-  const rows = dedupeBy(value.inspections.flatMap((inspection) => inspection.posts), (post) => post.sourceUrl);
+  const rows = dedupeBy(value.inspections.flatMap((inspection) => inspection.posts), (post) => post.sourceExternalId || post.sourceUrl);
   const checkedSources = value.inspections.filter((inspection) => inspection.ok);
   const checkedSourceSql =
     checkedSources.length > 0
@@ -629,9 +614,10 @@ SELECT
   review_status,
   decision_note
 FROM observed_posts
-ON CONFLICT ("source_url") DO UPDATE SET
+ON CONFLICT ("platform", "source_external_id") WHERE "source_external_id" IS NOT NULL DO UPDATE SET
   "event_source_id" = EXCLUDED."event_source_id",
   "handle" = EXCLUDED."handle",
+  "source_url" = EXCLUDED."source_url",
   "source_external_id" = EXCLUDED."source_external_id",
   "source_posted_at" = EXCLUDED."source_posted_at",
   "observed_at" = EXCLUDED."observed_at",

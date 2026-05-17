@@ -10,7 +10,8 @@ const outputSqlPath = process.env.ZAC_INSTAGRAM_INSPECTION_SQL ?? "data/intake/i
 const fixturePath = process.env.ZAC_INSTAGRAM_BROWSER_FIXTURE_JSON ?? "";
 const userDataDir = process.env.ZAC_INSTAGRAM_BROWSER_USER_DATA_DIR ?? ".zac-browser/instagram";
 const postsPerSource = parsePositiveInt(process.env.ZAC_INSTAGRAM_POSTS_PER_SOURCE, 3);
-const sourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_SOURCE_LIMIT, 100);
+const sourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_SOURCE_LIMIT ?? process.env.ZAC_INSTAGRAM_POST_SOURCE_LIMIT, 25);
+const sourceDelayMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS, 2500);
 const sourceTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS, 60000);
 const postTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_POST_TIMEOUT_MS, 30000);
 const navigationTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_NAVIGATION_TIMEOUT_MS, 25000);
@@ -29,8 +30,8 @@ const result = {
   generatedAt: generatedAt.toISOString(),
   mode: fixturePath ? "browser_fixture" : "browser_roller",
   cadence: {
-    targetRunsPerDay: 2,
-    targetHoursJst: ["09:00", "18:00"],
+    targetRunsPerDay: 8,
+    targetHoursJst: ["every 3 hours"],
     postsPerSource,
     sourceLimit,
   },
@@ -97,7 +98,7 @@ try {
     console.error(`Instagram browser session is not authenticated: ${result.browserSession.state}`);
     process.exitCode = 2;
   } else {
-    for (const source of queue) {
+    for (const [index, source] of queue.entries()) {
       const inspection = fixture ? inspectFixtureSource(source, fixture) : await inspectBrowserSource(context, source);
       result.inspections.push(inspection);
       result.summary.sourcesVisited += inspection.deferred ? 0 : 1;
@@ -109,6 +110,9 @@ try {
       result.summary.newPostsOpened += inspection.newPostsOpened;
       result.summary.duplicatePostsSkipped += inspection.duplicatePostsSkipped;
       result.summary.observedPosts += inspection.posts.length;
+      if (!fixture && index < queue.length - 1) {
+        await new Promise((resolve) => setTimeout(resolve, sourceDelayMs));
+      }
     }
 
     const flatPosts = result.inspections.flatMap((inspection) => inspection.posts);
@@ -662,7 +666,7 @@ function renderMarkdown(value) {
 - Generated: ${value.generatedAt}
 - Mode: ${value.mode}
 - Browser session: ${value.browserSession.state}${value.browserSession.reason ? ` (${value.browserSession.reason})` : ""}
-- Target cadence: 2 runs/day (${value.cadence.targetHoursJst.join(", ")} JST)
+- Target cadence: ${value.cadence.targetRunsPerDay} runs/day (${value.cadence.targetHoursJst.join(", ")} JST)
 - Sources queued: ${value.summary.sourcesQueued}
 - Sources visited: ${value.summary.sourcesVisited}
 - Sources succeeded: ${value.summary.sourcesSucceeded}

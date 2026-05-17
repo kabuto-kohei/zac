@@ -60,8 +60,10 @@ Recommended setup:
 2. Run `pnpm sources:instagram-login` and log in manually through the opened
    persistent browser profile.
 3. Let the roller reuse that session.
-4. If Instagram asks for login, checkpoint, or 2FA, stop the run and surface
-   `login_required` or `checkpoint_required` in readiness.
+4. If the session itself asks for login, checkpoint, or 2FA, stop the run and
+   surface `login_required` or `checkpoint_required` in readiness. If only an
+   individual source page triggers a checkpoint, isolate that source as a
+   source-level failure and continue the run within the configured budget.
 
 Do not put Instagram email addresses, passwords, cookies, session tokens, or
 2FA codes in code, docs, artifacts, commits, or chat.
@@ -70,27 +72,30 @@ Do not put Instagram email addresses, passwords, cookies, session tokens, or
 
 Target operating cadence:
 
-- Two Instagram browser roller passes per day.
-- Target times: 09:00 JST and 18:00 JST.
-- Each pass attempts all approved official Instagram sources up to the current
-  operational cap.
+- One local automation pass every three hours.
+- The browser roller processes a small batch on each pass.
+- The daily target is broad coverage by rotation, not a single aggressive
+  all-source scrape.
 
 Initial caps:
 
-- `ZAC_INSTAGRAM_POST_SOURCE_LIMIT=100`
+- `ZAC_INSTAGRAM_POST_SOURCE_LIMIT=25`
+- `ZAC_INSTAGRAM_SOURCE_LIMIT=25`
 - `ZAC_INSTAGRAM_POSTS_PER_SOURCE=3`
 - `ZAC_INSTAGRAM_DUE_HOURS=12`
+- `ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS=2500`
 - `ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS=60000`
 - `ZAC_INSTAGRAM_BROWSER_POST_TIMEOUT_MS=30000`
 
 Scale rule:
 
-- Up to 50 approved gyms: full pass twice daily is expected.
-- 51-100 approved gyms: full pass twice daily remains the target; failed
-  sources are isolated.
-- 101-150 approved gyms: use the hard cap only if run duration remains safe.
-- Over 150 approved gyms: important sources can remain twice daily, while all
-  sources should complete within a 24-48 hour priority rotation.
+- Up to 50 approved gyms: two to three three-hour batches can cover the set.
+- 51-100 approved gyms: four three-hour batches cover the set, and the
+  remaining daily runs absorb retries and newly due sources.
+- 101-200 approved gyms: the eight daily batches can still cover the set once
+  per day while reducing checkpoint pressure.
+- Over 200 approved gyms: keep important sources in the normal due rotation and
+  complete the full set within a 24-48 hour priority rotation.
 
 ## Extraction Rules
 
@@ -155,7 +160,7 @@ Source-level failures must not stop the whole run.
 Run-level blocked states:
 
 - `login_required`
-- `checkpoint_required`
+- `checkpoint_required` when the browser session itself is blocked
 - `browser_unavailable`
 - DB write failure
 
@@ -166,6 +171,7 @@ Source-level failures:
 - `timeout`
 - `network`
 - `browser_error`
+- `checkpoint_required` for an individual profile/post page
 
 Non-failures:
 

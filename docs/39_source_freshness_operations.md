@@ -217,13 +217,15 @@ upcoming events to recheck. They do not fetch external post bodies or media.
 The highest-priority queue is `instagramPostInspection`, which lists approved
 official Instagram profiles whose recent visible posts/reels should be reviewed
 by the browser roller. The queue includes recent known post URLs so the roller
-can open only unknown posts.
+can open only unknown posts. The production cadence intentionally uses small
+three-hour batches instead of a single all-source scrape, so Instagram
+checkpoint pressure stays visible and isolated.
 
 The monitor accepts optional batch-size environment variables:
 
 - `ZAC_SOURCE_DUE_HOURS`: due threshold for approved sources. Default: `6`.
 - `ZAC_INSTAGRAM_DUE_HOURS`: due threshold for official Instagram post checks. Default: `12`.
-- `ZAC_INSTAGRAM_POST_SOURCE_LIMIT`: official Instagram browser-roller batch size. Default: `100`.
+- `ZAC_INSTAGRAM_POST_SOURCE_LIMIT`: official Instagram browser-roller queue batch size. Default: `25`.
 - `ZAC_SOURCE_APPROVED_LIMIT`: approved source rotation size. Default: `96`.
 - `ZAC_SOURCE_STALE_LIMIT`: due approved source batch size. Default: `64`.
 - `ZAC_SOURCE_CANDIDATE_LIMIT`: candidate source batch size. Default: `96`.
@@ -240,6 +242,8 @@ The automation runner accepts operational environment variables:
 - `ZAC_INSTAGRAM_BROWSER_USER_DATA_DIR`: persistent browser profile for the Instagram roller. Default: `.zac-browser/instagram`.
 - `ZAC_INSTAGRAM_BROWSER_HEADLESS`: run the roller headless. Default: `true`.
 - `ZAC_INSTAGRAM_BROWSER_REQUIRE_AUTH`: require a logged-in browser session before inspection. Default: `true`.
+- `ZAC_INSTAGRAM_SOURCE_LIMIT`: maximum Instagram sources the browser inspector opens per run. Default: `25`.
+- `ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS`: delay between source profile inspections. Default: `2500`.
 - `ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS`: source-level browser timeout. Default: `60000`.
 - `ZAC_INSTAGRAM_BROWSER_POST_TIMEOUT_MS`: post-level browser timeout. Default: `30000`.
 - `ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS`: per-request timeout for Instagram profile fetches. Default: `8000`.

@@ -38,7 +38,11 @@
     <key>ZAC_INSTAGRAM_DUE_HOURS</key>
     <string>12</string>
     <key>ZAC_INSTAGRAM_POST_SOURCE_LIMIT</key>
-    <string>100</string>
+    <string>25</string>
+    <key>ZAC_INSTAGRAM_SOURCE_LIMIT</key>
+    <string>25</string>
+    <key>ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS</key>
+    <string>2500</string>
   </dict>
 </dict>
 </plist>

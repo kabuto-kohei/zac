@@ -1,9 +1,8 @@
-import { and, asc, desc, eq, eventSaves, events, eventSources, gyms, inArray, isNull, sourcePostObservations } from "@zac/db";
+import { and, asc, desc, eq, eventSaves, events, gyms, inArray, isNull, sourcePostObservations } from "@zac/db";
 import {
   eventFixtures,
   findEventFixture,
   formatEventDisplayTitle,
-  type CreateInstagramEventCandidateInput,
   type EventSummary,
   type ReviewAdminEventInput,
   type UpsertAdminEventInput,
@@ -90,59 +89,6 @@ export async function createEvent(input: UpsertAdminEventInput, actor: RequestAc
     throw new ApiError("service_unavailable", "Could not create event.", 503);
   }
 
-  clearEventCache();
-  return toEventSummary(row);
-}
-
-export async function createInstagramEventCandidate(input: CreateInstagramEventCandidateInput, actor: RequestActor) {
-  const db = getDatabase();
-
-  if (!db) {
-    if (!isRuntimeFallbackAllowed()) {
-      throw new ApiError("service_unavailable", "Database is required for events.", 503);
-    }
-    const event = toMemoryInstagramCandidate(`event-local-instagram-${memoryEvents.size + 1}`, input);
-    memoryEvents.set(event.id, event);
-    return event;
-  }
-
-  if (!isUuid(input.gymId)) {
-    throw new ApiError("validation_error", "Valid gymId is required for event candidates.", 422);
-  }
-
-  const now = new Date();
-  const sourceAccount = await getInstagramSourceAccount(input.sourceId, input.sourceUrl);
-  const summary = input.reason ? `Admin Instagram確認: ${input.reason}` : "Admin Instagram確認から作成された掲載候補です。";
-
-  const [row] = await db
-    .insert(events)
-    .values({
-      gymId: input.gymId,
-      category: input.category,
-      title: input.title,
-      summary,
-      description: summary,
-      startsAt: new Date(input.startsAt),
-      endsAt: input.endsAt ? new Date(input.endsAt) : null,
-      sourceType: "official_instagram",
-      sourceUrl: input.sourceUrl,
-      sourceAccount,
-      sourceFetchedAt: now,
-      sourceQuote: input.sourceQuote ?? null,
-      sourcePolicy: "summary_with_link",
-      extractionConfidence: "0.80",
-      reviewStatus: "pending",
-      status: "draft",
-      visibility: "public",
-      createdBy: actor.userId,
-    })
-    .returning(eventReturningFields);
-
-  if (!row) {
-    throw new ApiError("service_unavailable", "Could not create event candidate.", 503);
-  }
-
-  await recordInstagramCandidateObservation(input, sourceAccount, now);
   clearEventCache();
   return toEventSummary(row);
 }
@@ -439,85 +385,6 @@ function toMemoryEvent(eventId: string, input: UpsertAdminEventInput) {
     extractionConfidence: null,
     status: input.status,
   } satisfies EventSummary;
-}
-
-function toMemoryInstagramCandidate(eventId: string, input: CreateInstagramEventCandidateInput) {
-  return {
-    id: eventId,
-    category: input.category,
-    title: input.title,
-    summary: input.reason ?? "",
-    description: input.reason ?? "",
-    gymName: "Zac",
-    startsAt: formatDateTime(new Date(input.startsAt)),
-    endsAt: input.endsAt ? formatDateTime(new Date(input.endsAt)) : "",
-    capacity: "定員未設定",
-    sourceUrl: input.sourceUrl,
-    sourceLabel: "Instagram確認",
-    ...(input.sourceQuote ? { sourceQuote: input.sourceQuote } : {}),
-    reviewStatus: "pending",
-    extractionConfidence: 0.8,
-    status: "draft",
-  } satisfies EventSummary;
-}
-
-async function getInstagramSourceAccount(sourceId: string | null | undefined, sourceUrl: string) {
-  const db = getDatabase();
-
-  if (!db || !sourceId || !isUuid(sourceId)) {
-    return extractInstagramHandle(sourceUrl) ?? "Instagram確認";
-  }
-
-  try {
-    const [row] = await db
-      .select({ handle: eventSources.handle, displayName: eventSources.displayName })
-      .from(eventSources)
-      .where(eq(eventSources.id, sourceId))
-      .limit(1);
-    return row?.displayName ?? row?.handle ?? extractInstagramHandle(sourceUrl) ?? "Instagram確認";
-  } catch {
-    return extractInstagramHandle(sourceUrl) ?? "Instagram確認";
-  }
-}
-
-async function recordInstagramCandidateObservation(input: CreateInstagramEventCandidateInput, sourceAccount: string, observedAt: Date) {
-  const db = getDatabase();
-
-  if (!db) {
-    return;
-  }
-
-  try {
-    await db.insert(sourcePostObservations).values({
-      eventSourceId: input.sourceId && isUuid(input.sourceId) ? input.sourceId : null,
-      platform: "instagram",
-      handle: sourceAccount,
-      sourceUrl: input.sourceUrl,
-      sourceExternalId: extractInstagramExternalId(input.sourceUrl) ?? `admin:${Date.now()}`,
-      observedAt,
-      classification: input.category,
-      title: input.title,
-      summary: input.reason ?? null,
-      startsAt: new Date(input.startsAt),
-      endsAt: input.endsAt ? new Date(input.endsAt) : null,
-      sourceQuote: input.sourceQuote ?? null,
-      extractionConfidence: "0.80",
-      reviewStatus: "event_candidate",
-      decisionNote: input.reason ?? "Created from Admin Instagram review queue.",
-    });
-  } catch {
-    // Observation rows are auxiliary evidence. A duplicate URL must not block creating the review candidate.
-  }
-}
-
-function extractInstagramHandle(sourceUrl: string) {
-  const match = sourceUrl.match(/instagram\.com\/([^/?#]+)/i);
-  return match?.[1] ?? null;
-}
-
-function extractInstagramExternalId(sourceUrl: string) {
-  const match = sourceUrl.match(/instagram\.com\/(?:p|reel|tv)\/([^/?#]+)/i);
-  return match ? `instagram:${match[1]}` : null;
 }
 
 const eventReturningFields = {

@@ -95,8 +95,8 @@ Admin review:
 - Review `/reports` for user-submitted update requests.
 - Review `/event-candidates` for automation-staged event candidates.
 - Review `/instagram-review` for official Instagram sources that direct
-  automation could not fetch, then create candidates only from confirmed public
-  facts.
+  automation could not fetch, then mark the account official, non-official, or
+  held for follow-up.
 - Approve only items backed by official evidence.
 - Reject or leave pending weak evidence.
 - Keep copied Instagram captions/images/videos out of public output.

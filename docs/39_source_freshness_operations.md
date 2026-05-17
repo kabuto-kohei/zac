@@ -370,9 +370,9 @@ direct publishing:
    appears on the calendar.
 4. Admin candidate review exposes pending/draft candidates, links back to the
    original source, and records approve/reject decisions through the Admin API.
-5. Admin Instagram review can also create the same draft/pending event
-   candidates directly from a confirmed public Instagram URL when automatic
-   profile inspection is blocked.
+5. Admin Instagram review confirms whether a candidate Instagram account is an
+   official gym/operator source. Event creation remains in the observation
+   promotion and `/event-candidates` review path.
 
 Required fields:
 

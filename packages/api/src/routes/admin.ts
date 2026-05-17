@@ -1,5 +1,4 @@
 import {
-  createInstagramEventCandidateSchema,
   instagramReviewQueueActionSchema,
   moderatePostSchema,
   reviewAdminEventSchema,
@@ -13,7 +12,7 @@ import { resolveRequestActor } from "../auth.js";
 import { dataResponse, paginatedResponse, validationErrorResponse } from "../responses.js";
 import { createAnnouncement, listAnnouncements, updateAnnouncement } from "../services/announcement-service.js";
 import { listAdminUsers, listAuditLogs, moderatePost, recordAdminAudit, requireAdminActor, updateGymStatus, updateReportStatus } from "../services/admin-service.js";
-import { createEvent, createInstagramEventCandidate, listEventCandidates, listEvents, reviewEventCandidate, updateEvent } from "../services/event-service.js";
+import { createEvent, listEventCandidates, listEvents, reviewEventCandidate, updateEvent } from "../services/event-service.js";
 import { listEventSources } from "../services/event-source-service.js";
 import { listInstagramReviewQueue, recordInstagramReviewQueueAction } from "../services/instagram-review-service.js";
 
@@ -54,19 +53,6 @@ export function createAdminRoutes() {
     const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
     void actor;
     return context.json(paginatedResponse(await listInstagramReviewQueue()));
-  });
-
-  app.post("/instagram-review-queue/candidates", async (context) => {
-    const result = createInstagramEventCandidateSchema.safeParse(await context.req.json());
-
-    if (!result.success) {
-      return context.json(validationErrorResponse(result.error.flatten()), 422);
-    }
-
-    const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
-    const event = await createInstagramEventCandidate(result.data, actor);
-    await recordAdminAudit(actor, { action: "instagram_review_candidate_create", targetType: "event", targetId: event.id, metadata: result.data });
-    return context.json(dataResponse(event), 201);
   });
 
   app.post("/instagram-review-queue/:sourceId/actions", async (context) => {

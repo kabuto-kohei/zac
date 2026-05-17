@@ -751,27 +751,8 @@ test("admin content list routes require admin", async () => {
   assert.equal(announcementsResponse.status, 200);
 });
 
-test("admin Instagram review queue confirms official sources and creates event candidates", async () => {
+test("admin Instagram review queue confirms official sources", async () => {
   const app = createApp();
-  const candidateResponse = await app.request("/v1/admin/instagram-review-queue/candidates", {
-    method: "POST",
-    body: JSON.stringify({
-      gymId: "b-pump-tokyo",
-      sourceId: "event-source-b-pump-tokyo-instagram",
-      sourceUrl: "https://www.instagram.com/p/test-post/",
-      title: "B-PUMP Tokyo セット情報",
-      category: "route_set",
-      startsAt: "2026-06-10T10:00:00+09:00",
-      endsAt: "2026-06-10T12:00:00+09:00",
-      sourceQuote: "セット告知",
-      reason: "公開Instagram投稿をAdminで確認済み",
-    }),
-    headers: {
-      ...adminAuth,
-      "content-type": "application/json",
-    },
-  });
-  const candidateBody = await candidateResponse.json();
   const actionResponse = await app.request("/v1/admin/instagram-review-queue/event-source-b-pump-tokyo-instagram/actions", {
     method: "POST",
     body: JSON.stringify({
@@ -785,10 +766,6 @@ test("admin Instagram review queue confirms official sources and creates event c
   });
   const actionBody = await actionResponse.json();
 
-  assert.equal(candidateResponse.status, 201);
-  assert.equal(candidateBody.data.status, "draft");
-  assert.equal(candidateBody.data.reviewStatus, "pending");
-  assert.equal(candidateBody.data.sourceUrl, "https://www.instagram.com/p/test-post/");
   assert.equal(actionResponse.status, 200);
   assert.equal(actionBody.data.action, "confirm_official");
 });

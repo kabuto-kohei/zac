@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-16T15:40:52.454Z",
+  "generatedAt": "2026-05-17T02:47:21.863Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,98 +11,13 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 31,
-    "localRunAgeMinutes": 31,
+    "latestRunAgeMinutes": 150,
+    "localRunAgeMinutes": 150,
     "consecutiveNonReady": 0,
     "instagramFailureRatio": 1,
     "failedInstagramSources": [
       {
         "handle": "dogwood_climbing_gym",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "jetsetclimbing",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "kachill_climbing",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "lostcanyon_official",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "lutra_lutra_climb_park_",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "mitaka_gym",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "mountain_cliff_climbing",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "nextgen.bouldering",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "nose_machida_climbinggym",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "olioli_climbing.gym",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "peradra_gym",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "project_climbing_gym",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "tsstokyo",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "underground_bouldering_gym",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "rocky_shinagawa",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "funabashirocky",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "inzairocky",
-        "error": "profile_fetch_failed",
-        "hasOfficialFallback": true
-      },
-      {
-        "handle": "jyuku_rocky",
         "error": "profile_fetch_failed",
         "hasOfficialFallback": true
       },
@@ -255,6 +170,91 @@
         "handle": "energyurawa",
         "error": "profile_fetch_failed",
         "hasOfficialFallback": true
+      },
+      {
+        "handle": "climb.vortex",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "be_born_climbing_gym",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "betaclimb",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "bluebird_bouldering_gym",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "bouldersclimbing",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "bpumpyokohama",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "exciting_sancha",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "madrock.cg.jp_online",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "noborock_ikebukuro",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "noborock_machida",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "noborock_omiya",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "noborock_shibuya",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "noborock_takadanobaba",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "fishandbird_toyocho",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "headrockcg",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "okkurock",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "penguinclimb",
+        "error": "profile_fetch_failed",
+        "hasOfficialFallback": true
       }
     ],
     "launchAgent": {
@@ -264,7 +264,7 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 10800,
-      "runs": 2
+      "runs": 5
     },
     "queues": {
       "instagramPostInspection": 48,
@@ -311,7 +311,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "31m",
+      "detail": "150m",
       "severity": "error"
     },
     {
@@ -341,7 +341,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "31m",
+      "detail": "150m",
       "severity": "error"
     },
     {

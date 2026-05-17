@@ -1,6 +1,6 @@
 # Instagram Post Inspection
 
-- Generated: 2026-05-16T15:05:44.719Z
+- Generated: 2026-05-17T00:15:00.630Z
 - Sources queued: 48
 - Sources fetched: 0
 - Sources failed: 48
@@ -16,40 +16,6 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 ## Inspections
 
 - DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed (access_restricted)
-  - no posts
-- JET SET（ジェットセット） climbing gym (jetsetclimbing) - fetch failed (access_restricted)
-  - no posts
-- KaChill カチル (kachill_climbing) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム LOST CANYON（ロストキャニオン） (lostcanyon_official) - fetch failed (access_restricted)
-  - no posts
-- Lutra Lutra（ルトラルトラ） (lutra_lutra_climb_park_) - fetch failed (access_restricted)
-  - no posts
-- ロッククライミング 三鷹ジム (mitaka_gym) - fetch failed (access_restricted)
-  - no posts
-- MOUNTAIN CLIFF（マウンテンクリフ） (mountain_cliff_climbing) - fetch failed (access_restricted)
-  - no posts
-- Next Gen Bouldering（ネクストジェンボルダリング） (nextgen.bouldering) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム NOSE（ノーズ） 町田店 (nose_machida_climbinggym) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム OliOli（オリオリ） (olioli_climbing.gym) - fetch failed (access_restricted)
-  - no posts
-- PERADORA（ペルアドラ） クライミングジム 横浜 (peradra_gym) - fetch failed (access_restricted)
-  - no posts
-- クライミングジム Project（プロジェクト） (project_climbing_gym) - fetch failed (access_restricted)
-  - no posts
-- THE STONE SESSION TOKYO (tsstokyo) - fetch failed (access_restricted)
-  - no posts
-- ボルダリングジム UNDERGROUND（アンダーグラウンド） (underground_bouldering_gym) - fetch failed (access_restricted)
-  - no posts
-- Rocky Shinagawa (rocky_shinagawa) - fetch failed (access_restricted)
-  - no posts
-- ROCKY 船橋店 (funabashirocky) - fetch failed (access_restricted)
-  - no posts
-- ROCKY 印西店 (inzairocky) - fetch failed (access_restricted)
-  - no posts
-- ROCKY 新宿曙橋店 (jyuku_rocky) - fetch failed (access_restricted)
   - no posts
 - ROCKY 品川店 (shina_rocky) - fetch failed (access_restricted)
   - no posts
@@ -110,4 +76,38 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 - D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) - fetch failed (access_restricted)
   - no posts
 - エナジークライミングジム浦和店公式Instagram (energyurawa) - fetch failed (access_restricted)
+  - no posts
+- ボルダリングジム Vortex（ボルテックス） (climb.vortex) - fetch failed (access_restricted)
+  - no posts
+- be_born_climbing_gym (be_born_climbing_gym) - fetch failed (access_restricted)
+  - no posts
+- betaclimb (betaclimb) - fetch failed (access_restricted)
+  - no posts
+- bluebird_bouldering_gym (bluebird_bouldering_gym) - fetch failed (access_restricted)
+  - no posts
+- bouldersclimbing (bouldersclimbing) - fetch failed (access_restricted)
+  - no posts
+- B-PUMP YOKOHAMA 横浜 (bpumpyokohama) - fetch failed (access_restricted)
+  - no posts
+- exciting_sancha (exciting_sancha) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) - fetch failed (access_restricted)
+  - no posts
+- NOBOROCK 池袋店 (noborock_ikebukuro) - fetch failed (access_restricted)
+  - no posts
+- NOBOROCK 町田店 (noborock_machida) - fetch failed (access_restricted)
+  - no posts
+- NOBOROCK 大宮店 (noborock_omiya) - fetch failed (access_restricted)
+  - no posts
+- Noborock Shibuya (noborock_shibuya) - fetch failed (access_restricted)
+  - no posts
+- NOBOROCK 高田馬場店 (noborock_takadanobaba) - fetch failed (access_restricted)
+  - no posts
+- fishandbird_toyocho (fishandbird_toyocho) - fetch failed (access_restricted)
+  - no posts
+- headrockcg (headrockcg) - fetch failed (access_restricted)
+  - no posts
+- okkurock (okkurock) - fetch failed (access_restricted)
+  - no posts
+- penguinclimb (penguinclimb) - fetch failed (access_restricted)
   - no posts

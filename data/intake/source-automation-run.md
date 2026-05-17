@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-17T12:00:25.728Z
-- Updated: 2026-05-17T12:00:30.938Z
+- Generated: 2026-05-17T17:27:01.101Z
+- Updated: 2026-05-17T17:27:06.321Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (276ms, attempt 1)
-- passed: `pnpm db:verify:remote` (1042ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (1093ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (958ms, attempt 1)
-- passed: `pnpm sources:monitor` (1836ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (213ms, attempt 1)
+- passed: `pnpm db:verify:remote` (897ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1192ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (1007ms, attempt 1)
+- passed: `pnpm sources:monitor` (1906ms, attempt 1)
 
 ## Summary
 
@@ -38,8 +38,8 @@
 - sourceType.official_instagram: 118
 - sourceType.official_site: 67
 - sourceType.operator_owned_page: 1
-- dueApprovedSources: 64
-- instagramPostSources: 78
+- dueApprovedSources: 47
+- instagramPostSources: 25
 - approvedSourceRotation: 96
 - operatorBatch: 16
 - candidateSources: 0
@@ -56,8 +56,8 @@
 
 ## Next Actions
 
-- Run the Instagram browser roller first (78 approved source(s)); it must use a logged-in browser session, open latest visible posts/reels only, and stage candidates for Admin review.
-- Inspect 64 due approved source(s) from inspectNow first.
+- Run the Instagram browser roller first (25 approved source(s)); it must use a logged-in browser session, open latest visible posts/reels only, and stage candidates for Admin review.
+- Inspect 47 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
 - Recheck upcomingEventRecheck for items starting within the next 30 days (37 queued).
 - Classify gym disciplines only from official site/SNS evidence; leave directory-only rows as クライミング (119 queued).

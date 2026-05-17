@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-05-17T17:02:20.199Z",
+  "status": "authenticated",
+  "userDataDir": ".zac-browser/instagram",
+  "timeoutMs": 600000,
+  "message": "Log in to Instagram in the opened browser window. No password, cookie, or token is read or stored by this script.",
+  "checkedAt": "2026-05-17T17:03:05.964Z",
+  "detail": "Instagram home/profile UI is visible without login prompt."
+}

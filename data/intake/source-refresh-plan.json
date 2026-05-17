@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-17T03:19:27.571Z",
+  "generatedAt": "2026-05-17T07:38:51.991Z",
   "policy": {
     "publicDataOnly": true,
     "publishOnly": [
@@ -23,14 +23,14 @@
   },
   "summary": {
     "sourceStatus": {
-      "approved": 175,
+      "approved": 192,
       "candidate": 1,
-      "paused": 20
+      "paused": 3
     },
     "sourceType": {
-      "aggregator_instagram": 11,
+      "aggregator_instagram": 9,
       "media_summary": 1,
-      "official_instagram": 116,
+      "official_instagram": 118,
       "official_site": 67,
       "operator_owned_page": 1
     },
@@ -38,12 +38,12 @@
       "published": 192
     },
     "eventCategory": {
-      "competition": 16,
+      "competition": 18,
       "construction": 1,
-      "event": 8,
+      "event": 10,
       "opening_change": 1,
-      "private_booking": 1,
-      "route_set": 18
+      "private_booking": 2,
+      "route_set": 19
     },
     "gyms": {
       "missing_instagram": 95,
@@ -88,18 +88,6 @@
         "discoverySource": "",
         "lastCheckedAt": "2026-05-11",
         "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "climbingzerosaitama",
-        "displayName": "クライミングジム ZE-RO（ゼロ） さいたま店",
-        "sourceUrl": "https://www.instagram.com/climbingzerosaitama/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-15",
-        "sourceVerifiedAt": "2026-05-14"
       },
       {
         "platform": "instagram",
@@ -499,18 +487,6 @@
       },
       {
         "platform": "instagram",
-        "handle": "beaks.climbing",
-        "displayName": "BEAKS（ビークス） クライミングスタジオ",
-        "sourceUrl": "https://www.instagram.com/beaks.climbing/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-15",
-        "sourceVerifiedAt": "2026-05-14"
-      },
-      {
-        "platform": "instagram",
         "handle": "bouldering_gym_share",
         "displayName": "ボルダリングジム Share（シェア）",
         "sourceUrl": "https://www.instagram.com/bouldering_gym_share/",
@@ -835,34 +811,58 @@
       },
       {
         "platform": "web",
-        "handle": "base-camp-edogawabashi",
-        "displayName": "BASE CAMP TOKYO 江戸川橋 公式サイト",
-        "sourceUrl": "https://b-camp.jp/edogawabashi/",
+        "handle": "climbing-aska",
+        "displayName": "クライミング飛鳥公式サイト",
+        "sourceUrl": "https://climbing-aska.com/",
         "sourceType": "official_site",
         "status": "approved",
-        "relationshipSourceHandle": "comp_bible",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-16",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "climbing-gym-cell",
+        "displayName": "クライミングジムCELL公式サイト",
+        "sourceUrl": "https://www.climb-cell.com/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-16",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "web",
+        "handle": "d-bouldering-plus-lead-kaihin-makuhari",
+        "displayName": "D.Bouldering Plus Lead 海浜幕張公式サイト",
+        "sourceUrl": "https://www.d-b-c.jp/top/kaihin-makuhari/",
+        "sourceType": "official_site",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-16",
+        "sourceVerifiedAt": "2026-05-11"
+      },
+      {
+        "platform": "instagram",
+        "handle": "rocky_shinagawa",
+        "displayName": "Rocky Shinagawa",
+        "sourceUrl": "https://www.instagram.com/rocky_shinagawa/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": null,
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
         "sourceVerifiedAt": "2026-05-09"
       },
       {
-        "platform": "web",
-        "handle": "westrock-climbing-event",
-        "displayName": "WESTROCK 公式イベント情報",
-        "sourceUrl": "https://www.westrock-climbing.com/event/",
-        "sourceType": "official_site",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-09"
-      },
-      {
-        "platform": "web",
-        "handle": "noborock-ikebukuro",
-        "displayName": "NOBOROCK 池袋店 公式サイト",
-        "sourceUrl": "https://noborock-climbing.com/program/ikebukuro/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "funabashirocky",
+        "displayName": "ROCKY 船橋店",
+        "sourceUrl": "https://www.instagram.com/funabashirocky/",
+        "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
         "discoverySource": "",
@@ -870,11 +870,11 @@
         "sourceVerifiedAt": "2026-05-11"
       },
       {
-        "platform": "web",
-        "handle": "noborock-machida",
-        "displayName": "NOBOROCK 町田店 公式サイト",
-        "sourceUrl": "https://noborock-climbing.com/program/machida/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "inzairocky",
+        "displayName": "ROCKY 印西店",
+        "sourceUrl": "https://www.instagram.com/inzairocky/",
+        "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
         "discoverySource": "",
@@ -882,136 +882,136 @@
         "sourceVerifiedAt": "2026-05-11"
       },
       {
-        "platform": "web",
-        "handle": "noborock-mizonokuchi",
-        "displayName": "NOBOROCK 溝ノ口店 公式サイト",
-        "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "jyuku_rocky",
+        "displayName": "ROCKY 新宿曙橋店",
+        "sourceUrl": "https://www.instagram.com/jyuku_rocky/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
         "sourceVerifiedAt": "2026-05-11"
       },
       {
-        "platform": "web",
-        "handle": "b-pump-yokohama",
-        "displayName": "B-PUMP YOKOHAMA 公式サイト",
-        "sourceUrl": "https://pump-climbing.com/gym/bpump2/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "jetsetclimbing",
+        "displayName": "JET SET（ジェットセット） climbing gym",
+        "sourceUrl": "https://www.instagram.com/jetsetclimbing/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "base-camp-higashimurayama",
-        "displayName": "Boulder Park Base Camp 東村山 公式サイト",
-        "sourceUrl": "https://b-camp.jp/higashimurayama/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "kachill_climbing",
+        "displayName": "KaChill カチル",
+        "sourceUrl": "https://www.instagram.com/kachill_climbing/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "urban-base-camp-shinjuku",
-        "displayName": "Urban Base Camp 新宿 公式サイト",
-        "sourceUrl": "https://b-camp.jp/shinjuku/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "lostcanyon_official",
+        "displayName": "クライミングジム LOST CANYON（ロストキャニオン）",
+        "sourceUrl": "https://www.instagram.com/lostcanyon_official/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "base-camp-hanno",
-        "displayName": "Boulder Park Base Camp 飯能店 公式サイト",
-        "sourceUrl": "https://b-camp.jp/hanno",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "lutra_lutra_climb_park_",
+        "displayName": "Lutra Lutra（ルトラルトラ）",
+        "sourceUrl": "https://www.instagram.com/lutra_lutra_climb_park_/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "base-camp-iruma",
-        "displayName": "Climb Park Base Camp 入間店 公式サイト",
-        "sourceUrl": "https://b-camp.jp/iruma",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "mitaka_gym",
+        "displayName": "ロッククライミング 三鷹ジム",
+        "sourceUrl": "https://www.instagram.com/mitaka_gym/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "base-camp-tokyo-edogawabashi",
-        "displayName": "Base Camp Tokyo 江戸川橋 公式サイト",
-        "sourceUrl": "https://b-camp.jp/edogawabashi/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "mountain_cliff_climbing",
+        "displayName": "MOUNTAIN CLIFF（マウンテンクリフ）",
+        "sourceUrl": "https://www.instagram.com/mountain_cliff_climbing/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "base-camp-tokyo-kinshicho",
-        "displayName": "Base Camp Tokyo 錦糸町 公式サイト",
-        "sourceUrl": "https://b-camp.jp/kinshicho/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "nextgen.bouldering",
+        "displayName": "Next Gen Bouldering（ネクストジェンボルダリング）",
+        "sourceUrl": "https://www.instagram.com/nextgen.bouldering/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "climbing-spider",
-        "displayName": "クライミングジムSPIDER 公式サイト",
-        "sourceUrl": "https://climbing-spider.com/shop/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "nose_machida_climbinggym",
+        "displayName": "クライミングジム NOSE（ノーズ） 町田店",
+        "sourceUrl": "https://www.instagram.com/nose_machida_climbinggym/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "beta-climbing",
-        "displayName": "BETA Climbing Gym 公式サイト",
-        "sourceUrl": "https://beta-climbing.com/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "olioli_climbing.gym",
+        "displayName": "クライミングジム OliOli（オリオリ）",
+        "sourceUrl": "https://www.instagram.com/olioli_climbing.gym/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       },
       {
-        "platform": "web",
-        "handle": "boulcom-kawasaki",
-        "displayName": "BOULCOM 川崎店 公式サイト",
-        "sourceUrl": "https://boulcom.jp/kawasaki/",
-        "sourceType": "official_site",
+        "platform": "instagram",
+        "handle": "peradra_gym",
+        "displayName": "PERADORA（ペルアドラ） クライミングジム 横浜",
+        "sourceUrl": "https://www.instagram.com/peradra_gym/",
+        "sourceType": "official_instagram",
         "status": "approved",
-        "relationshipSourceHandle": null,
+        "relationshipSourceHandle": "comp_bible_following",
         "discoverySource": "",
         "lastCheckedAt": "2026-05-16",
-        "sourceVerifiedAt": "2026-05-11"
+        "sourceVerifiedAt": "2026-05-14"
       }
     ],
     "instagramPostInspection": [
@@ -1028,21 +1028,6 @@
         "sourceVerifiedAt": "2026-05-11",
         "lastObservedAt": null,
         "observedPosts": 0,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "3f9d3b7b-b618-4c13-9825-86e6b47e5109",
-        "platform": "instagram",
-        "handle": "climbingzerosaitama",
-        "displayName": "クライミングジム ZE-RO（ゼロ） さいたま店",
-        "sourceUrl": "https://www.instagram.com/climbingzerosaitama/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-15",
-        "sourceVerifiedAt": "2026-05-14",
-        "lastObservedAt": "2026-05-15",
-        "observedPosts": 2,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1531,21 +1516,6 @@
         "handle": "b.g.funny",
         "displayName": "ボルダリングガレージ FUNNY（ファニー）",
         "sourceUrl": "https://www.instagram.com/b.g.funny/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-15",
-        "sourceVerifiedAt": "2026-05-14",
-        "lastObservedAt": "2026-05-15",
-        "observedPosts": 3,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "cb646fce-8e59-47eb-ae91-75a3a9b886fd",
-        "platform": "instagram",
-        "handle": "beaks.climbing",
-        "displayName": "BEAKS（ビークス） クライミングスタジオ",
-        "sourceUrl": "https://www.instagram.com/beaks.climbing/",
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
@@ -2214,6 +2184,36 @@
         "lastObservedAt": "2026-05-16",
         "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "63c7e04c-a3ec-4afd-8bb9-867f912ecefa",
+        "platform": "instagram",
+        "handle": "shina_rocky",
+        "displayName": "ROCKY 品川店",
+        "sourceUrl": "https://www.instagram.com/shina_rocky/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-17",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "c252e276-e301-43f3-95d2-b7253f40cc09",
+        "platform": "instagram",
+        "handle": "tsukuba_ami_rocky",
+        "displayName": "ROCKY つくば阿見店",
+        "sourceUrl": "https://www.instagram.com/tsukuba_ami_rocky/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-11",
+        "lastObservedAt": "2026-05-17",
+        "observedPosts": 7,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       }
     ],
     "candidateInstagramVerification": [],
@@ -2811,6 +2811,26 @@
         "extractionConfidence": "0.72"
       },
       {
+        "category": "route_set",
+        "title": "1F LEFTをルートセットします！",
+        "startsAt": "2026-05-18 20:00",
+        "endsAt": "2026-05-19 21:00",
+        "sourceUrl": "https://www.instagram.com/p/DYRsJPOmhPJ/",
+        "sourceLabel": "B-PUMP YOKOHAMA 横浜",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.72"
+      },
+      {
+        "category": "event",
+        "title": "🔥宿ロキでもMOVING3開催間近‼️🔥",
+        "startsAt": "2026-05-19 10:00",
+        "endsAt": "2026-05-23 21:00",
+        "sourceUrl": "https://www.instagram.com/p/DYRxikUpUZV/",
+        "sourceLabel": "ROCKY 新宿曙橋店",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.72"
+      },
+      {
         "category": "construction",
         "title": "5月 ルートクライミングエリア工事",
         "startsAt": "2026-05-19 12:00",
@@ -2832,16 +2852,6 @@
       },
       {
         "category": "competition",
-        "title": "🌟コンペ開催🌟",
-        "startsAt": "2026-05-23 10:00",
-        "endsAt": "2026-05-23 11:00",
-        "sourceUrl": "https://www.instagram.com/p/DXHC4snEnUU/",
-        "sourceLabel": "ROCKY つくば阿見店",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.72"
-      },
-      {
-        "category": "competition",
         "title": "BLoC 2026 Round2 ao_roc.climbing",
         "startsAt": "2026-05-23 10:00",
         "endsAt": "2026-05-24 20:00",
@@ -2849,6 +2859,16 @@
         "sourceLabel": "CLIMBERS BLoC 2026記事",
         "reviewStatus": "approved",
         "extractionConfidence": "0.78"
+      },
+      {
+        "category": "competition",
+        "title": "🌟コンペ開催🌟",
+        "startsAt": "2026-05-23 10:00",
+        "endsAt": "2026-05-23 11:00",
+        "sourceUrl": "https://www.instagram.com/p/DXHC4snEnUU/",
+        "sourceLabel": "ROCKY つくば阿見店",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.72"
       },
       {
         "category": "route_set",
@@ -2899,6 +2919,16 @@
         "sourceLabel": "Base Camp Tokyo 錦糸町 公式サイト",
         "reviewStatus": "approved",
         "extractionConfidence": "0.86"
+      },
+      {
+        "category": "private_booking",
+        "title": "短縮営業のお知らせ",
+        "startsAt": "2026-05-28 10:00",
+        "endsAt": "2026-05-28 11:00",
+        "sourceUrl": "https://www.instagram.com/p/DYRnWvgRwY-/",
+        "sourceLabel": "NOBOROCK 高田馬場店",
+        "reviewStatus": "pending",
+        "extractionConfidence": "0.72"
       },
       {
         "category": "competition",
@@ -2961,12 +2991,22 @@
         "extractionConfidence": "0.88"
       },
       {
+        "category": "event",
+        "title": "屋内クラック講習 受講者募集",
+        "startsAt": "2026-06-01 19:15",
+        "endsAt": "2026-06-03 21:00",
+        "sourceUrl": "https://www.instagram.com/p/DYBoWJ7lDRn/",
+        "sourceLabel": "ボルダリングジム ジャムセッション三鷹",
+        "reviewStatus": "pending",
+        "extractionConfidence": "0.72"
+      },
+      {
         "category": "competition",
-        "title": "🚩ボルダーキッズツアー2026🚩",
+        "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
         "startsAt": "2026-06-06 10:00",
-        "endsAt": "2026-06-06 21:00",
-        "sourceUrl": "https://www.instagram.com/p/DYPKukLPq2i/",
-        "sourceLabel": "クライミングジム ZE-RO（ゼロ） 水戸店",
+        "endsAt": "2026-06-06 11:00",
+        "sourceUrl": "https://www.instagram.com/p/DYOn4RhEU6L/",
+        "sourceLabel": "アオロク〖ao_roc.climbing〗",
         "reviewStatus": "approved",
         "extractionConfidence": "0.72"
       },
@@ -2977,6 +3017,16 @@
         "endsAt": "2026-06-06 11:00",
         "sourceUrl": "https://www.instagram.com/p/DXHComvEz5I/",
         "sourceLabel": "B-PUMP OGIKUBO",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.72"
+      },
+      {
+        "category": "competition",
+        "title": "🚩ボルダーキッズツアー2026🚩",
+        "startsAt": "2026-06-06 10:00",
+        "endsAt": "2026-06-06 21:00",
+        "sourceUrl": "https://www.instagram.com/p/DYPKukLPq2i/",
+        "sourceLabel": "クライミングジム ZE-RO（ゼロ） 水戸店",
         "reviewStatus": "approved",
         "extractionConfidence": "0.72"
       },
@@ -3031,16 +3081,6 @@
         "extractionConfidence": "0.72"
       },
       {
-        "category": "competition",
-        "title": "BLoC 2026 Round3 ROCKLANDS",
-        "startsAt": "2026-06-27 10:00",
-        "endsAt": "2026-06-27 20:00",
-        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
-        "sourceLabel": "CLIMBERS BLoC 2026記事",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.78"
-      },
-      {
         "category": "event",
         "title": "TAMAX 2026 クライミングジム マッドロック",
         "startsAt": "2026-06-27 10:00",
@@ -3049,6 +3089,16 @@
         "sourceLabel": "WESTROCK 公式イベント情報",
         "reviewStatus": "approved",
         "extractionConfidence": "0.90"
+      },
+      {
+        "category": "competition",
+        "title": "BLoC 2026 Round3 ROCKLANDS",
+        "startsAt": "2026-06-27 10:00",
+        "endsAt": "2026-06-27 20:00",
+        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
+        "sourceLabel": "CLIMBERS BLoC 2026記事",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.78"
       },
       {
         "category": "event",

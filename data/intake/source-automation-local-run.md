@@ -1,20 +1,20 @@
 # Source Automation Local Run
 
-- Generated: 2026-05-17T03:17:04.009Z
-- Updated: 2026-05-17T03:19:30.754Z
+- Generated: 2026-05-17T07:35:55.715Z
+- Updated: 2026-05-17T07:38:55.162Z
 - Status: ready_for_review
 
 ## Steps
 
-- required passed: `/opt/homebrew/bin/pnpm sources:automation-run` (5965ms)
-- optional passed: `/opt/homebrew/bin/pnpm sources:inspect-instagram` (127637ms)
-- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/instagram-post-observations.sql` (1204ms)
-- optional passed: `/opt/homebrew/bin/pnpm sources:inspect-official-sites` (3127ms)
-- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/official-site-observations.sql` (940ms)
-- optional passed: `/opt/homebrew/bin/pnpm sources:promote-observations` (1145ms)
-- optional passed: `/opt/homebrew/bin/pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/source-observation-promotions.sql` (956ms)
-- required passed: `/opt/homebrew/bin/pnpm sources:automation-run` (5558ms)
-- required passed: `/opt/homebrew/bin/pnpm sources:automation-health` (204ms)
+- required passed: `pnpm sources:automation-run` (5493ms)
+- optional passed: `pnpm sources:inspect-instagram` (110225ms)
+- optional passed: `pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/instagram-post-observations.sql` (1315ms)
+- optional passed: `pnpm sources:inspect-official-sites` (53587ms)
+- optional passed: `pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/official-site-observations.sql` (1123ms)
+- optional passed: `pnpm sources:promote-observations` (1194ms)
+- optional passed: `pnpm exec node --env-file=.env.local scripts/apply-sql-files.mjs data/intake/source-observation-promotions.sql` (988ms)
+- required passed: `pnpm sources:automation-run` (5292ms)
+- required passed: `pnpm sources:automation-health` (221ms)
 
 ## Summary
 

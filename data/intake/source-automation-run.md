@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-17T03:19:25.204Z
-- Updated: 2026-05-17T03:19:30.538Z
+- Generated: 2026-05-17T07:38:49.870Z
+- Updated: 2026-05-17T07:38:54.929Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (224ms, attempt 1)
-- passed: `pnpm db:verify:remote` (977ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (1286ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (985ms, attempt 1)
-- passed: `pnpm sources:monitor` (1857ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (203ms, attempt 1)
+- passed: `pnpm db:verify:remote` (956ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1056ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (936ms, attempt 1)
+- passed: `pnpm sources:monitor` (1905ms, attempt 1)
 
 ## Summary
 
@@ -21,21 +21,21 @@
 - gyms.with_instagram: 97
 - gyms.official_site_verified: 76
 - gyms.directory_only: 116
-- eventsByReviewStatus.approved: 45
-- eventsByReviewStatus.pending: 5
+- eventsByReviewStatus.approved: 48
+- eventsByReviewStatus.pending: 2
 - eventsByReviewStatus.rejected: 1
-- scheduledEventsByCategory.competition: 16
+- scheduledEventsByCategory.competition: 18
 - scheduledEventsByCategory.construction: 1
-- scheduledEventsByCategory.event: 8
+- scheduledEventsByCategory.event: 10
 - scheduledEventsByCategory.opening_change: 1
-- scheduledEventsByCategory.private_booking: 1
-- scheduledEventsByCategory.route_set: 18
-- sourceStatus.approved: 175
+- scheduledEventsByCategory.private_booking: 2
+- scheduledEventsByCategory.route_set: 19
+- sourceStatus.approved: 192
 - sourceStatus.candidate: 1
-- sourceStatus.paused: 20
-- sourceType.aggregator_instagram: 11
+- sourceStatus.paused: 3
+- sourceType.aggregator_instagram: 9
 - sourceType.media_summary: 1
-- sourceType.official_instagram: 116
+- sourceType.official_instagram: 118
 - sourceType.official_site: 67
 - sourceType.operator_owned_page: 1
 - dueApprovedSources: 64
@@ -49,7 +49,7 @@
 - candidateMatches.highConfidence: 0
 - candidateMatches.needsReview: 0
 - candidateMatches.unmatched: 0
-- upcomingEvents: 34
+- upcomingEvents: 39
 - gymDisciplineCandidates: 119
 - closureVerificationCandidates: 80
 - publicNetworkReachable: true
@@ -59,6 +59,6 @@
 - Inspect official Instagram recent-post queue first (48 source(s)); record post URLs in source_post_observations or reproducible SQL patches.
 - Inspect 64 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
-- Recheck upcomingEventRecheck for items starting within the next 30 days (34 queued).
+- Recheck upcomingEventRecheck for items starting within the next 30 days (39 queued).
 - Classify gym disciplines only from official site/SNS evidence; leave directory-only rows as クライミング (119 queued).
 - Verify closure, relocation, and rename risk with official evidence first; require two independent current sources if the official source is unavailable (80 queued).

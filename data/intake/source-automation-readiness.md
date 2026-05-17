@@ -1,14 +1,14 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-17T03:42:31.932Z
+- generatedAt: 2026-05-17T07:39:01.517Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 23
-- localRunAgeMinutes: 23
+- latestRunAgeMinutes: 0
+- localRunAgeMinutes: 0
 - consecutiveNonReady: 0
-- instagramFailureRatio: 0.6666666666666666
+- instagramFailureRatio: 1
 
 ## Queues
 
@@ -16,7 +16,7 @@
 - inspectNow: 64
 - operatorBatch: 16
 - approvedSourceRotation: 96
-- upcomingEventRecheck: 34
+- upcomingEventRecheck: 39
 - candidateVerification: 0
 - gymDisciplineVerification: 119
 - closureVerification: 80
@@ -27,7 +27,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 6
+- runs: 7
 
 ## Failed Checks
 
@@ -35,8 +35,7 @@
 
 ## Failed Instagram Sources
 
-- dogwood_climbing_gym: profile_not_found; officialFallback=true
-- climbingzerosaitama: profile_fetch_failed; officialFallback=true
+- dogwood_climbing_gym: profile_fetch_failed; officialFallback=true
 - bonobo_bs: profile_fetch_failed; officialFallback=true
 - boulderingspace_hat: profile_fetch_failed; officialFallback=true
 - basecamp_kinshicho: profile_fetch_failed; officialFallback=true
@@ -67,6 +66,23 @@
 - headrockcg: profile_fetch_failed; officialFallback=true
 - okkurock: profile_fetch_failed; officialFallback=true
 - penguinclimb: profile_fetch_failed; officialFallback=true
+- 310_avue: profile_fetch_failed; officialFallback=true
+- altior_climbing_gym1: profile_fetch_failed; officialFallback=true
+- b.g.funny: profile_fetch_failed; officialFallback=true
+- bouldering_gym_share: profile_fetch_failed; officialFallback=true
+- bouldering_gym_tohandoujou: profile_fetch_failed; officialFallback=true
+- bouldering_space_bleau: profile_fetch_failed; officialFallback=true
+- climbing_aska: profile_fetch_failed; officialFallback=true
+- climbing_gym_cozy: profile_fetch_failed; officialFallback=true
+- climbinggym_hutte: profile_fetch_failed; officialFallback=true
+- climbinggymflash: profile_fetch_failed; officialFallback=true
+- climbrise2016: profile_fetch_failed; officialFallback=true
+- quartier_de_roche: profile_fetch_failed; officialFallback=true
+- rhinoandbird_nishinippori: profile_fetch_failed; officialFallback=true
+- rockbeans.insta: profile_fetch_failed; officialFallback=true
+- sloth.gym: profile_fetch_failed; officialFallback=true
+- three_peaks_climbing: profile_fetch_failed; officialFallback=true
+- tokyodomecity_spodori: profile_fetch_failed; officialFallback=true
 
 ## Next Actions
 

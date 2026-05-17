@@ -1,13 +1,13 @@
 # Instagram Post Inspection
 
-- Generated: 2026-05-17T03:17:10.169Z
+- Generated: 2026-05-17T07:36:01.409Z
 - Sources queued: 48
-- Sources fetched: 16
-- Sources failed: 32
-- Observed posts: 48
-- Pending posts: 34
-- Ignored posts: 14
-- Calendar candidates: 25
+- Sources fetched: 0
+- Sources failed: 48
+- Observed posts: 0
+- Pending posts: 0
+- Ignored posts: 0
+- Calendar candidates: 0
 
 ## Policy
 
@@ -15,73 +15,7 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 
 ## Inspections
 
-- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed (profile_not_found)
-  - no posts
-- ROCKY 品川店 (shina_rocky)
-  - pending: competition | もちろん今年もやります！！！！コンペ日程が確定🎉🎉 | https://www.instagram.com/p/DWs85LWiV5Q/
-  - pending: event | ご要望が多かったため、すべてのスクール開始時刻が30分遅くなりました】Rocky 品川店にて 2026年1月より、小学生・中学生向けのキッズスクールが開校され… | https://www.instagram.com/p/DTJkFARkqoD/
-  - pending: event | 今週末よりリニューアルオープンいたしました〜㊗️㊗️㊗️ | https://www.instagram.com/p/C9enmHRyWQ3/
-- ROCKY つくば阿見店 (tsukuba_ami_rocky)
-  - pending: competition | 🌟コンペ開催🌟 | https://www.instagram.com/p/DXHC4snEnUU/
-  - pending: competition | 5月の営業案内 | https://www.instagram.com/p/DXn0YnKkrD_/
-  - pending: competition | ✨✨エントリーリスト公開✨✨ | https://www.instagram.com/p/DYWuxFdhQf8/
-- PIGLET CLIMBING GYM公式Instagram (pigletclimbinggym)
-  - pending: route_set | 強傾斜側のホールド替えが近づいてきましたね！ | https://www.instagram.com/p/DYZMLdbj0Jx/
-  - ignored: notice | ジムTシャツじゃないけど、珍しいTシャツが被ったので写真撮りました👍 | https://www.instagram.com/p/DYUbmhTP0mj/
-  - ignored: notice | 頑張っているコースの手順足順、重心移動の仕方、遠いホールドを取りに行く時どのタイミングで手を離すか、そんなことを子どもたち同士で話し合っているのをきくとしっか… | https://www.instagram.com/p/DYR3rFcj246/
-- And Energy Bouldering (and_energy_bouldering)
-  - pending: opening_change | 初めてご来店の方へ | https://www.instagram.com/p/DX3MuX0E3bW/
-  - ignored: notice | NEW SET 参考動画🔥 | https://www.instagram.com/p/DYa6I5uzYWn/
-  - ignored: notice | 6日間のお休みをあけて、 | https://www.instagram.com/p/DYZfqulTiVw/
-- アオロク〖ao_roc.climbing〗 (ao_roc.climbing)
-  - pending: competition | 5月カレンダー&お知らせ】〈追記〉 | https://www.instagram.com/p/DXyvVscEYjV/
-  - pending: competition | BLoC2026 round2 | https://www.instagram.com/p/DXA2xVuiQCO/
-  - pending: competition | Round.2 ao_roc.climbing Time Table | https://www.instagram.com/p/DYVb6E9E0LK/
-- Base Camp Tokyo 江戸川橋 (basecamp_edogawabashi)
-  - ignored: notice | ・ | https://www.instagram.com/p/DYE2f9zia1r/
-  - pending: route_set | ・ | https://www.instagram.com/p/DXoaEezEemy/
-  - pending: route_set | ・ | https://www.instagram.com/p/DX0vO-6kcUd/
-- Boulder Park Base Camp 飯能店 (basecamp_hanno)
-  - pending: route_set | . | https://www.instagram.com/p/DXymojwj8Vu/
-  - ignored: notice | 新店舗のお知らせ | https://www.instagram.com/p/DXxt2MRk_c6/
-  - ignored: notice | ・ | https://www.instagram.com/p/DYMkwCCGsqr/
-- クライミングジム VOLNY（ボルニー） (volny_climbing)
-  - pending: opening_change | 2026.4月から有人営業、無人営業時間を変更します | https://www.instagram.com/p/DWi-r8gE40i/
-  - ignored: notice | First stop with Stōkt on tour… @volny_climbing ! It’s all about hard, tradition… | https://www.instagram.com/p/C92kk1zuhSw/
-  - ignored: notice | ・ | https://www.instagram.com/p/DWDUVpSkxg8/
-- クライミングジム ZE-RO（ゼロ） 水戸店 (zeromito0123)
-  - pending: competition | 🚩ボルダーキッズツアー2026🚩 | https://www.instagram.com/p/DYPKukLPq2i/
-  - pending: event | . | https://www.instagram.com/p/DWbMesCiYOI/
-  - pending: competition | . | https://www.instagram.com/p/DYWlalgP_QB/
-- クライミングジム MABOO（マーブー） (maboo.insta)
-  - pending: competition | Maboo Kanshasai – Climbing Festival | https://www.instagram.com/p/DWp_p48k7dV/
-  - ignored: notice | 「保持壁」 | https://www.instagram.com/p/DUAffeUE_n1/
-  - pending: competition | . | https://www.instagram.com/p/DSb8pSGk81i/
-- 小鹿野町クライミングパーク 神怡舘 (shinnikan)
-  - pending: event | 神怡舘information | https://www.instagram.com/p/DXy7rMMGTYa/
-  - pending: event | 神怡舘information | https://www.instagram.com/p/DXbpjGhmeDN/
-  - pending: opening_change | 神怡舘information | https://www.instagram.com/p/DWTUK8bEhfC/
-- クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands)
-  - ignored: notice | ⁡ | https://www.instagram.com/p/DYGsHrAif5s/
-  - pending: competition | BLoC2026 round3 | https://www.instagram.com/p/DXa8bCVCQtY/
-  - pending: competition | . | https://www.instagram.com/p/DWqDdeSibEa/
-- クライミングジム WESTROCK（ウエストロック） 調布店 (westrock_climbing)
-  - pending: competition | 府中店B-Score🍀 | https://www.instagram.com/p/DYEr-HijyhU/
-  - pending: competition | TAMAX 2026 開催スケジュール | https://www.instagram.com/p/DW3Xt-5E21Z/
-  - pending: competition | 府中店【B-SCORE 7th Season | https://www.instagram.com/p/DS4Jx-3D8Qg/
-- BOULCOM 川崎店 (boulcom_kawasaki)
-  - pending: event | BOULCOM KIDS SCHOOL生徒大募集✨ | https://www.instagram.com/p/DXA9RBcieUz/
-  - ignored: recruit | スタッフ募集中💡✨✨ | https://www.instagram.com/p/DVaRVWNk8dK/
-  - pending: route_set | オススメ課題紹介11 | https://www.instagram.com/p/DYZJzcFpV_C/
-- Boulder Park Base Camp 東村山 (basecamp_higashimurayama)
-  - pending: route_set | 料金改定とサマーキャンペーンのお知らせ | https://www.instagram.com/p/DYEuzBDE0xZ/
-  - pending: route_set | ４月から新しくボルダリングを始めた方や今ハマっててもっとうまくなりたいと思っている方は必見！ | https://www.instagram.com/p/DXtgSr-kwbW/
-  - pending: route_set | 今月、第２週に強傾斜壁、第４週に緩傾斜壁のセットがありますのでご確認お願いします‼️ | https://www.instagram.com/p/DXyb7P_k70p/
-- Climb Park Base Camp 入間店 (basecamp_iruma)
-  - ignored: notice | ボルダー緩傾斜 new set | https://www.instagram.com/p/DYGklTZuvRY/
-  - pending: event | ジュニアスクール　ホリデークラス　開講のお知らせ📣 | https://www.instagram.com/p/DWI2I4qjuaw/
-  - ignored: recruit | . | https://www.instagram.com/p/DWdF-JlDpmS/
-- クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) - fetch failed (access_restricted)
+- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - fetch failed (access_restricted)
   - no posts
 - bonobo_bs (bonobo_bs) - fetch failed (access_restricted)
   - no posts
@@ -142,4 +76,38 @@ Store source links, short summaries, and short quotes only. Do not store full ca
 - okkurock (okkurock) - fetch failed (access_restricted)
   - no posts
 - penguinclimb (penguinclimb) - fetch failed (access_restricted)
+  - no posts
+- 水戸シティロックジム avue（アヴュー） (310_avue) - fetch failed (access_restricted)
+  - no posts
+- ALTIOR（アルティオール）クライミングジム (altior_climbing_gym1) - fetch failed (access_restricted)
+  - no posts
+- ボルダリングガレージ FUNNY（ファニー） (b.g.funny) - fetch failed (access_restricted)
+  - no posts
+- ボルダリングジム Share（シェア） (bouldering_gym_share) - fetch failed (access_restricted)
+  - no posts
+- ボルダリングジム 登攀道場 (bouldering_gym_tohandoujou) - fetch failed (access_restricted)
+  - no posts
+- ボルダリングスペース BLEAU（ブロー） (bouldering_space_bleau) - fetch failed (access_restricted)
+  - no posts
+- クライミング飛鳥 (climbing_aska) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム COZY (climbing_gym_cozy) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム Hutte（ヒュッテ） (climbinggym_hutte) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム FLASH（フラッシュ） (climbinggymflash) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム RISE（ライズ） (climbrise2016) - fetch failed (access_restricted)
+  - no posts
+- クライミングパーク カルチェロッシュ (quartier_de_roche) - fetch failed (access_restricted)
+  - no posts
+- Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム SLOTH（スロース） (sloth.gym) - fetch failed (access_restricted)
+  - no posts
+- クライミングジム THREE PEAKS（スリーピークス） (three_peaks_climbing) - fetch failed (access_restricted)
+  - no posts
+- スポドリ！ (tokyodomecity_spodori) - fetch failed (access_restricted)
   - no posts

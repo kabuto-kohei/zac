@@ -751,7 +751,7 @@ test("admin content list routes require admin", async () => {
   assert.equal(announcementsResponse.status, 200);
 });
 
-test("admin Instagram review queue records actions and creates event candidates", async () => {
+test("admin Instagram review queue confirms official sources and creates event candidates", async () => {
   const app = createApp();
   const candidateResponse = await app.request("/v1/admin/instagram-review-queue/candidates", {
     method: "POST",
@@ -775,8 +775,8 @@ test("admin Instagram review queue records actions and creates event candidates"
   const actionResponse = await app.request("/v1/admin/instagram-review-queue/event-source-b-pump-tokyo-instagram/actions", {
     method: "POST",
     body: JSON.stringify({
-      action: "no_info",
-      reason: "掲載候補なし",
+      action: "confirm_official",
+      reason: "公式サイトからリンクされているため公式として確認",
     }),
     headers: {
       ...adminAuth,
@@ -790,7 +790,7 @@ test("admin Instagram review queue records actions and creates event candidates"
   assert.equal(candidateBody.data.reviewStatus, "pending");
   assert.equal(candidateBody.data.sourceUrl, "https://www.instagram.com/p/test-post/");
   assert.equal(actionResponse.status, 200);
-  assert.equal(actionBody.data.action, "no_info");
+  assert.equal(actionBody.data.action, "confirm_official");
 });
 
 test("admin content mutations create and update events and announcements", async () => {

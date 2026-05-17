@@ -96,6 +96,8 @@ export type InstagramReviewQueueItem = {
   sourceUrl: string;
   officialSiteUrl: string;
   fallbackAvailable: boolean;
+  sourceStatus: "candidate" | "approved" | "paused" | "rejected";
+  sourceVerifiedAt: string | null;
   lastCheckedAt: string;
   lastObservedAt: string;
   observedPosts: number;
@@ -396,14 +398,16 @@ export const instagramReviewQueueFixtures: InstagramReviewQueueItem[] = [
     sourceUrl: "https://www.instagram.com/bpumptokyo/",
     officialSiteUrl: "https://pump-climbing.com/gym/akiba/",
     fallbackAvailable: true,
+    sourceStatus: "candidate",
+    sourceVerifiedAt: null,
     lastCheckedAt: "2026-05-16",
     lastObservedAt: "",
     observedPosts: 0,
     failureCategory: "access_restricted",
-    failureDetail: "Instagram public endpoint requires login or rate-limits direct access. Open the profile manually and create candidates only from confirmed public facts.",
+    failureDetail: "Instagram public endpoint requires login or rate-limits direct access. Open the profile and official site to confirm whether this account is operated by the gym.",
     priority: "high",
     status: "needs_human_review",
-    reviewReason: "Instagram直取得が不安定なため、管理者が公開プロフィールと公式サイトを確認して候補化します。",
+    reviewReason: "Instagram直取得が不安定なため、管理者が公開プロフィールと公式サイトを見比べて公式アカウントか確認します。",
   },
 ];
 

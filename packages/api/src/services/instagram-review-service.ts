@@ -40,12 +40,10 @@ export async function recordInstagramReviewQueueAction(sourceId: string, input: 
 
   const now = new Date();
   const note = input.reason ?? defaultQueueActionReason(input.action);
+  const sourceUpdate = sourceUpdateForAction(input.action, source.lastCheckedAt, now);
   await db
     .update(eventSources)
-    .set({
-      lastCheckedAt: input.action === "no_info" ? now : source.lastCheckedAt,
-      updatedAt: now,
-    })
+    .set(sourceUpdate)
     .where(eq(eventSources.id, sourceId));
 
   try {
@@ -82,7 +80,14 @@ async function listPersistentInstagramReviewQueue() {
     const sources = await db
       .select()
       .from(eventSources)
-      .where(and(eq(eventSources.platform, "instagram"), eq(eventSources.sourceType, "official_instagram"), eq(eventSources.status, "approved"), isNull(eventSources.deletedAt)))
+      .where(
+        and(
+          eq(eventSources.platform, "instagram"),
+          inArray(eventSources.sourceType, ["official_instagram", "aggregator_instagram"]),
+          inArray(eventSources.status, ["candidate", "approved", "paused"]),
+          isNull(eventSources.deletedAt),
+        ),
+      )
       .orderBy(desc(eventSources.updatedAt))
       .limit(queueLimit);
 
@@ -169,6 +174,8 @@ function toQueueItem(input: {
     sourceUrl: input.source.sourceUrl,
     officialSiteUrl: input.fallbackUrl,
     fallbackAvailable: Boolean(input.fallbackUrl),
+    sourceStatus: parseSourceStatus(input.source.status),
+    sourceVerifiedAt: input.source.sourceVerifiedAt ? formatDate(input.source.sourceVerifiedAt) : null,
     lastCheckedAt,
     lastObservedAt,
     observedPosts: input.observedPosts,
@@ -242,23 +249,56 @@ function failureDetail(failureCategory: InstagramReviewQueueItem["failureCategor
 }
 
 function queueActionTitle(action: InstagramReviewQueueActionInput["action"]) {
-  if (action === "no_info") {
-    return "Instagram確認: 情報なし";
+  if (action === "confirm_official") {
+    return "Instagram公式確認: 公式として承認";
   }
-  if (action === "recheck") {
-    return "Instagram確認: 再確認";
+  if (action === "reject_official") {
+    return "Instagram公式確認: 非公式として却下";
   }
-  return "Instagram確認: 要追加対応";
+  return "Instagram公式確認: 保留";
 }
 
 function defaultQueueActionReason(action: InstagramReviewQueueActionInput["action"]) {
-  if (action === "no_info") {
-    return "Admin confirmed no publishable event information at this time.";
+  if (action === "confirm_official") {
+    return "Admin confirmed the Instagram profile is operated by the target gym or operator.";
   }
-  if (action === "recheck") {
-    return "Admin requested this source to be checked again.";
+  if (action === "reject_official") {
+    return "Admin determined the Instagram profile is not an official source for the target gym.";
   }
-  return "Admin marked this source for follow-up.";
+  return "Admin could not confirm official ownership and marked this source for follow-up.";
+}
+
+function sourceUpdateForAction(action: InstagramReviewQueueActionInput["action"], currentLastCheckedAt: Date | null, now: Date) {
+  if (action === "confirm_official") {
+    return {
+      sourceType: "official_instagram",
+      status: "approved",
+      sourceVerifiedAt: now,
+      lastCheckedAt: now,
+      updatedAt: now,
+    };
+  }
+
+  if (action === "reject_official") {
+    return {
+      status: "rejected",
+      lastCheckedAt: now,
+      updatedAt: now,
+    };
+  }
+
+  return {
+    status: "paused",
+    lastCheckedAt: currentLastCheckedAt,
+    updatedAt: now,
+  };
+}
+
+function parseSourceStatus(value: string): InstagramReviewQueueItem["sourceStatus"] {
+  if (value === "candidate" || value === "approved" || value === "paused" || value === "rejected") {
+    return value;
+  }
+  return "candidate";
 }
 
 function normalizeHandle(value: string | null | undefined) {

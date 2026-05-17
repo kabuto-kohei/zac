@@ -347,7 +347,7 @@ function InstagramReviewQueueView() {
 
   return (
     <>
-      <AdminViewHeader title="Instagram確認" description="自動取得できない公式Instagramを開き、確認済みの公開情報だけを候補化します。" />
+      <AdminViewHeader title="Instagram確認" description="候補Instagramが対象ジムの公式アカウントか確認し、公式ソースとして使えるものだけ承認します。" />
       <AdminDataStatus state={queue} />
       <section className="metric-grid compact-metrics">
         <Metric label="確認待ち" value={String(items.length)} />
@@ -649,37 +649,13 @@ function InstagramReviewQueueRow({ item, onRecorded }: { item: InstagramReviewQu
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
 
-  async function createCandidate(formData: FormData) {
+  async function recordAction(formData: FormData) {
     setMessage("");
-    const body = {
-      gymId: item.gymId,
-      sourceId: item.sourceId,
-      sourceUrl: formData.get("sourceUrl")?.toString() || item.sourceUrl,
-      title: formData.get("title")?.toString() ?? "",
-      category: formData.get("category")?.toString() || "event",
-      startsAt: toIsoDateTime(formData.get("startsAt")?.toString()) ?? "",
-      endsAt: toIsoDateTime(formData.get("endsAt")?.toString()),
-      sourceQuote: formData.get("sourceQuote")?.toString() || null,
-      reason: formData.get("reason")?.toString() || item.reviewReason,
-    };
-    const response = await postAdminApi<EventSummary>("/v1/admin/instagram-review-queue/candidates", body);
-
-    if (!response.ok) {
-      setStatus("error");
-      setMessage(response.message);
-      return;
-    }
-
-    setStatus("success");
-    setMessage("候補レビューに追加しました。");
-    onRecorded(item.sourceId);
-  }
-
-  async function recordAction(action: "no_info" | "recheck") {
-    setMessage("");
+    const action = formData.get("action")?.toString() || "needs_followup";
+    const reason = formData.get("reason")?.toString() || null;
     const response = await postAdminApi<{ sourceId: string; action: string; recorded: boolean }>(`/v1/admin/instagram-review-queue/${item.sourceId}/actions`, {
       action,
-      reason: action === "no_info" ? "公開プロフィールと公式サイトを確認したが掲載候補はありません。" : item.reviewReason,
+      reason,
     });
 
     if (!response.ok) {
@@ -689,7 +665,7 @@ function InstagramReviewQueueRow({ item, onRecorded }: { item: InstagramReviewQu
     }
 
     setStatus("success");
-    setMessage(action === "no_info" ? "情報なしとして記録しました。" : "再確認対象として記録しました。");
+    setMessage(action === "confirm_official" ? "公式Instagramとして承認しました。" : action === "reject_official" ? "非公式として却下しました。" : "保留として記録しました。");
     onRecorded(item.sourceId);
   }
 
@@ -704,12 +680,12 @@ function InstagramReviewQueueRow({ item, onRecorded }: { item: InstagramReviewQu
           <small>{item.reviewReason}</small>
         </span>
         <span>
-          <strong>{item.priority}</strong>
-          <small>{item.failureCategory}</small>
+          <strong>{item.sourceStatus}</strong>
+          <small>{item.sourceVerifiedAt ? `公式確認 ${item.sourceVerifiedAt}` : "公式未確認"}</small>
           <small>{item.failureDetail}</small>
         </span>
         <span>
-          <strong>確認日</strong>
+          <strong>自動取得</strong>
           <small>最終確認 {item.lastCheckedAt || "-"}</small>
           <small>観測 {item.observedPosts}件 / 最新 {item.lastObservedAt || "-"}</small>
         </span>
@@ -726,55 +702,21 @@ function InstagramReviewQueueRow({ item, onRecorded }: { item: InstagramReviewQu
           )}
         </span>
       </div>
-      <form action={createCandidate} className="instagram-candidate-form">
+      <form action={recordAction} className="instagram-review-decision-form">
         <label className="admin-field admin-field-title">
-          タイトル
-          <input maxLength={120} name="title" placeholder="適切な掲載タイトル" required />
+          判断理由
+          <input maxLength={1000} name="reason" placeholder="例: 公式サイトからリンクあり / 店舗名・住所・投稿内容が一致 / 別店舗のアカウントだった" />
         </label>
-        <label className="admin-field">
-          カテゴリ
-          <select defaultValue="event" name="category">
-            <option value="event">イベント</option>
-            <option value="competition">コンペ</option>
-            <option value="route_set">セット</option>
-            <option value="lesson">レッスン</option>
-            <option value="opening_change">営業時間変更</option>
-            <option value="private_booking">貸切</option>
-            <option value="construction">工事</option>
-            <option value="notice">お知らせ</option>
-            <option value="recruit">募集</option>
-          </select>
-        </label>
-        <label className="admin-field">
-          開始
-          <input name="startsAt" required type="datetime-local" />
-        </label>
-        <label className="admin-field">
-          終了
-          <input name="endsAt" type="datetime-local" />
-        </label>
-        <label className="admin-field admin-field-url">
-          証拠URL
-          <input defaultValue={item.sourceUrl} maxLength={500} name="sourceUrl" required />
-        </label>
-        <label className="admin-field">
-          根拠
-          <input maxLength={300} name="sourceQuote" placeholder="短い根拠メモ" />
-        </label>
-        <label className="admin-field">
-          理由
-          <input maxLength={1000} name="reason" placeholder="Admin確認理由" />
-        </label>
-        <button type="submit">候補化</button>
+        <button name="action" type="submit" value="confirm_official">
+          公式として承認
+        </button>
+        <button className="secondary-admin-action" name="action" type="submit" value="needs_followup">
+          保留
+        </button>
+        <button className="secondary-admin-action danger-admin-action" name="action" type="submit" value="reject_official">
+          非公式として却下
+        </button>
       </form>
-      <div className="instagram-review-actions">
-        <button className="secondary-admin-action" onClick={() => void recordAction("no_info")} type="button">
-          情報なし
-        </button>
-        <button className="secondary-admin-action" onClick={() => void recordAction("recheck")} type="button">
-          再確認
-        </button>
-      </div>
       <StatusMessage message={message} status={status} />
     </article>
   );

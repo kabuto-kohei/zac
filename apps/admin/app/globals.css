@@ -315,16 +315,15 @@ p {
 
 .instagram-review-row span,
 .instagram-review-summary span,
-.admin-link-stack,
-.instagram-review-actions {
+.admin-link-stack {
   display: grid;
   gap: 4px;
 }
 
-.instagram-candidate-form {
+.instagram-review-decision-form {
   display: grid;
-  grid-template-columns: minmax(180px, 1.2fr) minmax(130px, 0.7fr) minmax(150px, 0.8fr) minmax(150px, 0.8fr);
-  gap: 8px;
+  grid-template-columns: minmax(280px, 1fr) minmax(140px, 0.45fr) minmax(96px, 0.3fr) minmax(140px, 0.45fr);
+  gap: 10px;
   align-items: end;
   min-width: 0;
 }
@@ -363,10 +362,8 @@ p {
 .admin-field input,
 .admin-field select,
 .admin-field textarea,
-.instagram-candidate-form input,
-.instagram-candidate-form select,
-.instagram-candidate-form button,
-.instagram-review-actions button,
+.instagram-review-decision-form input,
+.instagram-review-decision-form button,
 .moderation-row select,
 .moderation-row input,
 .moderation-row button {
@@ -383,8 +380,7 @@ p {
 .candidate-actions input,
 .admin-field input,
 .admin-field select,
-.instagram-candidate-form input,
-.instagram-candidate-form select,
+.instagram-review-decision-form input,
 .moderation-row select,
 .moderation-row input {
   min-height: var(--control-height);
@@ -399,8 +395,7 @@ p {
 
 .candidate-row button,
 .candidate-actions button,
-.instagram-candidate-form button,
-.instagram-review-actions button,
+.instagram-review-decision-form button,
 .moderation-row button {
   min-height: var(--control-height);
   padding: 10px 12px;
@@ -416,10 +411,15 @@ p {
   color: var(--ink);
 }
 
-.instagram-review-actions .secondary-admin-action {
+.instagram-review-decision-form .secondary-admin-action {
   border-color: var(--line);
   background: var(--surface);
   color: var(--ink);
+}
+
+.instagram-review-decision-form .danger-admin-action {
+  border-color: #fecaca;
+  color: var(--danger);
 }
 
 .admin-editor-form {
@@ -552,7 +552,7 @@ p {
   }
 
   .instagram-review-row,
-  .instagram-candidate-form {
+  .instagram-review-decision-form {
     grid-template-columns: 1fr;
   }
 
@@ -577,7 +577,7 @@ p {
   .admin-row,
   .candidate-row,
   .instagram-review-row,
-  .instagram-candidate-form,
+  .instagram-review-decision-form,
   .moderation-row,
   .admin-editor-form,
   .content-editor-row,

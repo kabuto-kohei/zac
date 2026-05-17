@@ -57,9 +57,10 @@ Daily during the controlled launch:
 6. Approve only candidates backed by official evidence.
 7. Open `https://zac-admin.vercel.app/instagram-review`.
 8. For blocked official Instagram sources, open the profile and official site;
-   create a candidate only when the evidence URL, title, category, and date are
-   clear.
-9. Reject or leave pending weak evidence.
+   approve only accounts that can be confirmed as the target gym/operator's
+   official account.
+9. Reject non-official accounts or leave uncertain accounts on hold with a
+   short reason.
 10. Mark handled update requests `resolved`.
 
 Approval rules:

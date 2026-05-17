@@ -86,12 +86,13 @@ When Instagram direct fetch returns login or rate-limit responses, the source
 does not become complete. It moves into Admin Instagram review:
 
 1. Open `/instagram-review`.
-2. Open the official Instagram profile and official website link from the row.
-3. If a public post/reel contains a calendar-worthy fact, enter an appropriate
-   Zac title, category, date/time, evidence URL, short quote, and reason.
-4. Submit it as a draft/pending event candidate.
-5. If no publishable fact is visible, record `情報なし`; if the source needs a
-   later automated pass, record `再確認`.
+2. Open the Instagram profile and official website link from the row.
+3. Decide whether the Instagram account is operated by the target gym or its
+   operator. Good evidence includes an official-site link to the profile,
+   matching shop name/address, or consistent operator branding.
+4. Record `公式として承認`, `非公式として却下`, or `保留` with a short reason.
+5. Use `/event-candidates` or `/events` for event publication work after the
+   source itself is confirmed.
 
 This path is deliberately manual. It is for confirming public facts from the
 operator's normal browser session, not for copying Instagram media or full

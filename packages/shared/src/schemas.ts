@@ -174,7 +174,7 @@ export const adminEventCategorySchema = z.enum([
   "recruit",
 ]);
 export const instagramReviewQueueActionSchema = z.object({
-  action: z.enum(["no_info", "recheck", "needs_followup"]),
+  action: z.enum(["confirm_official", "reject_official", "needs_followup"]),
   reason: z.string().max(1000).nullable().optional(),
 });
 

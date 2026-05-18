@@ -1,12 +1,12 @@
 # Official Site Inspection
 
-- Generated: 2026-05-18T02:35:28.000Z
-- Sources queued: 7
-- Sources fetched: 5
+- Generated: 2026-05-18T15:18:43.306Z
+- Sources queued: 6
+- Sources fetched: 4
 - Sources failed: 2
-- Observed items: 15
-- Pending items: 15
-- Calendar candidates: 15
+- Observed items: 12
+- Pending items: 12
+- Calendar candidates: 12
 
 ## Policy
 
@@ -18,23 +18,19 @@ Store source links, short summaries, and short quotes only. Do not store full pa
   - no candidates
 - KaChill 公式サイト (kachill) - fetch failed (access_restricted)
   - no candidates
-- NOBOROCK 溝ノ口店 公式サイト (noborock-mizonokuchi)
-  - pending: route_set | NOBOROCK 溝ノ口店 ルートセット | https://noborock-climbing.com/program/mizonokuchi/#zac-2026-05-12-route_set-1
-  - pending: route_set | NOBOROCK 溝ノ口店 ルートセット | https://noborock-climbing.com/program/mizonokuchi/#zac-2026-06-14-route_set-2
-  - pending: route_set | NOBOROCK 溝ノ口店 ルートセット | https://noborock-climbing.com/program/mizonokuchi/#zac-2026-06-15-route_set-3
-- B-PUMP YOKOHAMA 公式サイト (b-pump-yokohama)
-  - pending: construction | B-PUMP YOKOHAMA BAMBI’S BOULDER SCHOOL | https://pump-climbing.com/gym/bpump2/#zac-2026-04-01-construction-1
-  - pending: construction | B-PUMP YOKOHAMA BAMBI’S BOULDER SCHOOL | https://pump-climbing.com/gym/bpump2/#zac-2026-05-01-construction-2
-  - pending: construction | B-PUMP YOKOHAMA この日なら行けるのに…！ | https://pump-climbing.com/gym/bpump2/#zac-2026-04-03-construction-3
-- Boulder Park Base Camp 東村山 公式サイト (base-camp-higashimurayama)
-  - pending: opening_change | Boulder Park Base Camp 東村山 02/01 営業変更 | https://b-camp.jp/higashimurayama/#zac-2026-02-01-opening_change-1
-  - pending: opening_change | Boulder Park Base Camp 東村山 01/11 営業変更 | https://b-camp.jp/higashimurayama/#zac-2026-01-11-opening_change-2
-  - pending: opening_change | Boulder Park Base Camp 東村山 04/01 営業変更 | https://b-camp.jp/higashimurayama/#zac-2026-04-01-opening_change-3
-- Urban Base Camp 新宿 公式サイト (urban-base-camp-shinjuku)
-  - pending: opening_change | Urban Base Camp 新宿 Body movin&#8217; | https://b-camp.jp/shinjuku/#zac-2026-05-08-opening_change-1
-  - pending: opening_change | Urban Base Camp 新宿 Body movin&#8217; | https://b-camp.jp/shinjuku/#zac-2026-03-29-opening_change-2
-  - pending: opening_change | Urban Base Camp 新宿 Body movin&#8217; | https://b-camp.jp/shinjuku/#zac-2026-03-12-opening_change-3
-- Boulder Park Base Camp 飯能店 公式サイト (base-camp-hanno)
-  - pending: competition | Boulder Park Base Camp 飯能店 08/08 コンペ | https://b-camp.jp/hanno#zac-2018-08-08-competition-1
-  - pending: competition | Boulder Park Base Camp 飯能店 05/11 コンペ | https://b-camp.jp/hanno#zac-2026-05-11-competition-2
-  - pending: competition | Boulder Park Base Camp 飯能店 05/01 コンペ | https://b-camp.jp/hanno#zac-2026-05-01-competition-3
+- ディーボルダリングプラス八千代公式施設紹介 (d-bouldering-plus-yachiyo)
+  - pending: private_booking | ディーボルダリングプラス八千代公式施設紹介 施設のご紹介 | https://www.d-b-c.jp/yachiyo-news/facility#zac-2025-02-06-private_booking-1
+  - pending: event | ディーボルダリングプラス八千代公式施設紹介 お詫びと自主回収のお知らせ | https://www.d-b-c.jp/yachiyo-news/facility#zac-2025-06-05-event-2
+  - pending: private_booking | ディーボルダリングプラス八千代公式施設紹介 施設のご紹介 | https://www.d-b-c.jp/yachiyo-news/facility#zac-2025-12-20-private_booking-3
+- エナジークライミングジム浦和店公式サイト (energy-climbing-urawa)
+  - pending: opening_change | エナジークライミングジム浦和店 年パス10％OFF | https://energy-climbing.co.jp/urawa/#zac-2026-04-30-opening_change-1
+  - pending: opening_change | エナジークライミングジム浦和店 年パス10％OFF | https://energy-climbing.co.jp/urawa/#zac-2025-12-27-opening_change-2
+  - pending: route_set | エナジークライミングジム浦和店 年パス10％OFF | https://energy-climbing.co.jp/urawa/#zac-2025-01-14-route_set-3
+- ジャムセッション三鷹公式サイト (jam-session-mitaka)
+  - pending: opening_change | ジャムセッション三鷹 外岩クラック講習（8月、9月、10月）参加募集 | https://xn--xckbj6a9jra6a4gy403a4b6j.com/#zac-2026-05-10-opening_change-1
+  - pending: opening_change | ジャムセッション三鷹 外岩クラック講習（8月、9月、10月）参加募集 | https://xn--xckbj6a9jra6a4gy403a4b6j.com/#zac-2026-05-04-opening_change-2
+  - pending: opening_change | ジャムセッション三鷹 外岩クラック講習（8月、9月、10月）参加募集 | https://xn--xckbj6a9jra6a4gy403a4b6j.com/#zac-2026-04-29-opening_change-3
+- クライミングジムPenguin公式サイト (penguin-climb)
+  - pending: event | クライミングジムPenguin 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-1
+  - pending: event | クライミングジムPenguin 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-2
+  - pending: event | クライミングジムPenguin 1時間体験プラン | https://penguin-climb.com/#zac-2025-12-06-event-3

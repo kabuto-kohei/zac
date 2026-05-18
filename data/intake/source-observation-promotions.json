@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T02:35:43.558Z",
+  "generatedAt": "2026-05-18T15:18:57.988Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -206,14 +206,14 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "947e41d6-5882-4281-8bd5-cc1c96701661",
-      "sourceUrl": "https://penguin-climb.com/#zac-2025-12-06-event-1",
+      "id": "337698ab-a548-4ed8-945d-c17ed24ef0b9",
+      "sourceUrl": "https://penguin-climb.com/#zac-2025-12-06-event-2",
       "title": "クライミングジムPenguin 1時間体験プラン",
       "reason": "past start date"
     },
     {
-      "id": "337698ab-a548-4ed8-945d-c17ed24ef0b9",
-      "sourceUrl": "https://penguin-climb.com/#zac-2025-12-06-event-2",
+      "id": "947e41d6-5882-4281-8bd5-cc1c96701661",
+      "sourceUrl": "https://penguin-climb.com/#zac-2025-12-06-event-1",
       "title": "クライミングジムPenguin 1時間体験プラン",
       "reason": "past start date"
     },
@@ -338,16 +338,16 @@
       "reason": "past start date"
     },
     {
-      "id": "a6960719-f8b6-4dd7-89d2-3de338553fad",
-      "sourceUrl": "https://boulcom.jp/tokyo/#zac-2026-02-07-competition-3",
-      "title": "BOULCOM 東京店 東京店",
-      "reason": "past start date"
-    },
-    {
       "id": "64af8b0e-f250-47ed-b2a0-93a7e5eb125b",
       "sourceUrl": "https://boulcom.jp/kawasaki/#zac-2026-02-07-private_booking-1",
       "title": "BOULCOM 川崎店 東京店",
       "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "a6960719-f8b6-4dd7-89d2-3de338553fad",
+      "sourceUrl": "https://boulcom.jp/tokyo/#zac-2026-02-07-competition-3",
+      "title": "BOULCOM 東京店 東京店",
+      "reason": "past start date"
     },
     {
       "id": "17e9dd87-0ad3-4e5c-8a8e-cf1d37fda25c",
@@ -446,12 +446,6 @@
       "reason": "post looks like an announcement, not a calendar item"
     },
     {
-      "id": "9d889388-2ae0-4492-b738-c379cbe57016",
-      "sourceUrl": "https://boulcom.jp/kawasaki/#zac-2026-03-31-private_booking-2",
-      "title": "BOULCOM 川崎店 東京店",
-      "reason": "post looks like an announcement, not a calendar item"
-    },
-    {
       "id": "eb29f64a-4200-47ec-847c-86853221ebff",
       "sourceUrl": "https://spoleclimbinggym.com/#zac-2026-03-31-private_booking-2",
       "title": "SPOLE CLIMBING GYM つくばユーワールド",
@@ -476,10 +470,10 @@
       "reason": "past start date"
     },
     {
-      "id": "20a17d94-48a6-4769-bc48-d632707e689f",
-      "sourceUrl": "https://beborn.boy.jp/#zac-2026-04-01-opening_change-1",
-      "title": "Be born Climbing gym NEW 水曜初級クラス新設",
-      "reason": "past start date"
+      "id": "9d889388-2ae0-4492-b738-c379cbe57016",
+      "sourceUrl": "https://boulcom.jp/kawasaki/#zac-2026-03-31-private_booking-2",
+      "title": "BOULCOM 川崎店 東京店",
+      "reason": "post looks like an announcement, not a calendar item"
     },
     {
       "id": "e6d79024-0275-4c1b-88f5-6608f311d173",
@@ -492,6 +486,12 @@
       "sourceUrl": "https://b-camp.jp/higashimurayama/#zac-2026-04-01-opening_change-3",
       "title": "Boulder Park Base Camp 東村山 04/01 営業変更",
       "reason": "post looks like an announcement, not a calendar item"
+    },
+    {
+      "id": "20a17d94-48a6-4769-bc48-d632707e689f",
+      "sourceUrl": "https://beborn.boy.jp/#zac-2026-04-01-opening_change-1",
+      "title": "Be born Climbing gym NEW 水曜初級クラス新設",
+      "reason": "past start date"
     },
     {
       "id": "a97c108f-83ad-4a2f-9403-cf242f3cadc1",
@@ -530,16 +530,16 @@
       "reason": "past start date"
     },
     {
-      "id": "411775ae-7d1b-48f9-9262-c9799e5febde",
-      "sourceUrl": "https://boulcom.jp/tokyo/#zac-2026-04-11-opening_change-2",
-      "title": "BOULCOM 東京店 東京店",
-      "reason": "past start date"
-    },
-    {
       "id": "66716d4e-1040-41ad-ad5d-2397075fd8e4",
       "sourceUrl": "https://www.westrock-climbing.com/event/#zac-2026-04-11-competition-3",
       "title": "WESTROCK 公式イベント情報 B-SCORE 7th SEASON",
       "reason": "no matching published gym"
+    },
+    {
+      "id": "411775ae-7d1b-48f9-9262-c9799e5febde",
+      "sourceUrl": "https://boulcom.jp/tokyo/#zac-2026-04-11-opening_change-2",
+      "title": "BOULCOM 東京店 東京店",
+      "reason": "past start date"
     },
     {
       "id": "54000647-d8d1-4003-a866-13049d435e79",

@@ -1,20 +1,20 @@
 # Instagram Browser Roller Inspection
 
-- Generated: 2026-05-18T02:33:21.568Z
+- Generated: 2026-05-18T15:16:43.178Z
 - Mode: browser_roller
 - Browser session: authenticated
 - Target cadence: 8 runs/day (every 3 hours JST)
 - Sources queued: 25
 - Sources visited: 25
-- Sources succeeded: 21
-- Sources failed: 4
+- Sources succeeded: 24
+- Sources failed: 1
 - Sources deferred: 0
-- Posts seen: 63
-- New posts opened: 0
-- Duplicate posts skipped: 63
-- Observed posts: 0
+- Posts seen: 72
+- New posts opened: 1
+- Duplicate posts skipped: 71
+- Observed posts: 1
 - Pending posts: 0
-- Ignored posts: 0
+- Ignored posts: 1
 - Calendar candidates: 0
 
 ## Policy
@@ -23,31 +23,25 @@ Only approved official Instagram sources are eligible. Store source links, short
 
 ## Inspections
 
-- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - failed (post_links_unavailable)
+- DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - failed (profile_unavailable)
   - no new posts
-- ボルダリングジム Vortex（ボルテックス） (climb.vortex) - failed (checkpoint_required)
+- ボルダリングジム Vortex（ボルテックス） (climb.vortex) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- Urban Base Camp 新宿 (basecamp_shinjuku) - failed (post_links_unavailable)
+- Urban Base Camp 新宿 (basecamp_shinjuku) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- Climbing Gym Walrus公式Instagram (climbinggym_walrus) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- B-PUMP OGIKUBO (bpump_ogikubo) - failed (post_links_unavailable)
+- B-PUMP OGIKUBO (bpump_ogikubo) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - B-PUMP Tokyo (bpumptokyo) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - エナジークライミングジム浦和店公式Instagram (energyurawa) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- be_born_climbing_gym (be_born_climbing_gym) postsSeen=3, newOpened=0, duplicates=3
+- NOBOROCK 高田馬場店 (noborock_takadanobaba) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- betaclimb (betaclimb) postsSeen=3, newOpened=0, duplicates=3
+- be_born_climbing_gym (be_born_climbing_gym) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - B-PUMP YOKOHAMA 横浜 (bpumpyokohama) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - exciting_sancha (exciting_sancha) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- NOBOROCK 高田馬場店 (noborock_takadanobaba) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングジム RISE（ライズ） (climbrise2016) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - headrockcg (headrockcg) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
@@ -67,9 +61,15 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - クライミングジム FLASH（フラッシュ） (climbinggymflash) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) postsSeen=3, newOpened=0, duplicates=3
+- クライミングジム RISE（ライズ） (climbrise2016) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - クライミングパーク カルチェロッシュ (quartier_de_roche) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
+- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- クライミングジム SLOTH（スロース） (sloth.gym) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- ディーボルダリングプラス津田沼 (dbouldering_tsudanuma) postsSeen=3, newOpened=1, duplicates=2
+  - ignored: notice | ディーボルダリングプラス津田沼 dbouldering_tsudanuma | https://www.instagram.com/reel/DVaJVOVE2jJ/

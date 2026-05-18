@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T02:35:48.133Z",
+  "generatedAt": "2026-05-18T15:19:03.902Z",
   "policy": {
     "publicDataOnly": true,
     "publishOnly": [
@@ -88,18 +88,6 @@
         "discoverySource": "",
         "lastCheckedAt": "2026-05-11",
         "sourceVerifiedAt": "2026-05-11"
-      },
-      {
-        "platform": "instagram",
-        "handle": "climb.vortex",
-        "displayName": "ボルダリングジム Vortex（ボルテックス）",
-        "sourceUrl": "https://www.instagram.com/climb.vortex/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-15",
-        "sourceVerifiedAt": "2026-05-14"
       },
       {
         "platform": "instagram",
@@ -691,18 +679,6 @@
       },
       {
         "platform": "instagram",
-        "handle": "dbouldering_tsudanuma",
-        "displayName": "ディーボルダリングプラス津田沼",
-        "sourceUrl": "https://www.instagram.com/dbouldering_tsudanuma/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-17",
-        "sourceVerifiedAt": "2026-05-14"
-      },
-      {
-        "platform": "instagram",
         "handle": "dbouldering_tsunashima",
         "displayName": "ディーボルダリング 綱島",
         "sourceUrl": "https://www.instagram.com/dbouldering_tsunashima/",
@@ -1012,6 +988,30 @@
         "discoverySource": "",
         "lastCheckedAt": "2026-05-17",
         "sourceVerifiedAt": "2026-05-14"
+      },
+      {
+        "platform": "instagram",
+        "handle": "zeromito0123",
+        "displayName": "クライミングジム ZE-RO（ゼロ） 水戸店",
+        "sourceUrl": "https://www.instagram.com/zeromito0123/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-14"
+      },
+      {
+        "platform": "instagram",
+        "handle": "maboo.insta",
+        "displayName": "クライミングジム MABOO（マーブー）",
+        "sourceUrl": "https://www.instagram.com/maboo.insta/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-14"
       }
     ],
     "instagramPostInspection": [
@@ -1031,21 +1031,6 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "7061a581-458e-485a-8a88-b9c9adf269e1",
-        "platform": "instagram",
-        "handle": "climb.vortex",
-        "displayName": "ボルダリングジム Vortex（ボルテックス）",
-        "sourceUrl": "https://www.instagram.com/climb.vortex/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-15",
-        "sourceVerifiedAt": "2026-05-14",
-        "lastObservedAt": "2026-05-15",
-        "observedPosts": 3,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
         "eventSourceId": "ae3bf68c-ef39-4336-8496-08ad3618b804",
         "platform": "instagram",
         "handle": "basecamp_shinjuku",
@@ -1054,7 +1039,7 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-17",
+        "lastCheckedAt": "2026-05-18",
         "sourceVerifiedAt": "2026-05-14",
         "lastObservedAt": "2026-05-15",
         "observedPosts": 3,
@@ -1069,7 +1054,7 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-17",
+        "lastCheckedAt": "2026-05-18",
         "sourceVerifiedAt": "2026-05-14",
         "lastObservedAt": "2026-05-15",
         "observedPosts": 5,
@@ -1091,21 +1076,6 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "b76cb4ec-9f4c-40c1-986c-dfbad22c2725",
-        "platform": "instagram",
-        "handle": "climbinggym_walrus",
-        "displayName": "Climbing Gym Walrus公式Instagram",
-        "sourceUrl": "https://www.instagram.com/climbinggym_walrus/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-18",
-        "sourceVerifiedAt": "2026-05-14",
-        "lastObservedAt": "2026-05-15",
-        "observedPosts": 7,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
         "eventSourceId": "7046b655-8cd4-4087-a233-db5bb52aa729",
         "platform": "instagram",
         "handle": "energyurawa",
@@ -1114,6 +1084,21 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
+        "lastCheckedAt": "2026-05-18",
+        "sourceVerifiedAt": "2026-05-14",
+        "lastObservedAt": "2026-05-15",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "7061a581-458e-485a-8a88-b9c9adf269e1",
+        "platform": "instagram",
+        "handle": "climb.vortex",
+        "displayName": "ボルダリングジム Vortex（ボルテックス）",
+        "sourceUrl": "https://www.instagram.com/climb.vortex/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
         "lastCheckedAt": "2026-05-18",
         "sourceVerifiedAt": "2026-05-14",
         "lastObservedAt": "2026-05-15",
@@ -1133,21 +1118,6 @@
         "sourceVerifiedAt": "2026-05-14",
         "lastObservedAt": "2026-05-15",
         "observedPosts": 4,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "b2ab778c-54a5-4985-b493-0f2a92d4f338",
-        "platform": "instagram",
-        "handle": "betaclimb",
-        "displayName": "betaclimb",
-        "sourceUrl": "https://www.instagram.com/betaclimb/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-18",
-        "sourceVerifiedAt": "2026-05-14",
-        "lastObservedAt": "2026-05-15",
-        "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1346,21 +1316,6 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "f5d7c62a-37fb-4253-ab25-f7135be773db",
-        "platform": "instagram",
-        "handle": "sloth.gym",
-        "displayName": "クライミングジム SLOTH（スロース）",
-        "sourceUrl": "https://www.instagram.com/sloth.gym/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-17",
-        "sourceVerifiedAt": "2026-05-14",
-        "lastObservedAt": "2026-05-16",
-        "observedPosts": 3,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
         "eventSourceId": "86e485c9-55ea-48ea-b4bc-be876064ff75",
         "platform": "instagram",
         "handle": "quartier_de_roche",
@@ -1406,15 +1361,15 @@
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
-        "eventSourceId": "f328ae42-2dd0-45da-b667-62b6c5a479ef",
+        "eventSourceId": "f5d7c62a-37fb-4253-ab25-f7135be773db",
         "platform": "instagram",
-        "handle": "dbouldering_tsudanuma",
-        "displayName": "ディーボルダリングプラス津田沼",
-        "sourceUrl": "https://www.instagram.com/dbouldering_tsudanuma/",
+        "handle": "sloth.gym",
+        "displayName": "クライミングジム SLOTH（スロース）",
+        "sourceUrl": "https://www.instagram.com/sloth.gym/",
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-17",
+        "lastCheckedAt": "2026-05-18",
         "sourceVerifiedAt": "2026-05-14",
         "lastObservedAt": "2026-05-16",
         "observedPosts": 3,
@@ -2214,6 +2169,51 @@
         "lastObservedAt": "2026-05-17",
         "observedPosts": 4,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "383a857a-b8ee-49aa-9ba4-31d3b4f1e410",
+        "platform": "instagram",
+        "handle": "climbinggym_wallstreet",
+        "displayName": "クライミングジム・ウォールストリート公式Instagram",
+        "sourceUrl": "https://www.instagram.com/climbinggym_wallstreet/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": null,
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-14",
+        "lastObservedAt": "2026-05-17",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "5c60bf4c-316b-4c7a-b8f8-19cf9fbf2821",
+        "platform": "instagram",
+        "handle": "dbouldering_soga",
+        "displayName": "D.Bouldering Plus 蘇我公式Instagram",
+        "sourceUrl": "https://www.instagram.com/dbouldering_soga/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-14",
+        "lastObservedAt": "2026-05-17",
+        "observedPosts": 6,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "7af896be-33b1-487b-b917-c1d19c4b01e1",
+        "platform": "instagram",
+        "handle": "fishandbird_toyocho",
+        "displayName": "fishandbird_toyocho",
+        "sourceUrl": "https://www.instagram.com/fishandbird_toyocho/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-14",
+        "lastObservedAt": "2026-05-17",
+        "observedPosts": 3,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       }
     ],
     "candidateInstagramVerification": [],
@@ -2781,26 +2781,6 @@
     ],
     "upcomingEventReview": [
       {
-        "category": "route_set",
-        "title": "▶︎▶︎▶︎",
-        "startsAt": "2026-05-18 13:00",
-        "endsAt": "2026-05-27 21:00",
-        "sourceUrl": "https://www.instagram.com/p/DXn9phGkdqY/",
-        "sourceLabel": "headrockcg",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.72"
-      },
-      {
-        "category": "route_set",
-        "title": "1F LEFTをルートセットします！",
-        "startsAt": "2026-05-18 20:00",
-        "endsAt": "2026-05-19 21:00",
-        "sourceUrl": "https://www.instagram.com/p/DYRsJPOmhPJ/",
-        "sourceLabel": "B-PUMP YOKOHAMA 横浜",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.72"
-      },
-      {
         "category": "event",
         "title": "🔥宿ロキでもMOVING3開催間近‼️🔥",
         "startsAt": "2026-05-19 10:00",
@@ -3061,16 +3041,6 @@
         "extractionConfidence": "0.72"
       },
       {
-        "category": "event",
-        "title": "TAMAX 2026 クライミングジム マッドロック",
-        "startsAt": "2026-06-27 10:00",
-        "endsAt": "2026-07-19 21:00",
-        "sourceUrl": "https://www.westrock-climbing.com/event/2026/04/11/4887/",
-        "sourceLabel": "WESTROCK 公式イベント情報",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.90"
-      },
-      {
         "category": "competition",
         "title": "BLoC 2026 Round3 ROCKLANDS",
         "startsAt": "2026-06-27 10:00",
@@ -3079,6 +3049,16 @@
         "sourceLabel": "CLIMBERS BLoC 2026記事",
         "reviewStatus": "approved",
         "extractionConfidence": "0.78"
+      },
+      {
+        "category": "event",
+        "title": "TAMAX 2026 クライミングジム マッドロック",
+        "startsAt": "2026-06-27 10:00",
+        "endsAt": "2026-07-19 21:00",
+        "sourceUrl": "https://www.westrock-climbing.com/event/2026/04/11/4887/",
+        "sourceLabel": "WESTROCK 公式イベント情報",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.90"
       },
       {
         "category": "event",
@@ -3092,16 +3072,6 @@
       },
       {
         "category": "competition",
-        "title": "BLoC 2026 Round4 ZE-RO MITO",
-        "startsAt": "2026-07-12 10:00",
-        "endsAt": "2026-07-12 20:00",
-        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
-        "sourceLabel": "CLIMBERS BLoC 2026記事",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.78"
-      },
-      {
-        "category": "competition",
         "title": "今年のBLOC",
         "startsAt": "2026-07-12 10:00",
         "endsAt": "2026-07-25 21:00",
@@ -3109,6 +3079,16 @@
         "sourceLabel": "アオロク〖ao_roc.climbing〗",
         "reviewStatus": "approved",
         "extractionConfidence": "0.72"
+      },
+      {
+        "category": "competition",
+        "title": "BLoC 2026 Round4 ZE-RO MITO",
+        "startsAt": "2026-07-12 10:00",
+        "endsAt": "2026-07-12 20:00",
+        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
+        "sourceLabel": "CLIMBERS BLoC 2026記事",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.78"
       },
       {
         "category": "competition",

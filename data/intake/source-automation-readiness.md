@@ -1,12 +1,12 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-18T03:16:47.623Z
+- generatedAt: 2026-05-18T04:33:24.625Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 41
-- localRunAgeMinutes: 41
+- latestRunAgeMinutes: 118
+- localRunAgeMinutes: 118
 - consecutiveNonReady: 0
 - instagramFailureRatio: 0.16
 - instagramBrowserSessionState: authenticated

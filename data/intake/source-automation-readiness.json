@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T03:16:47.623Z",
+  "generatedAt": "2026-05-18T04:33:24.625Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,8 +11,8 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 41,
-    "localRunAgeMinutes": 41,
+    "latestRunAgeMinutes": 118,
+    "localRunAgeMinutes": 118,
     "consecutiveNonReady": 0,
     "instagramFailureRatio": 0.16,
     "failedInstagramSources": [
@@ -106,7 +106,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "41m",
+      "detail": "118m",
       "severity": "error"
     },
     {
@@ -136,7 +136,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "41m",
+      "detail": "118m",
       "severity": "error"
     },
     {

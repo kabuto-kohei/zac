@@ -1,12 +1,12 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-17T17:27:35.409Z
+- generatedAt: 2026-05-18T03:16:47.623Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 0
-- localRunAgeMinutes: 0
+- latestRunAgeMinutes: 41
+- localRunAgeMinutes: 41
 - consecutiveNonReady: 0
 - instagramFailureRatio: 0.16
 - instagramBrowserSessionState: authenticated
@@ -18,14 +18,14 @@
 - sourcesFailed: 4
 - sourcesDeferred: 0
 - postsSeen: 63
-- newPostsOpened: 1
-- observedPosts: 1
+- newPostsOpened: 0
+- observedPosts: 0
 - calendarCandidates: 0
 
 ## Queues
 
 - instagramPostInspection: 25
-- inspectNow: 47
+- inspectNow: 64
 - operatorBatch: 16
 - approvedSourceRotation: 96
 - upcomingEventRecheck: 37
@@ -39,7 +39,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 1
+- runs: 4
 
 ## Failed Checks
 
@@ -48,9 +48,9 @@
 ## Failed Instagram Sources
 
 - dogwood_climbing_gym: post_links_unavailable; officialFallback=true
-- bpump_ogikubo: post_links_unavailable; officialFallback=true
 - climb.vortex: checkpoint_required; officialFallback=true
-- climbinggym_walrus: post_links_unavailable; officialFallback=true
+- basecamp_shinjuku: post_links_unavailable; officialFallback=true
+- bpump_ogikubo: post_links_unavailable; officialFallback=true
 
 ## Next Actions
 

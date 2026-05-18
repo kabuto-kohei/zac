@@ -1,6 +1,6 @@
 # Instagram Browser Roller Inspection
 
-- Generated: 2026-05-17T17:23:46.188Z
+- Generated: 2026-05-18T02:33:21.568Z
 - Mode: browser_roller
 - Browser session: authenticated
 - Target cadence: 8 runs/day (every 3 hours JST)
@@ -10,10 +10,10 @@
 - Sources failed: 4
 - Sources deferred: 0
 - Posts seen: 63
-- New posts opened: 1
-- Duplicate posts skipped: 62
-- Observed posts: 1
-- Pending posts: 1
+- New posts opened: 0
+- Duplicate posts skipped: 63
+- Observed posts: 0
+- Pending posts: 0
 - Ignored posts: 0
 - Calendar candidates: 0
 
@@ -25,17 +25,17 @@ Only approved official Instagram sources are eligible. Store source links, short
 
 - DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - failed (post_links_unavailable)
   - no new posts
-- B-PUMP OGIKUBO (bpump_ogikubo) - failed (post_links_unavailable)
-  - no new posts
 - ボルダリングジム Vortex（ボルテックス） (climb.vortex) - failed (checkpoint_required)
+  - no new posts
+- Urban Base Camp 新宿 (basecamp_shinjuku) - failed (post_links_unavailable)
+  - no new posts
+- Climbing Gym Walrus公式Instagram (climbinggym_walrus) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- B-PUMP OGIKUBO (bpump_ogikubo) - failed (post_links_unavailable)
   - no new posts
 - B-PUMP Tokyo (bpumptokyo) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- Climbing Gym Walrus公式Instagram (climbinggym_walrus) - failed (post_links_unavailable)
-  - no new posts
 - エナジークライミングジム浦和店公式Instagram (energyurawa) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- Urban Base Camp 新宿 (basecamp_shinjuku) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - be_born_climbing_gym (be_born_climbing_gym) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
@@ -45,11 +45,9 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - exciting_sancha (exciting_sancha) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- NOBOROCK 町田店 (noborock_machida) postsSeen=3, newOpened=1, duplicates=2
-  - pending: competition | NOBOROCK 町田店 noborock_omiya | https://www.instagram.com/p/DXJTc9HkRei/
-- NOBOROCK 大宮店 (noborock_omiya) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
 - NOBOROCK 高田馬場店 (noborock_takadanobaba) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- クライミングジム RISE（ライズ） (climbrise2016) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - headrockcg (headrockcg) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
@@ -69,7 +67,9 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - クライミングジム FLASH（フラッシュ） (climbinggymflash) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- クライミングジム RISE（ライズ） (climbrise2016) postsSeen=3, newOpened=0, duplicates=3
+- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - クライミングパーク カルチェロッシュ (quartier_de_roche) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori) postsSeen=3, newOpened=0, duplicates=3
   - no new posts

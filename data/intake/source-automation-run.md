@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-17T07:59:14.872Z
-- Updated: 2026-05-17T07:59:20.306Z
+- Generated: 2026-05-18T02:35:45.646Z
+- Updated: 2026-05-18T02:35:50.942Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (172ms, attempt 1)
-- passed: `pnpm db:verify:remote` (1051ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (1261ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (1053ms, attempt 1)
-- passed: `pnpm sources:monitor` (1892ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (238ms, attempt 1)
+- passed: `pnpm db:verify:remote` (1059ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1288ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (893ms, attempt 1)
+- passed: `pnpm sources:monitor` (1813ms, attempt 1)
 
 ## Summary
 
@@ -39,7 +39,7 @@
 - sourceType.official_site: 67
 - sourceType.operator_owned_page: 1
 - dueApprovedSources: 64
-- instagramPostSources: 48
+- instagramPostSources: 25
 - approvedSourceRotation: 96
 - operatorBatch: 16
 - candidateSources: 0
@@ -49,16 +49,16 @@
 - candidateMatches.highConfidence: 0
 - candidateMatches.needsReview: 0
 - candidateMatches.unmatched: 0
-- upcomingEvents: 39
+- upcomingEvents: 37
 - gymDisciplineCandidates: 119
 - closureVerificationCandidates: 80
 - publicNetworkReachable: true
 
 ## Next Actions
 
-- Inspect official Instagram recent-post queue first (48 source(s)); record post URLs in source_post_observations or reproducible SQL patches.
+- Run the Instagram browser roller first (25 approved source(s)); it must use a logged-in browser session, open latest visible posts/reels only, and stage candidates for Admin review.
 - Inspect 64 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
-- Recheck upcomingEventRecheck for items starting within the next 30 days (39 queued).
+- Recheck upcomingEventRecheck for items starting within the next 30 days (37 queued).
 - Classify gym disciplines only from official site/SNS evidence; leave directory-only rows as クライミング (119 queued).
 - Verify closure, relocation, and rename risk with official evidence first; require two independent current sources if the official source is unavailable (80 queued).

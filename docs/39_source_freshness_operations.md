@@ -12,8 +12,9 @@ legal, source, and review safety. It is responsible for:
 
 - Discovering and rotating official source checks across approved gym/operator
   websites and official Instagram profiles.
-- Inspecting public official Instagram posts/reels and persisting minimal
-  `source_post_observations` so the same post is not reprocessed forever.
+- Inspecting approved official Instagram profiles through the browser roller
+  and persisting minimal `source_post_observations` so the same post is not
+  reprocessed forever.
 - Classifying source observations into user-impact groups: event, competition,
   route-set, construction/opening-change, private booking, notice, or recruit.
 - Staging eligible future observations as draft/pending event candidates.
@@ -25,8 +26,8 @@ legal, source, and review safety. It is responsible for:
 It is not responsible for:
 
 - Billing, purchases, subscriptions, payment settings, or paid data access.
-- Republishing Instagram as a product, including copied captions, images, or
-  videos.
+- Republishing Instagram as a product, including copied captions, images,
+  videos, comments, DMs, stories, passwords, cookies, or session tokens.
 - Guessing gym status, boulder/lead discipline, or event dates without source
   evidence.
 - Auto-publishing weak or uncertain event candidates.
@@ -51,10 +52,10 @@ all of the following are true:
 5. LaunchAgent `com.zac.source-freshness` is loaded, configured for the current
    three-hour cadence, and its latest exit code is zero.
 6. No stale active automation lock exists.
-7. The local runner has no optional step failures. Instagram profile-level
-   fetch failures may remain in the artifact only when the inspection command
-   itself completed, generated SQL was applied, and an official non-Instagram
-   fallback source for the same gym/operator is also in rotation.
+7. The local runner has no optional step failures. Instagram browser source
+   failures may remain in the artifact only when the browser session itself is
+   authenticated, the inspection command completed, generated SQL was applied,
+   and source-level failures were isolated without stopping the run.
 8. Observation promotion remains in `draft_review` mode unless a separate
    reviewed release process explicitly enables approved publishing.
 9. Codex cron supervision is active and runs both health and readiness gates.
@@ -66,6 +67,9 @@ all of the following are true:
 12. Admin Instagram review is available at `/instagram-review`, backed by
     `/v1/admin/instagram-review-queue`, so sources blocked by Instagram login
     or rate limits can still be reviewed through an operator-confirmed path.
+13. Instagram browser roller readiness reports browser session state, visited
+    sources, failed/deferred sources, posts seen, duplicate skips, and
+    observations created.
 
 If any condition is false, the system is still useful, but it is not
 "completely unattended OK"; it is in operator-review mode.
@@ -74,16 +78,17 @@ If any condition is false, the system is still useful, but it is not
 
 Zac does not build an alternate Instagram viewer. Instagram is nevertheless the
 first freshness signal for most climbing gyms; official websites are the stable
-baseline and cross-check source. The operating model has five stages:
+baseline and cross-check source. The operating model has six stages:
 
 1. Register official sites and official Instagram profiles in `event_sources`.
 2. Generate review queues from DB state, with official Instagram post checks first.
-3. Use Browser/Computer Use or a normal browser to inspect public official pages.
+3. Use the Instagram browser roller on approved official Instagram sources only.
 4. Record inspected Instagram post URLs in `source_post_observations`.
-5. Reflect only confirmed updates into `events` / `gyms` as structured data.
+5. Promote structured observations into draft/pending event candidates.
+6. Reflect only Admin-approved candidates into public `events`.
 
-When Instagram direct fetch returns login or rate-limit responses, the source
-does not become complete. It moves into Admin Instagram review:
+When an Instagram account has not yet been approved as official, event
+extraction must not run. It moves through Admin Instagram review:
 
 1. Open `/instagram-review`.
 2. Open the Instagram profile and official website link from the row.
@@ -94,9 +99,9 @@ does not become complete. It moves into Admin Instagram review:
 5. Use `/event-candidates` or `/events` for event publication work after the
    source itself is confirmed.
 
-This path is deliberately manual. It is for confirming public facts from the
-operator's normal browser session, not for copying Instagram media or full
-captions into Zac.
+This path confirms the source. It does not publish events. Event extraction from
+approved sources is handled by the browser roller, and public publication still
+requires Admin candidate review.
 
 The public UI may show only title, short summary, category, date/time, source
 link, source label, and a minimal short quote. It must not show copied images,
@@ -110,11 +115,23 @@ Run the full automation preflight and packet generation:
 pnpm sources:automation-run
 ```
 
-Inspect the current official Instagram post queue and generate short
-observation records:
+Inspect the current official Instagram post queue with the browser roller and
+generate short observation records:
 
 ```bash
 pnpm sources:inspect-instagram
+```
+
+Run the old direct Instagram JSON API inspector only for diagnostics:
+
+```bash
+pnpm sources:inspect-instagram-api
+```
+
+Prepare the persistent browser session without sharing a password with Codex:
+
+```bash
+pnpm sources:instagram-login
 ```
 
 Check whether the automation is healthy enough to keep running unattended:
@@ -198,13 +215,17 @@ pnpm sources:monitor
 These files list official sources to inspect, candidate sources to verify, and
 upcoming events to recheck. They do not fetch external post bodies or media.
 The highest-priority queue is `instagramPostInspection`, which lists approved
-official Instagram profiles whose recent public posts/reels should be reviewed.
+official Instagram profiles whose recent visible posts/reels should be reviewed
+by the browser roller. The queue includes recent known post URLs so the roller
+can open only unknown posts. The production cadence intentionally uses small
+three-hour batches instead of a single all-source scrape, so Instagram
+checkpoint pressure stays visible and isolated.
 
 The monitor accepts optional batch-size environment variables:
 
 - `ZAC_SOURCE_DUE_HOURS`: due threshold for approved sources. Default: `6`.
-- `ZAC_INSTAGRAM_DUE_HOURS`: due threshold for official Instagram post checks. Default: `1`.
-- `ZAC_INSTAGRAM_POST_SOURCE_LIMIT`: official Instagram post-check batch size. Default: `48`.
+- `ZAC_INSTAGRAM_DUE_HOURS`: due threshold for official Instagram post checks. Default: `12`.
+- `ZAC_INSTAGRAM_POST_SOURCE_LIMIT`: official Instagram browser-roller queue batch size. Default: `25`.
 - `ZAC_SOURCE_APPROVED_LIMIT`: approved source rotation size. Default: `96`.
 - `ZAC_SOURCE_STALE_LIMIT`: due approved source batch size. Default: `64`.
 - `ZAC_SOURCE_CANDIDATE_LIMIT`: candidate source batch size. Default: `96`.
@@ -218,11 +239,18 @@ The automation runner accepts operational environment variables:
 - `ZAC_AUTOMATION_COMMAND_TIMEOUT_MS`: per-command timeout. Default: `120000`.
 - `ZAC_AUTOMATION_LOCAL_COMMAND_TIMEOUT_MS`: per-command timeout for the local launchd pipeline. Default: `240000`.
 - `ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS`: local-run timeout for the Instagram inspection step. Default: `900000`.
+- `ZAC_INSTAGRAM_BROWSER_USER_DATA_DIR`: persistent browser profile for the Instagram roller. Default: `.zac-browser/instagram`.
+- `ZAC_INSTAGRAM_BROWSER_HEADLESS`: run the roller headless. Default: `true`.
+- `ZAC_INSTAGRAM_BROWSER_REQUIRE_AUTH`: require a logged-in browser session before inspection. Default: `true`.
+- `ZAC_INSTAGRAM_SOURCE_LIMIT`: maximum Instagram sources the browser inspector opens per run. Default: `25`.
+- `ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS`: delay between source profile inspections. Default: `2500`.
+- `ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS`: source-level browser timeout. Default: `60000`.
+- `ZAC_INSTAGRAM_BROWSER_POST_TIMEOUT_MS`: post-level browser timeout. Default: `30000`.
 - `ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS`: per-request timeout for Instagram profile fetches. Default: `8000`.
 - `ZAC_AUTOMATION_LOCK_STALE_MINUTES`: stale lock threshold. Default: `45`.
 - `ZAC_AUTOMATION_DEGRADED_EXIT_ZERO`: set to `1` only when a caller explicitly wants degraded runs to exit zero. Default degraded exit is non-zero.
 - `ZAC_AUTOMATION_MAX_CONSECUTIVE_NON_READY`: health-check failure threshold for consecutive blocked/degraded runs. Default: `3`.
-- `ZAC_AUTOMATION_EXPECTED_INTERVAL_SECONDS`: expected LaunchAgent interval. Default: `3600`.
+- `ZAC_AUTOMATION_EXPECTED_INTERVAL_SECONDS`: expected LaunchAgent interval. Default: `10800`.
 - `ZAC_AUTOMATION_MAX_LATEST_RUN_AGE_MINUTES`: maximum acceptable age for the latest automation run. Default: `390`.
 - `ZAC_AUTOMATION_MAX_LOCAL_RUN_AGE_MINUTES`: maximum acceptable age for the latest local runner packet. Default: `390`.
 - `ZAC_AUTOMATION_REQUIRE_LOCAL_RUN`: set to `0` only for non-launchd development or CI checks. Default: enabled on macOS.
@@ -236,9 +264,11 @@ system does not wait passively for the next due threshold.
 
 Recommended cadence:
 
-- Every 3 hours: verify DB and inspect `instagramPostInspection` plus due
-  official-site sources first.
-- Every 6 hours: inspect broader approved official Instagram/site rotation and recheck upcoming calendar items.
+- Every 3 hours: verify DB, refresh queues, inspect due official-site sources,
+  and run health supervision.
+- Twice daily through `ZAC_INSTAGRAM_DUE_HOURS=12`: run the Instagram browser
+  roller against approved official Instagram sources.
+- Every 6 hours: inspect broader approved official-site rotation and recheck upcoming calendar items.
 - Daily: verify candidate Instagram sources and promote only officially confirmed profiles.
 - Weekly: backfill missing gym Instagram accounts through official sites, chain pages, and public business profiles.
 - Monthly: recheck closure, relocation, rename, and account-change risk.
@@ -294,15 +324,15 @@ and reruns `sources:automation-run` so the latest queue counts reflect newly
 observed posts and newly staged candidates. It then runs the health gate before
 marking the local runner ready. The readiness gate is intentionally run by the
 supervisor outside the local runner so it can judge a completed local-run packet
-instead of inspecting itself mid-run. If Instagram returns a rate-limit response,
-the failed source remains in `instagramPostInspection` and is retried by a later
-later three-hour run instead of being marked complete. A hung Instagram request is bounded
-by `ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS`, and the inspection step has a longer
+instead of inspecting itself mid-run. If the browser session is logged out,
+checkpointed, or unavailable, the Instagram browser roller writes a deferred
+artifact and exits non-zero so the local runner becomes operator-review work.
+Source-level browser failures are isolated to the affected source and retried by
+a later run instead of being marked complete. The inspection step has a longer
 `ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS` budget so it can process a meaningful
 batch without stalling the whole LaunchAgent. Readiness may remain green only
-when the Instagram inspection command completed and each failed Instagram source
-has an official fallback source in the same rotation; otherwise it becomes
-operator-review work.
+when the Instagram browser session is ready, the inspection command completed,
+and source-level failures stayed within the documented guardrails.
 
 `pnpm sources:automation-health` now checks more than the latest packet status:
 the latest run must be fresh, the local runner packet must be fresh, the
@@ -334,17 +364,25 @@ must not run remote DB writes or mark queue work complete until
 `pnpm db:verify:remote` passes again. If public web DNS is also unavailable,
 the run stays `blocked` and exits non-zero so the failure is visible.
 
-## Computer Use Review
+## Browser Roller Review
 
-Rules for Browser/Computer Use:
+Rules for the Instagram browser roller and any operator Browser/Computer Use
+fallback:
 
-- Open `instagramPostInspection` first. For each approved official Instagram
-  source, inspect recent public posts/reels since the last observation.
+- Open `instagramPostInspection` first. Each row must already be an approved
+  official Instagram source.
+- Use a persistent logged-in browser profile. If login, 2FA, checkpoint, or
+  suspicious-activity UI appears, stop the Instagram run and surface
+  `login_required` or `checkpoint_required`.
+- Inspect only the latest three visible posts/reels per source.
+- Open only post URLs that are not already known in recent
+  `source_post_observations`.
 - Record each reviewed post URL in `source_post_observations`. Calendar-worthy
   posts get classification, title, short summary, dates, and a short quote;
   irrelevant posts get `review_status = ignored` plus a short decision note.
 - Then open `sourceUrl` for other approved sources.
-- Do not save full post bodies, images, or videos.
+- Do not save full post bodies, images, videos, comments, DMs, stories,
+  passwords, cookies, or session tokens.
 - Extract only event name, date/time, location, category, booking requirement, and source URL.
 - Keep uncertain extraction as `events.review_status = pending` and do not publish it.
 - For multi-day events, route sets, and construction, mark only the start date on the calendar and show the full period on the detail page.

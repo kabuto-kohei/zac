@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-05-17T00:00:00.000Z",
+  "queues": {
+    "instagramPostInspection": [
+      {
+        "eventSourceId": "00000000-0000-0000-0000-000000000001",
+        "platform": "instagram",
+        "handle": "fixture_gym",
+        "displayName": "Fixture Gym",
+        "sourceUrl": "https://www.instagram.com/fixture_gym/",
+        "sourceType": "official_instagram",
+        "knownPostUrls": ["https://www.instagram.com/p/KNOWNPOST/"]
+      }
+    ]
+  }
+}

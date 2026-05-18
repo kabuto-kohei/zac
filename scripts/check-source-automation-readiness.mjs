@@ -88,6 +88,21 @@ const failedInstagramInspections = (inspection?.inspections ?? []).filter((item)
 const failedInstagramWithoutFallback = failedInstagramInspections.filter((item) => !hasOfficialFallback(item, monitor));
 const instagramFailuresCovered =
   instagramFailureRatio <= maxInstagramFailureRatio || failedInstagramWithoutFallback.length === 0;
+const instagramBrowserSessionState = inspection?.browserSession?.state ?? "unknown";
+const instagramBrowserSessionReady =
+  instagramBrowserSessionState === "authenticated" ||
+  instagramBrowserSessionState === "not_required" ||
+  inspection?.mode === "browser_fixture";
+const instagramBrowserRollerMadeProgress =
+  (inspection?.summary?.sourcesQueued ?? 0) === 0 ||
+  (inspection?.summary?.sourcesSucceeded ?? 0) > 0 ||
+  (inspection?.summary?.observedPosts ?? 0) > 0 ||
+  inspection?.mode === "browser_fixture";
+const instagramBrowserPolicyText = [
+  inspection?.policy?.excludedFields ?? "",
+  inspection?.policy?.publication ?? "",
+  inspection?.policy?.sourceEligibility ?? "",
+].join(" ");
 
 const checks = [
   check("package exposes sources:automation-local", packageJson?.scripts?.["sources:automation-local"]),
@@ -123,7 +138,31 @@ const checks = [
   check("monitor has Instagram queue visibility", Array.isArray(monitor?.queues?.instagramPostInspection)),
   check("monitor has upcoming-event recheck queue", Array.isArray(monitor?.queues?.upcomingEventRecheck)),
   check("monitor has closure-verification queue", Array.isArray(monitor?.queues?.closureVerification)),
-  check("Instagram inspection policy excludes media/captions", /full captions/u.test(inspection?.policy?.excludedFields ?? "") && /images/u.test(inspection?.policy?.excludedFields ?? "")),
+  check("Instagram inspection uses browser roller contract", inspection?.mode === "browser_roller" || inspection?.mode === "browser_fixture", inspection?.mode ?? "unknown"),
+  check("Instagram browser session is ready", instagramBrowserSessionReady, instagramBrowserSessionState),
+  check(
+    "Instagram browser roller made source progress",
+    instagramBrowserRollerMadeProgress,
+    `queued=${inspection?.summary?.sourcesQueued ?? "unknown"} succeeded=${inspection?.summary?.sourcesSucceeded ?? "unknown"} observed=${inspection?.summary?.observedPosts ?? "unknown"}`,
+  ),
+  check(
+    "Instagram browser roller limits source eligibility",
+    /approved official Instagram/u.test(instagramBrowserPolicyText),
+    truncate(instagramBrowserPolicyText, 120),
+  ),
+  check(
+    "Instagram inspection policy excludes secrets/media/captions",
+    /passwords/u.test(instagramBrowserPolicyText) &&
+      /cookies/u.test(instagramBrowserPolicyText) &&
+      /full captions/u.test(instagramBrowserPolicyText) &&
+      /images/u.test(instagramBrowserPolicyText),
+    truncate(instagramBrowserPolicyText, 120),
+  ),
+  check(
+    "Instagram browser observations require Admin review before public publication",
+    /Admin candidate review/u.test(instagramBrowserPolicyText) || /Never publish automatically/u.test(instagramBrowserPolicyText),
+    truncate(instagramBrowserPolicyText, 120),
+  ),
   check(
     "Instagram inspection failures are within budget or covered by official fallback",
     instagramFailuresCovered,
@@ -163,8 +202,22 @@ const result = {
     failedInstagramSources: failedInstagramInspections.map((item) => ({
       handle: item.handle,
       error: item.error ?? null,
+      failureCategory: item.failureCategory ?? null,
       hasOfficialFallback: hasOfficialFallback(item, monitor),
     })),
+    instagramBrowserSessionState,
+    instagramBrowserRoller: inspection?.summary
+      ? {
+          sourcesVisited: inspection.summary.sourcesVisited ?? null,
+          sourcesSucceeded: inspection.summary.sourcesSucceeded ?? null,
+          sourcesFailed: inspection.summary.sourcesFailed ?? null,
+          sourcesDeferred: inspection.summary.sourcesDeferred ?? null,
+          postsSeen: inspection.summary.postsSeen ?? null,
+          newPostsOpened: inspection.summary.newPostsOpened ?? null,
+          observedPosts: inspection.summary.observedPosts ?? null,
+          calendarCandidates: inspection.summary.calendarCandidates ?? null,
+        }
+      : null,
     launchAgent,
     queues: {
       instagramPostInspection: monitor?.queues?.instagramPostInspection?.length ?? null,
@@ -448,6 +501,11 @@ function parseRatio(value, fallback) {
   return Number.isFinite(parsed) && parsed >= 0 && parsed <= 1 ? parsed : fallback;
 }
 
+function truncate(value, max) {
+  const text = String(value ?? "");
+  return text.length > max ? `${text.slice(0, max - 1)}…` : text;
+}
+
 function renderMarkdown(resultValue) {
   const failedChecks = resultValue.checks.filter((item) => !item.ok);
   const failedSection = failedChecks.length
@@ -470,6 +528,18 @@ function renderMarkdown(resultValue) {
 - localRunAgeMinutes: ${resultValue.summary.localRunAgeMinutes}
 - consecutiveNonReady: ${resultValue.summary.consecutiveNonReady}
 - instagramFailureRatio: ${resultValue.summary.instagramFailureRatio}
+- instagramBrowserSessionState: ${resultValue.summary.instagramBrowserSessionState}
+
+## Instagram Browser Roller
+
+- sourcesVisited: ${resultValue.summary.instagramBrowserRoller?.sourcesVisited ?? "unknown"}
+- sourcesSucceeded: ${resultValue.summary.instagramBrowserRoller?.sourcesSucceeded ?? "unknown"}
+- sourcesFailed: ${resultValue.summary.instagramBrowserRoller?.sourcesFailed ?? "unknown"}
+- sourcesDeferred: ${resultValue.summary.instagramBrowserRoller?.sourcesDeferred ?? "unknown"}
+- postsSeen: ${resultValue.summary.instagramBrowserRoller?.postsSeen ?? "unknown"}
+- newPostsOpened: ${resultValue.summary.instagramBrowserRoller?.newPostsOpened ?? "unknown"}
+- observedPosts: ${resultValue.summary.instagramBrowserRoller?.observedPosts ?? "unknown"}
+- calendarCandidates: ${resultValue.summary.instagramBrowserRoller?.calendarCandidates ?? "unknown"}
 
 ## Queues
 

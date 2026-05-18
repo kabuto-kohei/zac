@@ -33,8 +33,16 @@
     <string>240000</string>
     <key>ZAC_INSTAGRAM_INSPECTION_STEP_TIMEOUT_MS</key>
     <string>900000</string>
-    <key>ZAC_INSTAGRAM_REQUEST_TIMEOUT_MS</key>
-    <string>8000</string>
+    <key>ZAC_INSTAGRAM_BROWSER_CHANNEL</key>
+    <string>chrome</string>
+    <key>ZAC_INSTAGRAM_DUE_HOURS</key>
+    <string>12</string>
+    <key>ZAC_INSTAGRAM_POST_SOURCE_LIMIT</key>
+    <string>25</string>
+    <key>ZAC_INSTAGRAM_SOURCE_LIMIT</key>
+    <string>25</string>
+    <key>ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS</key>
+    <string>2500</string>
   </dict>
 </dict>
 </plist>

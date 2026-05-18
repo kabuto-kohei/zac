@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-05-17T07:59:09.108Z",
+  "generatedAt": "2026-05-18T02:35:28.000Z",
   "policy": {
     "savedFields": "page URL, derived source fragment, classification, short summary, short quote, review status",
     "excludedFields": "full page text, copied images, copied videos, HTML snapshots"
   },
   "summary": {
-    "sourcesQueued": 2,
-    "sourcesFetched": 0,
+    "sourcesQueued": 7,
+    "sourcesFetched": 5,
     "sourcesFailed": 2,
-    "observedItems": 0,
-    "pendingItems": 0,
+    "observedItems": 15,
+    "pendingItems": 15,
     "ignoredItems": 0,
-    "calendarCandidates": 0
+    "calendarCandidates": 15
   },
   "inspections": [
     {
@@ -35,6 +35,276 @@
       "failureCategory": "access_restricted",
       "failureDetail": "HTTP 403",
       "candidates": []
+    },
+    {
+      "handle": "noborock-mizonokuchi",
+      "displayName": "NOBOROCK 溝ノ口店 公式サイト",
+      "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "noborock-mizonokuchi",
+          "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/#zac-2026-05-12-route_set-1",
+          "sourceExternalId": "official-site:noborock-mizonokuchi:2026-05-12:route_set:1",
+          "classification": "route_set",
+          "title": "NOBOROCK 溝ノ口店 ルートセット",
+          "summary": "NOBOROCK 溝ノ口店の公式情報に基づく2026/05/12のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
+          "startsAt": "2026-05-12T01:00:00.000Z",
+          "endsAt": "2026-05-12T02:00:00.000Z",
+          "sourceQuote": "店 高田馬場店 渋谷店 池袋店 町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 溝ノ口店 店舗 溝ノ口店 お知らせ 【ルートセット】 5/12 ルートセット完了！ 6/14(日) 17:00 close 6/1…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "NOBOROCK 溝ノ口店 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/05/12。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: 店 高田馬場店 渋谷店 池袋店 町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 溝ノ口店 店舗 溝ノ口店 お知らせ 【ルートセット】 5/12 ルートセット完了！ 6/14(日) 17:00 close 6/1…"
+        },
+        {
+          "handle": "noborock-mizonokuchi",
+          "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/#zac-2026-06-14-route_set-2",
+          "sourceExternalId": "official-site:noborock-mizonokuchi:2026-06-14:route_set:2",
+          "classification": "route_set",
+          "title": "NOBOROCK 溝ノ口店 ルートセット",
+          "summary": "NOBOROCK 溝ノ口店の公式情報に基づく2026/06/14のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
+          "startsAt": "2026-06-14T01:00:00.000Z",
+          "endsAt": "2026-06-14T02:00:00.000Z",
+          "sourceQuote": "町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 溝ノ口店 店舗 溝ノ口店 お知らせ 【ルートセット】 5/12 ルートセット完了！ 6/14(日) 17:00 close 6/15(月) close 6/16(…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "NOBOROCK 溝ノ口店 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/06/14。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: 町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 溝ノ口店 店舗 溝ノ口店 お知らせ 【ルートセット】 5/12 ルートセット完了！ 6/14(日) 17:00 close 6/15(月) close 6/16(…"
+        },
+        {
+          "handle": "noborock-mizonokuchi",
+          "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/#zac-2026-06-15-route_set-3",
+          "sourceExternalId": "official-site:noborock-mizonokuchi:2026-06-15:route_set:3",
+          "classification": "route_set",
+          "title": "NOBOROCK 溝ノ口店 ルートセット",
+          "summary": "NOBOROCK 溝ノ口店の公式情報に基づく2026/06/15のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
+          "startsAt": "2026-06-15T01:00:00.000Z",
+          "endsAt": "2026-06-15T02:00:00.000Z",
+          "sourceQuote": "撮影について ホーム 店舗案内 店舗 溝ノ口店 店舗 溝ノ口店 お知らせ 【ルートセット】 5/12 ルートセット完了！ 6/14(日) 17:00 close 6/15(月) close 6/16(火) 18:30 open！ 施設案内…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "NOBOROCK 溝ノ口店 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/06/15。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: 撮影について ホーム 店舗案内 店舗 溝ノ口店 店舗 溝ノ口店 お知らせ 【ルートセット】 5/12 ルートセット完了！ 6/14(日) 17:00 close 6/15(月) close 6/16(火) 18:30 open！ 施設案内…"
+        }
+      ]
+    },
+    {
+      "handle": "b-pump-yokohama",
+      "displayName": "B-PUMP YOKOHAMA 公式サイト",
+      "sourceUrl": "https://pump-climbing.com/gym/bpump2/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "b-pump-yokohama",
+          "sourceUrl": "https://pump-climbing.com/gym/bpump2/#zac-2026-04-01-construction-1",
+          "sourceExternalId": "official-site:b-pump-yokohama:2026-04-01:construction:1",
+          "classification": "construction",
+          "title": "B-PUMP YOKOHAMA BAMBI’S BOULDER SCHOOL",
+          "summary": "B-PUMP YOKOHAMAの公式情報に基づく2026/04/01の工事・メンテナンス情報です。対象エリアや営業影響は公式情報で確認してください。",
+          "startsAt": "2026-04-01T01:00:00.000Z",
+          "endsAt": "2026-04-01T02:00:00.000Z",
+          "sourceQuote": "B-PUMP横浜は、 クライマーが成長し続けられる環境を追求し続けます。 Routes 100-120 routes New 1F 全面改装完了！ Next （4/1）2F 緩傾斜＆X-Wall PICK UP NEWS BAMBI’s …",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "B-PUMP YOKOHAMA 公式サイトから工事・メンテナンス候補を検出。日付候補は2026/04/01。Adminで工事期間、対象エリア、営業影響を確認してください。根拠抜粋: B-PUMP横浜は、 クライマーが成長し続けられる環境を追求し続けます。 Routes 100-120 routes New 1F 全面改装完了！ Next （4/1）2F 緩傾斜＆X-Wall PICK UP NEWS BAMBI’s …"
+        },
+        {
+          "handle": "b-pump-yokohama",
+          "sourceUrl": "https://pump-climbing.com/gym/bpump2/#zac-2026-05-01-construction-2",
+          "sourceExternalId": "official-site:b-pump-yokohama:2026-05-01:construction:2",
+          "classification": "construction",
+          "title": "B-PUMP YOKOHAMA BAMBI’S BOULDER SCHOOL",
+          "summary": "B-PUMP YOKOHAMAの公式情報に基づく2026/05/01の工事・メンテナンス情報です。対象エリアや営業影響は公式情報で確認してください。",
+          "startsAt": "2026-05-01T01:00:00.000Z",
+          "endsAt": "2026-05-01T02:00:00.000Z",
+          "sourceQuote": "1F 全面改装完了！ Next （4/1）2F 緩傾斜＆X-Wall PICK UP NEWS BAMBI’s Boulder School 5月カレンダー 2026.05.01 DAILY BP2 PICK UP School 『BAM…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "B-PUMP YOKOHAMA 公式サイトから工事・メンテナンス候補を検出。日付候補は2026/05/01。Adminで工事期間、対象エリア、営業影響を確認してください。根拠抜粋: 1F 全面改装完了！ Next （4/1）2F 緩傾斜＆X-Wall PICK UP NEWS BAMBI’s Boulder School 5月カレンダー 2026.05.01 DAILY BP2 PICK UP School 『BAM…"
+        },
+        {
+          "handle": "b-pump-yokohama",
+          "sourceUrl": "https://pump-climbing.com/gym/bpump2/#zac-2026-04-03-construction-3",
+          "sourceExternalId": "official-site:b-pump-yokohama:2026-04-03:construction:3",
+          "classification": "construction",
+          "title": "B-PUMP YOKOHAMA この日なら行けるのに…！",
+          "summary": "B-PUMP YOKOHAMAの公式情報に基づく2026/04/03の工事・メンテナンス情報です。対象エリアや営業影響は公式情報で確認してください。",
+          "startsAt": "2026-04-03T01:00:00.000Z",
+          "endsAt": "2026-04-03T02:00:00.000Z",
+          "sourceQuote": "ました🤗 「この日なら行けるのに…！」という日程のご相談もOKですので、 [&hellip;] BAMBI’s Boulder School 4月カレンダー 2026.04.03 INFO PICK UP School 皆様、改装後のB…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "B-PUMP YOKOHAMA 公式サイトから工事・メンテナンス候補を検出。日付候補は2026/04/03。Adminで工事期間、対象エリア、営業影響を確認してください。根拠抜粋: ました🤗 「この日なら行けるのに…！」という日程のご相談もOKですので、 [&hellip;] BAMBI’s Boulder School 4月カレンダー 2026.04.03 INFO PICK UP School 皆様、改装後のB…"
+        }
+      ]
+    },
+    {
+      "handle": "base-camp-higashimurayama",
+      "displayName": "Boulder Park Base Camp 東村山 公式サイト",
+      "sourceUrl": "https://b-camp.jp/higashimurayama/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "base-camp-higashimurayama",
+          "sourceUrl": "https://b-camp.jp/higashimurayama/#zac-2026-02-01-opening_change-1",
+          "sourceExternalId": "official-site:base-camp-higashimurayama:2026-02-01:opening_change:1",
+          "classification": "opening_change",
+          "title": "Boulder Park Base Camp 東村山 02/01 営業変更",
+          "summary": "Boulder Park Base Camp 東村山の公式情報に基づく2026/02/01の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
+          "startsAt": "2026-02-01T01:00:00.000Z",
+          "endsAt": "2026-02-01T02:00:00.000Z",
+          "sourceQuote": "月スキルアップレッスンスケジュール 2026年03月31日 4月スキルアップレッスンスケジュール 2026年02月25日 3月スキルアップレッスンスケジュール 2026年02月01日 2月スキルアップレッスンスケジュール 2026年01月…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Boulder Park Base Camp 東村山 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/02/01。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: 月スキルアップレッスンスケジュール 2026年03月31日 4月スキルアップレッスンスケジュール 2026年02月25日 3月スキルアップレッスンスケジュール 2026年02月01日 2月スキルアップレッスンスケジュール 2026年01月…"
+        },
+        {
+          "handle": "base-camp-higashimurayama",
+          "sourceUrl": "https://b-camp.jp/higashimurayama/#zac-2026-01-11-opening_change-2",
+          "sourceExternalId": "official-site:base-camp-higashimurayama:2026-01-11:opening_change:2",
+          "classification": "opening_change",
+          "title": "Boulder Park Base Camp 東村山 01/11 営業変更",
+          "summary": "Boulder Park Base Camp 東村山の公式情報に基づく2026/01/11の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
+          "startsAt": "2026-01-11T01:00:00.000Z",
+          "endsAt": "2026-01-11T02:00:00.000Z",
+          "sourceQuote": "月スキルアップレッスンスケジュール 2026年02月25日 3月スキルアップレッスンスケジュール 2026年02月01日 2月スキルアップレッスンスケジュール 2026年01月11日 １月 スキルアップレッスン スケジュール ピックアップ…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Boulder Park Base Camp 東村山 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/01/11。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: 月スキルアップレッスンスケジュール 2026年02月25日 3月スキルアップレッスンスケジュール 2026年02月01日 2月スキルアップレッスンスケジュール 2026年01月11日 １月 スキルアップレッスン スケジュール ピックアップ…"
+        },
+        {
+          "handle": "base-camp-higashimurayama",
+          "sourceUrl": "https://b-camp.jp/higashimurayama/#zac-2026-04-01-opening_change-3",
+          "sourceExternalId": "official-site:base-camp-higashimurayama:2026-04-01:opening_change:3",
+          "classification": "opening_change",
+          "title": "Boulder Park Base Camp 東村山 04/01 営業変更",
+          "summary": "Boulder Park Base Camp 東村山の公式情報に基づく2026/04/01の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
+          "startsAt": "2026-04-01T01:00:00.000Z",
+          "endsAt": "2026-04-01T02:00:00.000Z",
+          "sourceQuote": "ル 2026年01月11日 １月 スキルアップレッスン スケジュール ピックアップ情報一覧 ルート情報 ROUTE INFO NEW 4月セットスケジュール ＊4/1(水)21:00～KWLのホールド外し 4/2(木)14:00 OPEN…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Boulder Park Base Camp 東村山 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/04/01。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: ル 2026年01月11日 １月 スキルアップレッスン スケジュール ピックアップ情報一覧 ルート情報 ROUTE INFO NEW 4月セットスケジュール ＊4/1(水)21:00～KWLのホールド外し 4/2(木)14:00 OPEN…"
+        }
+      ]
+    },
+    {
+      "handle": "urban-base-camp-shinjuku",
+      "displayName": "Urban Base Camp 新宿 公式サイト",
+      "sourceUrl": "https://b-camp.jp/shinjuku/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "urban-base-camp-shinjuku",
+          "sourceUrl": "https://b-camp.jp/shinjuku/#zac-2026-05-08-opening_change-1",
+          "sourceExternalId": "official-site:urban-base-camp-shinjuku:2026-05-08:opening_change:1",
+          "classification": "opening_change",
+          "title": "Urban Base Camp 新宿 Body movin&#8217;",
+          "summary": "Urban Base Camp 新宿の公式情報に基づく2026/05/08の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
+          "startsAt": "2026-05-08T01:00:00.000Z",
+          "endsAt": "2026-05-08T02:00:00.000Z",
+          "sourceQuote": "っぷりとご紹介します アクセス アクセスマップはこちらから 事前登録のお願い 事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月08日 NEW 料金改定とお得なキャンペーンのお知らせ 202…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Urban Base Camp 新宿 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/05/08。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: っぷりとご紹介します アクセス アクセスマップはこちらから 事前登録のお願い 事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月08日 NEW 料金改定とお得なキャンペーンのお知らせ 202…"
+        },
+        {
+          "handle": "urban-base-camp-shinjuku",
+          "sourceUrl": "https://b-camp.jp/shinjuku/#zac-2026-03-29-opening_change-2",
+          "sourceExternalId": "official-site:urban-base-camp-shinjuku:2026-03-29:opening_change:2",
+          "classification": "opening_change",
+          "title": "Urban Base Camp 新宿 Body movin&#8217;",
+          "summary": "Urban Base Camp 新宿の公式情報に基づく2026/03/29の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
+          "startsAt": "2026-03-29T01:00:00.000Z",
+          "endsAt": "2026-03-29T02:00:00.000Z",
+          "sourceQuote": "願い 事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月08日 NEW 料金改定とお得なキャンペーンのお知らせ 2026年03月29日 ゴールデンウイーク営業時間のご案内 2026年03月1…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Urban Base Camp 新宿 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/03/29。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: 願い 事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月08日 NEW 料金改定とお得なキャンペーンのお知らせ 2026年03月29日 ゴールデンウイーク営業時間のご案内 2026年03月1…"
+        },
+        {
+          "handle": "urban-base-camp-shinjuku",
+          "sourceUrl": "https://b-camp.jp/shinjuku/#zac-2026-03-12-opening_change-3",
+          "sourceExternalId": "official-site:urban-base-camp-shinjuku:2026-03-12:opening_change:3",
+          "classification": "opening_change",
+          "title": "Urban Base Camp 新宿 Body movin&#8217;",
+          "summary": "Urban Base Camp 新宿の公式情報に基づく2026/03/12の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
+          "startsAt": "2026-03-12T01:00:00.000Z",
+          "endsAt": "2026-03-12T02:00:00.000Z",
+          "sourceQuote": "アップ情報 PICK UP 2026年05月08日 NEW 料金改定とお得なキャンペーンのお知らせ 2026年03月29日 ゴールデンウイーク営業時間のご案内 2026年03月12日 リソール受付について 2026年02月13日 第5回【…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Urban Base Camp 新宿 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/03/12。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: アップ情報 PICK UP 2026年05月08日 NEW 料金改定とお得なキャンペーンのお知らせ 2026年03月29日 ゴールデンウイーク営業時間のご案内 2026年03月12日 リソール受付について 2026年02月13日 第5回【…"
+        }
+      ]
+    },
+    {
+      "handle": "base-camp-hanno",
+      "displayName": "Boulder Park Base Camp 飯能店 公式サイト",
+      "sourceUrl": "https://b-camp.jp/hanno",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "base-camp-hanno",
+          "sourceUrl": "https://b-camp.jp/hanno#zac-2018-08-08-competition-1",
+          "sourceExternalId": "official-site:base-camp-hanno:2018-08-08:competition:1",
+          "classification": "competition",
+          "title": "Boulder Park Base Camp 飯能店 08/08 コンペ",
+          "summary": "Boulder Park Base Camp 飯能店の公式情報に基づく2018/08/08のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
+          "startsAt": "2018-08-08T01:00:00.000Z",
+          "endsAt": "2018-08-08T02:00:00.000Z",
+          "sourceQuote": "ただけます！元世界チャンピオンの平山ユージがベースキャンプのオーナーです。 --> --> --> --> --> ピックアップ情報 PICK UP MORE 2018年08月08日 Bouldering Japan Cup 2019 J…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Boulder Park Base Camp 飯能店 公式サイトからコンペ・大会候補を検出。日付候補は2018/08/08。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: ただけます！元世界チャンピオンの平山ユージがベースキャンプのオーナーです。 --> --> --> --> --> ピックアップ情報 PICK UP MORE 2018年08月08日 Bouldering Japan Cup 2019 J…"
+        },
+        {
+          "handle": "base-camp-hanno",
+          "sourceUrl": "https://b-camp.jp/hanno#zac-2026-05-11-competition-2",
+          "sourceExternalId": "official-site:base-camp-hanno:2026-05-11:competition:2",
+          "classification": "competition",
+          "title": "Boulder Park Base Camp 飯能店 05/11 コンペ",
+          "summary": "Boulder Park Base Camp 飯能店の公式情報に基づく2026/05/11のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
+          "startsAt": "2026-05-11T01:00:00.000Z",
+          "endsAt": "2026-05-11T02:00:00.000Z",
+          "sourceQuote": "UP MORE 2018年08月08日 Bouldering Japan Cup 2019 JMSCA公認予選 Base Camp Tokyo大会 特設ページ 2026年05月11日 NEW 料金改定とお得なキャンペーンのお知らせ 202…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Boulder Park Base Camp 飯能店 公式サイトからコンペ・大会候補を検出。日付候補は2026/05/11。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: UP MORE 2018年08月08日 Bouldering Japan Cup 2019 JMSCA公認予選 Base Camp Tokyo大会 特設ページ 2026年05月11日 NEW 料金改定とお得なキャンペーンのお知らせ 202…"
+        },
+        {
+          "handle": "base-camp-hanno",
+          "sourceUrl": "https://b-camp.jp/hanno#zac-2026-05-01-competition-3",
+          "sourceExternalId": "official-site:base-camp-hanno:2026-05-01:competition:3",
+          "classification": "competition",
+          "title": "Boulder Park Base Camp 飯能店 05/01 コンペ",
+          "summary": "Boulder Park Base Camp 飯能店の公式情報に基づく2026/05/01のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
+          "startsAt": "2026-05-01T01:00:00.000Z",
+          "endsAt": "2026-05-01T02:00:00.000Z",
+          "sourceQuote": "Cup 2019 JMSCA公認予選 Base Camp Tokyo大会 特設ページ 2026年05月11日 NEW 料金改定とお得なキャンペーンのお知らせ 2026年05月01日 6月臨時休業と営業時間変更のお知らせ 2026年04月1…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Boulder Park Base Camp 飯能店 公式サイトからコンペ・大会候補を検出。日付候補は2026/05/01。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: Cup 2019 JMSCA公認予選 Base Camp Tokyo大会 特設ページ 2026年05月11日 NEW 料金改定とお得なキャンペーンのお知らせ 2026年05月01日 6月臨時休業と営業時間変更のお知らせ 2026年04月1…"
+        }
+      ]
     }
   ]
 }

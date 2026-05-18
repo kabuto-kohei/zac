@@ -44,7 +44,7 @@ const run = {
   policy: {
     officialSourceOnly: true,
     publicOutput: ["title", "summary", "category", "startsAt", "endsAt", "sourceUrl", "sourceLabel", "shortQuote"],
-    neverPublish: ["full captions", "copied images/videos", "unreviewed raw source text"],
+    neverPublish: ["full captions", "copied images/videos", "comments", "DMs", "stories", "passwords", "cookies", "unreviewed raw source text"],
     noBillingActions: true,
   },
   status: "running",
@@ -259,7 +259,7 @@ async function buildSummary() {
 function buildNextActions(summary) {
   const actions = [];
   if (summary.instagramPostSources > 0) {
-    actions.push(`Inspect official Instagram recent-post queue first (${summary.instagramPostSources} source(s)); record post URLs in source_post_observations or reproducible SQL patches.`);
+    actions.push(`Run the Instagram browser roller first (${summary.instagramPostSources} approved source(s)); it must use a logged-in browser session, open latest visible posts/reels only, and stage candidates for Admin review.`);
   }
   if (summary.dueApprovedSources > 0) {
     actions.push(`Inspect ${summary.dueApprovedSources} due approved source(s) from inspectNow first.`);
@@ -294,7 +294,7 @@ function buildDegradedNextActions(summary, monitor) {
     actions.push(`Inspect last-known operatorBatch first; it currently has ${summary.operatorBatch} approved source(s).`);
   }
   if (summary.instagramPostSources > 0) {
-    actions.push(`Inspect last-known Instagram post queue read-only first (${summary.instagramPostSources} source(s)); prepare observations but wait for DB reachability before marking them complete.`);
+    actions.push(`Inspect last-known Instagram browser-roller queue read-only first (${summary.instagramPostSources} approved source(s)); prepare observations but wait for DB reachability before marking them complete.`);
   }
   if (summary.upcomingEvents > 0) {
     actions.push(`Recheck last-known upcomingEventRecheck items carefully (${summary.upcomingEvents} queued).`);

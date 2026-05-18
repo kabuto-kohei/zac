@@ -15,6 +15,7 @@ const sourceDelayMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_
 const sourceTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS, 60000);
 const postTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_POST_TIMEOUT_MS, 30000);
 const navigationTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_NAVIGATION_TIMEOUT_MS, 25000);
+const profileSettleMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_PROFILE_SETTLE_MS, 8000);
 const requireAuthenticatedSession = parseBoolean(process.env.ZAC_INSTAGRAM_BROWSER_REQUIRE_AUTH, true);
 const headless = parseBoolean(process.env.ZAC_INSTAGRAM_BROWSER_HEADLESS, true);
 const generatedAt = new Date();
@@ -167,7 +168,7 @@ async function inspectBrowserSource(context, source) {
   try {
     const profileUrl = normalizeInstagramProfileUrl(source.sourceUrl, source.handle);
     const response = await page.goto(profileUrl, { waitUntil: "domcontentloaded", timeout: sourceTimeoutMs });
-    await page.waitForTimeout(1500);
+    await waitForProfileSettled(page);
     const pageState = await classifyInstagramPage(page, response);
     if (pageState.state !== "profile_visible") {
       return {
@@ -374,13 +375,30 @@ async function classifyInstagramPage(page, response) {
   if (/checkpoint|本人確認|認証コード|suspicious|challenge/i.test(`${url}\n${text}`)) {
     return { state: "checkpoint_required", category: "checkpoint_required", reason: "Instagram checkpoint or challenge UI detected." };
   }
-  if (status === 404 || /Sorry, this page isn't available|ページをご利用いただけません/i.test(text)) {
+  if (status === 404 || /Sorry, this page isn't available|このページはご利用いただけません|ページ[^\n]*利用いただけません|リンクに問題がある|page isn't available/i.test(text)) {
     return { state: "profile_unavailable", category: "profile_unavailable", reason: `Profile or post unavailable; status=${status ?? "unknown"}` };
   }
   if (status && status >= 500) {
     return { state: "instagram_unavailable", category: "instagram_unavailable", reason: `Instagram returned HTTP ${status}` };
   }
   return { state: "profile_visible", category: "profile_visible", reason: null };
+}
+
+async function waitForProfileSettled(page) {
+  await page
+    .waitForFunction(
+      () => {
+        const text = document.body?.innerText ?? "";
+        const hasPostLink = [...document.querySelectorAll("a")].some((anchor) => /\/(?:p|reel)\//.test(anchor.href));
+        const hasTerminalText =
+          /\/accounts\/login|login_required|ログイン|Log in|Sign up|Create an account|checkpoint|本人確認|認証コード|suspicious|challenge|このページはご利用いただけません|ページ[^\n]*利用いただけません|リンクに問題がある|Sorry, this page isn't available|No Posts Yet|投稿がありません/i.test(
+            `${location.href}\n${text}`,
+          );
+        return hasPostLink || hasTerminalText;
+      },
+      { timeout: profileSettleMs },
+    )
+    .catch(() => null);
 }
 
 async function extractProfilePostUrls(page, handle) {

@@ -1,20 +1,20 @@
 # Instagram Browser Roller Inspection
 
-- Generated: 2026-05-18T15:16:43.178Z
+- Generated: 2026-05-18T23:53:00.194Z
 - Mode: browser_roller
 - Browser session: authenticated
 - Target cadence: 8 runs/day (every 3 hours JST)
 - Sources queued: 25
 - Sources visited: 25
-- Sources succeeded: 24
-- Sources failed: 1
+- Sources succeeded: 23
+- Sources failed: 2
 - Sources deferred: 0
-- Posts seen: 72
-- New posts opened: 1
-- Duplicate posts skipped: 71
-- Observed posts: 1
+- Posts seen: 69
+- New posts opened: 0
+- Duplicate posts skipped: 69
+- Observed posts: 0
 - Pending posts: 0
-- Ignored posts: 1
+- Ignored posts: 0
 - Calendar candidates: 0
 
 ## Policy
@@ -25,7 +25,7 @@ Only approved official Instagram sources are eligible. Store source links, short
 
 - DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - failed (profile_unavailable)
   - no new posts
-- ボルダリングジム Vortex（ボルテックス） (climb.vortex) postsSeen=3, newOpened=0, duplicates=3
+- ボルダリングジム Vortex（ボルテックス） (climb.vortex) - failed (checkpoint_required)
   - no new posts
 - Urban Base Camp 新宿 (basecamp_shinjuku) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
@@ -35,13 +35,13 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - エナジークライミングジム浦和店公式Instagram (energyurawa) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- NOBOROCK 高田馬場店 (noborock_takadanobaba) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
 - be_born_climbing_gym (be_born_climbing_gym) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - B-PUMP YOKOHAMA 横浜 (bpumpyokohama) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - exciting_sancha (exciting_sancha) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- NOBOROCK 高田馬場店 (noborock_takadanobaba) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - headrockcg (headrockcg) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
@@ -71,5 +71,5 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - クライミングジム SLOTH（スロース） (sloth.gym) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- ディーボルダリングプラス津田沼 (dbouldering_tsudanuma) postsSeen=3, newOpened=1, duplicates=2
-  - ignored: notice | ディーボルダリングプラス津田沼 dbouldering_tsudanuma | https://www.instagram.com/reel/DVaJVOVE2jJ/
+- ディーボルダリング 綱島 (dbouldering_tsunashima) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts

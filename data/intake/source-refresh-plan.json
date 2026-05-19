@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T15:19:03.902Z",
+  "generatedAt": "2026-05-19T01:08:36.145Z",
   "policy": {
     "publicDataOnly": true,
     "publishOnly": [
@@ -679,18 +679,6 @@
       },
       {
         "platform": "instagram",
-        "handle": "dbouldering_tsunashima",
-        "displayName": "ディーボルダリング 綱島",
-        "sourceUrl": "https://www.instagram.com/dbouldering_tsunashima/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
-        "discoverySource": "",
-        "lastCheckedAt": "2026-05-17",
-        "sourceVerifiedAt": "2026-05-14"
-      },
-      {
-        "platform": "instagram",
         "handle": "dbouldering_yachiyo",
         "displayName": "ディーボルダリングプラス八千代",
         "sourceUrl": "https://www.instagram.com/dbouldering_yachiyo/",
@@ -1012,6 +1000,18 @@
         "discoverySource": "",
         "lastCheckedAt": "2026-05-17",
         "sourceVerifiedAt": "2026-05-14"
+      },
+      {
+        "platform": "instagram",
+        "handle": "shinnikan",
+        "displayName": "小鹿野町クライミングパーク 神怡舘",
+        "sourceUrl": "https://www.instagram.com/shinnikan/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "discoverySource": "",
+        "lastCheckedAt": "2026-05-17",
+        "sourceVerifiedAt": "2026-05-14"
       }
     ],
     "instagramPostInspection": [
@@ -1028,6 +1028,21 @@
         "sourceVerifiedAt": "2026-05-11",
         "lastObservedAt": null,
         "observedPosts": 0,
+        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
+      },
+      {
+        "eventSourceId": "7061a581-458e-485a-8a88-b9c9adf269e1",
+        "platform": "instagram",
+        "handle": "climb.vortex",
+        "displayName": "ボルダリングジム Vortex（ボルテックス）",
+        "sourceUrl": "https://www.instagram.com/climb.vortex/",
+        "sourceType": "official_instagram",
+        "status": "approved",
+        "relationshipSourceHandle": "comp_bible_following",
+        "lastCheckedAt": "2026-05-18",
+        "sourceVerifiedAt": "2026-05-14",
+        "lastObservedAt": "2026-05-15",
+        "observedPosts": 3,
         "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
       },
       {
@@ -1084,21 +1099,6 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": null,
-        "lastCheckedAt": "2026-05-18",
-        "sourceVerifiedAt": "2026-05-14",
-        "lastObservedAt": "2026-05-15",
-        "observedPosts": 3,
-        "requiredEvidence": "recent public Instagram post/reel URL plus short summary and classification; no full captions or media copies"
-      },
-      {
-        "eventSourceId": "7061a581-458e-485a-8a88-b9c9adf269e1",
-        "platform": "instagram",
-        "handle": "climb.vortex",
-        "displayName": "ボルダリングジム Vortex（ボルテックス）",
-        "sourceUrl": "https://www.instagram.com/climb.vortex/",
-        "sourceType": "official_instagram",
-        "status": "approved",
-        "relationshipSourceHandle": "comp_bible_following",
         "lastCheckedAt": "2026-05-18",
         "sourceVerifiedAt": "2026-05-14",
         "lastObservedAt": "2026-05-15",
@@ -1384,7 +1384,7 @@
         "sourceType": "official_instagram",
         "status": "approved",
         "relationshipSourceHandle": "comp_bible_following",
-        "lastCheckedAt": "2026-05-17",
+        "lastCheckedAt": "2026-05-18",
         "sourceVerifiedAt": "2026-05-14",
         "lastObservedAt": "2026-05-16",
         "observedPosts": 3,
@@ -2781,16 +2781,6 @@
     ],
     "upcomingEventReview": [
       {
-        "category": "event",
-        "title": "🔥宿ロキでもMOVING3開催間近‼️🔥",
-        "startsAt": "2026-05-19 10:00",
-        "endsAt": "2026-05-23 21:00",
-        "sourceUrl": "https://www.instagram.com/p/DYRxikUpUZV/",
-        "sourceLabel": "ROCKY 新宿曙橋店",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.72"
-      },
-      {
         "category": "construction",
         "title": "5月 ルートクライミングエリア工事",
         "startsAt": "2026-05-19 12:00",
@@ -2962,11 +2952,11 @@
       },
       {
         "category": "competition",
-        "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
+        "title": "🚩ボルダーキッズツアー2026🚩",
         "startsAt": "2026-06-06 10:00",
-        "endsAt": "2026-06-06 11:00",
-        "sourceUrl": "https://www.instagram.com/p/DYOn4RhEU6L/",
-        "sourceLabel": "アオロク〖ao_roc.climbing〗",
+        "endsAt": "2026-06-06 21:00",
+        "sourceUrl": "https://www.instagram.com/p/DYPKukLPq2i/",
+        "sourceLabel": "クライミングジム ZE-RO（ゼロ） 水戸店",
         "reviewStatus": "approved",
         "extractionConfidence": "0.72"
       },
@@ -2982,11 +2972,11 @@
       },
       {
         "category": "competition",
-        "title": "🚩ボルダーキッズツアー2026🚩",
+        "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
         "startsAt": "2026-06-06 10:00",
-        "endsAt": "2026-06-06 21:00",
-        "sourceUrl": "https://www.instagram.com/p/DYPKukLPq2i/",
-        "sourceLabel": "クライミングジム ZE-RO（ゼロ） 水戸店",
+        "endsAt": "2026-06-06 11:00",
+        "sourceUrl": "https://www.instagram.com/p/DYOn4RhEU6L/",
+        "sourceLabel": "アオロク〖ao_roc.climbing〗",
         "reviewStatus": "approved",
         "extractionConfidence": "0.72"
       },
@@ -3072,16 +3062,6 @@
       },
       {
         "category": "competition",
-        "title": "今年のBLOC",
-        "startsAt": "2026-07-12 10:00",
-        "endsAt": "2026-07-25 21:00",
-        "sourceUrl": "https://www.instagram.com/p/DYQwrvJB6Kk/",
-        "sourceLabel": "アオロク〖ao_roc.climbing〗",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.72"
-      },
-      {
-        "category": "competition",
         "title": "BLoC 2026 Round4 ZE-RO MITO",
         "startsAt": "2026-07-12 10:00",
         "endsAt": "2026-07-12 20:00",
@@ -3089,6 +3069,16 @@
         "sourceLabel": "CLIMBERS BLoC 2026記事",
         "reviewStatus": "approved",
         "extractionConfidence": "0.78"
+      },
+      {
+        "category": "competition",
+        "title": "今年のBLOC",
+        "startsAt": "2026-07-12 10:00",
+        "endsAt": "2026-07-25 21:00",
+        "sourceUrl": "https://www.instagram.com/p/DYQwrvJB6Kk/",
+        "sourceLabel": "アオロク〖ao_roc.climbing〗",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.72"
       },
       {
         "category": "competition",

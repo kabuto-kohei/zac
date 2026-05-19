@@ -1,25 +1,25 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-18T15:19:15.796Z
+- generatedAt: 2026-05-19T01:08:45.939Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
 - latestRunAgeMinutes: 0
-- localRunAgeMinutes: 0
+- localRunAgeMinutes: 73
 - consecutiveNonReady: 0
-- instagramFailureRatio: 0.04
+- instagramFailureRatio: 0.08
 - instagramBrowserSessionState: authenticated
 
 ## Instagram Browser Roller
 
 - sourcesVisited: 25
-- sourcesSucceeded: 24
-- sourcesFailed: 1
+- sourcesSucceeded: 23
+- sourcesFailed: 2
 - sourcesDeferred: 0
-- postsSeen: 72
-- newPostsOpened: 1
-- observedPosts: 1
+- postsSeen: 69
+- newPostsOpened: 0
+- observedPosts: 0
 - calendarCandidates: 0
 
 ## Queues
@@ -28,7 +28,7 @@
 - inspectNow: 64
 - operatorBatch: 16
 - approvedSourceRotation: 96
-- upcomingEventRecheck: 35
+- upcomingEventRecheck: 34
 - candidateVerification: 0
 - gymDisciplineVerification: 119
 - closureVerification: 80
@@ -39,7 +39,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 8
+- runs: 11
 
 ## Failed Checks
 
@@ -48,6 +48,7 @@
 ## Failed Instagram Sources
 
 - dogwood_climbing_gym: profile_unavailable; officialFallback=true
+- climb.vortex: checkpoint_required; officialFallback=true
 
 ## Next Actions
 

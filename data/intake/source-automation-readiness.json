@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-18T15:19:15.796Z",
+  "generatedAt": "2026-05-19T01:08:45.939Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -12,26 +12,32 @@
     "failedChecks": 0,
     "warnings": 0,
     "latestRunAgeMinutes": 0,
-    "localRunAgeMinutes": 0,
+    "localRunAgeMinutes": 73,
     "consecutiveNonReady": 0,
-    "instagramFailureRatio": 0.04,
+    "instagramFailureRatio": 0.08,
     "failedInstagramSources": [
       {
         "handle": "dogwood_climbing_gym",
         "error": "profile_unavailable",
         "failureCategory": "profile_unavailable",
         "hasOfficialFallback": true
+      },
+      {
+        "handle": "climb.vortex",
+        "error": "checkpoint_required",
+        "failureCategory": "checkpoint_required",
+        "hasOfficialFallback": true
       }
     ],
     "instagramBrowserSessionState": "authenticated",
     "instagramBrowserRoller": {
       "sourcesVisited": 25,
-      "sourcesSucceeded": 24,
-      "sourcesFailed": 1,
+      "sourcesSucceeded": 23,
+      "sourcesFailed": 2,
       "sourcesDeferred": 0,
-      "postsSeen": 72,
-      "newPostsOpened": 1,
-      "observedPosts": 1,
+      "postsSeen": 69,
+      "newPostsOpened": 0,
+      "observedPosts": 0,
       "calendarCandidates": 0
     },
     "launchAgent": {
@@ -41,14 +47,14 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 10800,
-      "runs": 8
+      "runs": 11
     },
     "queues": {
       "instagramPostInspection": 25,
       "inspectNow": 64,
       "operatorBatch": 16,
       "approvedSourceRotation": 96,
-      "upcomingEventRecheck": 35,
+      "upcomingEventRecheck": 34,
       "candidateVerification": 0,
       "gymDisciplineVerification": 119,
       "closureVerification": 80
@@ -118,7 +124,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "0m",
+      "detail": "73m",
       "severity": "error"
     },
     {
@@ -220,7 +226,7 @@
     {
       "name": "Instagram browser roller made source progress",
       "ok": true,
-      "detail": "queued=25 succeeded=24 observed=1",
+      "detail": "queued=25 succeeded=23 observed=0",
       "severity": "error"
     },
     {
@@ -244,7 +250,7 @@
     {
       "name": "Instagram inspection failures are within budget or covered by official fallback",
       "ok": true,
-      "detail": "4% failed; covered by official fallback",
+      "detail": "8% failed; covered by official fallback",
       "severity": "error"
     },
     {

@@ -1,10 +1,10 @@
 # Source Monitor Run
 
-- Generated: 2026-05-18T15:19:05.559Z
+- Generated: 2026-05-19T01:08:37.963Z
 - Due approved sources: 64
 - Instagram post sources: 25
 - Candidate Instagram sources: 0
-- Upcoming event rechecks: 35
+- Upcoming event rechecks: 34
 - Gym discipline verification candidates: 119
 - Closure verification candidates: 80
 - Gyms with Instagram: 97/192
@@ -12,11 +12,11 @@
 ## Instagram Post Inspection
 
 1. DOGWOOD Climbing Gym 公式Instagram (dogwood_climbing_gym) - https://www.instagram.com/dogwood_climbing_gym/ - lastObserved: none - observedPosts: 0
-2. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
-3. B-PUMP OGIKUBO (bpump_ogikubo) - https://www.instagram.com/bpump_ogikubo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 5
-4. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 4
-5. エナジークライミングジム浦和店公式Instagram (energyurawa) - https://www.instagram.com/energyurawa/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
-6. ボルダリングジム Vortex（ボルテックス） (climb.vortex) - https://www.instagram.com/climb.vortex/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+2. ボルダリングジム Vortex（ボルテックス） (climb.vortex) - https://www.instagram.com/climb.vortex/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+3. Urban Base Camp 新宿 (basecamp_shinjuku) - https://www.instagram.com/basecamp_shinjuku/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
+4. B-PUMP OGIKUBO (bpump_ogikubo) - https://www.instagram.com/bpump_ogikubo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 5
+5. B-PUMP Tokyo (bpumptokyo) - https://www.instagram.com/bpumptokyo/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 4
+6. エナジークライミングジム浦和店公式Instagram (energyurawa) - https://www.instagram.com/energyurawa/ - lastObserved: 2026-05-15T14:20:37.797Z - observedPosts: 3
 7. be_born_climbing_gym (be_born_climbing_gym) - https://www.instagram.com/be_born_climbing_gym/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 4
 8. B-PUMP YOKOHAMA 横浜 (bpumpyokohama) - https://www.instagram.com/bpumpyokohama/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 3
 9. exciting_sancha (exciting_sancha) - https://www.instagram.com/exciting_sancha/ - lastObserved: 2026-05-15T16:45:20.195Z - observedPosts: 3
@@ -72,18 +72,18 @@
 
 ## Upcoming Event Recheck
 
-1. event: 🔥宿ロキでもMOVING3開催間近‼️🔥 - 2026-05-19 10:00
-2. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
-3. opening_change: 5/20〜22日まで急遽臨時休業となります😭臨時休業に伴い壁の改装工事が大幅に遅れるかもしれません🙏 - 2026-05-20 10:00
-4. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
-5. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
-6. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
-7. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
-8. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
-9. event: 神怡舘information - 2026-05-27 10:00
-10. route_set: 錦糸町 リードエリア Leaning Tower セット - 2026-05-27 12:00
-11. private_booking: 短縮営業のお知らせ - 2026-05-28 10:00
-12. competition: ▶︎▶︎▶︎ - 2026-05-30 10:00
+1. construction: 5月 ルートクライミングエリア工事 - 2026-05-19 12:00
+2. opening_change: 5/20〜22日まで急遽臨時休業となります😭臨時休業に伴い壁の改装工事が大幅に遅れるかもしれません🙏 - 2026-05-20 10:00
+3. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
+4. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
+5. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
+6. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
+7. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
+8. event: 神怡舘information - 2026-05-27 10:00
+9. route_set: 錦糸町 リードエリア Leaning Tower セット - 2026-05-27 12:00
+10. private_booking: 短縮営業のお知らせ - 2026-05-28 10:00
+11. competition: ▶︎▶︎▶︎ - 2026-05-30 10:00
+12. event: TAMAX 2026 WESTROCK調布 - 2026-05-30 10:00
 
 ## Existing Event Fingerprints
 

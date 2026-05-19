@@ -66,6 +66,7 @@ const data = await withDatabaseClient(
       WHERE o.deleted_at IS NULL
         AND o.review_status = 'pending'
         AND o.starts_at IS NOT NULL
+        AND o.starts_at >= ${todayStart}
       ORDER BY o.starts_at ASC, o.observed_at ASC
       LIMIT ${promotionLimit};
     `;

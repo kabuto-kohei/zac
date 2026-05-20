@@ -262,7 +262,7 @@ async function listPersistentEventCandidates() {
       .orderBy(desc(events.createdAt))
       .limit(100);
 
-    return toEventSummaries(rows.filter((row) => row.reviewStatus !== "approved" || row.status === "draft"));
+    return toEventSummaries(rows.filter((row) => row.reviewStatus === "pending"));
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not list event candidates.", 503);

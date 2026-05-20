@@ -87,7 +87,7 @@ export function formatSourceCandidate(input) {
   const template = categoryTemplates[category];
   const sourceName = normalizeWhitespace(input.sourceName || "公式情報");
   const publicSourceName = publicSourceLabel(sourceName);
-  const titleCore = selectTitleCore(input.rawTitle, input.sourceName);
+  const titleCore = selectTitleCore(input.rawTitle, input.sourceName, category);
   const startsAt = asDate(input.startsAt);
   const dateText = startsAt ? formatJstDate(startsAt) : "";
   const title = truncate(`${publicSourceName} ${titleCore || `${dateText} ${template.titleSuffix}`}`.trim(), 100);
@@ -113,7 +113,7 @@ export function formatSourceCandidate(input) {
   };
 }
 
-function selectTitleCore(rawTitle, sourceName) {
+function selectTitleCore(rawTitle, sourceName, category) {
   const normalized = normalizeWhitespace(rawTitle ?? "")
     .replace(/^【|】$/gu, "")
     .replace(/^《|》$/gu, "")
@@ -121,11 +121,39 @@ function selectTitleCore(rawTitle, sourceName) {
     .trim();
   if (!normalized) return "";
 
-  const withoutSource = normalizeWhitespace(normalized.replace(normalizeWhitespace(sourceName ?? ""), ""));
+  const sourcePatterns = sourceNameVariants(sourceName);
+  let withoutSource = normalized;
+  for (const pattern of sourcePatterns) {
+    withoutSource = withoutSource.replace(pattern, "");
+  }
+  withoutSource = normalizeWhitespace(withoutSource);
+  if (isGenericTitleCore(withoutSource, category)) return "";
+
   const compact = withoutSource.replace(/[・.。！？!?【】「」『』（）()\s\d年月日\-_/〜~:：,.、]/gu, "");
   if (compact.length < 3) return "";
 
   return withoutSource;
+}
+
+function sourceNameVariants(sourceName) {
+  const normalized = normalizeWhitespace(sourceName ?? "");
+  const publicLabel = publicSourceLabel(normalized);
+  return [normalized, publicLabel]
+    .filter(Boolean)
+    .flatMap((value) => [value, value.replace(/[（）()].*?[）)]/gu, "")])
+    .map((value) => normalizeWhitespace(value))
+    .filter(Boolean)
+    .map((value) => new RegExp(escapeRegExp(value), "gu"));
+}
+
+function isGenericTitleCore(value, category) {
+  const text = normalizeWhitespace(value);
+  if (!text) return true;
+  if (/^(official|instagram|insta|info|information|お知らせ)$/iu.test(text)) return true;
+  if (/^[\p{Emoji_Presentation}\p{Extended_Pictographic}\s\dA-Za-z._-]+$/u.test(text)) return true;
+  if (/^(今日の|本日の|today|next set info|set info)/iu.test(text)) return true;
+  if (category === "route_set" && /^(ルートセット|セット|ホールド替え)$/u.test(text)) return true;
+  return false;
 }
 
 function normalizeConfidence(value, startsAt) {
@@ -166,4 +194,8 @@ function publicSourceLabel(value) {
 
 function truncate(value, max) {
   return value.length > max ? `${value.slice(0, max - 1)}…` : value;
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
 }

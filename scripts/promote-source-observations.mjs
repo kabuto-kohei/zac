@@ -12,6 +12,7 @@ const outputJsonPath = process.env.ZAC_OBSERVATION_PROMOTION_JSON ?? "data/intak
 const outputMdPath = process.env.ZAC_OBSERVATION_PROMOTION_MD ?? "data/intake/source-observation-promotions.md";
 const outputSqlPath = process.env.ZAC_OBSERVATION_PROMOTION_SQL ?? "data/intake/source-observation-promotions.sql";
 const promotionLimit = parsePositiveInt(process.env.ZAC_OBSERVATION_PROMOTION_LIMIT, 96);
+const cleanupLimit = parsePositiveInt(process.env.ZAC_OBSERVATION_CLEANUP_LIMIT, 256);
 const publishApproved = process.env.ZAC_PROMOTE_OBSERVATIONS_APPROVE === "1";
 const systemUserId = process.env.ZAC_SYSTEM_USER_ID ?? "00000000-0000-4000-8000-000000000001";
 const generatedAt = new Date();
@@ -26,7 +27,7 @@ const data = await withDatabaseClient(
   postgres,
   databaseUrl,
   async (sql) => {
-    const observations = await sql`
+    const observationColumns = sql`
       SELECT
         o.id,
         o.event_source_id,
@@ -63,6 +64,10 @@ const data = await withDatabaseClient(
           OR g.source_url = es.source_url
           OR g.source_url = split_part(o.source_url, '#', 1)
        )
+    `;
+
+    const observations = await sql`
+      ${observationColumns}
       WHERE o.deleted_at IS NULL
         AND o.review_status = 'pending'
         AND o.starts_at IS NOT NULL
@@ -71,13 +76,32 @@ const data = await withDatabaseClient(
       LIMIT ${promotionLimit};
     `;
 
+    const cleanupObservations = await sql`
+      ${observationColumns}
+      WHERE o.deleted_at IS NULL
+        AND o.review_status = 'pending'
+        AND o.starts_at IS NOT NULL
+        AND o.starts_at < ${todayStart}
+      ORDER BY o.starts_at ASC, o.observed_at ASC
+      LIMIT ${cleanupLimit};
+    `;
+
     const events = await sql`
       SELECT id, gym_id, category, title, starts_at, source_url, status, review_status
       FROM events
       WHERE deleted_at IS NULL;
     `;
 
-    return { observations, events };
+    const staleEventCandidates = await sql`
+      SELECT id, title, starts_at
+      FROM events
+      WHERE deleted_at IS NULL
+        AND review_status = 'pending'
+        AND status = 'draft'
+        AND starts_at < ${todayStart};
+    `;
+
+    return { observations, cleanupObservations, events, staleEventCandidates };
   },
   { label: "source observation promotion" },
 );
@@ -86,17 +110,18 @@ const existing = buildExistingIndex(data.events);
 const seenObservationIds = new Set();
 const promotions = [];
 const skipped = [];
+const ignoredObservationIds = new Set();
 
 for (const row of data.observations) {
   if (seenObservationIds.has(row.id)) {
-    skipped.push({ id: row.id, sourceUrl: row.source_url, title: row.title, reason: "duplicate observation row from source/gym matching" });
+    recordSkipped(row, "duplicate observation row from source/gym matching");
     continue;
   }
   seenObservationIds.add(row.id);
 
   const evaluation = evaluateObservation(row, existing);
   if (!evaluation.ok) {
-    skipped.push({ id: row.id, sourceUrl: row.source_url, title: row.title, reason: evaluation.reason });
+    recordSkipped(row, evaluation.reason, evaluation.terminal);
     continue;
   }
 
@@ -104,6 +129,17 @@ for (const row of data.observations) {
   promotions.push(promotion);
   existing.sourceUrls.add(row.source_url);
   existing.fingerprints.add(fingerprintFor(promotion.gymId, promotion.category, promotion.startsAt));
+}
+
+for (const row of data.cleanupObservations) {
+  if (seenObservationIds.has(row.id)) {
+    continue;
+  }
+  seenObservationIds.add(row.id);
+  const evaluation = evaluateObservation(row, existing);
+  if (!evaluation.ok && evaluation.terminal) {
+    recordSkipped(row, evaluation.reason, true);
+  }
 }
 
 const result = {
@@ -116,11 +152,17 @@ const result = {
   },
   summary: {
     observationsRead: data.observations.length,
+    cleanupRead: data.cleanupObservations.length,
     promotions: promotions.length,
     skipped: skipped.length,
+    ignored: ignoredObservationIds.size,
+    staleEventCandidates: data.staleEventCandidates.length,
   },
   promotions,
   skipped,
+  ignoredObservationIds: [...ignoredObservationIds],
+  staleEventCandidateIds: data.staleEventCandidates.map((row) => row.id),
+  staleEventCandidateCutoff: todayStart.toISOString(),
 };
 
 await fs.writeFile(outputJsonPath, `${JSON.stringify(result, null, 2)}\n`);
@@ -145,21 +187,9 @@ console.log(
 );
 
 function evaluateObservation(row, existing) {
-  const category = normalizeCategory(row.classification);
+  const category = refineCategory(row, normalizeCategory(row.classification));
   if (!category) {
-    return { ok: false, reason: `unsupported classification: ${row.classification ?? "unknown"}` };
-  }
-
-  if (!row.gym_id) {
-    return { ok: false, reason: "no matching published gym" };
-  }
-
-  const title = normalizeWhitespace(row.title ?? "");
-  if (!isUsefulTitle(title)) {
-    return { ok: false, reason: "title is too weak for event candidate" };
-  }
-  if (isWeakAnnouncement(title, row.source_quote ?? "", category)) {
-    return { ok: false, reason: "post looks like an announcement, not a calendar item" };
+    return { ok: false, reason: `unsupported classification: ${row.classification ?? "unknown"}`, terminal: true };
   }
 
   const startsAt = asDate(row.starts_at);
@@ -168,18 +198,30 @@ function evaluateObservation(row, existing) {
     return { ok: false, reason: "missing start date" };
   }
   if (startsAt < todayStart) {
-    return { ok: false, reason: "past start date" };
+    return { ok: false, reason: "past start date", terminal: true };
   }
   if (endsAt < startsAt) {
-    return { ok: false, reason: "end date is before start date" };
+    return { ok: false, reason: "end date is before start date", terminal: true };
+  }
+
+  if (!row.gym_id) {
+    return { ok: false, reason: "no matching published gym" };
+  }
+
+  const title = normalizeWhitespace(row.title ?? "");
+  if (!isUsefulTitle(title)) {
+    return { ok: false, reason: "title is too weak for event candidate", terminal: true };
+  }
+  if (isWeakAnnouncement(title, row.source_quote ?? "", category)) {
+    return { ok: false, reason: "post looks like an announcement, not a calendar item", terminal: true };
   }
 
   if (existing.sourceUrls.has(row.source_url)) {
-    return { ok: false, reason: "source URL already exists in events" };
+    return { ok: false, reason: "source URL already exists in events", terminal: true };
   }
 
   if (existing.fingerprints.has(fingerprintFor(row.gym_id, category, startsAt))) {
-    return { ok: false, reason: "same gym/category/start date already exists" };
+    return { ok: false, reason: "same gym/category/start date already exists", terminal: true };
   }
 
   return { ok: true, category };
@@ -225,6 +267,13 @@ function buildPromotion(row, category) {
   };
 }
 
+function recordSkipped(row, reason, terminal = false) {
+  skipped.push({ id: row.id, sourceUrl: row.source_url, title: row.title, reason, terminal });
+  if (terminal) {
+    ignoredObservationIds.add(row.id);
+  }
+}
+
 function buildExistingIndex(events) {
   const sourceUrls = new Set();
   const fingerprints = new Set();
@@ -245,6 +294,20 @@ function buildExistingIndex(events) {
 
 function normalizeCategory(value) {
   return normalizeObservationCategory(value);
+}
+
+function refineCategory(row, fallbackCategory) {
+  const text = `${row.title ?? ""} ${row.summary ?? ""} ${row.source_quote ?? ""}`;
+  if (/セット|ホールド替え|ルートセット|next set|set info|まぶし|全面替え|壁替え/iu.test(text)) {
+    return "route_set";
+  }
+  if (/コンペ|大会|competition|cup|カップ|BLoC|TAMAX|ボルダーキッズツアー/iu.test(text)) {
+    return "competition";
+  }
+  if (/貸切|短縮営業|営業時間|休業|臨時休業|close|closed|open|オープン時間|クローズ/iu.test(text)) {
+    return "private_booking";
+  }
+  return fallbackCategory;
 }
 
 function fingerprintFor(gymId, category, startsAt) {
@@ -306,8 +369,11 @@ function renderMarkdown(result) {
     "## Summary",
     "",
     `- observationsRead: ${result.summary.observationsRead}`,
+    `- cleanupRead: ${result.summary.cleanupRead}`,
     `- promotions: ${result.summary.promotions}`,
     `- skipped: ${result.summary.skipped}`,
+    `- ignored: ${result.summary.ignored}`,
+    `- staleEventCandidates: ${result.summary.staleEventCandidates}`,
     "",
     "## Promotions",
     "",
@@ -317,7 +383,7 @@ function renderMarkdown(result) {
     "",
     "## Skipped",
     "",
-    ...result.skipped.map((item) => `- ${item.reason}: ${item.title ?? "(no title)"} | ${item.sourceUrl}`),
+    ...result.skipped.map((item) => `- ${item.reason}${item.terminal ? " [ignored]" : ""}: ${item.title ?? "(no title)"} | ${item.sourceUrl}`),
   ];
   return `${lines.join("\n")}\n`;
 }
@@ -332,7 +398,7 @@ function renderSql(result) {
   ].join("\n");
 
   if (result.promotions.length === 0) {
-    return `${header}-- No eligible source_post_observations to promote.\n`;
+    return `${header}-- No eligible source_post_observations to promote.\n${renderIgnoredObservationSql(result)}${renderStaleEventCandidateSql(result)}`;
   }
 
   const rows = result.promotions
@@ -438,6 +504,51 @@ SET
   "updated_at" = now()
 FROM promoted_observations
 WHERE o."id" = promoted_observations."id";
+${renderIgnoredObservationSql(result)}
+${renderStaleEventCandidateSql(result)}
+`;
+}
+
+function renderIgnoredObservationSql(result) {
+  if (!result.ignoredObservationIds?.length) {
+    return "";
+  }
+  const rows = result.ignoredObservationIds.map((id) => `  (${sqlString(id)}::uuid)`).join(",\n");
+  return `
+WITH ignored_observations("id") AS (
+  VALUES
+${rows}
+)
+UPDATE "source_post_observations" o
+SET
+  "review_status" = 'ignored',
+  "decision_note" = trim(concat_ws(' ', o."decision_note", 'Skipped by promotion quality gate')),
+  "updated_at" = now()
+FROM ignored_observations
+WHERE o."id" = ignored_observations."id"
+  AND o."review_status" = 'pending';
+`;
+}
+
+function renderStaleEventCandidateSql(result) {
+  if (!result.staleEventCandidateIds?.length) {
+    return "";
+  }
+  const rows = result.staleEventCandidateIds.map((id) => `  (${sqlString(id)}::uuid)`).join(",\n");
+  return `
+WITH stale_event_candidates("id") AS (
+  VALUES
+${rows}
+)
+UPDATE "events" e
+SET
+  "review_status" = 'rejected',
+  "reviewed_at" = now(),
+  "updated_at" = now()
+FROM stale_event_candidates
+WHERE e."id" = stale_event_candidates."id"
+  AND e."review_status" = 'pending'
+  AND e."status" = 'draft';
 `;
 }
 

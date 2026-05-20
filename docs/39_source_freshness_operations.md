@@ -82,7 +82,9 @@ baseline and cross-check source. The operating model has six stages:
 
 1. Register official sites and official Instagram profiles in `event_sources`.
 2. Generate review queues from DB state, with official Instagram post checks first.
-3. Use the Instagram browser roller on approved official Instagram sources only.
+3. Use the Instagram browser roller on approved official Instagram sources only:
+   latest-three freshness first, then bounded backfill only when the latest
+   visible posts are already known or the account has no observations yet.
 4. Record inspected Instagram post URLs in `source_post_observations`.
 5. Promote structured observations into draft/pending event candidates.
 6. Reflect only Admin-approved candidates into public `events`.
@@ -216,10 +218,14 @@ These files list official sources to inspect, candidate sources to verify, and
 upcoming events to recheck. They do not fetch external post bodies or media.
 The highest-priority queue is `instagramPostInspection`, which lists approved
 official Instagram profiles whose recent visible posts/reels should be reviewed
-by the browser roller. The queue includes recent known post URLs so the roller
-can open only unknown posts. The production cadence intentionally uses small
-three-hour batches instead of a single all-source scrape, so Instagram
-checkpoint pressure stays visible and isolated.
+by the browser roller. The queue includes known post URLs so the roller can open
+only unknown posts. The production cadence intentionally uses small three-hour
+batches instead of a single all-source scrape, so Instagram checkpoint pressure
+stays visible and isolated. Within each source, the roller checks the latest
+three visible posts/reels for freshness. If those posts are already known, or if
+the account has no observations yet, it scrolls within the profile for the next
+unknown posts and stops at the per-source limit, visible-post scan limit, or
+60-day lookback.
 
 The monitor accepts optional batch-size environment variables:
 
@@ -243,6 +249,9 @@ The automation runner accepts operational environment variables:
 - `ZAC_INSTAGRAM_BROWSER_HEADLESS`: run the roller headless. Default: `true`.
 - `ZAC_INSTAGRAM_BROWSER_REQUIRE_AUTH`: require a logged-in browser session before inspection. Default: `true`.
 - `ZAC_INSTAGRAM_SOURCE_LIMIT`: maximum Instagram sources the browser inspector opens per run. Default: `25`.
+- `ZAC_INSTAGRAM_LOOKBACK_DAYS`: maximum posted-date age for Instagram backfill. Default: `60`.
+- `ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT`: maximum visible profile post/reel links considered per source. Default: `24`.
+- `ZAC_INSTAGRAM_PROFILE_SCROLL_LIMIT`: maximum profile scroll attempts per source during backfill. Default: `5`.
 - `ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS`: delay between source profile inspections. Default: `2500`.
 - `ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS`: source-level browser timeout. Default: `60000`.
 - `ZAC_INSTAGRAM_BROWSER_POST_TIMEOUT_MS`: post-level browser timeout. Default: `30000`.
@@ -374,8 +383,12 @@ fallback:
 - Use a persistent logged-in browser profile. If login, 2FA, checkpoint, or
   suspicious-activity UI appears, stop the Instagram run and surface
   `login_required` or `checkpoint_required`.
-- Inspect only the latest three visible posts/reels per source.
-- Open only post URLs that are not already known in recent
+- Inspect the latest three visible posts/reels first.
+- If the latest three are already known, or if the account has no observations
+  yet, use bounded backfill: scroll within the profile and open the next unknown
+  posts until the per-source limit, visible-post scan limit, or 60-day lookback
+  is reached.
+- Open only post URLs that are not already known in
   `source_post_observations`.
 - Record each reviewed post URL in `source_post_observations`. Calendar-worthy
   posts get classification, title, short summary, dates, and a short quote;

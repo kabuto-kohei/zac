@@ -261,7 +261,7 @@ try {
       publicOutput: ["title", "summary", "category", "startsAt", "endsAt", "sourceUrl", "sourceLabel", "shortQuote"],
       neverPublicOutput: ["full Instagram captions", "copied images/videos", "unreviewed raw text"],
       instagramTrackingRule:
-        "Track approved official Instagram profiles through the browser roller twice per day. Store observation metadata and short summaries only; never store copied images/videos, full captions, comments, DMs, stories, passwords, cookies, or session tokens.",
+        "Track approved official Instagram profiles through the browser roller twice per day. Freshness checks open the latest three posts/reels. If those posts are already known, or if the account has no observations yet, the bounded backfill lane scrolls within the profile and opens the next unknown posts up to the configured per-source limit, stopping at a 60-day lookback. Store observation metadata and short summaries only; never store copied images/videos, full captions, comments, DMs, stories, passwords, cookies, or session tokens.",
       calendarRule: "Multi-day events are marked on the start date only; the full period is shown on the detail page.",
       eventSplitRule:
         "Classify each source item by primary user impact: competition, event/lesson, route_set, private_booking, opening_change, construction, notice, or recruit. If a route-set announcement includes closure/opening times, keep category route_set and store the closure/opening period in startsAt/endsAt. If a post is only a private rental closure, use private_booking. If it is only hours/temporary closure, use opening_change. If it is wall/area work, use construction.",
@@ -304,7 +304,7 @@ try {
       existingEventFingerprints: eventFingerprints.map(formatEventFingerprint),
     },
     operatorChecklist: [
-      "Run the Instagram browser roller first. It may inspect only approved official Instagram sources, open the profile in a logged-in browser session, scan the latest three posts/reels, and record only new relevant post URLs in source_post_observations or a reproducible SQL patch.",
+      "Run the Instagram browser roller first. It may inspect only approved official Instagram sources in a logged-in browser session. Use the freshness lane for the latest three posts/reels; when those are already known or the account has no observations yet, use the bounded backfill lane to scroll for the next unknown posts. Stop at the configured per-source limit, visible-post scan limit, or 60-day lookback.",
       "After Instagram post inspection, open inspectNow; if it is empty, process approvedSourceRotation in order. Use large batches and stop only at the configured source limit or a human gate.",
       "Look only for public, official updates that affect visit planning: competitions, lessons, route sets, construction, opening changes, closures, or recruitment.",
       "Before inserting an event, compare against queues.existingEventFingerprints by category, gym, normalized title, start date, and source host.",
@@ -401,7 +401,7 @@ function formatInstagramPostSource(source) {
     knownPostUrls: Array.isArray(source.known_post_urls) ? source.known_post_urls.filter(Boolean).slice(0, 30) : [],
     priority: "instagram_recent_posts",
     inspectionRule:
-      "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens.",
+      "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens.",
   };
 }
 
@@ -577,7 +577,8 @@ ${closureRows || "No closure verification candidates."}
 
 - Publish only title, summary, category, date/time, source link, source label, and short quote.
 - Do not publish full Instagram captions or copied images/videos.
-- Prioritize official Instagram profiles for latest updates. Track inspected post URLs in source_post_observations and mark irrelevant posts ignored to avoid repeated work.
+- Prioritize official Instagram profiles for latest updates. Track inspected post URLs in source_post_observations and mark irrelevant or outside-lookback posts ignored to avoid repeated work.
+- Use the Instagram freshness lane for latest three posts/reels, then the bounded backfill lane for the next unknown posts only when latest posts are already known or the account has no observations. Stop at the per-source limit, visible-post scan limit, or 60-day lookback.
 - Multi-day events are marked on the start date only.
 - Route-set announcements that include closure/opening times stay in route_set; private rental closures use private_booking; area work uses construction; pure temporary hours changes use opening_change.
 - Gym discipline filters must use official site or official SNS evidence; keep directory-only uncertainty as クライミング.

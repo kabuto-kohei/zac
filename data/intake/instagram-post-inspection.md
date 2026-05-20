@@ -1,6 +1,6 @@
 # Instagram Browser Roller Inspection
 
-- Generated: 2026-05-20T15:39:18.558Z
+- Generated: 2026-05-20T16:14:49.257Z
 - Mode: browser_roller
 - Browser session: authenticated
 - Target cadence: 8 runs/day (every 3 hours JST)
@@ -9,17 +9,18 @@
 - Sources succeeded: 23
 - Sources failed: 2
 - Sources deferred: 0
-- Posts seen: 69
-- New posts opened: 0
-- Duplicate posts skipped: 69
-- Observed posts: 0
-- Pending posts: 0
-- Ignored posts: 0
-- Calendar candidates: 0
+- Posts seen: 322
+- New posts opened: 69
+- Duplicate posts skipped: 253
+- Older-than-lookback posts skipped: 13
+- Observed posts: 69
+- Pending posts: 12
+- Ignored posts: 57
+- Calendar candidates: 37
 
 ## Policy
 
-Only approved official Instagram sources are eligible. Store source links, short summaries, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
+Only approved official Instagram sources are eligible. The freshness lane checks the latest 3 posts/reels; when those are already known or the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts, stopping at 60 days or 24 visible post links. Store source links, short summaries, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
 
 ## Inspections
 
@@ -27,49 +28,95 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - ボルダリングジム Vortex（ボルテックス） (climb.vortex) - failed (checkpoint_required)
   - no new posts
-- Urban Base Camp 新宿 (basecamp_shinjuku) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- B-PUMP OGIKUBO (bpump_ogikubo) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- B-PUMP Tokyo (bpumptokyo) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- エナジークライミングジム浦和店公式Instagram (energyurawa) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- be_born_climbing_gym (be_born_climbing_gym) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- exciting_sancha (exciting_sancha) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- NOBOROCK 高田馬場店 (noborock_takadanobaba) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- headrockcg (headrockcg) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- okkurock (okkurock) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- penguinclimb (penguinclimb) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- ボルダリングガレージ FUNNY（ファニー） (b.g.funny) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- ボルダリングジム Share（シェア） (bouldering_gym_share) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングジム COZY (climbing_gym_cozy) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングジム Hutte（ヒュッテ） (climbinggym_hutte) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングジム RISE（ライズ） (climbrise2016) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングパーク カルチェロッシュ (quartier_de_roche) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングジム SLOTH（スロース） (sloth.gym) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- ディーボルダリング 綱島 (dbouldering_tsunashima) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- スポーツクライミングスクール・ジム J&S 池袋 (jands_ikebukuro) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- ECHOES CLIMBING（エコーズ クライミング） (echoesclimbing) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- folk（フォーク） ボルダリングジム (folk_boulderinggym) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
+- Urban Base Camp 新宿 (basecamp_shinjuku) mode=backfill, postsSeen=11, newOpened=3, duplicates=8, olderThanLookback=0
+  - ignored: notice | Urban Base Camp 新宿 2026/10/06 イベント | https://www.instagram.com/reel/DYjf7PuS3-r/
+  - ignored: notice | Urban Base Camp 新宿 2026/10/06 イベント | https://www.instagram.com/reel/DYg7HaOyhgz/
+  - ignored: notice | Urban Base Camp 新宿 2026/04/09 イベント | https://www.instagram.com/reel/DYeWX_MSYwh/
+- B-PUMP OGIKUBO (bpump_ogikubo) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - pending: competition | B-PUMP OGIKUBO  コンペ | https://www.instagram.com/p/DYjYCZckaCD/
+  - pending: route_set | B-PUMP OGIKUBO  セット | https://www.instagram.com/p/DYW6IzPEvSb/
+  - ignored: notice | B-PUMP OGIKUBO  イベント | https://www.instagram.com/p/DYUTzRVklaO/
+- B-PUMP Tokyo (bpumptokyo) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - pending: route_set | B-PUMP Tokyo 2026/05/24 セット | https://www.instagram.com/p/DYg7G5VAWSr/
+  - ignored: notice | B-PUMP Tokyo 2026/05/23 イベント | https://www.instagram.com/reel/DYeWTMjTUeu/
+  - pending: route_set | B-PUMP Tokyo 2026/05/21 セット | https://www.instagram.com/p/DYZMy9xjsWi/
+- エナジークライミングジム浦和店公式Instagram (energyurawa) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: recruit | エナジークライミングジム浦和店 2026/05/12 イベント | https://www.instagram.com/p/DYMbCeilBrJ/
+  - ignored: notice | エナジークライミングジム浦和店 2026/10/07 イベント | https://www.instagram.com/reel/DYJE5wUipyE/
+  - ignored: notice | エナジークライミングジム浦和店 2026/09/08 イベント | https://www.instagram.com/reel/DYBkZkEPhKm/
+- be_born_climbing_gym (be_born_climbing_gym) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - pending: opening_change | be_born_climbing_gym 2026/05/01 営業変更 | https://www.instagram.com/p/DXwipQBE-l0/
+  - pending: opening_change | be_born_climbing_gym 2026/04/29 営業変更 | https://www.instagram.com/p/DXoRrkhkxXN/
+  - pending: event | be_born_climbing_gym  イベント | https://www.instagram.com/p/DXk2K9tk4TE/
+- exciting_sancha (exciting_sancha) mode=backfill, postsSeen=24, newOpened=3, duplicates=21, olderThanLookback=2
+  - ignored: notice | exciting_sancha 2026/03/29 イベント | https://www.instagram.com/p/DWdVSzpkX4T/
+  - ignored: notice | exciting_sancha  イベント | https://www.instagram.com/p/DVp-7H_kYTu/
+  - ignored: notice | exciting_sancha  イベント | https://www.instagram.com/p/DVVUZSnEa5K/
+- NOBOROCK 高田馬場店 (noborock_takadanobaba) mode=backfill, postsSeen=23, newOpened=3, duplicates=20, olderThanLookback=0
+  - ignored: notice | NOBOROCK 高田馬場店 2026/05/08 イベント | https://www.instagram.com/reel/DYjbh8RxWK5/
+  - ignored: notice | NOBOROCK 高田馬場店  イベント | https://www.instagram.com/reel/DYhSE7Iyy7d/
+  - pending: private_booking | NOBOROCK 高田馬場店 2026/05/25 貸切 | https://www.instagram.com/p/DYg6MV5R-Ah/
+- headrockcg (headrockcg) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - pending: opening_change | headrockcg  営業変更 | https://www.instagram.com/p/DYjyWIHk51H/
+  - ignored: notice | headrockcg  イベント | https://www.instagram.com/p/DYUIE7ukYUn/
+  - ignored: notice | headrockcg  イベント | https://www.instagram.com/p/DYUCWdQEXwm/
+- okkurock (okkurock) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | okkurock  イベント | https://www.instagram.com/p/DYiKBYEk6fI/
+  - ignored: notice | okkurock 2026/06/01 イベント | https://www.instagram.com/p/DYgHzu6TleX/
+  - ignored: notice | okkurock  イベント | https://www.instagram.com/p/DYdR-liE8ul/
+- penguinclimb (penguinclimb) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | penguinclimb 2026/06/07 イベント | https://www.instagram.com/reel/DYjerubKlbo/
+  - ignored: notice | penguinclimb 2026/05/24 イベント | https://www.instagram.com/p/DYg_7etErVS/
+  - ignored: notice | penguinclimb 2026/06/07 イベント | https://www.instagram.com/reel/DYgtXyyyTfY/
+- ボルダリングガレージ FUNNY（ファニー） (b.g.funny) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | ボルダリングガレージ FUNNY（ファニー） 2026/05/02 イベント | https://www.instagram.com/p/DYeJu8fk6IK/
+  - ignored: notice | ボルダリングガレージ FUNNY（ファニー）  イベント | https://www.instagram.com/p/DYUnlBzzEBg/
+  - ignored: notice | ボルダリングガレージ FUNNY（ファニー） 2026/07/01 イベント | https://www.instagram.com/reel/DYJgckUzaCR/
+- ボルダリングジム Share（シェア） (bouldering_gym_share) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | ボルダリングジム Share（シェア） 2026/07/02 イベント | https://www.instagram.com/reel/DYjvzD1MVkt/
+  - pending: event | ボルダリングジム Share（シェア） 2026/05/23 イベント | https://www.instagram.com/p/DYeuw6pmXFX/
+  - ignored: notice | ボルダリングジム Share（シェア） 2026/11/11 イベント | https://www.instagram.com/reel/DYY-5GwR6HU/
+- クライミングジム COZY (climbing_gym_cozy) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=2
+  - ignored: notice | クライミングジム COZY 2026/04/05 イベント | https://www.instagram.com/p/DWnAeWvAaHB/
+  - ignored: recruit | クライミングジム COZY 2026/03/17 イベント | https://www.instagram.com/p/DV8LA99Aa7h/
+  - ignored: event | クライミングジム COZY 2026/03/10 イベント | https://www.instagram.com/p/DVsBN1pAa1h/
+- クライミングジム Hutte（ヒュッテ） (climbinggym_hutte) mode=backfill, postsSeen=24, newOpened=3, duplicates=21, olderThanLookback=0
+  - ignored: notice | クライミングジム Hutte（ヒュッテ） 2026/04/29 イベント | https://www.instagram.com/p/DXrkBtYGfDQ/
+  - ignored: recruit | クライミングジム Hutte（ヒュッテ） 2026/04/22 イベント | https://www.instagram.com/p/DXZeVkqAhwB/
+  - ignored: notice | クライミングジム Hutte（ヒュッテ） 2026/07/02 イベント | https://www.instagram.com/reel/DXCB9gSArfF/
+- クライミングジム RISE（ライズ） (climbrise2016) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | クライミングジム RISE（ライズ）  イベント | https://www.instagram.com/p/DYBVMz4E9Qh/
+  - pending: private_booking | クライミングジム RISE（ライズ） 2026/05/19 貸切 | https://www.instagram.com/p/DXvxU0kE8qM/
+  - ignored: notice | クライミングジム RISE（ライズ）  イベント | https://www.instagram.com/p/DXszKmOk9VN/
+- クライミングパーク カルチェロッシュ (quartier_de_roche) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | クライミングパーク カルチェロッシュ  イベント | https://www.instagram.com/reel/DX39-3xSgiU/
+  - ignored: notice | クライミングパーク カルチェロッシュ  イベント | https://www.instagram.com/reel/DX1kQaxSSkr/
+  - ignored: notice | クライミングパーク カルチェロッシュ 2026/05/02 イベント | https://www.instagram.com/p/DX1AFxnklIv/
+- Rhino and Bird（ライノアンドバード） (rhinoandbird_nishinippori) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=2
+  - pending: route_set | Rhino and Bird（ライノアンドバード） 2026/05/25 セット | https://www.instagram.com/p/DYToK7_x9k6/
+  - ignored: notice | Rhino and Bird（ライノアンドバード） 2026/03/24 イベント | https://www.instagram.com/p/DVcyTgDkdIN/
+  - ignored: route_set | Rhino and Bird（ライノアンドバード） 2026/03/02 セット | https://www.instagram.com/p/DU7VRzRkVvb/
+- クライミングジム ROCKBEANS（ロックビーンズ） (rockbeans.insta) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=3
+  - ignored: recruit | クライミングジム ROCKBEANS（ロックビーンズ） 2025/02/22 イベント | https://www.instagram.com/p/DGXSo45yR9j/
+  - ignored: notice | クライミングジム ROCKBEANS（ロックビーンズ） 2025/02/21 イベント | https://www.instagram.com/p/DGUcHs7SgQQ/
+  - ignored: recruit | クライミングジム ROCKBEANS（ロックビーンズ） 2024/08/06 イベント | https://www.instagram.com/p/C-UOj8_SR0H/
+- クライミングジム SLOTH（スロース） (sloth.gym) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=1
+  - ignored: notice | クライミングジム SLOTH（スロース） 2026/04/04 イベント | https://www.instagram.com/p/DWsUpf-AeY1/
+  - ignored: notice | クライミングジム SLOTH（スロース）  イベント | https://www.instagram.com/p/DWkj_SWAdLk/
+  - ignored: notice | クライミングジム SLOTH（スロース） 2026/02/26 イベント | https://www.instagram.com/p/DVN8piWAcaN/
+- ディーボルダリング 綱島 (dbouldering_tsunashima) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | ディーボルダリング 綱島  イベント | https://www.instagram.com/reel/DYgXsC2zDae/
+  - ignored: notice | ディーボルダリング 綱島  イベント | https://www.instagram.com/p/DYTouMRE0zk/
+  - ignored: notice | ディーボルダリング 綱島 2026/04/05 イベント | https://www.instagram.com/reel/DYMINn2TaS0/
+- ボルダリングジム GRANNY（グラニー） 南流山店 (granny_bouldering) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | ボルダリングジム GRANNY（グラニー） 南流山店  イベント | https://www.instagram.com/reel/DYZmhRAB1kB/
+  - ignored: notice | ボルダリングジム GRANNY（グラニー） 南流山店 2026/07/08 イベント | https://www.instagram.com/reel/DYZMsu4TKt-/
+  - ignored: notice | ボルダリングジム GRANNY（グラニー） 南流山店 2026/01/02 イベント | https://www.instagram.com/reel/DYWn-dHT69G/
+- ECHOES CLIMBING（エコーズ クライミング） (echoesclimbing) mode=backfill, postsSeen=12, newOpened=3, duplicates=9, olderThanLookback=0
+  - ignored: notice | ECHOES CLIMBING（エコーズ クライミング） 2026/12/08 イベント | https://www.instagram.com/reel/DYcPCtlRJhl/
+  - ignored: notice | ECHOES CLIMBING（エコーズ クライミング） 2026/02/07 イベント | https://www.instagram.com/reel/DYUOVQORUlN/
+  - ignored: notice | ECHOES CLIMBING（エコーズ クライミング） 2026/03/02 イベント | https://www.instagram.com/reel/DYRn498xOIx/
+- folk（フォーク） ボルダリングジム (folk_boulderinggym) mode=backfill, postsSeen=24, newOpened=3, duplicates=21, olderThanLookback=3
+  - ignored: notice | folk（フォーク） ボルダリングジム  イベント | https://www.instagram.com/p/DVj5ZdBE8Ej/
+  - ignored: private_booking | folk（フォーク） ボルダリングジム 2026/03/07 貸切 | https://www.instagram.com/p/DVhuAw7CSN3/
+  - ignored: route_set | folk（フォーク） ボルダリングジム 2026/03/04 セット | https://www.instagram.com/p/DUX1INZCTvE/

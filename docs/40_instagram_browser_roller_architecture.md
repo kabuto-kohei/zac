@@ -82,6 +82,9 @@ Initial caps:
 - `ZAC_INSTAGRAM_POST_SOURCE_LIMIT=25`
 - `ZAC_INSTAGRAM_SOURCE_LIMIT=25`
 - `ZAC_INSTAGRAM_POSTS_PER_SOURCE=3`
+- `ZAC_INSTAGRAM_LOOKBACK_DAYS=60`
+- `ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT=24`
+- `ZAC_INSTAGRAM_PROFILE_SCROLL_LIMIT=5`
 - `ZAC_INSTAGRAM_DUE_HOURS=12`
 - `ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS=2500`
 - `ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS=60000`
@@ -99,9 +102,23 @@ Scale rule:
 
 ## Extraction Rules
 
-For each source, the roller opens the profile and reads only the latest visible
-post/reel links. It opens only URLs that are not already known in recent
-`source_post_observations`.
+For each source, the roller opens the profile and starts with the latest three
+visible post/reel links. If any of those links are unknown, this freshness lane
+opens only those unknown links, up to `ZAC_INSTAGRAM_POSTS_PER_SOURCE`.
+
+If the latest three links are already known, or if the account has no
+observations yet, the bounded backfill lane scrolls within the profile and opens
+the next unknown links. It stops when one of these limits is reached:
+
+- `ZAC_INSTAGRAM_POSTS_PER_SOURCE` opened posts for that source.
+- `ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT` visible profile links considered.
+- `ZAC_INSTAGRAM_PROFILE_SCROLL_LIMIT` scroll attempts.
+- A visible post date older than `ZAC_INSTAGRAM_LOOKBACK_DAYS`.
+
+The roller opens only URLs that are not already known in
+`source_post_observations`. Outside-lookback posts are recorded as ignored
+observations when their visible date is available, so future runs do not keep
+revisiting them.
 
 V1 includes:
 

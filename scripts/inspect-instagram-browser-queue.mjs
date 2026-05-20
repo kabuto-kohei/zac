@@ -11,6 +11,9 @@ const fixturePath = process.env.ZAC_INSTAGRAM_BROWSER_FIXTURE_JSON ?? "";
 const userDataDir = process.env.ZAC_INSTAGRAM_BROWSER_USER_DATA_DIR ?? ".zac-browser/instagram";
 const postsPerSource = parsePositiveInt(process.env.ZAC_INSTAGRAM_POSTS_PER_SOURCE, 3);
 const sourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_SOURCE_LIMIT ?? process.env.ZAC_INSTAGRAM_POST_SOURCE_LIMIT, 25);
+const lookbackDays = parsePositiveInt(process.env.ZAC_INSTAGRAM_LOOKBACK_DAYS, 60);
+const profilePostScanLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT, 24);
+const profileScrollLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_PROFILE_SCROLL_LIMIT, 5);
 const sourceDelayMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS, 2500);
 const sourceTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS, 60000);
 const postTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_POST_TIMEOUT_MS, 30000);
@@ -20,6 +23,7 @@ const requireAuthenticatedSession = parseBoolean(process.env.ZAC_INSTAGRAM_BROWS
 const headless = parseBoolean(process.env.ZAC_INSTAGRAM_BROWSER_HEADLESS, true);
 const generatedAt = new Date();
 const generatedAtSql = toSqlTimestamp(generatedAt);
+const lookbackCutoff = new Date(generatedAt.getTime() - lookbackDays * 24 * 60 * 60 * 1000);
 
 const monitor = JSON.parse(await fs.readFile(monitorPath, "utf8"));
 const queue = (monitor.queues?.instagramPostInspection ?? []).slice(0, sourceLimit);
@@ -35,9 +39,13 @@ const result = {
     targetHoursJst: ["every 3 hours"],
     postsPerSource,
     sourceLimit,
+    lookbackDays,
+    profilePostScanLimit,
   },
   policy: {
     sourceEligibility: "Only approved official Instagram sources from instagramPostInspection are eligible.",
+    collectionArchitecture:
+      "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts up to the configured per-source limit. Posts with a visible posted date older than the lookback window are skipped.",
     savedFields: "post URL, shortcode, displayed/parsed posted date, classification, short summary, short quote, review status, decision note",
     excludedFields: "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories",
     publication: "Never publish automatically. Browser observations can only become public after Admin candidate review approval.",
@@ -59,6 +67,7 @@ const result = {
     postsSeen: 0,
     newPostsOpened: 0,
     duplicatePostsSkipped: 0,
+    lookbackPostsSkipped: 0,
     observedPosts: 0,
     pendingPosts: 0,
     ignoredPosts: 0,
@@ -110,6 +119,7 @@ try {
       result.summary.postsSeen += inspection.postsSeen;
       result.summary.newPostsOpened += inspection.newPostsOpened;
       result.summary.duplicatePostsSkipped += inspection.duplicatePostsSkipped;
+      result.summary.lookbackPostsSkipped += inspection.lookbackPostsSkipped;
       result.summary.observedPosts += inspection.posts.length;
       if (!fixture && index < queue.length - 1) {
         await new Promise((resolve) => setTimeout(resolve, sourceDelayMs));
@@ -151,6 +161,7 @@ console.log(
       sourcesDeferred: result.summary.sourcesDeferred,
       postsSeen: result.summary.postsSeen,
       newPostsOpened: result.summary.newPostsOpened,
+      lookbackPostsSkipped: result.summary.lookbackPostsSkipped,
       observedPosts: result.summary.observedPosts,
       pendingPosts: result.summary.pendingPosts,
       outputJsonPath,
@@ -180,8 +191,8 @@ async function inspectBrowserSource(context, source) {
       };
     }
 
-    const postUrls = await extractProfilePostUrls(page, source.handle);
-    const uniquePostUrls = dedupe(postUrls).slice(0, postsPerSource);
+    const postUrls = await collectProfilePostUrls(page, source);
+    const uniquePostUrls = dedupe(postUrls);
     if (uniquePostUrls.length === 0) {
       const bodyText = normalizeWhitespace(await page.locator("body").innerText({ timeout: 5000 }).catch(() => ""));
       return {
@@ -194,14 +205,24 @@ async function inspectBrowserSource(context, source) {
       };
     }
 
-    const newPostUrls = uniquePostUrls.filter((url) => !knownPostUrls.has(url));
+    const latestPostUrls = uniquePostUrls.slice(0, postsPerSource);
+    const shouldBackfill = Number(source.observedPosts ?? 0) === 0 || latestPostUrls.every((url) => knownPostUrls.has(url));
+    const candidateUrls = shouldBackfill ? uniquePostUrls : latestPostUrls;
+    const newPostUrls = candidateUrls.filter((url) => !knownPostUrls.has(url)).slice(0, postsPerSource);
     const posts = [];
+    let lookbackPostsSkipped = 0;
     for (const postUrl of newPostUrls) {
       if (Date.now() - sourceStartedAt > sourceTimeoutMs) {
         break;
       }
       const post = await inspectBrowserPost(page, source, postUrl);
       if (post) {
+        if (isOlderThanLookback(post.sourcePostedAt)) {
+          lookbackPostsSkipped += 1;
+          posts.push(markOutsideLookback(post));
+          knownPostUrls.add(post.sourceUrl);
+          continue;
+        }
         posts.push(post);
         knownPostUrls.add(post.sourceUrl);
       }
@@ -214,6 +235,9 @@ async function inspectBrowserSource(context, source) {
       postsSeen: uniquePostUrls.length,
       newPostsOpened: newPostUrls.length,
       duplicatePostsSkipped: uniquePostUrls.length - newPostUrls.length,
+      lookbackPostsSkipped,
+      inspectionMode: shouldBackfill ? "backfill" : "freshness",
+      lookbackCutoff: lookbackCutoff.toISOString(),
       noRecentPosts: uniquePostUrls.length === 0,
     };
   } catch (error) {
@@ -279,7 +303,13 @@ function inspectFixtureSource(source, fixture) {
   }
 
   const postUrls = dedupe((fixtureSource.posts ?? []).map((post) => normalizeInstagramPostUrl(post.sourceUrl)));
-  const newPosts = (fixtureSource.posts ?? []).filter((post) => !knownPostUrls.has(normalizeInstagramPostUrl(post.sourceUrl)));
+  const latestPostUrls = postUrls.slice(0, postsPerSource);
+  const shouldBackfill = Number(source.observedPosts ?? 0) === 0 || latestPostUrls.every((url) => knownPostUrls.has(url));
+  const candidateUrls = shouldBackfill ? postUrls : latestPostUrls;
+  const newPosts = (fixtureSource.posts ?? [])
+    .filter((post) => candidateUrls.includes(normalizeInstagramPostUrl(post.sourceUrl)))
+    .filter((post) => !knownPostUrls.has(normalizeInstagramPostUrl(post.sourceUrl)))
+    .slice(0, postsPerSource);
   const posts = newPosts.map((post) =>
     inspectPost(
       {
@@ -292,17 +322,28 @@ function inspectFixtureSource(source, fixture) {
       source,
     ),
   );
+  const retainedPosts = [];
+  let lookbackPostsSkipped = 0;
   for (const post of posts) {
     knownPostUrls.add(post.sourceUrl);
+    if (isOlderThanLookback(post.sourcePostedAt)) {
+      lookbackPostsSkipped += 1;
+      retainedPosts.push(markOutsideLookback(post));
+    } else {
+      retainedPosts.push(post);
+    }
   }
 
   return {
     ...baseInspection(source),
     ok: true,
-    posts,
+    posts: retainedPosts,
     postsSeen: postUrls.length,
     newPostsOpened: newPosts.length,
     duplicatePostsSkipped: postUrls.length - newPosts.length,
+    lookbackPostsSkipped,
+    inspectionMode: shouldBackfill ? "backfill" : "freshness",
+    lookbackCutoff: lookbackCutoff.toISOString(),
     noRecentPosts: postUrls.length === 0,
   };
 }
@@ -310,8 +351,10 @@ function inspectFixtureSource(source, fixture) {
 function inspectPost(post, source) {
   const classification = classifyText(post.text);
   const dateRange = extractDateRange(post.text);
-  const reviewStatus = classification === "notice" || classification === "recruit" ? "ignored" : "pending";
   const title = buildTitle(post.text, classification, source.displayName);
+  const sourceQuote = buildQuote(post.text);
+  const weakEvidence = isWeakPostEvidence(post.text, source, sourceQuote);
+  const reviewStatus = classification === "notice" || classification === "recruit" || weakEvidence ? "ignored" : "pending";
   const formatted = formatSourceCandidate({
     category: classification,
     sourceName: source.displayName,
@@ -319,7 +362,7 @@ function inspectPost(post, source) {
     rawTitle: title,
     startsAt: dateRange?.startsAt ?? null,
     endsAt: dateRange?.endsAt ?? null,
-    sourceQuote: buildQuote(post.text),
+    sourceQuote,
     extractionConfidence: scoreConfidence(classification, dateRange),
   });
 
@@ -338,7 +381,12 @@ function inspectPost(post, source) {
     sourceQuote: formatted.sourceQuote,
     extractionConfidence: formatted.extractionConfidence,
     reviewStatus,
-    decisionNote: reviewStatus === "pending" ? formatted.decisionNote : buildDecisionNote(classification, dateRange),
+    decisionNote:
+      reviewStatus === "pending"
+        ? formatted.decisionNote
+        : weakEvidence
+          ? "Browser roller saw only account/profile UI text, not enough post evidence for Admin candidate review."
+          : buildDecisionNote(classification, dateRange),
   };
 }
 
@@ -411,6 +459,30 @@ async function extractProfilePostUrls(page, handle) {
     .filter((url) => !url.includes(`/${handle}/tagged`));
 }
 
+async function collectProfilePostUrls(page, source) {
+  const handle = source.handle;
+  const latestUrls = dedupe(await extractProfilePostUrls(page, handle));
+  const latestWindow = latestUrls.slice(0, postsPerSource);
+  const needsBackfill = Number(source.observedPosts ?? 0) === 0 || latestWindow.every((url) => knownPostUrls.has(url));
+  if (!needsBackfill || latestUrls.length >= profilePostScanLimit) {
+    return latestUrls.slice(0, needsBackfill ? profilePostScanLimit : postsPerSource);
+  }
+
+  let urls = latestUrls;
+  let previousCount = urls.length;
+  for (let attempt = 0; attempt < profileScrollLimit && urls.length < profilePostScanLimit; attempt += 1) {
+    await page.mouse.wheel(0, 1800);
+    await page.waitForTimeout(1200);
+    urls = dedupe(await extractProfilePostUrls(page, handle));
+    if (urls.length <= previousCount) {
+      break;
+    }
+    previousCount = urls.length;
+  }
+
+  return urls.slice(0, profilePostScanLimit);
+}
+
 function buildPostLinksUnavailableDetail(text) {
   if (/ログイン|Log in|Sign up|Create an account/i.test(text)) {
     return "Profile opened without visible post links and login UI text was present.";
@@ -444,6 +516,9 @@ function baseInspection(source) {
     postsSeen: 0,
     newPostsOpened: 0,
     duplicatePostsSkipped: 0,
+    lookbackPostsSkipped: 0,
+    inspectionMode: null,
+    lookbackCutoff: lookbackCutoff.toISOString(),
     noRecentPosts: false,
     error: null,
     failureCategory: null,
@@ -528,6 +603,24 @@ function buildQuote(text) {
   return truncate(line ?? "", 80);
 }
 
+function isWeakPostEvidence(text, source, quote) {
+  const normalizedQuote = normalizeEvidenceToken(quote);
+  const handle = normalizeEvidenceToken(source.handle);
+  const displayName = normalizeEvidenceToken(source.displayName);
+  if (!normalizedQuote) return true;
+  if (normalizedQuote === handle || normalizedQuote === displayName) return true;
+  if (/^[a-z0-9_.]{3,40}$/iu.test(normalizedQuote)) return true;
+  return false;
+}
+
+function normalizeEvidenceToken(value) {
+  return String(value ?? "")
+    .normalize("NFKC")
+    .replace(/^@/u, "")
+    .replace(/\s+/gu, "")
+    .toLowerCase();
+}
+
 function scoreConfidence(classification, dateRange) {
   if (classification === "notice" || classification === "recruit") return "0.40";
   return dateRange ? "0.72" : "0.55";
@@ -559,6 +652,23 @@ function extractPostedAtFromPageText(text) {
   const day = Number(match[3] ?? match[5]);
   if (!month || !day) return null;
   return new Date(Date.UTC(year, month - 1, day, 0, 0));
+}
+
+function isOlderThanLookback(value) {
+  if (!value) return false;
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) && date < lookbackCutoff;
+}
+
+function markOutsideLookback(post) {
+  return {
+    ...post,
+    startsAt: null,
+    endsAt: null,
+    reviewStatus: "ignored",
+    extractionConfidence: "0.30",
+    decisionNote: `Ignored by Instagram backfill lookback guard: visible posted date is older than ${lookbackDays} days.`,
+  };
 }
 
 function renderSql(value) {
@@ -675,7 +785,9 @@ function renderMarkdown(value) {
     .map((inspection) => {
       const posts = inspection.posts.map((post) => `  - ${post.reviewStatus}: ${post.classification} | ${post.title} | ${post.sourceUrl}`).join("\n");
       const failure = inspection.ok ? "" : ` - ${inspection.deferred ? "deferred" : "failed"} (${inspection.failureCategory ?? "unknown"})`;
-      const counts = inspection.ok ? ` postsSeen=${inspection.postsSeen}, newOpened=${inspection.newPostsOpened}, duplicates=${inspection.duplicatePostsSkipped}` : "";
+      const counts = inspection.ok
+        ? ` mode=${inspection.inspectionMode ?? "unknown"}, postsSeen=${inspection.postsSeen}, newOpened=${inspection.newPostsOpened}, duplicates=${inspection.duplicatePostsSkipped}, olderThanLookback=${inspection.lookbackPostsSkipped}`
+        : "";
       return `- ${inspection.displayName} (${inspection.handle})${failure}${counts}\n${posts || "  - no new posts"}`;
     })
     .join("\n");
@@ -693,6 +805,7 @@ function renderMarkdown(value) {
 - Posts seen: ${value.summary.postsSeen}
 - New posts opened: ${value.summary.newPostsOpened}
 - Duplicate posts skipped: ${value.summary.duplicatePostsSkipped}
+- Older-than-lookback posts skipped: ${value.summary.lookbackPostsSkipped}
 - Observed posts: ${value.summary.observedPosts}
 - Pending posts: ${value.summary.pendingPosts}
 - Ignored posts: ${value.summary.ignoredPosts}
@@ -700,7 +813,7 @@ function renderMarkdown(value) {
 
 ## Policy
 
-Only approved official Instagram sources are eligible. Store source links, short summaries, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
+Only approved official Instagram sources are eligible. The freshness lane checks the latest ${value.cadence.postsPerSource} posts/reels; when those are already known or the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts, stopping at ${value.cadence.lookbackDays} days or ${value.cadence.profilePostScanLimit} visible post links. Store source links, short summaries, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
 
 ## Inspections
 

@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-20T16:04:07.637Z
-- Updated: 2026-05-20T16:04:12.896Z
+- Generated: 2026-05-20T16:24:25.007Z
+- Updated: 2026-05-20T16:24:30.399Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (270ms, attempt 1)
-- passed: `pnpm db:verify:remote` (988ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (1223ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (916ms, attempt 1)
-- passed: `pnpm sources:monitor` (1857ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (240ms, attempt 1)
+- passed: `pnpm db:verify:remote` (1101ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1224ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (913ms, attempt 1)
+- passed: `pnpm sources:monitor` (1909ms, attempt 1)
 
 ## Summary
 
@@ -23,7 +23,7 @@
 - gyms.directory_only: 116
 - eventsByReviewStatus.approved: 48
 - eventsByReviewStatus.pending: 9
-- eventsByReviewStatus.rejected: 10
+- eventsByReviewStatus.rejected: 14
 - scheduledEventsByCategory.competition: 18
 - scheduledEventsByCategory.construction: 1
 - scheduledEventsByCategory.event: 10
@@ -56,7 +56,7 @@
 
 ## Next Actions
 
-- Run the Instagram browser roller first (25 approved source(s)); it must use a logged-in browser session, open latest visible posts/reels only, and stage candidates for Admin review.
+- Run the Instagram browser roller first (25 approved source(s)); it must use a logged-in browser session, check the latest three posts/reels for freshness, use bounded backfill for next unknown posts when needed, and stage candidates for Admin review.
 - Inspect 64 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
 - Recheck upcomingEventRecheck for items starting within the next 30 days (32 queued).

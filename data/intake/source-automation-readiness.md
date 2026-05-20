@@ -1,12 +1,12 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-20T16:04:19.950Z
+- generatedAt: 2026-05-20T16:24:40.477Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
 - latestRunAgeMinutes: 0
-- localRunAgeMinutes: 23
+- localRunAgeMinutes: 3
 - consecutiveNonReady: 0
 - instagramFailureRatio: 0.08
 - instagramBrowserSessionState: authenticated
@@ -17,10 +17,10 @@
 - sourcesSucceeded: 23
 - sourcesFailed: 2
 - sourcesDeferred: 0
-- postsSeen: 69
-- newPostsOpened: 0
-- observedPosts: 0
-- calendarCandidates: 0
+- postsSeen: 322
+- newPostsOpened: 69
+- observedPosts: 69
+- calendarCandidates: 37
 
 ## Queues
 
@@ -39,7 +39,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 24
+- runs: 1
 
 ## Failed Checks
 

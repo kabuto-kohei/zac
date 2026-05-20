@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:04:19.950Z",
+  "generatedAt": "2026-05-20T16:24:40.477Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -12,7 +12,7 @@
     "failedChecks": 0,
     "warnings": 0,
     "latestRunAgeMinutes": 0,
-    "localRunAgeMinutes": 23,
+    "localRunAgeMinutes": 3,
     "consecutiveNonReady": 0,
     "instagramFailureRatio": 0.08,
     "failedInstagramSources": [
@@ -35,10 +35,11 @@
       "sourcesSucceeded": 23,
       "sourcesFailed": 2,
       "sourcesDeferred": 0,
-      "postsSeen": 69,
-      "newPostsOpened": 0,
-      "observedPosts": 0,
-      "calendarCandidates": 0
+      "postsSeen": 322,
+      "newPostsOpened": 69,
+      "lookbackPostsSkipped": 13,
+      "observedPosts": 69,
+      "calendarCandidates": 37
     },
     "launchAgent": {
       "checked": true,
@@ -47,7 +48,7 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 10800,
-      "runs": 24
+      "runs": 1
     },
     "queues": {
       "instagramPostInspection": 25,
@@ -124,7 +125,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "23m",
+      "detail": "3m",
       "severity": "error"
     },
     {
@@ -226,25 +227,31 @@
     {
       "name": "Instagram browser roller made source progress",
       "ok": true,
-      "detail": "queued=25 succeeded=23 observed=0",
+      "detail": "queued=25 succeeded=23 observed=69",
       "severity": "error"
     },
     {
       "name": "Instagram browser roller limits source eligibility",
       "ok": true,
-      "detail": "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories Never publish automatically. …",
+      "detail": "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observati…",
+      "severity": "error"
+    },
+    {
+      "name": "Instagram browser roller has bounded backfill architecture",
+      "ok": true,
+      "detail": "lookbackDays=60",
       "severity": "error"
     },
     {
       "name": "Instagram inspection policy excludes secrets/media/captions",
       "ok": true,
-      "detail": "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories Never publish automatically. …",
+      "detail": "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observati…",
       "severity": "error"
     },
     {
       "name": "Instagram browser observations require Admin review before public publication",
       "ok": true,
-      "detail": "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories Never publish automatically. …",
+      "detail": "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observati…",
       "severity": "error"
     },
     {

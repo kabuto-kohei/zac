@@ -259,7 +259,9 @@ async function buildSummary() {
 function buildNextActions(summary) {
   const actions = [];
   if (summary.instagramPostSources > 0) {
-    actions.push(`Run the Instagram browser roller first (${summary.instagramPostSources} approved source(s)); it must use a logged-in browser session, open latest visible posts/reels only, and stage candidates for Admin review.`);
+    actions.push(
+      `Run the Instagram browser roller first (${summary.instagramPostSources} approved source(s)); it must use a logged-in browser session, check the latest three posts/reels for freshness, use bounded backfill for next unknown posts when needed, and stage candidates for Admin review.`,
+    );
   }
   if (summary.dueApprovedSources > 0) {
     actions.push(`Inspect ${summary.dueApprovedSources} due approved source(s) from inspectNow first.`);

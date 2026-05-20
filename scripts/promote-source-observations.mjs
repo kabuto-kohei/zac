@@ -212,6 +212,9 @@ function evaluateObservation(row, existing) {
   if (!isUsefulTitle(title)) {
     return { ok: false, reason: "title is too weak for event candidate", terminal: true };
   }
+  if (isWeakEvidence(row)) {
+    return { ok: false, reason: "source quote is too weak for Admin candidate review", terminal: true };
+  }
   if (isWeakAnnouncement(title, row.source_quote ?? "", category)) {
     return { ok: false, reason: "post looks like an announcement, not a calendar item", terminal: true };
   }
@@ -332,6 +335,24 @@ function isWeakAnnouncement(title, summary, category) {
     return true;
   }
   return false;
+}
+
+function isWeakEvidence(row) {
+  const quote = normalizeEvidenceToken(row.source_quote);
+  const handle = normalizeEvidenceToken(row.handle);
+  const displayName = normalizeEvidenceToken(row.display_name);
+  if (!quote) return true;
+  if (quote === handle || quote === displayName) return true;
+  if (/^[a-z0-9_.]{3,40}$/iu.test(quote)) return true;
+  return false;
+}
+
+function normalizeEvidenceToken(value) {
+  return String(value ?? "")
+    .normalize("NFKC")
+    .replace(/^@/u, "")
+    .replace(/\s+/gu, "")
+    .toLowerCase();
 }
 
 function normalizeWhitespace(value) {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:04:11.264Z",
+  "generatedAt": "2026-05-20T16:24:28.721Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -24,7 +24,7 @@
       "copied images/videos",
       "unreviewed raw text"
     ],
-    "instagramTrackingRule": "Track approved official Instagram profiles through the browser roller twice per day. Store observation metadata and short summaries only; never store copied images/videos, full captions, comments, DMs, stories, passwords, cookies, or session tokens.",
+    "instagramTrackingRule": "Track approved official Instagram profiles through the browser roller twice per day. Freshness checks open the latest three posts/reels. If those posts are already known, or if the account has no observations yet, the bounded backfill lane scrolls within the profile and opens the next unknown posts up to the configured per-source limit, stopping at a 60-day lookback. Store observation metadata and short summaries only; never store copied images/videos, full captions, comments, DMs, stories, passwords, cookies, or session tokens.",
     "calendarRule": "Multi-day events are marked on the start date only; the full period is shown on the detail page.",
     "eventSplitRule": "Classify each source item by primary user impact: competition, event/lesson, route_set, private_booking, opening_change, construction, notice, or recruit. If a route-set announcement includes closure/opening times, keep category route_set and store the closure/opening period in startsAt/endsAt. If a post is only a private rental closure, use private_booking. If it is only hours/temporary closure, use opening_change. If it is wall/area work, use construction.",
     "candidateFormatRule": "Before Admin candidate review, normalize each calendar-worthy observation with the category-specific source-candidate formatter: title, summary, description, capacityText, sourceQuote, decisionNote, and extractionConfidence must use the same category shape across Instagram, official-site, and promotion steps.",
@@ -62,7 +62,7 @@
     "eventsByReviewStatus": {
       "approved": 48,
       "pending": 9,
-      "rejected": 10
+      "rejected": 14
     },
     "scheduledEventsByCategory": {
       "competition": 18,
@@ -868,7 +868,7 @@
         "observedPosts": 0,
         "knownPostUrls": [],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
         "eventSourceId": "7061a581-458e-485a-8a88-b9c9adf269e1",
@@ -885,527 +885,536 @@
         "lastObservedAt": "2026-05-15T14:20:37.797Z",
         "observedPosts": 3,
         "knownPostUrls": [
-          "https://www.instagram.com/p/DYD37_6EzXm/",
+          "https://www.instagram.com/p/DYEV77iE7wb/",
           "https://www.instagram.com/p/DXu0MCQE-Kc/",
-          "https://www.instagram.com/p/DYEV77iE7wb/"
+          "https://www.instagram.com/p/DYD37_6EzXm/"
         ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       },
       {
-        "eventSourceId": "ae3bf68c-ef39-4336-8496-08ad3618b804",
+        "eventSourceId": "60a38ea2-fbc2-4b56-a765-44b3c8421581",
         "platform": "instagram",
-        "handle": "basecamp_shinjuku",
-        "displayName": "Urban Base Camp 新宿",
-        "sourceUrl": "https://www.instagram.com/basecamp_shinjuku/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://b-camp.jp/shinjuku/",
-        "gymInstagramHandle": "basecamp_shinjuku",
-        "gymInstagramUrl": "https://www.instagram.com/basecamp_shinjuku/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T14:20:37.797Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DYEikGAlG11/",
-          "https://www.instagram.com/p/DXvtiJ_FF3q/",
-          "https://www.instagram.com/p/DV0PguWFNV-/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "1c927437-7710-4318-9d77-e0e2104c9dc1",
-        "platform": "instagram",
-        "handle": "bpump_ogikubo",
-        "displayName": "B-PUMP OGIKUBO",
-        "sourceUrl": "https://www.instagram.com/bpump_ogikubo/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://pump-climbing.com/gym/bpump/",
-        "gymInstagramHandle": "bpump_ogikubo",
-        "gymInstagramUrl": "https://www.instagram.com/bpump_ogikubo/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T14:20:37.797Z",
-        "observedPosts": 5,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DYRr6n1zMGs/",
-          "https://www.instagram.com/p/DXy0HKeElJ0/",
-          "https://www.instagram.com/p/DXHComvEz5I/",
-          "https://www.instagram.com/p/DYMhcMQEr9t/",
-          "https://www.instagram.com/p/DYE6Su0EvnU/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "86b3a08a-8bae-454f-9eb0-241adab7b8ec",
-        "platform": "instagram",
-        "handle": "bpumptokyo",
-        "displayName": "B-PUMP Tokyo",
-        "sourceUrl": "https://www.instagram.com/bpumptokyo/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://pump-climbing.com/gym/akiba/",
-        "gymInstagramHandle": "bpumptokyo",
-        "gymInstagramUrl": "https://www.instagram.com/bpumptokyo/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T14:20:37.797Z",
-        "observedPosts": 4,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DXwABbbDtGJ/",
-          "https://www.instagram.com/p/DW_E5wyAaNI/",
-          "https://www.instagram.com/p/DXwBG9kjhYr/",
-          "https://www.instagram.com/p/DXWQBNzjiuY/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "7046b655-8cd4-4087-a233-db5bb52aa729",
-        "platform": "instagram",
-        "handle": "energyurawa",
-        "displayName": "エナジークライミングジム浦和店公式Instagram",
-        "sourceUrl": "https://www.instagram.com/energyurawa/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://energy-climbing.co.jp/urawa/",
-        "gymInstagramHandle": "energyurawa",
-        "gymInstagramUrl": "https://www.instagram.com/energyurawa/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T14:20:37.797Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DErxuUPS2th/",
-          "https://www.instagram.com/p/DXviDzfjzRx/",
-          "https://www.instagram.com/p/DXvXu8jj-OZ/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "8dd8d0fc-d295-40af-bd1c-a676b1d8ea4a",
-        "platform": "instagram",
-        "handle": "be_born_climbing_gym",
-        "displayName": "be_born_climbing_gym",
-        "sourceUrl": "https://www.instagram.com/be_born_climbing_gym/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://beborn.boy.jp/",
-        "gymInstagramHandle": "be_born_climbing_gym",
-        "gymInstagramUrl": "https://www.instagram.com/be_born_climbing_gym/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T16:45:20.195Z",
-        "observedPosts": 4,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DYMUu0tkzsC/",
-          "https://www.instagram.com/p/DSv4tB_k7qf/",
-          "https://www.instagram.com/p/DYUPHBHE8cF/",
-          "https://www.instagram.com/p/DXyqvzfk5Tx/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "924eff10-8759-4291-8975-8c9afb0f9ace",
-        "platform": "instagram",
-        "handle": "exciting_sancha",
-        "displayName": "exciting_sancha",
-        "sourceUrl": "https://www.instagram.com/exciting_sancha/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://exciting-sancha.com/about/",
-        "gymInstagramHandle": "exciting_sancha",
-        "gymInstagramUrl": "https://www.instagram.com/exciting_sancha/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T16:45:20.195Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DW3S5GXEWMb/",
-          "https://www.instagram.com/p/DYExyIHka9C/",
-          "https://www.instagram.com/p/DYDemF2k_DD/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "b2e46ff9-fa74-4413-9269-457f4a24775f",
-        "platform": "instagram",
-        "handle": "noborock_takadanobaba",
-        "displayName": "NOBOROCK 高田馬場店",
-        "sourceUrl": "https://www.instagram.com/noborock_takadanobaba/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://noborock-climbing.com/program/takadanobaba/",
-        "gymInstagramHandle": "noborock_takadanobaba",
-        "gymInstagramUrl": "https://www.instagram.com/noborock_takadanobaba/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T16:45:20.195Z",
-        "observedPosts": 5,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DXgNdraEfr6/",
-          "https://www.instagram.com/p/DWqMXOzEcVD/",
-          "https://www.instagram.com/p/DYRnWvgRwY-/",
-          "https://www.instagram.com/p/DYOsj0Sxq3E/",
-          "https://www.instagram.com/p/DYJgLtZRpcd/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "29729a2e-530f-4bd6-a77f-f3d9a586f18e",
-        "platform": "instagram",
-        "handle": "headrockcg",
-        "displayName": "headrockcg",
-        "sourceUrl": "https://www.instagram.com/headrockcg/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://headrock-climbing.com/",
-        "gymInstagramHandle": "headrockcg",
-        "gymInstagramUrl": "https://www.instagram.com/headrockcg/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DX0yS5Rkcko/",
-          "https://www.instagram.com/p/DApzIrpS9xN/",
-          "https://www.instagram.com/p/DXn9phGkdqY/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "130a0146-a8f8-4f45-bb5d-8f7680b3cc24",
-        "platform": "instagram",
-        "handle": "okkurock",
-        "displayName": "okkurock",
-        "sourceUrl": "https://www.instagram.com/okkurock/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://okkurock.com/",
-        "gymInstagramHandle": "okkurock",
-        "gymInstagramUrl": "https://www.instagram.com/okkurock/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 4,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DU9l-QME5YJ/",
-          "https://www.instagram.com/p/DYV8QZOzRzJ/",
-          "https://www.instagram.com/p/CqwbjXuSFu1/",
-          "https://www.instagram.com/p/DXamWcGE9LO/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "980b0f60-2f81-4f01-b602-b141409f808e",
-        "platform": "instagram",
-        "handle": "penguinclimb",
-        "displayName": "penguinclimb",
-        "sourceUrl": "https://www.instagram.com/penguinclimb/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://penguin-climb.com/",
-        "gymInstagramHandle": "penguinclimb",
-        "gymInstagramUrl": "https://www.instagram.com/penguinclimb/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DPk6pIqkqJQ/",
-          "https://www.instagram.com/p/CrC2LU8yMlP/",
-          "https://www.instagram.com/p/DRTt0ARkr2o/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "1e1c5950-4893-4760-bb9c-d11891dc09e5",
-        "platform": "instagram",
-        "handle": "b.g.funny",
-        "displayName": "ボルダリングガレージ FUNNY（ファニー）",
-        "sourceUrl": "https://www.instagram.com/b.g.funny/",
+        "handle": "jands_ikebukuro",
+        "displayName": "スポーツクライミングスクール・ジム J&S 池袋",
+        "sourceUrl": "https://www.instagram.com/jands_ikebukuro/",
         "sourceType": "official_instagram",
         "fallbackUrl": null,
-        "gymInstagramHandle": "b.g.funny",
-        "gymInstagramUrl": "https://www.instagram.com/b.g.funny/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DXtnAZBk2Gv/",
-          "https://www.instagram.com/p/DWA-bECE43H/",
-          "https://www.instagram.com/p/DXojaeRE8QD/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "230beec0-b638-4d8d-acb9-b0d6c2dd6750",
-        "platform": "instagram",
-        "handle": "bouldering_gym_share",
-        "displayName": "ボルダリングジム Share（シェア）",
-        "sourceUrl": "https://www.instagram.com/bouldering_gym_share/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "bouldering_gym_share",
-        "gymInstagramUrl": "https://www.instagram.com/bouldering_gym_share/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/C5vEZ6ry51L/",
-          "https://www.instagram.com/p/DXxtB78mTfe/",
-          "https://www.instagram.com/p/DWiwJnzE-3g/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "1f04c6db-0b8f-4dc0-94a4-9416dfa234fb",
-        "platform": "instagram",
-        "handle": "climbing_gym_cozy",
-        "displayName": "クライミングジム COZY",
-        "sourceUrl": "https://www.instagram.com/climbing_gym_cozy/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "climbing_gym_cozy",
-        "gymInstagramUrl": "https://www.instagram.com/climbing_gym_cozy/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DIAASkszrLy/",
-          "https://www.instagram.com/p/DXssntzAUMG/",
-          "https://www.instagram.com/p/DYCE8DBARiY/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "15beb98e-1f8b-40b2-badc-791514039786",
-        "platform": "instagram",
-        "handle": "climbinggym_hutte",
-        "displayName": "クライミングジム Hutte（ヒュッテ）",
-        "sourceUrl": "https://www.instagram.com/climbinggym_hutte/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "climbinggym_hutte",
-        "gymInstagramUrl": "https://www.instagram.com/climbinggym_hutte/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 4,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DYXYCvEmX_Z/",
-          "https://www.instagram.com/p/DX_M7RMmTpU/",
-          "https://www.instagram.com/p/DYPsAgHmcpc/",
-          "https://www.instagram.com/p/DXtqXRFAjcK/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "33933782-2ad8-4000-afae-772c5f05ecce",
-        "platform": "instagram",
-        "handle": "climbrise2016",
-        "displayName": "クライミングジム RISE（ライズ）",
-        "sourceUrl": "https://www.instagram.com/climbrise2016/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "climbrise2016",
-        "gymInstagramUrl": "https://www.instagram.com/climbrise2016/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-15T18:56:31.371Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/C5StuT3SM-r/",
-          "https://www.instagram.com/p/DXOsBIqE6-H/",
-          "https://www.instagram.com/p/DJK5PFGyAgk/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "86e485c9-55ea-48ea-b4bc-be876064ff75",
-        "platform": "instagram",
-        "handle": "quartier_de_roche",
-        "displayName": "クライミングパーク カルチェロッシュ",
-        "sourceUrl": "https://www.instagram.com/quartier_de_roche/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "quartier_de_roche",
-        "gymInstagramUrl": "https://www.instagram.com/quartier_de_roche/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-16T00:23:40.841Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DX6sMdPkmqO/",
-          "https://www.instagram.com/p/DYT94slSzAx/",
-          "https://www.instagram.com/p/DYGaPgWEu6j/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "02d44afc-a542-4d6e-8e36-042215e7a55e",
-        "platform": "instagram",
-        "handle": "rhinoandbird_nishinippori",
-        "displayName": "Rhino and Bird（ライノアンドバード）",
-        "sourceUrl": "https://www.instagram.com/rhinoandbird_nishinippori/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "rhinoandbird_nishinippori",
-        "gymInstagramUrl": "https://www.instagram.com/rhinoandbird_nishinippori/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-16T00:23:40.841Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/CiZhBneu6Xv/",
-          "https://www.instagram.com/p/Cyzb02uSFtx/",
-          "https://www.instagram.com/p/Cx0Gxc2y60t/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "8e81426f-f0ee-45a1-ac86-6625148f8e1d",
-        "platform": "instagram",
-        "handle": "rockbeans.insta",
-        "displayName": "クライミングジム ROCKBEANS（ロックビーンズ）",
-        "sourceUrl": "https://www.instagram.com/rockbeans.insta/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "rockbeans.insta",
-        "gymInstagramUrl": "https://www.instagram.com/rockbeans.insta/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-16T00:23:40.841Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DUhxBMzkgyj/",
-          "https://www.instagram.com/p/DG0C04LShX8/",
-          "https://www.instagram.com/p/DHqVCQ8yxFI/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "f5d7c62a-37fb-4253-ab25-f7135be773db",
-        "platform": "instagram",
-        "handle": "sloth.gym",
-        "displayName": "クライミングジム SLOTH（スロース）",
-        "sourceUrl": "https://www.instagram.com/sloth.gym/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "sloth.gym",
-        "gymInstagramUrl": "https://www.instagram.com/sloth.gym/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-16T00:23:40.841Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/ClIvV33ymfp/",
-          "https://www.instagram.com/p/DXDcxJsge_8/",
-          "https://www.instagram.com/p/DX0T1EBgVOV/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "d138f4f5-4298-42bc-8905-703e7dde222a",
-        "platform": "instagram",
-        "handle": "dbouldering_tsunashima",
-        "displayName": "ディーボルダリング 綱島",
-        "sourceUrl": "https://www.instagram.com/dbouldering_tsunashima/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "dbouldering_tsunashima",
-        "gymInstagramUrl": "https://www.instagram.com/dbouldering_tsunashima/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-16T03:39:38.672Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DUC8M-iE8fb/",
-          "https://www.instagram.com/p/DXrDJf0E9Nl/",
-          "https://www.instagram.com/p/C3rrNsqyO8k/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "c4471313-b931-43cc-9608-c32a49fbbf96",
-        "platform": "instagram",
-        "handle": "granny_bouldering",
-        "displayName": "ボルダリングジム GRANNY（グラニー） 南流山店",
-        "sourceUrl": "https://www.instagram.com/granny_bouldering/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "granny_bouldering",
-        "gymInstagramUrl": "https://www.instagram.com/granny_bouldering/",
-        "lastCheckedAt": "2026-05-20T12:36:54.355Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-16T06:55:54.102Z",
-        "observedPosts": 3,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DXjGiomgaRn/",
-          "https://www.instagram.com/p/DVTS-3zgT3L/",
-          "https://www.instagram.com/p/DTWlkgFAVd8/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "806b9f74-2b0b-418f-89df-a1b0ffe51a91",
-        "platform": "instagram",
-        "handle": "echoesclimbing",
-        "displayName": "ECHOES CLIMBING（エコーズ クライミング）",
-        "sourceUrl": "https://www.instagram.com/echoesclimbing/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": null,
-        "gymInstagramHandle": "echoesclimbing",
-        "gymInstagramUrl": "https://www.instagram.com/echoesclimbing/",
-        "lastCheckedAt": "2026-05-20T15:39:18.558Z",
-        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
-        "lastObservedAt": "2026-05-16T06:55:54.102Z",
-        "observedPosts": 4,
-        "knownPostUrls": [
-          "https://www.instagram.com/p/DYJm6jDkf09/",
-          "https://www.instagram.com/p/DXYh40IkeEj/",
-          "https://www.instagram.com/p/DYY74ksRR-m/",
-          "https://www.instagram.com/p/DYUOVQORUlN/"
-        ],
-        "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
-      },
-      {
-        "eventSourceId": "78a8cba8-4553-4856-8ec3-fd587d39fb78",
-        "platform": "instagram",
-        "handle": "folk_boulderinggym",
-        "displayName": "folk（フォーク） ボルダリングジム",
-        "sourceUrl": "https://www.instagram.com/folk_boulderinggym/",
-        "sourceType": "official_instagram",
-        "fallbackUrl": "https://folkboulderinggym.com/",
-        "gymInstagramHandle": "folk_boulderinggym",
-        "gymInstagramUrl": "https://www.instagram.com/folk_boulderinggym/",
+        "gymInstagramHandle": "jands_ikebukuro",
+        "gymInstagramUrl": "https://www.instagram.com/jands_ikebukuro/",
         "lastCheckedAt": "2026-05-20T15:39:18.558Z",
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
         "lastObservedAt": "2026-05-16T06:55:54.102Z",
         "observedPosts": 3,
         "knownPostUrls": [
-          "https://www.instagram.com/p/DXyl_CHmeuZ/",
-          "https://www.instagram.com/p/DXsy1zNietN/",
-          "https://www.instagram.com/p/DYEgNmMCbSc/"
+          "https://www.instagram.com/p/DSwhsfnEidc/",
+          "https://www.instagram.com/p/DXs4iRikgXN/",
+          "https://www.instagram.com/p/DSwg3ntkpbI/"
         ],
         "priority": "instagram_recent_posts",
-        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels, open only unknown post URLs, record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "4afeef09-e278-4b3c-90e0-ef1c87150149",
+        "platform": "instagram",
+        "handle": "climbing_gym_rockyn0429",
+        "displayName": "クライミングジム RocKY’N（ロッキン）",
+        "sourceUrl": "https://www.instagram.com/climbing_gym_rockyn0429/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "climbing_gym_rockyn0429",
+        "gymInstagramUrl": "https://www.instagram.com/climbing_gym_rockyn0429/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:11:45.399Z",
+        "lastObservedAt": "2026-05-16T12:02:31.550Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYJAhb4Ei03/",
+          "https://www.instagram.com/p/DPPtj6lkq04/",
+          "https://www.instagram.com/p/DKtnWbyRDB4/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "442a5bb0-f6b3-4707-82f5-8783631d9087",
+        "platform": "instagram",
+        "handle": "funabashirocky",
+        "displayName": "ROCKY 船橋店",
+        "sourceUrl": "https://www.instagram.com/funabashirocky/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.rockyclimbing.com/funabashi/",
+        "gymInstagramHandle": "funabashirocky",
+        "gymInstagramUrl": "https://www.instagram.com/funabashirocky/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 7,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYZTqKkEtpj/",
+          "https://www.instagram.com/p/DU2tsToklaQ/",
+          "https://www.instagram.com/p/DYUKEr3yh1h/",
+          "https://www.instagram.com/p/DYR5f5XErE7/",
+          "https://www.instagram.com/p/DYPAd2eB_sy/",
+          "https://www.instagram.com/p/DX-oO2gyAvk/",
+          "https://www.instagram.com/p/DXwQSJ3ktak/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "01c23def-29c0-4c9a-8b43-6348526ac221",
+        "platform": "instagram",
+        "handle": "inzairocky",
+        "displayName": "ROCKY 印西店",
+        "sourceUrl": "https://www.instagram.com/inzairocky/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.rockyclimbing.com/inzai/",
+        "gymInstagramHandle": "inzairocky",
+        "gymInstagramUrl": "https://www.instagram.com/inzairocky/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYW7HThD1Jm/",
+          "https://www.instagram.com/p/DYZUv6oP9x1/",
+          "https://www.instagram.com/p/DYUM40ijyBk/",
+          "https://www.instagram.com/p/DX8OnWQvWUY/",
+          "https://www.instagram.com/p/DX9AnkMjzmQ/",
+          "https://www.instagram.com/p/DX1PyRBv0ob/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "083b264f-6eb5-4515-b254-8336009ea098",
+        "platform": "instagram",
+        "handle": "jyuku_rocky",
+        "displayName": "ROCKY 新宿曙橋店",
+        "sourceUrl": "https://www.instagram.com/jyuku_rocky/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.rockyclimbing.com/shinjukuakebonobashi/",
+        "gymInstagramHandle": "jyuku_rocky",
+        "gymInstagramUrl": "https://www.instagram.com/jyuku_rocky/",
+        "lastCheckedAt": "2026-05-16T18:09:46.650Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYRxikUpUZV/",
+          "https://www.instagram.com/p/C5ZyU2gSSSt/",
+          "https://www.instagram.com/p/DWbBwrZlKdx/",
+          "https://www.instagram.com/p/DYE0rt8ypSH/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "82ebe4b8-1462-4498-a1cc-fa0a8c279489",
+        "platform": "instagram",
+        "handle": "rocky_shinagawa",
+        "displayName": "Rocky Shinagawa",
+        "sourceUrl": "https://www.instagram.com/rocky_shinagawa/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": null,
+        "gymInstagramUrl": null,
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-09T15:00:00.000Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 1,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/B_uyPWGDI5X/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "528c7d5a-ffb5-45d5-ae64-9f976e5fb7d3",
+        "platform": "instagram",
+        "handle": "jetsetclimbing",
+        "displayName": "JET SET（ジェットセット） climbing gym",
+        "sourceUrl": "https://www.instagram.com/jetsetclimbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.jetsetclimbing.com/",
+        "gymInstagramHandle": "jetsetclimbing",
+        "gymInstagramUrl": "https://www.instagram.com/jetsetclimbing/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXy5zjRkzYP/",
+          "https://www.instagram.com/p/DWlLtgAE8ZW/",
+          "https://www.instagram.com/p/DVU7FRkj6e_/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "49962ae9-aeb3-4ef4-bb4c-5c7c0db9f955",
+        "platform": "instagram",
+        "handle": "kachill_climbing",
+        "displayName": "KaChill カチル",
+        "sourceUrl": "https://www.instagram.com/kachill_climbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://kachill.jimdosite.com/",
+        "gymInstagramHandle": "kachill_climbing",
+        "gymInstagramUrl": "https://www.instagram.com/kachill_climbing/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/C5Z3C68yBl5/",
+          "https://www.instagram.com/p/Cyh1hnSSFHZ/",
+          "https://www.instagram.com/p/DTFGGHBD_pl/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "392263d8-d012-46c3-ac69-67f09f069002",
+        "platform": "instagram",
+        "handle": "lostcanyon_official",
+        "displayName": "クライミングジム LOST CANYON（ロストキャニオン）",
+        "sourceUrl": "https://www.instagram.com/lostcanyon_official/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "lostcanyon_official",
+        "gymInstagramUrl": "https://www.instagram.com/lostcanyon_official/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYEb-B4Cfn8/",
+          "https://www.instagram.com/p/DYYpE03pGyo/",
+          "https://www.instagram.com/p/DXtRYtuCcVI/",
+          "https://www.instagram.com/p/DYR6hWvJt92/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "87b53873-e1ee-45c4-9e23-adf2eef76897",
+        "platform": "instagram",
+        "handle": "lutra_lutra_climb_park_",
+        "displayName": "Lutra Lutra（ルトラルトラ）",
+        "sourceUrl": "https://www.instagram.com/lutra_lutra_climb_park_/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.lutra-lutra.com/",
+        "gymInstagramHandle": "lutra_lutra_climb_park_",
+        "gymInstagramUrl": "https://www.instagram.com/lutra_lutra_climb_park_/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYY5Ca9k0Fm/",
+          "https://www.instagram.com/p/DYOqo8uk6h1/",
+          "https://www.instagram.com/p/DXwACLQE5La/",
+          "https://www.instagram.com/p/DXI4VT1k2z7/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "dc335d7d-2ae4-472e-b319-40544fddffab",
+        "platform": "instagram",
+        "handle": "underground_bouldering_gym",
+        "displayName": "ボルダリングジム UNDERGROUND（アンダーグラウンド）",
+        "sourceUrl": "https://www.instagram.com/underground_bouldering_gym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "underground_bouldering_gym",
+        "gymInstagramUrl": "https://www.instagram.com/underground_bouldering_gym/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-16T18:09:46.650Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXyHT3zEYAx/",
+          "https://www.instagram.com/p/DXlJicaEXEo/",
+          "https://www.instagram.com/p/DYTqs6-kd10/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "1ebafa86-034c-4e70-a20d-34cca87c512c",
+        "platform": "instagram",
+        "handle": "climbinggym_rocklands",
+        "displayName": "クライミングジム ROCKLANDS（ロックランズ）",
+        "sourceUrl": "https://www.instagram.com/climbinggym_rocklands/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "climbinggym_rocklands",
+        "gymInstagramUrl": "https://www.instagram.com/climbinggym_rocklands/",
+        "lastCheckedAt": "2026-05-17T03:17:10.169Z",
+        "sourceVerifiedAt": "2026-05-14T04:11:45.399Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYGsHrAif5s/",
+          "https://www.instagram.com/p/DWqDdeSibEa/",
+          "https://www.instagram.com/p/DXa8bCVCQtY/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "63c7e04c-a3ec-4afd-8bb9-867f912ecefa",
+        "platform": "instagram",
+        "handle": "shina_rocky",
+        "displayName": "ROCKY 品川店",
+        "sourceUrl": "https://www.instagram.com/shina_rocky/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://www.rockyclimbing.com/shinagawa/",
+        "gymInstagramHandle": "shina_rocky",
+        "gymInstagramUrl": "https://www.instagram.com/shina_rocky/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-11T04:15:00.000Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/C9enmHRyWQ3/",
+          "https://www.instagram.com/p/DWs85LWiV5Q/",
+          "https://www.instagram.com/p/DTJkFARkqoD/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "fdcb412f-e5a7-47d1-9820-62c76879ec84",
+        "platform": "instagram",
+        "handle": "pigletclimbinggym",
+        "displayName": "PIGLET CLIMBING GYM公式Instagram",
+        "sourceUrl": "https://www.instagram.com/pigletclimbinggym/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://piglet-climb.com/",
+        "gymInstagramHandle": "pigletclimbinggym",
+        "gymInstagramUrl": "https://www.instagram.com/pigletclimbinggym/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-11T08:15:00.000Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYR3rFcj246/",
+          "https://www.instagram.com/p/DYZMLdbj0Jx/",
+          "https://www.instagram.com/p/DYUbmhTP0mj/",
+          "https://www.instagram.com/p/DYL9eQujyic/",
+          "https://www.instagram.com/p/DYE4LDAPCm4/",
+          "https://www.instagram.com/p/DX8Yb3Ajw9n/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "fa3467fe-ca12-4ea6-a5ee-d24b88f3e674",
+        "platform": "instagram",
+        "handle": "ao_roc.climbing",
+        "displayName": "アオロク〖ao_roc.climbing〗",
+        "sourceUrl": "https://www.instagram.com/ao_roc.climbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://aoroc.jp/",
+        "gymInstagramHandle": "ao_roc.climbing",
+        "gymInstagramUrl": "https://www.instagram.com/ao_roc.climbing/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXA2xVuiQCO/",
+          "https://www.instagram.com/p/DYVb6E9E0LK/",
+          "https://www.instagram.com/p/DXyvVscEYjV/",
+          "https://www.instagram.com/p/DYQwrvJB6Kk/",
+          "https://www.instagram.com/p/DYOn4RhEU6L/",
+          "https://www.instagram.com/p/DWTzQZygfZG/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "52558a73-2f55-4990-a8be-e17bc56f25a3",
+        "platform": "instagram",
+        "handle": "basecamp_edogawabashi",
+        "displayName": "Base Camp Tokyo 江戸川橋",
+        "sourceUrl": "https://www.instagram.com/basecamp_edogawabashi/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://b-camp.jp/edogawabashi/",
+        "gymInstagramHandle": "basecamp_edogawabashi",
+        "gymInstagramUrl": "https://www.instagram.com/basecamp_edogawabashi/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DX0vO-6kcUd/",
+          "https://www.instagram.com/p/DYE2f9zia1r/",
+          "https://www.instagram.com/p/DXoaEezEemy/",
+          "https://www.instagram.com/p/DXoZssJEV6m/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "0c7e2b25-fe74-440d-aceb-7da0aa7a35b5",
+        "platform": "instagram",
+        "handle": "basecamp_hanno",
+        "displayName": "Boulder Park Base Camp 飯能店",
+        "sourceUrl": "https://www.instagram.com/basecamp_hanno/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://b-camp.jp/hanno",
+        "gymInstagramHandle": "basecamp_hanno",
+        "gymInstagramUrl": "https://www.instagram.com/basecamp_hanno/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 6,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXxt2MRk_c6/",
+          "https://www.instagram.com/p/DXymojwj8Vu/",
+          "https://www.instagram.com/p/DYMkwCCGsqr/",
+          "https://www.instagram.com/p/DW-fvfzDwbi/",
+          "https://www.instagram.com/p/DYHRXylGuHg/",
+          "https://www.instagram.com/p/DYJkJoXGt17/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "a03df26a-5459-4848-91b1-7c0ae5f3d938",
+        "platform": "instagram",
+        "handle": "basecamp_higashimurayama",
+        "displayName": "Boulder Park Base Camp 東村山",
+        "sourceUrl": "https://www.instagram.com/basecamp_higashimurayama/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://b-camp.jp/higashimurayama/",
+        "gymInstagramHandle": "basecamp_higashimurayama",
+        "gymInstagramUrl": "https://www.instagram.com/basecamp_higashimurayama/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T03:58:57.413Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DYEuzBDE0xZ/",
+          "https://www.instagram.com/p/DXtgSr-kwbW/",
+          "https://www.instagram.com/p/DXyb7P_k70p/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "d6be4bd8-1768-4ff9-8f75-4819938c7aa0",
+        "platform": "instagram",
+        "handle": "maboo.insta",
+        "displayName": "クライミングジム MABOO（マーブー）",
+        "sourceUrl": "https://www.instagram.com/maboo.insta/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "maboo.insta",
+        "gymInstagramUrl": "https://www.instagram.com/maboo.insta/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:08:12.732Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DUAffeUE_n1/",
+          "https://www.instagram.com/p/DSb8pSGk81i/",
+          "https://www.instagram.com/p/DWp_p48k7dV/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "ff355838-8ee0-4922-a29a-5811ddbc5b61",
+        "platform": "instagram",
+        "handle": "shinnikan",
+        "displayName": "小鹿野町クライミングパーク 神怡舘",
+        "sourceUrl": "https://www.instagram.com/shinnikan/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "shinnikan",
+        "gymInstagramUrl": "https://www.instagram.com/shinnikan/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:08:12.732Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXy7rMMGTYa/",
+          "https://www.instagram.com/p/DXbpjGhmeDN/",
+          "https://www.instagram.com/p/DWTUK8bEhfC/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "c87d0d74-8680-4c30-bbb6-9ac8be720d8f",
+        "platform": "instagram",
+        "handle": "westrock_climbing",
+        "displayName": "クライミングジム WESTROCK（ウエストロック） 調布店",
+        "sourceUrl": "https://www.instagram.com/westrock_climbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "westrock_climbing",
+        "gymInstagramUrl": "https://www.instagram.com/westrock_climbing/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-14T04:11:45.399Z",
+        "lastObservedAt": "2026-05-17T03:17:10.169Z",
+        "observedPosts": 3,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DS4Jx-3D8Qg/",
+          "https://www.instagram.com/p/DW3Xt-5E21Z/",
+          "https://www.instagram.com/p/DYEr-HijyhU/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "cb646fce-8e59-47eb-ae91-75a3a9b886fd",
+        "platform": "instagram",
+        "handle": "beaks.climbing",
+        "displayName": "BEAKS（ビークス） クライミングスタジオ",
+        "sourceUrl": "https://www.instagram.com/beaks.climbing/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": "https://beaksc.wixsite.com/beaks",
+        "gymInstagramHandle": "beaks.climbing",
+        "gymInstagramUrl": "https://www.instagram.com/beaks.climbing/",
+        "lastCheckedAt": "2026-05-17T17:04:17.930Z",
+        "sourceVerifiedAt": "2026-05-17T03:34:56.753Z",
+        "lastObservedAt": "2026-05-17T03:34:56.753Z",
+        "observedPosts": 4,
+        "knownPostUrls": [
+          "https://www.instagram.com/beaks.climbing/#zac-admin-confirm_official-1778988896753",
+          "https://www.instagram.com/p/DRGRMzaEo5Z/",
+          "https://www.instagram.com/p/DWIhZPcEVVb/",
+          "https://www.instagram.com/p/DRTtBwnj6Fz/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
+      },
+      {
+        "eventSourceId": "3f9d3b7b-b618-4c13-9825-86e6b47e5109",
+        "platform": "instagram",
+        "handle": "climbingzerosaitama",
+        "displayName": "クライミングジム ZE-RO（ゼロ） さいたま店",
+        "sourceUrl": "https://www.instagram.com/climbingzerosaitama/",
+        "sourceType": "official_instagram",
+        "fallbackUrl": null,
+        "gymInstagramHandle": "climbingzerosaitama",
+        "gymInstagramUrl": "https://www.instagram.com/climbingzerosaitama/",
+        "lastCheckedAt": "2026-05-17T06:19:39.562Z",
+        "sourceVerifiedAt": "2026-05-14T04:05:29.312Z",
+        "lastObservedAt": "2026-05-17T06:19:39.562Z",
+        "observedPosts": 2,
+        "knownPostUrls": [
+          "https://www.instagram.com/p/DXySzXKjxBc/",
+          "https://www.instagram.com/p/DX-sEGCD-Mc/"
+        ],
+        "priority": "instagram_recent_posts",
+        "inspectionRule": "Use the browser roller on a logged-in browser session. Inspect the latest three visible posts/reels for freshness; if they are already known, or if this account has no observations yet, scroll within the profile and open the next unknown posts until the per-source limit, visible-post scan limit, or 60-day lookback is reached. Record posted date if visible, classification, short summary, and decision. Do not store full captions, media, comments, DMs, stories, passwords, cookies, or session tokens."
       }
     ],
     "approvedSourceRotation": [
@@ -2490,54 +2499,6 @@
         "sourceVerifiedAt": "2026-05-14T04:05:29.312Z"
       },
       {
-        "platform": "web",
-        "handle": "headrock-climbing",
-        "displayName": "HEADROCK CLIMBING GYM 公式サイト",
-        "sourceUrl": "https://headrock-climbing.com/",
-        "sourceType": "official_site",
-        "fallbackUrl": null,
-        "gymInstagramHandle": null,
-        "gymInstagramUrl": null,
-        "lastCheckedAt": "2026-05-19T09:02:31.683Z",
-        "sourceVerifiedAt": "2026-05-11T14:05:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "limestone-climbing-club",
-        "displayName": "LIMESTONE Climbing Club 公式サイト",
-        "sourceUrl": "https://www.limestone.jp/",
-        "sourceType": "official_site",
-        "fallbackUrl": null,
-        "gymInstagramHandle": null,
-        "gymInstagramUrl": null,
-        "lastCheckedAt": "2026-05-19T09:02:31.683Z",
-        "sourceVerifiedAt": "2026-05-11T14:05:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "lutra-lutra",
-        "displayName": "Lutra Lutra 公式サイト",
-        "sourceUrl": "https://www.lutra-lutra.com/",
-        "sourceType": "official_site",
-        "fallbackUrl": null,
-        "gymInstagramHandle": null,
-        "gymInstagramUrl": null,
-        "lastCheckedAt": "2026-05-19T09:02:31.683Z",
-        "sourceVerifiedAt": "2026-05-11T14:05:00.000Z"
-      },
-      {
-        "platform": "web",
-        "handle": "monolithe-bouldering-gym",
-        "displayName": "Monolithe Bouldering Gym 公式サイト",
-        "sourceUrl": "https://www.boulderinggym.jp/",
-        "sourceType": "official_site",
-        "fallbackUrl": null,
-        "gymInstagramHandle": null,
-        "gymInstagramUrl": null,
-        "lastCheckedAt": "2026-05-19T09:02:31.683Z",
-        "sourceVerifiedAt": "2026-05-11T14:05:00.000Z"
-      },
-      {
         "platform": "instagram",
         "handle": "freiheit_bouldering",
         "displayName": "ボルダリングジム フライハイト",
@@ -2551,15 +2512,63 @@
       },
       {
         "platform": "web",
-        "handle": "noborock-ikebukuro",
-        "displayName": "NOBOROCK 池袋店 公式サイト",
-        "sourceUrl": "https://noborock-climbing.com/program/ikebukuro/",
+        "handle": "noborock-machida",
+        "displayName": "NOBOROCK 町田店 公式サイト",
+        "sourceUrl": "https://noborock-climbing.com/program/machida/",
         "sourceType": "official_site",
         "fallbackUrl": null,
         "gymInstagramHandle": null,
         "gymInstagramUrl": null,
         "lastCheckedAt": "2026-05-19T12:05:27.579Z",
         "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "noborock-mizonokuchi",
+        "displayName": "NOBOROCK 溝ノ口店 公式サイト",
+        "sourceUrl": "https://noborock-climbing.com/program/mizonokuchi/",
+        "sourceType": "official_site",
+        "fallbackUrl": null,
+        "gymInstagramHandle": null,
+        "gymInstagramUrl": null,
+        "lastCheckedAt": "2026-05-19T12:05:27.579Z",
+        "sourceVerifiedAt": "2026-05-11T02:20:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "b-pump-yokohama",
+        "displayName": "B-PUMP YOKOHAMA 公式サイト",
+        "sourceUrl": "https://pump-climbing.com/gym/bpump2/",
+        "sourceType": "official_site",
+        "fallbackUrl": null,
+        "gymInstagramHandle": null,
+        "gymInstagramUrl": null,
+        "lastCheckedAt": "2026-05-19T12:05:27.579Z",
+        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "base-camp-higashimurayama",
+        "displayName": "Boulder Park Base Camp 東村山 公式サイト",
+        "sourceUrl": "https://b-camp.jp/higashimurayama/",
+        "sourceType": "official_site",
+        "fallbackUrl": null,
+        "gymInstagramHandle": null,
+        "gymInstagramUrl": null,
+        "lastCheckedAt": "2026-05-19T12:05:27.579Z",
+        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
+      },
+      {
+        "platform": "web",
+        "handle": "urban-base-camp-shinjuku",
+        "displayName": "Urban Base Camp 新宿 公式サイト",
+        "sourceUrl": "https://b-camp.jp/shinjuku/",
+        "sourceType": "official_site",
+        "fallbackUrl": null,
+        "gymInstagramHandle": null,
+        "gymInstagramUrl": null,
+        "lastCheckedAt": "2026-05-19T12:05:27.579Z",
+        "sourceVerifiedAt": "2026-05-11T03:05:00.000Z"
       }
     ],
     "operatorBatch": [
@@ -6286,15 +6295,6 @@
         "sourceHost": "westrock-climbing.com"
       },
       {
-        "key": "competition|クライミングジムrocklandsロックランズ|bloc2026round3rocklands|2026-06-27|climbers-web.jp",
-        "category": "competition",
-        "gymName": "クライミングジム ROCKLANDS（ロックランズ）",
-        "title": "BLoC 2026 Round3 ROCKLANDS",
-        "startsAt": "2026-06-27 10:00",
-        "endsAt": "2026-06-27 20:00",
-        "sourceHost": "climbers-web.jp"
-      },
-      {
         "key": "event|クライミングジムマッドロック|tamax2026クライミングジムマッドロック|2026-06-27|westrock-climbing.com",
         "category": "event",
         "gymName": "クライミングジム マッドロック",
@@ -6302,6 +6302,15 @@
         "startsAt": "2026-06-27 10:00",
         "endsAt": "2026-07-19 21:00",
         "sourceHost": "westrock-climbing.com"
+      },
+      {
+        "key": "competition|クライミングジムrocklandsロックランズ|bloc2026round3rocklands|2026-06-27|climbers-web.jp",
+        "category": "competition",
+        "gymName": "クライミングジム ROCKLANDS（ロックランズ）",
+        "title": "BLoC 2026 Round3 ROCKLANDS",
+        "startsAt": "2026-06-27 10:00",
+        "endsAt": "2026-06-27 20:00",
+        "sourceHost": "climbers-web.jp"
       },
       {
         "key": "competition|bebornビーボーンクライミングジム|ボルダーキッズツアーが2年振りにbebornに復活|2026-06-20|instagram.com",
@@ -6349,12 +6358,12 @@
         "sourceHost": "instagram.com"
       },
       {
-        "key": "competition|クライミングジムze-roゼロ水戸店|ボルダーキッズツアー2026|2026-06-06|instagram.com",
+        "key": "competition|ao_rocアオロクclimbing|2026シリーズ戦aocup第1戦リザルト|2026-06-06|instagram.com",
         "category": "competition",
-        "gymName": "クライミングジム ZE-RO（ゼロ） 水戸店",
-        "title": "🚩ボルダーキッズツアー2026🚩",
+        "gymName": "ao_roc.（アオロク） climbing",
+        "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
         "startsAt": "2026-06-06 10:00",
-        "endsAt": "2026-06-06 21:00",
+        "endsAt": "2026-06-06 11:00",
         "sourceHost": "instagram.com"
       },
       {
@@ -6367,12 +6376,12 @@
         "sourceHost": "instagram.com"
       },
       {
-        "key": "competition|ao_rocアオロクclimbing|2026シリーズ戦aocup第1戦リザルト|2026-06-06|instagram.com",
+        "key": "competition|クライミングジムze-roゼロ水戸店|ボルダーキッズツアー2026|2026-06-06|instagram.com",
         "category": "competition",
-        "gymName": "ao_roc.（アオロク） climbing",
-        "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
+        "gymName": "クライミングジム ZE-RO（ゼロ） 水戸店",
+        "title": "🚩ボルダーキッズツアー2026🚩",
         "startsAt": "2026-06-06 10:00",
-        "endsAt": "2026-06-06 11:00",
+        "endsAt": "2026-06-06 21:00",
         "sourceHost": "instagram.com"
       },
       {
@@ -6394,19 +6403,19 @@
         "sourceHost": "b-camp.jp"
       },
       {
-        "key": "route_set|noborockノボロック大宮|大宮店531ルートセット営業変更|2026-05-31|noborock-climbing.com",
+        "key": "route_set|noborock高田馬場店|高田馬場店531ルートセット営業変更|2026-05-31|noborock-climbing.com",
         "category": "route_set",
-        "gymName": "NOBOROCK（ノボロック） 大宮",
-        "title": "大宮店 5/31 ルートセット営業変更",
+        "gymName": "NOBOROCK 高田馬場店",
+        "title": "高田馬場店 5/31 ルートセット営業変更",
         "startsAt": "2026-05-31 17:00",
         "endsAt": "2026-06-02 18:30",
         "sourceHost": "noborock-climbing.com"
       },
       {
-        "key": "route_set|noborock高田馬場店|高田馬場店531ルートセット営業変更|2026-05-31|noborock-climbing.com",
+        "key": "route_set|noborockノボロック大宮|大宮店531ルートセット営業変更|2026-05-31|noborock-climbing.com",
         "category": "route_set",
-        "gymName": "NOBOROCK 高田馬場店",
-        "title": "高田馬場店 5/31 ルートセット営業変更",
+        "gymName": "NOBOROCK（ノボロック） 大宮",
+        "title": "大宮店 5/31 ルートセット営業変更",
         "startsAt": "2026-05-31 17:00",
         "endsAt": "2026-06-02 18:30",
         "sourceHost": "noborock-climbing.com"
@@ -6421,15 +6430,6 @@
         "sourceHost": "pump-climbing.com"
       },
       {
-        "key": "event|クライミングジムwestrockウエストロック調布店|tamax2026westrock調布|2026-05-30|westrock-climbing.com",
-        "category": "event",
-        "gymName": "クライミングジム WESTROCK（ウエストロック） 調布店",
-        "title": "TAMAX 2026 WESTROCK調布",
-        "startsAt": "2026-05-30 10:00",
-        "endsAt": "2026-06-21 21:00",
-        "sourceHost": "westrock-climbing.com"
-      },
-      {
         "key": "competition|headrockヘッドロッククライミングジム|2026-05-30|instagram.com",
         "category": "competition",
         "gymName": "HEADROCK（ヘッドロック） クライミングジム",
@@ -6437,6 +6437,15 @@
         "startsAt": "2026-05-30 10:00",
         "endsAt": "2026-05-30 11:00",
         "sourceHost": "instagram.com"
+      },
+      {
+        "key": "event|クライミングジムwestrockウエストロック調布店|tamax2026westrock調布|2026-05-30|westrock-climbing.com",
+        "category": "event",
+        "gymName": "クライミングジム WESTROCK（ウエストロック） 調布店",
+        "title": "TAMAX 2026 WESTROCK調布",
+        "startsAt": "2026-05-30 10:00",
+        "endsAt": "2026-06-21 21:00",
+        "sourceHost": "westrock-climbing.com"
       },
       {
         "key": "private_booking|zac|短縮営業のお知らせ|2026-05-28|instagram.com",
@@ -6583,15 +6592,6 @@
         "sourceHost": "instagram.com"
       },
       {
-        "key": "event|ディーボルダリング八王子|tamax2026ディーボルダリング八王子opa|2026-05-16|westrock-climbing.com",
-        "category": "event",
-        "gymName": "ディーボルダリング 八王子",
-        "title": "TAMAX 2026 ディーボルダリング八王子OPA",
-        "startsAt": "2026-05-16 10:00",
-        "endsAt": "2026-06-07 21:00",
-        "sourceHost": "westrock-climbing.com"
-      },
-      {
         "key": "competition|zac|tamax2026開催スケジュール|2026-05-16|instagram.com",
         "category": "competition",
         "gymName": "Zac",
@@ -6599,6 +6599,15 @@
         "startsAt": "2026-05-16 10:00",
         "endsAt": "2026-05-30 21:00",
         "sourceHost": "instagram.com"
+      },
+      {
+        "key": "event|ディーボルダリング八王子|tamax2026ディーボルダリング八王子opa|2026-05-16|westrock-climbing.com",
+        "category": "event",
+        "gymName": "ディーボルダリング 八王子",
+        "title": "TAMAX 2026 ディーボルダリング八王子OPA",
+        "startsAt": "2026-05-16 10:00",
+        "endsAt": "2026-06-07 21:00",
+        "sourceHost": "westrock-climbing.com"
       },
       {
         "key": "route_set|b-pumptokyo|4frooftopセット営業変更|2026-05-11|pump-climbing.com",
@@ -6628,13 +6637,13 @@
         "sourceHost": "westrock-climbing.com"
       },
       {
-        "key": "route_set|noborockノボロック町田店|町田店510ルートセット営業変更|2026-05-10|noborock-climbing.com",
+        "key": "route_set|b-pumpogikubo荻窪|5月competitionwallセット|2026-05-10|pump-climbing.com",
         "category": "route_set",
-        "gymName": "NOBOROCK（ノボロック） 町田店",
-        "title": "町田店 5/10 ルートセット営業変更",
+        "gymName": "B-PUMP OGIKUBO 荻窪",
+        "title": "5月 COMPETITION WALL セット",
         "startsAt": "2026-05-10 17:00",
-        "endsAt": "2026-05-12 18:30",
-        "sourceHost": "noborock-climbing.com"
+        "endsAt": "2026-05-11 22:00",
+        "sourceHost": "pump-climbing.com"
       },
       {
         "key": "route_set|noborockノボロック溝ノ口店|溝ノ口店510ルートセット営業変更|2026-05-10|noborock-climbing.com",
@@ -6646,13 +6655,13 @@
         "sourceHost": "noborock-climbing.com"
       },
       {
-        "key": "route_set|b-pumpogikubo荻窪|5月competitionwallセット|2026-05-10|pump-climbing.com",
+        "key": "route_set|noborockノボロック町田店|町田店510ルートセット営業変更|2026-05-10|noborock-climbing.com",
         "category": "route_set",
-        "gymName": "B-PUMP OGIKUBO 荻窪",
-        "title": "5月 COMPETITION WALL セット",
+        "gymName": "NOBOROCK（ノボロック） 町田店",
+        "title": "町田店 5/10 ルートセット営業変更",
         "startsAt": "2026-05-10 17:00",
-        "endsAt": "2026-05-11 22:00",
-        "sourceHost": "pump-climbing.com"
+        "endsAt": "2026-05-12 18:30",
+        "sourceHost": "noborock-climbing.com"
       },
       {
         "key": "route_set|basecamptokyo江戸川橋|5月2階ボルダーdebutセット|2026-05-10|b-camp.jp",
@@ -6684,7 +6693,7 @@
     ]
   },
   "operatorChecklist": [
-    "Run the Instagram browser roller first. It may inspect only approved official Instagram sources, open the profile in a logged-in browser session, scan the latest three posts/reels, and record only new relevant post URLs in source_post_observations or a reproducible SQL patch.",
+    "Run the Instagram browser roller first. It may inspect only approved official Instagram sources in a logged-in browser session. Use the freshness lane for the latest three posts/reels; when those are already known or the account has no observations yet, use the bounded backfill lane to scroll for the next unknown posts. Stop at the configured per-source limit, visible-post scan limit, or 60-day lookback.",
     "After Instagram post inspection, open inspectNow; if it is empty, process approvedSourceRotation in order. Use large batches and stop only at the configured source limit or a human gate.",
     "Look only for public, official updates that affect visit planning: competitions, lessons, route sets, construction, opening changes, closures, or recruitment.",
     "Before inserting an event, compare against queues.existingEventFingerprints by category, gym, normalized title, start date, and source host.",

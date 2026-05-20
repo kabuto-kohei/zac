@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-05-20T15:41:10.959Z",
+  "generatedAt": "2026-05-20T16:20:59.490Z",
   "policy": {
     "savedFields": "page URL, derived source fragment, classification, short summary, short quote, review status",
     "excludedFields": "full page text, copied images, copied videos, HTML snapshots"
   },
   "summary": {
-    "sourcesQueued": 8,
-    "sourcesFetched": 6,
+    "sourcesQueued": 7,
+    "sourcesFetched": 5,
     "sourcesFailed": 2,
     "observedItems": 10,
     "pendingItems": 10,
@@ -37,9 +37,9 @@
       "candidates": []
     },
     {
-      "handle": "folk-bouldering-gym",
-      "displayName": "folk bouldering gym 公式サイト",
-      "sourceUrl": "https://folkboulderinggym.com/",
+      "handle": "headrock-climbing",
+      "displayName": "HEADROCK CLIMBING GYM 公式サイト",
+      "sourceUrl": "https://headrock-climbing.com/",
       "sourceType": "official_site",
       "ok": true,
       "error": null,
@@ -47,202 +47,191 @@
       "failureDetail": null,
       "candidates": [
         {
-          "handle": "folk-bouldering-gym",
-          "sourceUrl": "https://folkboulderinggym.com/#zac-2026-05-05-route_set-1",
-          "sourceExternalId": "official-site:folk-bouldering-gym:2026-05-05:route_set:1",
-          "classification": "route_set",
-          "title": "folk bouldering gym 05/05 セット",
-          "summary": "folk bouldering gymの公式情報に基づく2026/05/05のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
-          "startsAt": "2026-05-05T01:00:00.000Z",
-          "endsAt": "2026-05-05T02:00:00.000Z",
-          "sourceQuote": "らへ Information ボルダリングを体験したいと考える方へ最新情報を案内 folk bouldering gymに関する幅広い情報を確かめていただけます 5/5-5/8ホールド替え... 2026/05/02 5/5(火)〜5/8…",
+          "handle": "headrock-climbing",
+          "sourceUrl": "https://headrock-climbing.com/#zac-2026-05-19-event-1",
+          "sourceExternalId": "official-site:headrock-climbing:2026-05-19:event:1",
+          "classification": "event",
+          "title": "HEADROCK CLIMBING GYM 3月末まで延長",
+          "summary": "HEADROCK CLIMBING GYMの公式情報に基づく2026/05/19のイベント情報です。内容や参加条件は公式情報で確認してください。",
+          "startsAt": "2026-05-19T01:00:00.000Z",
+          "endsAt": "2026-05-19T02:00:00.000Z",
+          "sourceQuote": "開閉する 施設について 初めての方へ 料金表 スクール クーポン アクセス ONLINE SHOP お問い合わせ 03-6659-5843 NEWS MORE 2026/5/19 キッズクラス体験会開催！ 2026/5/1 2026年5月…",
           "extractionConfidence": "0.60",
           "reviewStatus": "pending",
-          "decisionNote": "folk bouldering gym 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/05/05。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: らへ Information ボルダリングを体験したいと考える方へ最新情報を案内 folk bouldering gymに関する幅広い情報を確かめていただけます 5/5-5/8ホールド替え... 2026/05/02 5/5(火)〜5/8…"
+          "decisionNote": "HEADROCK CLIMBING GYM 公式サイトからイベント候補を検出。日付候補は2026/05/19。Adminで開催日、内容、参加条件を確認してください。根拠抜粋: 開閉する 施設について 初めての方へ 料金表 スクール クーポン アクセス ONLINE SHOP お問い合わせ 03-6659-5843 NEWS MORE 2026/5/19 キッズクラス体験会開催！ 2026/5/1 2026年5月…"
         },
         {
-          "handle": "folk-bouldering-gym",
-          "sourceUrl": "https://folkboulderinggym.com/#zac-2026-05-08-route_set-2",
-          "sourceExternalId": "official-site:folk-bouldering-gym:2026-05-08:route_set:2",
+          "handle": "headrock-climbing",
+          "sourceUrl": "https://headrock-climbing.com/#zac-2026-05-01-event-2",
+          "sourceExternalId": "official-site:headrock-climbing:2026-05-01:event:2",
+          "classification": "event",
+          "title": "HEADROCK CLIMBING GYM 3月末まで延長",
+          "summary": "HEADROCK CLIMBING GYMの公式情報に基づく2026/05/01のイベント情報です。内容や参加条件は公式情報で確認してください。",
+          "startsAt": "2026-05-01T01:00:00.000Z",
+          "endsAt": "2026-05-01T02:00:00.000Z",
+          "sourceQuote": "スクール クーポン アクセス ONLINE SHOP お問い合わせ 03-6659-5843 NEWS MORE 2026/5/19 キッズクラス体験会開催！ 2026/5/1 2026年5月スケジュール 2026/3/1 【3月末まで延…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "HEADROCK CLIMBING GYM 公式サイトからイベント候補を検出。日付候補は2026/05/01。Adminで開催日、内容、参加条件を確認してください。根拠抜粋: スクール クーポン アクセス ONLINE SHOP お問い合わせ 03-6659-5843 NEWS MORE 2026/5/19 キッズクラス体験会開催！ 2026/5/1 2026年5月スケジュール 2026/3/1 【3月末まで延…"
+        },
+        {
+          "handle": "headrock-climbing",
+          "sourceUrl": "https://headrock-climbing.com/#zac-2026-03-01-event-3",
+          "sourceExternalId": "official-site:headrock-climbing:2026-03-01:event:3",
+          "classification": "event",
+          "title": "HEADROCK CLIMBING GYM 3月末まで延長",
+          "summary": "HEADROCK CLIMBING GYMの公式情報に基づく2026/03/01のイベント情報です。内容や参加条件は公式情報で確認してください。",
+          "startsAt": "2026-03-01T01:00:00.000Z",
+          "endsAt": "2026-03-01T02:00:00.000Z",
+          "sourceQuote": "HOP お問い合わせ 03-6659-5843 NEWS MORE 2026/5/19 キッズクラス体験会開催！ 2026/5/1 2026年5月スケジュール 2026/3/1 【3月末まで延長】始めたい人応援します！... 2026/3…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "HEADROCK CLIMBING GYM 公式サイトからイベント候補を検出。日付候補は2026/03/01。Adminで開催日、内容、参加条件を確認してください。根拠抜粋: HOP お問い合わせ 03-6659-5843 NEWS MORE 2026/5/19 キッズクラス体験会開催！ 2026/5/1 2026年5月スケジュール 2026/3/1 【3月末まで延長】始めたい人応援します！... 2026/3…"
+        }
+      ]
+    },
+    {
+      "handle": "limestone-climbing-club",
+      "displayName": "LIMESTONE Climbing Club 公式サイト",
+      "sourceUrl": "https://www.limestone.jp/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "limestone-climbing-club",
+          "sourceUrl": "https://www.limestone.jp/#zac-2026-05-12-competition-1",
+          "sourceExternalId": "official-site:limestone-climbing-club:2026-05-12:competition:1",
+          "classification": "competition",
+          "title": "LIMESTONE Climbing Club 開店時間変更のお知らせ",
+          "summary": "LIMESTONE Climbing Clubの公式情報に基づく2026/05/12のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
+          "startsAt": "2026-05-12T01:00:00.000Z",
+          "endsAt": "2026-05-12T02:00:00.000Z",
+          "sourceQuote": "テップUPを目指す方へ 料金案内 よくあるご質問 INFORMATION アクセス ブログ search メニュー開閉 Youtube INFORMATION 2026/05/12 5/12(火)～5/17(日) 《旬の壁トライアル》開催…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "LIMESTONE Climbing Club 公式サイトからコンペ・大会候補を検出。日付候補は2026/05/12。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: テップUPを目指す方へ 料金案内 よくあるご質問 INFORMATION アクセス ブログ search メニュー開閉 Youtube INFORMATION 2026/05/12 5/12(火)～5/17(日) 《旬の壁トライアル》開催…"
+        },
+        {
+          "handle": "limestone-climbing-club",
+          "sourceUrl": "https://www.limestone.jp/#zac-2026-05-12-competition-2",
+          "sourceExternalId": "official-site:limestone-climbing-club:2026-05-12:competition:2",
+          "classification": "competition",
+          "title": "LIMESTONE Climbing Club 開店時間変更のお知らせ",
+          "summary": "LIMESTONE Climbing Clubの公式情報に基づく2026/05/12のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
+          "startsAt": "2026-05-12T01:00:00.000Z",
+          "endsAt": "2026-05-12T02:00:00.000Z",
+          "sourceQuote": "料金案内 よくあるご質問 INFORMATION アクセス ブログ search メニュー開閉 Youtube INFORMATION 2026/05/12 5/12(火)～5/17(日) 《旬の壁トライアル》開催中！ 2026/05/0…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "LIMESTONE Climbing Club 公式サイトからコンペ・大会候補を検出。日付候補は2026/05/12。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: 料金案内 よくあるご質問 INFORMATION アクセス ブログ search メニュー開閉 Youtube INFORMATION 2026/05/12 5/12(火)～5/17(日) 《旬の壁トライアル》開催中！ 2026/05/0…"
+        },
+        {
+          "handle": "limestone-climbing-club",
+          "sourceUrl": "https://www.limestone.jp/#zac-2026-05-17-competition-3",
+          "sourceExternalId": "official-site:limestone-climbing-club:2026-05-17:competition:3",
+          "classification": "competition",
+          "title": "LIMESTONE Climbing Club 開店時間変更のお知らせ",
+          "summary": "LIMESTONE Climbing Clubの公式情報に基づく2026/05/17のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
+          "startsAt": "2026-05-17T01:00:00.000Z",
+          "endsAt": "2026-05-17T02:00:00.000Z",
+          "sourceQuote": "あるご質問 INFORMATION アクセス ブログ search メニュー開閉 Youtube INFORMATION 2026/05/12 5/12(火)～5/17(日) 《旬の壁トライアル》開催中！ 2026/05/05 5月🎏旬…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "LIMESTONE Climbing Club 公式サイトからコンペ・大会候補を検出。日付候補は2026/05/17。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: あるご質問 INFORMATION アクセス ブログ search メニュー開閉 Youtube INFORMATION 2026/05/12 5/12(火)～5/17(日) 《旬の壁トライアル》開催中！ 2026/05/05 5月🎏旬…"
+        }
+      ]
+    },
+    {
+      "handle": "lutra-lutra",
+      "displayName": "Lutra Lutra 公式サイト",
+      "sourceUrl": "https://www.lutra-lutra.com/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "lutra-lutra",
+          "sourceUrl": "https://www.lutra-lutra.com/#zac-2026-03-31-competition-1",
+          "sourceExternalId": "official-site:lutra-lutra:2026-03-31:competition:1",
+          "classification": "competition",
+          "title": "Lutra Lutra 03/31 コンペ",
+          "summary": "Lutra Lutraの公式情報に基づく2026/03/31のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
+          "startsAt": "2026-03-31T01:00:00.000Z",
+          "endsAt": "2026-03-31T02:00:00.000Z",
+          "sourceQuote": "\udf3b大ゴッホ展とTHEWALL合宿🌻 茨城生まれ、足立区育ち、サウナ好きなやつはだいたいトモダチ🎵てんちょーです福島美術館で開幕中の大ゴッホ展に突撃です💨 2026.03.31 08:27 ジム 観光 お風呂 ✨６面リニューアル✨今月…",
+          "extractionConfidence": "0.60",
+          "reviewStatus": "pending",
+          "decisionNote": "Lutra Lutra 公式サイトからコンペ・大会候補を検出。日付候補は2026/03/31。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: \udf3b大ゴッホ展とTHEWALL合宿🌻 茨城生まれ、足立区育ち、サウナ好きなやつはだいたいトモダチ🎵てんちょーです福島美術館で開幕中の大ゴッホ展に突撃です💨 2026.03.31 08:27 ジム 観光 お風呂 ✨６面リニューアル✨今月…"
+        }
+      ]
+    },
+    {
+      "handle": "monolithe-bouldering-gym",
+      "displayName": "Monolithe Bouldering Gym 公式サイト",
+      "sourceUrl": "https://www.boulderinggym.jp/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": []
+    },
+    {
+      "handle": "noborock-ikebukuro",
+      "displayName": "NOBOROCK 池袋店 公式サイト",
+      "sourceUrl": "https://noborock-climbing.com/program/ikebukuro/",
+      "sourceType": "official_site",
+      "ok": true,
+      "error": null,
+      "failureCategory": null,
+      "failureDetail": null,
+      "candidates": [
+        {
+          "handle": "noborock-ikebukuro",
+          "sourceUrl": "https://noborock-climbing.com/program/ikebukuro/#zac-2026-05-08-route_set-1",
+          "sourceExternalId": "official-site:noborock-ikebukuro:2026-05-08:route_set:1",
           "classification": "route_set",
-          "title": "folk bouldering gym 05/08 セット",
-          "summary": "folk bouldering gymの公式情報に基づく2026/05/08のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
+          "title": "NOBOROCK 池袋店 2026/05/08 セット",
+          "summary": "NOBOROCK 池袋店の公式情報に基づく2026/05/08のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
           "startsAt": "2026-05-08T01:00:00.000Z",
           "endsAt": "2026-05-08T02:00:00.000Z",
-          "sourceQuote": "formation ボルダリングを体験したいと考える方へ最新情報を案内 folk bouldering gymに関する幅広い情報を確かめていただけます 5/5-5/8ホールド替え... 2026/05/02 5/5(火)〜5/8(金)は全…",
+          "sourceQuote": "浅草店 高田馬場店 渋谷店 池袋店 町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 池袋店 店舗 池袋店 お知らせ 【ルートセット】 5/8 ルートセット完了！ 6/7(日) 17:00 close 6/8(月…",
           "extractionConfidence": "0.60",
           "reviewStatus": "pending",
-          "decisionNote": "folk bouldering gym 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/05/08。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: formation ボルダリングを体験したいと考える方へ最新情報を案内 folk bouldering gymに関する幅広い情報を確かめていただけます 5/5-5/8ホールド替え... 2026/05/02 5/5(火)〜5/8(金)は全…"
+          "decisionNote": "NOBOROCK 池袋店 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/05/08。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: 浅草店 高田馬場店 渋谷店 池袋店 町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 池袋店 店舗 池袋店 お知らせ 【ルートセット】 5/8 ルートセット完了！ 6/7(日) 17:00 close 6/8(月…"
         },
         {
-          "handle": "folk-bouldering-gym",
-          "sourceUrl": "https://folkboulderinggym.com/#zac-2026-05-02-route_set-3",
-          "sourceExternalId": "official-site:folk-bouldering-gym:2026-05-02:route_set:3",
+          "handle": "noborock-ikebukuro",
+          "sourceUrl": "https://noborock-climbing.com/program/ikebukuro/#zac-2026-06-07-route_set-2",
+          "sourceExternalId": "official-site:noborock-ikebukuro:2026-06-07:route_set:2",
           "classification": "route_set",
-          "title": "folk bouldering gym 05/02 セット",
-          "summary": "folk bouldering gymの公式情報に基づく2026/05/02のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
-          "startsAt": "2026-05-02T01:00:00.000Z",
-          "endsAt": "2026-05-02T02:00:00.000Z",
-          "sourceQuote": "リングを体験したいと考える方へ最新情報を案内 folk bouldering gymに関する幅広い情報を確かめていただけます 5/5-5/8ホールド替え... 2026/05/02 5/5(火)〜5/8(金)は全面ホールド替えのため休業と…",
+          "title": "NOBOROCK 池袋店 2026/06/07 セット",
+          "summary": "NOBOROCK 池袋店の公式情報に基づく2026/06/07のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
+          "startsAt": "2026-06-07T01:00:00.000Z",
+          "endsAt": "2026-06-07T02:00:00.000Z",
+          "sourceQuote": "池袋店 町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 池袋店 店舗 池袋店 お知らせ 【ルートセット】 5/8 ルートセット完了！ 6/7(日) 17:00 close 6/8(月) close 6/9(火)…",
           "extractionConfidence": "0.60",
           "reviewStatus": "pending",
-          "decisionNote": "folk bouldering gym 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/05/02。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: リングを体験したいと考える方へ最新情報を案内 folk bouldering gymに関する幅広い情報を確かめていただけます 5/5-5/8ホールド替え... 2026/05/02 5/5(火)〜5/8(金)は全面ホールド替えのため休業と…"
-        }
-      ]
-    },
-    {
-      "handle": "forge-bouldering",
-      "displayName": "Forge bouldering 公式サイト",
-      "sourceUrl": "https://www.forge-bouldering.com/",
-      "sourceType": "official_site",
-      "ok": true,
-      "error": null,
-      "failureCategory": null,
-      "failureDetail": null,
-      "candidates": [
-        {
-          "handle": "forge-bouldering",
-          "sourceUrl": "https://www.forge-bouldering.com/#zac-2020-06-17-opening_change-1",
-          "sourceExternalId": "official-site:forge-bouldering:2020-06-17:opening_change:1",
-          "classification": "opening_change",
-          "title": "Forge bouldering 06/17 営業変更",
-          "summary": "Forge boulderingの公式情報に基づく2020/06/17の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
-          "startsAt": "2020-06-17T01:00:00.000Z",
-          "endsAt": "2020-06-17T02:00:00.000Z",
-          "sourceQuote": "様のご来店お待ちしております。 ​ &#8203; &#8203; @forge.bouldering Load More forge bouldering ​2020年6月17日OPEN 横須賀市唯一の屋内ボルダリング専用施設 京急県立…",
-          "extractionConfidence": "0.60",
-          "reviewStatus": "pending",
-          "decisionNote": "Forge bouldering 公式サイトから営業時間・休業変更候補を検出。日付候補は2020/06/17。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: 様のご来店お待ちしております。 ​ &#8203; &#8203; @forge.bouldering Load More forge bouldering ​2020年6月17日OPEN 横須賀市唯一の屋内ボルダリング専用施設 京急県立…"
-        }
-      ]
-    },
-    {
-      "handle": "hokimaboulders",
-      "displayName": "HOKIMABOULDERS 公式サイト",
-      "sourceUrl": "https://hokimaboulders.com/",
-      "sourceType": "official_site",
-      "ok": true,
-      "error": null,
-      "failureCategory": null,
-      "failureDetail": null,
-      "candidates": []
-    },
-    {
-      "handle": "jetsetclimbing",
-      "displayName": "JET SET Climbing Gym 公式サイト",
-      "sourceUrl": "https://www.jetsetclimbing.com/",
-      "sourceType": "official_site",
-      "ok": true,
-      "error": null,
-      "failureCategory": null,
-      "failureDetail": null,
-      "candidates": []
-    },
-    {
-      "handle": "base-camp-edogawabashi",
-      "displayName": "BASE CAMP TOKYO 江戸川橋 公式サイト",
-      "sourceUrl": "https://b-camp.jp/edogawabashi/",
-      "sourceType": "official_site",
-      "ok": true,
-      "error": null,
-      "failureCategory": null,
-      "failureDetail": null,
-      "candidates": [
-        {
-          "handle": "base-camp-edogawabashi",
-          "sourceUrl": "https://b-camp.jp/edogawabashi/#zac-2026-05-20-opening_change-1",
-          "sourceExternalId": "official-site:base-camp-edogawabashi:2026-05-20:opening_change:1",
-          "classification": "opening_change",
-          "title": "BASE CAMP TOKYO 江戸川橋 料金改定とサマーキャンペーンのお知らせ",
-          "summary": "BASE CAMP TOKYO 江戸川橋の公式情報に基づく2026/05/20の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
-          "startsAt": "2026-05-20T01:00:00.000Z",
-          "endsAt": "2026-05-20T02:00:00.000Z",
-          "sourceQuote": "っぷりとご紹介します アクセス アクセスマップはこちらから 事前登録のお願い 事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月20日 NEW BCTルートクライミングスクールミドルコース …",
-          "extractionConfidence": "0.60",
-          "reviewStatus": "pending",
-          "decisionNote": "BASE CAMP TOKYO 江戸川橋 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/05/20。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: っぷりとご紹介します アクセス アクセスマップはこちらから 事前登録のお願い 事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月20日 NEW BCTルートクライミングスクールミドルコース …"
+          "decisionNote": "NOBOROCK 池袋店 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/06/07。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: 池袋店 町田店 溝ノ口店 大宮店 カレンダー 撮影について ホーム 店舗案内 店舗 池袋店 店舗 池袋店 お知らせ 【ルートセット】 5/8 ルートセット完了！ 6/7(日) 17:00 close 6/8(月) close 6/9(火)…"
         },
         {
-          "handle": "base-camp-edogawabashi",
-          "sourceUrl": "https://b-camp.jp/edogawabashi/#zac-2026-05-09-opening_change-2",
-          "sourceExternalId": "official-site:base-camp-edogawabashi:2026-05-09:opening_change:2",
-          "classification": "opening_change",
-          "title": "BASE CAMP TOKYO 江戸川橋 料金改定とサマーキャンペーンのお知らせ",
-          "summary": "BASE CAMP TOKYO 江戸川橋の公式情報に基づく2026/05/09の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
-          "startsAt": "2026-05-09T01:00:00.000Z",
-          "endsAt": "2026-05-09T02:00:00.000Z",
-          "sourceQuote": "事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月20日 NEW BCTルートクライミングスクールミドルコース 2026年05月09日 【料金改定とサマーキャンペーンのお知らせ】 2026年…",
+          "handle": "noborock-ikebukuro",
+          "sourceUrl": "https://noborock-climbing.com/program/ikebukuro/#zac-2026-06-08-route_set-3",
+          "sourceExternalId": "official-site:noborock-ikebukuro:2026-06-08:route_set:3",
+          "classification": "route_set",
+          "title": "NOBOROCK 池袋店 2026/06/08 セット",
+          "summary": "NOBOROCK 池袋店の公式情報に基づく2026/06/08のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
+          "startsAt": "2026-06-08T01:00:00.000Z",
+          "endsAt": "2026-06-08T02:00:00.000Z",
+          "sourceQuote": "ンダー 撮影について ホーム 店舗案内 店舗 池袋店 店舗 池袋店 お知らせ 【ルートセット】 5/8 ルートセット完了！ 6/7(日) 17:00 close 6/8(月) close 6/9(火) 18:30 open! 施設案内 池…",
           "extractionConfidence": "0.60",
           "reviewStatus": "pending",
-          "decisionNote": "BASE CAMP TOKYO 江戸川橋 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/05/09。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: 事前の登録でご来店時の受付がスムーズになります ピックアップ情報 PICK UP 2026年05月20日 NEW BCTルートクライミングスクールミドルコース 2026年05月09日 【料金改定とサマーキャンペーンのお知らせ】 2026年…"
-        },
-        {
-          "handle": "base-camp-edogawabashi",
-          "sourceUrl": "https://b-camp.jp/edogawabashi/#zac-2026-04-27-opening_change-3",
-          "sourceExternalId": "official-site:base-camp-edogawabashi:2026-04-27:opening_change:3",
-          "classification": "opening_change",
-          "title": "BASE CAMP TOKYO 江戸川橋 料金改定とサマーキャンペーンのお知らせ",
-          "summary": "BASE CAMP TOKYO 江戸川橋の公式情報に基づく2026/04/27の営業変更情報です。営業時間や営業影響は公式情報で確認してください。",
-          "startsAt": "2026-04-27T01:00:00.000Z",
-          "endsAt": "2026-04-27T02:00:00.000Z",
-          "sourceQuote": "ICK UP 2026年05月20日 NEW BCTルートクライミングスクールミドルコース 2026年05月09日 【料金改定とサマーキャンペーンのお知らせ】 2026年04月27日 5月 ルートクライミングエリア工事のお知らせ 2026…",
-          "extractionConfidence": "0.60",
-          "reviewStatus": "pending",
-          "decisionNote": "BASE CAMP TOKYO 江戸川橋 公式サイトから営業時間・休業変更候補を検出。日付候補は2026/04/27。Adminで変更日、営業時間、休業/短縮営業の範囲を確認してください。根拠抜粋: ICK UP 2026年05月20日 NEW BCTルートクライミングスクールミドルコース 2026年05月09日 【料金改定とサマーキャンペーンのお知らせ】 2026年04月27日 5月 ルートクライミングエリア工事のお知らせ 2026…"
-        }
-      ]
-    },
-    {
-      "handle": "westrock-climbing-event",
-      "displayName": "WESTROCK 公式イベント情報",
-      "sourceUrl": "https://www.westrock-climbing.com/event/",
-      "sourceType": "official_site",
-      "ok": true,
-      "error": null,
-      "failureCategory": null,
-      "failureDetail": null,
-      "candidates": [
-        {
-          "handle": "westrock-climbing-event",
-          "sourceUrl": "https://www.westrock-climbing.com/event/#zac-2026-05-18-competition-1",
-          "sourceExternalId": "official-site:westrock-climbing-event:2026-05-18:competition:1",
-          "classification": "competition",
-          "title": "WESTROCK 公式イベント情報 東京都内",
-          "summary": "WESTROCK 公式イベント情報の公式情報に基づく2026/05/18のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
-          "startsAt": "2026-05-18T01:00:00.000Z",
-          "endsAt": "2026-05-18T02:00:00.000Z",
-          "sourceQuote": "ithin a few seconds. イベント情報 - クライミングジム ウエストロック【東京都内】 ウエストロック > イベント情報 イベント情報 一覧 2026/05/18 STONE CIRCUIT Plus+ 2026 Sea…",
-          "extractionConfidence": "0.60",
-          "reviewStatus": "pending",
-          "decisionNote": "WESTROCK 公式イベント情報の公式サイトからコンペ・大会候補を検出。日付候補は2026/05/18。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: ithin a few seconds. イベント情報 - クライミングジム ウエストロック【東京都内】 ウエストロック > イベント情報 イベント情報 一覧 2026/05/18 STONE CIRCUIT Plus+ 2026 Sea…"
-        },
-        {
-          "handle": "westrock-climbing-event",
-          "sourceUrl": "https://www.westrock-climbing.com/event/#zac-2026-05-09-competition-2",
-          "sourceExternalId": "official-site:westrock-climbing-event:2026-05-09:competition:2",
-          "classification": "competition",
-          "title": "WESTROCK 公式イベント情報 2026/05/09 コンペ",
-          "summary": "WESTROCK 公式イベント情報の公式情報に基づく2026/05/09のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
-          "startsAt": "2026-05-09T01:00:00.000Z",
-          "endsAt": "2026-05-09T02:00:00.000Z",
-          "sourceQuote": "】 ウエストロック > イベント情報 イベント情報 一覧 2026/05/18 STONE CIRCUIT Plus+ 2026 Season2 Result 2026/05/09 【B-SCORE 7th SEASON】April Re…",
-          "extractionConfidence": "0.60",
-          "reviewStatus": "pending",
-          "decisionNote": "WESTROCK 公式イベント情報の公式サイトからコンペ・大会候補を検出。日付候補は2026/05/09。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: 】 ウエストロック > イベント情報 イベント情報 一覧 2026/05/18 STONE CIRCUIT Plus+ 2026 Season2 Result 2026/05/09 【B-SCORE 7th SEASON】April Re…"
-        },
-        {
-          "handle": "westrock-climbing-event",
-          "sourceUrl": "https://www.westrock-climbing.com/event/#zac-2026-04-24-competition-3",
-          "sourceExternalId": "official-site:westrock-climbing-event:2026-04-24:competition:3",
-          "classification": "competition",
-          "title": "WESTROCK 公式イベント情報 2026/04/24 コンペ",
-          "summary": "WESTROCK 公式イベント情報の公式情報に基づく2026/04/24のコンペ・大会情報です。開催日や申込方法は公式情報で確認してください。",
-          "startsAt": "2026-04-24T01:00:00.000Z",
-          "endsAt": "2026-04-24T02:00:00.000Z",
-          "sourceQuote": "E CIRCUIT Plus+ 2026 Season2 Result 2026/05/09 【B-SCORE 7th SEASON】April Result 2026/04/24 STONE CIRCUIT Plus＋ 2026 Sea…",
-          "extractionConfidence": "0.60",
-          "reviewStatus": "pending",
-          "decisionNote": "WESTROCK 公式イベント情報の公式サイトからコンペ・大会候補を検出。日付候補は2026/04/24。Adminで開催日、対象店舗、参加条件、申込要否を確認してください。根拠抜粋: E CIRCUIT Plus+ 2026 Season2 Result 2026/05/09 【B-SCORE 7th SEASON】April Result 2026/04/24 STONE CIRCUIT Plus＋ 2026 Sea…"
+          "decisionNote": "NOBOROCK 池袋店 公式サイトからセット・ホールド替え候補を検出。日付候補は2026/06/08。Adminで対象エリア、作業期間、利用制限を確認してください。根拠抜粋: ンダー 撮影について ホーム 店舗案内 店舗 池袋店 店舗 池袋店 お知らせ 【ルートセット】 5/8 ルートセット完了！ 6/7(日) 17:00 close 6/8(月) close 6/9(火) 18:30 open! 施設案内 池…"
         }
       ]
     }

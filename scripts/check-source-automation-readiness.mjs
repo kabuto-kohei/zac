@@ -99,6 +99,7 @@ const instagramBrowserRollerMadeProgress =
   (inspection?.summary?.observedPosts ?? 0) > 0 ||
   inspection?.mode === "browser_fixture";
 const instagramBrowserPolicyText = [
+  inspection?.policy?.collectionArchitecture ?? "",
   inspection?.policy?.excludedFields ?? "",
   inspection?.policy?.publication ?? "",
   inspection?.policy?.sourceEligibility ?? "",
@@ -149,6 +150,14 @@ const checks = [
     "Instagram browser roller limits source eligibility",
     /approved official Instagram/u.test(instagramBrowserPolicyText),
     truncate(instagramBrowserPolicyText, 120),
+  ),
+  check(
+    "Instagram browser roller has bounded backfill architecture",
+    /backfill lane/u.test(instagramBrowserPolicyText) &&
+      /latest three/u.test(instagramBrowserPolicyText) &&
+      Number.isFinite(inspection?.cadence?.lookbackDays) &&
+      inspection.cadence.lookbackDays <= 60,
+    `lookbackDays=${inspection?.cadence?.lookbackDays ?? "unknown"}`,
   ),
   check(
     "Instagram inspection policy excludes secrets/media/captions",
@@ -214,6 +223,7 @@ const result = {
           sourcesDeferred: inspection.summary.sourcesDeferred ?? null,
           postsSeen: inspection.summary.postsSeen ?? null,
           newPostsOpened: inspection.summary.newPostsOpened ?? null,
+          lookbackPostsSkipped: inspection.summary.lookbackPostsSkipped ?? null,
           observedPosts: inspection.summary.observedPosts ?? null,
           calendarCandidates: inspection.summary.calendarCandidates ?? null,
         }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T15:44:10.433Z",
+  "generatedAt": "2026-05-20T16:04:11.264Z",
   "cadence": {
     "approvedSourceCheck": "every 6 hours",
     "upcomingEventRecheck": "every 6 hours for upcoming public calendar items",
@@ -61,8 +61,8 @@
     },
     "eventsByReviewStatus": {
       "approved": 48,
-      "pending": 16,
-      "rejected": 3
+      "pending": 9,
+      "rejected": 10
     },
     "scheduledEventsByCategory": {
       "competition": 18,
@@ -5869,17 +5869,6 @@
     ],
     "upcomingEventRecheck": [
       {
-        "id": "c7fa6b6e-5173-47c9-9647-897914392313",
-        "category": "competition",
-        "title": "🌟コンペ開催🌟",
-        "startsAt": "2026-05-23 10:00",
-        "endsAt": "2026-05-23 11:00",
-        "sourceUrl": "https://www.instagram.com/p/DXHC4snEnUU/",
-        "sourceLabel": "ROCKY つくば阿見店",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.72"
-      },
-      {
         "id": "77777777-7777-4777-8777-000000000009",
         "category": "competition",
         "title": "BLoC 2026 Round2 ao_roc.climbing",
@@ -5889,6 +5878,17 @@
         "sourceLabel": "CLIMBERS BLoC 2026記事",
         "reviewStatus": "approved",
         "extractionConfidence": "0.78"
+      },
+      {
+        "id": "c7fa6b6e-5173-47c9-9647-897914392313",
+        "category": "competition",
+        "title": "🌟コンペ開催🌟",
+        "startsAt": "2026-05-23 10:00",
+        "endsAt": "2026-05-23 11:00",
+        "sourceUrl": "https://www.instagram.com/p/DXHC4snEnUU/",
+        "sourceLabel": "ROCKY つくば阿見店",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.72"
       },
       {
         "id": "77777777-7777-4777-8777-000000000028",
@@ -5990,17 +5990,6 @@
         "extractionConfidence": "0.86"
       },
       {
-        "id": "77777777-7777-4777-8777-000000000018",
-        "category": "route_set",
-        "title": "大宮店 5/31 ルートセット営業変更",
-        "startsAt": "2026-05-31 17:00",
-        "endsAt": "2026-06-02 18:30",
-        "sourceUrl": "https://noborock-climbing.com/program/omiya/",
-        "sourceLabel": "NOBOROCK 大宮店 公式サイト",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.90"
-      },
-      {
         "id": "77777777-7777-4777-8777-000000000019",
         "category": "route_set",
         "title": "高田馬場店 5/31 ルートセット営業変更",
@@ -6008,6 +5997,17 @@
         "endsAt": "2026-06-02 18:30",
         "sourceUrl": "https://noborock-climbing.com/program/takadanobaba/",
         "sourceLabel": "NOBOROCK 高田馬場店 公式サイト",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.90"
+      },
+      {
+        "id": "77777777-7777-4777-8777-000000000018",
+        "category": "route_set",
+        "title": "大宮店 5/31 ルートセット営業変更",
+        "startsAt": "2026-05-31 17:00",
+        "endsAt": "2026-06-02 18:30",
+        "sourceUrl": "https://noborock-climbing.com/program/omiya/",
+        "sourceLabel": "NOBOROCK 大宮店 公式サイト",
         "reviewStatus": "approved",
         "extractionConfidence": "0.90"
       },
@@ -6034,6 +6034,17 @@
         "extractionConfidence": "0.72"
       },
       {
+        "id": "357d7522-bb5e-44fe-bfe6-aa826a057f51",
+        "category": "competition",
+        "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
+        "startsAt": "2026-06-06 10:00",
+        "endsAt": "2026-06-06 11:00",
+        "sourceUrl": "https://www.instagram.com/p/DYOn4RhEU6L/",
+        "sourceLabel": "アオロク〖ao_roc.climbing〗",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.72"
+      },
+      {
         "id": "0753b471-2587-4441-bc75-b941e7767ba9",
         "category": "competition",
         "title": "🚩ボルダーキッズツアー2026🚩",
@@ -6052,17 +6063,6 @@
         "endsAt": "2026-06-06 11:00",
         "sourceUrl": "https://www.instagram.com/p/DXHComvEz5I/",
         "sourceLabel": "B-PUMP OGIKUBO",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.72"
-      },
-      {
-        "id": "357d7522-bb5e-44fe-bfe6-aa826a057f51",
-        "category": "competition",
-        "title": "2026シリーズ戦 AOCUP第1戦[リザルト]",
-        "startsAt": "2026-06-06 10:00",
-        "endsAt": "2026-06-06 11:00",
-        "sourceUrl": "https://www.instagram.com/p/DYOn4RhEU6L/",
-        "sourceLabel": "アオロク〖ao_roc.climbing〗",
         "reviewStatus": "approved",
         "extractionConfidence": "0.72"
       },
@@ -6122,17 +6122,6 @@
         "extractionConfidence": "0.72"
       },
       {
-        "id": "77777777-7777-4777-8777-000000000010",
-        "category": "competition",
-        "title": "BLoC 2026 Round3 ROCKLANDS",
-        "startsAt": "2026-06-27 10:00",
-        "endsAt": "2026-06-27 20:00",
-        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
-        "sourceLabel": "CLIMBERS BLoC 2026記事",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.78"
-      },
-      {
         "id": "77777777-7777-4777-8777-000000000007",
         "category": "event",
         "title": "TAMAX 2026 クライミングジム マッドロック",
@@ -6142,6 +6131,17 @@
         "sourceLabel": "WESTROCK 公式イベント情報",
         "reviewStatus": "approved",
         "extractionConfidence": "0.90"
+      },
+      {
+        "id": "77777777-7777-4777-8777-000000000010",
+        "category": "competition",
+        "title": "BLoC 2026 Round3 ROCKLANDS",
+        "startsAt": "2026-06-27 10:00",
+        "endsAt": "2026-06-27 20:00",
+        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
+        "sourceLabel": "CLIMBERS BLoC 2026記事",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.78"
       },
       {
         "id": "77777777-7777-4777-8777-000000000008",
@@ -6155,17 +6155,6 @@
         "extractionConfidence": "0.90"
       },
       {
-        "id": "77777777-7777-4777-8777-000000000011",
-        "category": "competition",
-        "title": "BLoC 2026 Round4 ZE-RO MITO",
-        "startsAt": "2026-07-12 10:00",
-        "endsAt": "2026-07-12 20:00",
-        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
-        "sourceLabel": "CLIMBERS BLoC 2026記事",
-        "reviewStatus": "approved",
-        "extractionConfidence": "0.78"
-      },
-      {
         "id": "47bb1d01-56a5-4d0e-bb67-773ac9a09514",
         "category": "competition",
         "title": "今年のBLOC",
@@ -6175,6 +6164,17 @@
         "sourceLabel": "アオロク〖ao_roc.climbing〗",
         "reviewStatus": "approved",
         "extractionConfidence": "0.72"
+      },
+      {
+        "id": "77777777-7777-4777-8777-000000000011",
+        "category": "competition",
+        "title": "BLoC 2026 Round4 ZE-RO MITO",
+        "startsAt": "2026-07-12 10:00",
+        "endsAt": "2026-07-12 20:00",
+        "sourceUrl": "https://www.climbers-web.jp/news/20260214-1/",
+        "sourceLabel": "CLIMBERS BLoC 2026記事",
+        "reviewStatus": "approved",
+        "extractionConfidence": "0.78"
       },
       {
         "id": "77777777-7777-4777-8777-000000000012",
@@ -6259,15 +6259,6 @@
         "sourceHost": "climbers-web.jp"
       },
       {
-        "key": "competition|ao_rocアオロクclimbing|今年のbloc|2026-07-12|instagram.com",
-        "category": "competition",
-        "gymName": "ao_roc.（アオロク） climbing",
-        "title": "今年のBLOC",
-        "startsAt": "2026-07-12 10:00",
-        "endsAt": "2026-07-25 21:00",
-        "sourceHost": "instagram.com"
-      },
-      {
         "key": "competition|クライミングジムze-roゼロ水戸店|bloc2026round4ze-romito|2026-07-12|climbers-web.jp",
         "category": "competition",
         "gymName": "クライミングジム ZE-RO（ゼロ） 水戸店",
@@ -6275,6 +6266,15 @@
         "startsAt": "2026-07-12 10:00",
         "endsAt": "2026-07-12 20:00",
         "sourceHost": "climbers-web.jp"
+      },
+      {
+        "key": "competition|ao_rocアオロクclimbing|今年のbloc|2026-07-12|instagram.com",
+        "category": "competition",
+        "gymName": "ao_roc.（アオロク） climbing",
+        "title": "今年のBLOC",
+        "startsAt": "2026-07-12 10:00",
+        "endsAt": "2026-07-25 21:00",
+        "sourceHost": "instagram.com"
       },
       {
         "key": "event|ディーボルダリングプラスリード立川|tamax2026ディーボルダリングプラスリード立川|2026-07-11|westrock-climbing.com",
@@ -6628,13 +6628,13 @@
         "sourceHost": "westrock-climbing.com"
       },
       {
-        "key": "route_set|b-pumpogikubo荻窪|5月competitionwallセット|2026-05-10|pump-climbing.com",
+        "key": "route_set|noborockノボロック町田店|町田店510ルートセット営業変更|2026-05-10|noborock-climbing.com",
         "category": "route_set",
-        "gymName": "B-PUMP OGIKUBO 荻窪",
-        "title": "5月 COMPETITION WALL セット",
+        "gymName": "NOBOROCK（ノボロック） 町田店",
+        "title": "町田店 5/10 ルートセット営業変更",
         "startsAt": "2026-05-10 17:00",
-        "endsAt": "2026-05-11 22:00",
-        "sourceHost": "pump-climbing.com"
+        "endsAt": "2026-05-12 18:30",
+        "sourceHost": "noborock-climbing.com"
       },
       {
         "key": "route_set|noborockノボロック溝ノ口店|溝ノ口店510ルートセット営業変更|2026-05-10|noborock-climbing.com",
@@ -6646,13 +6646,13 @@
         "sourceHost": "noborock-climbing.com"
       },
       {
-        "key": "route_set|noborockノボロック町田店|町田店510ルートセット営業変更|2026-05-10|noborock-climbing.com",
+        "key": "route_set|b-pumpogikubo荻窪|5月competitionwallセット|2026-05-10|pump-climbing.com",
         "category": "route_set",
-        "gymName": "NOBOROCK（ノボロック） 町田店",
-        "title": "町田店 5/10 ルートセット営業変更",
+        "gymName": "B-PUMP OGIKUBO 荻窪",
+        "title": "5月 COMPETITION WALL セット",
         "startsAt": "2026-05-10 17:00",
-        "endsAt": "2026-05-12 18:30",
-        "sourceHost": "noborock-climbing.com"
+        "endsAt": "2026-05-11 22:00",
+        "sourceHost": "pump-climbing.com"
       },
       {
         "key": "route_set|basecamptokyo江戸川橋|5月2階ボルダーdebutセット|2026-05-10|b-camp.jp",

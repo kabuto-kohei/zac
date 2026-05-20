@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T15:43:24.543Z",
+  "generatedAt": "2026-05-20T16:02:54.461Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -12,14 +12,11 @@
     "promotions": 0,
     "skipped": 0,
     "ignored": 0,
-    "staleEventCandidates": 2
+    "staleEventCandidates": 0
   },
   "promotions": [],
   "skipped": [],
   "ignoredObservationIds": [],
-  "staleEventCandidateIds": [
-    "062bffd7-45e6-4cc4-b4fb-e280ad7bee44",
-    "729d66eb-f805-48bf-9d91-d8b31f2d4818"
-  ],
+  "staleEventCandidateIds": [],
   "staleEventCandidateCutoff": "2026-05-20T15:00:00.000Z"
 }

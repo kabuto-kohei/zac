@@ -1,6 +1,6 @@
 # Source Monitor Run
 
-- Generated: 2026-05-20T15:44:10.433Z
+- Generated: 2026-05-20T16:04:11.264Z
 - Due approved sources: 64
 - Instagram post sources: 25
 - Candidate Instagram sources: 0
@@ -72,8 +72,8 @@
 
 ## Upcoming Event Recheck
 
-1. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
-2. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
+1. competition: BLoC 2026 Round2 ao_roc.climbing - 2026-05-23 10:00
+2. competition: 🌟コンペ開催🌟 - 2026-05-23 10:00
 3. route_set: 5/24-26 次回セット休業 - 2026-05-24 00:00
 4. route_set: 新宿店 YosemiteFall-CandyLand セット - 2026-05-25 10:00
 5. private_booking: 高田馬場店 5/25 短縮営業 - 2026-05-25 18:00
@@ -83,7 +83,7 @@
 9. event: TAMAX 2026 WESTROCK調布 - 2026-05-30 10:00
 10. competition: ▶︎▶︎▶︎ - 2026-05-30 10:00
 11. route_set: YOKOHAMA 2F All Change - 2026-05-30 11:00
-12. route_set: 大宮店 5/31 ルートセット営業変更 - 2026-05-31 17:00
+12. route_set: 高田馬場店 5/31 ルートセット営業変更 - 2026-05-31 17:00
 
 ## Existing Event Fingerprints
 
@@ -91,8 +91,8 @@
 - competition|クライミングジムwalrusウォルラス|bloc2026round6walrus|2026-09-19|climbers-web.jp
 - competition|クライミングジムriseライズ|checkcheckcheck|2026-08-29|instagram.com
 - competition|zac|bloc2026round5moriparksportswall|2026-07-25|climbers-web.jp
-- competition|ao_rocアオロクclimbing|今年のbloc|2026-07-12|instagram.com
 - competition|クライミングジムze-roゼロ水戸店|bloc2026round4ze-romito|2026-07-12|climbers-web.jp
+- competition|ao_rocアオロクclimbing|今年のbloc|2026-07-12|instagram.com
 - event|ディーボルダリングプラスリード立川|tamax2026ディーボルダリングプラスリード立川|2026-07-11|westrock-climbing.com
 - competition|クライミングジムrocklandsロックランズ|bloc2026round3rocklands|2026-06-27|climbers-web.jp
 - event|クライミングジムマッドロック|tamax2026クライミングジムマッドロック|2026-06-27|westrock-climbing.com

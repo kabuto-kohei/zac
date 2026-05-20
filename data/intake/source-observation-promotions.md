@@ -1,6 +1,6 @@
 # Source Observation Promotions
 
-Generated: 2026-05-20T15:43:24.543Z
+Generated: 2026-05-20T16:02:54.461Z
 Mode: draft_review
 
 ## Summary
@@ -10,7 +10,7 @@ Mode: draft_review
 - promotions: 0
 - skipped: 0
 - ignored: 0
-- staleEventCandidates: 2
+- staleEventCandidates: 0
 
 ## Promotions
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T15:44:06.774Z",
+  "generatedAt": "2026-05-20T16:04:07.637Z",
   "policy": {
     "officialSourceOnly": true,
     "publicOutput": [
@@ -32,12 +32,12 @@
       "attempt": 1,
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-05-20T15:44:06.775Z",
-      "finishedAt": "2026-05-20T15:44:07.049Z",
-      "durationMs": 274,
+      "startedAt": "2026-05-20T16:04:07.638Z",
+      "finishedAt": "2026-05-20T16:04:07.908Z",
+      "durationMs": 270,
       "outputPath": null,
-      "stdout": "HTTP/2 200 \r\ndate: Wed, 20 May 2026 15:44:07 GMT\r\ncontent-type: text/html\r\nserver: cloudflare\r\nlast-modified: Thu, 14 May 2026 05:31:28 GMT\r\nallow: GET, HEAD\r\naccept-ranges: bytes\r\nage: 5193\r\ncf-cache-status: HIT\r\ncf-ray: 9fec75fc1d6a4f3d-NRT\r\n\r\n",
-      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n",
+      "stdout": "HTTP/2 200 \r\ndate: Wed, 20 May 2026 16:04:07 GMT\r\ncontent-type: text/html\r\nserver: cloudflare\r\nlast-modified: Thu, 14 May 2026 05:31:28 GMT\r\nallow: GET, HEAD\r\naccept-ranges: bytes\r\nage: 6393\r\ncf-cache-status: HIT\r\ncf-ray: 9fec934d5bd5f6bd-NRT\r\n\r\n",
+      "stderr": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\n",
       "timedOut": false,
       "publicNetworkReachable": true
     },
@@ -47,9 +47,9 @@
       "attempt": 1,
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-05-20T15:44:07.050Z",
-      "finishedAt": "2026-05-20T15:44:08.040Z",
-      "durationMs": 990,
+      "startedAt": "2026-05-20T16:04:07.909Z",
+      "finishedAt": "2026-05-20T16:04:08.897Z",
+      "durationMs": 988,
       "outputPath": null,
       "stdout": "\n> zac@0.0.0 db:verify:remote /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/verify-db-data.mjs\n\n{\n  \"databaseReachable\": true,\n  \"gyms\": 192,\n  \"events\": 67,\n  \"eventSources\": 196\n}\n",
       "stderr": "",
@@ -61,9 +61,9 @@
       "attempt": 1,
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-05-20T15:44:08.040Z",
-      "finishedAt": "2026-05-20T15:44:09.279Z",
-      "durationMs": 1239,
+      "startedAt": "2026-05-20T16:04:08.897Z",
+      "finishedAt": "2026-05-20T16:04:10.120Z",
+      "durationMs": 1223,
       "outputPath": "data/intake/source-refresh-plan.json",
       "stdout": "\n> zac@0.0.0 sources:plan-refresh /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/plan-source-refresh.mjs\n\nwrote data/intake/source-refresh-plan.json\n{\n  \"sourceStatus\": {\n    \"approved\": 193,\n    \"candidate\": 1,\n    \"paused\": 2\n  },\n  \"sourceType\": {\n    \"aggregator_instagram\": 9,\n    \"media_summary\": 1,\n    \"official_instagram\": 118,\n    \"official_site\": 67,\n    \"operator_owned_page\": 1\n  },\n  \"gymBackfillQueue\": 80,\n  \"candidateInstagramQueue\": 0,\n  \"dailyApprovedQueue\": 80,\n  \"instagramPostQueue\": 80,\n  \"upcomingEventReviewQueue\": 32,\n  \"closureVerificationQueue\": 80\n}\n",
       "stderr": "",
@@ -75,9 +75,9 @@
       "attempt": 1,
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-05-20T15:44:09.279Z",
-      "finishedAt": "2026-05-20T15:44:10.202Z",
-      "durationMs": 923,
+      "startedAt": "2026-05-20T16:04:10.120Z",
+      "finishedAt": "2026-05-20T16:04:11.036Z",
+      "durationMs": 916,
       "outputPath": "data/intake/instagram-source-match-report.json",
       "stdout": "\n> zac@0.0.0 sources:match-instagram /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/match-instagram-sources.mjs\n\nwrote data/intake/instagram-source-match-report.json\n{\n  \"candidates\": 0,\n  \"gyms\": 192,\n  \"matched\": 0,\n  \"highConfidence\": 0,\n  \"needsReview\": 0,\n  \"unmatched\": 0\n}\n",
       "stderr": "",
@@ -89,9 +89,9 @@
       "attempt": 1,
       "status": "passed",
       "exitCode": 0,
-      "startedAt": "2026-05-20T15:44:10.202Z",
-      "finishedAt": "2026-05-20T15:44:12.122Z",
-      "durationMs": 1920,
+      "startedAt": "2026-05-20T16:04:11.037Z",
+      "finishedAt": "2026-05-20T16:04:12.894Z",
+      "durationMs": 1857,
       "outputPath": "data/intake/source-monitor-run.json",
       "stdout": "\n> zac@0.0.0 sources:monitor /Users/kkabuto/dev/zac\n> node --env-file=.env.local scripts/run-source-monitor.mjs\n\nwrote data/intake/source-monitor-run.json\nwrote data/intake/source-monitor-run.md\n{\n  \"databaseReachable\": true,\n  \"dueApprovedSources\": 64,\n  \"instagramPostSources\": 25,\n  \"candidateSources\": 0,\n  \"upcomingEvents\": 32,\n  \"gymDisciplineCandidates\": 119,\n  \"closureVerificationCandidates\": 80,\n  \"gymsWithInstagram\": 97,\n  \"gymsTotal\": 192\n}\n",
       "stderr": "",
@@ -108,8 +108,8 @@
     },
     "eventsByReviewStatus": {
       "approved": 48,
-      "pending": 16,
-      "rejected": 3
+      "pending": 9,
+      "rejected": 10
     },
     "scheduledEventsByCategory": {
       "competition": 18,
@@ -158,9 +158,9 @@
     "Verify closure, relocation, and rename risk with official evidence first; require two independent current sources if the official source is unavailable (80 queued)."
   ],
   "lock": {
-    "pid": 30330,
-    "startedAt": "2026-05-20T15:44:06.774Z",
+    "pid": 34572,
+    "startedAt": "2026-05-20T16:04:07.637Z",
     "lockPath": "data/intake/source-automation-run.lock.json"
   },
-  "updatedAt": "2026-05-20T15:44:12.124Z"
+  "updatedAt": "2026-05-20T16:04:12.896Z"
 }

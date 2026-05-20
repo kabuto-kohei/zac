@@ -1,12 +1,12 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-19T01:08:45.939Z
+- generatedAt: 2026-05-20T15:44:17.333Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
 - latestRunAgeMinutes: 0
-- localRunAgeMinutes: 73
+- localRunAgeMinutes: 3
 - consecutiveNonReady: 0
 - instagramFailureRatio: 0.08
 - instagramBrowserSessionState: authenticated
@@ -28,7 +28,7 @@
 - inspectNow: 64
 - operatorBatch: 16
 - approvedSourceRotation: 96
-- upcomingEventRecheck: 34
+- upcomingEventRecheck: 32
 - candidateVerification: 0
 - gymDisciplineVerification: 119
 - closureVerification: 80
@@ -39,7 +39,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 11
+- runs: 24
 
 ## Failed Checks
 

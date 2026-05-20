@@ -1,6 +1,6 @@
 # Instagram Browser Roller Inspection
 
-- Generated: 2026-05-18T23:53:00.194Z
+- Generated: 2026-05-20T15:39:18.558Z
 - Mode: browser_roller
 - Browser session: authenticated
 - Target cadence: 8 runs/day (every 3 hours JST)
@@ -37,8 +37,6 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - be_born_climbing_gym (be_born_climbing_gym) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- B-PUMP YOKOHAMA 横浜 (bpumpyokohama) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
 - exciting_sancha (exciting_sancha) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - NOBOROCK 高田馬場店 (noborock_takadanobaba) postsSeen=3, newOpened=0, duplicates=3
@@ -49,8 +47,6 @@ Only approved official Instagram sources are eligible. Store source links, short
   - no new posts
 - penguinclimb (penguinclimb) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
-- 水戸シティロックジム avue（アヴュー） (310_avue) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
 - ボルダリングガレージ FUNNY（ファニー） (b.g.funny) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - ボルダリングジム Share（シェア） (bouldering_gym_share) postsSeen=3, newOpened=0, duplicates=3
@@ -58,8 +54,6 @@ Only approved official Instagram sources are eligible. Store source links, short
 - クライミングジム COZY (climbing_gym_cozy) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - クライミングジム Hutte（ヒュッテ） (climbinggym_hutte) postsSeen=3, newOpened=0, duplicates=3
-  - no new posts
-- クライミングジム FLASH（フラッシュ） (climbinggymflash) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - クライミングジム RISE（ライズ） (climbrise2016) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
@@ -72,4 +66,10 @@ Only approved official Instagram sources are eligible. Store source links, short
 - クライミングジム SLOTH（スロース） (sloth.gym) postsSeen=3, newOpened=0, duplicates=3
   - no new posts
 - ディーボルダリング 綱島 (dbouldering_tsunashima) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- スポーツクライミングスクール・ジム J&S 池袋 (jands_ikebukuro) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- ECHOES CLIMBING（エコーズ クライミング） (echoesclimbing) postsSeen=3, newOpened=0, duplicates=3
+  - no new posts
+- folk（フォーク） ボルダリングジム (folk_boulderinggym) postsSeen=3, newOpened=0, duplicates=3
   - no new posts

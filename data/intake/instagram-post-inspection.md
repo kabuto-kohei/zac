@@ -1,6 +1,6 @@
 # Instagram Browser Roller Inspection
 
-- Generated: 2026-05-26T09:57:42.926Z
+- Generated: 2026-05-26T10:22:35.504Z
 - Mode: browser_roller
 - Browser session: authenticated
 - Target cadence: 8 runs/day (every 3 hours JST)
@@ -9,18 +9,18 @@
 - Sources succeeded: 23
 - Sources failed: 2
 - Sources deferred: 0
-- Posts seen: 228
-- New posts opened: 9
-- Duplicate posts skipped: 219
-- Older-than-lookback posts skipped: 0
-- Observed posts: 8
-- Pending posts: 6
-- Ignored posts: 2
-- Calendar candidates: 6
+- Posts seen: 288
+- New posts opened: 46
+- Duplicate posts skipped: 242
+- Older-than-lookback posts skipped: 18
+- Observed posts: 40
+- Pending posts: 11
+- Ignored posts: 29
+- Calendar candidates: 7
 
 ## Policy
 
-Only approved official Instagram sources are eligible. The freshness lane checks the latest 3 posts/reels; when those are already known or the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts, stopping at 60 days or 24 visible post links. Store source links, short summaries, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
+Only approved official Instagram sources are eligible. The freshness lane scans the latest 12 visible posts/reels and opens up to 6 unknown posts per source; when those are already known or the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts, stopping at 60 days or 24 visible post links. Store source links, short summaries, image alt text when exposed by the page, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
 
 ## Inspections
 
@@ -28,10 +28,15 @@ Only approved official Instagram sources are eligible. The freshness lane checks
   - no new posts
 - Rocky Shinagawa (rocky_shinagawa) mode=backfill, postsSeen=1, newOpened=0, duplicates=1, olderThanLookback=0
   - no new posts
-- boulderinggym.bunker2 (boulderinggym.bunker2) mode=freshness, postsSeen=3, newOpened=1, duplicates=2, olderThanLookback=0
-  - pending: event | boulderinggym.bunker2 "【期間イベント | https://www.instagram.com/p/DXyl_CHmeuZ/
-- basecamp_kawagoe (basecamp_kawagoe) mode=freshness, postsSeen=3, newOpened=1, duplicates=2, olderThanLookback=0
-  - ignored: notice | basecamp_kawagoe Base Campの一店舗として「Boulder Park Base Camp川越」を2026年6月吉日にオープンさせて頂く事となりました | https://www.instagram.com/p/DXxt2MRk_c6/
+- Boulder Park Base Camp 飯能店 (basecamp_hanno) mode=freshness, postsSeen=6, newOpened=4, duplicates=2, olderThanLookback=0
+  - ignored: notice | Boulder Park Base Camp 飯能店 Base Campの一店舗として「Boulder Park Base Camp川越」を2026年6月吉日にオープンさせて頂く事となりました | https://www.instagram.com/p/DXxt2MRk_c6/
+  - ignored: notice | Boulder Park Base Camp 飯能店 いよいよ今週の木曜までとなった今セット！ | https://www.instagram.com/p/DYwn3t2mtg1/
+  - ignored: notice | Boulder Park Base Camp 飯能店 5月25日（月）を予定していました浜崎治療院の出張ボディメンテナンスですが、浜崎先生が体調不良のため日程を変更して開催します | https://www.instagram.com/p/DYtdYGNo7sg/
+  - ignored: notice | Boulder Park Base Camp 飯能店  イベント | https://www.instagram.com/p/DYq9Jt2mv8p/
+- クライミングジム ZE-RO（ゼロ） 水戸店 (zeromito0123) mode=freshness, postsSeen=6, newOpened=3, duplicates=3, olderThanLookback=0
+  - pending: event | クライミングジム ZE-RO（ゼロ） 水戸店 🔥🔥🔥『聖地巡零2026』開催のお知らせ🔥🔥🔥 | https://www.instagram.com/p/DWbMesCiYOI/
+  - pending: competition | クライミングジム ZE-RO（ゼロ） 水戸店 "【BLoC2026 round4 | https://www.instagram.com/p/DYwzKs3JX7w/
+  - pending: competition | クライミングジム ZE-RO（ゼロ） 水戸店 🚗聖地巡零2026 No.32🚗 | https://www.instagram.com/reel/DYWlalgP_QB/
 - ROCKY 新宿曙橋店 (jyuku_rocky) - failed (checkpoint_required)
   - no new posts
 - B-PUMP OGIKUBO (bpump_ogikubo) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
@@ -46,32 +51,55 @@ Only approved official Instagram sources are eligible. The freshness lane checks
   - no new posts
 - ROCKY 船橋店 (funabashirocky) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
   - no new posts
+- moripark_sports_wall (moripark_sports_wall) mode=freshness, postsSeen=6, newOpened=3, duplicates=3, olderThanLookback=0
+  - pending: competition | moripark_sports_wall "【BLoC2026 round5 | https://www.instagram.com/p/DYwX3ejGYMj/
+  - ignored: notice | moripark_sports_wall 去年開催した"10日間限定"のスペシャルなセット | https://www.instagram.com/reel/DYvuq5EzK2M/
+  - pending: event | moripark_sports_wall "【今週のスケジュール（5/25〜5/31） | https://www.instagram.com/p/DYtyOsAGalM/
 - 水戸シティロックジム avue（アヴュー） (310_avue) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
   - no new posts
-- BLoC Bouldering Local Circuit (bloc_bouldering_local_circuit) mode=backfill, postsSeen=12, newOpened=2, duplicates=10, olderThanLookback=0
-  - pending: competition | BLoC Bouldering Local Circuit "【BLoC2026 round4 | https://www.instagram.com/p/DYwzKs3JX7w/
-  - pending: competition | BLoC Bouldering Local Circuit "【BLoC2026 round5 | https://www.instagram.com/p/DYwX3ejGYMj/
-- クライミングジム ZE-RO（ゼロ） さいたま店 (climbingzerosaitama) mode=freshness, postsSeen=3, newOpened=1, duplicates=2, olderThanLookback=0
-  - pending: event | クライミングジム ZE-RO（ゼロ） さいたま店 🔥🔥🔥『聖地巡零2026』開催のお知らせ🔥🔥🔥 | https://www.instagram.com/p/DWbMesCiYOI/
 - bluebird_bouldering_gym (bluebird_bouldering_gym) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
   - no new posts
-- スポーツクライミングスクール・ジム J&S 池袋 (jands_ikebukuro) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
-  - no new posts
+- スポーツクライミングスクール・ジム J&S 池袋 (jands_ikebukuro) mode=backfill, postsSeen=24, newOpened=6, duplicates=18, olderThanLookback=3
+  - ignored: notice | スポーツクライミングスクール・ジム J&S 池袋 #野中生萌 #mihononaka #sportsclimbing #climbing #bouldering #boulder #スポーツクライミ… | https://www.instagram.com/p/DCwUII6yxE4/
+  - ignored: notice | スポーツクライミングスクール・ジム J&S 池袋 #野中生萌 #mihononaka #sportsclimbing #climbing #bouldering #boulder #スポーツクライミ… | https://www.instagram.com/reel/DCvzvWxyA3e/
+  - ignored: route_set | スポーツクライミングスクール・ジム J&S 池袋 "#ホールド替え | https://www.instagram.com/p/DCifDfYSv2V/
+  - ignored: route_set | スポーツクライミングスクール・ジム J&S 池袋 "#ルートセット | https://www.instagram.com/p/DCfoZZRSRo8/
 - iichiko STEP (iichiko_step) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
   - no new posts
+- クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) mode=backfill, postsSeen=24, newOpened=6, duplicates=18, olderThanLookback=3
+  - ignored: competition | クライミングジム・ウォールストリート "2025年12月7日 小学生ボルダリング大会「JKBC2025」開催します！詳細は後ほど | https://www.instagram.com/p/DOxlEvOEVbb/
+  - ignored: notice | クライミングジム・ウォールストリート "8月のマンスリー | https://www.instagram.com/reel/DNNjRusSZSJ/
+  - ignored: competition | クライミングジム・ウォールストリート "第13回ボルダー群馬カップ | https://www.instagram.com/p/DJlSoFeSGr2/
+  - ignored: notice | クライミングジム・ウォールストリート 登録料660円/2時間1650円/1日1980円 | https://www.instagram.com/p/DJRsV9iS7HU/
 - D.Bouldering Plus 蘇我公式Instagram (dbouldering_soga) mode=backfill, postsSeen=11, newOpened=0, duplicates=11, olderThanLookback=0
   - no new posts
-- クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
+- クライミングジム マッドロック公式Instagram (madrock.cg.jp_online) mode=backfill, postsSeen=24, newOpened=6, duplicates=18, olderThanLookback=0
+  - ignored: notice | クライミングジム マッドロック 対象商品のDrone2.0をご紹介 | https://www.instagram.com/p/DX1Z4p6E9JI/
+  - ignored: notice | クライミングジム マッドロック サイズ 3.80cm x 9.14m | https://www.instagram.com/p/DXwBdD2jg2i/
+  - pending: event | クライミングジム マッドロック カレンデュラオイルはハードセッション後の肌の再生をサポートし、促進します | https://www.instagram.com/reel/DXtT93TDl37/
+  - ignored: notice | クライミングジム マッドロック "【大人気モデルD2ONE HV | https://www.instagram.com/p/DXqkScrDoj8/
+- JET SET（ジェットセット） climbing gym (jetsetclimbing) mode=backfill, postsSeen=24, newOpened=6, duplicates=18, olderThanLookback=6
+  - ignored: notice | JET SET（ジェットセット） climbing gym 2025/06/07 イベント | https://www.instagram.com/p/DKhMpIMzPrb/
+  - ignored: route_set | JET SET（ジェットセット） climbing gym "６月 ホールド替えします！ | https://www.instagram.com/p/DKMhkroTXs-/
+  - ignored: opening_change | JET SET（ジェットセット） climbing gym １７日(木)はリフレッシュ休業させて頂きます | https://www.instagram.com/p/DH3S7t9z9Bh/
+  - ignored: notice | JET SET（ジェットセット） climbing gym February 1, 2025、40 likes, 0 comments - jetsetclimbing | https://www.instagram.com/p/DFjzIdoT48p/
+  - ignored: route_set | JET SET（ジェットセット） climbing gym ホールド替えがあり、１２・１３・１４日は | https://www.instagram.com/p/DFfBDRGTQGs/
+  - ignored: notice | JET SET（ジェットセット） climbing gym January 2, 2025、41 likes, 0 comments - jetsetclimbing | https://www.instagram.com/p/DEWj6M-TREm/
+- クライミングジム MABOO（マーブー） (maboo.insta) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
   - no new posts
-- JET SET（ジェットセット） climbing gym (jetsetclimbing) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
-  - no new posts
-- クライミングジム・ウォールストリート公式Instagram (climbinggym_wallstreet) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
-  - no new posts
-- fishandbird_toyocho (fishandbird_toyocho) mode=backfill, postsSeen=12, newOpened=1, duplicates=11, olderThanLookback=0
-  - ignored: notice | fishandbird_toyocho "2FNewセット課題紹介第五弾🟣 | https://www.instagram.com/reel/DYybGF5SKFg/
-- NOBOROCK 池袋店 (noborock_ikebukuro) mode=freshness, postsSeen=3, newOpened=1, duplicates=2, olderThanLookback=0
-  - pending: opening_change | NOBOROCK 池袋店 ⛏次回セットスケジュール⛏ | https://www.instagram.com/p/DYyH8muzRsg/
-- ALTIOR（アルティオール）クライミングジム (altior_climbing_gym1) mode=backfill, postsSeen=12, newOpened=2, duplicates=10, olderThanLookback=0
-  - pending: route_set | ALTIOR（アルティオール）クライミングジム grade:2D/V9/7c | https://www.instagram.com/reel/DYyTbeCvx_P/
-- クライミングジム COZY (climbing_gym_cozy) mode=backfill, postsSeen=12, newOpened=0, duplicates=12, olderThanLookback=0
-  - no new posts
+- 小鹿野町クライミングパーク 神怡舘 (shinnikan) mode=freshness, postsSeen=6, newOpened=3, duplicates=3, olderThanLookback=0
+  - pending: event | 小鹿野町クライミングパーク 神怡舘 トップロープセッションも開催致します‼️ | https://www.instagram.com/p/DYwE9PrGQIw/
+  - pending: competition | 小鹿野町クライミングパーク 神怡舘 第3回全国中学生ボルダー競技大会エントリー受付を開始いたしました | https://www.instagram.com/p/DYwCcQhHxov/
+  - pending: opening_change | 小鹿野町クライミングパーク 神怡舘 "エントリー締め切りました‼️ | https://www.instagram.com/p/DYrctCVGVZx/
+- クライミングジム RocKY’N（ロッキン） (climbing_gym_rockyn0429) mode=backfill, postsSeen=24, newOpened=6, duplicates=18, olderThanLookback=6
+  - ignored: notice | クライミングジム RocKY’N（ロッキン） "アシマカップ✖️MAXASIA japan | https://www.instagram.com/p/DUscQ8Pkkeu/
+  - ignored: notice | クライミングジム RocKY’N（ロッキン） "2月15日のアシマカップ✖️MAXASIA japan | https://www.instagram.com/p/DUpDWXTEvjX/
+  - ignored: competition | クライミングジム RocKY’N（ロッキン） "週末は アシマカップ2026 ✖︎MAXASIA japan | https://www.instagram.com/p/DUkBqTAEtdQ/
+  - ignored: notice | クライミングジム RocKY’N（ロッキン） "アシマカップ✖️MAXASIA japan 🇯🇵 | https://www.instagram.com/p/DUarEIFkoOc/
+  - ignored: competition | クライミングジム RocKY’N（ロッキン） 大会離れが増えているなあーと感じていましたが | https://www.instagram.com/p/DUK5pTskjVp/
+  - ignored: notice | クライミングジム RocKY’N（ロッキン） "今日はロッキンキッズを連れて | https://www.instagram.com/p/DUKAbUikslU/
+- クライミングジム ROCKLANDS（ロックランズ） (climbinggym_rocklands) mode=freshness, postsSeen=6, newOpened=1, duplicates=5, olderThanLookback=0
+  - pending: event | クライミングジム ROCKLANDS（ロックランズ）  イベント | https://www.instagram.com/p/DYwKHqapRXi/
+- betaclimb.odawara (betaclimb.odawara) mode=freshness, postsSeen=6, newOpened=2, duplicates=4, olderThanLookback=0
+  - ignored: notice | betaclimb.odawara "4/22 平日登攀部 | https://www.instagram.com/p/DYeUNFPEoC9/
+  - pending: event | betaclimb.odawara "クラッククライミングを身につけ可能性を広げよう！ 登りたいマルチがあるのだけど、クラックパートがあるので、トライできない | https://www.instagram.com/p/DYeK5HlksvO/

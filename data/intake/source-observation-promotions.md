@@ -1,48 +1,47 @@
 # Source Observation Promotions
 
-Generated: 2026-05-26T10:02:59.001Z
+Generated: 2026-05-26T10:32:38.907Z
 Mode: draft_review
 
 ## Summary
 
-- observationsRead: 6
-- cleanupRead: 23
-- promotions: 1
+- observationsRead: 3
+- cleanupRead: 34
+- promotions: 0
 - skipped: 28
 - ignored: 27
 - staleEventCandidates: 0
 
 ## Promotions
 
-- draft/pending: route_set | ALTIOR（アルティオール）クライミングジム | ALTIOR（アルティオール）クライミングジム grade:2D/V9/7c | https://www.instagram.com/reel/DYyTbeCvx_P/
 
 ## Skipped
 
-- source URL already exists in events [ignored]: クライミングジム マッドロック 2026/05/27 コンペ | https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-27-competition-3
-- source URL already exists in events [ignored]: クライミングジム マッドロック 5月の営業に関して | https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-29-competition-1
-- same gym/category/start date already exists [ignored]: NOBOROCK 池袋店 ⛏次回セットスケジュール⛏ | https://www.instagram.com/p/DYyH8muzRsg/
-- no matching published gym: BLoC Bouldering Local Circuit "【BLoC2026 round5 | https://www.instagram.com/p/DYwX3ejGYMj/
-- post looks like an announcement, not a calendar item [ignored]: クライミングジム ZE-RO（ゼロ） さいたま店 🔥🔥🔥『聖地巡零2026』開催のお知らせ🔥🔥🔥 | https://www.instagram.com/p/DWbMesCiYOI/
-- past start date [ignored]: Climb Park Base Camp 入間店 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/iruma#zac-2019-05-27-opening_change-1
-- past start date [ignored]: Forge bouldering 06/17 営業変更 | https://www.forge-bouldering.com/#zac-2020-06-17-opening_change-1
-- past start date [ignored]: クライミングジムSPIDER 08/03 営業変更 | https://climbing-spider.com/shop/#zac-2024-08-03-opening_change-2
-- past start date [ignored]: クライミングジムSPIDER 09/15 営業変更 | https://climbing-spider.com/shop/#zac-2024-09-15-opening_change-1
-- past start date [ignored]: FITS CLIMBING GYM 01/17 営業変更 | https://www.fits-climbing.com/#zac-2026-01-17-opening_change-3
-- past start date [ignored]: FITS CLIMBING GYM 01/20 営業変更 | https://www.fits-climbing.com/#zac-2026-01-20-opening_change-2
-- past start date [ignored]: FITS CLIMBING GYM 01/27 営業変更 | https://www.fits-climbing.com/#zac-2026-01-27-opening_change-1
-- past start date [ignored]: Climb Park Base Camp 入間店 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/iruma#zac-2026-04-25-opening_change-3
-- past start date [ignored]: Base Camp Tokyo 江戸川橋 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-04-27-opening_change-3
-- past start date [ignored]: Base Camp Tokyo 錦糸町 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/kinshicho/#zac-2026-04-28-construction-2
-- past start date [ignored]: Base Camp Tokyo 錦糸町 04/28 営業変更 | https://b-camp.jp/kinshicho/#zac-2026-04-28-opening_change-3
-- past start date [ignored]: クライミングジム マッドロック 5月の営業に関して | https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-02-competition-2
-- past start date [ignored]: folk bouldering gym 05/02 セット | https://folkboulderinggym.com/#zac-2026-05-02-route_set-3
-- past start date [ignored]: folk bouldering gym 05/05 セット | https://folkboulderinggym.com/#zac-2026-05-05-route_set-1
-- past start date [ignored]: Climb Park Base Camp 入間店 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/iruma#zac-2026-05-08-opening_change-2
-- past start date [ignored]: Base Camp Tokyo 錦糸町 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/kinshicho/#zac-2026-05-08-construction-1
-- past start date [ignored]: folk bouldering gym 05/08 セット | https://folkboulderinggym.com/#zac-2026-05-08-route_set-2
-- past start date [ignored]: Base Camp Tokyo 江戸川橋 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-05-09-opening_change-2
-- past start date [ignored]: Bouldering Spot Landmark リソール受付のお知らせ | https://boulderingspot-landmark.com/#zac-2026-05-15-event-2
-- past start date [ignored]: boulderinggym.bunker2 "【期間イベント | https://www.instagram.com/p/DXyl_CHmeuZ/
-- past start date [ignored]: Bouldering Spot Landmark リソール受付のお知らせ | https://boulderingspot-landmark.com/#zac-2026-05-17-route_set-1
-- past start date [ignored]: Base Camp Tokyo 江戸川橋 料金改定とサマーキャンペーンのお知らせ | https://b-camp.jp/edogawabashi/#zac-2026-05-20-opening_change-1
-- past start date [ignored]: Bouldering Spot Landmark 新制度 | https://boulderingspot-landmark.com/#zac-2026-05-23-event-3
+- post looks like an announcement, not a calendar item [ignored]: BOULCOM 東京店 BOULコン | https://boulcom.jp/tokyo/#zac-2026-06-06-competition-1
+- no matching published gym: moripark_sports_wall "【BLoC2026 round5 | https://www.instagram.com/p/DYwX3ejGYMj/
+- post looks like an announcement, not a calendar item [ignored]: Be born Climbing gym メディア出演情報 | https://beborn.boy.jp/#zac-2026-11-02-opening_change-2
+- past start date [ignored]: Be born Climbing gym メディア出演情報 | https://beborn.boy.jp/#zac-2015-10-03-event-3
+- past start date [ignored]: DOGWOOD Climbing Gym 02/03 イベント | https://dogwood-climbing.jp/#zac-2025-02-03-event-3
+- past start date [ignored]: And Energy Bouldering 02/28 営業変更 | https://www.andenergy-bouldering.com/#zac-2025-02-28-opening_change-1
+- past start date [ignored]: DOGWOOD Climbing Gym 03/19 イベント | https://dogwood-climbing.jp/#zac-2025-03-19-event-2
+- past start date [ignored]: ROCKY Climbing & Fitness Gym 07/17 営業変更 | https://www.rockyclimbing.com/#zac-2025-07-17-opening_change-3
+- past start date [ignored]: ROCKY Climbing & Fitness Gym 07/27 営業変更 | https://www.rockyclimbing.com/#zac-2025-07-27-opening_change-2
+- past start date [ignored]: ROCKY Climbing & Fitness Gym 12/15 営業変更 | https://www.rockyclimbing.com/#zac-2025-12-15-opening_change-1
+- past start date [ignored]: BOULCOM 川崎店 東京店 | https://boulcom.jp/kawasaki/#zac-2026-02-07-private_booking-1
+- past start date [ignored]: BOULCOM 東京店 東京店 | https://boulcom.jp/tokyo/#zac-2026-02-07-competition-3
+- past start date [ignored]: BOULCOM 川崎店 川崎店 | https://boulcom.jp/kawasaki/#zac-2026-02-23-private_booking-3
+- past start date [ignored]: HEADROCK CLIMBING GYM 3月末まで延長 | https://headrock-climbing.com/#zac-2026-03-01-event-3
+- past start date [ignored]: BOULCOM 川崎店 東京店 | https://boulcom.jp/kawasaki/#zac-2026-03-31-private_booking-2
+- past start date [ignored]: Lutra Lutra 03/31 コンペ | https://www.lutra-lutra.com/#zac-2026-03-31-competition-1
+- past start date [ignored]: BOULCOM 東京店 東京店 | https://boulcom.jp/tokyo/#zac-2026-04-11-opening_change-2
+- past start date [ignored]: DOGWOOD Climbing Gym 04/26 イベント | https://dogwood-climbing.jp/#zac-2026-04-26-event-1
+- past start date [ignored]: クライミングジム ZE-RO（ゼロ） 水戸店 🔥🔥🔥『聖地巡零2026』開催のお知らせ🔥🔥🔥 | https://www.instagram.com/p/DWbMesCiYOI/
+- past start date [ignored]: クライミングジム ZE-RO（ゼロ） 水戸店 🚗聖地巡零2026 No.32🚗 | https://www.instagram.com/reel/DYWlalgP_QB/
+- past start date [ignored]: HEADROCK CLIMBING GYM 3月末まで延長 | https://headrock-climbing.com/#zac-2026-05-01-event-2
+- past start date [ignored]: LIMESTONE Climbing Club 開店時間変更のお知らせ | https://www.limestone.jp/#zac-2026-05-12-competition-2
+- past start date [ignored]: LIMESTONE Climbing Club 開店時間変更のお知らせ | https://www.limestone.jp/#zac-2026-05-12-competition-3
+- past start date [ignored]: HEADROCK CLIMBING GYM 3月末まで延長 | https://headrock-climbing.com/#zac-2026-05-19-event-1
+- past start date [ignored]: Be born Climbing gym NEW 水曜初級クラス新設 | https://beborn.boy.jp/#zac-2026-05-21-event-1
+- past start date [ignored]: LIMESTONE Climbing Club 05/24 コンペ | https://www.limestone.jp/#zac-2026-05-24-competition-1
+- past start date [ignored]: moripark_sports_wall "【今週のスケジュール（5/25〜5/31） | https://www.instagram.com/p/DYtyOsAGalM/
+- past start date [ignored]: 小鹿野町クライミングパーク 神怡舘 第3回全国中学生ボルダー競技大会エントリー受付を開始いたしました | https://www.instagram.com/p/DYwCcQhHxov/

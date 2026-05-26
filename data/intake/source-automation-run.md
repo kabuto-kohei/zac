@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-26T10:13:33.279Z
-- Updated: 2026-05-26T10:13:37.017Z
+- Generated: 2026-05-26T10:32:41.587Z
+- Updated: 2026-05-26T10:32:46.254Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (197ms, attempt 1)
-- passed: `pnpm db:verify:remote` (811ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (578ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (823ms, attempt 1)
-- passed: `pnpm sources:monitor` (1327ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (178ms, attempt 1)
+- passed: `pnpm db:verify:remote` (801ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (1356ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (727ms, attempt 1)
+- passed: `pnpm sources:monitor` (1601ms, attempt 1)
 
 ## Summary
 

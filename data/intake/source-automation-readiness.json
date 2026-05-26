@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-26T10:13:43.738Z",
+  "generatedAt": "2026-05-26T10:34:54.198Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,8 +11,8 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 0,
-    "localRunAgeMinutes": 11,
+    "latestRunAgeMinutes": 2,
+    "localRunAgeMinutes": 2,
     "consecutiveNonReady": 0,
     "instagramFailureRatio": 0.08,
     "failedInstagramSources": [
@@ -36,25 +36,25 @@
       "dueHours": 12,
       "estimatedRunsPerFullPass": 5,
       "estimatedHoursPerFullPass": 15,
-      "checkedWithin24h": 100,
+      "checkedWithin24h": 105,
       "checkedWithin48h": 114,
-      "dueForInspection": 56,
+      "dueForInspection": 51,
       "neverChecked": 0,
-      "coverage24hRatio": 0.86,
+      "coverage24hRatio": 0.91,
       "coverage48hRatio": 0.98,
       "oldestLastCheckedAt": "2026-05-11T04:30:00.000Z",
-      "newestLastCheckedAt": "2026-05-26T09:57:42.926Z"
+      "newestLastCheckedAt": "2026-05-26T10:22:35.504Z"
     },
     "instagramBrowserRoller": {
       "sourcesVisited": 25,
       "sourcesSucceeded": 23,
       "sourcesFailed": 2,
       "sourcesDeferred": 0,
-      "postsSeen": 228,
-      "newPostsOpened": 9,
-      "lookbackPostsSkipped": 0,
-      "observedPosts": 8,
-      "calendarCandidates": 6
+      "postsSeen": 288,
+      "newPostsOpened": 46,
+      "lookbackPostsSkipped": 18,
+      "observedPosts": 40,
+      "calendarCandidates": 7
     },
     "launchAgent": {
       "checked": true,
@@ -63,7 +63,7 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 10800,
-      "runs": 45
+      "runs": 1
     },
     "queues": {
       "instagramPostInspection": 25,
@@ -110,7 +110,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "0m",
+      "detail": "2m",
       "severity": "error"
     },
     {
@@ -140,7 +140,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "11m",
+      "detail": "2m",
       "severity": "error"
     },
     {
@@ -242,13 +242,13 @@
     {
       "name": "Instagram browser roller made source progress",
       "ok": true,
-      "detail": "queued=25 succeeded=23 observed=8",
+      "detail": "queued=25 succeeded=23 observed=40",
       "severity": "error"
     },
     {
       "name": "Instagram browser roller limits source eligibility",
       "ok": true,
-      "detail": "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observati…",
+      "detail": "Freshness lane scans the latest visible posts/reels and opens the newest unknown posts up to the configured per-source …",
       "severity": "error"
     },
     {
@@ -260,13 +260,13 @@
     {
       "name": "Instagram inspection policy excludes secrets/media/captions",
       "ok": true,
-      "detail": "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observati…",
+      "detail": "Freshness lane scans the latest visible posts/reels and opens the newest unknown posts up to the configured per-source …",
       "severity": "error"
     },
     {
       "name": "Instagram browser observations require Admin review before public publication",
       "ok": true,
-      "detail": "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observati…",
+      "detail": "Freshness lane scans the latest visible posts/reels and opens the newest unknown posts up to the configured per-source …",
       "severity": "error"
     },
     {

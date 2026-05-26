@@ -249,6 +249,8 @@ The automation runner accepts operational environment variables:
 - `ZAC_INSTAGRAM_BROWSER_HEADLESS`: run the roller headless. Default: `true`.
 - `ZAC_INSTAGRAM_BROWSER_REQUIRE_AUTH`: require a logged-in browser session before inspection. Default: `true`.
 - `ZAC_INSTAGRAM_SOURCE_LIMIT`: maximum Instagram sources the browser inspector opens per run. Default: `25`.
+- `ZAC_INSTAGRAM_POSTS_PER_SOURCE`: maximum unknown posts/reels opened per source in one run. Default: `6`.
+- `ZAC_INSTAGRAM_FRESHNESS_POST_SCAN_LIMIT`: visible latest posts/reels considered before backfill. Default: `12`.
 - `ZAC_INSTAGRAM_LOOKBACK_DAYS`: maximum posted-date age for Instagram backfill. Default: `60`.
 - `ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT`: maximum visible profile post/reel links considered per source. Default: `24`.
 - `ZAC_INSTAGRAM_PROFILE_SCROLL_LIMIT`: maximum profile scroll attempts per source during backfill. Default: `5`.

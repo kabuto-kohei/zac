@@ -41,6 +41,10 @@
     <string>25</string>
     <key>ZAC_INSTAGRAM_SOURCE_LIMIT</key>
     <string>25</string>
+    <key>ZAC_INSTAGRAM_POSTS_PER_SOURCE</key>
+    <string>6</string>
+    <key>ZAC_INSTAGRAM_FRESHNESS_POST_SCAN_LIMIT</key>
+    <string>12</string>
     <key>ZAC_INSTAGRAM_LOOKBACK_DAYS</key>
     <string>60</string>
     <key>ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT</key>

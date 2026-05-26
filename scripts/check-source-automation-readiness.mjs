@@ -154,7 +154,7 @@ const checks = [
   check(
     "Instagram browser roller has bounded backfill architecture",
     /backfill lane/u.test(instagramBrowserPolicyText) &&
-      /latest three/u.test(instagramBrowserPolicyText) &&
+      /latest visible/u.test(instagramBrowserPolicyText) &&
       Number.isFinite(inspection?.cadence?.lookbackDays) &&
       inspection.cadence.lookbackDays <= 60,
     `lookbackDays=${inspection?.cadence?.lookbackDays ?? "unknown"}`,

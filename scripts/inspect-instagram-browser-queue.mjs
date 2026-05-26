@@ -9,10 +9,14 @@ const outputMdPath = process.env.ZAC_INSTAGRAM_INSPECTION_MD ?? "data/intake/ins
 const outputSqlPath = process.env.ZAC_INSTAGRAM_INSPECTION_SQL ?? "data/intake/instagram-post-observations.sql";
 const fixturePath = process.env.ZAC_INSTAGRAM_BROWSER_FIXTURE_JSON ?? "";
 const userDataDir = process.env.ZAC_INSTAGRAM_BROWSER_USER_DATA_DIR ?? ".zac-browser/instagram";
-const postsPerSource = parsePositiveInt(process.env.ZAC_INSTAGRAM_POSTS_PER_SOURCE, 3);
+const postsPerSource = parsePositiveInt(process.env.ZAC_INSTAGRAM_POSTS_PER_SOURCE, 6);
 const sourceLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_SOURCE_LIMIT ?? process.env.ZAC_INSTAGRAM_POST_SOURCE_LIMIT, 25);
 const lookbackDays = parsePositiveInt(process.env.ZAC_INSTAGRAM_LOOKBACK_DAYS, 60);
 const profilePostScanLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT, 24);
+const freshnessPostScanLimit = Math.min(
+  profilePostScanLimit,
+  parsePositiveInt(process.env.ZAC_INSTAGRAM_FRESHNESS_POST_SCAN_LIMIT, Math.max(9, postsPerSource * 2)),
+);
 const profileScrollLimit = parsePositiveInt(process.env.ZAC_INSTAGRAM_PROFILE_SCROLL_LIMIT, 5);
 const sourceDelayMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_DELAY_MS, 2500);
 const sourceTimeoutMs = parsePositiveInt(process.env.ZAC_INSTAGRAM_BROWSER_SOURCE_TIMEOUT_MS, 60000);
@@ -41,11 +45,12 @@ const result = {
     sourceLimit,
     lookbackDays,
     profilePostScanLimit,
+    freshnessPostScanLimit,
   },
   policy: {
     sourceEligibility: "Only approved official Instagram sources from instagramPostInspection are eligible.",
     collectionArchitecture:
-      "Freshness lane opens the latest three posts/reels. If those posts are already known, or if the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts up to the configured per-source limit. Posts with a visible posted date older than the lookback window are skipped.",
+      "Freshness lane scans the latest visible posts/reels and opens the newest unknown posts up to the configured per-source limit. If those posts are already known, or if the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts up to the configured per-source limit. Posts with a visible posted date older than the lookback window are skipped.",
     savedFields: "post URL, shortcode, displayed/parsed posted date, classification, short summary, short quote, review status, decision note",
     excludedFields: "passwords, cookies, session tokens, full captions, images, videos, comments, DMs, stories",
     publication: "Never publish automatically. Browser observations can only become public after Admin candidate review approval.",
@@ -205,7 +210,7 @@ async function inspectBrowserSource(context, source) {
       };
     }
 
-    const latestPostUrls = uniquePostUrls.slice(0, postsPerSource);
+    const latestPostUrls = uniquePostUrls.slice(0, freshnessPostScanLimit);
     const shouldBackfill = Number(source.observedPosts ?? 0) === 0 || latestPostUrls.every((url) => knownPostUrls.has(url));
     const candidateUrls = shouldBackfill ? uniquePostUrls : latestPostUrls;
     const newPostUrls = candidateUrls.filter((url) => !knownPostUrls.has(url)).slice(0, postsPerSource);
@@ -302,7 +307,7 @@ function inspectFixtureSource(source, fixture) {
   }
 
   const postUrls = dedupe((fixtureSource.posts ?? []).map((post) => normalizeInstagramPostUrl(post.sourceUrl)));
-  const latestPostUrls = postUrls.slice(0, postsPerSource);
+  const latestPostUrls = postUrls.slice(0, freshnessPostScanLimit);
   const shouldBackfill = Number(source.observedPosts ?? 0) === 0 || latestPostUrls.every((url) => knownPostUrls.has(url));
   const candidateUrls = shouldBackfill ? postUrls : latestPostUrls;
   const newPosts = (fixtureSource.posts ?? [])
@@ -530,9 +535,9 @@ function classifyText(text) {
   if (/(求人|採用|アルバイト|スタッフ募集|recruit)/i.test(text)) return "recruit";
   if (/(貸切|貸し切り|private booking|private event)/i.test(text)) return "private_booking";
   if (/(コンペ|コンペティション|competition|circuit|大会|選手権|stone circuit|tamax|cup|rock on)/i.test(text)) return "competition";
-  if (/(ルートセット|セット替え|ホールド替え|課題替え|まぶし替え|壁替え|全面セット|reset|route set|routeset|setting)/i.test(text)) return "route_set";
-  if (/(営業時間|営業予定|臨時休業|休業|営業変更|短縮営業|open|close|closed|closure)/i.test(text)) return "opening_change";
-  if (/(講習|セッション|道場|体験|ガイダンス|ワークショップ|試し履き|イベント|session|workshop|lesson)/i.test(text)) return "event";
+  if (/(ルートセット|セット替え|ホールド替え|課題替え|セット課題|newセット|今セット|まぶし替え|壁替え|全面セット|reset|route set|routeset|setting)/i.test(text)) return "route_set";
+  if (/(営業時間|営業予定|臨時休業|休業|営業変更|短縮営業|日程変更|延期|中止|open|close|closed|closure)/i.test(text)) return "opening_change";
+  if (/(開催|講習|セッション|道場|体験|体験会|ガイダンス|ワークショップ|試し履き|イベント|スケジュール|メンテナンス|session|workshop|lesson)/i.test(text)) return "event";
   if (/(お知らせ|告知|news|notice)/i.test(text) || value.length > 0) return "notice";
   return "notice";
 }
@@ -639,10 +644,19 @@ async function extractPostText(page, source) {
     (await page.locator('meta[property="og:description"], meta[name="description"]').first().getAttribute("content").catch(() => "")) ?? "",
   );
   const articleText = normalizeWhitespace(await page.locator("article").first().innerText({ timeout: 5000 }).catch(() => ""));
-  const postedAt = (await extractPostedAtFromPage(page)) ?? extractPostedAtFromPageText(`${articleText}\n${metaDescription}\n${bodyText}`);
+  const imageAltText = normalizeWhitespace(
+    (
+      await page
+        .locator("article img[alt]")
+        .evaluateAll((images) => images.map((image) => image.getAttribute("alt") ?? "").filter(Boolean))
+        .catch(() => [])
+    ).join("\n"),
+  );
+  const postedAt = (await extractPostedAtFromPage(page)) ?? extractPostedAtFromPageText(`${articleText}\n${imageAltText}\n${metaDescription}\n${bodyText}`);
   const candidates = [
     captionFromMetaDescription(metaDescription, source),
     selectCaptionLikeText(articleText, source),
+    selectCaptionLikeText(imageAltText, source),
     selectCaptionLikeText(bodyText, source),
     selectRelevantText(bodyText, source),
   ].filter(Boolean);
@@ -707,7 +721,7 @@ function isAccountOnlyLine(line, source) {
 }
 
 function hasCalendarOrEventSignal(line) {
-  return /20\d{2}|(?:\d{1,2}\s*(?:月|\/|\.)\s*\d{1,2}\s*(?:日)?)|(?:\d{1,2}\s*日)|コンペ|大会|competition|cup|カップ|BLoC|TAMAX|セット|ホールド替え|ルートセット|営業時間|短縮営業|休業|貸切|イベント|セッション|道場|講習|workshop|lesson|session|route set|routeset|reset/iu.test(
+  return /20\d{2}|(?:\d{1,2}\s*(?:月|\/|\.)\s*\d{1,2}\s*(?:日)?)|(?:\d{1,2}\s*日)|コンペ|大会|competition|cup|カップ|BLoC|TAMAX|開催|セット|今セット|課題替え|ホールド替え|ルートセット|営業時間|短縮営業|休業|日程変更|貸切|イベント|スケジュール|セッション|道場|講習|体験会|workshop|lesson|session|route set|routeset|reset/iu.test(
     line,
   );
 }
@@ -881,7 +895,7 @@ function renderMarkdown(value) {
 
 ## Policy
 
-Only approved official Instagram sources are eligible. The freshness lane checks the latest ${value.cadence.postsPerSource} posts/reels; when those are already known or the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts, stopping at ${value.cadence.lookbackDays} days or ${value.cadence.profilePostScanLimit} visible post links. Store source links, short summaries, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
+Only approved official Instagram sources are eligible. The freshness lane scans the latest ${value.cadence.freshnessPostScanLimit} visible posts/reels and opens up to ${value.cadence.postsPerSource} unknown posts per source; when those are already known or the account has no observations yet, the backfill lane scrolls within the profile and opens the next unknown posts, stopping at ${value.cadence.lookbackDays} days or ${value.cadence.profilePostScanLimit} visible post links. Store source links, short summaries, image alt text when exposed by the page, and short quotes only. Do not store passwords, cookies, session tokens, full captions, images, videos, comments, DMs, or stories. Public calendar publication still requires Admin candidate review approval.
 
 ## Inspections
 

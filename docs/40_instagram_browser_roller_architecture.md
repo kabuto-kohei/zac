@@ -81,7 +81,8 @@ Initial caps:
 
 - `ZAC_INSTAGRAM_POST_SOURCE_LIMIT=25`
 - `ZAC_INSTAGRAM_SOURCE_LIMIT=25`
-- `ZAC_INSTAGRAM_POSTS_PER_SOURCE=3`
+- `ZAC_INSTAGRAM_POSTS_PER_SOURCE=6`
+- `ZAC_INSTAGRAM_FRESHNESS_POST_SCAN_LIMIT=12`
 - `ZAC_INSTAGRAM_LOOKBACK_DAYS=60`
 - `ZAC_INSTAGRAM_PROFILE_POST_SCAN_LIMIT=24`
 - `ZAC_INSTAGRAM_PROFILE_SCROLL_LIMIT=5`
@@ -102,11 +103,12 @@ Scale rule:
 
 ## Extraction Rules
 
-For each source, the roller opens the profile and starts with the latest three
-visible post/reel links. If any of those links are unknown, this freshness lane
-opens only those unknown links, up to `ZAC_INSTAGRAM_POSTS_PER_SOURCE`.
+For each source, the roller opens the profile and scans the latest
+`ZAC_INSTAGRAM_FRESHNESS_POST_SCAN_LIMIT` visible post/reel links. If any of
+those links are unknown, this freshness lane opens the newest unknown links, up
+to `ZAC_INSTAGRAM_POSTS_PER_SOURCE`.
 
-If the latest three links are already known, or if the account has no
+If the freshness scan window is already known, or if the account has no
 observations yet, the bounded backfill lane scrolls within the profile and opens
 the next unknown links. It stops when one of these limits is reached:
 

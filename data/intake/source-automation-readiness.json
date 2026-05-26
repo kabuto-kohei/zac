@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-26T10:34:54.198Z",
+  "generatedAt": "2026-05-26T10:50:50.492Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,8 +11,8 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 2,
-    "localRunAgeMinutes": 2,
+    "latestRunAgeMinutes": 18,
+    "localRunAgeMinutes": 18,
     "consecutiveNonReady": 0,
     "instagramFailureRatio": 0.08,
     "failedInstagramSources": [
@@ -110,7 +110,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "2m",
+      "detail": "18m",
       "severity": "error"
     },
     {
@@ -140,7 +140,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "2m",
+      "detail": "18m",
       "severity": "error"
     },
     {
@@ -294,7 +294,19 @@
       "severity": "error"
     },
     {
+      "name": "Admin low-confidence source observation page exists",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
       "name": "Admin API exposes candidate list and review mutation",
+      "ok": true,
+      "detail": "",
+      "severity": "error"
+    },
+    {
+      "name": "Admin API exposes source observation review",
       "ok": true,
       "detail": "",
       "severity": "error"

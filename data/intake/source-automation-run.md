@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-26T10:03:00.169Z
-- Updated: 2026-05-26T10:03:03.605Z
+- Generated: 2026-05-26T10:13:33.279Z
+- Updated: 2026-05-26T10:13:37.017Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (159ms, attempt 1)
-- passed: `pnpm db:verify:remote` (942ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (767ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (757ms, attempt 1)
-- passed: `pnpm sources:monitor` (808ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (197ms, attempt 1)
+- passed: `pnpm db:verify:remote` (811ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (578ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (823ms, attempt 1)
+- passed: `pnpm sources:monitor` (1327ms, attempt 1)
 
 ## Summary
 
@@ -22,8 +22,8 @@
 - gyms.official_site_verified: 76
 - gyms.directory_only: 116
 - eventsByReviewStatus.approved: 56
-- eventsByReviewStatus.pending: 3
-- eventsByReviewStatus.rejected: 15
+- eventsByReviewStatus.pending: 2
+- eventsByReviewStatus.rejected: 16
 - scheduledEventsByCategory.competition: 19
 - scheduledEventsByCategory.construction: 1
 - scheduledEventsByCategory.event: 10

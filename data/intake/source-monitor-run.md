@@ -1,6 +1,6 @@
 # Source Monitor Run
 
-- Generated: 2026-05-26T10:10:27.942Z
+- Generated: 2026-05-26T10:13:35.919Z
 - Due approved sources: 64
 - Instagram post sources: 25
 - Instagram rotation coverage: 100/116 within 24h, 114/116 within 48h

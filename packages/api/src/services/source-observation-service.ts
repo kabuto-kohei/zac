@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, gyms, isNull, lte, or, sourcePostObservations } from "@zac/db";
+import { and, asc, desc, eq, gyms, inArray, isNull, lte, or, sourcePostObservations } from "@zac/db";
 import {
   sourceObservationReviewFixtures,
   type SourceObservationReviewActionInput,
@@ -60,19 +60,9 @@ async function listPersistentSourceObservationReviewQueue() {
   }
 
   try {
-    const rows = await db
-      .select({
-        observation: sourcePostObservations,
-        gymName: gyms.name,
-      })
+    const observations = await db
+      .select()
       .from(sourcePostObservations)
-      .leftJoin(
-        gyms,
-        and(
-          isNull(gyms.deletedAt),
-          or(eq(gyms.instagramHandle, sourcePostObservations.handle), eq(gyms.instagramUrl, sourcePostObservations.sourceUrl)),
-        ),
-      )
       .where(
         and(
           isNull(sourcePostObservations.deletedAt),
@@ -84,7 +74,18 @@ async function listPersistentSourceObservationReviewQueue() {
       .orderBy(asc(sourcePostObservations.startsAt), desc(sourcePostObservations.observedAt))
       .limit(reviewLimit);
 
-    return rows.map(({ observation, gymName }) => toReviewItem(observation, gymName));
+    const handles = [...new Set(observations.map((observation) => observation.handle).filter(Boolean))];
+    const gymRows =
+      handles.length > 0
+        ? await db
+            .select()
+            .from(gyms)
+            .where(and(isNull(gyms.deletedAt), inArray(gyms.instagramHandle, handles)))
+            .limit(1000)
+        : [];
+    const gymByHandle = new Map(gymRows.map((gym) => [normalizeHandle(gym.instagramHandle), gym]));
+
+    return observations.map((observation) => toReviewItem(observation, gymByHandle.get(normalizeHandle(observation.handle))?.name ?? null));
   } catch {
     if (!isRuntimeFallbackAllowed()) {
       throw new ApiError("service_unavailable", "Could not list source observations.", 503);
@@ -167,4 +168,8 @@ function parseReviewStatus(value: string | null | undefined): SourceObservationR
 
 function formatDateTime(value: Date) {
   return value.toISOString();
+}
+
+function normalizeHandle(value: string | null | undefined) {
+  return (value ?? "").replace(/^@/u, "").trim().toLowerCase();
 }

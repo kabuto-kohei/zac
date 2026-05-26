@@ -2,6 +2,7 @@ import {
   instagramReviewQueueActionSchema,
   moderatePostSchema,
   reviewAdminEventSchema,
+  sourceObservationReviewActionSchema,
   updateGymStatusSchema,
   updateReportStatusSchema,
   upsertAdminAnnouncementSchema,
@@ -15,6 +16,7 @@ import { listAdminUsers, listAuditLogs, moderatePost, recordAdminAudit, requireA
 import { createEvent, listEventCandidates, listEvents, reviewEventCandidate, updateEvent } from "../services/event-service.js";
 import { listEventSources } from "../services/event-source-service.js";
 import { listInstagramReviewQueue, recordInstagramReviewQueueAction } from "../services/instagram-review-service.js";
+import { listSourceObservationReviewQueue, reviewSourceObservation } from "../services/source-observation-service.js";
 
 export function createAdminRoutes() {
   const app = new Hono();
@@ -53,6 +55,25 @@ export function createAdminRoutes() {
     const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
     void actor;
     return context.json(paginatedResponse(await listInstagramReviewQueue()));
+  });
+
+  app.get("/source-observations", async (context) => {
+    const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
+    void actor;
+    return context.json(paginatedResponse(await listSourceObservationReviewQueue()));
+  });
+
+  app.post("/source-observations/:observationId/actions", async (context) => {
+    const result = sourceObservationReviewActionSchema.safeParse(await context.req.json());
+
+    if (!result.success) {
+      return context.json(validationErrorResponse(result.error.flatten()), 422);
+    }
+
+    const actor = await requireAdminActor(await resolveRequestActor(context.req.header("authorization")));
+    const action = await reviewSourceObservation(context.req.param("observationId"), result.data);
+    await recordAdminAudit(actor, { action: `source_observation_${result.data.action}`, targetType: "source_post_observation", targetId: action.observationId, metadata: result.data });
+    return context.json(dataResponse(action));
   });
 
   app.post("/instagram-review-queue/:sourceId/actions", async (context) => {

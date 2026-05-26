@@ -9,6 +9,7 @@ import {
   instagramReviewQueueFixtures,
   postFixtures,
   reportFixtures,
+  sourceObservationReviewFixtures,
 } from "@zac/shared";
 import type {
   AdminUserSummary,
@@ -20,6 +21,7 @@ import type {
   InstagramReviewQueueItem,
   PostSummary,
   ReportSummary,
+  SourceObservationReviewItem,
 } from "@zac/shared";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -35,6 +37,7 @@ type AdminView =
   | "eventCandidates"
   | "eventSources"
   | "instagramReview"
+  | "sourceObservations"
   | "posts"
   | "reports"
   | "auditLogs"
@@ -54,6 +57,7 @@ const navItems: Array<{ id: AdminView; href: string; label: string }> = [
   { id: "eventCandidates", href: "/event-candidates", label: "候補レビュー" },
   { id: "eventSources", href: "/event-sources", label: "取得源" },
   { id: "instagramReview", href: "/instagram-review", label: "Instagram確認" },
+  { id: "sourceObservations", href: "/source-observations", label: "投稿確認" },
   { id: "posts", href: "/posts", label: "投稿" },
   { id: "reports", href: "/reports", label: "通報" },
   { id: "auditLogs", href: "/audit-logs", label: "監査ログ" },
@@ -108,6 +112,7 @@ export function AdminDashboard({ view }: { view: AdminView }) {
         {view === "eventCandidates" ? <EventCandidatesView /> : null}
         {view === "eventSources" ? <EventSourcesView /> : null}
         {view === "instagramReview" ? <InstagramReviewQueueView /> : null}
+        {view === "sourceObservations" ? <SourceObservationsView /> : null}
         {view === "posts" ? <PostsView /> : null}
         {view === "reports" ? <ReportsView /> : null}
         {view === "auditLogs" ? <AuditLogsView /> : null}
@@ -396,6 +401,35 @@ function EventCandidatesView() {
   );
 }
 
+function SourceObservationsView() {
+  const observations = useAdminList<SourceObservationReviewItem>("/v1/admin/source-observations", sourceObservationReviewFixtures);
+  const [items, setItems] = useState(observations.data);
+  const noDateCount = items.filter((item) => !item.startsAt).length;
+  const lowConfidenceCount = items.filter((item) => item.extractionConfidence != null && item.extractionConfidence <= 0.6).length;
+
+  useEffect(() => {
+    setItems(observations.data);
+  }, [observations.data]);
+
+  return (
+    <>
+      <AdminViewHeader title="投稿確認" description="承認済みInstagramから拾った投稿のうち、日付未確定や低信頼のものを確認します。" />
+      <AdminDataStatus state={observations} />
+      <section className="metric-grid compact-metrics">
+        <Metric label="確認待ち" value={String(items.length)} />
+        <Metric label="日付未確定" value={String(noDateCount)} />
+        <Metric label="低信頼" value={String(lowConfidenceCount)} />
+      </section>
+      <AdminTable>
+        {items.map((item) => (
+          <SourceObservationRow item={item} key={item.id} onRecorded={(observationId) => setItems((current) => current.filter((next) => next.id !== observationId))} />
+        ))}
+        <AdminEmptyState dataLength={items.length} state={observations} emptyMessage="確認待ちの投稿はありません。" />
+      </AdminTable>
+    </>
+  );
+}
+
 function PostsView() {
   const posts = useAdminList<PostSummary>("/v1/posts", postFixtures);
 
@@ -642,6 +676,73 @@ function GymModerationRow({ gym }: { gym: GymSummary }) {
       <button type="submit">更新</button>
       <StatusMessage message={message} status={status} />
     </form>
+  );
+}
+
+function SourceObservationRow({ item, onRecorded }: { item: SourceObservationReviewItem; onRecorded: (observationId: string) => void }) {
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function recordAction(formData: FormData) {
+    setMessage("");
+    const action = formData.get("action")?.toString() === "ignore" ? "ignore" : "keep_pending";
+    const response = await postAdminApi<{ observationId: string; action: string; recorded: boolean }>(`/v1/admin/source-observations/${item.id}/actions`, {
+      action,
+      reason: formData.get("reason")?.toString() || null,
+    });
+
+    if (!response.ok) {
+      setStatus("error");
+      setMessage(response.message);
+      return;
+    }
+
+    setStatus("success");
+    setMessage(action === "ignore" ? "投稿を無視にしました。" : "保留として記録しました。");
+    if (action === "ignore") {
+      onRecorded(item.id);
+    }
+  }
+
+  return (
+    <article className="admin-row candidate-row">
+      <div className="candidate-summary">
+        <span>
+          <strong>{item.title}</strong>
+          <small>
+            {item.gymName} / @{item.handle}
+          </small>
+        </span>
+        <span>
+          <strong>{item.classification}</strong>
+          <small>{item.startsAt ? `日付候補 ${item.startsAt}` : "日付未確定"}</small>
+        </span>
+        <span>
+          <strong>{item.sourceLabel}</strong>
+          <a href={item.sourceUrl} rel="noreferrer" target="_blank">
+            情報源
+          </a>
+        </span>
+        <span>
+          <strong>{item.extractionConfidence == null ? "信頼度 -" : `信頼度 ${Math.round(item.extractionConfidence * 100)}%`}</strong>
+          <small>{item.reviewReason}</small>
+          {item.sourceQuote ? <small>根拠: {item.sourceQuote}</small> : null}
+        </span>
+      </div>
+      <form action={recordAction} className="candidate-actions">
+        <label className="admin-field">
+          確認メモ
+          <input maxLength={1000} name="reason" placeholder="例: 画像内だけの告知で日付不明 / イベントではない投稿だった" />
+        </label>
+        <button name="action" type="submit" value="keep_pending">
+          保留
+        </button>
+        <button className="secondary-admin-action danger-admin-action" name="action" type="submit" value="ignore">
+          無視
+        </button>
+      </form>
+      <StatusMessage message={message} status={status} />
+    </article>
   );
 }
 

@@ -736,18 +736,24 @@ test("admin content list routes require admin", async () => {
   const instagramReviewResponse = await createApp().request("/v1/admin/instagram-review-queue", {
     headers: adminAuth,
   });
+  const sourceObservationsResponse = await createApp().request("/v1/admin/source-observations", {
+    headers: adminAuth,
+  });
   const announcementsResponse = await createApp().request("/v1/admin/announcements", {
     headers: adminAuth,
   });
   const eventSourcesBody = await eventSourcesResponse.json();
   const instagramReviewBody = await instagramReviewResponse.json();
+  const sourceObservationsBody = await sourceObservationsResponse.json();
 
   assert.equal(eventsResponse.status, 200);
   assert.equal(eventSourcesResponse.status, 200);
   assert.equal(eventCandidatesResponse.status, 200);
   assert.equal(instagramReviewResponse.status, 200);
+  assert.equal(sourceObservationsResponse.status, 200);
   assert.equal(eventSourcesBody.data.some((source: { handle: string }) => source.handle === "comp_bible"), true);
   assert.equal(instagramReviewBody.data.some((item: { handle: string }) => item.handle === "bpumptokyo"), true);
+  assert.equal(sourceObservationsBody.data.some((item: { handle: string }) => item.handle === "bpumptokyo"), true);
   assert.equal(announcementsResponse.status, 200);
 });
 
@@ -768,6 +774,25 @@ test("admin Instagram review queue confirms official sources", async () => {
 
   assert.equal(actionResponse.status, 200);
   assert.equal(actionBody.data.action, "confirm_official");
+});
+
+test("admin source observation review records low-confidence decisions", async () => {
+  const app = createApp();
+  const actionResponse = await app.request("/v1/admin/source-observations/source-observation-date-missing/actions", {
+    method: "POST",
+    body: JSON.stringify({
+      action: "ignore",
+      reason: "イベントではない投稿だった",
+    }),
+    headers: {
+      ...adminAuth,
+      "content-type": "application/json",
+    },
+  });
+  const actionBody = await actionResponse.json();
+
+  assert.equal(actionResponse.status, 200);
+  assert.equal(actionBody.data.action, "ignore");
 });
 
 test("admin content mutations create and update events and announcements", async () => {

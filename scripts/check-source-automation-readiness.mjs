@@ -18,6 +18,7 @@ const paths = {
   readinessMd: "data/intake/source-automation-readiness.md",
   historyJsonl: "data/intake/source-automation-history.jsonl",
   adminEventCandidatePage: "apps/admin/app/event-candidates/page.tsx",
+  adminSourceObservationPage: "apps/admin/app/source-observations/page.tsx",
   adminRoutes: "packages/api/src/routes/admin.ts",
   eventService: "packages/api/src/services/event-service.ts",
   launchAgentTemplate: "ops/launchd/com.zac.source-freshness.plist",
@@ -74,6 +75,7 @@ const installedLaunchAgent = await readText(paths.installedLaunchAgent);
 const codexAutomationToml = await readText(paths.codexAutomationToml);
 const runbook = await readText(paths.runbook);
 const adminEventCandidatePage = await readText(paths.adminEventCandidatePage);
+const adminSourceObservationPage = await readText(paths.adminSourceObservationPage);
 const adminRoutes = await readText(paths.adminRoutes);
 const eventService = await readText(paths.eventService);
 const launchAgent = await readLaunchAgentStatus(label);
@@ -182,7 +184,9 @@ const checks = [
   check("observation promotion defaults to draft review", promotion?.mode === "draft_review"),
   check("promotion policy blocks copied media/captions", /full captions/u.test(promotion?.policy?.excludedFields ?? "") && /images/u.test(promotion?.policy?.excludedFields ?? "")),
   check("Admin candidate review page exists", /eventCandidates/u.test(adminEventCandidatePage)),
+  check("Admin low-confidence source observation page exists", /sourceObservations/u.test(adminSourceObservationPage)),
   check("Admin API exposes candidate list and review mutation", /event-candidates/u.test(adminRoutes) && /:eventId\/review/u.test(adminRoutes)),
+  check("Admin API exposes source observation review", /source-observations/u.test(adminRoutes) && /:observationId\/actions/u.test(adminRoutes)),
   check("event review approval can publish approved candidates", /reviewEventCandidate/u.test(eventService) && /reviewStatus: nextReviewStatus/u.test(eventService)),
   check("runbook defines unattended health contract", /unattended/i.test(runbook) && /LaunchAgent/u.test(runbook) && /ready_for_review/u.test(runbook)),
 ];

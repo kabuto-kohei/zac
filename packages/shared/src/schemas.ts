@@ -178,6 +178,11 @@ export const instagramReviewQueueActionSchema = z.object({
   reason: z.string().max(1000).nullable().optional(),
 });
 
+export const sourceObservationReviewActionSchema = z.object({
+  action: z.enum(["ignore", "keep_pending"]),
+  reason: z.string().max(1000).nullable().optional(),
+});
+
 export const updateReportStatusSchema = z.object({
   status: adminReportStatusSchema,
   action: adminModerationActionSchema.default("mark_review_pending"),
@@ -246,4 +251,5 @@ export type UpdateGymStatusInput = z.infer<typeof updateGymStatusSchema>;
 export type ReviewAdminEventInput = z.infer<typeof reviewAdminEventSchema>;
 export type UpsertAdminEventInput = z.infer<typeof upsertAdminEventSchema>;
 export type InstagramReviewQueueActionInput = z.infer<typeof instagramReviewQueueActionSchema>;
+export type SourceObservationReviewActionInput = z.infer<typeof sourceObservationReviewActionSchema>;
 export type UpsertAdminAnnouncementInput = z.infer<typeof upsertAdminAnnouncementSchema>;

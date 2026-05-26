@@ -148,6 +148,12 @@ The roller never writes directly to public events. It writes
 `source_post_observations`, then the promotion step creates draft/pending event
 candidates.
 
+If a post has event-like language but the date is missing or the extraction
+confidence is low, it must remain a source observation and appear in Admin
+`/source-observations` instead of being silently hidden. Admin can open the
+source post, keep it pending for follow-up, or mark it ignored. Only
+date-backed observations can move into `/event-candidates`.
+
 Category shaping is shared with the official-site lane:
 
 - `competition`

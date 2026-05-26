@@ -108,6 +108,24 @@ export type InstagramReviewQueueItem = {
   reviewReason: string;
 };
 
+export type SourceObservationReviewItem = {
+  id: string;
+  gymName: string;
+  handle: string;
+  sourceUrl: string;
+  sourceLabel: string;
+  classification: EventSummary["category"];
+  title: string;
+  summary: string;
+  sourceQuote: string;
+  observedAt: string;
+  sourcePostedAt: string | null;
+  startsAt: string | null;
+  extractionConfidence: number | null;
+  reviewStatus: "pending" | "ignored" | "event_candidate";
+  reviewReason: string;
+};
+
 export type AnnouncementSummary = {
   id: string;
   title: string;
@@ -408,6 +426,26 @@ export const instagramReviewQueueFixtures: InstagramReviewQueueItem[] = [
     priority: "high",
     status: "needs_human_review",
     reviewReason: "Instagram直取得が不安定なため、管理者が公開プロフィールと公式サイトを見比べて公式アカウントか確認します。",
+  },
+];
+
+export const sourceObservationReviewFixtures: SourceObservationReviewItem[] = [
+  {
+    id: "source-observation-date-missing",
+    gymName: "B-PUMP Tokyo",
+    handle: "bpumptokyo",
+    sourceUrl: "https://www.instagram.com/p/example/",
+    sourceLabel: "公式Instagram",
+    classification: "route_set",
+    title: "B-PUMP Tokyo セット情報",
+    summary: "公式Instagramからセット・ホールド替えの可能性がある投稿を検出しました。",
+    sourceQuote: "今セットは木曜まで",
+    observedAt: "2026-05-26",
+    sourcePostedAt: "2026-05-26",
+    startsAt: null,
+    extractionConfidence: 0.55,
+    reviewStatus: "pending",
+    reviewReason: "日付候補が未確定のため、情報源を開いて掲載可否を確認してください。",
   },
 ];
 

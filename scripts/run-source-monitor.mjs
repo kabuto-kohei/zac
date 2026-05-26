@@ -40,6 +40,7 @@ try {
     reviewSummaryRows,
     categoryRows,
     gymRows,
+    instagramCoverageRows,
     gymDisciplineRows,
     closureVerificationRows,
   ] = await Promise.all([
@@ -178,6 +179,24 @@ try {
         and status = 'published'
     `,
     sql`
+      select
+        count(*)::int as approved_official_instagram_sources,
+        count(*) filter (where last_checked_at >= now() - interval '24 hours')::int as checked_within_24h,
+        count(*) filter (where last_checked_at >= now() - interval '48 hours')::int as checked_within_48h,
+        count(*) filter (where last_checked_at is null)::int as never_checked,
+        count(*) filter (
+          where last_checked_at is null
+             or last_checked_at < now() - (${instagramDueIntervalHours}::text || ' hours')::interval
+        )::int as due_for_inspection,
+        min(last_checked_at) as oldest_last_checked_at,
+        max(last_checked_at) as newest_last_checked_at
+      from event_sources
+      where deleted_at is null
+        and status = 'approved'
+        and platform = 'instagram'
+        and source_type = 'official_instagram'
+    `,
+    sql`
       select source_external_id, name, area, disciplines_text, website_url, instagram_handle, instagram_url, source_url, source_attribution, source_type, source_verified_at
       from gyms
       where deleted_at is null
@@ -282,6 +301,7 @@ try {
       gyms: gymRows[0] ?? {},
       eventsByReviewStatus: toCountObject(reviewSummaryRows, "review_status"),
       scheduledEventsByCategory: toCountObject(categoryRows, "category"),
+      instagramRotation: formatInstagramRotation(instagramCoverageRows[0] ?? {}, instagramPostSourceLimit, instagramDueIntervalHours),
       dueApprovedSources: staleSources.length,
       instagramPostSources: instagramPostSources.length,
       candidateSources: candidateSources.length,
@@ -336,6 +356,7 @@ try {
         closureVerificationCandidates: run.summary.closureVerificationCandidates,
         gymsWithInstagram: run.summary.gyms.with_instagram,
         gymsTotal: run.summary.gyms.total,
+        instagramRotation: run.summary.instagramRotation,
       },
       null,
       2,
@@ -479,6 +500,29 @@ function toCountObject(rows, key) {
   return Object.fromEntries(rows.map((row) => [row[key] ?? "unknown", row.count]));
 }
 
+function formatInstagramRotation(row, batchSize, dueHours) {
+  const total = Number(row.approved_official_instagram_sources ?? 0);
+  const checkedWithin24h = Number(row.checked_within_24h ?? 0);
+  const checkedWithin48h = Number(row.checked_within_48h ?? 0);
+  const dueForInspection = Number(row.due_for_inspection ?? 0);
+  const neverChecked = Number(row.never_checked ?? 0);
+  return {
+    approvedOfficialInstagramSources: total,
+    perRunBatchSize: batchSize,
+    dueHours,
+    estimatedRunsPerFullPass: total > 0 ? Math.ceil(total / batchSize) : 0,
+    estimatedHoursPerFullPass: total > 0 ? Math.ceil(total / batchSize) * 3 : 0,
+    checkedWithin24h,
+    checkedWithin48h,
+    dueForInspection,
+    neverChecked,
+    coverage24hRatio: total > 0 ? Number((checkedWithin24h / total).toFixed(2)) : 0,
+    coverage48hRatio: total > 0 ? Number((checkedWithin48h / total).toFixed(2)) : 0,
+    oldestLastCheckedAt: formatNullableDateTime(row.oldest_last_checked_at),
+    newestLastCheckedAt: formatNullableDateTime(row.newest_last_checked_at),
+  };
+}
+
 function formatNullableDateTime(value) {
   return value ? value.toISOString() : null;
 }
@@ -539,6 +583,8 @@ function renderMarkdown(run) {
 - Generated: ${run.generatedAt}
 - Due approved sources: ${run.summary.dueApprovedSources}
 - Instagram post sources: ${run.summary.instagramPostSources}
+- Instagram rotation coverage: ${run.summary.instagramRotation.checkedWithin24h}/${run.summary.instagramRotation.approvedOfficialInstagramSources} within 24h, ${run.summary.instagramRotation.checkedWithin48h}/${run.summary.instagramRotation.approvedOfficialInstagramSources} within 48h
+- Instagram full-pass estimate: ${run.summary.instagramRotation.estimatedRunsPerFullPass} run(s), about ${run.summary.instagramRotation.estimatedHoursPerFullPass}h at the current 3h cadence
 - Candidate Instagram sources: ${run.summary.candidateSources}
 - Upcoming event rechecks: ${run.summary.upcomingEvents}
 - Gym discipline verification candidates: ${run.summary.gymDisciplineCandidates}

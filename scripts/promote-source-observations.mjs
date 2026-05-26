@@ -215,6 +215,9 @@ function evaluateObservation(row, existing) {
   if (isWeakEvidence(row)) {
     return { ok: false, reason: "source quote is too weak for Admin candidate review", terminal: true };
   }
+  if (isGradeOnlyEvidence(row)) {
+    return { ok: false, reason: "source quote only contains grade/problem metadata", terminal: true };
+  }
   if (isWeakAnnouncement(title, row.source_quote ?? "", category)) {
     return { ok: false, reason: "post looks like an announcement, not a calendar item", terminal: true };
   }
@@ -345,6 +348,16 @@ function isWeakEvidence(row) {
   if (quote === handle || quote === displayName) return true;
   if (/^[a-z0-9_.]{3,40}$/iu.test(quote)) return true;
   return false;
+}
+
+function isGradeOnlyEvidence(row) {
+  const quote = normalizeWhitespace(row.source_quote ?? "");
+  const title = normalizeWhitespace(row.title ?? "");
+  const text = `${title} ${quote}`;
+  if (!/grade|グレード|[vV]\d{1,2}|[一二三四五六七八九十初段級]\s*(?:段|級)|\d{1,2}[abcd][+]?/u.test(text)) {
+    return false;
+  }
+  return !/セット|ホールド替え|ルートセット|コンペ|大会|イベント|営業時間|短縮営業|休業|貸切|開催|schedule|competition|session|workshop|lesson|route set|routeset|reset/iu.test(text);
 }
 
 function normalizeEvidenceToken(value) {

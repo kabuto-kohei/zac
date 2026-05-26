@@ -262,15 +262,14 @@ async function inspectBrowserPost(page, source, postUrl) {
       return null;
     }
 
-    const visibleText = normalizeWhitespace(await page.locator("body").innerText({ timeout: Math.min(postTimeoutMs, 10000) }));
-    const shortText = selectRelevantText(visibleText, source.displayName);
+    const extracted = await extractPostText(page, source);
     return inspectPost(
       {
         handle: source.handle,
         sourceUrl: normalizeInstagramPostUrl(postUrl),
         sourceExternalId: extractPostExternalId(postUrl),
-        sourcePostedAt: extractPostedAtFromPageText(visibleText),
-        text: shortText,
+        sourcePostedAt: extracted.postedAt,
+        text: extracted.text,
       },
       source,
     );
@@ -541,12 +540,13 @@ function classifyText(text) {
 function extractDateRange(text) {
   const normalized = text.replaceAll("〜", "-").replaceAll("～", "-").replaceAll("ー", "-");
   const candidates = [];
-  const monthDayPattern = /(?:(20\d{2})[年\/.-])?\s*(\d{1,2})\s*(?:月|\/|\.)\s*(\d{1,2})\s*(?:日)?/g;
+  const monthDayPattern =
+    /(^|[^\p{L}\p{N}])(?:(20\d{2})[年\/.-])?\s*(\d{1,2})\s*(?:月|\/|\.)\s*(\d{1,2})\s*(?:日)?(?![\p{L}\p{N}])/gu;
   let match;
   while ((match = monthDayPattern.exec(normalized)) !== null) {
-    const year = match[1] ? Number(match[1]) : generatedAt.getFullYear();
-    const month = Number(match[2]);
-    const day = Number(match[3]);
+    const year = match[2] ? Number(match[2]) : generatedAt.getFullYear();
+    const month = Number(match[3]);
+    const day = Number(match[4]);
     if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
       candidates.push({ year, month, day, index: match.index });
     }
@@ -633,15 +633,83 @@ function buildDecisionNote(classification, dateRange) {
   return "Relevant official Instagram post, but date extraction is not strong enough for public calendar insertion.";
 }
 
-function selectRelevantText(text, displayName) {
+async function extractPostText(page, source) {
+  const bodyText = normalizeWhitespace(await page.locator("body").innerText({ timeout: Math.min(postTimeoutMs, 10000) }).catch(() => ""));
+  const metaDescription = normalizeWhitespace(
+    (await page.locator('meta[property="og:description"], meta[name="description"]').first().getAttribute("content").catch(() => "")) ?? "",
+  );
+  const articleText = normalizeWhitespace(await page.locator("article").first().innerText({ timeout: 5000 }).catch(() => ""));
+  const postedAt = (await extractPostedAtFromPage(page)) ?? extractPostedAtFromPageText(`${articleText}\n${metaDescription}\n${bodyText}`);
+  const candidates = [
+    captionFromMetaDescription(metaDescription, source),
+    selectCaptionLikeText(articleText, source),
+    selectCaptionLikeText(bodyText, source),
+    selectRelevantText(bodyText, source),
+  ].filter(Boolean);
+  return {
+    text: truncate(candidates[0] ?? "", 900),
+    postedAt,
+  };
+}
+
+async function extractPostedAtFromPage(page) {
+  const datetime = await page.locator("time[datetime]").first().getAttribute("datetime").catch(() => null);
+  if (!datetime) return null;
+  const date = new Date(datetime);
+  return Number.isFinite(date.getTime()) ? date : null;
+}
+
+function captionFromMetaDescription(text, source) {
+  const normalized = normalizeWhitespace(text);
+  if (!normalized) return "";
+  const colonIndex = normalized.indexOf(":");
+  const afterAttribution = colonIndex >= 0 ? normalized.slice(colonIndex + 1).trim() : normalized;
+  return selectCaptionLikeText(afterAttribution, source);
+}
+
+function selectCaptionLikeText(text, source) {
   const lines = text
     .split("\n")
     .map((line) => line.trim())
     .filter(Boolean)
-    .filter((line) => !/^(Instagram|Log in|Sign up|Follow|いいね|コメント|シェア)$/i.test(line));
-  const displayIndex = lines.findIndex((line) => line.includes(displayName));
-  const selected = displayIndex >= 0 ? lines.slice(displayIndex, displayIndex + 12) : lines.slice(0, 16);
+    .filter((line) => !isInstagramChromeLine(line, source));
+  const signalIndex = lines.findIndex(hasCalendarOrEventSignal);
+  const selected = signalIndex >= 0 ? lines.slice(signalIndex, signalIndex + 12) : lines.filter((line) => !isAccountOnlyLine(line, source)).slice(0, 12);
   return truncate(selected.join("\n"), 900);
+}
+
+function selectRelevantText(text, source) {
+  const lines = text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((line) => !isInstagramChromeLine(line, source));
+  const displayIndex = lines.findIndex((line) => line.includes(source.displayName));
+  const windowed = displayIndex >= 0 ? lines.slice(displayIndex + 1, displayIndex + 18) : lines.slice(0, 18);
+  return selectCaptionLikeText(windowed.join("\n"), source);
+}
+
+function isInstagramChromeLine(line, source) {
+  const normalized = normalizeEvidenceToken(line);
+  const handle = normalizeEvidenceToken(source.handle);
+  const displayName = normalizeEvidenceToken(source.displayName);
+  if (!normalized) return true;
+  if (normalized === handle || normalized === displayName) return true;
+  return /^(Instagram|Log in|Sign up|Follow|いいね|コメント|シェア|保存|送信|Meta|Threads)$/i.test(line);
+}
+
+function isAccountOnlyLine(line, source) {
+  const normalized = normalizeEvidenceToken(line);
+  const handle = normalizeEvidenceToken(source.handle);
+  const displayName = normalizeEvidenceToken(source.displayName);
+  if (normalized === handle || normalized === displayName) return true;
+  return /^[a-z0-9_.]{3,40}$/iu.test(normalized);
+}
+
+function hasCalendarOrEventSignal(line) {
+  return /20\d{2}|(?:\d{1,2}\s*(?:月|\/|\.)\s*\d{1,2}\s*(?:日)?)|(?:\d{1,2}\s*日)|コンペ|大会|competition|cup|カップ|BLoC|TAMAX|セット|ホールド替え|ルートセット|営業時間|短縮営業|休業|貸切|イベント|セッション|道場|講習|workshop|lesson|session|route set|routeset|reset/iu.test(
+    line,
+  );
 }
 
 function extractPostedAtFromPageText(text) {

@@ -215,6 +215,7 @@ const result = {
       hasOfficialFallback: hasOfficialFallback(item, monitor),
     })),
     instagramBrowserSessionState,
+    instagramRotation: monitor?.summary?.instagramRotation ?? null,
     instagramBrowserRoller: inspection?.summary
       ? {
           sourcesVisited: inspection.summary.sourcesVisited ?? null,
@@ -539,6 +540,15 @@ function renderMarkdown(resultValue) {
 - consecutiveNonReady: ${resultValue.summary.consecutiveNonReady}
 - instagramFailureRatio: ${resultValue.summary.instagramFailureRatio}
 - instagramBrowserSessionState: ${resultValue.summary.instagramBrowserSessionState}
+
+## Instagram Rotation Coverage
+
+- approvedOfficialInstagramSources: ${resultValue.summary.instagramRotation?.approvedOfficialInstagramSources ?? "unknown"}
+- perRunBatchSize: ${resultValue.summary.instagramRotation?.perRunBatchSize ?? "unknown"}
+- checkedWithin24h: ${resultValue.summary.instagramRotation?.checkedWithin24h ?? "unknown"}
+- checkedWithin48h: ${resultValue.summary.instagramRotation?.checkedWithin48h ?? "unknown"}
+- estimatedRunsPerFullPass: ${resultValue.summary.instagramRotation?.estimatedRunsPerFullPass ?? "unknown"}
+- estimatedHoursPerFullPass: ${resultValue.summary.instagramRotation?.estimatedHoursPerFullPass ?? "unknown"}
 
 ## Instagram Browser Roller
 

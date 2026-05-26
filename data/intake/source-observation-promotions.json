@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:24:25.015Z",
+  "generatedAt": "2026-05-26T10:02:59.001Z",
   "mode": "draft_review",
   "policy": {
     "source": "source_post_observations",
@@ -7,16 +7,265 @@
     "excludedFields": "full captions, images, videos"
   },
   "summary": {
-    "observationsRead": 0,
-    "cleanupRead": 0,
-    "promotions": 0,
-    "skipped": 0,
-    "ignored": 0,
+    "observationsRead": 6,
+    "cleanupRead": 23,
+    "promotions": 1,
+    "skipped": 28,
+    "ignored": 27,
     "staleEventCandidates": 0
   },
-  "promotions": [],
-  "skipped": [],
-  "ignoredObservationIds": [],
+  "promotions": [
+    {
+      "eventId": "a337cd67-6d47-4937-b515-84dcd6351d1e",
+      "observationId": "7e93691b-a475-476d-8a74-fa0d6badbe5f",
+      "gymId": "a3ef4def-5c09-4e49-ac12-c556018e8c2c",
+      "gymName": "ALTIOR（アルティオール）クライミングジム",
+      "category": "route_set",
+      "title": "ALTIOR（アルティオール）クライミングジム grade:2D/V9/7c",
+      "summary": "ALTIOR（アルティオール）クライミングジムの公式情報に基づく2026/09/07のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。",
+      "description": "ALTIOR（アルティオール）クライミングジムの公式情報に基づく2026/09/07のセット・ホールド替え情報です。対象エリアや利用制限は公式情報で確認してください。 最新状況はリンク先の公式情報を確認してください。",
+      "startsAt": "2026-09-07T08:00:00.000Z",
+      "endsAt": "2026-09-07T09:00:00.000Z",
+      "capacityText": "対象エリア・利用制限は公式情報で確認",
+      "sourceType": "official_instagram",
+      "sourceUrl": "https://www.instagram.com/reel/DYyTbeCvx_P/",
+      "sourceAccount": "ALTIOR（アルティオール）クライミングジム",
+      "sourcePublishedAt": null,
+      "sourceFetchedAt": "2026-05-26T09:57:42.926Z",
+      "sourceQuote": "grade:2D/V9/7c",
+      "extractionConfidence": "0.72",
+      "reviewStatus": "pending",
+      "reviewedAt": null,
+      "status": "draft"
+    }
+  ],
+  "skipped": [
+    {
+      "id": "6f922b47-2325-4455-9b78-2d8833d17f35",
+      "sourceUrl": "https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-27-competition-3",
+      "title": "クライミングジム マッドロック 2026/05/27 コンペ",
+      "reason": "source URL already exists in events",
+      "terminal": true
+    },
+    {
+      "id": "4ff8a90d-0a83-4d8e-a512-136713edbadc",
+      "sourceUrl": "https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-29-competition-1",
+      "title": "クライミングジム マッドロック 5月の営業に関して",
+      "reason": "source URL already exists in events",
+      "terminal": true
+    },
+    {
+      "id": "2b8f469f-6d74-43eb-9fdd-248c4297ef5f",
+      "sourceUrl": "https://www.instagram.com/p/DYyH8muzRsg/",
+      "title": "NOBOROCK 池袋店 ⛏次回セットスケジュール⛏",
+      "reason": "same gym/category/start date already exists",
+      "terminal": true
+    },
+    {
+      "id": "78fadcfa-c9f9-4379-91eb-7989142949e4",
+      "sourceUrl": "https://www.instagram.com/p/DYwX3ejGYMj/",
+      "title": "BLoC Bouldering Local Circuit \"【BLoC2026 round5",
+      "reason": "no matching published gym",
+      "terminal": false
+    },
+    {
+      "id": "dbca0c60-5eea-4b54-ae8b-6adc3d6dad49",
+      "sourceUrl": "https://www.instagram.com/p/DWbMesCiYOI/",
+      "title": "クライミングジム ZE-RO（ゼロ） さいたま店 🔥🔥🔥『聖地巡零2026』開催のお知らせ🔥🔥🔥",
+      "reason": "post looks like an announcement, not a calendar item",
+      "terminal": true
+    },
+    {
+      "id": "29a2a852-9962-43a8-88d8-4250b8942d6a",
+      "sourceUrl": "https://b-camp.jp/iruma#zac-2019-05-27-opening_change-1",
+      "title": "Climb Park Base Camp 入間店 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "c432a667-0d15-4c60-a949-51c451958b34",
+      "sourceUrl": "https://www.forge-bouldering.com/#zac-2020-06-17-opening_change-1",
+      "title": "Forge bouldering 06/17 営業変更",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "cb5594bf-0c72-40a6-a8c6-d67857cce86a",
+      "sourceUrl": "https://climbing-spider.com/shop/#zac-2024-08-03-opening_change-2",
+      "title": "クライミングジムSPIDER 08/03 営業変更",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "4087b937-a7b7-4c73-a420-a5e6c718da6a",
+      "sourceUrl": "https://climbing-spider.com/shop/#zac-2024-09-15-opening_change-1",
+      "title": "クライミングジムSPIDER 09/15 営業変更",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "cf253e8f-9994-4421-a29b-d77bce360f1f",
+      "sourceUrl": "https://www.fits-climbing.com/#zac-2026-01-17-opening_change-3",
+      "title": "FITS CLIMBING GYM 01/17 営業変更",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "d61f25a4-60ed-4565-b91c-b79966d87f1f",
+      "sourceUrl": "https://www.fits-climbing.com/#zac-2026-01-20-opening_change-2",
+      "title": "FITS CLIMBING GYM 01/20 営業変更",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "64e309b4-3290-44be-bf32-e92da6d3d47e",
+      "sourceUrl": "https://www.fits-climbing.com/#zac-2026-01-27-opening_change-1",
+      "title": "FITS CLIMBING GYM 01/27 営業変更",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "833036af-496c-4ff4-9684-0659ece5436d",
+      "sourceUrl": "https://b-camp.jp/iruma#zac-2026-04-25-opening_change-3",
+      "title": "Climb Park Base Camp 入間店 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "f329d311-25ed-4299-84b8-5869300bc720",
+      "sourceUrl": "https://b-camp.jp/edogawabashi/#zac-2026-04-27-opening_change-3",
+      "title": "Base Camp Tokyo 江戸川橋 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "88eb5281-5598-4d90-a25d-46c7e29c0ff4",
+      "sourceUrl": "https://b-camp.jp/kinshicho/#zac-2026-04-28-construction-2",
+      "title": "Base Camp Tokyo 錦糸町 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "d6bdb609-45bb-4349-99fb-ed962b9fc719",
+      "sourceUrl": "https://b-camp.jp/kinshicho/#zac-2026-04-28-opening_change-3",
+      "title": "Base Camp Tokyo 錦糸町 04/28 営業変更",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "99e4fd3b-9924-4e64-bc16-2c452af1cf8e",
+      "sourceUrl": "https://www.bouldering-climbinggym-madrock.com/#zac-2026-05-02-competition-2",
+      "title": "クライミングジム マッドロック 5月の営業に関して",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "5b617934-0d84-4032-a6ab-62e50bde5542",
+      "sourceUrl": "https://folkboulderinggym.com/#zac-2026-05-02-route_set-3",
+      "title": "folk bouldering gym 05/02 セット",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "2ab6efd1-5612-4eb4-be58-0d4d0f771caf",
+      "sourceUrl": "https://folkboulderinggym.com/#zac-2026-05-05-route_set-1",
+      "title": "folk bouldering gym 05/05 セット",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "a26d6b19-f63a-4f33-85f0-3c7dbe195709",
+      "sourceUrl": "https://b-camp.jp/iruma#zac-2026-05-08-opening_change-2",
+      "title": "Climb Park Base Camp 入間店 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "caad4002-c688-4fe3-82e7-4d51cacfb144",
+      "sourceUrl": "https://b-camp.jp/kinshicho/#zac-2026-05-08-construction-1",
+      "title": "Base Camp Tokyo 錦糸町 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "077b5763-4ce1-4043-ab1d-e0d8d2d22b97",
+      "sourceUrl": "https://folkboulderinggym.com/#zac-2026-05-08-route_set-2",
+      "title": "folk bouldering gym 05/08 セット",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "57fab4fc-ea85-43b4-a94f-f623e399e007",
+      "sourceUrl": "https://b-camp.jp/edogawabashi/#zac-2026-05-09-opening_change-2",
+      "title": "Base Camp Tokyo 江戸川橋 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "53404b06-0bcb-49e0-a5e9-add2ffeba613",
+      "sourceUrl": "https://boulderingspot-landmark.com/#zac-2026-05-15-event-2",
+      "title": "Bouldering Spot Landmark リソール受付のお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "616040c2-1ad7-4768-aa58-4a2645b66cdb",
+      "sourceUrl": "https://www.instagram.com/p/DXyl_CHmeuZ/",
+      "title": "boulderinggym.bunker2 \"【期間イベント",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "a03e7591-e98c-4f9a-8daf-213febeb61ce",
+      "sourceUrl": "https://boulderingspot-landmark.com/#zac-2026-05-17-route_set-1",
+      "title": "Bouldering Spot Landmark リソール受付のお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "c2493e65-1fd4-421b-8b69-c65a147d1617",
+      "sourceUrl": "https://b-camp.jp/edogawabashi/#zac-2026-05-20-opening_change-1",
+      "title": "Base Camp Tokyo 江戸川橋 料金改定とサマーキャンペーンのお知らせ",
+      "reason": "past start date",
+      "terminal": true
+    },
+    {
+      "id": "19c7ffce-05b9-4114-a99c-dae7e872c80b",
+      "sourceUrl": "https://boulderingspot-landmark.com/#zac-2026-05-23-event-3",
+      "title": "Bouldering Spot Landmark 新制度",
+      "reason": "past start date",
+      "terminal": true
+    }
+  ],
+  "ignoredObservationIds": [
+    "6f922b47-2325-4455-9b78-2d8833d17f35",
+    "4ff8a90d-0a83-4d8e-a512-136713edbadc",
+    "2b8f469f-6d74-43eb-9fdd-248c4297ef5f",
+    "dbca0c60-5eea-4b54-ae8b-6adc3d6dad49",
+    "29a2a852-9962-43a8-88d8-4250b8942d6a",
+    "c432a667-0d15-4c60-a949-51c451958b34",
+    "cb5594bf-0c72-40a6-a8c6-d67857cce86a",
+    "4087b937-a7b7-4c73-a420-a5e6c718da6a",
+    "cf253e8f-9994-4421-a29b-d77bce360f1f",
+    "d61f25a4-60ed-4565-b91c-b79966d87f1f",
+    "64e309b4-3290-44be-bf32-e92da6d3d47e",
+    "833036af-496c-4ff4-9684-0659ece5436d",
+    "f329d311-25ed-4299-84b8-5869300bc720",
+    "88eb5281-5598-4d90-a25d-46c7e29c0ff4",
+    "d6bdb609-45bb-4349-99fb-ed962b9fc719",
+    "99e4fd3b-9924-4e64-bc16-2c452af1cf8e",
+    "5b617934-0d84-4032-a6ab-62e50bde5542",
+    "2ab6efd1-5612-4eb4-be58-0d4d0f771caf",
+    "a26d6b19-f63a-4f33-85f0-3c7dbe195709",
+    "caad4002-c688-4fe3-82e7-4d51cacfb144",
+    "077b5763-4ce1-4043-ab1d-e0d8d2d22b97",
+    "57fab4fc-ea85-43b4-a94f-f623e399e007",
+    "53404b06-0bcb-49e0-a5e9-add2ffeba613",
+    "616040c2-1ad7-4768-aa58-4a2645b66cdb",
+    "a03e7591-e98c-4f9a-8daf-213febeb61ce",
+    "c2493e65-1fd4-421b-8b69-c65a147d1617",
+    "19c7ffce-05b9-4114-a99c-dae7e872c80b"
+  ],
   "staleEventCandidateIds": [],
-  "staleEventCandidateCutoff": "2026-05-20T15:00:00.000Z"
+  "staleEventCandidateCutoff": "2026-05-25T15:00:00.000Z"
 }

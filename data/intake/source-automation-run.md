@@ -1,18 +1,18 @@
 # Source Automation Run
 
-- Generated: 2026-05-20T16:24:25.007Z
-- Updated: 2026-05-20T16:24:30.399Z
+- Generated: 2026-05-26T10:03:00.169Z
+- Updated: 2026-05-26T10:03:03.605Z
 - Status: ready_for_review
 
 
 
 ## Commands
 
-- passed: `curl -I --max-time 10 https://example.com` (240ms, attempt 1)
-- passed: `pnpm db:verify:remote` (1101ms, attempt 1)
-- passed: `pnpm sources:plan-refresh` (1224ms, attempt 1)
-- passed: `pnpm sources:match-instagram` (913ms, attempt 1)
-- passed: `pnpm sources:monitor` (1909ms, attempt 1)
+- passed: `curl -I --max-time 10 https://example.com` (159ms, attempt 1)
+- passed: `pnpm db:verify:remote` (942ms, attempt 1)
+- passed: `pnpm sources:plan-refresh` (767ms, attempt 1)
+- passed: `pnpm sources:match-instagram` (757ms, attempt 1)
+- passed: `pnpm sources:monitor` (808ms, attempt 1)
 
 ## Summary
 
@@ -21,15 +21,15 @@
 - gyms.with_instagram: 97
 - gyms.official_site_verified: 76
 - gyms.directory_only: 116
-- eventsByReviewStatus.approved: 48
-- eventsByReviewStatus.pending: 9
-- eventsByReviewStatus.rejected: 14
-- scheduledEventsByCategory.competition: 18
+- eventsByReviewStatus.approved: 56
+- eventsByReviewStatus.pending: 3
+- eventsByReviewStatus.rejected: 15
+- scheduledEventsByCategory.competition: 19
 - scheduledEventsByCategory.construction: 1
 - scheduledEventsByCategory.event: 10
 - scheduledEventsByCategory.opening_change: 1
 - scheduledEventsByCategory.private_booking: 2
-- scheduledEventsByCategory.route_set: 19
+- scheduledEventsByCategory.route_set: 26
 - sourceStatus.approved: 193
 - sourceStatus.candidate: 1
 - sourceStatus.paused: 2
@@ -49,7 +49,7 @@
 - candidateMatches.highConfidence: 0
 - candidateMatches.needsReview: 0
 - candidateMatches.unmatched: 0
-- upcomingEvents: 32
+- upcomingEvents: 34
 - gymDisciplineCandidates: 119
 - closureVerificationCandidates: 80
 - publicNetworkReachable: true
@@ -59,6 +59,6 @@
 - Run the Instagram browser roller first (25 approved source(s)); it must use a logged-in browser session, check the latest three posts/reels for freshness, use bounded backfill for next unknown posts when needed, and stage candidates for Admin review.
 - Inspect 64 due approved source(s) from inspectNow first.
 - Inspect operatorBatch next; it currently has 16 approved source(s).
-- Recheck upcomingEventRecheck for items starting within the next 30 days (32 queued).
+- Recheck upcomingEventRecheck for items starting within the next 30 days (34 queued).
 - Classify gym disciplines only from official site/SNS evidence; leave directory-only rows as クライミング (119 queued).
 - Verify closure, relocation, and rename risk with official evidence first; require two independent current sources if the official source is unavailable (80 queued).

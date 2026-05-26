@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-20T16:24:40.477Z",
+  "generatedAt": "2026-05-26T10:10:35.643Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,8 +11,8 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 0,
-    "localRunAgeMinutes": 3,
+    "latestRunAgeMinutes": 8,
+    "localRunAgeMinutes": 8,
     "consecutiveNonReady": 0,
     "instagramFailureRatio": 0.08,
     "failedInstagramSources": [
@@ -23,23 +23,38 @@
         "hasOfficialFallback": true
       },
       {
-        "handle": "climb.vortex",
+        "handle": "jyuku_rocky",
         "error": "checkpoint_required",
         "failureCategory": "checkpoint_required",
         "hasOfficialFallback": true
       }
     ],
     "instagramBrowserSessionState": "authenticated",
+    "instagramRotation": {
+      "approvedOfficialInstagramSources": 116,
+      "perRunBatchSize": 25,
+      "dueHours": 12,
+      "estimatedRunsPerFullPass": 5,
+      "estimatedHoursPerFullPass": 15,
+      "checkedWithin24h": 100,
+      "checkedWithin48h": 114,
+      "dueForInspection": 56,
+      "neverChecked": 0,
+      "coverage24hRatio": 0.86,
+      "coverage48hRatio": 0.98,
+      "oldestLastCheckedAt": "2026-05-11T04:30:00.000Z",
+      "newestLastCheckedAt": "2026-05-26T09:57:42.926Z"
+    },
     "instagramBrowserRoller": {
       "sourcesVisited": 25,
       "sourcesSucceeded": 23,
       "sourcesFailed": 2,
       "sourcesDeferred": 0,
-      "postsSeen": 322,
-      "newPostsOpened": 69,
-      "lookbackPostsSkipped": 13,
-      "observedPosts": 69,
-      "calendarCandidates": 37
+      "postsSeen": 228,
+      "newPostsOpened": 9,
+      "lookbackPostsSkipped": 0,
+      "observedPosts": 8,
+      "calendarCandidates": 6
     },
     "launchAgent": {
       "checked": true,
@@ -48,14 +63,14 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 10800,
-      "runs": 1
+      "runs": 45
     },
     "queues": {
       "instagramPostInspection": 25,
       "inspectNow": 64,
       "operatorBatch": 16,
       "approvedSourceRotation": 96,
-      "upcomingEventRecheck": 32,
+      "upcomingEventRecheck": 34,
       "candidateVerification": 0,
       "gymDisciplineVerification": 119,
       "closureVerification": 80
@@ -95,7 +110,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "0m",
+      "detail": "8m",
       "severity": "error"
     },
     {
@@ -125,7 +140,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "3m",
+      "detail": "8m",
       "severity": "error"
     },
     {
@@ -227,7 +242,7 @@
     {
       "name": "Instagram browser roller made source progress",
       "ok": true,
-      "detail": "queued=25 succeeded=23 observed=69",
+      "detail": "queued=25 succeeded=23 observed=8",
       "severity": "error"
     },
     {

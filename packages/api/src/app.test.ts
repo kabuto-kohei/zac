@@ -754,6 +754,7 @@ test("admin content list routes require admin", async () => {
   assert.equal(eventSourcesBody.data.some((source: { handle: string }) => source.handle === "comp_bible"), true);
   assert.equal(instagramReviewBody.data.some((item: { handle: string }) => item.handle === "bpumptokyo"), true);
   assert.equal(sourceObservationsBody.data.some((item: { handle: string }) => item.handle === "bpumptokyo"), true);
+  assert.equal(sourceObservationsBody.data.some((item: { gymMatchStatus: string }) => item.gymMatchStatus === "missing"), true);
   assert.equal(announcementsResponse.status, 200);
 });
 

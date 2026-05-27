@@ -111,6 +111,8 @@ export type InstagramReviewQueueItem = {
 export type SourceObservationReviewItem = {
   id: string;
   gymName: string;
+  gymMatchStatus: "matched" | "missing";
+  gymMatchReason: string;
   handle: string;
   sourceUrl: string;
   sourceLabel: string;
@@ -433,6 +435,8 @@ export const sourceObservationReviewFixtures: SourceObservationReviewItem[] = [
   {
     id: "source-observation-date-missing",
     gymName: "B-PUMP Tokyo",
+    gymMatchStatus: "matched",
+    gymMatchReason: "Instagram handle matched a listed gym.",
     handle: "bpumptokyo",
     sourceUrl: "https://www.instagram.com/p/example/",
     sourceLabel: "公式Instagram",
@@ -446,6 +450,25 @@ export const sourceObservationReviewFixtures: SourceObservationReviewItem[] = [
     extractionConfidence: 0.55,
     reviewStatus: "pending",
     reviewReason: "日付候補が未確定のため、情報源を開いて掲載可否を確認してください。",
+  },
+  {
+    id: "source-observation-missing-gym",
+    gymName: "noborock_shinjuku",
+    gymMatchStatus: "missing",
+    gymMatchReason: "掲載ジムとの安全な紐づけが未確定です。",
+    handle: "noborock_shinjuku",
+    sourceUrl: "https://www.instagram.com/p/example-missing-gym/",
+    sourceLabel: "公式Instagram",
+    classification: "route_set",
+    title: "noborock_shinjuku 次回ルートセットのお知らせ",
+    summary: "公式Instagramからセット・ホールド替えの可能性がある投稿を検出しました。",
+    sourceQuote: "次回ルートセットのお知らせ",
+    observedAt: "2026-05-27",
+    sourcePostedAt: "2026-05-27",
+    startsAt: "2026-06-01T01:00:00.000Z",
+    extractionConfidence: 0.72,
+    reviewStatus: "pending",
+    reviewReason: "掲載ジムにまだ紐づいていません。公式性と対象ジムを確認してください。",
   },
 ];
 

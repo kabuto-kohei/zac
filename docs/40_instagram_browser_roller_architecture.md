@@ -154,6 +154,12 @@ confidence is low, it must remain a source observation and appear in Admin
 source post, keep it pending for follow-up, or mark it ignored. Only
 date-backed observations can move into `/event-candidates`.
 
+If a post has a strong date/category but cannot be safely linked to a published
+gym, it also stays in `/source-observations` with a missing-gym reason. The
+automation may only auto-link a gym through exact Instagram handle/profile URL,
+official-site URL, or a unique verified brand/location match. Ambiguous sources
+must remain human-reviewed.
+
 Category shaping is shared with the official-site lane:
 
 - `competition`

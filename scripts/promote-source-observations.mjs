@@ -57,12 +57,16 @@ const data = await withDatabaseClient(
        AND g.status = 'published'
        AND (
           lower(coalesce(g.instagram_handle, '')) = lower(o.handle)
+          OR lower(coalesce(g.instagram_handle, '')) = lower(coalesce(es.handle, ''))
           OR g.instagram_url = es.source_url
           OR g.instagram_url = o.source_url
+          OR regexp_replace(lower(coalesce(g.instagram_url, '')), '/+$', '') = regexp_replace(lower(coalesce(es.source_url, '')), '/+$', '')
           OR g.website_url = es.source_url
           OR g.website_url = split_part(o.source_url, '#', 1)
+          OR regexp_replace(lower(coalesce(g.website_url, '')), '/+$', '') = regexp_replace(lower(coalesce(es.source_url, '')), '/+$', '')
           OR g.source_url = es.source_url
           OR g.source_url = split_part(o.source_url, '#', 1)
+          OR regexp_replace(lower(coalesce(g.source_url, '')), '/+$', '') = regexp_replace(lower(coalesce(es.source_url, '')), '/+$', '')
        )
     `;
 

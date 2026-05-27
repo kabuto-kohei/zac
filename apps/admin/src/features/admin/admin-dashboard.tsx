@@ -712,6 +712,7 @@ function SourceObservationRow({ item, onRecorded }: { item: SourceObservationRev
           <small>
             {item.gymName} / @{item.handle}
           </small>
+          <small>{item.gymMatchStatus === "missing" ? "掲載ジム未紐づけ" : item.gymMatchReason}</small>
         </span>
         <span>
           <strong>{item.classification}</strong>
@@ -726,6 +727,7 @@ function SourceObservationRow({ item, onRecorded }: { item: SourceObservationRev
         <span>
           <strong>{item.extractionConfidence == null ? "信頼度 -" : `信頼度 ${Math.round(item.extractionConfidence * 100)}%`}</strong>
           <small>{item.reviewReason}</small>
+          {item.gymMatchStatus === "missing" ? <small>{item.gymMatchReason}</small> : null}
           {item.sourceQuote ? <small>根拠: {item.sourceQuote}</small> : null}
         </span>
       </div>

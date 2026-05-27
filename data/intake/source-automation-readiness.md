@@ -1,14 +1,14 @@
 # Source Automation Readiness
 
-- generatedAt: 2026-05-26T10:50:50.492Z
+- generatedAt: 2026-05-27T06:29:24.245Z
 - ok: true
 - scope: unattended official-source collection, staging, and safety supervision
 - failedChecks: 0
 - warnings: 0
-- latestRunAgeMinutes: 18
-- localRunAgeMinutes: 18
+- latestRunAgeMinutes: 53
+- localRunAgeMinutes: 53
 - consecutiveNonReady: 0
-- instagramFailureRatio: 0.08
+- instagramFailureRatio: 0.12
 - instagramBrowserSessionState: authenticated
 
 ## Instagram Rotation Coverage
@@ -23,13 +23,13 @@
 ## Instagram Browser Roller
 
 - sourcesVisited: 25
-- sourcesSucceeded: 23
-- sourcesFailed: 2
+- sourcesSucceeded: 22
+- sourcesFailed: 3
 - sourcesDeferred: 0
-- postsSeen: 288
-- newPostsOpened: 46
-- observedPosts: 40
-- calendarCandidates: 7
+- postsSeen: 247
+- newPostsOpened: 25
+- observedPosts: 19
+- calendarCandidates: 4
 
 ## Queues
 
@@ -37,7 +37,7 @@
 - inspectNow: 64
 - operatorBatch: 16
 - approvedSourceRotation: 96
-- upcomingEventRecheck: 34
+- upcomingEventRecheck: 31
 - candidateVerification: 0
 - gymDisciplineVerification: 119
 - closureVerification: 80
@@ -48,7 +48,7 @@
 - running: false
 - lastExitCode: 0
 - runIntervalSeconds: 10800
-- runs: 1
+- runs: 7
 
 ## Failed Checks
 
@@ -58,6 +58,7 @@
 
 - dogwood_climbing_gym: profile_unavailable; officialFallback=true
 - jyuku_rocky: checkpoint_required; officialFallback=true
+- climb.vortex: checkpoint_required; officialFallback=true
 
 ## Next Actions
 

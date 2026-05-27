@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-26T10:50:50.492Z",
+  "generatedAt": "2026-05-27T06:29:24.245Z",
   "ok": true,
   "scope": "unattended official-source collection, staging, and safety supervision",
   "notInScope": [
@@ -11,10 +11,10 @@
   "summary": {
     "failedChecks": 0,
     "warnings": 0,
-    "latestRunAgeMinutes": 18,
-    "localRunAgeMinutes": 18,
+    "latestRunAgeMinutes": 53,
+    "localRunAgeMinutes": 53,
     "consecutiveNonReady": 0,
-    "instagramFailureRatio": 0.08,
+    "instagramFailureRatio": 0.12,
     "failedInstagramSources": [
       {
         "handle": "dogwood_climbing_gym",
@@ -24,6 +24,12 @@
       },
       {
         "handle": "jyuku_rocky",
+        "error": "checkpoint_required",
+        "failureCategory": "checkpoint_required",
+        "hasOfficialFallback": true
+      },
+      {
+        "handle": "climb.vortex",
         "error": "checkpoint_required",
         "failureCategory": "checkpoint_required",
         "hasOfficialFallback": true
@@ -38,23 +44,23 @@
       "estimatedHoursPerFullPass": 15,
       "checkedWithin24h": 105,
       "checkedWithin48h": 114,
-      "dueForInspection": 51,
+      "dueForInspection": 64,
       "neverChecked": 0,
       "coverage24hRatio": 0.91,
       "coverage48hRatio": 0.98,
       "oldestLastCheckedAt": "2026-05-11T04:30:00.000Z",
-      "newestLastCheckedAt": "2026-05-26T10:22:35.504Z"
+      "newestLastCheckedAt": "2026-05-27T05:26:33.759Z"
     },
     "instagramBrowserRoller": {
       "sourcesVisited": 25,
-      "sourcesSucceeded": 23,
-      "sourcesFailed": 2,
+      "sourcesSucceeded": 22,
+      "sourcesFailed": 3,
       "sourcesDeferred": 0,
-      "postsSeen": 288,
-      "newPostsOpened": 46,
-      "lookbackPostsSkipped": 18,
-      "observedPosts": 40,
-      "calendarCandidates": 7
+      "postsSeen": 247,
+      "newPostsOpened": 25,
+      "lookbackPostsSkipped": 1,
+      "observedPosts": 19,
+      "calendarCandidates": 4
     },
     "launchAgent": {
       "checked": true,
@@ -63,14 +69,14 @@
       "running": false,
       "lastExitCode": 0,
       "runIntervalSeconds": 10800,
-      "runs": 1
+      "runs": 7
     },
     "queues": {
       "instagramPostInspection": 25,
       "inspectNow": 64,
       "operatorBatch": 16,
       "approvedSourceRotation": 96,
-      "upcomingEventRecheck": 34,
+      "upcomingEventRecheck": 31,
       "candidateVerification": 0,
       "gymDisciplineVerification": 119,
       "closureVerification": 80
@@ -110,7 +116,7 @@
     {
       "name": "latest automation run is fresh",
       "ok": true,
-      "detail": "18m",
+      "detail": "53m",
       "severity": "error"
     },
     {
@@ -140,7 +146,7 @@
     {
       "name": "local runner packet is fresh",
       "ok": true,
-      "detail": "18m",
+      "detail": "53m",
       "severity": "error"
     },
     {
@@ -242,7 +248,7 @@
     {
       "name": "Instagram browser roller made source progress",
       "ok": true,
-      "detail": "queued=25 succeeded=23 observed=40",
+      "detail": "queued=25 succeeded=22 observed=19",
       "severity": "error"
     },
     {
@@ -272,7 +278,7 @@
     {
       "name": "Instagram inspection failures are within budget or covered by official fallback",
       "ok": true,
-      "detail": "8% failed; covered by official fallback",
+      "detail": "12% failed; covered by official fallback",
       "severity": "error"
     },
     {
